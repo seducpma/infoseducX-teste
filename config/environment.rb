@@ -31,8 +31,7 @@ Rails::Initializer.run do |config|
   config.gem "searchlogic", :version => "2.4.14"
   config.gem 'i18n', :version => '0.6.1'
   config.gem 'paperclip', :version => '~>2.3'
-
-  # Only load the plugins named here, in .the order given. By default, all plugins
+# Only load the plugins named here, in .the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
