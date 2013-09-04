@@ -11,10 +11,10 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-a:link {text-decoration:none}
-a:visited {text-decoration:none}
-a:active {text-decoration:none}
-a:hover {text-decoration:none}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
 
 .fieldWithErrors {
   padding: 2px;

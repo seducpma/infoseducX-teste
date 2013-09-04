@@ -29,14 +29,14 @@ $.extend($.ui, { timepicker: { version: "0.9.4" } });
 function Timepicker() {
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[''] = { // Default regional settings
-		currentText: 'Now',
-		closeText: 'Done',
+		currentText: 'Agora',
+		closeText: 'OK',
 		ampm: false,
 		timeFormat: 'hh:mm tt',
-		timeOnlyTitle: 'Choose Time',
-		timeText: 'Time',
-		hourText: 'Hour',
-		minuteText: 'Minute',
+		timeOnlyTitle: 'Selecionar Horário',
+		timeText: 'Horário',
+		hourText: 'Hora',
+		minuteText: 'Minuto',
 		secondText: 'Second',
 		timezoneText: 'Time Zone'
 	};

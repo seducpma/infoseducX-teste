@@ -1,13 +1,16 @@
-z <div class="botao">
- <br/><br/>
-    <table class="tabelas" align="center" width="100%">
+
+<br/>
+    <table class="tabelas" width="100%"  align="center">
      <tr>
-        <td colspan="2" align="left">
-           <font  size=5 color="black"> <b> PONTO ELETRÔNICO - INFORMÁTICA SEDUC</b></font>
-       </td>
+        <th colspan="2" align="left">
+           <font  size=5 color="black"> <b> PONTO ELETRÔNICO - INFORMÁTICA SEDUC
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             </b></font>
+       </th>
       </tr>
        <tr>
-         <td align="center" width="95%">
+         <td width="95%">
            <table>
              <tr>
                <% form_for @search do |f| %>
@@ -32,53 +35,6 @@ z <div class="botao">
                       <br/>
                   <%end%>
                 <%else%>
-                  <h2><%= "Horas Trabalhadas em #{@date.strftime("%B %Y")} - 21/#{@date.month - 1}/#{@date.year} até 22/#{@date.month}/#{@date.year}" %></h2>
-                  <%inicio_mes = "#{@date.year}-#{(((@date.month).to_i) -1)}-21"%>
-                  <%termino_mes ="#{@date.year}-#{((@date.month).to_i)}-20"%>
-                  <%@ponto_count = Ponto.find_by_estagiario_id(params[:search][:estagiario_id_equals],:conditions =>["created_at between ? and ?",inicio_mes,termino_mes], :select => "count(*) as qtde_dias")%>
-                  <%@qtde = MesBase.find_by_mes(@date.month) %>
-                  <%if @qtde%>
-                    <% total = ((@total_trabalhado.total_trabalhado_geral).to_i) %>
-                  <%= "#{Ponto.convert_to_hour((total).to_i)}" %><br/>
-                   <% if (@ponto_count.qtde_dias.to_i < 3 ) && (@date.month.to_i == 4) && (@total_trabalhado.total_trabalhado_geral.to_i < 900)%>
-                    <h2 style="color:green"><%= "Estagiário ainda não terminou a carga horária mensal de 15 hrs exclusivas para este mês" %>.</h2>
-                   <%else%>
-                     <% if (@ponto_count.qtde_dias.to_i == 3 ) && (@date.month.to_i == 4) && (@total_trabalhado.total_trabalhado_geral.to_i == 900)%>
-                    <h2 style="color:green"><%= "Estagiário cumpriu a carga horária mensal de 15 hrs exclusivas para este mês" %>.</h2>
-                     <%else%>
-                      <%if total < 4800 %>
-                        <h2>Estagiário não cumpriu a carga horária mensal. Favor justificar.</h2>
-                          <% if @date.month == Ponto.define_month(Time.current) %>
-                            <%if @qtde.present?%>
-                              <%if Date.current.strftime("%Y-%m-%d") >= termino_mes%>
-                                <%if @ponto_count.qtde_dias.to_i < @qtde.qtde_dias %>
-                                  <% ChamadoMailer.deliver_informacao(@ponto_estagiario) %>
-                                <%end%>
-                              <%end%>
-                            <%else%>
-                              <% ChamadoMailer.deliver_lembrete_info(@date.month) %>
-                            <%end%>
-                          <%else%>
-                            <%if @date.month < Ponto.define_month(Time.current)%>
-                              <h2 style="color:yellow"><%= "Mes já passou" %>.</h2>
-                            <%else%>
-                              <h2 style="color:green"><%= "Mes ainda não iniciou" %>.</h2>
-                            <%end%>
-                          <%end%>
-                       <%else%>
-                        <%if total > 4800 %>
-                          <h2 style="color:green">Estagiário cumpriu a carga horária mensal.E ainda criou um banco de <%= (@total_trabalhado.total_trabalhado_geral.to_i - 4800) %></h2>
-                        <%else%>
-                          <%if (total == 4800) %>
-                            <h2 style="color:green"><%= "Estagiário cumpriu a carga horária mensal" %>.</h2>
-                          <%end%>
-                        <%end%>
-                      <%end%>
-                     <%end%>
-                   <%end%>
-                  <%else%>
-                    <% ChamadoMailer.deliver_lembrete_info(@date.month) %>
-                  <%end%>
                  <%end%>
                 <div class="botao">
                   <table width="100%">
@@ -93,6 +49,6 @@ z <div class="botao">
           </td>
        </tr>
   </table>
-  <br>
-  </div>
+  <br/>
+
 

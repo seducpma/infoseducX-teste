@@ -1,11 +1,11 @@
 <% form_for(@informativo) do |f| %>
   <%= f.error_messages %>
   <font  size="2">
-<table class="tabelas" width="100%" align="center">
+<table class="tabelas1" width="100%" align="center">
   <tr>
-   <td colspan="2" align="left">
+   <th colspan="2" align="left">
      <font  size=5><b> INFORMATIVO</b></font>
-   </td>
+   </th>
   </tr>
      <tr>
       <td width="50%">
@@ -34,7 +34,7 @@
               <td valign="top">
                 <fieldset>
                   <legend><font  size=4>Informação a ser repassada</font></legend>
-                  <%= f.text_area :mensagem, :rows => 4, :cols => 48  %>
+                  <%= f.text_area :mensagem, :rows => 4, :cols => 80  %>
                 </fieldset>
               </td>
 

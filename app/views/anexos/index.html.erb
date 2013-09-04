@@ -2,9 +2,9 @@
 <br/>
  <table  class="tabelas"   align="center" width="80%">
    <tr>
-      <td colspan="2" align="left">
+      <th colspan="2" align="left">
          <font  size=5><b> ANEXOS DA UNIDADE <%= params[:unidade].present? ? params[:unidade] : "" %> - <%= params[:unidade].present? ? Unidade.find(params[:unidade]).nome : "Todos" %></b></font>
-      </td>
+      </ths>
    </tr>
    <tr>
      <td>
@@ -52,3 +52,4 @@
         </div>
  </table>
 </font>
+<BR/>

@@ -1,14 +1,14 @@
- <table class="tabelas"  align="center" width="100%">
+ <table class="tabelas1"  align="center" width="100%">
   <tr>
-       <td align="left">
+       <th align="left">
          <font  size=5 color="black"> <b>SENHAS</b></font>
-       </td>
+       </t1>
       </tr>
  <tr>
   <td>
    <br/>
    <div class="botao">
-   <table width="100%">
+     <table width="100%">
     <tr>
       <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
       <td width="1%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>
@@ -75,11 +75,11 @@
    </table>
    </font>
   <div class="botao">
-   <table width="100%">
+   <table width="100%" >
     <tr>
-      <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-      <td width="1%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>     <% if  $var == 0 then %>
-        <td align="left" colspan="4"><%= will_paginate @senhas %></td>
+      <td width="4%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>     <% if  $var == 0 then %>
+        <td align="left" ><%= will_paginate @senhas %></td>
       <%end%>
    </tr>
   </table>

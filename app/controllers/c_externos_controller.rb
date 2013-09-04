@@ -146,7 +146,11 @@ def exencerra
   protected
 
   def load_resources
-    @empresas = Empresa.all
+    if (current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC'))
+         @empresas = Empresa.all
+    else
+       @empresas = Empresa.find(:all, :conditions => ['status= 0'])
+    end
   end
 
 

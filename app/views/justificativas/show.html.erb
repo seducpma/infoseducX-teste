@@ -2,16 +2,16 @@
 <br/>
 <table class="tabelas"align="center">
   <tr>
-    <td colspan="2" align="left">
+    <th colspan="2" align="left">
      <font  size=4><b> JUSTIFICATIVA</b></font>
-  </td>
+  </th>
  </tr>
  <tr>
    <td>
       <font  size="2">
         <table width="100%">
           <tr>
-            <td width="40%"align="left"><b>Estagiário:</b></td>
+            <td width="32%"align="left"><b>Estagiário:</b></td>
           <td align="left"><%=h @justificativa.estagiario.nome %></td>
           </tr>
           <tr>
@@ -24,16 +24,16 @@
           </tr>
           <tr>
              <%if @justificativa.saida.present? && @justificativa.entrada.present?%>
-                <td align="left"><b>Dia letivo</b> - <%=h@justificativa.dia.strftime("%d/%m/%Y")%></td>
+            <td align="left"><b>Dia letivo:</b></td><td align="left"> <%=h@justificativa.dia.strftime("%d/%m/%Y")%></td>
                 <%else%>
                   <%if @justificativa.saida.present? && !@justificativa.entrada.present?%>
-                    <td align="left"><b>Saída</b> às <%=h@justificativa.hora_saida.strftime("%H:%M")%> horas</td>
+                    <td align="left"><b>Saída:</b></td><td align="left"> às <%=h@justificativa.hora_saida.strftime("%H:%M")%> horas</td>
                   <%else%>
                     <%if @justificativa.saida.present? && !@justificativa.entrada.present?%>
-                      <td align="left"><b>Saída</b> às  <%=h@justificativa.hora_saida.strftime("%H:%M")%> horas</td>
+                      <td align="left"><b>Saída:</b></td><td align="left"> às  <%=h@justificativa.hora_saida.strftime("%H:%M")%> horas</td>
                     <%else%>
                       <%if !@justificativa.saida.present? && @justificativa.entrada.present?%>
-                        <td align="left"><b>Entrada</b> às <%=h@justificativa.hora_entrada.strftime("%H:%M/")%> horas</td>
+                        <td align="left"><b>Entrada:</b></td><td align="left"> às <%=h@justificativa.hora_entrada.strftime("%H:%M/")%> horas</td>
                       <%end%>
                     <%end%>
                   <%end%>

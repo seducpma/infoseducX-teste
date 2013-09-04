@@ -1,0 +1,62 @@
+<br/>
+<font size="2">
+<table class="tabelas"width="40%"align="center">
+ <tr>
+   <th colspan="2" align="left">
+       <font  size=5 color="black"> <b>CURSO</b></font>
+   </th>
+ </tr>
+ <tr>
+   <td>
+    <fieldset><legend><font  size=4> Produto</font></legend>
+       <table width="100%">
+               <tr>
+                   <td align="left"><b>Nome do Curso:</b></td>
+                   <td align="left"><%=h @curso.nome %></td>
+                </tr>
+                 <tr>
+                   <td align="left" valign="Top"><b>Ementa:</b></td>
+                   <td align="left"><%=h @curso.ementa %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Ministrante(s): </b></td>
+                   <td align="left"><%=h @curso.ministrante %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Carga Horária: </b></td>
+                   <td align="left"><%=h @curso.carga_horaria %> horas</td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Nº Vagas: </b></td>
+                   <td align="left"><%=h @curso.vagas_disponiveis %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Nº Inscritos: </b></td>
+                   <td align="left"><%=h @curso.qtde %></td>
+                </tr>
+                <tr>
+                  <td align="left" valign="top"><b>Observações:</b></td>
+                  <td align="left"colspan="5"><%=h @curso.obs  %></td>
+                </tr>
+        </table>
+    </fieldset>
+    <div class="botao">
+      <table>
+        <tr>
+            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_curso_path(@curso), :title => "Alterar Dados"%></td>
+            <%end%>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+      </table>
+   </div>
+ </td>
+</tr>
+</table>
+</font>
+<br/>
+
+
+
+

@@ -1,0 +1,99 @@
+<br/>
+<font size="2">
+<table class="tabelas"width="40%"align="center">
+ <tr>
+   <th colspan="2" align="left">
+       <font  size=5 color="black"> <b>PARTICIPANTE</b></font>
+   </th>
+ </tr>
+ <tr>
+   <td>
+    <fieldset><legend><font  size=4> Dados Pessoais </font></legend>
+       <table width="100%">
+               <tr>
+                   <td align="left"><b>Nome :</b></td>
+                   <td align="left"><%=h @participante.nome %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>RG :</b></td>
+                   <td align="left"><%=h @participante.rg %> - 
+                     <b>CPF :</b><%=h @participante.cpf %></td>
+                </tr>
+                 <tr>
+                   <td align="left"><b>Profissão:</b></td>
+                   <td align="left"><%=h @participante.profissao %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Endereço: </b></td>
+                   <td align="left"><%=h @participante.endereco %> <b>Nº</b> <%=h @participante.num %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Complemento: </b></td>
+                   <td align="left"><%=h @participante.complemento %></td>
+                </tr>
+
+                <tr>
+                   <td align="left"><b>Cidade: </b></td>
+                   <td align="left"><%=h @participante.cidade %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Bairro: </b></td>
+                   <td align="left"><%=h @participante.bairro%> -
+                     <b>CEP: </b><%=h @participante.CEP %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Telefone: </b></td>
+                   <td align="left"><%=h @participante.telefone %> -
+                     <b>Celular: </b><%=h @participante.cel %></td>
+                </tr>
+              <% if @participante.unidade_id.nil? %>
+                <tr>
+                   <td align="left"><b>Observação: </b></td>
+                   <td align="left"><%=h @participante.obs %></td>
+                </tr>
+               <%end%>
+        </table>
+    </fieldset>
+     <% if @participante.unidade_id.nil? %>
+     
+     <%else%>
+   <fieldset><legend><font  size=4> Se Professor ou Funcionário SEDUC </font></legend>
+       <table width="100%">
+                <tr>
+                   <td align="left"><b>Matrícula: </b></td>
+                   <td align="left"><%=h @participante.matricula %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Unidade: </b></td>
+                   <td align="left"><%=h @participante.unidade.nome %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Função: </b></td>
+                   <td align="left"><%=h @participante.funcao%></td>
+                </tr>
+                 <tr>
+                   <td align="left"><b>Observação: </b></td>
+                   <td align="left"><%=h @participante.obs%></td>
+                </tr>
+        </table>
+    </fieldset>
+      <%end%>
+     <div class="botao">
+      <table>
+        <tr>
+            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+
+
+                <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_participante_path(@participante), :title => "Alterar Dados"%></td>
+
+
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+      </table>
+   </div>
+ </td>
+</tr>
+</table>
+</font>
+<br/>
+

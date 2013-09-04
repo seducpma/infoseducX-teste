@@ -1,0 +1,16 @@
+<% for curso in @cursosparticipa %>
+     <b>Nome:<%=h curso.nome %><br/>
+        Ministrante: <%=h curso.ministrante %><br/>
+        Tipo: <%=h curso.tipo %><br/>
+        Carga Horaria: <%=h curso.carga_horaria%> horas<br/>
+        Data e Horário:<%=h curso.data_hora.strftime("%d de %B de %Y - %H:%M horas") %><br/>
+        Observações:<%=h curso.obs %>
+      </b>
+     <% end %>
+
+
+
+
+
+
+

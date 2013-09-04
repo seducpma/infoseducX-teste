@@ -1,0 +1,52 @@
+ <br/>
+ <br/>
+ <table width="70%" border="1" frame="box" rules="all" align="center">
+   <tr>
+     <td>
+        <h1 align="center">Confirmação da Inscrição</h1>
+      </td>
+   </tr>
+   <tr>
+      <td>
+       <table width="100%" border="1">
+         <br/>
+           <tr>
+             <th colspan="2"><b>Participante:</b></th>
+           </tr>
+           <tr>
+             <td colspan="2">
+              <%=h  @inscricao.participante.nome %>
+             </td>
+           </tr>
+      <tr>
+          <th colspan="2">Cursos:</th>
+      </tr>
+          <% @inscricao.cursos.each do |curso| %>
+              <tr>
+                <td colspan="2" align="center">
+                  <b><%=h curso.nome_curto %></b>
+                </td>
+              </tr>
+          <% end %>
+          <tr>
+            <td colspan="2"><b>Inscrição efetuada em:</b>
+              <%=h  @inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
+          </tr>
+       </table>
+     </td>
+   </tr>
+  </table>
+  <div class="botao">
+   <table width="70%" align="center">
+    <tr>
+       <td width="8%"><%= button_to 'Nova Inscrição', new_inscricao_path  %></td>
+       <td><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+    </tr>
+  </table>
+ </div>
+
+
+
+
+
+

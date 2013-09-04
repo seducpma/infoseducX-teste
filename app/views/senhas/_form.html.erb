@@ -3,9 +3,9 @@
 <font  size="2">
  <table class="tabelas" align="center" width="50%">
   <tr>
-   <td colspan="2" align="left">
+   <th colspan="2" align="left">
      <font  size=5><b> SENHAS</b></font>
-   </td>
+   </th>
   </tr>
   <tr>
    <td>
@@ -13,9 +13,6 @@
         <tr>
           <td align="left"><b>Unidade:</b></td>
            <td align="left"><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %>
-               <%= observe_field 'senha_unidade_id',
-               :with => :senha_unidade_id,
-               :url => { :action => 'nome_unidade' } %>
            </td>
          </tr>
          <tr>
@@ -23,25 +20,25 @@
          </tr>
          <tr>
            <td valign="top"align="left"><b>De:</b></td>
-           <td colspan="2" align="left"><%= f.text_field :de %></td>
+           <td colspan="2" align="left"><%= f.text_field :de, :size =>44 %></td>
          </tr>
         <tr>
 
          <tr>
            <td valign="top"align="left"><b>Usuário</b></td>
-           <td colspan="2" align="left"><%= f.text_field :usuario %></td>
+           <td colspan="2" align="left"><%= f.text_field :usuario, :size =>44 %></td>
          </tr>
         <tr>
            <td valign="top"align="left"><b>Senha:</b></td>
-           <td colspan="2" align="left">    <%= f.text_field :senha %></td>
+           <td colspan="2" align="left">    <%= f.text_field :senha, :size =>44 %></td>
          </tr>
         <tr>
            <td valign="top"align="left"><b>Fone Instalado:</b></td>
-           <td colspan="2" align="left">    <%= f.text_field :fone%></td>
+           <td colspan="2" align="left">    <%= f.text_field :fone, :size =>44%></td>
          </tr>
          <tr>
            <td valign="top"align="left"><b>Observações:</b></td>
-           <td colspan="2" align="left"><%= f.text_area(:obs, :cols =>"39", :rows => "2") %></td>
+           <td colspan="2" align="left"><%= f.text_area(:obs, :cols =>"61", :rows => "2") %></td>
          </tr>
      </table>
        <table>

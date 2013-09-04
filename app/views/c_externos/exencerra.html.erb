@@ -1,9 +1,9 @@
 <br/>
- <table  class="tabelas2"   align="center" width="100%">
+ <table  class="tabelas1"   align="center" width="100%">
   <tr>
-    <td colspan="2" align="left">
+    <th colspan="2" align="left">
       <font  size=5><b> ORDEM DE SERVIÇO EXTERNO ENCERRADOS</b></font>
-   </td>
+   </th>
   </tr>
   <tr>
     <td>
@@ -28,13 +28,13 @@
           <th>Data hora</th>
           <th>Unidade</th>
           <th>Tipo Serviço</th>
-          <th>Obs</th>
-          <th>Encerrada</th>
+          <th>Problema</th>
+          <th>Encerrado</th>
        </tr>
        <% for c_externo in @c_externos %>
          <%if (c_externo.situacao == 1) then %>
            <tr>
-              <td><%=h c_externo.id %></td>
+             <td align="center"><%=h c_externo.id %></td>
               <td><%=h c_externo.empresa.nome %></td>
               <td><%=h c_externo.atendente %></td>
               <td><%=h c_externo.data_hora.strftime("%d/%m/%Y") %></td>

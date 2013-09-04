@@ -6,12 +6,17 @@ class Justificativa < ActiveRecord::Base
   #validates_presence_of :horario, :if => :cumpriu?
   attr_accessor :hour
 
- 
+
   after_save :cria_ponto, :if => :nao_bateu_ponto?
   after_save :forgot_hit_out, :if => :just_out
   after_update :update_ponto, :if => !(:just_out)
   before_save :qtde_horas, :if => :just_out
-  
+  before_save :horas_saida_justificativa
+
+  def horas_saida_justificativa
+  self.hora_saida = hour
+  end
+
   def verifica_datas
     if self.saida.to_date < self.entrada.to_date
       errors.add(:saida, "Saida horário de saida deve ser maior que o de entrada")
@@ -35,7 +40,7 @@ class Justificativa < ActiveRecord::Base
           self.qtd_hrs = 0
     end
   end
-  
+
   def justificativa_total
     if self.saida.present? && self.entrada.present?
       sem_ponto
@@ -52,9 +57,9 @@ class Justificativa < ActiveRecord::Base
       p.total_trabalhado = ((saida).to_i - (p.entrada).to_i) / 60
       p.saida = corrige_hora_saida
       self.qtd_hrs = p.total_trabalhado
-      p.updated_at = Time.current
+    p.updated_at = Time.current
       p.save!
-      
+
     end
   end
 
@@ -71,11 +76,11 @@ class Justificativa < ActiveRecord::Base
       p.mes = self.dia.month
       p.ano = self.dia.year
       p.updated_at = Time.current
-      p.save
-    end
-  
-  end
+    p.updated_at = Time.current
+      p.save!
 
+    end
+  end
 
   def cria_ponto
     ponto = Ponto.new
@@ -90,8 +95,7 @@ class Justificativa < ActiveRecord::Base
       if type == "VESPERTINO"
       ponto.created_at = ("#{self.dia + 15.hour}").to_time
       ponto.updated_at = ("#{self.dia + 20.hour}").to_time
-
-      end
+    end
     end
     ponto.total_trabalhado = justificativa_total
     ponto.mes = self.dia.month
@@ -99,7 +103,7 @@ class Justificativa < ActiveRecord::Base
   end
 
   def forgot_hit_out
-    self.cumpriu_horario = 1    
+    self.cumpriu_horario = 1
   end
 
 
@@ -121,3 +125,5 @@ class Justificativa < ActiveRecord::Base
   end
 
 end
+
+

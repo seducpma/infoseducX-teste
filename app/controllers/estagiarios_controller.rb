@@ -141,7 +141,7 @@ class EstagiariosController < ApplicationController
 
   def analistas
     if (params[:search].nil? || params[:search].empty?)
-       @analistas = Estagiario.paginate :page => params[:page], :conditions =>['flag=?',1], :order => 'nome ASC', :per_page => 10
+       @analistas = Estagiario.paginate :page => params[:page], :conditions =>['flag=1 and desligado=0'], :order => 'nome ASC', :per_page => 10
       $var = 0
     else
       @analistas = Estagiario.find(:all, :conditions => (["nome like ? and flag=?", "%" + params[:search].to_s + "%",1 ]), :order => 'nome ASC')

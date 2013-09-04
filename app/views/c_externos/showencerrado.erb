@@ -44,7 +44,11 @@
                 <td align="left"><b>Observações:</b></td>
                 <td align="left"colspan="2"><%=h  @c_externo.obs %></td>
               </tr>
-              <% if @c_externo.situacao == 1 then %>
+              <tr>
+                <td align="left"><b>Procedimentos:</b></td>
+                <td align="left"colspan="2"><%=h  @c_externo.executados %></td>
+              </tr>
+               <% if @c_externo.situacao == 1 then %>
                 <tr>
                   <td align="left"><b>Situação:</b></td>
                   <td align="left"> Chamado ENCERRADO em </td>

@@ -12,22 +12,23 @@
 
 <div id="contents">
   <div id="header">
+    <br/>
     <div id="topo">
       <br/><br/><br/><br/><br/>   
-      <table>
+      <table width="100%">
         <tr>
           <td width="74%"align="left"></td>
-          <td align="right"> <h4><font   size ="2"> Americana <%= Time.now.strftime("%d de %B de %Y") %></font></h4>
+          <td align="right"> <h4><font   size ="2"> Americana <%= Time.now.strftime("%d de %B de %Y") %></font></h4></td>
         </tr>
+        <br/>
       </table>
     </div>      
 
   </div>
   <p style="color: red"><%= flash[:notice] %></p>
-  <div id="principal2">
+  <div id="principal">
       
         <%= yield  %>
-      </div>
   </div>
 </div>
 </body>

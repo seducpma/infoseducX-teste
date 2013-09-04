@@ -1,0 +1,22 @@
+<h1>Listing cursos_inscricaos</h1>
+
+<table>
+  <tr>
+    <th>Curso</th>
+    <th>Inscricao</th>
+  </tr>
+
+<% @cursos_inscricaos.each do |cursos_inscricao| %>
+  <tr>
+    <td><%=h cursos_inscricao.curso %></td>
+    <td><%=h cursos_inscricao.inscricao %></td>
+    <td><%= link_to 'Show', cursos_inscricao %></td>
+    <td><%= link_to 'Edit', edit_cursos_inscricao_path(cursos_inscricao) %></td>
+    <td><%= link_to 'Destroy', cursos_inscricao, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cursos_inscricao', new_cursos_inscricao_path %>

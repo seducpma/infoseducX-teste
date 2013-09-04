@@ -28,6 +28,7 @@
         </tr>
         <tr>
           <td colspan="2"><font size="3" color="red"><i><b>Clique na caixa de Horário e arraste o botão Hour e Minute para marcar a hora</b></i></font></td>
+        </tr>
         <tr>
          <td colspan="2">
            <table>
@@ -55,21 +56,21 @@
           <td align="left" ><%= f.hidden_field(:dia, :value => params[:date]) %>
               <%dia = params[:date].to_date%>
               <%= dia.strftime("%d/%m/%Y") %>
-             <b>Cumpriu horário ?</b>
+             <b>Cumpriu horário?</b>
               <%= f.check_box :cumpriu_horario %>
           </td>
         </tr>
         <tr>
            <td align="left"><b>Feriado:</b></td>
-           <td align="left">SIM <%= f.check_box :feriado %> </td><p>
-       </tr>zz
+           <td align="left">SIM <%= f.check_box :feriado %> - NÃO necessita cumprir horário </td>
+       </tr>
         <tr>
            <td align="left"><b>Recesso:</b></td>
-           <td align="left">SIM <%= f.check_box :recesso %> </td><p>
+           <td align="left">SIM <%= f.check_box :recesso %> - NÃO necessita cumprir horário</td>
        </tr>
         <tr>
            <td align="left"><b>Fim de Semana:</b></td>
-           <td align="left">SIM <%= f.check_box :fimsemana %> </td><p>
+           <td align="left">SIM <%= f.check_box :fimsemana %>  - NÃO necessita cumprir horário</td>
        </tr>
         <tr>
          <td colspan="2">

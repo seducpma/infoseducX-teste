@@ -1,5 +1,5 @@
-set :application, "192.168.0.122"
-set :repository, "git://github.com/alexsoares/infoseduc.git"
+set :application, "192.168.0.5"
+set :repository, "git://github.com/seducpma/infoseduc.git"
 set :user, "servidor"
 set :use_sudo, false
 set :deploy_to, "/home/#{user}/infoseduc.seducpma.com"

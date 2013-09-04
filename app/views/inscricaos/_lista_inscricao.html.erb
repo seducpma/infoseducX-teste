@@ -1,0 +1,38 @@
+<style media="print">
+.botao {
+display: none;
+}
+</style>
+<br/>
+<table>
+ <tr>
+   <td align="left"l><font size="4"><b><u> Resultado da Consulta</u></b></font></td>
+   <br/>
+ </tr>
+ <tr>
+  <td width="100%" colspan="3">
+   <%  $contador = 0 %>
+   <table border ="1" cellpadding="1" cellspacing="1" width="100%" >
+       <tr>
+        <td bgcolor="gray">Participante</td>
+        <td bgcolor="gray">Curso</td>
+        <td bgcolor="gray">Tipo</td>
+        <td bgcolor="gray">Data da Inscrição:</td>
+      </tr>
+      <% for inscricao in @inscricaos %>
+      <tr>
+       <td><%=h inscricao.participante.nome %></td>
+       <td><%=h inscricao.curso.nome %></td>
+       <td><%=h inscricao.curso.tipo %></td>
+       <td><%=h inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
+     </tr>
+     <%  $contador = $contador + 1 %>
+    <% end %>
+   </table>
+ </td>
+</tr>
+
+<tr>
+     <td width="8%" colspan="4"><b> Total de inscritos no curso: <%= $contador %></b> </td>
+     </tr>
+ </table>

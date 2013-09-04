@@ -1,0 +1,85 @@
+class InscricaosController < ApplicationController
+  # GET /inscricaos
+  # GET /inscricaos.xml
+  def index
+    @inscricaos = Inscricao.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @inscricaos }
+    end
+  end
+
+  # GET /inscricaos/1
+  # GET /inscricaos/1.xml
+  def show
+    @inscricao = Inscricao.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @inscricao }
+    end
+  end
+
+  # GET /inscricaos/new
+  # GET /inscricaos/new.xml
+  def new
+    @inscricao = Inscricao.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @inscricao }
+    end
+  end
+
+  # GET /inscricaos/1/edit
+  def edit
+    @inscricao = Inscricao.find(params[:id])
+  end
+
+  # POST /inscricaos
+  # POST /inscricaos.xml
+  def create
+    @inscricao = Inscricao.new(params[:inscricao])
+
+    respond_to do |format|
+      if @inscricao.save
+        flash[:notice] = 'Inscricao was successfully created.'
+        format.html { redirect_to(@inscricao) }
+        format.xml  { render :xml => @inscricao, :status => :created, :location => @inscricao }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @inscricao.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /inscricaos/1
+  # PUT /inscricaos/1.xml
+  def update
+    @inscricao = Inscricao.find(params[:id])
+
+    respond_to do |format|
+      if @inscricao.update_attributes(params[:inscricao])
+        flash[:notice] = 'Inscricao was successfully updated.'
+        format.html { redirect_to(@inscricao) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @inscricao.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /inscricaos/1
+  # DELETE /inscricaos/1.xml
+  def destroy
+    @inscricao = Inscricao.find(params[:id])
+    @inscricao.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(inscricaos_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

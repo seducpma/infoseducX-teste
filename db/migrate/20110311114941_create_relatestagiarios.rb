@@ -10,7 +10,7 @@ class CreateRelatestagiarios < ActiveRecord::Migration
       t.string :providencia
       t.string :obs
       t.integer :valida, :default => 0
-      t.string :nome
+
 
       t.timestamps
     end

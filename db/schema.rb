@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424182105) do
+ActiveRecord::Schema.define(:version => 20130813150851) do
 
   create_table "administracaos", :force => true do |t|
     t.integer  "unidade_id",       :null => false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20120424182105) do
   create_table "computadores", :force => true do |t|
     t.integer  "unidade_id"
     t.integer  "tipo_controle_id"
-    t.integer  "quant",            :default => 0
+    t.integer  "quant",            :default => 1
     t.string   "config"
     t.string   "pat"
     t.string   "user"
@@ -114,6 +114,11 @@ ActiveRecord::Schema.define(:version => 20120424182105) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cursos_inscricaos", :id => false, :force => true do |t|
+    t.integer "curso_id",     :null => false
+    t.integer "inscricao_id", :null => false
   end
 
   create_table "data_files", :force => true do |t|
@@ -359,7 +364,7 @@ ActiveRecord::Schema.define(:version => 20120424182105) do
     t.integer  "estagiario_id"
     t.datetime "entrada"
     t.datetime "saida"
-    t.integer  "total_trabalhado"
+    t.integer  "total_trabalhado", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ano"
@@ -509,8 +514,8 @@ ActiveRecord::Schema.define(:version => 20120424182105) do
     t.integer  "estagiarioN", :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "ip"
     t.string   "biblioteca"
+    t.string   "ip"
   end
 
   create_table "users", :force => true do |t|
@@ -525,8 +530,6 @@ ActiveRecord::Schema.define(:version => 20120424182105) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
-    t.integer  "unidade_id"
-    t.string   "password_reset_code"
   end
 
 end

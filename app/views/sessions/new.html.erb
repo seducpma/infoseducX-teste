@@ -1,48 +1,91 @@
 <div id="posicao_login" >
- <table width="75%" border="1" rules="all" frame="box">
-  <tr>
-    <td width="48%" rowspan="3">
-       <div id="imagem_login"></div>
-    </td>
-    <td width="25%">
-           <p><font  size="4"><b><u>Sistema de Gerenciamento Informática</u></b></font></p>
-           <p align="center"><font  size="3">LOGIN</font></p>
-          <% form_tag session_path do -%>
-          <font  size="2">
-           <p><%= label_tag 'Usuário' %><br />
-              <%= text_field_tag 'login', @login %></p>
+  <table width ="97%" border="2">
+    <tr>
+      <td width ="47%" valign="top">
+        <table width="100%" border="1">
+          <tr>
+            <td valign="top">
+               <div id="imagem_login"></div>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="center">
+              <p><font  size="4" color="black"><b><u>Sistema de Gerenciamento Informática</u></b></font></p>
+              <p align="center"><font  size="3"  color="black"><b>LOGIN DE ACESSO</b></font></p>
+              <% form_tag session_path do -%>
+                  <font  size="2" color="black">
+                    <p><b><%= label_tag 'Usuário' %></b>
+                      <%= text_field_tag 'login', @login, :size =>15 %></p>
+                    <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
+                     <%= password_field_tag 'password', nil, :size =>15 %></p>
+                  </font>
+                  <p><%= submit_tag 'Entrar' %></p>
+               <% end %>
+             </td>
+           </tr>
+           <tr>
+              <td colspan="2" align="center">
+                <font  size="2" color="black"><b>Não possui senha?</b></font><br/>
+                       <%= button_to 'Cadastrar Usuário/Senha', signup_path%>
+                       <%= link_to 'Esqueci a Senha', new_password_path%>
+              </td>
+           </tr>
+        </table>
+     </td>
+     <td width="1%">
+ 
+     </td>
+     <td width ="45%" valign="top">
+         <table width="100%" border="1">
+          <tr>
+            <td>
+               <div id="imagem_login2"></div>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="center">
+              <p><font  size="4" color="black"><b><u>Sistema de Inscrições on-line</u></b></font></p>
+               <p align="center"><font  size="3"  color="black"><%= button_to  "Inscrições", new_inscricao_path, :class => "button", :id => "inscreva-se" %></font></p>
+               <table width="100%">
+                  <tr>
+                    <td>
+                      <table  class="tabelas" style="border-color: white">
+                        <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
+                        <% @cursos.in_groups_of(2, false) do |row_cursos| %>
+                          <tr>
+                            <% row_cursos.each do |curso| %>
+                                <%if curso.existe_vaga %>
+                                  <td id="demo" align="left"><%= "#{curso.nome_curto} - #{curso.qtde}/#{curso.vagas_disponiveis}"%></td>
+                                <%else%>
+                                  <td><%= " #{curso.nome}"%>  <br/>
+                                    <font color="red"> <b>VAGAS COMPLETADAS" </b></font> </td>
+                                <%end%>
+                            <%end%>
+                          </tr>
+                        <%end%>
+                      </table>
+                    </td>
+                  </tr>
+               </table>
+             </td>
+           </tr>
 
-          <p><%= label_tag 'Senha' %><br/>
-             <%= password_field_tag 'password', nil %></p>
-          </font>
-          <p><%= submit_tag 'Entrar' %></p>
-          <% end %>
-        <br/>
-      </td>
-   </tr>
-   <tr>
-      <td colspan="2" align="center">
-        <font  size="2"><b>Consulta andamento de Serviço</b></font><br/>
-         <%= button_to 'Consultar', busca_protocolo_chamados_path%>
-       <br/>
-      </td>
-   </tr>
-   <tr>
-      <td colspan="2" align="center">
-        <font  size="2"><b>Não possui senha?</b></font><br/>
-               <%= button_to 'Cadastrar Usuário/Senha', signup_path%>
-               <%= link_to 'Esqueci a Senha', new_password_path%>
-      </td>
-   </tr>
-   <tr>
-     <td colspan="2">
-        <div id="rodape_login">
-           © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.
-        </div>
-      </td>
+        </table>
+     </td>
     </tr>
-   </table>
+    <tr>
+      <td colspan="3">
+         <div id="rodape_login">
+             © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.
+         </div>
+      </td>
+     </tr>
+
+  </table>
+
+<br/><br/><br/><br/>
 </div>
 <br/>
-
+<br/>
+<br/>
 

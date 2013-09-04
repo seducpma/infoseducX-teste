@@ -1,9 +1,9 @@
 <br/>
- <table  class="tabelas2"   align="center" width="100%">
+ <table  class="tabelas1"   align="center" width="100%">
    <tr>
-     <td colspan="2" align="left">
+     <th colspan="2" align="left">
          <font  size=5><b> ORDEM DE SERVIÇO EXTERNO EM ABERTO</b></font>
-      </td>
+      </th >
    </tr>
    <tr>
      <td>
@@ -29,7 +29,7 @@
                       <th>Data hora</th>
                       <th>Unidade</th>
                       <th>Tipo Serviço</th>
-                      <th>Obs</th>
+                      <th>Problema</th>
                     </tr>
                 <%$numchamados = 0%>
                 <% @c_externos.each do |c_externo| %>
@@ -43,23 +43,25 @@
                     <td><%=h c_externo.tipo_osexterna.tipo %></td>
                     <td><%=h c_externo.obs %></td>
                  </tr>
-                     <tr>
-                      <td colspan="7">
-                      <div class="botao">
-                        <table>
+                 <div class="botao">
                    <% if (c_externo.tipo_id == 1)|| (c_externo.tipo_id == 2)|| (c_externo.tipo_id == 3)%>
-                      <td align="center" colspan="1"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), c_externo_documentos_path(c_externo), :method => "get", :title => "Anexos referentes ao Chamado" %></td>
+                     <tr>
+                       <td width="5%"align="left" colspan="7"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), c_externo_documentos_path(c_externo), :method => "get", :title => "Anexos referentes ao Chamado" %>
+                       &nbsp;&nbsp;
+                       <%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), {:action => "ordemservico", :id =>c_externo}, :method => "get", :title => "Ordem de Serviço" %>
+                       </td>
+                     </tr>
                    <%else%>
 
                    <%end%>
+                     <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                       <tr>
+                         <td colspan="7" align="left" > <%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), {:action => "ordemservico", :id =>c_externo}, :method => "get", :title => "Ordem de Serviço" %>
+                         </td>
+                        </tr>
+                      <%end%>
+                  </div>
 
-                          <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                             <td align="left" > <%= link_to image_tag("/stylesheets/images/listar.png", :size => "35x35"), {:action => "ordemservico", :id =>c_externo}, :method => "get", :title => "Ordem de Serviço" %></td>
-                           <%end%>
-                        </table>
-                      </div>
-                     </td>
-                  </tr>
              <%$numchamados = $numchamados +1%>
                 <% end %>
               <% end %>
@@ -80,6 +82,7 @@
         </table>
         </div>
       </td>
+  </tr>
 </table>
 
 

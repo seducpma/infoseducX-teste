@@ -1,11 +1,11 @@
     <fieldset><legend><font  size=4> Solicitação</font></legend>
-       <table width="100%" align="center">
+      <table width="100%" align="center">
                <tr>
-                  <td align="left" width="37%"><b>Nº Protocolo:</b></td>
+                  <td align="left" width="20%"><b>Nº Protocolo:</b></td>
                   <td align="left" colspan="2"><%=h @c_externo.id %></td>
                </tr>
         <tr>
-            <td align="left" width="35%"><b>Empresa:</b></td>
+            <td align="left" width="20%"><b>Empresa:</b></td>
             <td align="left" colspan="2"><%=h @c_externo.empresa.nome %></td>
           </tr>
           <tr>
@@ -25,25 +25,30 @@
             <td align="left"colspan="2"><%=h @c_externo.atendente %></td>
           </tr>
           <tr>
-            <td align="left"><b>Data e Hora Atendimento:</b></td>
+            <td align="left"><b>Data:</b></td>
             <td align="left"colspan="2"><%=h  @c_externo.data_hora.strftime("%d/%m/%Y") %></td>
           </tr>
           <tr>
-            <td align="left"><b>Observações:</b></td>
+            <td align="left"><b>Problema:</b></td>
             <td align="left"colspan="2"><%=h  @c_externo.obs %></td>
           </tr>
           <% if @c_externo.situacao == 1 then %>
             <tr>
               <td align="left"><b>Situação:</b></td>
-              <td align="left"> Chamado ENCERRADO em </td>
-               <td align="left"><%=h  @c_externo.data_encerra.strftime("%d/%m/%Y") %></td>
+              <td align="left" colspan="2"> Chamado ENCERRADO em <%=h  @c_externo.data_encerra.strftime("%d/%m/%Y") %></td>
             </tr>
+            <tr>
+              <td align="left"><b>Procedimentos <br/>Executados:</b></td>
+              <td align="left" colspan="2" valign="top"> <%=h  @c_externo.executado %></td>
+            </tr>
+
           <%else%>
             <tr>
               <td align="left"><b>Situação:</b></td>
               <td align="left" colspan="2"> Chamado NÂO ENCERRADO </td>
             </tr>
-        <%end%>
+          <%end%>
+ 
      </table>
    </fieldset>
 

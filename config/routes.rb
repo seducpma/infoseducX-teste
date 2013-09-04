@@ -1,4 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :cursos_inscricaos
+#  map.resources :inscricaos
+#  map.resources :participantes
+#  map.resources :cursos
+
+  map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :por_curso => :get}
+
+  map.resources :cursos, :collection => {:voltar => :get}
+
+  map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get}, :member => [:addemail,:update_email]
+
+
+
+
   map.resources :noticias
   
   map.resources :importar
@@ -14,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pontos
   map.resources :relatestagiarios, :collection => {:validacao => :get}
   map.resources :tipo_osexternas
-  map.resources :c_externos, :has_many => :documentos
+  map.resources :c_externos, :has_many => :documentos, :collection => {:instrucao => :get}
   map.resources :empresas
   map.resources :listaestagiarios
   map.resources :protocolos
@@ -95,8 +109,8 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.upload 'upload', :controller => 'importar', :action => 'index'
   map.termo '/termo_servico', :controller => 'administracaos', :action => 'termo_servico'
-  map.validacao '/validacao', :controller => 'relatestagiarios', :action => 'validacao'
-  map.consulta_relatestagiario '/consulta_relatestagiario', :controller => 'relatestagiarios', :action => 'consulta'
+ 
+  map.consulta_relatestagiario '/consulta_relatestagiario', :controller => 'relatestagiarios', :action => 'consulta1'
   map.geo "/geos/geo/:id", :controller => "geos", :action => "geo"
   map.exencerra '/exencerra', :controller => 'c_externos', :action => 'exencerra'
   map.resources :fornecedores
@@ -123,6 +137,8 @@ ActionController::Routing::Routes.draw do |map|
   map.totalizaC '/totalizaC', :controller => 'computadores', :action => 'totalizaC'
   map.encerrados '/cencerrados', :controller => 'chamados', :action => 'encerrados'
   map.consulta '/consultas', :controller => 'fornecedores', :action => 'consulta'
+  map.consulta_relatorio '/consulta_relatorio', :controller => 'relatestagiarios', :action => 'consulta'
+  map.valida '/valida', :controller => 'relatestagiarios', :action => 'valida'
   map.sem_estagiario '/sem_estagiario', :controller => 'unidades', :action => 'sem_estagiarios'
   map.baixas '/baixas', :controller => 'estagiarios', :action => 'baixas'
   map.analistas '/analistas', :controller => 'estagiarios', :action => 'analistas'

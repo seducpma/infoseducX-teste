@@ -27,10 +27,11 @@ h1 span {
 
 
 #mapCanvas {
-  height: 400px;
+  height: 500px;
   background: #F7F7F7;
   text-align:center;
-  line-height: 400px;
+  line-height: 500px;
+  border-style: double
 }
 
 .pagination {

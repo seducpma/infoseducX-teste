@@ -7,9 +7,9 @@ window.print();
 <font size="2">
 <table  class="tabelas" align="center" width="80%">
  <tr>
-   <td colspan="2" align="left">
+   <th colspan="2" align="left">
      <font  size=5 color="black"> <b> ESTAGIÁRIO POR PERÍODO</b></font>
-   </td>
+   </th>
  </tr>
 <tr>
   <td>
@@ -19,10 +19,8 @@ window.print();
         <tr>
           <% form_for @search do |f| %>
             <tr>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-               <!--<td width="8%" align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>-->
-               <td align="right" width="46%"><font  size="3" color="black"> Selecione Período:<%= f.select :periodo_trab_equals, options_for_select(PERIODO), :include_blank => true%></font></td>
+              <!--<td width="8%" align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>-->
+               <td align="left" width="100%"><font  size="3" color="black"> Selecione Período:<%= f.select :periodo_trab_equals, options_for_select(PERIODO), :include_blank => true%></font></td>
                <td align="left"  width="8%"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar"></td>
            </tr>
           <% end %>
@@ -75,3 +73,4 @@ window.print();
     </table>
 </table>
 </font>
+<br/>

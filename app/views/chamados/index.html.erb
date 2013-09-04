@@ -1,15 +1,9 @@
 <br/>
- <table  class="tabelas2"   align="center" width="100%">
+ <table  class="tabelas1"   align="center" width="100%">
   <tr>
-   <td>
-    <table>
-      <tr>
-        <td colspan="2" align="left">
+   <th colspan="2" align="left">
          <font  size=5><b> ORDEM DE SERVIÇO INTERNO</b></font>
-        </td>
-      </tr>
-    </table>
-   </td>
+   </th>
   </tr>
   <tr>
     <td>
@@ -33,24 +27,24 @@
             <% if current_user.has_role?('administrador') %>
                  <th bgcolor="gray"></th>
             <%end%>
-            <th>Nº Ordem</th>
-            <th>Data sol</th>
-            <th>Solicitante</th>
-            <th>Unidade</th>
-            <th colspan="2">Problema</th>
-            <th>Procedimentos</th>
-            <th>Status</th>
+            <th width ="1%" align="center"> Nº Ordem</th>
+            <th width ="5%">Data sol</th>
+            <th width ="10%">Solicitante</th>
+            <th width ="15%">Unidade</th>
+            <th width ="20%"colspan="2">Problema</th>
+            <th width ="20%"  >Procedimentos</th>
+            <th width="8%">Status</th>
             <% if current_user.has_role?('administrador') %>
-                <th>OS</th>
+            <th align="center">OS</th>
             <%end%>
           </tr>
           <%form_tag selected_print_chamados_path, :method => :get do %>
             <% for chamado in @chamados %>
               <tr>
                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                    <td><%= check_box_tag "chamado_ids[]",chamado.id %></td>
+                    <td align="center"><%= check_box_tag "chamado_ids[]",chamado.id %></td>
                <%end%>
-               <td><%=h chamado.id %></td>
+               <td align="center"><%=h chamado.id %></td>
                <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
                <td><%=h chamado.solicitante %></td>
                <td><%=h chamado.unidade.nome %></td>
@@ -66,7 +60,7 @@
                    <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
                <%end%>   <%end%>
                <% if current_user.has_role?('administrador') %>
-                   <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/listar.png", :size => "35x35"), {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Ordem de Serviço" %></td>
+                   <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Ordem de Serviço" %></td>
                <%end%>
               </tr>
             <%end%>

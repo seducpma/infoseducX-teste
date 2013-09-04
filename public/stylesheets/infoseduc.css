@@ -91,12 +91,29 @@ margin:25px;
 }
 
 #imagem_login{
-   background-image:url(Imagens/informatica.jpg);
+   background-image:url(Imagens/banner.jpg);
    background-repeat: no-repeat;
    text-align: center;
    color:white;
-   width:99.5%;
-   height:386px;
+   width:99%;
+   height:150px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+   }
+
+
+#imagem_login2{
+   background-image:url(Imagens/banner2.jpg);
+   background-repeat: no-repeat;
+   text-align: center;
+   color:white;
+   width:99%;
+   height:150px;
    margin:0;
    font:bold;
    border-color:black;
@@ -137,7 +154,7 @@ background-repeat: no-repeat;
 text-align: center;
 color:black;
 width:99.5%;
-height:84px;
+height:110px;
 margin:0;
 font:bold;
 border-color:black;
@@ -181,26 +198,33 @@ margin-left: 300px;
 #contents{
     margin:0 auto;
     background-color:White;
-    width:950px;
+    width:99%;
+   
 
 }
 
 #principal{
-    float:right;
-    width:950px;
-    height:auto;
-    background-image:url(Imagens/principal_body.jpg);
-    background-repeat:no-repeat;
-    font-size:10px;
+    
 
+    float:right;
+    width:100%;
+    height:auto;
+    overflow: auto;
+    margin:0;
+    background-image:url(Imagens/principal_body1.jpg);
+    background-repeat:repeat;
+    font-size:12px;
+    border-color:black;
 
 }
+
+
 
 #principal2{
     float:right;
     height:500px;
     width:950px;
-    background-image:url(Imagens/principal_body.jpg);
+    background-image:url(Imagens/principal_body1.jpg);
     font-size:10px;
     text-align: center;
     color:white;
@@ -267,10 +291,18 @@ margin-left: 300px;
    border-right: double;
 }
 .tabelas {
-  border: solid 1px;
+  border-style: double;
   border-collapse: separate;
   border-color:black;
   width:auto;
+
+}
+.tabelas1 {
+  border-style: double;
+  border-collapse: separate;
+  border-color:black;
+  width: 90%;
+
 }
 .tabelas2 {
   border: solid 1px;
@@ -289,16 +321,23 @@ margin-left: 300px;
 .tabelas th {
   font-size: 12px;
   color: black;
-  background-color: #EE9A00;
+  background-image:url(Imagens/fundolinha.jpg);
   padding: 4px 8px;
   padding-bottom: 4px;
-  text-align: center;
+  text-align: left;
 }
-
+.tabelas1 th {
+  font-size: 12px;
+  color: black;
+  background-image:url(Imagens/fundolinha.jpg);
+  padding: 4px 8px;
+  padding-bottom: 4px;
+  text-align: left;
+}
 .tabelas2 th {
   font-size: 12px;
   color: black;
-  background-color: #EE9A00;
+  background-color: #8297a8;
   padding: 4px 8px;
   padding-bottom: 4px;
   text-align: center;
@@ -307,7 +346,7 @@ margin-left: 300px;
 .tabelasT th {
   font-size: 12px;
   color: black;
-  background-color: #EE9A00;
+  background-color: #8297a8;
   padding: 4px 8px;
   padding-bottom: 4px;
   text-align: center;
@@ -335,21 +374,26 @@ margin-left: 300px;
 
 .tabelas td {
   padding: 4px 8px;
-  background-color: #F5DEB3;
+  background-color: #e3f4fc;
   color:black;
 }
 
+.tabelas1 td {
+  padding: 4px 8px;
+  background-color: #e3f4fc;
+  color:black;
+}
 .tabelas2 td {
   font-size: 12px;
   padding: 4px 8px;
-  background-color: #F5DEB3;
+  background-color: #e3f4fc;
   color:black;
 }
 
 .tabelasT td {
   font-size: 1px;
   padding: 4px 8px;
-  background-color: #F5DEB3;
+  background-color: #e3f4fc;
   color:black;
 }
 
@@ -478,14 +522,14 @@ font-family: Trebuchet MS, Arial, sans-serif, Helvetica;
 font-size:14px;
 text-decoration:none;
 font-weight: bold;
-background: url(images/item-primary-bg.gif);
+
 background-repeat: no-repeat;
 background-position: top;
 }
 
 #nav-container a:hover{
 color: #6C3600;
-background: url(images/item-primary-bg.gif);
+
 background-repeat: no-repeat;
 background-position: center;
 }
@@ -494,9 +538,9 @@ background-position: center;
 #nav-container div, #nav-container ul{
 margin:0px 0px 0px 0px;
 background: url(images/item-secondary-container-bg.jpg);
-background-repeat: no-repeat;
+background-repeat: repeat;
 background-color: #FF9900;
-border-bottom: 1px solid #CA6500;
+
 
 
 }
@@ -553,6 +597,7 @@ border-color:#AAAAAA;
 #posicao_abas{
     position:relative;
     top:30px;
+    
     
 }
 

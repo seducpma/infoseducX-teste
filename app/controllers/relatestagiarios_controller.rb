@@ -102,6 +102,12 @@ def load_estagiarios
     render :partial => 'consultas'
   end
 
+  def consulta1
+    render 'consultas'
+  end
+
+
+
 def lista_relatorio
     $rel = params[:relatestagiario_estagiario_id]
     @relatestagiarios = Relatestagiario.find(:all, :conditions => ['estagiario_id=' + $rel],  :order => 'created_at DESC')

@@ -2,6 +2,12 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
+
+ before_filter :load_cursos
+  def load_cursos
+    @cursos = Curso.find(:all, :order => 'nome ASC', :conditions => ['status = 0'])
+  end
+
   layout "login"
   # render new.erb.html
   def new
@@ -31,7 +37,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "VOCẼ ACABOU DE SAIR DO INFOSEDUC"
+    flash[:notice] = "VOCÊ ACABOU DE SAIR DO INFOSEDUC"
     redirect_back_or_default('/')
   end
 
