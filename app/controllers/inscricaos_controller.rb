@@ -76,7 +76,11 @@ class InscricaosController < ApplicationController
 
   def sel_participa
     @dadosparticipa = Participante.find(params[:inscricao_participante_id])
-    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1'])
+    #p= params[:inscricao_participante_id]
+    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1 and encerrado = 0'])
+    #@inscricao = Inscricao.find(:all, :conditions => ['participante_id(params[:inscricao_participante_id] and status = 1 and cursos.status = 1'])
+    #@inscricaos = Inscricao.find(:all, :conditions => ['curso_id=' + $curso ])
+    #@inscricao = Inscricao.find(:all, :conditions => ["participante_id =? and cursos.status = 1", +p])
     render :update do |page|
       page.replace_html "informacoes", :partial => 'exibe_participante'
       unless @inscricao.present?

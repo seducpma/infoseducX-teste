@@ -129,6 +129,10 @@ ActionController::Routing::Routes.draw do |map|
   map.c_adm_tp '/c_adm_tp', :controller => 'administracaos', :action => 'consultatipo'
   map.c_adm_uni '/c_adm_uni', :controller => 'administracaos', :action => 'consulta'
   map.c_est_nom '/c_est_nom', :controller => 'estagiarios', :action => 'consulta'
+  map.c_curso '/c_curso', :controller => 'cursos', :action => 'consulta'
+
+
+
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'
   map.c_uni_tp '/c_uni_tp', :controller => 'unidades', :action => 'consultatipo'
   map.c_uni_uni '/c_uni_uni', :controller => 'unidades', :action => 'consulta'

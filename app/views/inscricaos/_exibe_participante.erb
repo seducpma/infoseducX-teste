@@ -1,40 +1,43 @@
-<table width="100%">
+<table width="100%" >
     <tr>
       <td>
         <b>
-            <% if @inscricao.present?  %>
-              <b style="color:red"><%= "PARTICIPANTE JA INSCRITO." %><%= link_to "|Visualizar Inscrição|", @inscricao  %></b><br/>
-            <%end%>
+            <% if @inscricao2.present?  %>
+                
+                <b style="color:red"><%= "PARTICIPANTE JA INSCRITO." %> &nbsp&nbsp&nbsp&nbsp<%= link_to "|Visualizar Inscrição|", @inscricao  %></b><br/>
+
+             <%end%>
             Nome:<%=h @dadosparticipa.nome %> 
               <%if @dadosparticipa.unidade_id.nil?%>
                  <br/>
               <%else%>
                  -  Matricula: <%=h @dadosparticipa.matricula %><br/>
              <%end%>
-            Cidade:<%=h @dadosparticipa.cidade %> 
+            Unidade:<%if @dadosparticipa.unidade_id.nil?%>
+                   Não é funcionario da SEDUC 
+                <%else%>
+                 <%=h @dadosparticipa.unidade.nome %>
+             <%end%>
+
               <%if @dadosparticipa.obs.nil?%>
                  <br/>
               <%else%>
-                 -Observações: <%=h @dadosparticipa.obs %><br/>
+                 Obs: <%=h @dadosparticipa.obs %><br/>
              <%end%>
             Email:
               <%if @dadosparticipa.email.nil?%>
-                 Favor atualizar seu cadastro e acrescentar e-mail<br/>
-              <%else%>
+                 <font color="red"> Não consta e_mail em seu cadastro, favor atualizar cadastro</font> <br/>
+             <%else%>
                  <%=h @dadosparticipa.email %><br/>
              <%end%>
-                <!-- <%=h "#{@dadosparticipa.email.present? ? @dadosparticipa.email : 'Favor editar seu cadastro e acrescentar email para contato - '}"%>       <%=link_to "Clique Aqui", addemail_participante_path(@dadosparticipa)%><br/>
-                 -->
+          
          </b>
         </td>
-    </tr>
-  </table>
-  <table>
-    <tr>
-     <td width="6%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
-     <% if @inscricao.present?  %>
-        <td width="6%" align="left"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "30x30"), @inscricao, :title => "Visualizar Inscrição" %></td>
-    <%end%>
-    <td align="left"><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), edit_participante_path(@dadosparticipa), :title => "Atualizar Cadastro" %></td>
+        <td align="right">
+                <font color="blue">Caso necessário atualizar cadastro =></font> 
+         </td>
+         <td>
+            <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), edit_participante_path(@dadosparticipa), :title => "Atualizar Cadastro" %> </dd>
+         </td>
     </tr>
   </table>

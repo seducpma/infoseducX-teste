@@ -1,0 +1,43 @@
+  <br/>  <br/>
+   <font  size="2">
+   <table  class="tabelas" border ="1" cellpadding="1" cellspacing="1" width="100%" >
+     <% for curso in @cursos %>
+      <tr>
+        <th>Curso</th>
+        <th>Ementa</th>
+        <th>Ministrante</th>
+        <th>Carga horaria</th>
+        <th>Inscritos</th>
+        <th>Vagas</th>
+        <th>Status</th>
+        <th>Obs</th>
+      </tr>
+      <tr>
+        <td><%=h curso.nome %></td>
+        <td><%=h curso.ementa %></td>
+        <td><%=h curso.ministrante %></td>
+        <td><%=h curso.carga_horaria %></td>
+        <td><%=h curso.qtde %></td>
+        <td><%=h curso.vagas_disponiveis %></td>
+        <td><%=h curso.status %></td>
+        <td><%=h curso.obs %></td>
+      </tr>
+     <tr>
+       <td colspan="12">
+          <div class="botao">
+            <table >
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), curso, :title => "Exibir Unidade" %></td>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_curso_path(curso), :title => "Alterar Curso"%></td>0
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), curso, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
+
+            </table>
+           </div>
+       </td>
+    </tr>
+   <% end %>
+  </table>
+ </font>
+
+
+
+

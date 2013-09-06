@@ -1,7 +1,16 @@
 <% form_for(@inscricao) do |f| %>
- <%= f.error_messages %>
+<%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" width="100%" align="center" >
+  <tr>
+   <th colspan="2" align="left">
+     <font  size=5><b> CADASTRO DE INSCRIÇÕES</b></font>
+   </th >
+  </tr>
+  <tr>
+    <td>
 <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
-<table width="100%" >
+  <table width="100%" >
   <tr>
     <td width ="10%" valign="top"><b>Participante:</b></td>
      <% if @participante.present? %>
@@ -9,29 +18,29 @@
         <td  valign="top">
            <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %>
         </td>
-        
+
      <%else%>
         <td width =20%"  valign="top">
            <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
         </td>
         <td align="right" >
-          Caso nome não cadastrado =>
+           <font color="blue">Se nome não cadastrado, favor cadastrar =></font>
         </td>
         <td>
-          <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "40x40"), new_participante_path, :title => "Cadastrar Participante" %>
+          <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
          </td>
      <%end%>
-      
+
   </tr>
   <tr>
-    <td colspan="3">
+    <td colspan="4">
           <%= observe_field  :inscricao_participante_id,
               :with => :inscricao_participante_id,
               :url => { :action => 'sel_participa' } %>
     </td>
   </tr>
   <tr>
-    <td colspan="3">
+    <td colspan="4">
      <%if @participante.present?%>
       Matricula: <%=h @participante.matricula %><br/>
       Nome:<%=h @participante.nome %><br/>
@@ -43,15 +52,12 @@
     <%end%>
     </td>
   </tr>
-   <tr>
-    <td colspan="4">
-      <font color="red"> Cursos com <b>*</b> disponíveis somente para professores da SEDUC no exercício da função</p>
-    </td>
-   </tr>
-  </table>
+ </table>
 
-   <table border="2" class="tabelas">
-    <th colspan="2" style=" font-size: large; color: blue">Cursos</th>
+   <table class="tabelas" align="center"  width="100%">
+     <tr>
+      <th colspan="2" style=" font-size: large">CURSOS  </th>
+     </tr>
     <% @cursos.in_groups_of(2, false) do |row_cursos| %>
       <tr>
         <% row_cursos.each do |curso| %>
@@ -65,11 +71,27 @@
       </tr>
     <%end%>
       <tr>
-        <th colspan="2" style=" font-size: large; color: blue">Para maiores informações sobre o curso, posicione o mouse sobre a caixa de opção</th>
+        <th colspan="2"><font size="2">
+          <u>Obs:</u> Cursos com <b>*</b> disponíveis somente para professores da SEDUC no exercício da função <br/>
+          &nbsp&nbsp&nbsp&nbsp&nbspPara maiores informações sobre o curso, posicione o mouse sobre a caixa de opção</font></th>
       </tr>
   </table>
-  <p>
-    <div id="final"><%= f.submit "Confirmar suas opções"  %></div>
-  </p>
-<%end%>
+
 </fieldset>
+
+         <table width="100%" align="left">
+           <tr>
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+           </tr>
+       </table>
+      <% end %>
+    </td>
+  </tr>
+  </table>
+</font>
+
+
+
+
+

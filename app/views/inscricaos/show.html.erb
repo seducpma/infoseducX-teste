@@ -1,50 +1,64 @@
- <br/>
- <br/>
- <table width="70%" border="1" frame="box" rules="all" align="center">
-   <tr>
-     <td>
-        <h1 align="center">Confirmação da Inscrição</h1>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       <table width="100%" border="1">
-         <br/>
-           <tr>
-             <th colspan="2"><b>Participante:</b></th>
-           </tr>
-           <tr>
-             <td colspan="2">
-              <%=h  @inscricao.participante.nome %>
-             </td>
-           </tr>
-      <tr>
-          <th colspan="2">Cursos:</th>
-      </tr>
-          <% @inscricao.cursos.each do |curso| %>
+<br/>
+<font size="2">
+<table  class="tabelas" align="center">
+  <tr>
+    <th colspan="2" align="left">
+        <font  size=5 color="black"> <b> COMPROVANTE DE INSCRIÇÃO</b></font>
+    </th>
+  </tr>
+  <tr>
+    <td>
+       <fieldset><legend><font  size=4>  <div class="botao">Inscrição</div></font></legend>
+         <table width="100%" >
+           <br/>
+             <tr>
+               <td><b>Participante:</b></td>
+               <td colspan="5"><%=h  @inscricao.participante.nome %></td>
+             </tr>
               <tr>
-                <td colspan="2" align="center">
-                  <b><%=h curso.nome_curto %></b>
+                <td valign="top"><b>Cursos:</b></td>
+                <td>
+                   <% @inscricao.cursos.each do |curso| %>
+                      - <%=h curso.nome_curto %><br/>
+                    <% end %>
                 </td>
               </tr>
-          <% end %>
+              <tr>
+                <td colspan="2"><b>Inscrição efetuada em:</b>
+                  <%=h  @inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
+              </tr>
+          </table>
+        </fieldset>
+        <div class="botao">
+          <table width="100%" align="left"  >
           <tr>
-            <td colspan="2"><b>Inscrição efetuada em:</b>
-              <%=h  @inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
+            <td colspan="3">
+              <b><font color="red" size="2"> <u>IMPORTANTE:</u></b>
+            </td>
           </tr>
-       </table>
-     </td>
-   </tr>
-  </table>
-  <div class="botao">
-   <table width="70%" align="center">
-    <tr>
-       <td width="8%"><%= button_to 'Nova Inscrição', new_inscricao_path  %></td>
-       <td><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
-    </tr>
-  </table>
- </div>
+          <tr>
+            <td colspan="3"><b>
+              <dd><li> Este comprovante é a garantia da efetivação de sua inscriação</li></dd>
+              <dd><li> Imprima e guarde este comprovante</li></dd>
+              <dd><li> O comprovante pode ser solicitado para ingresso no dia do curso</li></b></dd>
+            </td>
+          </tr>
+          <tr>
+             <td colspan="3"><hr></td>
+        </tr>
+          <tr>
+            <td width="1%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <td width="1%"><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "40x40"), new_inscricao_path, :title => 'Nova Inscrição'  %></td>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+        </table>
+       </div>
 
+      </td>
+    </tr>
+ </table>
+</font>
+<br/>
 
 
 

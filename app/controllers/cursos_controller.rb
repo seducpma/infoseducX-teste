@@ -1,6 +1,12 @@
 class CursosController < ApplicationController
   # GET /cursos
   # GET /cursos.xml
+     before_filter :load_cursos
+
+def load_cursos
+    @cursos = Curso.find(:all, :order => 'nome ASC')
+  end
+
   def index
     @cursos = Curso.all
 
@@ -82,4 +88,16 @@ class CursosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+def consulta
+    render 'consultas'
+  end
+
+
+  def lista_curso
+    $curso = params[:curso_curso_id]
+    @cursos = Curso.find(:all, :conditions => ['id=' + $curso])
+    render :partial => 'lista_cursos'
+  end
+
 end

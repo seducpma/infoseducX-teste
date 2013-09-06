@@ -5,6 +5,8 @@ class Curso < ActiveRecord::Base
    validates_presence_of :nome, :message => ' ==> PREENCHER DE DADOS OBRIGATÓRIO <=='
    validates_presence_of :ministrante, :message => ' ==> PREENCHER DE DADOS OBRIGATÓRIO <=='
 
+    before_update :encerra_participante
+
 
   def before_create
     self.vagas_disponiveis = self.qtde
@@ -27,5 +29,25 @@ class Curso < ActiveRecord::Base
       true
     end
   end
+
+  
+  def encerra_participante
+
+    if status == 1 then
+      @inscricaos = Inscricao.find(:all, :conditions => ['curso_id=' + self.id])
+
+      @participante = @inscricao.find(:all, :conditions => ['curso_id=' + self.id])
+
+
+      @participantes.each do |participante|
+           participante.encerrado = 1
+           participante.save
+      end
+
+
+   end
+
+  end
+
 
 end
