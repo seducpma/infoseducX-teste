@@ -4,9 +4,9 @@ class ChamadoMailer < ActionMailer::Base
     if RAILS_ENV == "production"
       recipients chamado.unidade.email
     else
-      recipients "alexandre@seducpma.com"
+      recipients "administrador@seducpma.com"
     end
-    from  "informatica@seducpma.com"
+    from  "administrador@seducpma.com"
     if RAILS_ENV == "production"
       subject "Abertura chamado técnico"
     else
@@ -17,13 +17,13 @@ class ChamadoMailer < ActionMailer::Base
 
   def chat(user,chat)
       if RAILS_ENV == "production"
-        recipients user.email ? user.email : "alexandre@seducpma.com"
+        recipients user.email ? user.email : "administrador@seducpma.com"
         subject "Convite para participação de Chat"
       else
-       recipients "alexandre@seducpma.com"
+       recipients "administrador@seducpma.com"
        subject user.email ? "Teste - Convite para participação de Chat" : "Usuário sem email cadastrado - email retornado"
       end
-      from  "informatica@seducpma.com"
+      from  "administrador@seducpma.com"
       body :chat => chat
   end
 
@@ -32,26 +32,26 @@ class ChamadoMailer < ActionMailer::Base
 		setup_email(user)
 		@subject    += 'Você solicitou a mudança da sua senha'
     if RAILS_ENV == "production"
-      @body[:url]  = "http://pontuacao.seducpma.com/reset_password/#{user.password_reset_code}"
+      @body[:url]  = "http://infoseduc.seducpma.com/reset_password/#{user.password_reset_code}"
     else
-      @body[:url]  = "http://localhost:3001/reset_password/#{user.password_reset_code}"
+      @body[:url]  = "http://localhost:3000/reset_password/#{user.password_reset_code}"
     end
 
 	end
 
   def informacao(ponto)
     if RAILS_ENV == "production"
-      recipients "informatica@seducpma.com"
+      recipients "administrador@seducpma.com"
     else
-      recipients "alexandre@seducpma.com"
+      recipients "naor@seducpma.com"
     end
     unless ponto.estagiario.regiao_id.present?
       from  ponto.estagiario.unidade.email
     else
       if RAILS_ENV == "production"
-        recipients "informatica@seducpma.com"
+        recipients "administrador@seducpma.com"
       else
-        recipients "alexandre@seducpma.com"
+        recipients "administrador@seducpma.com"
       end
     end
     subject "Informe estagiários"
@@ -60,9 +60,9 @@ class ChamadoMailer < ActionMailer::Base
 
   def lembrete_info(mes)
     if RAILS_ENV == "production"
-      recipients "informatica@seducpma.com"
+      recipients "administrador@seducpma.com"
     else
-      recipients "alexandre@seducpma.com"
+      recipients "administrador@seducpma.com"
     end
     if RAILS_ENV == "production"
       subject "Urgente!!! Cadastrar Mês Base"
@@ -75,7 +75,7 @@ class ChamadoMailer < ActionMailer::Base
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "no-reply@ribeirosoares.com"
+      @from        = "nao-responda@seducpma.com"
       @subject     = "Esqueceu sua senha "
       @sent_on     = Time.now
       @body[:user] = user

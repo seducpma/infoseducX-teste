@@ -87,6 +87,6 @@ ActionMailer::Base.smtp_settings = {
    :port => 587,
    :authentication => :plain,
    :user_name => "administrador@seducpma.com", #Você pode usar o Google Apps!
-   :password => 'infoseducpma'
+   :password => 'mus@and2'
 }
 
