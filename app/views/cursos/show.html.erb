@@ -1,18 +1,26 @@
 <br/>
 <font size="2">
-<table class="tabelas"width="40%"align="center">
+<table class="tabelas1"width="40%"align="center">
  <tr>
    <th colspan="2" align="left">
-       <font  size=5 color="black"> <b>CURSO</b></font>
+       <font  size=5 color="black"> <b>CURSOS CADASTRADOS</b></font>
    </th>
  </tr>
  <tr>
    <td>
-    <fieldset><legend><font  size=4> Produto</font></legend>
+    <fieldset><legend><font  size=4> CURSO</font></legend>
        <table width="100%">
                <tr>
-                   <td align="left"><b>Nome do Curso:</b></td>
-                   <td align="left"><%=h @curso.nome %></td>
+                   <td align="left" width="10%"><b>Nome do Curso:</b></td>
+                   <td align="left"><%=h @curso.nome %>
+                     <% if  @curso.status == 1 %>
+                         - <font color="red"><b> (CURSO ENCERRADO)</b>
+                    <%else%>
+                         - <font color="blue"><b> (CURSO EM ANDAMENTO)</b>
+                    <%end%>
+
+
+                   </td>
                 </tr>
                  <tr>
                    <td align="left" valign="Top"><b>Ementa:</b></td>
@@ -36,9 +44,9 @@
                 </tr>
                 <tr>
                   <td align="left" valign="top"><b>Observações:</b></td>
-                  <td align="left"colspan="5"><%=h @curso.obs  %></td>
+                  <td align="left"><%=h @curso.obs  %></td>
                 </tr>
-        </table>
+       </table>
     </fieldset>
     <div class="botao">
       <table>

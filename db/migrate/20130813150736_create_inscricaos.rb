@@ -3,11 +3,12 @@ class CreateInscricaos < ActiveRecord::Migration
     create_table :inscricaos do |t|
       t.references :participante, :null => false
       t.date :data_inscricao
-      t.status :boolean, :default => 0
-      t.opcao1 :interger
-      t.opcao2 :integer
-      t.periodoop1 :string
-      t.periodoop2 :string
+      t.interger :opcao1
+      t.interger:opcao2
+      t.string:periodoop1
+      t.string:periodoop2
+      t.boolean :status, :default => 1
+      t.boolean :encerrado, :default => 0
       t.timestamps
     end
   end

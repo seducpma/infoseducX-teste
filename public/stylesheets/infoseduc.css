@@ -517,7 +517,7 @@ left:100%;
 #nav-container a{
 padding:7px 17px 7px 18px;
 margin: 10px 0px 0px 0px;
-color: #FFFFFF;
+color: black;
 font-family: Trebuchet MS, Arial, sans-serif, Helvetica;
 font-size:14px;
 text-decoration:none;
@@ -548,7 +548,7 @@ background-color: #FF9900;
 /*^'^ Secondary Items ^'^*/
 #nav-container div a, #nav-container ul a{
 padding:0px 10px 3px 6px;
-background-color: #FFFFFF;
+background-color: black;
 background: url(images/item-secondary-bg.jpg);
 background-repeat: no-repeat;
 background-position: 0px 22px;
@@ -561,7 +561,7 @@ width: 90px;
 
 /*^'^ Secondary Items Hover State ^'^*/
 #nav-container div a:hover, #nav-container ul a:hover{
-background-color: #FFFFFF;
+background-color: black;
 background: url(images/item-secondary-bg.jpg);
 background-repeat: no-repeat;
 color:#6C3600;

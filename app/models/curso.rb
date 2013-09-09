@@ -34,15 +34,18 @@ class Curso < ActiveRecord::Base
   def encerra_participante
 
     if status == 1 then
-      @inscricaos = Inscricao.find(:all, :conditions => ['curso_id=' + self.id])
+      @inscricaos = Inscricao.find(:all, :include=> :cursos, :conditions => ['cursos.id=?', self.id])
 
-      @participante = @inscricao.find(:all, :conditions => ['curso_id=' + self.id])
-
-
-      @participantes.each do |participante|
-           participante.encerrado = 1
-           participante.save
-      end
+      @inscricaos.each do |inscricao|
+    
+                inscricao = Inscricao.find_by_id(inscricao)
+                #@inscricao.Inscricao.new
+                inscricao.encerrado = 1
+                y=inscricao.encerrado
+                x=inscricao.participante_id
+                z=inscricao.id
+               inscricao.save
+             end
 
 
    end

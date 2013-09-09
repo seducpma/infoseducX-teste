@@ -74,13 +74,9 @@ class InscricaosController < ApplicationController
   end
 
 
-  def sel_participa
+ def sel_participa
     @dadosparticipa = Participante.find(params[:inscricao_participante_id])
-    #p= params[:inscricao_participante_id]
-    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1 and encerrado = 0'])
-    #@inscricao = Inscricao.find(:all, :conditions => ['participante_id(params[:inscricao_participante_id] and status = 1 and cursos.status = 1'])
-    #@inscricaos = Inscricao.find(:all, :conditions => ['curso_id=' + $curso ])
-    #@inscricao = Inscricao.find(:all, :conditions => ["participante_id =? and cursos.status = 1", +p])
+    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1'])
     render :update do |page|
       page.replace_html "informacoes", :partial => 'exibe_participante'
       unless @inscricao.present?
@@ -90,7 +86,7 @@ class InscricaosController < ApplicationController
           page.replace_html "final", :text => "<a href='/participantes/#{params[:inscricao_participante_id]}/addemail'>Favor atualizar dados</a>"
         end
       else
-        page.replace_html "final", :text => "<a href='/inscricaos/#{@inscricao.id}'>Inscrição já efetuada - </a>"
+        page.replace_html "final", :text => "<a href='/inscricaos/#{@inscricao.id}'>Inscrição já efetuada - visualize</a>"
       end
 
     end

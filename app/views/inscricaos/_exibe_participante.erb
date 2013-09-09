@@ -2,9 +2,9 @@
     <tr>
       <td>
         <b>
-            <% if @inscricao2.present?  %>
+            <% if @inscricao.present?  %>
                 
-                <b style="color:red"><%= "PARTICIPANTE JA INSCRITO." %> &nbsp&nbsp&nbsp&nbsp<%= link_to "|Visualizar Inscrição|", @inscricao  %></b><br/>
+                <b style="color:red"><%= "PARTICIPANTE JA POSSUI INSCRIÇÃO." %> &nbsp&nbsp&nbsp<%= link_to "|Visualizar Inscrição já realizada|", @inscricao  %></b><br/>
 
              <%end%>
             Nome:<%=h @dadosparticipa.nome %> 
