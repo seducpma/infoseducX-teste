@@ -35,17 +35,17 @@ class ParticipantesController < ApplicationController
   end
 
   def busca_por_turno
-    if params[:turno].present?
-      @turno_op = Inscricao.paginate(:all, :conditions => ["periodo_opcao1 = ? or periodo_opcao2 =?", params[:turno], params[:turno]],:per_page =>10,:page => params[:page])
+
+      @turno_op = Inscricao.paginate(:all, :conditions => ["periodoop1 = ? or periodoop2 =?", params[:turno], params[:turno]],:per_page =>10,:page => params[:page], :order => 'periodoop1 ASC')
       #@turno_op2 = Inscricao.find_all_by_periodo_opcao2(params[:turno])
-    end
+
   end
 
   def logado?
     if logged_in?
       "application"
     else
-      "inscricao"
+      "application"
     end
   end
 
@@ -154,6 +154,13 @@ def index
     @inscricao = Inscricao.find_by_participante_id(params[:participante_participante_id])
     render :partial => 'lista_participantes'
   end
+
+  def lista_participante1
+    @inscricao = Inscricao.find_by_participante_id(params[:participante_participante_id])
+    render :partial => 'lista_participantes'
+  end
+
+
 
 
   def lista_participante_index

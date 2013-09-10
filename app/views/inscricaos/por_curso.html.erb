@@ -9,7 +9,7 @@
     <td>
       <br/>
       <div class="botao">
-      <table width="100%">
+       <table width="100%">
        <tr>
             <% form_for @search do |f| %>
               <tr>
@@ -32,11 +32,11 @@
             </tr>
 
             <%if @curso.present? %>
-                <h1 align="center">Inscrições para o curso:  <%= params[:search] ? Curso.find(params[:search][:cursos_id_equals]).nome_curto : "Selecione" %></h1>
+                <h1 align="center">Inscrições no curso "<%= params[:search] ? Curso.find(params[:search][:cursos_id_equals]).nome_curto : "Selecione" %>"</h1>
                 <tr>
-                  <th>Matricula</th>
+                  <th>Matrícula</th>
                   <th>Nome</th>
-                  <th>Pertence a Unidade</th>
+                  <th>Unidade</th>
                 </tr>
                 <% @curso.each do |inscricao| %>
                   <tr>
@@ -51,12 +51,12 @@
                 <%end%>
 
             <tr>
-              <td colspan="3" align="left"> <b><%= "Existe(m) #{@curso.count} participante(s) inscrito(s) " %></b></td>
+              <th colspan="3" align="left"> <b><%= "Existe(m) #{@curso.count} participante(s) inscrito(s) " %></b></th>
             </tr>
           <% end %>
           </table>
 
-          <%= @curso ? (will_paginate @curso) : "" %>
+
 
        <div class="botao">
         <table width="100%" align="left">
