@@ -265,9 +265,21 @@ display: none;
                            <ul>
                               <li><%= link_to "Em Andamento", c_curso_and_path%></li>
                               <li><%= link_to "Encerrados", c_curso_enc_path%></li>
-                              <li><%= link_to "Todos", c_curso_path%></li>
+                              <li><%= link_to "Todos", c_curso_cursos_path%></li>
                             </ul>
-                         </li>  
+                         </li>
+                         <li><a>Inscrições</a>
+                           <ul>
+
+                                           <%= link_to "Por Curso", por_curso_inscricaos_path %>
+              <%= link_to 'Por Turno', busca_por_turno_participantes_path %>
+              <%= link_to 'Participantes', consulta_participantes_path %>
+              <%= link_to 'Estatistica', estatistica_inscricaos_path %>
+
+                             
+                            </ul>
+                         </li>
+
                       </ul>
                       </li>
                   </ul>

@@ -25,9 +25,9 @@ class InscricaosController < ApplicationController
 
   def define
     if logged_in?
-      'gerenciar'
+      'application'
     else
-      'inscricao'
+      'applicatio'
     end
   end
 

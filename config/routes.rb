@@ -4,9 +4,11 @@ ActionController::Routing::Routes.draw do |map|
 #  map.resources :participantes
 #  map.resources :cursos
 
-  map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :por_curso => :get}
 
-  map.resources :cursos, :collection => {:voltar => :get}
+  map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :por_curso => :get}
+
+
+  map.resources :cursos, :collection => {:voltar => :get, :c_curso => :get}
 
   map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get}, :member => [:addemail,:update_email]
 
@@ -129,7 +131,7 @@ ActionController::Routing::Routes.draw do |map|
   map.c_adm_tp '/c_adm_tp', :controller => 'administracaos', :action => 'consultatipo'
   map.c_adm_uni '/c_adm_uni', :controller => 'administracaos', :action => 'consulta'
   map.c_est_nom '/c_est_nom', :controller => 'estagiarios', :action => 'consulta'
-  map.c_curso '/c_curso', :controller => 'cursos', :action => 'consulta'
+  #map.c_curso '/c_curso', :controller => 'cursos', :action => 'consulta'
   map.c_curso_and '/c_curso_and', :controller => 'cursos', :action => 'consulta_and'
   map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
 
