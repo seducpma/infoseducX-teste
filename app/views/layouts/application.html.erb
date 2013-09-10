@@ -258,14 +258,18 @@ display: none;
                         <li><%= link_to "Curso", new_curso_path%></li>
                         <li><%= link_to "Participante", new_participante_path%></li>
                       </ul>
+                     </li>
                      <li><a>Consultar</a>
                       <ul>
-                        <li><%= link_to "Curso", c_curso_path%></li>
-                        <li>  </li>
+                         <li><a>Cursos</a>
+                           <ul>
+                              <li><%= link_to "Em Andamento", c_curso_and_path%></li>
+                              <li><%= link_to "Encerrados", c_curso_enc_path%></li>
+                              <li><%= link_to "Todos", c_curso_path%></li>
+                            </ul>
+                         </li>  
                       </ul>
-                     </li>
-
-                     </li>
+                      </li>
                   </ul>
                 </li>
               <%end%>

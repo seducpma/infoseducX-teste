@@ -17,9 +17,15 @@
         <td><%=h curso.ementa %></td>
         <td><%=h curso.ministrante %></td>
         <td><%=h curso.carga_horaria %></td>
-        <td><%=h curso.qtde %></td>
-        <td><%=h curso.vagas_disponiveis %></td>
-        <td><%=h curso.status %></td>
+        <td align="center"><%=h curso.qtde %></td>
+        <td align="center"><%=h curso.vagas_disponiveis %></td>
+        <td align="center">
+            <% if curso.status == 0 %>
+              Em andamento
+            <%else%>
+              Encerrado
+            <%end%>
+        </td>
         <td><%=h curso.obs %></td>
       </tr>
      <tr>
@@ -28,7 +34,6 @@
             <table >
                <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), curso, :title => "Exibir Unidade" %></td>
                <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_curso_path(curso), :title => "Alterar Curso"%></td>
-               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), curso, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
 
             </table>
            </div>

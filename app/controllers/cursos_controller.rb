@@ -5,6 +5,8 @@ class CursosController < ApplicationController
 
 def load_cursos
     @cursos = Curso.find(:all, :order => 'nome ASC')
+    @cursosA = Curso.find(:all, :conditions => 'status = 0', :order => 'nome ASC')
+    @cursosE = Curso.find(:all, :conditions => 'status = 1', :order => 'nome ASC')
   end
 
   def index
@@ -92,6 +94,14 @@ def load_cursos
 def consulta
     render 'consultas'
   end
+
+def consulta_and
+    render 'consultas_andamento'
+end
+
+def consulta_enc
+    render 'consultas_encerrado'
+end
 
 
   def lista_curso

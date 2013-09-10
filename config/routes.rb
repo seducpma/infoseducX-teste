@@ -130,7 +130,8 @@ ActionController::Routing::Routes.draw do |map|
   map.c_adm_uni '/c_adm_uni', :controller => 'administracaos', :action => 'consulta'
   map.c_est_nom '/c_est_nom', :controller => 'estagiarios', :action => 'consulta'
   map.c_curso '/c_curso', :controller => 'cursos', :action => 'consulta'
-
+  map.c_curso_and '/c_curso_and', :controller => 'cursos', :action => 'consulta_and'
+  map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
 
 
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'

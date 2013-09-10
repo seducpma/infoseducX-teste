@@ -2,7 +2,7 @@
 <table class="tabelas1" align="center" width="80%">
  <tr>
    <th colspan="2" align="left">
-      <font  size=5 color="black"> <b> CURSOS - TODOS</b></font><font  size=3 color="black"> (cursos ministrados pela SEDUC desde de 10/2013)</b></font>
+      <font  size=5 color="black"> <b> CURSOS EM ANDAMENTO</b></font>
    </th>
   </tr>
   <tr>
@@ -15,7 +15,7 @@
             <table>
               <tr>
                 <td>
-                   <font  size="4" color="black"> Curso: <%= collection_select :curso, :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+                   <font  size="4" color="black"> Curso: <%= collection_select :curso, :curso_id, @cursosA, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
                  </td>
               </tr>
            </table>
