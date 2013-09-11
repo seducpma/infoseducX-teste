@@ -1,41 +1,77 @@
 <br/>
-<table class="tabelas" border="1" width="100%" cellspacing="1">
+<font size="3">
+<table class="tabelas" align="center" width="100%">
   <tr>
-    <td colspan="2">
-      <h1 align="center" style="color:orange">Estatistica das Inscrições</h1>
+    <th colspan="2"><font size="4">ESTATISTICA DAS INSCRIÇÕES</font></th>
+  </tr>
+  <tr>
+    <td>
+      <table align="center" border="2">
+          <th colspan="2" align="center"><font size="3">Cursos em Andamento</font></th>
+              <ul>
+                <% @cursos.in_groups_of(2, false) do |row_cursos| %>
+                  <tr>
+                    <% for curso in row_cursos %>
+                      <td>
+                        <ul>
+                          <li id="nome_curso" title="<%=h curso.nome %>"><b><%=h truncate(curso.nome,:length => 50,:omission => "...")%></b>
+                              <ul class="hide" id="curso_<%= curso.id %>" >
+                                <%= render "inscritos", :f => curso %>
+                              </ul>
+                              <li>Inscritos neste curso - <%= curso.inscricaos.count %></li>
+                          </li>
+                        </ul>
+                      </td>
+                    <% end %>
+                  </tr>
+                <%end%>
+              </ul>
+      </table>
+    <br/><b> Total de inscrições: <%= @inscricaos.count %></b>
+    <br/> <hr size="3"> <br/>
     </td>
   </tr>
-  <th colspan="2" align="center">Nome do curso</th>
-      <ul>
-        <% @cursos.in_groups_of(2, false) do |row_cursos| %>
-          <tr>
-            <% for curso in row_cursos %>
-              <td>
-                <ul>
-                  <li id="nome_curso" title="<%=h curso.nome %>"><b><%=h truncate(curso.nome,:length => 50,:omission => "...")%> - </b><%= link_to_function "Mostrar", "hide_field(this,('#curso_#{curso.id}'))" %>
-                      <ul class="hide" id="curso_<%= curso.id %>" >
-                        <%= render "inscritos", :f => curso %>
-                      </ul>
-                      <li>Inscritos neste curso - <%= curso.inscricaos.count %></li>
-                  </li>
-                </ul>
-              </td>
-            <% end %>
-          </tr>
-        <%end%>
-      </ul>
+  
   <tr>
-    <td colspan="2"><b> Total de inscrições: <%= @inscricaos.count %></b> </td>
+    <td>
+      <table align="center" border="2">
+          <th colspan="2" align="center"><font size="3">Cursos Encerrados</font></th>
+              <ul>
+                <% @cursosE.in_groups_of(2, false) do |row_cursos| %>
+                  <tr>
+                    <% for curso in row_cursos %>
+                      <td>
+                        <ul>
+                          <li id="nome_curso" title="<%=h curso.nome %>"><b><%=h truncate(curso.nome,:length => 50,:omission => "...")%></b>
+                              <ul class="hide" id="curso_<%= curso.id %>" >
+                                <%= render "inscritos", :f => curso %>
+                              </ul>
+                              <li>Inscritos neste curso - <%= curso.inscricaos.count %></li>
+                          </li>
+                        </ul>
+                      </td>
+                    <% end %>
+                  </tr>
+                <%end%>
+              </ul>
+      </table>
+      <br/><b> Total de inscrições: <%= @inscricaosE.count %></b>
+    </td>
   </tr>
+  <tr>
+    <td>
+      <div class="botao">
+        <table width="100%" align="left">
+          <tr>
+            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+       </table>
+      </div>
+    </td>
+  </tr>
+
 </table>
-<div class="botao">
-  <table width="60%" align="center">
-    <tr>
-      <td width="8%"><%= button_to 'Voltar', gerenciars_path, {:method => "get"} %></td>
-      <td><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
-    </tr>
-   </table>
-</div>
-<script>
-  $("li[title]").tooltip();
-</script>
+</font>
+
+

@@ -186,8 +186,10 @@ class InscricaosController < ApplicationController
  end
 
  def estatistica
-    @cursos = Curso.find(:all, :order => 'nome ASC')
-    @inscricaos = Inscricao.all
+    @cursos = Curso.find(:all,:conditions => ['cursos.status= 0'], :order => 'nome ASC')
+    @cursosE = Curso.find(:all,:conditions => ['cursos.status= 1'], :order => 'nome ASC')
+    @inscricaos = Inscricao.find(:all, :include => 'cursos', :conditions => ['cursos.status= 0'])
+    @inscricaosE = Inscricao.find(:all, :include => 'cursos', :conditions => ['cursos.status= 1'])
   end
 
 private
