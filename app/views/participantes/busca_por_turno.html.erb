@@ -30,20 +30,21 @@
         </tr>
 
 
-
+    
           <% @turno_op.each do |op| %>
             <tr>
               <td><b><%= op.participante.nome %></b><br/>
                <% if (op.periodoop1.nil?) %>
-                      - Sem opção
+                    <dd><b>1ª Opção:</b> Não selecionada
                 <%else%>
-                    <%= " - #{op.periodoop1} - #{Unidade.find(op.opcao1).nome}" %><br/>
+                    <dd><b>1ª Opção:</b> <%= "#{op.periodoop1} - #{Unidade.find(op.opcao1).nome}" %><br/>
                 <%end%>
                 <% if (op.periodoop2.nil?) %>
-                     - Sem opção
+                   <dd><b>2ª Opção:</b> Não selecionada
                 <%else%>
-                    <%= " - #{op.periodoop2} - #{Unidade.find(op.opcao2).nome}" %><br/>
+                  <dd><b>2ª Opção:</b> <%= "#{op.periodoop2} - #{Unidade.find(op.opcao2).nome}" %><br/>
                <%end%>
+    
             </td>
             <td>
               <ul>

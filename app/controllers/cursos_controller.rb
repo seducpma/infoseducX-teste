@@ -90,7 +90,10 @@ def load_cursos
       format.xml  { head :ok }
     end
   end
-  
+
+def c_curso
+    render 'consultas'
+  end
 def consulta
     render 'consultas'
   end
