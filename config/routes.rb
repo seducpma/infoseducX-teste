@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 #  map.resources :cursos
 
 
-  map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :por_curso => :get}
+  map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get, :listagem_participantes => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :por_curso => :get}
 
 
   map.resources :cursos, :collection => {:voltar => :get, :c_curso => :get}

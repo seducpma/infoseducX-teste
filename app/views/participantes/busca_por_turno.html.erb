@@ -22,15 +22,12 @@
       </div>
       <br/>
     <% if @turno_op.present?%>
-       <h1 align="center">Inscrições para curso no perído   <%=  params[:turno] %></h1>
+       <h2 align="center">Inscrições para curso no perído   <%=  params[:turno] %></h2>
       <table width="100%" align="center" class="tabelas1"  border="1">
         <tr>
-          <th width="80%"> Incristo</th>
+          <th width="80%"> Incrisção</th>
           <th> Curso</th>
         </tr>
-
-
-    
           <% @turno_op.each do |op| %>
             <tr>
               <td><b><%= op.participante.nome %></b><br/>

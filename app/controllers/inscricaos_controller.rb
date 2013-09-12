@@ -142,31 +142,86 @@ class InscricaosController < ApplicationController
     end
   end
 
- def gera_pdf
-   @search = Curso.find(params[:curso])
-    respond_to do |format|
-      format.html {render(:layout => false)} ## index.html.erb
-      format.pdf do
-        #send_data CursosDrawer.draw(@search), :filename => "#{@search.nome_curto}.pdf", :type => 'application/pdf', :disposition => 'inline'
-        html = render_to_string(:layout => 'false' , :action => "gera_pdf.erb")
-        kit = PDFKit.new(html)
-        kit.stylesheets << "#{Rails.root}/public/stylesheets/pdf.css"
-        send_data(kit.to_pdf, :filename => "#{@search}.pdf", :type => 'application/pdf')
-        #pdf = PDF::Writer.new
-        #send_data pdf.render, :filename => "#{@search}.pdf", :type => 'application/pdf'
-        #send_data CursosDrawer.draw(@search), :filename => "#{@search}.pdf",:type => 'application/pdf'
-      end
-    end
-
-
-
- end
-
+ 
  def listagem
    if params[:curso].present?
      @search = Curso.find(params[:curso][:get])
      @cursos_inscricaos = Inscricao.paginate(:all, {:page => params[:page],:per_page => 10, :include => 'cursos',:conditions => [ 'cursos.id =?', @search.id ]})
    end
+ end
+ 
+ def listagem_participantes
+   if params[:curso].present?
+     session[:opcao] = params[:periodo_opcao1]
+     session[:unidade] = params[:curso][:unidade]
+     session[:curso] = params[:curso][:get]
+
+     
+     c = session[:curso]
+     o = session[:opcao]
+     u = session[:unidade]
+     @search = Curso.find(params[:curso][:get])
+     unless session[:opcao].present?
+       #@cursos_inscricaos = Inscricao.paginate(:all, {:page => params[:page],:per_page => 10, :include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id]})
+       @cursos_inscricaos=@contador = Inscricao.all(:include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id])
+     else
+       #@cursos_inscricaos = Inscricao.paginate(:all, {:page => params[:page],:per_page => 10, :include => 'cursos',:conditions => [ 'cursos.id =? and (inscricaos.opcao1 = ? and inscricaos.periodo_opcao1 = ?)', @search.id,session[:unidade], session[:opcao] ]})
+       i=@search.id
+       u = session[:unidade]
+       o = session[:opcao]
+       @cursos_inscricaos=@contador = Inscricao.all(:include => 'cursos',:conditions => [ 'cursos.id =? and inscricaos.opcao1 = ? and inscricaos.periodoop1 = ?', @search.id,session[:unidade], session[:opcao] ])
+       render :update do |page|
+           page.replace_html 'lista', :partial => "inscritos_participantes" 
+       end
+       t=0
+     end
+     
+
+   end
+ end
+
+
+def gera_pdf
+   @search = Curso.find(params[:curso])
+   unless session[:unidade].present?
+     @contador = @cursos_inscricaos = Inscricao.all({:include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id]})
+     #@contador = Inscricao.all(:include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id])
+   else
+     if session[:opcao] == "Todos"
+       @cursos_inscricaos = Inscricao.all({:include => 'cursos',:conditions => [ 'cursos.id =? and (inscricaos.opcao1 = ? and inscricaos.periodo_opcao1 = ?)', @search.id,session[:unidade], session[:opcao] ], :order =>"inscricaos.id"})
+     else
+       @cursos_inscricaos = Inscricao.all({:include => 'cursos',:conditions => [ 'cursos.id =? and (inscricaos.opcao1 = ?)', @search.id,session[:unidade] ], :order =>"inscricaos.id"})
+     end
+     @contador = Inscricao.all(:include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id])
+   end
+    respond_to do |format|
+      format.html {render(:layout => false)} ## index.html.erb
+      format.pdf do
+        html = render_to_string(:layout => 'false' , :action => "gera_pdf.erb")
+        kit = PDFKit.new(html)
+        kit.stylesheets << "#{Rails.root}/public/stylesheets/pdf.css"
+        send_data(kit.to_pdf, :filename => "#{@search.nome_curto}.pdf", :type => 'application/pdf')
+      end
+    end
+ end
+
+
+ def gera_excel(inscricao)
+        ## Gera arquivo em pdf
+     #@inscricao = Inscricao.all(:include => "cursos",:conditions => [ 'cursos.id =1' ])
+     @report = DailyOrdersXlsFactory.new("simple report")
+     @report.add_column(10).add_column(40).add_column(30).add_column(30).add_column(30)
+     @report.add_row(["Prefeitura Municipal de Americana"], 30).join_last_row_heading(0..6)
+     @report.add_row(["Inscritos no curso: #{@search.truncar_curso} "], 30).join_last_row_heading(0..6)
+     @report.add_row(["Matricula","Nome","Unidade","Opção 1","Horario","Opçao 2","Horario"])
+     inscricao.each do |insc|
+       @report.add_row([insc.participante.matricula,insc.participante.nome,insc.participante.unidade.nome,insc.unidade(insc.opcao1),insc.periodo_opcao1,insc.unidade(insc.opcao2),insc.periodo_opcao2])
+     end
+     @rel = Relatorio.new
+       @rel.ip = request.remote_ip
+       @rel.user_id = current_user
+       @rel.path = @report.save_to_file("public/saidas/#{@search.truncar_curso}_#{Date.today.strftime("%d_%m_%Y")}_#{@rel.user.login}.xls")
+     @rel.save
 
  end
 
@@ -208,7 +263,7 @@ protected
 
 
   def load_locais
-    @locais = Unidade.all(:conditions => ["id in (42,43,44,45,46,47,48,49,50,51)"])
+    @locais = Unidade.find(:all, :order => 'nome ASC')
   end
 
   def load_inscricaos

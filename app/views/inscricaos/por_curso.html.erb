@@ -27,12 +27,9 @@
         </table>
      </div>
         <table width="100%" align="center" class="tabelas1"  border="1">
-            <tr style="font-size:12px">
-             <br/>
-            </tr>
 
             <%if @curso.present? %>
-                <h1 align="center">Inscrições no curso "<%= params[:search] ? Curso.find(params[:search][:cursos_id_equals]).nome_curto : "Selecione" %>"</h1>
+                <h2 align="center">Inscrições no curso "<%= params[:search] ? Curso.find(params[:search][:cursos_id_equals]).nome_curto : "Selecione" %>"</h2>
                 <tr>
                   <th>Matrícula</th>
                   <th>Nome</th>
