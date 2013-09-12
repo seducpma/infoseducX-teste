@@ -45,7 +45,7 @@ class ParticipantesController < ApplicationController
     if logged_in?
       "application"
     else
-      "application"
+      "inscricao"
     end
   end
 
