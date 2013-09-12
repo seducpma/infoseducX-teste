@@ -27,7 +27,7 @@ class InscricaosController < ApplicationController
     if logged_in?
       'application'
     else
-      'applicatio'
+      'inscricao'
     end
   end
 
