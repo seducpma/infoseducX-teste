@@ -3,14 +3,23 @@
 <table  class="tabelas" align="center">
   <tr>
     <th colspan="2" align="left">
-        <font  size=5 color="black"> <b> COMPROVANTE DE INSCRIÇÃO</b></font>
+        <font  size=5 color="black"> <b> SISTEMA DE INSCRIÇÃO ON-LINE</b></font>
     </th>
   </tr>
+  <tr>
+     <td colspan="2" align="left" >
+       <font  size=4 color="black"> <b><center>COMPROVANTE DE INSCRIÇÃO</b></center></font>
+    </td>
+ </tr>
   <tr>
     <td>
        <fieldset><legend><font  size=4>  <div class="botao">Inscrição</div></font></legend>
          <table width="100%" >
            <br/>
+             <tr>
+               <td width="10%"><b>Nº Inscrião:</b></td>
+               <td colspan="5" ><%=h  @inscricao.id%></td>
+             </tr>
              <tr>
                <td width="10%"><b>Participante:</b></td>
                <td colspan="5" ><%=h  @inscricao.participante.nome %></td>

@@ -23,12 +23,18 @@
         <td width =20%"  valign="top">
            <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
         </td>
+        <!--
         <td align="right" >
            <font color="blue">Se nome não cadastrado, favor cadastrar =></font>
         </td>
         <td>
           <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
          </td>
+        -->
+        <td colspan="">
+          <font color="blue"><b>Curso disponível somente para quem   cursou o módulo I</b>
+
+        </td>
      <%end%>
 
   </tr>
