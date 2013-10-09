@@ -15,7 +15,7 @@
 <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
   <table width="100%" >
   <tr>
-    <td width ="10%" valign="top"><b>Participante:</b></td>
+    <td width ="1%" valign="top"><b>Participante:</b></td>
      <% if @participante.present? %>
         <%= @participante.nome %>
         <td  valign="top">
@@ -24,13 +24,8 @@
 
      <%else%>
         <td width =20%"  valign="top">
-           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
-        </td>
-
-        <td align="right" >
-           <font color="blue">Se nome não cadastrado, favor cadastrar =></font>
-        </td>
-        <td>
+           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %><br/>
+           <font color="blue">Se nome não consta na lista acima, favor cadastrar =></font>
           <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
          </td>
          <!--
