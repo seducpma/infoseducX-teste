@@ -2,13 +2,16 @@
 <%= f.error_messages %>
 <font  size="2">
  <table class="tabelas" width="100%" align="center" >
-  <tr>
-   <th colspan="2" align="left">
-     <font  size=5><b> CADASTRO DE INSCRIÇÕES</b></font>
-   </th >
+   <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b> CADASTRO DE INSCRIÇÕES</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
   </tr>
   <tr>
-    <td>
+  <td colspan="2">
 <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
   <table width="100%" >
   <tr>
@@ -16,25 +19,25 @@
      <% if @participante.present? %>
         <%= @participante.nome %>
         <td  valign="top">
-           <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %>
+         <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %>
         </td>
 
      <%else%>
         <td width =20%"  valign="top">
            <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
         </td>
-        <!--
+
         <td align="right" >
            <font color="blue">Se nome não cadastrado, favor cadastrar =></font>
         </td>
         <td>
           <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
          </td>
-        -->
+         <!--
         <td colspan="">
           <font color="blue"><b>Curso disponível somente para quem   cursou o módulo I</b>
 
-        </td>
+        </td>-->
      <%end%>
 
   </tr>
@@ -52,7 +55,7 @@
       Nome:<%=h @participante.nome %><br/>
       Cidade:<%=h @participante.cidade %><br/>
       Email:<%=h @participante.email %><br/>
-      Observações: <%=h @participante.obs %><br/>
+        Observações: <%=h @participante.obs %><br/>
     <%else%>
       <div id="informacoes"></div>
     <%end%>
@@ -64,11 +67,16 @@
      <tr>
       <th colspan="2" style=" font-size: large">CURSOS  </th>
      </tr>
-    <% @cursos.in_groups_of(2, false) do |row_cursos| %>
+    <tr>
+      <td colspan="2">
+         <b>Selecione o(s) curso(s) desejado(s)</b>
+      </td>
+    </tr>
+     <% @cursos.in_groups_of(2, false) do |row_cursos| %>
       <tr>
         <% row_cursos.each do |curso| %>
             <%if curso.existe_vaga %>
-              <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde}/#{curso.vagas_disponiveis}" %></td>
+             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde}/#{curso.vagas_disponiveis}" %></td>
             <%else%>
               <td><%= "CURSO #{curso.nome}"%>  <br/>
                 <font color="red"> <b>Nº DE VAGAS COMPLETO </b></font> </td>
@@ -96,6 +104,8 @@
   </tr>
   </table>
 </font>
+
+
 
 
 

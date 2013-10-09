@@ -1,17 +1,20 @@
 <br/>
 <font size="2">
 <table class="tabelas"width="40%"align="center">
+   <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b> PARTICIPANTE</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+   </tr>
  <tr>
-   <th colspan="2" align="left">
-       <font  size=5 color="black"> <b>PARTICIPANTE</b></font>
-   </th>
- </tr>
- <tr>
-   <td>
+   <td colspan="2">
     <fieldset><legend><font  size=4> Dados Pessoais </font></legend>
        <table width="100%">
                <tr>
-                   <td align="left"><b>Nome :</b></td>
+                   <td width ="20%"align="left"><b>Nome :</b></td>
                    <td align="left"><%=h @participante.nome %></td>
                 </tr>
                 <tr>
@@ -58,7 +61,7 @@
      
      <%else%>
    <fieldset><legend><font  size=4> Se Professor ou Funcionário SEDUC </font></legend>
-       <table width="100%">
+       <table width ="20%"width="100%">
                 <tr>
                    <td align="left"><b>Matrícula: </b></td>
                    <td align="left"><%=h @participante.matricula %></td>
