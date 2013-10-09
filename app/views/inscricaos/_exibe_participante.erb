@@ -4,7 +4,7 @@
         <b>
             <% if @inscricao.present?  %>
                 
-                <b style="color:red"><%= "PARTICIPANTE JA POSSUI INSCRIÇÃO." %> &nbsp&nbsp&nbsp<%= link_to "|Visualizar Inscrição já realizada|", @inscricao  %></b><br/>
+                <b style="color:red"><%= "PARTICIPANTE JA POSSUI INSCRIÇÃO." %> &nbsp&nbsp&nbsp<%= link_to "|Visualizar Inscrição|", @inscricao  %></b><br/>
 
              <%end%>
             Nome:<%=h @dadosparticipa.nome %> 
@@ -13,24 +13,22 @@
               <%else%>
                  -  Matricula: <%=h @dadosparticipa.matricula %><br/>
              <%end%>
-            Unidade:<%if @dadosparticipa.unidade_id.nil?%>
+             Unidade:<%if @dadosparticipa.unidade_id.nil?%>
                    Não é funcionario da SEDUC 
                 <%else%>
                  <%=h @dadosparticipa.unidade.nome %>
              <%end%>
-
-              <%if @dadosparticipa.obs.nil?%>
-                 <br/>
-              <%else%>
-                 Obs: <%=h @dadosparticipa.obs %><br/>
-             <%end%>
-            Email:
+            <br/>Email:
               <%if @dadosparticipa.email.nil?%>
-                 <font color="red"> Não consta e_mail em seu cadastro, favor atualizar cadastro</font> <br/>
+                 <font color="red"> Não consta e_mail, favor atualizar cadastro</font> <br/>
              <%else%>
                  <%=h @dadosparticipa.email %><br/>
              <%end%>
-          
+              <%if @dadosparticipa.obs.nil?%>
+                 <br/>
+              <%else%>
+                Obs: <%=h @dadosparticipa.obs %><br/>
+             <%end%>
          </b>
         </td>
         <td align="right">
