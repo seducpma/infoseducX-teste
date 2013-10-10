@@ -1,7 +1,7 @@
 <div id="posicao_login" >
   <table width ="97%" border="2">
     <tr>
-      <td width ="47%" valign="top">
+      <td width ="30%" valign="top">
         <table width="100%" border="1">
           <tr>
             <td valign="top">
@@ -10,8 +10,8 @@
           </tr>
           <tr>
             <td width="100%" align="center">
-              <p><font  size="4" color="black"><b><u>Sistema de Gerenciamento Informática</u></b></font></p>
-              <p align="center"><font  size="3"  color="black"><b>LOGIN DE ACESSO</b></font></p>
+              <p><font  size="4" color="black"><b><u>Gerenciamento de Informática</u></b></font></p>
+              <p align="center"><font  size="1"  color="black"><b>LOGIN DE ACESSO</b></font></p>
               <% form_tag session_path do -%>
                   <font  size="2" color="black">
                     <p><b><%= label_tag 'Usuário' %></b>
@@ -33,9 +33,44 @@
         </table>
      </td>
      <td width="1%">
- 
+
      </td>
-     <td width ="45%" valign="top">
+     <td width ="30%" valign="top">
+        <table width="100%" border="1">
+          <tr>
+            <td valign="top">
+               <div id="imagem_login1"></div>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="center">
+              <p><font  size="4" color="black"><b><u>Gerenciamento de Manutenção</u></b></font></p>
+              <p align="center"><font  size="1"  color="black"><b>LOGIN DE ACESSO</b></font></p>
+              <% form_tag session_path do -%>
+                  <font  size="2" color="black">
+                    <p><b><%= label_tag 'Usuário' %></b>
+                      <%= text_field_tag 'login', @login, :size =>15 %></p>
+                    <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
+                     <%= password_field_tag 'password', nil, :size =>15 %></p>
+                  </font>
+                  <p><%= submit_tag 'Entrar' %></p>
+               <% end %>
+             </td>
+           </tr>
+           <tr>
+              <td colspan="2" align="center">
+                <font  size="2" color="black"><b>Não possui senha?</b></font><br/>
+                       <%= button_to 'Cadastrar Usuário/Senha', signup_path%>
+                       <%= link_to 'Esqueci a Senha', new_password_path%>
+              </td>
+           </tr>
+        </table>
+     </td>
+     <td width="1%">
+
+     </td>
+
+     <td width ="30%" valign="top">
          <table width="100%" border="1">
           <tr>
             <td>
@@ -44,7 +79,7 @@
           </tr>
           <tr>
             <td width="100%" align="center">
-              <p><font  size="4" color="black"><b><u>Sistema de Inscrições on-line</u></b></font></p>
+              <p><font  size="4" color="black"><b><u>Inscrições on-line</u></b></font></p>
                <p align="center"><font  size="3"  color="black"><%= button_to  "Inscrições", new_inscricao_path, :class => "button", :id => "inscreva-se" %></font></p>
                <table width="100%">
                   <tr>
@@ -57,7 +92,7 @@
                                 <%if curso.existe_vaga %>
                                   <td id="demo" align="left"><%= "#{curso.nome} - #{curso.qtde} vagas/#{curso.vagas_disponiveis}disponíveis"%></td>
                                 <%else%>
-                                  <td><%= " #{curso.nome}"%>  <br/>
+                                  <td><%= " #{curso.nome_curto}"%>  <br/>
                                     <font color="red"> <b>VAGAS COMPLETADAS" </b></font> </td>
                                 <%end%>
                             <%end%>
@@ -66,11 +101,18 @@
                       </table>
                     </td>
                   </tr>
+           <tr>
+              <td align="center">
+                <br/><br/>
+                <b><font size="1" color=#7f2698>Este Módulo NÃO necessita de senha de acesso Para acessar clique em INSCRIÇÕES<font></b>
+              </td>
+           </tr>
                   <tr>
                     <td>
                       <br/>
                     </td>
                   </tr>
+
                </table>
              </td>
            </tr>
@@ -79,7 +121,7 @@
      </td>
     </tr>
     <tr>
-      <td colspan="3">
+      <td colspan="5">
          <div id="rodape_login">
              © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.
          </div>

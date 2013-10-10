@@ -106,7 +106,22 @@ margin:25px;
    border-right: double;
    }
 
-
+#imagem_login1{
+   background-image:url(Imagens/manutencao2.JPG);
+   background-repeat: no-repeat;
+   text-align: center;
+   color:white;
+   width:99%;
+   height:150px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+   }
+   
 #imagem_login2{
    background-image:url(Imagens/banner2.jpg);
    background-repeat: no-repeat;
