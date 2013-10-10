@@ -124,7 +124,7 @@ margin:25px;
    
 #imagem_login2{
    background-image:url(Imagens/banner2.jpg);
-   background-repeat: no-repeat;
+   background-repeat: repeat-x;
    text-align: center;
    color:white;
    width:99%;
