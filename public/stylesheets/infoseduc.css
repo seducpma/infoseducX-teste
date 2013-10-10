@@ -108,7 +108,7 @@ margin:25px;
 
 #imagem_login1{
    background-image:url(Imagens/manutencao2.JPG);
-   background-repeat: no-repeat;
+   background-repeat: repeat-x;
    text-align: center;
    color:white;
    width:99%;
