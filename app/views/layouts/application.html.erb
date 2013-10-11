@@ -93,7 +93,7 @@ display: none;
            <font style="color: red"><%= flash[:notice] %></font>
         <%end%>
     </div>
-     <div id="menu">
+      <div id="menu">
         <div class="nav-container-outer">
            <img src="/stylesheets/images/nav-bg-l.jpg" alt="" class="float-left" />
            <img src="/stylesheets/images/nav-bg-r.jpg" alt="" class="float-right" />
@@ -151,119 +151,6 @@ display: none;
                  </ul>
               </li>
               <%end%>
- <!--
-              <li><a class="item-primary" href="#">Equipamentos</a>
-                 <ul style="width:108px;">
-                  <li><a>Estoque</a>
-                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                     <ul>
-                       <li><a>Cadastrar</a>
-                          <ul>
-                            <li><%= link_to "Estoque", new_estoque_path%></li>
-                            <li><%= link_to "Componente", new_componente_path%></li>
-                          </ul>
-                       </li>
-                        <li><a>Em estoque</a>
-                          <ul>
-                             <li><%= link_to "Em Estoque", estoques_path%></li>
-                          </ul>
-                       </li>
-                        <li><a>Lançamentos</a>
-                          <ul>
-                            <li><%= link_to "Entradas",new_entrada_path %></li>
-                            <li><%= link_to "Saidas",new_saida_path  %></li>
-                          </ul>
-                         </li>
-                         <% if current_user.has_role?('administrador') %>
-                          <li><a>Verificar Lançtos</a>
-                            <ul>
-                              <li><%= link_to "Entradas",entradas_path %></li>
-                              <li><%= link_to "Saidas",saidas_path %></li>
-                            </ul>
-                          </li>
-                         <%end%>
-                         <% if current_user.has_role?('administrador') %>
-                          <li><a>Em Falta</a>
-                            <ul>
-                              <li><%= link_to "Cadastrar", new_emfalta_path%></li>
-                              <li><%= link_to "Consultar", emfaltas_path%></li>
-                            </ul>
-                          </li>
-                         <%end%>
-                     </ul>
-                   <%end%>
-                  </li>
-                  <li><a>Computadores</a>
-                   <ul>
-                      <% if current_user.has_role?('administrador') %>
-                        <li><%= link_to 'Cadastrar',new_computadore_path  %></li>
-                      <%end%>
-                      <li><%= link_to 'Cadastrados', computadores_path%></li>
-                      <li><a>Consultar</a></li>
-                        <ul>
-                          <li><%= link_to 'Específica',  c_comp_tpuni_path %></li>
-                          <li><%= link_to 'por Pertence', c_comp_tp_path %></li>
-                          <li><%= link_to 'por Unidade', c_comp_uni_path %></li>
-                        </ul>
-                      <li><%= link_to 'Totalização', totalizaC_path %></li>
-                   </ul>
-                  </li>
-                  <li><a>Data Show</a>
-                   <ul>
-                      <% if current_user.has_role?('administrador')%>
-                        <li><%= link_to 'Cadastrar',new_datashow_path  %></li>
-                      <%end%>
-                      <li><%= link_to 'Cadastrados', datashows_path%></li>
-                      <li><%= link_to 'Consultar', c_datashow_uni_path %></li>
-                      <li><%= link_to 'Totalização', totalizaS_path %></li>
-                   </ul>
-                  </li>
-                  <li><a>Impressoras</a>
-                   <ul>
-                      <% if current_user.has_role?('administrador')%>
-                        <li><%= link_to 'Cadastrar',new_impressora_path  %></li>
-                      <%end%>
-                      <li><%= link_to 'Cadastrados', impressoras_path%></li>
-                      <li><a>Consultar</a>
-                        <ul>
-                          <li><%= link_to 'Específica',  c_imp_tpuni_path %></li>
-                          <li><%= link_to 'por Pertence', c_imp_tp_path %></li>
-                          <li><%= link_to 'por Unidade', c_imp_uni_path %></li>
-                        </ul>
-                      </li>
-                      <li><%= link_to 'Totalização', totalizaI_path %></li>
-                   </ul>
-                  </li>
-                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                  <li><a>INFOSEDUC</a>
-                    <ul>
-                      <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
-                        <li><%= link_to 'Entrada',new_equipamento_path %></li>
-                      <%end%>
-                      <li><%= link_to 'Consulta', consulta_equipamentos_path %></li>
-                      <li><%= link_to 'Encerrados', encerrado_equipamentos_path %></li>
-                    </ul>
-                  </li>
-                  <li><a>Rede/Internet</a>
-                    <ul>
-                      <% if current_user.has_role?('administrador') %>
-                        <li><%= link_to 'Cadastrar',new_administracao_path %></li>
-                      <%end%>
-                      <li><%= link_to 'Cadastrados', administracaos_path %></li>
-                      <li><a>Consultar</a>
-                        <ul>
-                          <li><%= link_to 'Específica',  c_adm_tpuni_path %></li>
-                          <li><%= link_to 'Internet',  internet_administracaos_path %></li>
-                          <li><%= link_to 'por Pertence', c_adm_tp_path %></li>
-                          <li><%= link_to 'por Unidade', c_adm_uni_path %></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                 <%end%>
-                 </ul>
-              </li>
--->
               <li><span class="divider divider-vert" ></span></li>
                   <% if current_user.has_role?('administrador') %>
               <li><a class="item-primary" href="#;">Infoseduc</a>
@@ -422,8 +309,11 @@ display: none;
 
               <li><span class="divider divider-vert" ></span></li>
               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
+
                    <li><a class="item-primary" href="#;">OS's</a>
-                    <li><a>OS Interno</a>
+
+                 <ul style="width:108px;">
+                   <li><a>OS Interno</a>
                     <ul>
                       <li><%= link_to "Abrir",new_chamado_path %></li>
                       <li><%= link_to "Consultas", busca_protocolo_chamados_path  %>
