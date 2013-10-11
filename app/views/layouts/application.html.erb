@@ -56,8 +56,6 @@ display: none;
         </tr>
       </table>
    </div>
-
-    
         <%if logged_in? then%>
           <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %>  </font>
             <% if current_user.has_role?('administrador') %>
@@ -69,8 +67,24 @@ display: none;
                     <% if current_user.has_role?('estagiario itinerante') %>
                        Acesso de  Estagiário(a) itinerante
                     <%else%>
-                         Acesso de  Estagiário(a) unidade
-                  <%end%>
+                       <% if current_user.has_role?('estagiario itinerante') %>
+                           Acesso de  Estagiário(a) unidade
+                        <%else%>
+                          <% if current_user.has_role?('admin_manutencao') %>
+                             Acesso Administrador - Sistema de Manutenção
+                            <%else%>
+                              <% if current_user.has_role?('chefia_manutencao') %>
+                                 Acesso Chefia - Sistema de Manutenção
+                              <%else%>
+                                  <% if current_user.has_role?('diretor_unidade') %>
+                                     Acesso Sistema de Gerenciamento de Manutenção
+                                  <%else%>
+                                   Bem vindo ao Sistema INFOSEDUC
+                                  <%end%>
+                             <%end%>
+                          <%end%>
+                        <%end%>
+                    <%end%>
                <%end%>
             <%end%>
           <font style="color: red"><%= flash[:notice] %></font>
@@ -79,7 +93,7 @@ display: none;
            <font style="color: red"><%= flash[:notice] %></font>
         <%end%>
     </div>
-      <div id="menu">
+     <div id="menu">
         <div class="nav-container-outer">
            <img src="/stylesheets/images/nav-bg-l.jpg" alt="" class="float-left" />
            <img src="/stylesheets/images/nav-bg-r.jpg" alt="" class="float-right" />
@@ -93,6 +107,51 @@ display: none;
               </li>
 
               <li><span class="divider divider-vert" ></span></li>
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
+              <li><a class="item-primary" href="#">Estagiários</a>
+                 <ul style="width:108px;">
+
+                     <% if current_user.has_role?('administrador') %>
+                       <li><%= link_to 'Analistas', analistas_path %></li>
+                       <li><%= link_to 'Cadastrar',new_estagiario_path %></li>
+                     <%end%>
+                     <% if current_user.has_role?('administrador')%>
+                     <li><%= link_to 'Cadastrados', c_est_nom_path %></li>
+                     <li><a>Consultar</a>
+                        <ul>
+                          <li><%= link_to 'Atuais', estagiarios_path%></li>
+                          <% if current_user.has_role?('administrador') %>
+                              <li><%= link_to 'Baixados', baixas_path%></li>
+                          <%end%>
+                           <li><%= link_to "Período",periodo_trabalho_estagiarios_path %></li>
+                          <% if current_user.has_role?('administrador') %>
+                              <li><%= link_to 'Todos', print_all_estagiarios_path(:tipo => "todos")%></li>
+                          <%end%>
+                       </ul>
+                     </li>
+                    <%end%>
+                     <li>
+                        <%= link_to "Ponto Eletrônico", pontos_path %>
+                     </li>
+                     <li><a>Relatórios</a>
+                        <ul>
+                          <li><%= link_to "Cadastrar",new_relatestagiario_path %></li>
+                           <% if current_user.has_role?('administrador') %>
+                          <li><a>Consultar</a>
+                            <ul>
+                               <li><%= link_to'por Nome', consulta_relatestagiario_path %></li>
+                               <li><%= link_to 'por Unidade',relatestagiarios_path %></li>
+                            </ul>
+                          </li>
+                             <%end%>
+                          <li><%= link_to 'Validar',consulta_relatestagiario_path %></li>
+                          <li><%= link_to_remote('Validar',:update => "tela", :url => { :action => "valida", :controller => 'relatestagiarios'}) %></li>
+                        </ul>
+                     </li>
+                 </ul>
+              </li>
+              <%end%>
+ <!--
               <li><a class="item-primary" href="#">Equipamentos</a>
                  <ul style="width:108px;">
                   <li><a>Estoque</a>
@@ -204,50 +263,73 @@ display: none;
                  <%end%>
                  </ul>
               </li>
-
+-->
               <li><span class="divider divider-vert" ></span></li>
-              <li><a class="item-primary" href="#">Funcionários</a>
+                  <% if current_user.has_role?('administrador') %>
+              <li><a class="item-primary" href="#;">Infoseduc</a>
                  <ul style="width:108px;">
-
-                     <% if current_user.has_role?('administrador') %>
-                       <li><%= link_to 'Analistas', analistas_path %></li>
-                       <li><%= link_to 'Cadastrar',new_estagiario_path %></li>
-                     <%end%>
-                     <% if current_user.has_role?('administrador')%>
-                     <li><%= link_to 'Cadastrados', c_est_nom_path %></li>
-                     <li><a>Consultar</a>
-                        <ul>
-                          <li><%= link_to 'Atuais', estagiarios_path%></li>
-                          <% if current_user.has_role?('administrador') %>
-                              <li><%= link_to 'Baixados', baixas_path%></li>
-                          <%end%>
-                           <li><%= link_to "Período",periodo_trabalho_estagiarios_path %></li>
-                          <% if current_user.has_role?('administrador') %>
-                              <li><%= link_to 'Todos', print_all_estagiarios_path(:tipo => "todos")%></li>
-                          <%end%>
-                       </ul>
-                     </li>
-                    <%end%>
-                     <li>
-                        <%= link_to "Ponto Eletrônico", pontos_path %>
-                     </li>
-                     <li><a>Relatórios</a>
-                        <ul>
-                          <li><%= link_to "Cadastrar",new_relatestagiario_path %></li>
-                           <% if current_user.has_role?('administrador') %>
-                          <li><a>Consultar</a>
-                            <ul>
-                               <li><%= link_to'por Nome', consulta_relatestagiario_path %></li>
-                               <li><%= link_to 'por Unidade',relatestagiarios_path %></li>
-                            </ul>
-                          </li>
-                             <%end%>
-                          <li><%= link_to 'Validar',consulta_relatestagiario_path %></li>
-                          <li><%= link_to_remote('Validar',:update => "tela", :url => { :action => "valida", :controller => 'relatestagiarios'}) %></li>
-                        </ul>
-                     </li>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                    <li><%= link_to 'Empresa', new_empresa_path %></li>
+                    <li><a>Fornecedores</a>
+                      <ul>
+                        <% if current_user.has_role?('administrador') %>
+                          <li><%= link_to 'Cadastrar',new_fornecedore_path %></li>
+                        <%end%>
+                        <li><a>Consultar</a>
+                          <ul>
+                            <li><%= link_to 'Nome', fornecedores_path %></li>
+                            <li><%= link_to 'Tipo Serviço', consulta_path %></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a>Informativo</a>
+                      <ul>
+                        <li><%= link_to "Novo",new_informativo_path %></li>
+                        <li><%= link_to "Todos",informativos_path  %></li>
+                      </ul>
+                    </li>
+                   <!--
+                    <li><a>Ponto eletrônico</a>
+                      <ul>
+                        <li><a>Consultar por</a>
+                          <ul>
+                            <li><%= link_to 'Estagiário', carga_horaria_estagiarios_path %></li>
+                            <li><%= link_to 'Geral', rel_ponto_estagiarios_path %></li>
+                          </ul>
+                        </li>
+                        <li><%= link_to 'Ponto Base', mes_bases_path%></li>
+                      </ul>
+                    </li>
+                     -->
+                   <li><%= link_to 'Senhas',senhas_path %></li>
+                  <%end%>
+                  <% if current_user.has_role?('administrador') %>
+                  <li><a>Tabelas</a>
+                     <ul>
+                       <li><%= link_to "Departamentos", new_departamento_path%></li>
+                      <li><a>Funcionarios</a>
+                          <ul>
+                            <li><%= link_to "Cadastrar", new_funcionario_path%></li>
+                         </ul>
+                       </li>
+                       <li><%= link_to "Tipo Manutenção",new_tipos_manutencao_path %></li>
+                       <li><%= link_to "Tipo OS Externa",new_tipo_osexterna_path %></li>
+                       <li><%= link_to "Tipo Problema",new_tipos_problema_path %></li>
+                       <li><%= link_to "Tipo Unidade",new_tipo_path %></li>
+                       <!--<li><%= link_to "Situação",new_situacao_chamado_path %></li>-->
+                     </ul>
+                  </li>
+                   <li><a>Usuários</a>
+                     <ul>
+                       <li><%= link_to 'Associar', new_roles_user_path %></li>
+                       <li><%= link_to 'Gerenciar', roles_users_path %></li>
+                     </ul>
+                   </li>
+                  <%end%>
                  </ul>
               </li>
+              <%end%>
 
               <li><span class="divider divider-vert" ></span></li>
               <% if current_user.has_role?('administrador') or current_user.has_role?('inscricao') %>
@@ -316,70 +398,32 @@ display: none;
               <%end%>
 
               <li><span class="divider divider-vert" ></span></li>
-                  <% if current_user.has_role?('administrador') %>
+               <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') %>
               <li><a class="item-primary" href="#;">Manutenção</a>
                  <ul style="width:108px;">
-                  <li><a>Cadastros</a>
-                     <ul>
-                       <li><%= link_to "Departamento", new_departamento_path%></li>
-                       <li><%= link_to "Tipo OS Externa",new_tipo_osexterna_path %></li>
-                       <li><%= link_to "Tipo Problema",new_tipos_problema_path %></li>
-                       <li><%= link_to "Tipo Unidade",new_tipo_path %></li>
-                       <!--<li><%= link_to "Situação",new_situacao_chamado_path %></li>-->
-                     </ul>
-                  </li>
-                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                    <li><%= link_to 'Empresa', new_empresa_path %></li>
-                    <li><a>Fornecedores</a>
-                      <ul>
-                        <% if current_user.has_role?('administrador') %>
-                          <li><%= link_to 'Cadastrar',new_fornecedore_path %></li>
-                        <%end%>
-                        <li><a>Consultar</a>
-                          <ul>
-                            <li><%= link_to 'Nome', fornecedores_path %></li>
-                            <li><%= link_to 'Tipo Serviço', consulta_path %></li>
-                          </ul>
-                        </li>
+                   <li><a>Ordem Serviço</a>
+                    <ul>
+                      <li><%= link_to "Abrir",new_manutencao_path %></li>
+                      <li><%= link_to "Consultas", busca_protocolo_manutencaos_path  %>
+                         <% if  current_user.has_role?('chefia_manutencao') %>
+                           <li><%= link_to "Em Aberto", consultas_manutencaos_path %></li>
+                          <%else%>
+                              <li><%= link_to "Em Aberto", manutencaos_path %></li>
+                           <%end%>
+
+                        <li><%= link_to "Encerrados", encerrados_manutencaos_path  %></li>
+                         </li>
                       </ul>
-                    </li>
-                    <li><a>Informativo</a>
-                      <ul>
-                        <li><%= link_to "Novo",new_informativo_path %></li>
-                        <li><%= link_to "Todos",informativos_path  %></li>
-                      </ul>
-                    </li>
-                   <!--
-                    <li><a>Ponto eletrônico</a>
-                      <ul>
-                        <li><a>Consultar por</a>
-                          <ul>
-                            <li><%= link_to 'Estagiário', carga_horaria_estagiarios_path %></li>
-                            <li><%= link_to 'Geral', rel_ponto_estagiarios_path %></li>
-                          </ul>
-                        </li>
-                        <li><%= link_to 'Ponto Base', mes_bases_path%></li>
-                      </ul>
-                    </li>
-                     -->
-                   <li><%= link_to 'Senhas',senhas_path %></li>
-                  <%end%>
-                  <% if current_user.has_role?('administrador') %>
-                   <li><a>Usuários</a>
-                     <ul>
-                       <li><%= link_to 'Associar', new_roles_user_path %></li>
-                       <li><%= link_to 'Gerenciar', roles_users_path %></li>
-                     </ul>
                    </li>
-                  <%end%>             
+
                  </ul>
               </li>
-              <%end%>
+           <%end%>
 
               <li><span class="divider divider-vert" ></span></li>
-              <li><a class="item-primary" href="#;">OS's</a>
-                 <ul style="width:108px;">
-                   <li><a>OS Interno</a>
+              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
+                   <li><a class="item-primary" href="#;">OS's</a>
+                    <li><a>OS Interno</a>
                     <ul>
                       <li><%= link_to "Abrir",new_chamado_path %></li>
                       <li><%= link_to "Consultas", busca_protocolo_chamados_path  %>
@@ -388,7 +432,7 @@ display: none;
                          </li>
                       </ul>
                    </li>
-                   
+                    <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')%>
                      <li><a href=>OS Externo</a>
                        <ul>
                           <li><%= link_to "Abrir", new_c_externo_path %></li>
@@ -396,12 +440,12 @@ display: none;
                          <li><%= link_to "Encerrados", exencerra_path  %></li>
                       </ul>
                      </li>
-
-                   <li><span class="divider divider-horiz" ></span></li>
-                   <li><%= link_to "Datashow", emprestimos_path %></li>
+                     <li><span class="divider divider-horiz" ></span></li>
+                     <li><%= link_to "Datashow", emprestimos_path %></li>
+                    <%end%>
                  </ul>
               </li>
-
+              <%end%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">

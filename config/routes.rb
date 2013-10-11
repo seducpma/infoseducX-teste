@@ -1,8 +1,21 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :chefias
+
+  map.resources :funcionarios
+
+  map.resources :situacao_manutencaos
+
+  map.resources :manutencaos_tipos_manutencaos
+
+  map.resources :manutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get}
+
+  map.resources :tipos_manutencaos
+
   map.resources :cursos_inscricaos
 #  map.resources :inscricaos
 #  map.resources :participantes
 #  map.resources :cursos
+
 
 
   map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get, :listagem_participantes => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :por_curso => :get}
@@ -16,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :noticias
-  
+
   map.resources :importar
   map.resources :contato_internos
 
@@ -57,14 +70,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :seduc
   map.resources :administracaos, :collection => {:internet => :get}
   map.resources :estagiarios, :collection => {:periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
-  
+
   #
   map.resources :unidades, :collection => {:print_all => :get}
   map.resources :users
 
   map.resource :session
   map.resources :roles_users
-  map.desconectar '/chat/desconectar', :controller => 'chats', :action => 'desconectar'  
+  map.desconectar '/chat/desconectar', :controller => 'chats', :action => 'desconectar'
   #map.connect '/homes/acertar_online_users', :controller => 'homes', :action => 'acertar_online_users'
   map.resources :homes, :collection => {:push_data => :get}
   map.resource :password
@@ -88,7 +101,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -111,7 +124,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.upload 'upload', :controller => 'importar', :action => 'index'
   map.termo '/termo_servico', :controller => 'administracaos', :action => 'termo_servico'
- 
+
   map.consulta_relatestagiario '/consulta_relatestagiario', :controller => 'relatestagiarios', :action => 'consulta1'
   map.geo "/geos/geo/:id", :controller => "geos", :action => "geo"
   map.exencerra '/exencerra', :controller => 'c_externos', :action => 'exencerra'
