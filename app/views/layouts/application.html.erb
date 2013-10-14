@@ -194,7 +194,12 @@ display: none;
                   <% if current_user.has_role?('administrador') %>
                   <li><a>Tabelas</a>
                      <ul>
-                       <li><%= link_to "Departamentos", new_departamento_path%></li>
+                      <li><a>Chefia</a>
+                          <ul>
+                            <li><%= link_to "Cadastrar", new_chefia_path%></li>
+                            <li><%= link_to "Consultar", chefias_path%></li>
+                         </ul>
+                       </li>
                       <li><a>Funcionarios</a>
                           <ul>
                             <li><%= link_to "Cadastrar", new_funcionario_path%></li>

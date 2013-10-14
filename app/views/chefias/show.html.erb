@@ -1,0 +1,49 @@
+<br/>
+
+<table class="tabelas"align="center">
+ <tr>
+    <th colspan="2" align="left">
+       <font  size=5 <b>RESPONSÁVEL POR SETOR</b></font>
+    </th>
+    <td width="10%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+   <tr>
+     <td align="left" width="20%" ><b>Nome:</b></td>
+     <td align="left" colspan="2"><%=h @chefia.nome %></td>
+   </tr>
+   <tr>
+     <td align="left"> <b>Setor:</b></td>
+     <td align="left"colspan="2"><%=h @chefia.setor%></td>
+   </tr>
+     <tr>
+     <td align="left"><b>Condição: </b></td>
+     <% if @chefia.desligado == false %>
+       <td colspan="2">Ativo</td>
+     <%else%>
+       <td colspan="2">Desligado</td>
+     <%end%>
+   </tr>
+   <tr>
+     <td colspan="3">
+      <div class="botao">
+      <table>
+        <tr>
+            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_chefia_path(@chefia), :title => "Alterar Dados"%></td>
+            <%end%>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+      </table>
+      </div>
+    </td>
+   </tr>
+ 
+</table>
+<br/>
+
+
+
+

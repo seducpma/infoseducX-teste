@@ -1,0 +1,53 @@
+<% form_for @chefia, :html => { :multipart => true } do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+<table class="tabelas" align="center">
+ <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b> RESPONSÁVEL POR SETOR</b></font>
+    </th>
+    <td width="10%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+ <tr>
+     <td colspan="3" align="left"><font  size=3><b> SERVIDOR DA SEDUC</b></font></td>
+ </tr>
+  <tr>
+     <td colspan="3">
+       <fieldset><legend><font  size=4> Dados Pessais</font></legend>
+         <table width="50%">
+            <tr>
+              <td align="left"><b>Nome:</b></td>
+              <td align="left"><%= f.text_field :nome, :size =>20 %></td>
+            </tr>
+           <tr>
+              <td align="left"><b> Setor:</b></td>
+              <td align="left"><%= f.text_field :setor, :size =>20 %></td>
+           </tr>
+           <tr>
+             <td align="left"><b> Usuário:</b></td>
+             <td align="left"><%= f.collection_select  :user_id, @users, :id, :login, :include_blank => ' -- Selecione -- ' %></td>
+           </tr>
+           <tr>
+             <td align="left"><b> Situação:</b></td>
+             <td>
+                  <%= f.check_box :desligado %><b>Desligado da SEDUC</b>
+             </td>
+           </tr>
+
+         </table>
+      </fieldset>
+      <div class="botao">
+        <table width="100%" align="left">
+           <tr>
+              <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+<% end %>
+            </tr>
+        </table>
+      </div>
+    </td>
+   </tr>
+  </table>
+</font>
