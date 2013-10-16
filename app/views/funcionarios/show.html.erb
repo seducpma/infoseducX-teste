@@ -1,0 +1,66 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+ <tr>
+    <th align="left"><font size=5> <b>SERVIDOR DA SEDUC</b></font></th>
+    <td width="7%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+  <tr>
+    <td colspan="2">
+       <fieldset><legend><font  size=4> Dados Funcinario</font></legend>
+        <table width="100%">
+          <tr>
+            <td align="left" width="15%"><b>Nome:</b></td>
+            <td align="left"><%=h @funcionario.nome %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Matrícula:</b></td>
+            <td align="left"><%=h  @funcionario.matricula %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Setor:</b></td>
+            <td align="left"> <%=h @funcionario.setor %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Informações:</b></td>
+            <td align="left">
+              <% if @funcionario.chefia == true %>
+                    Chefia de Setor
+              <%else%>
+                    Funcionário
+              <%end%>
+              <% if @funcionario.desligado == true %>
+                    - Desligado da SEDUC
+              <%end%>
+            </td>
+          </tr>
+          <tr>
+            <td align="left"><b>Atribuições:</b></td>
+            <td align="left"> <%=h @funcionario.atribuicao %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Observações:</b></td>
+            <td align="left"> <%=h @funcionario.obs %></td>
+          </tr>
+         </table>
+        </fieldset>
+       <div class="botao">
+       <table>
+        <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <% if current_user.has_role?('administrador')%>
+            <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_funcionario_path(@funcionario), :title => "Alterar Unidade"%></td>
+          <%end%>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+      </table>
+      </div>
+      </td>
+    </tr>
+ </table>
+</font>
+<br/>
+
+

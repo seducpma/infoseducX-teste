@@ -10,13 +10,25 @@ def load_users
 
 
 def index
+   if params[:teste].to_i == 0
       if params[:search].blank?
           @search = Chefia.search(params[:search])
-          @chefias = @search.all(:order => 'nome ASC')
+          @chefias = @search.all(:conditions => ['desligado = 0'],:order => 'nome ASC')
       else
           @search = Chefia.search(params[:search])
-          @chefias = @search.all(:order => 'nome ASC')
+          @chefias = @search.all(:conditions => ['desligado = 0'],:order => 'nome ASC')
       end
+   end
+   if params[:teste].to_i == 1
+      if params[:search].blank?
+          @search = Chefia.search(params[:search])
+          @chefias = @search.all(:conditions => ['desligado = 1'],:order => 'nome ASC')
+      else
+          @search = Chefia.search(params[:search])
+          @chefias = @search.all(:conditions => ['desligado = 1'],:order => 'nome ASC')
+      end
+   end
+
   end
 
 
