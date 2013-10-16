@@ -2,6 +2,8 @@ class Unidade < ActiveRecord::Base
 belongs_to :unidades_gpd
 belongs_to :tipo
 belongs_to :regiao
+has_many :manutencaos
+
 has_many :anexos
 has_many :estagiarios
 has_many :senhas
