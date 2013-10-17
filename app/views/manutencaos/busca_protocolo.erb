@@ -1,0 +1,94 @@
+<br/><br/>
+<font size="2">
+<table class="tabelas1" align="center" width="90%">
+  <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b>  CONSULTA PROTOCOLO ORDEM DE MANUTENÇÃO</b></font>
+    </th>
+    <td width="3%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+        
+   </tr>
+   <tr>
+     <td colspan="2">
+       <table width="100%" >
+        <tr>
+          <td align="left">
+            <% form_tag busca_protocolo_manutencaos_path, :method => 'get' do %>
+            <font size="4"> Nº Protocolo:</font>
+             <%= text_field_tag :search, params[:search], :size => '1' %>
+             <input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+          </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td colspan="2">
+
+            <table border="1" width="100%">
+                <%if @manutencao.present?%>
+                 <% for chamado in @manutencao %>
+                 <tr>
+                    <th width="1%"> Protocolo</th>
+                    <th> Unidade</th>
+                    <th> Solicitado</th>
+                    <th> Solicitante</th>
+                    <th> Encaminhado</th>
+                    <th> Para</th>
+                    <th> Executado</th>
+                    <th> Por</th>
+                    <th>Status</th>
+                    <th>Visualizar</th>
+                 </tr>
+                 <tr>
+                    <td><center><%=h chamado.id %></center></td>
+                    <td><%=h chamado.unidade.nome %></td>
+                    <td><%=h chamado.data_sol.strftime("%d/%m/%Y")%></td>
+                    <td><%=h chamado.user.name %></td>
+                    <%if chamado.data_ate.nil?%>
+                       <td></td>
+                       <td><b><font color="red"> Não encaminhado</font></b></td>
+                     <%else%>
+                      <td><%=h chamado.data_ate.strftime("%d/%m/%Y")%></td>
+                      <td><%=h chamado.chefia.nome %></td>
+                    <%end%>
+                    <%if chamado.data_enc.nil?%>
+                       <td></td>
+                       <td><b><font color="red">  Não executado</b></font></td>
+                     <%else%>
+                      <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
+                      <td><%=h chamado.funcionario.nome %></td>
+                     <%end%>
+                      <td><%=h chamado.situacao_manutencao.situacao %></td>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir Dados" %></td>
+                 </tr>
+                 <%end%>
+               <%else%>
+               <tr>
+                 <%if $ok==0%>
+                   <td><b><font size="4" color="red"> Pesquisa Não Autorizada</font></b></td>
+                 <%else%>
+                   <td> Realizar Pesquisa </td>
+                 <%end%>
+               </tr>
+               <%end%>
+              </table>
+
+
+
+
+          <div class="botao">
+           <table width="80%" align="left">
+              <tr>
+                <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+                <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>              </tr>
+           </table>
+          </div>
+        </td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <br/>
+</font>

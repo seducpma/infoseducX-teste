@@ -1,0 +1,90 @@
+<br/>
+ <table  class="tabelas1"   align="center" width="100%">
+  <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font>
+    </th>
+    <td width="3%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+
+  <tr>
+    <td colspan="2">
+      <br/>
+      <font  size="2">
+        <table border="2" width="100%">
+          <tr>
+            <th width ="1%" align="center">Proto- colo</th>
+            <th width ="5%">Data Solicitação</th>
+            <th width ="10%">Solicitante</th>
+            <th width ="15%">Unidade</th>
+            <th width ="20%"colspan="2">Problema</th>
+            <th width ="20%"  >Procedimentos Executados</th>
+            <th width="8%">Status</th>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')  %>
+                <th colspan="3"><center>Administrar</center></th>
+
+            <%end%>
+            <% if current_user.has_role? current_user.has_role?('chefia_manutencao')  %>
+                <th align="center">OS</th>
+            <%end%>
+
+          </tr>
+          <%$cont=0%>
+          <%form_tag selected_print_manutencaos_path, :method => :get do %>
+            <% for chamado in @manutencaos %>
+              <tr>
+               <td align="center"><%=h chamado.id %></td>
+               <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+               <td><%=h chamado.solicitante %></td>
+               <td><%=h chamado.unidade.nome %></td>
+               <td colspan="2"><%=h chamado.descricao %></td>
+               <td> <%=h chamado.procedimentos%>  </td>
+               <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                   <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+               <% else %>
+                   <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                      <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                   <% else %>
+                      <td><%=h chamado.situacao_manutencao.situacao %> <br/>
+                         p/ <%=h chamado.chefia.nome %> </td>
+                      <%end%>
+               <% end %>
+               <% if current_user.has_role?('administrador')  or current_user.has_role?('admin_manutencao')  %>
+                   <td align="center" width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/write.png", :size => "25x25"), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhamento" %></td>
+                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "20x20"), chamado, :title => "Visualização" %></td>
+                <%end%>
+               <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao')  %>
+                    <td align="center" width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/listar.png", :size => "25x25"), {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Ordem de Serviço" %></td>
+               <%end%>
+              </tr>
+            <%$cont=$cont+1%>
+            <%end%>
+              <tr>
+                <td  colspan="12">
+                  <b>Total de Ordem de Serviços em aberto:</b> <%= $cont %>
+                </td>
+              </tr>
+          <%end%>
+  
+
+  </table>
+  </font>
+    <div class="botao">
+      <table width="100%" align="center">
+       <br/>
+       <tr>
+        <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+        <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+       </tr>
+       </table>
+    </div>
+ </td>
+  </tr>
+</table>
+
+<br/>
+
+
+
+

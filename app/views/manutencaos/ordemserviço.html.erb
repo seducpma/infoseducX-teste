@@ -1,0 +1,64 @@
+<br/>
+<font size="2">
+<table  class="tabelas1" width="100%"align="center">
+ <tr>
+   <th align="left">
+     <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO - DESPACHO</b></font>
+   </th>
+</tr>
+<tr>
+  <td>
+     <table>
+       <tr>
+         <td width="40%" valign="TOP">
+           <%= render 'formshow' %>
+         </td>
+         <td width="60%">
+           <fieldset><legend><font  size=4> Depacho</font></legend>
+           <% form_for(@manutencao) do |f| %>
+           <%= f.error_messages %>
+           <table>
+            <tr>
+              <td align="left" width="20%"><b>Nome:</b></td>
+              <td align="left"><%= @manutencao.user.name%></td>
+
+             </tr>
+           <tr>
+              <td align="left" valign="top"><b>Despacho:</b></td>
+              <td align="left"><%= f.text_area :procedimentos, :cols =>"65", :rows => "5" %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Funcionário:</b></td>
+               <td align="left"><%= f.collection_select :funcionario_id, @funcionarios_chefia, :id, :nome, :include_blank => ' -- Selecione -- ', :size=> 20 %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Situação Chamado:</b></td>
+              <td align="left"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecione -- '%></td>
+           </tr>
+           <tr>
+              <td align="left" width="20%"><b>Data do Despacho:</b></td>
+              <td align="left"><%= Time.now.strftime("%d/%m/%Y")%></td>
+             </tr>
+
+           </table>
+        </fieldset>
+      </td>
+      </tr>
+        <table>
+            <tr >
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <div id='Certeza'>
+               <td width="5%"align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+             </div> 
+             <%end%>
+               <td align="left" ><%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), manutencaos_path, {:method => "get"}, :title => "Ordem de Serviço" %></td>
+             </tr>
+         </table>
+
+    </table>
+  </td>
+ </tr>
+</table>
+</font>
+<br/>
+

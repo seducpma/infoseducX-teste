@@ -3,6 +3,8 @@ class Chamado < ActiveRecord::Base
   belongs_to :tipos_problema
   belongs_to :situacao_chamado
   belongs_to :unidade
+  Solicitacao = %w(Internet E-mail Telefone Pessoalmente Outros)
+
 
   #nivel de chamado técnico
   named_scope :nao_encerrado, :conditions => ["situacao_chamado_id != 2"], :order => "situacao_chamado_id,data_sol DESC"

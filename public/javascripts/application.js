@@ -15,3 +15,14 @@
 			});
 
 		});
+function Imprimir(){
+window.print();
+}
+function MM_openBrWindow(theURL,winName,features) {
+window.open(theURL,winName,features);
+}
+
+function PrintDiv(div)
+{
+	$('#'+div).printElement();
+}
