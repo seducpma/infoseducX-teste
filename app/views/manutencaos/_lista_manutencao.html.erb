@@ -44,16 +44,6 @@
                      <td align="center" width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimr" %></td>
               </tr>
             <%end%>
-            <tr>
-             <td align="left" colspan="11">
-                <table>
-                   <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao') %>
-                      <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar"></td>
-                      <td align="left" ><font color="Blue"> VISUALIAR CHAMADOS SELECIONADOS PARA ATENDIMENTO</font></td>
-                   <%end%>
-                </table>
-                </td>
-            </tr
           <%end%>
 
 
