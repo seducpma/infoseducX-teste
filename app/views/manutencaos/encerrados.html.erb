@@ -41,9 +41,18 @@
            <td><%=h chamado.data_sol.strftime("%d/%m/%Y")%></td>
            <td><%=h chamado.user.name %></td>
            <td><%=h chamado.data_ate.strftime("%d/%m/%Y")%></td>
-           <td><%=h chamado.chefia.nome %></td>
+           <td> <%if chamado.chefia.nil?%>
+                    <%=h chamado.user.login%> </td>
+                <%else%>
+                    <%=h chamado.chefia.nome %></td>
+                <%end%>
            <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
-           <td><%=h chamado.funcionario.nome %></td>
+           <td><%if chamado.funcionario.nil?%>
+                    <%=h chamado.user.login%> </td>
+                <%else%>
+                    <%=h chamado.funcionario.nome %></td>
+                <%end%>
+
            <div class="botao">
              <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir Dados" %></td>
            </div>

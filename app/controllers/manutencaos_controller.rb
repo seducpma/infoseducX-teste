@@ -52,12 +52,12 @@ def lista_manutencao
 
   def index
     if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
-       @manutencaos = Manutencao.all
+       @manutencaos = Manutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
     else
       if current_user.has_role?('diretor_unidade')
-       @manutencaos = Manutencao.all(:conditions =>["unidade_id = ?",current_user.unidade_id ])
+       @manutencaos = Manutencao.all(:conditions =>["situacao_manutencao_id <> 2 and unidade_id = ?",current_user.unidade_id ])
       else
-       @manutencaos = Manutencao.all(:conditions =>["user_id = ?",current_user])
+       @manutencaos = Manutencao.all(:conditions =>["situacao_manutencao_id <> 2 and user_id = ?",current_user])
        $chefia1=@manutencaos.user_id.current_user
       end
     end

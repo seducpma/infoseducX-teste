@@ -73,7 +73,11 @@
                   <%if @manutencao.data_enc.nil?%>
                     <td align="leff"></td>
                   <%else%>
-                    <td align="left"><%=h @manutencao.funcionario.nome %></td>
+                        <%if @manutencao.funcionario.nil?%>
+                            <td align="left"><%=h@manutencao.user.login%> </td>
+                        <%else%>
+                            <td align="left"><%=h @manutencao.funcionario.nome %></td>
+                        <%end%>
                   <%end%>
 
               </tr>

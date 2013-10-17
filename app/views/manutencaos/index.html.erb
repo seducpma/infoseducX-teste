@@ -47,7 +47,12 @@
                       <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
                    <% else %>
                       <td><%=h chamado.situacao_manutencao.situacao %> <br/>
-                         p/ <%=h chamado.chefia.nome %> </td>
+                        <%if chamado.chefia.nil? %>
+                           p/ <%=h chamado.user.login %></td>
+                        <%else%>
+                           p/ <%=h chamado.chefia.nome %> </td>
+                        <%end%>
+                         
                       <%end%>
                <% end %>
                <% if current_user.has_role?('administrador')  or current_user.has_role?('admin_manutencao')  %>
