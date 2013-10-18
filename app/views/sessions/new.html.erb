@@ -19,7 +19,7 @@
                     <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
                      <%= password_field_tag 'password', nil, :size =>15 %></p>
                   </font>
-                  <p><%= submit_tag 'Entrar' %></p>
+                  <p><%= submit_tag 'Entrar' %></p><br/><br/><br/><br/>
                <% end %>
              </td>
            </tr>
@@ -53,7 +53,7 @@
                     <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
                      <%= password_field_tag 'password', nil, :size =>15 %></p>
                   </font>
-                  <p><%= submit_tag 'Entrar' %></p>
+                  <p><%= submit_tag 'Entrar' %></p><br/><br/><br/><br/>
                <% end %>
              </td>
            </tr>
@@ -82,13 +82,13 @@
                <table width="100%">
                   <tr>
                     <td>
-                      <table  class="tabelas" align="center" style="border-color: white">
+                      <table  class="tabelas" align="center" style="border-color: gray">
                         <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
                         <% @cursos.in_groups_of(2, false) do |row_cursos| %>
                           <tr>
                             <% row_cursos.each do |curso| %>
                                 <%if curso.existe_vaga %>
-                                  <td id="demo" align="left"><%= "#{curso.nome} - #{curso.qtde} vagas/#{curso.vagas_disponiveis}disponíveis"%></td>
+                                  <td id="demo" align="left"><%= "#{curso.nome} - #{curso.qtde} vagas / #{curso.vagas_disponiveis}disponíveis"%></td>
                                 <%else%>
                                   <td><%= " #{curso.nome_curto}"%>  <br/>
                                     <font color="red"> <b>VAGAS COMPLETADAS" </b></font> </td>

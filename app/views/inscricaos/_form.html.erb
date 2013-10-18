@@ -58,9 +58,9 @@
   </tr>
  </table>
 
-   <table class="tabelas" align="center"  width="100%">
+   <table class="tabelas" align="center"  width="100%" border="2">
      <tr>
-      <th colspan="2" style=" font-size: large">CURSOS  </th>
+      <th colspan="2" style=" font-size: large">CURSOS DISPONÍVEIS </th>
      </tr>
     <tr>
       <td colspan="2">
@@ -71,7 +71,7 @@
       <tr>
         <% row_cursos.each do |curso| %>
             <%if curso.existe_vaga %>
-             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde}/#{curso.vagas_disponiveis}" %></td>
+             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %></td>
             <%else%>
               <td><%= "CURSO #{curso.nome}"%>  <br/>
                 <font color="red"> <b>Nº DE VAGAS COMPLETO </b></font> </td>
@@ -81,8 +81,8 @@
     <%end%>
       <tr>
         <th colspan="2"><font size="2">
-          <u>Obs:</u> Cursos com <b>*</b> disponíveis somente para professores da SEDUC no exercício da função <br/>
-          &nbsp&nbsp&nbsp&nbsp&nbspPara maiores informações sobre o curso, posicione o mouse sobre a caixa de opção</font></th>
+          <u>Obs:</u> Cursos com <b>*</b>disponíveis somente para professoras e ADI de creches  <br/>
+          &nbsp&nbsp&nbsp&nbsp Para maiores informações posicione o cursor do mouse sobre caixa de opção e aguarde alguns segundos</font></th>
       </tr>
   </table>
 
