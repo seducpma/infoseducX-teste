@@ -101,8 +101,17 @@ display: none;
               <li><a class="item-primary" href="#">Arquivo</a>
                 <ul style="width:108px;">
                   <li><%= link_to 'Inicio', root_path %></li>
-                  <li><%= link_to 'Upload',anexos_path %></li>
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
+                  <li><a class="item-primary" href="#">Tutoriais</a>
+                     <ul style="width:108px;">
+                         <li><a>Roteadores</a>
+                           <ul>
+                            <li><a href="http://youtu.be/-B-gxSZyNHQ">Configuração WDS</a></li>
+                          </ul>
+                         </li>
+                     </ul>
+                  </li>
+                  <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
 
