@@ -42,7 +42,20 @@
                     <%  if inscricao.participante.tipo_participante == 2 %>
                       <td align="center"><%=h "Externo" %></td>
                     <%else%>
-                      <td align="center"><%=h inscricao.participante.unidade.nome %></td>
+                      <%  if inscricao.participante.unidade.nil? %>
+                        <td align="center">--</td>
+                      <%else%>
+                         <td align="center"><%=h inscricao.participante.unidade.nome %></td>
+                      <%end%>
+
+
+
+
+
+
+
+
+
                     <%end%>
                   </tr>
                 <%end%>

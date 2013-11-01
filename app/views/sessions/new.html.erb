@@ -79,10 +79,10 @@
             <td width="100%" align="center">
               <p><font  size="4" color="black"><b><u>Inscrições on-line</u></b></font></p>
                <p align="center"><font  size="3"  color="black"><%= button_to  "Inscrições", new_inscricao_path, :class => "button", :id => "inscreva-se" %></font></p>
-               <table width="100%">
+               <table width="100%" >
                   <tr>
                     <td>
-                      <table  class="tabelas" align="center" style="border-color: gray">
+                      <table  class="tabelas" align="center" style="border-color: gray" border="2">
                         <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
                         <% @cursos.in_groups_of(2, false) do |row_cursos| %>
                           <tr>

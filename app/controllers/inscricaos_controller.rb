@@ -11,6 +11,11 @@ class InscricaosController < ApplicationController
   def envia_email
   end
 
+  def modelo
+    send_file("#{RAILS_ROOT}/public/documentos/modelo.doc" , :type=>"text/msword")
+  end
+
+
   def confirmacao
     participante = Participante.find_by_matricula(params[:matricula])
     @inscricao = Inscricao.find_by_participante_id(participante_id)

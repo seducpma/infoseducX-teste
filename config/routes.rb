@@ -124,7 +124,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.upload 'upload', :controller => 'importar', :action => 'index'
   map.termo '/termo_servico', :controller => 'administracaos', :action => 'termo_servico'
-
+  map.modelo '/download', :controller => 'inscricaos', :action => 'modelo'
   map.consulta_relatestagiario '/consulta_relatestagiario', :controller => 'relatestagiarios', :action => 'consulta1'
   map.geo "/geos/geo/:id", :controller => "geos", :action => "geo"
   map.exencerra '/exencerra', :controller => 'c_externos', :action => 'exencerra'
