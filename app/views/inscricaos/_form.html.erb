@@ -71,7 +71,7 @@
       <tr>
         <% row_cursos.each do |curso| %>
             <%if curso.existe_vaga %>
-             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %></td>
+             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis para seleção" %></td>
             <%else%>
               <td><%= "CURSO #{curso.nome}"%>  <br/>
                 <font color="red"> <b>Nº DE VAGAS COMPLETO </b></font> </td>
@@ -82,14 +82,15 @@
       <tr>
         <th colspan="2"><font size="2">
           <center><font size ="3"color="red"><u>LEIA COM ATENÇÃO</u></font></center>
-          <u>Obs:</u>> Para maiores informações posicione o mouse mouse sobre caixa de opção e aguarde alguns segundos.<br/>
+          <u>Obs:</u>> Para maiores informações posicione o mouse sobre caixa de opção e aguarde alguns segundos.<br/>
           &nbsp&nbsp&nbsp&nbsp> Serão selecionadas 30 inscrições para Apresentação de Painel e 20 inscrições para Apresentação Oral.<br/>
-          &nbsp&nbsp&nbsp&nbsp> Para inscrição de Apresentação Oral ou Painel é necessário enviar projeto da apresentação.<br/>
+          &nbsp&nbsp&nbsp&nbsp> Para inscrição de Apresentação Oral ou Painel é necessário enviar o projeto para nucleo@seducpma.com<br/>
           &nbsp&nbsp&nbsp&nbsp> Download Modelo de Projeto de Apresentação <%= "#{ link_to "|Clique aqui|", modelo_path}"%><br/>
-          &nbsp&nbsp&nbsp&nbsp> Dúvidas e envio de projeto:  nucleo@seducpma.com ou fone 3475-9700 (ramal 9904).<br/>
+          &nbsp&nbsp&nbsp&nbsp> Dúvidas contate fone 3475-9700 (ramal 9904) ou e_mail nucleo@seducpma.com<br/>
           &nbsp&nbsp&nbsp&nbsp> Os projetos / inscrições selecionados serão notificadas por e_mail.<br/>
           &nbsp&nbsp&nbsp&nbsp> Os projetos não selecionados poderão participar como ouvinte.<br/>
-          &nbsp&nbsp&nbsp&nbsp> A II Mostra de Trabalho das Creches será realizada dia <font color="blue">23/11/2013 das 8h as 12h</font>. <br/>
+          &nbsp&nbsp&nbsp&nbsp> A II Mostra de Trabalho das Creches será realizada dia <font color="blue">23/11/2013 das 8h as 12h no Anfiteatro  <br/>
+          &nbsp&nbsp&nbsp&nbsp&nbsp do Colégio Objetivo</font>.
           
 
 </font></th>
