@@ -71,7 +71,7 @@
       <tr>
         <% row_cursos.each do |curso| %>
             <%if curso.existe_vaga %>
-             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis para seleção" %></td>
+             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %></td>
             <%else%>
               <td><%= "CURSO #{curso.nome}"%>  <br/>
                 <font color="red"> <b>Nº DE VAGAS COMPLETO </b></font> </td>
