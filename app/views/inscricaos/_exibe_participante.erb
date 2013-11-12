@@ -1,8 +1,10 @@
 <table width="100%">
     <% if @inscricao.present?  %>
         <tr>
-           <td colspan="2"><b style="color:red"><%= "PARTICIPANTE JA POSSUI INSCRIÇÃO." %> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= link_to "|Visualizar Inscrição|", @inscricao  %></b><br/>
+           <td colspan="3"><b style="color:red"><%= "PARTICIPANTE JA POSSUI INSCRIÇÃO." %> =================================================================> <%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), consultas_inscricaos_path %></b><br/>
         </tr>
+
+
     <%end%>
     <tr>
       <td width="70%">
@@ -32,13 +34,11 @@
                          <%=h @dadosparticipa.obs %><br/>
                       <%end%>
                <%end%>
-         </b>
+      
         </td>
         <td widt ="30%"align="right">
                 <font color="blue"><b>Atualizar Cadastro</b> =></font>
          </td>
-         <td>
-            <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), edit_participante_path(@dadosparticipa), :title => "Atualizar Cadastro" %> </dd>
-         </td>
+         <td><%= link_to image_tag("/stylesheets/images/write.png", :size => "30x30"), edit_participante_path(@dadosparticipa), :title => "Atualizar Cadastro" %> </td>
     </tr>
   </table>

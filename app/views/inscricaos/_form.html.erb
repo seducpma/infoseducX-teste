@@ -11,6 +11,11 @@
    </td>
   </tr>
   <tr>
+    <td colspan="2">
+      <marquee behavior="alternate"><font  size=5 color="RED"> <b> FAVOR LER TODAS AS INSTRUÇÕES AO EFETURAR SUA INSCRIÇÃO</b></font></marquee>
+    </td>
+  </tr>
+  <tr>
   <td colspan="2">
 <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
   <table width="100%" >
@@ -18,14 +23,14 @@
     <td width ="1%" valign="top"><b>Participante:</b></td>
      <% if @participante.present? %>
         <%= @participante.nome %>
-        <td  valign="top">
+        <td valign="top">
          <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %>
         </td>
 
      <%else%>
         <td width =20%"  valign="top">
            <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %><br/>
-           <font color="blue">Se nome não consta na lista acima, favor cadastrar =></font>
+           <font color="blue">Se nome não consta na lista acima, favor cadastrar ===============================></font>
           <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
          </td>
          <!--

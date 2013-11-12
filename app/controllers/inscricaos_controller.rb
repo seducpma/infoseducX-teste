@@ -252,6 +252,18 @@ def gera_pdf
     @inscricaosE = Inscricao.find(:all, :include => 'cursos', :conditions => ['cursos.status= 1'])
   end
 
+
+ def consultas
+   @participantess =  Participante.find_by_id(params[:inscricao_inscricao_participante_id])
+
+ end
+
+ def lista_inscricaos
+     $participante = params[:inscricao_inscricao_participante_id]
+    @inscricaos = Inscricao.find(:all, :conditions => ['participante_id=?',  $participante ])
+    render :partial => 'inscricaos'
+ end
+
 private
 
   def sort_column
