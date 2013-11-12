@@ -81,7 +81,7 @@ class InscricaosController < ApplicationController
 
  def sel_participa
     @dadosparticipa = Participante.find(params[:inscricao_participante_id])
-    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1'])
+    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1 and encerrado = 0'])
     render :update do |page|
       page.replace_html "informacoes", :partial => 'exibe_participante'
       unless @inscricao.present?
