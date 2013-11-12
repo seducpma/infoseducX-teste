@@ -15,7 +15,10 @@
             <table>
               <tr>
                 <td>
+                   <font  size="2" color="black"> (Selecione o nome do particiante para visualizar o(s) protocolo(s) de inscrição)</font><br/><br/>
+
                    <font  size="4" color="black"> Participante: <%= collection_select :inscricao, :inscricao_participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+
                  </td>
               </tr>
            </table>
