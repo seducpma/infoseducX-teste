@@ -15,12 +15,9 @@
              <%=h curso.nome %>
            <% end %>
       </td>
-
-
-
        <td><%=h inscricao.data_inscricao.strftime("%d/%b/%y") %> </td>
        <td align="center">
-            <% if inscricao.encerrado == 0 %>
+            <% if inscricao.encerrado == 1 %>
               Encerrado
             <%else%>
               Em Andamento
