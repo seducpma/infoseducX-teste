@@ -66,7 +66,7 @@ def index
 
     respond_to do |format|
       if @chefia.save
-        flash[:notice] = 'Chefia was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@chefia) }
         format.xml  { render :xml => @chefia, :status => :created, :location => @chefia }
       else
@@ -83,7 +83,7 @@ def index
 
     respond_to do |format|
       if @chefia.update_attributes(params[:chefia])
-        flash[:notice] = 'Chefia was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@chefia) }
         format.xml  { head :ok }
       else

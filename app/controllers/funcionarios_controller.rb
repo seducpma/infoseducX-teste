@@ -70,7 +70,7 @@ def index
 
     respond_to do |format|
       if @funcionario.save
-        flash[:notice] = 'Funcionario was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@funcionario) }
         format.xml  { render :xml => @funcionario, :status => :created, :location => @funcionario }
       else
@@ -87,7 +87,7 @@ def index
 
     respond_to do |format|
       if @funcionario.update_attributes(params[:funcionario])
-        flash[:notice] = 'Funcionario was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@funcionario) }
         format.xml  { head :ok }
       else

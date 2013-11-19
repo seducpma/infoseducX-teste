@@ -48,7 +48,7 @@ class SituacaoManutencaosController < ApplicationController
 
     respond_to do |format|
       if @situacao_manutencao.save
-        flash[:notice] = 'SituacaoManutencao was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@situacao_manutencao) }
         format.xml  { render :xml => @situacao_manutencao, :status => :created, :location => @situacao_manutencao }
       else
@@ -65,7 +65,7 @@ class SituacaoManutencaosController < ApplicationController
 
     respond_to do |format|
       if @situacao_manutencao.update_attributes(params[:situacao_manutencao])
-        flash[:notice] = 'SituacaoManutencao was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@situacao_manutencao) }
         format.xml  { head :ok }
       else

@@ -44,7 +44,7 @@ class ContatoInternosController < ApplicationController
 
     respond_to do |format|
       if @contato_interno.save
-        flash[:notice] = 'ContatoInterno was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@contato_interno) }
         format.xml  { render :xml => @contato_interno, :status => :created, :location => @contato_interno }
       else
@@ -61,7 +61,7 @@ class ContatoInternosController < ApplicationController
 
     respond_to do |format|
       if @contato_interno.update_attributes(params[:contato_interno])
-        flash[:notice] = 'ContatoInterno was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@contato_interno) }
         format.xml  { head :ok }
       else

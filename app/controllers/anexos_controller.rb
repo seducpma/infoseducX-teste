@@ -49,7 +49,7 @@ class AnexosController < ApplicationController
 
     respond_to do |format|
       if @anexo.save
-        flash[:notice] = 'Anexo was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@anexo) }
         format.xml  { render :xml => @anexo, :status => :created, :location => @anexo }
       else
@@ -66,7 +66,7 @@ class AnexosController < ApplicationController
 
     respond_to do |format|
       if @anexo.update_attributes(params[:anexo])
-        flash[:notice] = 'Anexo was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@anexo) }
         format.xml  { head :ok }
       else

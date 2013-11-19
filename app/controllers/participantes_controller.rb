@@ -106,7 +106,7 @@ def index
 
     respond_to do |format|
       if @participante.save
-        flash[:notice] = 'Participante was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@participante) }
         format.xml  { render :xml => @participante, :status => :created, :location => @participante }
       else
@@ -123,7 +123,7 @@ def index
 
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
-        flash[:notice] = 'Participante was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@participante) }
         format.xml  { head :ok }
       else

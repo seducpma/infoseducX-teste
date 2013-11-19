@@ -52,7 +52,7 @@ def load_cursos
 
     respond_to do |format|
       if @curso.save
-        flash[:notice] = 'Curso was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@curso) }
         format.xml  { render :xml => @curso, :status => :created, :location => @curso }
       else
@@ -69,7 +69,7 @@ def load_cursos
 
     respond_to do |format|
       if @curso.update_attributes(params[:curso])
-        flash[:notice] = 'Curso was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@curso) }
         format.xml  { head :ok }
       else
