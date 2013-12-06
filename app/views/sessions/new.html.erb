@@ -84,6 +84,12 @@
                     <td>
                       <table  class="tabelas" align="center" style="border-color: gray" border="2">
                         <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
+
+
+                        <tr><td><br/><br/><b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b><br/><br/><br/><br/><br/><br/><br/><br/></td></tr>
+
+
+
                         <% @cursos.in_groups_of(2, false) do |row_cursos| %>
                           <tr>
                             <% row_cursos.each do |curso| %>
