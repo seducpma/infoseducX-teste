@@ -179,8 +179,8 @@ def sem_estagiarios
               #@sem_estagiarios_reg = Estagiario.find_by_sql('SELECT * FROM `estagiarios` INNER JOIN `unidades` ON `unidade`.id = `estagiarios`.unidade_id WHERE (flag=0)is not in SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiarios`.regiao_id WHERE (flag=0) ORDER BY regiaos.regiao ASC')
               #@sem_estagiarios_reg = Estagiario.find_by_sql("SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiari' at  SELECT * FROM `estagiarios` INNER JOIN `unidades` ON `unidade`.id = `estagiarios`.unidade_id WHERE (flag=0)is not in SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiarios`.regiao_id WHERE (flag=0) ORDER BY regiaos.regiao ASC")
 
-    @sem_estagiarios_reg = Estagiario.find(:all,:joins => :regiao,:conditions => ['flag=? and etinerante=?' ,0,1], :select => "distinct regiao_id",  :order => 'regiaos.regiao ASC')
-
+    #@sem_estagiarios_reg = Estagiario.find(:all,:joins => :regiao,:conditions => ['flag=? and etinerante=?' ,0,1], :select => "distinct regiao_id",  :order => 'regiaos.regiao ASC')
+     @sem_estagiarios_reg =  Regiao.all
   
     respond_to do |format|
       format.html # index.html.erb
