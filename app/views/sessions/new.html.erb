@@ -1,100 +1,23 @@
 <div id="posicao_login" >
-  <table width ="97%" border="2">
-    <tr>
-      <td width ="30%" valign="top">
-        <table width="100%" border="1">
-          <tr>
-            <td valign="top">
-               <div id="imagem_login"></div>
-            </td>
-          </tr>
-          <tr>
-            <td width="100%" align="center">
-              <p><font  size="4" color="black"><b><u>Gerenciamento de Informática</u></b></font></p>
-              <p align="center"><font  size="1"  color="black"><b>LOGIN DE ACESSO</b></font></p>
-              <% form_tag session_path do -%>
-                  <font  size="2" color="black">
-                    <p><b><%= label_tag 'Usuário' %></b>
-                      <%= text_field_tag 'login', @login, :size =>15 %></p>
-                    <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
-                     <%= password_field_tag 'password', nil, :size =>15 %></p>
-                  </font>
-                  <p><%= submit_tag 'Entrar' %></p><br/><br/><br/><br/>
-               <% end %>
-             </td>
-           </tr>
-           <tr>
-              <td colspan="2" align="center">
-                <font  size="2" color="black"><b>Não possui senha?</b></font><br/>
-                       <%= button_to 'Cadastrar Usuário/Senha', signup_path%>
-                       <%= link_to 'Esqueci a Senha', new_password_path%>
-              </td>
-           </tr>
-        </table>
+  <br/>
+ <table border="1" align="center" width="65%">
+   <tr>
+     <td>
+       <%= link_to image_tag("/stylesheets/Imagens/banner2.jpg", :size => "300x100"), informatica_path, :title => "Informática"%>
      </td>
-     <td width="1%">
-
-     </td>
-     <td width ="30%" valign="top">
-        <table width="100%" border="1">
-          <tr>
-            <td valign="top">
-               <div id="imagem_login1"></div>
-            </td>
-          </tr>
-          <tr>
-            <td width="100%" align="center">
-              <p><font  size="4" color="black"><b><u>Gerenciamento de Manutenção</u></b></font></p>
-              <p align="center"><font  size="1"  color="black"><b>LOGIN DE ACESSO</b></font></p>
-              <% form_tag session_path do -%>
-                  <font  size="2" color="black">
-                    <p><b><%= label_tag 'Usuário' %></b>
-                      <%= text_field_tag 'login', @login, :size =>15 %></p>
-                    <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
-                     <%= password_field_tag 'password', nil, :size =>15 %></p>
-                  </font>
-                  <p><%= submit_tag 'Entrar' %></p><br/><br/><br/><br/>
-               <% end %>
-             </td>
-           </tr>
-           <tr>
-              <td colspan="2" align="center">
-                <font  size="2" color="black"><b>Não possui senha?</b></font><br/>
-                       <%= button_to 'Cadastrar Usuário/Senha', signup_path%>
-                       <%= link_to 'Esqueci a Senha', new_password_path%>
-              </td>
-           </tr>
-        </table>
-     </td>
-     <td width="1%">
-     </td>
-     <td width ="30%" valign="top">
-         <table width="100%" border="1">
-          <tr>
-            <td>
-               <div id="imagem_login2"></div>
-            </td>
-          </tr>
-          <tr>
-            <td width="100%" align="center">
-              <p><font  size="4" color="black"><b><u>Inscrições on-line</u></b></font></p>
-               <p align="center"><font  size="3"  color="black"><%= button_to  "Inscrições", new_inscricao_path, :class => "button", :id => "inscreva-se" %></font></p>
+     <td rowspan="4"></td>
+     <td rowspan="4" valign="top">
                <table width="100%" >
                   <tr>
                     <td>
                       <table  class="tabelas" align="center" style="border-color: gray" border="2">
                         <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
 
-
-                        <tr><td><br/><br/><b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b><br/><br/><br/><br/><br/><br/><br/><br/></td></tr>
-
-
-
-                        <% @cursos.in_groups_of(2, false) do |row_cursos| %>
+                        <% @cursos.in_groups_of(1, false) do |row_cursos| %>
                           <tr>
                             <% row_cursos.each do |curso| %>
                                 <%if curso.existe_vaga %>
-                                  <td id="demo" align="left"><%= "#{curso.nome} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis"%></td>
+                                  <td id="demo" align="left"><%= "#{curso.nome}"%> <br/> <font color="blue"><%="Total de vagas: #{curso.qtde}.  Vagas em aberto: #{curso.vagas_disponiveis}"%></font></td>
                                 <%else%>
                                   <td><%= " #{curso.nome}"%>  <br/>
                                     <font color="red"> <b>VAGAS COMPLETADAS </b></font> </td>
@@ -103,26 +26,47 @@
                           </tr>
                         <%end%>
                       </table>
-                    </td>
-                  </tr>
+                     </td>
+                    </tr>
+           
            <tr>
               <td align="center">
-                <b><font size="1" color=blue>Este Módulo NÃO necessita de senha de acesso Para acessar clique em INSCRIÇÕES<font></b>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <b><font size="1" color=blue>Para inscrever-se acesse o módulo Inscrições on-line<font></b>
               </td>
            </tr>
-         </table>
-       </td>
-     </tr>
-   </table>
-  </td>
- </tr>
- <tr>
+
+        </table>
+
+     </td>
+   </tr>
+   <tr>
+     <td >
+       <%= link_to image_tag("/stylesheets/Imagens/manutencao2b.jpg", :size => "300x100"), manutencao_path, :title => "Manutenção"%>
+     </td>
+   </tr>
+   <tr>
+     <td>
+       <%= link_to image_tag("/stylesheets/Imagens/inscricoes2b.jpg", :size => "300x100"), new_inscricao_path, :title => "Inscrições"%>
+     </td>
+   </tr>
+   <tr>
+     <td>
+       <%= link_to image_tag("/stylesheets/Imagens/inscricoes2A.jpg", :size => "300x100"), new_curriculo_path, :title => "Curriculos"%>
+     </td>
+   </tr>
+    <tr>
     <td colspan="5">
          <div id="rodape_login">
-             © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados. Ver.4.11 - 2013
+          <font size="2"> © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.  -----   ver.5.0 - 2014</font>
          </div>
       </td>
      </tr>
+ </table>
+<br/>
+  
+ <table>
+
 
   </table>
 

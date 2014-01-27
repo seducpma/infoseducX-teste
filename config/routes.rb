@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :curriculos, :collection => {:curriculo => :get}
+
   map.resources :chefias
 
   map.resources :funcionarios
@@ -19,7 +21,6 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get, :listagem_participantes => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :consultas => :get,:por_curso => :get}
-
 
   map.resources :cursos, :collection => {:voltar => :get, :c_curso => :get}
 
@@ -75,7 +76,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :unidades, :collection => {:print_all => :get}
   map.resources :users
 
-  map.resource :session
+  map.resource :session, :informatica => :get
   map.resources :roles_users
   map.desconectar '/chat/desconectar', :controller => 'chats', :action => 'desconectar'
   #map.connect '/homes/acertar_online_users', :controller => 'homes', :action => 'acertar_online_users'
@@ -119,6 +120,9 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'homes', :action => 'index'
   # See how all your routes lay out with "rake routes"
 
+  map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
+  map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
+  
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.

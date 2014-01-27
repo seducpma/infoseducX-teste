@@ -13,6 +13,16 @@ class SessionsController < ApplicationController
   def new
   end
 
+ def informatica
+    render 'informatica'
+ end
+
+
+ def manutencao
+    render 'manutencao'
+ end
+
+
   def create
    logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])

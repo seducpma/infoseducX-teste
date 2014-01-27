@@ -139,6 +139,16 @@ display: none;
                        </ul>
                      </li>
                     <%end%>
+                     <% if current_user.has_role?('administrador')%>
+                     <li><a>Curriculos</a>
+                        <ul>
+                          <li><%= link_to 'Cadastrar', new_curriculo_path%></li>
+                          <li><%= link_to 'Consultar', curriculos_path%></li>
+                       </ul>
+                     </li>
+                    <%end%>
+
+
                      <li>
                         <%= link_to "Ponto Eletrônico", pontos_path %>
                      </li>

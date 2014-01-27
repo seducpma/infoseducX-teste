@@ -1,0 +1,149 @@
+<% form_for @curriculo do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+<table class="tabelas" width="90%"  align="center">
+ <tr>
+    <th align="left">
+       <font size=5 color="black"> <b> <b> CURRICULOS PARA ESTÁGIO</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+   <tr>
+     <td colspan="2">
+       <br/>
+        <center><font size="3"><b> Este cadastro é exclusivo para preenchimento de vagas de estágio para <br/> Secretaria de Educação da Prefeitura Municipal de America </b></font></center>
+       <br/>
+     </td>
+   </tr>
+   <tr>
+     <td colspan="2">
+       <fieldset><legend><font  size=4>Dados Pessoais</font></legend>
+        <font size="2">
+         <table width="100%">
+             <tr>
+               <td align="left"><font size="2"><b>Nome:</b></font></td>
+               <td align="left"><font size="2"><%= f.text_field :nome, :size =>35 %></font></td>
+               <td align="left"><font size="2"><b>Data Nasc:</b></font></td>
+               <td align="left"><font size="2"><%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %></font></td>
+             </tr>
+             <tr>
+               <td align="left"> <font size="2"><b> Endereço:</b></font></td>
+               <td align="left"> <font size="2"> <%= f.text_field :endereco, :size => 35%></font></td>
+               <td align="left"> <font size="2"><b> Estado Civil:</b></font></td>
+               <td align="left"> <font size="2"> <%=  f.select :civil, Curriculo::CIVIL, :include_blank => '---Selecione---'%></font></td>
+             </tr>
+             <tr>
+               <td align="left"> <font size="2"><b> Complemento:</b></font></td>
+               <td align="left"> <font size="2"> <%= f.text_field :complemento, :size => 35%></font></td>
+               <td align="left"> <font size="2"><b>Documentos:</b></font></td>
+               <td align="left" colspan="3"><b> RG:</b> <font size="2"><%= f.text_field :RG, :size =>10 %>
+                               - <b> CPF:</b><%= f.text_field :CPF, :size =>10%></font></td>
+
+             </tr>
+             <tr>
+               <td align="left"><font size="2"><b> Bairro:</b></font></td>
+               <td align="left"><font size="2"><%= f.text_field :bairro, :size =>35 %></font></td>
+               <td align="left"> <font size="2"><b>Telefone:</b></font></td>
+               <td align="left" colspan="3"> <font size="2"><%= f.text_field :fone, :size =>10 %>
+                               - <b> Celular:</b><%= f.text_field :cel, :size =>10%></font></td>
+             </tr>
+             <tr>
+              <td align="left"><font size="2"><b> Cidade:</b></font></td>
+              <td align="left"><font size="2"><%= f.text_field :cidade, :size =>35 %></font></td>
+              <td align="left"><font size="2"><b> e_mail:</b></font></td>
+              <td align="left"><font size="2"><%= f.text_field :email, :size =>35%></font></td>
+             </tr>
+             <tr>
+
+             </tr>
+         </table>
+        </font>
+       </fieldset>
+      <br/>
+       <fieldset><legend><font  size=4> Dados Acadêmicos</font></legend>
+         <table>
+            <tr>
+               <td align="left"> <font size="2"><b>Modalidade:</b></font></td>
+               <td align="left"> <font size="2"> <%= f.select :modalidade, MODALIDADE, :include_blank => '---Selecione---'  %></font></td>
+               <td align="left"> <font size="2"><b> Período:</b></font></td>
+               <td align="left"> <font size="2"><%= f.select :periodo, Curriculo::PERIODO , :include_blank => '---Selecione---'%>
+                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Semestre: </b> <%= f.select :semestre, Curriculo::SEMESTRE, :include_blank => '---Selecione---' %></font></td>
+
+            </tr>
+            <tr>
+               <td align="left"> <font size="2"><b>Instituição:</b></font></td>
+               <td align="left">  <font size="2"><%= f.text_field :instituicao, :size =>35 %></font></td>
+               <td align="left"> <font size="2"><b>Ingresso:</b></font></td>
+               <td align="left">  <font size="2">   <%= f.date_select(:data_ingresso, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></font></td><p>
+
+            </tr>
+            <tr>
+               <td align="left"> <font size="2"><b> Curso:</b></font></td>
+               <td align="left"><%= f.text_field :curso, :size =>35  %></td>
+               <td align="left" colspan="2"> <font size="2"><b>Término (previsão):</b>
+                           <%= f.date_select(:data_termino, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year + 5)) %></font></td>
+
+            </tr>
+        </table>
+      </fieldset>
+      <br/>
+      <fieldset><legend><font  size=4> Currículum</font></legend>
+          <table>
+            <tr>
+               <td align="left"><font size="2"><b> 1) Experiência Profissional</b></font></td>
+               <td align="left" ><font size="2"><b>2) Porque deseja atuar como estagiário na SEDUC-PMA?</font></b></td>
+            </tr>
+            <tr>
+               <td align="left"><%= f.text_area(:pergunta1, :cols =>"58", :rows => "3")%></td>
+               <td align="left"><%= f.text_area(:pergunta2, :cols =>"58", :rows => "3") %></td>
+            </tr>
+            <tr>
+               <td align="left"><font size="2"><b>3) Quais são seus conhecimentos na área de informática</b></font></td>
+               <td align="left"><font size="2"><b>4) Outras informações </b></font></td>
+            </tr>
+           </table>
+      </fieldset>
+      <br/>
+      <fieldset><legend><font  size=4> Avaliação</font></legend>
+          <table>
+            <tr>
+               <td align="left"><%= f.text_area(:pergunta3, :cols =>"58", :rows => "3") %></td>
+               <td align="left"> <%= f.text_area(:obs, :cols =>"58", :rows => "3") %></td>
+            </tr>
+             <% if current_user.has_role?('administrador') %>
+                <tr>
+                   <td valign="top"><b>Status:</b>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <%= f.select :status,Curriculo::STATUS, :include_blank => '---Selecione---'  %></td>
+                   <td align="left"> <b>Entrevista:</b>
+                       <%= f.date_select(:data_entrevista, :order => [:day, :month, :year]) %></td>
+
+                </tr>
+                <tr>
+                   <td align="left" colspan="2"><b> Avaliação:</b></td>
+                </tr>
+                <tr>
+                   <td align="left" colspan="2"><%= f.text_area(:aval, :cols =>"120", :rows => "3")%></td>
+                </tr>
+             <%end%>
+
+        </table>
+      </fieldset>
+      <div class="botao">
+        <table width="100%" align="left">
+           <tr>
+             <div id='Certeza'>
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+              </div>
+              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+<% end %>
+            </tr>
+        </table>
+      </div>
+    </td>
+   </tr>
+  </table>
+</font>
+

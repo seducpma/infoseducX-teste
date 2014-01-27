@@ -26,3 +26,25 @@ function PrintDiv(div)
 {
 	$('#'+div).printElement();
 }
+
+jQuery(document).ready(function( $ ){
+
+ $(".sem_filtro").click(function ()
+    {
+      $(".txt_busca").val("");
+      $(".texto1").hide();
+      $(".txt_busca").hide();
+      $(".label_busca").hide();
+      $(".consulta").show();
+
+    });
+  $(".filtro").click(function ()
+   {
+     $(".consulta").show();
+     $(".txt_busca").show();
+     $(".texto1").show();
+     $(".label_busca").show();
+     $(".txt_busca").val("").css("color","gray");
+
+   });
+});

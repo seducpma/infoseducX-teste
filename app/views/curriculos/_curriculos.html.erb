@@ -1,0 +1,53 @@
+      <font  size="2">
+      <table border="2" width="100%">
+         <tr>
+          <td align="left" colspan="9"><b>TOTAL DE CURRICULOS: </b>
+              <font color ="red "size="2"><b><%= @contador %></b></font>
+          </td>
+        </tr>
+       <%cont=0%>
+        <% for curriculos in @curriculos %>
+        <tr>
+          <th></th>
+          <th>Nome</th>
+          <th>Modalidade</th>
+          <th>Curso</th>
+          <th>Semestre</th>
+          <th>Instituição</th>
+          <th>Status</th>
+          <% if current_user.has_role?('administrador')%>
+            <th colspan="2">Administração</th>
+          <%end%>
+        <%cont= cont+1%>
+        </tr>
+        <tr>
+          <td align="center"><%= cont %></td>
+          <td align="center"><%=h curriculos.nome %></td>
+          <td align="center"><%=h curriculos.modalidade %></td>
+          <td align="center"><%=h curriculos.curso %></td>
+          <td align="center"><%=h curriculos.semestre %></td>
+          <td align="center"><%=h curriculos.instituicao %></td>
+          <td align="center"><%=h curriculos.status %></td>
+          <div class="botao">
+           <% if current_user.has_role?('administrador')%>
+            <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),{:action => "curriculo", :id =>curriculos}, :title => "Exibir Curriculo" %></td>
+            <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_curriculo_path(curriculos), :title => "Alterar Dados"%></td>
+           <%end%>
+         </div>
+        </tr>
+
+
+     <% end %>
+     </table>
+      <div class="botao">
+         <table width="100%" align="center">
+          <tr>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+
+          </tr>
+        </table>
+  </div>
+
+   </font>
+
