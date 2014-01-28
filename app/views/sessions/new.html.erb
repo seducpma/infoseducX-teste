@@ -1,17 +1,19 @@
 <div id="posicao_login" >
   <br/>
- <table align="center" width="55%">
+ <table align="center" width="90%">
    <tr>
      <td align="center">
        <%= link_to image_tag("/stylesheets/Imagens/banner2.jpg", :size => "300x100"), informatica_path, :title => "Informática"%>
      </td>
      <td rowspan="4"></td>
-     <td rowspan="4" valign="top">
+     <td rowspan="4" valign="top" align="left">
                <table width="100%" >
                   <tr>
                     <td>
                       <table  class="tabelas" align="center" style="border-color: gray" border="2">
-                        <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
+                        <th colspan="2" style=" font-size: large">Cursos Disponíveis 
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                         <% @cursos.in_groups_of(1, false) do |row_cursos| %>
                           <tr>
                             <% row_cursos.each do |curso| %>
@@ -40,8 +42,6 @@
            
            <tr>
               <td align="center">
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                <br/><br/><br/>
                 <b><font size="1" color=blue>Para inscrever-se acesse o módulo Inscrições on-line<font></b>
               </td>
            </tr>
@@ -67,6 +67,7 @@
    </tr>
     <tr>
     <td colspan="5">
+      <br/><br/><br/><br/><br/><br/><br/><br/>
          <div id="rodape_login">
           <font size="2"> © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.  -----   ver.5.0 - 2014</font>
          </div>
