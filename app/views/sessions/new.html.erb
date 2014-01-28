@@ -12,7 +12,6 @@
                     <td>
                       <table  class="tabelas" align="center" style="border-color: gray" border="2">
                         <th colspan="2" style=" font-size: large">Cursos Disponíveis </th>
-
                         <% @cursos.in_groups_of(1, false) do |row_cursos| %>
                           <tr>
                             <% row_cursos.each do |curso| %>
@@ -25,13 +24,26 @@
                             <%end%>
                           </tr>
                         <%end%>
+
+                       <tr>
+                         <td>
+                           <br/><br/><br/>
+                           NO MOMENTO NÃO HÁ NENHUM CURSO<br/>
+                           EM ANDAMENTO.
+                           <br/><br/><br/>
+                         </td>
+                       </tr>
+
+
+
+
                       </table>
                      </td>
                     </tr>
            
            <tr>
               <td align="center">
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                 <b><font size="1" color=blue>Para inscrever-se acesse o módulo Inscrições on-line<font></b>
               </td>
            </tr>
