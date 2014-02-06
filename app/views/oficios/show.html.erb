@@ -1,28 +1,63 @@
-<p>
-  <b>Emissor:</b>
-  <%=h @oficio.emissor %>
-</p>
+<<br/>
+<font size="2">
+<table class="tabelas"width="40%"align="center">
+ <tr>
+   <th align="left">
+       <font  size=5 color="black"> <b>CONTROLE DE OFICIOS - SECRETARIA DE EDUCAÇÃO</b></font>
+   </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+ <tr>
+   <td colspan="2">
+    <fieldset><legend><font  size=4>OFICIO</font></legend>
+       <table width="100%">
+          <tr>
+            <td align="left" colspan="3"><u><font color="red"size="5"><b>Ofício Número: <%=h @oficio.id%></b></font></u></td>
+          </tr>
+          <tr>
+            <td width="6%"></td>
+            <td align="left" valign="Top" width="9%"><b>Emissor:</b></td>
+            <td align="left"><%=h @oficio.emissor %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left"><b>Assunto: </b></td>
+            <td align="left"><%=h @oficio.assunto %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left"><font size="2"><b>Data:</b></font></td>
+            <td align="left"><font size="2">  <%=h @oficio.data.strftime("%d de %B de %Y") %></font></td><p>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left"><b>Destinatario: </b></td>
+            <td align="left"><%=h @oficio.destinatario %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left" valign="top"><b>Observações:</b></td>
+            <td align="left"><%=h @oficio.obs  %></td>
+          </tr>
+       </table>
+    </fieldset>
+    <div class="botao">
+      <table>
+           <tr>
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+              <td width="6%" align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), oficios_path, :title => "Ofícios Cadastrados"%></td>
+              <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
+            </tr>
+      </table>
+   </div>
+  </td>
+ </tr>
+</table>
+</font>
+<br/>
 
-<p>
-  <b>Assunto:</b>
-  <%=h @oficio.assunto %>
-</p>
-
-<p>
-  <b>Destinatario:</b>
-  <%=h @oficio.destinatario %>
-</p>
-
-<p>
-  <b>Data:</b>
-  <%=h @oficio.data %>
-</p>
-
-<p>
-  <b>Obs:</b>
-  <%=h @oficio.obs %>
-</p>
 
 
-<%= link_to 'Edit', edit_oficio_path(@oficio) %> |
-<%= link_to 'Back', oficios_path %>

@@ -84,8 +84,8 @@ end
 
     respond_to do |format|
       if @oficio.save
-        flash[:notice] = 'Oficio was successfully created.'
-        format.html { redirect_to(oficios_path) }
+        flash[:notice] = 'OFICIO CADASTRADO.'
+        format.html { render :action => "show" }
         format.xml  { render :xml => @oficio, :status => :created, :location => @oficio }
       else
         format.html { render :action => "new" }
@@ -101,7 +101,7 @@ end
 
     respond_to do |format|
       if @oficio.update_attributes(params[:oficio])
-        flash[:notice] = 'Oficio was successfully updated.'
+        flash[:notice] = 'OFICIO CADASTRADO.'
         format.html { redirect_to(@oficio) }
         format.xml  { head :ok }
       else
