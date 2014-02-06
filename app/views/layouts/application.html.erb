@@ -59,27 +59,31 @@ display: none;
         <%if logged_in? then%>
           <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %>  </font>
             <% if current_user.has_role?('administrador') %>
-              Acesso de Administrador do Sistema
+             - Administrador INFOSEDUC
             <%else%>
               <% if current_user.has_role?('estagiario SEDUC') %>
-                  Acesso de Estagiário(a)- SEDUC
+                  - Estagiário(a) INFOSEDUC
                   <%else%>
                     <% if current_user.has_role?('estagiario itinerante') %>
-                       Acesso de  Estagiário(a) itinerante
+                       Itinerante INFOSEDUC
                     <%else%>
                        <% if current_user.has_role?('estagiario itinerante') %>
-                           Acesso de  Estagiário(a) unidade
+                          - Itinerante INFOSEDUC
                         <%else%>
                           <% if current_user.has_role?('admin_manutencao') %>
-                             Acesso Administrador - Sistema de Manutenção
+                             - Administrador SISMAN - Sistema de Manutenção
                             <%else%>
                               <% if current_user.has_role?('chefia_manutencao') %>
-                                 Acesso Chefia - Sistema de Manutenção
+                                - Chefia SISMAN - Sistema de Manutenção
                               <%else%>
                                   <% if current_user.has_role?('diretor_unidade') %>
-                                     Acesso Sistema de Gerenciamento de Manutenção
+                                    - SISMAN - Sistema de Manutenção
                                   <%else%>
-                                   Bem vindo ao Sistema INFOSEDUC
+                                      <% if current_user.has_role?('oficios') %>
+                                        - SISOFI- Sistema de Controle de Oficios
+                                      <%else%>
+                                        - Bem vindo ao Sistema INFOSEDUC
+                                      <%end%>
                                   <%end%>
                              <%end%>
                           <%end%>
