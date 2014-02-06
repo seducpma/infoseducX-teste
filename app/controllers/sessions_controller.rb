@@ -22,6 +22,10 @@ class SessionsController < ApplicationController
     render 'manutencao'
  end
 
+ def oficio
+    render 'oficio'
+ end
+
 
   def create
    logout_keeping_session!
@@ -34,8 +38,15 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
+      if current_user.has_role?('oficios')
+        redirect_to oficios_path
+        #redirect_to livros_cadastrados_livros_path
+        flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.2"
+      else
       redirect_back_or_default('/')
-      flash[:notice] = "BEM VINDO AO INFOSEDUC ver.4.0"
+      flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.2"
+
+      end
     else
       note_failed_signin
       @login       = params[:login]

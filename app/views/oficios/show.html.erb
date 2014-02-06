@@ -1,0 +1,28 @@
+<p>
+  <b>Emissor:</b>
+  <%=h @oficio.emissor %>
+</p>
+
+<p>
+  <b>Assunto:</b>
+  <%=h @oficio.assunto %>
+</p>
+
+<p>
+  <b>Destinatario:</b>
+  <%=h @oficio.destinatario %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%=h @oficio.data %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%=h @oficio.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_oficio_path(@oficio) %> |
+<%= link_to 'Back', oficios_path %>

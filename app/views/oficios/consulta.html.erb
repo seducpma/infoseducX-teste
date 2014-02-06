@@ -1,0 +1,61 @@
+<br/>
+ <table class="tabelas" align="center" width="100%">
+ <tr>
+    <th align="left">
+       <font size=5 color="black"> <b>CONTROLE DE OFICIOS</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+ <div class="botao">
+  <tr>
+   <td colspan="2">
+     <table>
+      <tr>
+       <td width="2%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
+       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), oficios_path, :title => "Ofícios Cadastrados"%></td>
+       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_oficio_path, :title => "Novo Ofício"%></td>
+       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
+      </tr>
+    </table>
+   </td>
+  </tr>
+ </div>
+  <tr>
+    <td colspan="2">
+      <br/>
+       <div class="botao">
+       <% form_remote_tag :url => consultaof_oficios_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+       <table width="100%">
+        <tr>
+          <td align="left" >
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "1") %></a>Assunto
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a>Emissor
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "3") %></a>Destinatário
+               <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "4") %></a>Todos
+           </td>
+
+           <td><div class="consulta" style="display:none"> <%= render "consulta" %>  </div></td>
+
+       </tr>
+      </table>
+    <% end %>
+
+    <br/>
+    <hr>
+    <div id="consultaoficio"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+  <table>
+    <tr>
+       <td width="2%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
+       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), oficios_path, :title => "Ofícios Cadastrados"%></td>
+       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_oficio_path, :title => "Novo Ofício"%></td>
+       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
+    </tr>
+  </table>
+ </div>
+ </td>
+ </tr>
+ </table>
+ <br/>

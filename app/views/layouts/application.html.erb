@@ -361,6 +361,20 @@ display: none;
                  </ul>
               </li>
               <%end%>
+
+              <li><span class="divider divider-vert" ></span></li>
+              <% if current_user.has_role?('administrador') or current_user.has_role?('oficios') %>
+                 <li><a class="item-primary" href="#;">Oficios</a>
+                    <ul>
+                      <li><%= link_to "Novo",new_oficio_path %></li>
+                      <li><%= link_to "Ofícios", oficios_path  %></li>
+                      <li><%= link_to "Consulta", consulta_oficios_path  %></li>
+                    </ul>
+                 </li>
+              <%end%>
+
+
+
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">

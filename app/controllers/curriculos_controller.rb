@@ -41,20 +41,21 @@ class CurriculosController < ApplicationController
                   render :update do |page|
                      page.replace_html 'curriculos', :partial => "curriculos"
                   end
+                  else     if params[:type_of].to_i == 1
+                     @contador = Curriculo.all(:conditions => ["STATUS like ?", "CONTRATADO"],:order => 'nome ASC').count
+                     @curriculos = Curriculo.all(:conditions => ["STATUS like ?" , "CONTRATADO"],:order => 'nome ASC')
+                     render :update do |page|
+                       page.replace_html 'curriculos', :partial => "curriculos"
+                     end
                   end
+                 end
                 end
               end
             end
           end
       end
    else
-    if params[:type_of].to_i == 1
-       @contador = Curriculo.all(:conditions => ["STATUS like ? and NOME like ?", "CONTRATADO", "%" + params[:search].to_s + "%"],:order => 'nome ASC').count
-       @curriculos = Curriculo.all(:conditions => ["STATUS like ? and NOME like ?", "CONTRATADO", "%" + params[:search].to_s + "%"],:order => 'nome ASC',:order => 'nome ASC')
-       render :update do |page|
-         page.replace_html 'curriculos', :partial => "curriculos"
-       end
-     end
+
    end
 
   end

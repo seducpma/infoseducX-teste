@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  emissor: MyString
+  assunto: MyString
+  destinatario: MyString
+  data: 2014-02-05 10:44:36
+  obs: MyString
+
+two:
+  emissor: MyString
+  assunto: MyString
+  destinatario: MyString
+  data: 2014-02-05 10:44:36
+  obs: MyString
