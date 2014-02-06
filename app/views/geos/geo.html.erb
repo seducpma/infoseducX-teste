@@ -9,14 +9,14 @@
 
     function geolocateAddress(event) {
       var address = $(this).html();
-      var address2 = "Rua das Imbuias,230,Americana,SP,Brasil";
+      var address2 = "Rua São Vito,1675,Americana,SP,Brasil";
       $("#mapCanvas").geolocate([address,address2]);
     }
 </script>
 <font size="2">
   <div id="container">
     <div id="mapCanvas">
-      Loading Map
+      Carregando Mapa
    </div>
    <%if params[:id].nil?%>
      <table width="100%" >
@@ -37,7 +37,7 @@
     <td align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
     <td align="right">
         <div id="addressList">
-          <li><a style="color:blue"><%= @unidade ? " #{@unidade.tipo.nome} #{@unidade.nome} -#{@unidade.endereco},#{@unidade.bairro},#{@unidade.num},Americana,SP,Brasil" : "Rua das Imbuias, Jardim São Paulo,230,Americana,SP,Brasil" %></a></li>
+          <li><a style="color:blue"><%= @unidade ? " #{@unidade.tipo.nome} #{@unidade.nome} -#{@unidade.endereco},#{@unidade.bairro},#{@unidade.num},Americana,SP,Brasil" : "Rua São Vito,São Luiz,1675,Americana, SP,Brasil" %></a></li>
              <!--<li><% @unidade ? "#{@unidade.endereco},#{@unidade.bairro},#{@unidade.num},Americana,SP,Brasil" : "Rua das Imbuias, Jardim São Paulo,230,Americana,SP,Brasil" %></li>-->
        </div>
     </td>
