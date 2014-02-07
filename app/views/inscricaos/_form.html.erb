@@ -30,13 +30,14 @@
 
      <%else%>
         <td width =20%"  valign="top">
-           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
-           &nbsp&nbsp<b><u>OBS:</u> 1) ANTES DE SE CADASTRAR, VERIFIQUE SE SEU NOME CONSTA NA LISTA</b><br/>
-           &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-           <b>2) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES</b><br/>
-           <font color="blue">&nbsp<b>&#183; Se nome não consta na lista acima, favor cadastrar</b> =========================></font>
-          <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
-          
+           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %><br/>
+           <div class="botao">
+             &nbsp&nbsp<b><u>OBS:</u> 1) ANTES DE SE CADASTRAR, VERIFIQUE SE SEU NOME CONSTA NA LISTA</b><br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             <b>2) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES</b><br/>
+             <font color="blue">&nbsp<b>&#183; Se nome não consta na lista acima, favor cadastrar</b> =========================></font>
+             <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
+           </div>
          </td>
          <!--
         <td colspan="">
