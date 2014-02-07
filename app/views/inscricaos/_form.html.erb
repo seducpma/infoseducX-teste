@@ -1,7 +1,7 @@
 <% form_for(@inscricao) do |f| %>
 <%= f.error_messages %>
 <font  size="2">
- <table class="tabelas" width="100%" align="center" >
+ <table class="tabelas1" align="center" >
    <tr>
     <th align="left">
        <font  size=5 color="black"> <b> CADASTRO DE INSCRIÇÕES</b></font>
@@ -18,7 +18,7 @@
   <tr>
   <td colspan="2">
 <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
-  <table width="100%" >
+  <table width="100%"  >
   <tr>
     <td width ="1%" valign="top"><b>Participante:</b></td>
      <% if @participante.present? %>
@@ -30,7 +30,7 @@
      <%else%>
         <td width =20%"  valign="top">
            <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %><br/>
-           <font color="blue">Se nome não consta na lista acima, favor cadastrar ===============================></font>
+           <font color="blue">&nbsp<b>&#183; Se nome não consta na lista acima, favor cadastrar</b> =========================></font>
           <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
          </td>
          <!--
@@ -41,13 +41,11 @@
      <%end%>
 
   </tr>
-  <tr>
-    <td colspan="4">
+
           <%= observe_field  :inscricao_participante_id,
               :with => :inscricao_participante_id,
               :url => { :action => 'sel_participa' } %>
-    </td>
-  </tr>
+
   <tr>
     <td colspan="4">
      <%if @participante.present?%>
@@ -63,7 +61,7 @@
   </tr>
  </table>
 
-   <table class="tabelas" align="center"  width="100%" border="2">
+   <table class="tabelas1" align="center"  width="100%" >
      <tr>
       <th colspan="2" style=" font-size: large">CURSOS DISPONÍVEIS </th>
      </tr>

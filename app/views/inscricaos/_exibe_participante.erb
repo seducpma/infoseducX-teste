@@ -1,13 +1,17 @@
-<table width="100%">
+<table width="92%" align="center" >
     <% if @inscricao.present?  %>
         <tr>
-           <td colspan="3"><b style="color:red"><%= "PARTICIPANTE JA POSSUI INSCRIÇÃO." %> =================================================================> <%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), consultas_inscricaos_path %></b><br/>
+           <td colspan="3">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <b style="color:red">&#183 <%= "PARTICIPANTE JA POSSUI INSCRIÇÃO. VER INCRIÇÔES" %> ============================>&nbsp&nbsp<%= link_to image_tag("/stylesheets/images/listar.png", :size => "30x30"), consultas_inscricaos_path %></b><br/>
         </tr>
-
-
     <%end%>
     <tr>
-      <td width="70%">
+        <td colspan="3">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <font color="blue"><b>&#183 Se necessário, atualizar Cadastro</b> ==========================================></font>&nbsp&nbsp<%= link_to image_tag("/stylesheets/images/write.png", :size => "30x30"), edit_participante_path(@dadosparticipa), :title => "Atualizar Cadastro" %>
+         </td>
+    </tr>
+    <tr>
+      <td width="70%"><br/>
                 Nome:<%=h @dadosparticipa.nome %>
               <%if @dadosparticipa.unidade_id.nil?%>
                  <br/>
@@ -29,16 +33,13 @@
                  <br/>
               <%else%>
                 Obs: <%if @dadosparticipa.email.nil?%>
-                          <font color="red"><b>PARA FAZER INSCRIÇÃO É OBRIGATÓRIO CONSTAR E_MAIL NO CADASTRO  -  <blink><u>FAVOR ATUALIZAR SEU CADASTRO ANTES DE PROSSEGUIR.</u></blink></b></font> <br/>
+                          <font color="red" size="3"><b>PARA FAZER INSCRIÇÃO É OBRIGATÓRIO CONSTAR SEU E_MAIL NO CADASTRO <br/>
+                              &nbsp&nbsp&nbsp<blink><u>FAVOR ATUALIZAR SEU CADASTRO ANTES DE PROSSEGUIR.</u></blink></b></font> <br/>
                       <%else%>
                          <%=h @dadosparticipa.obs %><br/>
                       <%end%>
                <%end%>
       
         </td>
-        <td widt ="30%"align="right">
-                <font color="blue"><b>Atualizar Cadastro</b> =></font>
-         </td>
-         <td><%= link_to image_tag("/stylesheets/images/write.png", :size => "30x30"), edit_participante_path(@dadosparticipa), :title => "Atualizar Cadastro" %> </td>
     </tr>
   </table>
