@@ -25,7 +25,7 @@
              <%end%>
             <br/>Email:
               <%if @dadosparticipa.email.nil?%>
-                 <font color="red"><b> NÃO CONSTA E-MAIL NO CADASTRO - <u>FAVOR ATUALIZAR CADASTRO</u></b></font> <br/>
+                 <font color="red"><b> NÃO CONSTA E-MAIL NO CADASTRO - <u><%= link_to 'FAVOR ATUALIZAR CADASTRO', edit_participante_path(@dadosparticipa) %></u> </b></font> <br/>
              <%else%>
                  <%=h @dadosparticipa.email %><br/>
              <%end%>
@@ -43,3 +43,4 @@
         </td>
     </tr>
   </table>
+
