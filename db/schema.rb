@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813150851) do
+ActiveRecord::Schema.define(:version => 20140210130128) do
 
   create_table "administracaos", :force => true do |t|
     t.integer  "unidade_id",       :null => false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.integer  "tipo"
     t.integer  "situacao",     :default => 0, :null => false
     t.datetime "data_encerra"
+    t.string   "executado"
   end
 
   create_table "chamados", :force => true do |t|
@@ -84,6 +85,15 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.integer "user_id", :null => false
   end
 
+  create_table "chefias", :force => true do |t|
+    t.string   "nome"
+    t.string   "setor"
+    t.boolean  "desligado",  :default => false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "componentes", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at"
@@ -112,6 +122,56 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.string   "nome"
     t.integer  "telefone"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "curriculos", :force => true do |t|
+    t.string   "nome"
+    t.string   "RG",              :limit => 12
+    t.string   "CPF",             :limit => 14
+    t.datetime "nascimento"
+    t.string   "endereco"
+    t.integer  "num"
+    t.string   "complemento"
+    t.string   "cep"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "fone"
+    t.string   "cel"
+    t.string   "email"
+    t.string   "civil"
+    t.string   "modalidade"
+    t.string   "curso"
+    t.string   "instituicao"
+    t.string   "periodo"
+    t.string   "semestre"
+    t.datetime "data_ingresso"
+    t.datetime "data_termino"
+    t.string   "pergunta1"
+    t.string   "pergunta2"
+    t.string   "pergunta3"
+    t.string   "obs"
+    t.string   "aval"
+    t.string   "status"
+    t.datetime "data_entrevista"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cursos", :force => true do |t|
+    t.string   "nome_curto"
+    t.string   "nome"
+    t.string   "ministrante"
+    t.string   "carga_horaria"
+    t.text     "ementa"
+    t.text     "obs"
+    t.datetime "data_hora"
+    t.integer  "qtde"
+    t.integer  "vagas_disponiveis"
+    t.boolean  "status",            :default => false
+    t.date     "data_inicio"
+    t.date     "data_fim"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,6 +231,7 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.string   "nome"
     t.string   "tipo_servico"
     t.string   "telefone"
+    t.boolean  "status",       :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -283,6 +344,18 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.datetime "updated_at"
   end
 
+  create_table "funcionarios", :force => true do |t|
+    t.integer  "chefia_id"
+    t.string   "nome"
+    t.string   "matricula"
+    t.string   "setor"
+    t.string   "atribuicao"
+    t.boolean  "desligado",  :default => false
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "impressoras", :force => true do |t|
     t.integer  "unidade_id"
     t.integer  "tipo_controle_id"
@@ -302,6 +375,19 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.datetime "ends_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "inscricaos", :force => true do |t|
+    t.integer  "participante_id",                    :null => false
+    t.date     "data_inscricao"
+    t.integer  "opcao1"
+    t.integer  "opcao2"
+    t.string   "periodoop1"
+    t.string   "periodoop2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "status",          :default => true
+    t.boolean  "encerrado",       :default => false
   end
 
   create_table "itinerarios", :force => true do |t|
@@ -330,6 +416,30 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.boolean  "fimsemana"
   end
 
+  create_table "manutencaos", :force => true do |t|
+    t.integer  "unidade_id",                            :null => false
+    t.integer  "situacao_manutencao_id", :default => 1
+    t.integer  "funcionario_id"
+    t.integer  "chefia_id"
+    t.integer  "user_id"
+    t.string   "descricao"
+    t.datetime "data_sol"
+    t.datetime "data_ate"
+    t.datetime "data_enc"
+    t.string   "forma"
+    t.string   "solicitante"
+    t.string   "procedimentos"
+    t.string   "executado"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "manutencaos_tipos_manutencaos", :id => false, :force => true do |t|
+    t.integer "tipos_manutencao_id", :null => false
+    t.integer "manutencao_id",       :null => false
+  end
+
   create_table "mes_bases", :force => true do |t|
     t.date     "data"
     t.integer  "mes"
@@ -350,6 +460,16 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.string   "descricao_curta"
   end
 
+  create_table "oficios", :force => true do |t|
+    t.string   "emissor"
+    t.string   "assunto"
+    t.string   "destinatario"
+    t.datetime "data"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "online_users", :force => true do |t|
     t.string   "username"
     t.date     "last_seen"
@@ -358,6 +478,30 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "chat_session"
+  end
+
+  create_table "participantes", :force => true do |t|
+    t.string   "nome"
+    t.string   "matricula"
+    t.integer  "unidade_id"
+    t.string   "funcao"
+    t.string   "endereco"
+    t.string   "num"
+    t.string   "complemento"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "telefone"
+    t.string   "cel"
+    t.string   "email"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tipo_participante"
+    t.string   "profissao"
+    t.string   "CEP"
+    t.string   "rg"
+    t.string   "cpf"
+    t.boolean  "flag",              :default => true, :null => false
   end
 
   create_table "pontos", :force => true do |t|
@@ -390,6 +534,7 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.string   "local"
     t.string   "unidade"
     t.string   "obs"
+    t.boolean  "sem_esta",   :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -456,8 +601,25 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.datetime "updated_at"
   end
 
+  create_table "servicos_internos", :force => true do |t|
+    t.string   "emissor"
+    t.string   "assunto"
+    t.string   "destinatario"
+    t.datetime "data"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "situacao_chamados", :force => true do |t|
     t.string   "situacao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "situacao_manutencaos", :force => true do |t|
+    t.string   "situacao"
+    t.boolean  "status",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -484,6 +646,13 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
 
   create_table "tipos", :force => true do |t|
     t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tipos_manutencaos", :force => true do |t|
+    t.string   "servico"
+    t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -530,6 +699,8 @@ ActiveRecord::Schema.define(:version => 20130813150851) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
+    t.integer  "unidade_id"
+    t.string   "password_reset_code"
   end
 
 end

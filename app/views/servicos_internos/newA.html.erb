@@ -1,0 +1,31 @@
+<h1>New servicos_interno</h1>
+
+<% form_for(@servicos_interno) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :emissor %><br />
+    <%= f.text_field :emissor %>
+  </p>
+  <p>
+    <%= f.label :assunto %><br />
+    <%= f.text_field :assunto %>
+  </p>
+  <p>
+    <%= f.label :destinatario %><br />
+    <%= f.text_field :destinatario %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', servicos_internos_path %>

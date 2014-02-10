@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :servicos_internos
+
   map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get}
 
   map.resources :curriculos, :collection => {:curriculo => :get}
