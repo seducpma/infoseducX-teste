@@ -2,7 +2,7 @@
  <table class="tabelas" align="center" width="100%">
  <tr>
     <th align="left">
-       <font size=5 color="black"> <b>CONTROLE DE OFICIOS</b></font>
+       <font size=5 color="black"> <b>CONTROLE DE SSERVIÇOS INTERNOS</b></font>
     </th>
     <td width="5%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -14,9 +14,9 @@
      <table>
       <tr>
        <td width="2%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
-       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), oficios_path, :title => "Ofícios Cadastrados"%></td>
-       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_oficio_path, :title => "Novo Ofício"%></td>
-       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
+       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), servicos_internos_path, :title => "Serviços Internos Cadastrados"%></td>
+       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_servicos_interno_path, :title => "Novo Serviço Interno"%></td>
+       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_servicos_internos_path, :title => "Consulta Serviços Internos" %></td>
       </tr>
     </table>
    </td>
@@ -26,7 +26,7 @@
     <td colspan="2">
       <br/>
        <div class="botao">
-       <% form_remote_tag :url => consultaof_oficios_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+       <% form_remote_tag :url => consultaint_servicos_internos_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
        <table width="100%">
         <tr>
           <td align="left" >
@@ -44,14 +44,14 @@
 
     <br/>
     <hr>
-    <div id="consultaoficio"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <div id="interno"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
     <br/>
   <table>
     <tr>
        <td width="2%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
-       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), oficios_path, :title => "Ofícios Cadastrados"%></td>
-       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_oficio_path, :title => "Novo Ofício"%></td>
-       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
+       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), servicos_internos_path, :title => "Serviços Internos Cadastrados"%></td>
+       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_servicos_interno_path, :title => "Novo Serviços Internos"%></td>
+       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_servicos_internos_path, :title => "Consulta Serviços Internos" %></td>
     </tr>
   </table>
  </div>

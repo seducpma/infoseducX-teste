@@ -79,10 +79,11 @@ display: none;
                                   <% if current_user.has_role?('diretor_unidade') %>
                                     - SISMAN - Sistema de Manutenção
                                   <%else%>
-                                      <% if current_user.has_role?('oficios') %>
-                                        - SISOFI- Sistema de Controle de Oficios
+                                      <% if (current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
+                                        - SISOFI - SISINT- Sistema de Controle Emissão de Documentos
                                       <%else%>
-                                        - Bem vindo ao Sistema INFOSEDUC
+                                            - Bem vindo ao Sistema INFOSEDUC
+
                                       <%end%>
                                   <%end%>
                              <%end%>
@@ -365,9 +366,8 @@ display: none;
                  </ul>
               </li>
               <%end%>
-
               <li><span class="divider divider-vert" ></span></li>
-              <% if current_user.has_role?('administrador') or current_user.has_role?('oficios') %>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
                  <li><a class="item-primary" href="#;">Oficios</a>
                     <ul>
                       <li><%= link_to "Novo",new_oficio_path %></li>
@@ -376,9 +376,16 @@ display: none;
                     </ul>
                  </li>
               <%end%>
-
-
-
+              <li><span class="divider divider-vert" ></span></li>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('internos') or current_user.has_role?('oficios')) %>
+                 <li><a class="item-primary" href="#;">Serviços Internos</a>
+                    <ul>
+                      <li><%= link_to "Novo",new_servicos_interno_path %></li>
+                      <li><%= link_to "Serviços Interno", servicos_internos_path  %></li>
+                      <li><%= link_to "Consulta", consulta_servicos_internos_path  %></li>
+                    </ul>
+                 </li>
+              <%end%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">

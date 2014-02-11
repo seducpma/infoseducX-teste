@@ -50,6 +50,14 @@ end
     end
   end
 
+ def oficios
+    @oficios = Oficio.all(:order => 'id DESC')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @oficios }
+    end
+  end
   # GET /oficios/1
   # GET /oficios/1.xml
   def show

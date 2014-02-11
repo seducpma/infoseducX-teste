@@ -15,8 +15,8 @@
         <table width="10%">
            <tr>
              <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_servicos_interno_path, :title => "Novo Serviço Interno"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_servicos_internos_path, :title => "Consulta Serviços Internos" %></td>
+             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_oficio_path, :title => "Novo Ofício"%></td>
+             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
              <td align="left"><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
           </tr>
         </table>
@@ -34,14 +34,14 @@
 
           </tr>
 
-            <% for servico_interno in @servicos_internos %>
+            <% for oficio in @oficios %>
            <tr>
-               <td><b><font color="red" size="3"><center><%=h servico_interno.codigo %></center></font></b></td>
-               <td><%=h servico_interno.emissor %></td>
-               <td><%=h servico_interno.assunto %></td>
-               <td><%=h servico_interno.destinatario %></td>
-               <td><%=h servico_interno.data.strftime("%d/%m/%y")%></td>
-               <td><%=h servico_interno.obs%>  </td>
+               <td><b><font color="red" size="3"><center><%=h oficio.codigo %></center></font></b></td>
+               <td><%=h oficio.emissor %></td>
+               <td><%=h oficio.assunto %></td>
+               <td><%=h oficio.destinatario %></td>
+               <td><%=h oficio.data.strftime("%d/%m/%y")%></td>
+               <td><%=h oficio.obs%>  </td>
 
           </tr>
             <%end%>
@@ -54,8 +54,8 @@
        <br/>
            <tr>
              <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_servicos_interno_path, :title => "Novo Serviço Interno"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_servicos_internos_path, :title => "Consulta Serviço Intenro" %></td>
+             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_oficio_path, :title => "Novo Ofício"%></td>
+             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_oficios_path, :title => "Consulta Ofícios" %></td>
              <td align="left"><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
           </tr>
        </table>

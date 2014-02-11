@@ -26,6 +26,11 @@ class SessionsController < ApplicationController
     render 'oficio'
  end
 
+def interno
+    render 'interno'
+ end
+
+
 
   def create
    logout_keeping_session!

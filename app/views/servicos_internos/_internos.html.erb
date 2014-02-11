@@ -1,7 +1,7 @@
       <font  size="2">
       <table border="2" width="100%">
          <tr>
-          <td align="left" colspan="9"><b>TOTAL DE OFICIOS: </b>
+          <td align="left" colspan="9"><b>TOTAL DE SERVIÇOS INTERNOS: </b>
               <font color ="red "size="2"><b><%= @contador %></b></font>
           </td>
         </tr>
@@ -15,14 +15,14 @@
 
           </tr>
 
-            <% for oficio in @oficios %>
+             <% for servico_interno in @servicos_internos %>
            <tr>
-               <td><b><font color="red" size="3"><center><%=h oficio.id %></center></font></b></td>
-               <td><%=h oficio.emissor %></td>
-               <td><%=h oficio.assunto %></td>
-               <td><%=h oficio.destinatario %></td>
-               <td><%=h oficio.data.strftime("%d/%m/%y")%></td>
-               <td><%=h oficio.obs%>  </td>
+               <td><b><font color="red" size="3"><center><%=h servico_interno.codigo %></center></font></b></td>
+               <td><%=h servico_interno.emissor %></td>
+               <td><%=h servico_interno.assunto %></td>
+               <td><%=h servico_interno.destinatario %></td>
+               <td><%=h servico_interno.data.strftime("%d/%m/%y")%></td>
+               <td><%=h servico_interno.obs%>  </td>
 
           </tr>
             <%end%>
