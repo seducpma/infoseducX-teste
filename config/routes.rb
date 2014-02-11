@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
 
-  map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get}
+  map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
 
   map.resources :curriculos, :collection => {:curriculo => :get}
 
@@ -124,7 +124,7 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
   map.root :controller => 'homes', :action => 'index'
   # See how all your routes lay out with "rake routes"
-
+  map.internos 'internos', :controller => 'servicos_internos', :action => 'index'
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
   map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
