@@ -5,8 +5,8 @@
               <font color ="red "size="2"><b><%= @contador %></b></font>
           </td>
         </tr>
-       <%cont=0%>
-        <% for curriculos in @curriculos %>
+       <%cont=1%>
+
         <tr>
           <th></th>
           <th>Nome</th>
@@ -18,8 +18,9 @@
           <% if current_user.has_role?('administrador')%>
             <th colspan="2">Administração</th>
           <%end%>
-        <%cont= cont+1%>
+
         </tr>
+        <% for curriculos in @curriculos %>
         <tr>
           <td align="center"><%= cont %></td>
           <td align="center"><%=h curriculos.nome %></td>
@@ -34,6 +35,7 @@
             <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_curriculo_path(curriculos), :title => "Alterar Dados"%></td>
            <%end%>
          </div>
+                 <%cont= cont+1%>
         </tr>
 
 
