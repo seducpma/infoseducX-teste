@@ -90,14 +90,14 @@
                     </tr>
                     <tr>
                       <td align="left"><font size="2"><b>Ingresso:</b></font></td>
-                      <td align="left"><font size="2"><%=h @curriculo.data_ingresso.strftime("%d de %B de %Y") %></font></td>
+                      <td align="left"><font size="2"><%=h @curriculo.data_ingresso.strftime("%B de %Y") %></font></td>
                    </tr>
                    <tr>
                      <td align="left"><font size="2"><b>Término:</b></font></td>
                         <% if @curriculo.data_termino.nil? then %>
                             <td align="left"><font size="2"><%=h @curriculo.data_termino %></font></td>
                         <%else%>
-                            <td align="left"><font size="2"><%=h @curriculo.data_termino.strftime("%d de %B de %Y") %></font></td>
+                            <td align="left"><font size="2"><%=h @curriculo.data_termino.strftime("%B de %Y") %></font></td>
                         <%end%>
                    </tr>
                 </table>

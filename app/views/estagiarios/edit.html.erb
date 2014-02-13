@@ -5,18 +5,24 @@
 <table class="tabelas1" width="100%"  align="center">
    <tr>
      <%if @estagiarios.flag == 0%>
-       <th colspan="2" align="left"><font  size=5><b> ESTAGIÁRIOS</b></font></th>
+       <th align="left"><font  size=5><b> ESTAGIÁRIOS</b></font></th>
+       <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
      <%else%>
-      <th colspan="2" align="left"> <font  size=5><b> ANALISTAS</b></font></th>
+      <th align="left"> <font  size=5><b> ANALISTAS</b></font></th>
+       <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
      <%end%>
    </tr>
    <tr>
-     <td>
+     <td colspan="2">
        <fieldset><legend><font  size=4> Dados Pessais</font></legend>
          <table width="100%">
             <tr>
               <td align="left"><b>Nome:</b></td>
-              <td align="left" colspan="3"><%= f.text_field :nome, :size =>65 %>
+              <td align="left" colspan="3"><%= f.text_field :nome, :size =>63 %>
                      <%= observe_field :estagiario_nome,
                           :with => :estagiario_nome,
                           :url => { :action => 'mesmo_nome' } %>
@@ -34,7 +40,7 @@
            <tr>
               <td align="left"><b> Endereço:</b></td>
               <td align="left" colspan="3"> <%= f.text_field :endereco, :size => 40%>
-                    <b>Nº </b><%= f.text_field :num, :size => 4 %>
+                    <b>Nº </b><%= f.text_field :num, :size => 2 %>
                     <b> Complemento:</b><%= f.text_field :complemento, :size =>30 %></td>
 
            </tr>
@@ -42,14 +48,14 @@
            </tr>
            <tr>
               <td align="left"><b> Bairro:</b></td>
-              <td align="left" colspan="3"><%= f.text_field :bairro, :size =>37 %>
+              <td align="left" colspan="3"><%= f.text_field :bairro, :size =>35 %>
                    <b> Cidade:</b><%= f.text_field :cidade, :size =>51 %></td>
            </tr>
            <tr>
               <td align="left"><b>Telefone:</b></td>
               <td align="left" colspan="3"><%= f.text_field :fone, :size =>10 %>
                   <b> Celular:</b><%= f.text_field :cel, :size =>10%>
-                  <b> e_mail:</b><%= f.text_field :email, :size =>54%>
+                  <b> e_mail:</b><%= f.text_field :email, :size =>52%>
                </td>
            </tr>
            <tr>
@@ -72,9 +78,9 @@
             </tr>
             <tr>
                <td align="left"><b>Ingresso:</b></td>
-               <td align="left">    <%= f.date_select(:data_ingresso, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %><BR /></td><p>
+               <td align="left">    <%= f.date_select(:data_ingresso, :order => [:month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %><BR /></td><p>
             <td align="left" colspan="2"><b>Término (previsão):</b>
-                        <%= f.date_select(:data_termino, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year + 5)) %><BR /></td><p>
+                        <%= f.date_select(:data_termino, :order => [:month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year + 5)) %><BR /></td><p>
             </tr>
         </table>
       </fieldset>
@@ -96,12 +102,12 @@
                 <td align="left"><b>Admissão:</b></td>
                 <td align="left" colspan="3"><%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
                       <b>Desligado:</b>SIM <%= f.check_box :desligado %> <%= f.date_select(:data_desliga, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
-                      <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>15%></td>
+                      <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>7%></td>
              </tr>
              <% if current_user.has_role?('administrador') %>
                 <tr>
                    <td valign="top"><b>Status:</b></td>
-                   <td  align="left"><%= f.text_area(:obs, :cols =>"68", :rows => "1") %></td>
+                   <td  align="left"><%= f.text_area(:obs, :cols =>"60", :rows => "1") %></td>
                    <td align="left"><b> Avaliação:</b></td>
                    <td align="left" ><%= f.text_field :aval, :size =>"34"   %></td>
                 </tr>

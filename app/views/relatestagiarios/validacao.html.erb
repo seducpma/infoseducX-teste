@@ -3,12 +3,14 @@
 <table class="tabelas" width="45%" border="1"align="center">
   <tr>
     <th>
-      <font  size="4"><b><u>VALIDAÇÃO DE RELATÓRIOS</u></b></font>
-           <br/><br/>
+      <font  size="4"><b>VALIDAÇÃO DE RELATÓRIOS</b></font>
     </th>
-  </tr>
-   <tr>
-     <td>
+   <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+ <tr>
+   <td colspan="2">
             <table>
               <tr>
                  <% form_tag validacao_relatestagiarios_path, :method => 'get' do %>

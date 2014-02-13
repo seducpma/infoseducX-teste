@@ -2,15 +2,15 @@
 <br/>
     <table class="tabelas" width="100%"  align="center">
      <tr>
-        <th colspan="2" align="left">
-           <font  size=5 color="black"> <b> PONTO ELETRÔNICO - INFORMÁTICA SEDUC
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-             </b></font>
+        <th  align="left">
+           <font  size=5 color="black"> <b> PONTO ELETRÔNICO - INFORMÁTICA SEDUC </b></font>
        </th>
+       <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
       </tr>
        <tr>
-         <td width="95%">
+         <td colspan="2" width="95%">
            <table>
              <tr>
                <% form_for @search do |f| %>
@@ -26,7 +26,7 @@
          </td>
        </tr>
        <tr>
-         <td>
+         <td colspan="2">
            <table>
             <%= render :partial => "calendar" %>
                 <%if !@ponto.present? %>

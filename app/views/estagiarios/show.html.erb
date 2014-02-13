@@ -2,12 +2,15 @@
 <%if @estagiarios.flag == 0%>
 <table  class="tabelas" width="80%"align="center">
    <tr>
-      <th colspan="2" align="left">
+      <th align="left">
          <font  size=5 color="black"> <b> ESTAGIÁRIO</b></font>
       </th>
+       <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
   </tr>
   <tr>
-   <td>
+   <td colspan="2">
         <font  size="2">
         <table width="100%">
           <tr>
@@ -64,13 +67,13 @@
                  <td align="left"><%=h @estagiarios.RG %>
                </tr>
                <tr>
-                 <td align="left"><b>RCPF</b></td>
+                 <td align="left"><b>CPF</b></td>
                  <td align="left"><%=h @estagiarios.CPF %>
                </tr>
 
                <tr>
                  <td align="left"><b>Data Nasc:</b></td>
-                 <td align="left">  <%=h @estagiarios.data_nasc.strftime("%d de %B de %Y") %></td><p>
+                 <td align="left">  <%=h @estagiarios.data_nasc.strftime("%d/%B/%Y") %></td><p>
                </tr>
                 <tr>
                 <td valign="top" align="left"><b>Status:</b></td>
@@ -99,14 +102,14 @@
                     </tr>
                     <tr>
                       <td align="left"><b>Ingresso:</b></td>
-                      <td align="left"><%=h @estagiarios.data_ingresso.strftime("%d de %B de %Y") %></td>
+                      <td align="left"><%=h @estagiarios.data_ingresso.strftime("%B de %Y") %></td>
                    </tr>
                    <tr>
                      <td align="left"><b>Término:</b></td>
                         <% if @estagiarios.data_termino.nil? then %>
                             <td align="left"><%=h @estagiarios.data_termino %></td>
                         <%else%>
-                            <td align="left"><%=h @estagiarios.data_termino.strftime("%d/%m/%y") %></td>
+                            <td align="left"><%=h @estagiarios.data_termino.strftime("%B de %Y") %></td>
                         <%end%>
                    </tr>
                 </table>
@@ -131,7 +134,7 @@
                     </tr>
                     <tr>
                      <td align="left"><b>Admissão:</b></td>
-                    <td align="left"> <%=h @estagiarios.data_admissao.strftime("%d de %B de %Y") %></td>
+                    <td align="left"> <%=h @estagiarios.data_admissao.strftime("%d/%B/%Y") %></td>
                    </tr>
                   <tr>
                       <% if @estagiarios.desligado == 1 %>
