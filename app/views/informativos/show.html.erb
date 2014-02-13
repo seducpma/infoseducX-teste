@@ -2,13 +2,15 @@
 <font size="2">
 <table  class="tabelas" width="100%"align="center">
   <tr>
-       <th colspan="2" align="left">
+       <th align="left">
          <font  size=5 color="black"> <b> <%="Informativo nº #{@informativo.id} - de #{@informativo.created_at.strftime("%d/%m%Y %H:%M")}" %></b></font>
        </th>
-      </tr>
+   <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
  <tr>
-   <td>
-      <table width="100%">
+   <td colspan="2">      <table width="100%">
         <tr>
           <td width="50%">
             <br/>
