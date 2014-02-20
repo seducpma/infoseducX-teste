@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140210130128) do
+ActiveRecord::Schema.define(:version => 20140218124152) do
 
   create_table "administracaos", :force => true do |t|
     t.integer  "unidade_id",       :null => false
@@ -202,6 +202,18 @@ ActiveRecord::Schema.define(:version => 20140210130128) do
   create_table "departamentos", :force => true do |t|
     t.integer  "unidade_id", :default => 53
     t.string   "depto"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "despachos", :force => true do |t|
+    t.integer  "prefprotocolo_id"
+    t.string   "procedencia"
+    t.datetime "data_recebimento"
+    t.string   "para"
+    t.string   "despacho"
+    t.string   "destino"
+    t.datetime "data_saida"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -461,6 +473,7 @@ ActiveRecord::Schema.define(:version => 20140210130128) do
   end
 
   create_table "oficios", :force => true do |t|
+    t.string   "codigo"
     t.string   "emissor"
     t.string   "assunto"
     t.string   "destinatario"
@@ -513,6 +526,16 @@ ActiveRecord::Schema.define(:version => 20140210130128) do
     t.datetime "updated_at"
     t.integer  "ano"
     t.integer  "mes"
+  end
+
+  create_table "prefprotocolos", :force => true do |t|
+    t.string   "codigo"
+    t.datetime "data"
+    t.string   "de"
+    t.string   "assunto"
+    t.string   "destino"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "protocolos", :force => true do |t|
@@ -602,6 +625,7 @@ ActiveRecord::Schema.define(:version => 20140210130128) do
   end
 
   create_table "servicos_internos", :force => true do |t|
+    t.string   "codigo"
     t.string   "emissor"
     t.string   "assunto"
     t.string   "destinatario"

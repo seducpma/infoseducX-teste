@@ -30,7 +30,9 @@ def interno
     render 'interno'
  end
 
-
+def protocolo
+    render 'protocolo'
+ end
 
   def create
    logout_keeping_session!

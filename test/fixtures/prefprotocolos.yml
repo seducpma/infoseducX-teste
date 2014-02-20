@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  codigo: MyString
+  data: 2014-02-18 09:03:10
+  de: MyString
+  assunto: MyString
+  para: 
+  destino: MyString
+
+two:
+  codigo: MyString
+  data: 2014-02-18 09:03:10
+  de: MyString
+  assunto: MyString
+  para: 
+  destino: MyString

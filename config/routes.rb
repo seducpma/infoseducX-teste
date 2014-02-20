@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :despachos
+
+  map.resources :prefprotocolos
+
   
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
 
@@ -128,6 +132,7 @@ ActionController::Routing::Routes.draw do |map|
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
   map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
+  map.protocolo 'protocolo', :controller => 'sessions', :action => 'protocolo'
   map.interno 'interno', :controller => 'sessions', :action => 'interno'
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

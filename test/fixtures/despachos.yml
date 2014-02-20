@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  prefprotocolo: 
+  procedencia: MyString
+  data_recebimento: 2014-02-18 09:41:52
+  para: MyString
+  despacho: MyString
+  destino: MyString
+  data_saida: 2014-02-18 09:41:52
+
+two:
+  prefprotocolo: 
+  procedencia: MyString
+  data_recebimento: 2014-02-18 09:41:52
+  para: MyString
+  despacho: MyString
+  destino: MyString
+  data_saida: 2014-02-18 09:41:52

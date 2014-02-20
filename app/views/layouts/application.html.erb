@@ -153,9 +153,32 @@ display: none;
                      </li>
                     <%end%>
 
+              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario itinerante') %>
+                <li><a>Itinerancia</a>
+                  <ul style="width:108px;">
+                   <li><a>Roteiro</a>
+                      <ul>
+                        <% if current_user.has_role?('administrador') %>
+                          <li><%= link_to "Cadastrar",new_itinerario_path %></li>
+                        <%end%>
+                        <li><%= link_to "Consultar", itinerarios_path%></li>
+                      </ul>
+                    </li>
+                    <li><a>Regiões</a>
+                      <ul>
+                        <% if current_user.has_role?('administrador') %>
+                           <li><%= link_to "Cadastrar",new_regiao_path %></li>
+                        <%end%>
+                        <li><%= link_to "Consultar", regiaos_path%></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              <%end%>
+
 
                      <li>
-                        <%= link_to "Ponto Eletrônico", pontos_path %>
+                     <%= link_to "Ponto Eletrônico", pontos_path %>
                      </li>
                      <li><a>Relatórios</a>
                         <ul>
@@ -282,37 +305,6 @@ display: none;
                 </li>
               <%end%>
 
-              <li><span class="divider divider-vert" ></span></li>
-              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario itinerante') %>
-                <li><a class="item-primary" href="#;">Itinerancia</a>
-                  <ul style="width:108px;">
-                    <li><a>Relatórios</a>
-                      <ul>
-                        <li><%= link_to "Cadastrar",new_relatorio_path %></li>
-                        <% if current_user.has_role?('administrador') %>
-                         <li><%= link_to 'Consultar', relatorios_path %></li>
-                        <%end%>
-                      </ul>
-                    </li>
-                    <li><a>Roteiro</a>
-                      <ul>
-                        <% if current_user.has_role?('administrador') %>
-                          <li><%= link_to "Cadastrar",new_itinerario_path %></li>
-                        <%end%>
-                        <li><%= link_to "Consultar", itinerarios_path%></li>
-                      </ul>
-                    </li>
-                    <li><a>Regiões</a>
-                      <ul>
-                        <% if current_user.has_role?('administrador') %>
-                           <li><%= link_to "Cadastrar",new_regiao_path %></li>
-                        <%end%>
-                        <li><%= link_to "Consultar", regiaos_path%></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              <%end%>
 
               <li><span class="divider divider-vert" ></span></li>
                <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') %>
@@ -366,8 +358,8 @@ display: none;
                  </ul>
               </li>
               <%end%>
-              <li><span class="divider divider-vert" ></span></li>
               <% if (current_user.has_role?('administrador') or current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
+              <li><span class="divider divider-vert" ></span></li>
                  <li><a class="item-primary" href="#;">Oficios</a>
                     <ul>
                       <li><%= link_to "Novo",new_oficio_path %></li>
@@ -375,9 +367,15 @@ display: none;
                       <li><%= link_to "Consulta", consulta_oficios_path  %></li>
                     </ul>
                  </li>
-              <%end%>
-              <li><span class="divider divider-vert" ></span></li>
-              <% if (current_user.has_role?('administrador') or current_user.has_role?('internos') or current_user.has_role?('oficios')) %>
+                 <li><span class="divider divider-vert" ></span></li>
+                 <li><a class="item-primary" href="#;">Protocolos</a>
+                    <ul>
+                      <li><%= link_to "Novo",new_prefprotocolo_path %></li>
+                      <li><%= link_to "Serviços Interno", prefprotocolos_path  %></li>
+                      <li><%= link_to "Consulta", consulta_servicos_internos_path  %></li>
+                    </ul>
+                 </li>
+                 <li><span class="divider divider-vert" ></span></li>
                  <li><a class="item-primary" href="#;">Serviços Internos</a>
                     <ul>
                       <li><%= link_to "Novo",new_servicos_interno_path %></li>
@@ -385,7 +383,7 @@ display: none;
                       <li><%= link_to "Consulta", consulta_servicos_internos_path  %></li>
                     </ul>
                  </li>
-              <%end%>
+           <%end%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">

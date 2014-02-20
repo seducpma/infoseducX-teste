@@ -41,7 +41,7 @@
           <%form_tag selected_print_chamados_path, :method => :get do %>
             <% for chamado in @chamados %>
               <tr>
-               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <% if current_user.has_role?('administrador')%>
                     <td align="center"><%= check_box_tag "chamado_ids[]",chamado.id %></td>
                <%end%>
                <td align="center"><%=h chamado.id %></td>

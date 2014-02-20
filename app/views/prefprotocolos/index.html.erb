@@ -1,0 +1,30 @@
+<h1>Listing prefprotocolos</h1>
+
+<table>
+  <tr>
+    <th>Codigo</th>
+    <th>Data</th>
+    <th>De</th>
+    <th>Assunto</th>
+    <th>Para</th>
+    <th>Destino</th>
+  </tr>
+
+<% @prefprotocolos.each do |prefprotocolo| %>
+  <tr>
+    <td><%=h prefprotocolo.codigo %></td>
+    <td><%=h prefprotocolo.data %></td>
+    <td><%=h prefprotocolo.de %></td>
+    <td><%=h prefprotocolo.assunto %></td>
+    <td><%=h prefprotocolo.para %></td>
+    <td><%=h prefprotocolo.destino %></td>
+    <td><%= link_to 'Show', prefprotocolo %></td>
+    <td><%= link_to 'Edit', edit_prefprotocolo_path(prefprotocolo) %></td>
+    <td><%= link_to 'Destroy', prefprotocolo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New prefprotocolo', new_prefprotocolo_path %>

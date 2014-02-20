@@ -1,0 +1,36 @@
+<h1>Editing prefprotocolo</h1>
+
+<% form_for(@prefprotocolo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </p>
+  <p>
+    <%= f.label :de %><br />
+    <%= f.text_field :de %>
+  </p>
+  <p>
+    <%= f.label :assunto %><br />
+    <%= f.text_field :assunto %>
+  </p>
+  <p>
+    <%= f.label :para %><br />
+    <%= f.text_field :para %>
+  </p>
+  <p>
+    <%= f.label :destino %><br />
+    <%= f.text_field :destino %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @prefprotocolo %> |
+<%= link_to 'Back', prefprotocolos_path %>
