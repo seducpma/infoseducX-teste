@@ -1,0 +1,32 @@
+      <font  size="2">
+      <table border="2" width="100%">
+         <tr>
+          <td align="left" colspan="9"><b>TOTAL DE PROTOCOLOS: </b>
+              <font color ="red "size="2"><b><%= @contador %></b></font>
+          </td>
+        </tr>
+         <tr>
+            <th width ="1%" align="center"> Protocolo</th>
+            <th width ="10%">Requente</th>
+            <th width ="90%">Assunto</th>
+            <th width ="10%">Destinatário</th>
+            <th width ="50%">Data</th>
+          </tr>
+
+            <% for protocolo in @prefprotocolos %>
+           <tr>
+               <td><b><font color="red" size="3"><center><%=h protocolo.codigo %></center></font></b></td>
+               <td><%=h protocolo.de %></td>
+               <td><%=h protocolo.assunto %></td>
+               <td><%=h protocolo.destino %></td>
+               <td><%=h protocolo.data.strftime("%d/%m/%y")%></td>
+               
+
+          </tr>
+            <%end%>
+
+     </table>
+
+
+   </font>
+

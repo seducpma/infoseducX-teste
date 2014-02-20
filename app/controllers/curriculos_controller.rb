@@ -5,7 +5,7 @@ class CurriculosController < ApplicationController
 
   def index
    unless params[:search].present?
-     if params[:type_of].to_i == 7
+     if params[:type_of].to_i == 8
        @contador = Curriculo.all.count
        @curriculos = Curriculo.all(:order => 'nome ASC')
        render :update do |page|
@@ -41,11 +41,18 @@ class CurriculosController < ApplicationController
                   render :update do |page|
                      page.replace_html 'curriculos', :partial => "curriculos"
                   end
-                  else     if params[:type_of].to_i == 1
+                  else if params[:type_of].to_i == 1
                      @contador = Curriculo.all(:conditions => ["STATUS like ?", "CONTRATADO"],:order => 'nome ASC').count
                      @curriculos = Curriculo.all(:conditions => ["STATUS like ?" , "CONTRATADO"],:order => 'nome ASC')
                      render :update do |page|
                        page.replace_html 'curriculos', :partial => "curriculos"
+                     end
+                      else if params[:type_of].to_i == 7
+                         @contador = Curriculo.all(:conditions => ["STATUS like ?  or STATUS like ? or STATUS like ? or STATUS like ? or STATUS is NULL", "NIVEL-3", "NIVEL-2", "NIVEL-1", "NIVEL-0" ],:order => 'nome ASC').count
+                         @curriculos = Curriculo.all(:conditions => ["STATUS like ?  or STATUS like ? or STATUS like ? or STATUS like ? or STATUS is NULL", "NIVEL-3", "NIVEL-2", "NIVEL-1", "NIVEL-0" ],:order => 'nome ASC')
+                         render :update do |page|
+                           page.replace_html 'curriculos', :partial => "curriculos"
+                         end
                      end
                   end
                  end

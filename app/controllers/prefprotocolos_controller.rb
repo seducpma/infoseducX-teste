@@ -1,7 +1,47 @@
 class PrefprotocolosController < ApplicationController
   # GET /prefprotocolos
   # GET /prefprotocolos.xml
-  def index
+
+ def consulta
+    render 'consulta'
+ end
+
+def protocolo
+   unless params[:search].present?
+     if params[:type_of].to_i == 4
+       @contador = Prefprotocolo.all.count
+       @prefprotocolos = Prefprotocolo.all(:order => 'id DESC')
+       render :update do |page|
+         page.replace_html 'protocolo', :partial => "protocolos"
+       end
+     end
+   else
+      if params[:type_of].to_i == 1
+          @contador = Prefprotocolo.all(:conditions => ["assunto like ?", "%" + params[:search].to_s + "%"]).count
+          @prefprotocolos = Prefprotocolo.all(:conditions => ["assunto like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          render :update do |page|
+            page.replace_html 'protocolo', :partial => "protocolos"
+          end
+          else if params[:type_of].to_i == 2
+          @contador = Prefprotocolo.all(:conditions => ["emissor like ?", "%" + params[:search].to_s + "%"]).count
+          @prefprotocolos = Prefprotocolo.all(:conditions => ["emissor like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          render :update do |page|
+            page.replace_html 'protocolo', :partial => "protocolos"
+          end
+            else if params[:type_of].to_i == 3
+          @contador = Prefprotocolo.all(:conditions => ["destinatario like ?", "%" + params[:search].to_s + "%"]).count
+          @prefprotocolos = Prefprotocolo.all(:conditions => ["destinatario like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          render :update do |page|
+            page.replace_html 'protocolo', :partial => "protocolos"
+          end
+         end
+       end
+     end
+   end
+end
+
+
+def index
     @prefprotocolos = Prefprotocolo.all
 
     respond_to do |format|

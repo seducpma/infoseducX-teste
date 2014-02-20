@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :despachos
 
-  map.resources :prefprotocolos
+  map.resources :prefprotocolos, :collection => {:consulta => :get, :protocolo=>:get, :protocolos => :get,}
 
   
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
