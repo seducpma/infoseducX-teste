@@ -43,6 +43,16 @@
             <td align="left"><b>Destinatario: </b></td>
             <td align="left"><%=h  @prefprotocolo.destino %></td>
           </tr>
+          <tr>
+            <td></td>
+            <td align="left"><b>Encerrado: </b></td>
+            <% if @prefprotocolo.encerrado == 0 %>
+               <td align="left"> NÃO</td>
+            <%  else  %>
+                <td align="left"> em  <%=h @prefprotocolo.data_encerramento.strftime("%d de %B de %Y") %> SIM</td>
+            <% end %>
+          </tr>
+
        </table>
     </fieldset>
     <div class="botao">

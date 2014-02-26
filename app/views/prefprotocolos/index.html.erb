@@ -2,7 +2,7 @@
  <table  class="tabelas1"   align="center" width="100%">
  <tr>
     <th align="left">
-       <font size=5 color="black"> <b>  CONTROLE DE EMISSÃO DE DOCUMENTOS</b></font>
+       <font size=5 color="black"> <b>  CONTROLE DE PROTOCOLOS</b></font>
     </th>
     <td width="5%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -17,7 +17,9 @@
             <th width ="90%">Assunto</th>
             <th width ="10%">Destinatário</th>
             <th width ="50%">Data</th>
-            <th colspan="3">Administração</th>
+            <th width ="10%">Para</th>
+            <th> Encerrado</th>
+            <th colspan="4">Administração</th>
 
           </tr>
 
@@ -28,11 +30,20 @@
                <td><%=h protocolo.assunto %></td>
                <td><%=h protocolo.destino %></td>
                <td><%=h protocolo.data.strftime("%d/%m/%y")%></td>
-    <td><%= link_to 'Show', protocolo %></td>
-    <td><%= link_to 'Edit', edit_prefprotocolo_path(protocolo) %></td>
-    <td><%= link_to 'Destroy', protocolo, :confirm => 'Confirma Exlusão?', :method => :delete %></td>
-
-
+               <td><%=h protocolo.para %></td>
+               <% if  protocolo.encerrado == 0 %>
+                 <td align="center"> NÃO </td>
+               <%  else  %>
+                 <td align="center"><font color="red" > SIM</font> </td>
+               <% end %>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "20x20"), protocolo, :title => "Exibir Dados" %></td>
+               <% if current_user.has_role?('administrador') or current_user.has_role?('oficios') %>
+                <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "20x20"),  edit_prefprotocolo_path(protocolo), :title => "Alterar Dados"%></td>
+                    <% if current_user.has_role?('administrador')%>
+                        <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"), protocolo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                    <%end%>
+               <%end%>
+               <td align="center"><%= link_to image_tag("/stylesheets/images/adicionar.png", :size => "15x15"), "#inline_despacho", :class =>"inline", :title => "Despacho" %></td>
           </tr>
             <%end%>
 
@@ -42,34 +53,4 @@
 
 <br/>
 
-
-<h1>Listing prefprotocolos</h1>
-
-<table>
-  <tr>
-    <th>Codigo</th>
-    <th>Data</th>
-    <th>De</th>
-    <th>Assunto</th>
-    <th>Para</th>
-    <th>Destino</th>
-  </tr>
-
-<% @prefprotocolos.each do |prefprotocolo| %>
-  <tr>
-    <td><%=h prefprotocolo.codigo %></td>
-    <td><%=h prefprotocolo.data %></td>
-    <td><%=h prefprotocolo.de %></td>
-    <td><%=h prefprotocolo.assunto %></td>
-    <td><%=h prefprotocolo.para %></td>
-    <td><%=h prefprotocolo.destino %></td>
-    <td><%= link_to 'Show', prefprotocolo %></td>
-    <td><%= link_to 'Edit', edit_prefprotocolo_path(prefprotocolo) %></td>
-    <td><%= link_to 'Destroy', prefprotocolo, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New prefprotocolo', new_prefprotocolo_path %>
+    <%= render "despacho" %>

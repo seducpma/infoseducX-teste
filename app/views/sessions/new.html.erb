@@ -6,8 +6,9 @@
        <%= link_to image_tag("/stylesheets/Imagens/banner2.jpg", :size => "300x100"), informatica_path, :title => "Informática"%>
      </td>
      <td align="center">
-       <%= link_to image_tag("/stylesheets/Imagens/manutencao2b.jpg", :size => "300x100"), manutencao_path, :title => "Manutenção"%>
+       <%= link_to image_tag("/stylesheets/Imagens/inscricao.jpg", :size => "300x100"), new_inscricao_path, :title => "Inscrições"%>
      </td>
+
      <td rowspan="3"></td>
      <td rowspan="3" valign="top" align="left">
                <table width="100%" >
@@ -19,7 +20,7 @@
                           <tr>
                             <% row_cursos.each do |curso| %>
                                 <%if curso.existe_vaga %>
-                                  <td id="demo" align="left"><%= "#{curso.nome}"%> <br/> <font color="blue"><%="Total de vagas: #{curso.qtde}.  Vagas em aberto: #{curso.vagas_disponiveis}"%></font></td>
+                                  <td id="demo" align="left"><%= "#{curso.nome}"%> <br/> <font color="blue"><%="Total de vagas: #{curso.qtde}"%> <br/> <%="Vagas disponíveis: #{curso.vagas_disponiveis}"%></font></td>
                                 <%else%>
                                   <td><%= " #{curso.nome}"%>  <br/>
                                     <font color="red"> <b>VAGAS COMPLETADAS </b></font> </td>
@@ -28,17 +29,7 @@
                           </tr>
                         <%end%>
 
-                       <tr>
-                         <td>
-                           <br/><br/>
-                           <br/><br/>
-                           <center>NO MOMENTO NÃO HÁ NENHUM CURSO EM ANDAMENTO.</center>
-                           <br/><br/><br/><br/>
-                           <br/><br/><br/><br/>
 
-                           
-                         </td>
-                       </tr>
 
                       </table>
                      </td>
@@ -46,7 +37,8 @@
 
            <tr>
               <td align="center">
-                <b><font size="1" color=blue>Para inscrever-se acesse o módulo Inscrições On-Line<font></b>
+                <b><font size="1" color='blue'>Para inscrever-se acesse o módulo Inscrições On-Line</font></b>
+
               </td>
            </tr>
 
@@ -59,9 +51,8 @@
        <%= link_to image_tag("/stylesheets/Imagens/professores1.jpg", :size => "300x100"), "http://pontuacao.int.seducpma.com", :title => "Pontualção"%>
      </td>
      <td align="center">
-       <%= link_to image_tag("/stylesheets/Imagens/inscricao.jpg", :size => "300x100"), new_inscricao_path, :title => "Inscrições"%>
+       <%= link_to image_tag("/stylesheets/Imagens/manutencao2b.jpg", :size => "300x100"), manutencao_path, :title => "Manutenção"%>
      </td>
-
    </tr>
    <tr>
      <td align="center">

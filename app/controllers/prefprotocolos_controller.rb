@@ -2,7 +2,12 @@ class PrefprotocolosController < ApplicationController
   # GET /prefprotocolos
   # GET /prefprotocolos.xml
 
- def consulta
+
+
+  def consulta
+      if params[:type_of].nil?
+        @prefprotocolos = Prefprotocolo.all(:order => 'id DESC')
+      end
     render 'consulta'
  end
 
@@ -23,14 +28,14 @@ def protocolo
             page.replace_html 'protocolo', :partial => "protocolos"
           end
           else if params[:type_of].to_i == 2
-          @contador = Prefprotocolo.all(:conditions => ["emissor like ?", "%" + params[:search].to_s + "%"]).count
-          @prefprotocolos = Prefprotocolo.all(:conditions => ["emissor like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          @contador = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"]).count
+          @prefprotocolos = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
           render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
           end
             else if params[:type_of].to_i == 3
-          @contador = Prefprotocolo.all(:conditions => ["destinatario like ?", "%" + params[:search].to_s + "%"]).count
-          @prefprotocolos = Prefprotocolo.all(:conditions => ["destinatario like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          @contador = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"]).count
+          @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
           render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
           end
@@ -42,7 +47,16 @@ end
 
 
 def index
-    @prefprotocolos = Prefprotocolo.all
+    @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?", "0"], :order => 'id DESC' )
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @prefprotocolos }
+    end
+  end
+
+def indexe
+    @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?", "1"], :order => 'id DESC' )
 
     respond_to do |format|
       format.html # index.html.erb

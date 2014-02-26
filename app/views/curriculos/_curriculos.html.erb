@@ -13,6 +13,7 @@
           <th>Modalidade</th>
           <th>Curso</th>
           <th>Semestre</th>
+          <th>Período</th>
           <th>Instituição</th>
           <th>Status</th>
           <% if current_user.has_role?('administrador')%>
@@ -27,6 +28,7 @@
           <td align="center"><%=h curriculos.modalidade %></td>
           <td align="center"><%=h curriculos.curso %></td>
           <td align="center"><%=h curriculos.semestre %></td>
+          <td align="center"><%=h curriculos.periodo %></td>
           <td align="center"><%=h curriculos.instituicao %></td>
           <td align="center"><%=h curriculos.status %></td>
           <div class="botao">

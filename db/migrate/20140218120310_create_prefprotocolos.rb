@@ -7,7 +7,7 @@ class CreatePrefprotocolos < ActiveRecord::Migration
       t.string :assunto
       t.strig :para
       t.string :destino
-
+      t.integer :encerrado, :default => 0
       t.timestamps
     end
   end

@@ -11,6 +11,8 @@
             <th width ="90%">Assunto</th>
             <th width ="10%">Destinatário</th>
             <th width ="50%">Data</th>
+            <th width ="10%">Para</th>
+            <th width ="1%">Despacho</th>
           </tr>
 
             <% for protocolo in @prefprotocolos %>
@@ -20,8 +22,8 @@
                <td><%=h protocolo.assunto %></td>
                <td><%=h protocolo.destino %></td>
                <td><%=h protocolo.data.strftime("%d/%m/%y")%></td>
-               
-
+               <td><%=h protocolo.para %></td>
+               <td align="center"><%= link_to image_tag("/stylesheets/images/adicionar.png", :size => "15x15"), "#inline_despacho", :class =>"inline" %></td>
           </tr>
             <%end%>
 
@@ -30,3 +32,4 @@
 
    </font>
 
+    <%= render "form_despacho" %>
