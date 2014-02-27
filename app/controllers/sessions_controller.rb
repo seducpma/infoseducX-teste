@@ -48,10 +48,10 @@ def protocolo
       if current_user.has_role?('oficios')
         redirect_to oficios_path
         #redirect_to livros_cadastrados_livros_path
-        flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.2"
+        flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.3"
       else
       redirect_back_or_default('/')
-      flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.2"
+      flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.3"
 
       end
     else
