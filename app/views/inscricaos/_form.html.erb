@@ -86,7 +86,9 @@
       <tr>
         <% row_cursos.each do |curso| %>
             <%if curso.existe_vaga %>
-             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%><%= "#{curso.nome_curto} - #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %></td>
+             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%>
+                                        <%= "#{curso.nome_curto}"%><br/>&nbsp&nbsp&nbsp
+                                        <%=" #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %></td>
             <%else%>
               <td><%= "CURSO #{curso.nome}"%>  <br/>
                 <font color="red"> <b>Nº DE VAGAS COMPLETO </b></font> </td>
@@ -98,7 +100,7 @@
         <th colspan="2"><font size="2">
           <center><font size ="3"color="red"><u>LEIA COM ATENÇÃO</u></font></center>
           <u>Obs:</u> Para maiores informações posicione o mouse sobre caixa de opção e aguarde alguns segundos.<br/>
-          &nbsp&nbsp&nbsp&nbsp&nbsp<b>Grupo A - <u>Roteiro:</u> Dia 08/03 às 13 horas - Anfiteatro da SEDUC, <br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp<b>Grupo A - <u>Roteiro:</u> Dia 08/03 às 13 horas - Anfiteatro da SEDUC, <br/>
              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 15/03 às 8 horas visita ao Museu de Arte (MASP)<br/>
              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
