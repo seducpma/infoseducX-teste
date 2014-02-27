@@ -22,7 +22,7 @@
                                   <td id="demo" align="left"><%= "#{curso.nome}"%> <br/> <font color="blue"><%="Total de vagas: #{curso.qtde}"%> <br/> <%="Vagas disponíveis: #{curso.vagas_disponiveis}"%></font></td>
                                 <%else%>
                                   <td><%= " #{curso.nome}"%>  <br/>
-                                    <font color="red"> <b>VAGAS COMPLETADAS </b></font> </td>
+                                    <font color="red"> <b>TODAS AS <%="#{curso.qtde}"%> VAGAS<br/> ESTÃO COMPLETAS </b></font> </td>
                                 <%end%>
                             <%end%>
                           </tr>
