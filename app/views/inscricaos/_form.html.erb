@@ -71,16 +71,16 @@
      <tr>
       <th colspan="2" style=" font-size: large">CURSOS DISPONÍVEIS </th>
      </tr>
-<!--
+
     <tr>
       <td colspan="2">
          <b>Selecione a opção desejada  </b>
       </td>
     </tr>
--->
+<!--
 
     <tr><td>&nbsp&nbsp<b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b></td></tr>
-
+-->
 
      <% @cursos.in_groups_of(2, false) do |row_cursos| %>
       <tr>
@@ -137,7 +137,10 @@
          <table width="100%" align="left">
            <tr>
                <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+               <!--
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÂO <b></font></td>
+               -->
+               <td align="left">   <%= f.submit "INSCREVER" %></td>
            </tr>
        </table>
       <% end %>
