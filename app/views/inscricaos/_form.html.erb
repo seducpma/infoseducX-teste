@@ -67,7 +67,7 @@
   </tr>
  </table>
 
-   <table class="tabelas1" align="center"  width="100%" >
+   <table class="tabelas1" align="center" width="100%" >
      <tr>
       <th colspan="2" style=" font-size: large">CURSOS DISPONÍVEIS </th>
      </tr>
@@ -86,12 +86,17 @@
       <tr>
         <% row_cursos.each do |curso| %>
             <%if curso.existe_vaga %>
-             <td id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%>
+             <td width="50%"id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%>
                                         <%= "#{curso.nome_curto}"%><br/>&nbsp&nbsp&nbsp
-                                        <%=" #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %></td>
+                                        <%=" #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %>
+             ________________________________________________
+             </td>
+
             <%else%>
-              <td><%= "CURSO #{curso.nome}"%>  <br/>
-                <font color="red"> <b>Nº DE VAGAS COMPLETO </b></font> </td>
+              <td><%= "CURSO #{curso.nome}"%><br/>
+                <font color="red"><b>Nº DE VAGAS COMPLETO </b></font>
+             ________________________________________________
+              </td>
             <%end%>
         <%end%>
       </tr>
@@ -100,32 +105,38 @@
         <th colspan="2"><font size="2">
           <center><font size ="3"color="red"><u>LEIA COM ATENÇÃO</u></font></center>
           <u>Obs:</u> Para maiores informações posicione o mouse sobre caixa de opção e aguarde alguns segundos.<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp<b>Grupo A - <u>Roteiro:</u> Dia 08/03 às 13 horas - Anfiteatro da SEDUC, <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp <b>> WORKSHOP NEUROPSICOLOGIA:<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Professores de Creche, ADIs, Professores Ensino Fundamental <br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 13/03, 20/03 e 27/03<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> Anfiteatro da SEDUC<br/>
+             &nbsp&nbsp&nbsp&nbsp <b>> VISITAÇÃO Á MUSEUS- Grupo A -<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Roteiro:</u> Dia 08/03 às 13 horas - Anfiteatro da SEDUC, <br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 15/03 às 8 horas visita ao Museu de Arte (MASP)<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 29/03 às 8 horas visita ao Museu de Arte COntenpotânea (MAM) <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 12/04 às 8 horas visita ao Museu Lasar Segal<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 26/04  às 8 horas visita à Pinacoteca e Museu da Lingua Portuguesa <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 10/05  às 8 horas visita ao Museu de Arte Sacra <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 24/05 às 8 horas visita ao Museu Catavento  </b><br/>
 
-          &nbsp&nbsp&nbsp&nbsp&nbsp<b>Grupo B - <u>Roteiro:</u> Dia 08/03 às 13 horas - Anfiteatro da SEDUC, <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp<b>> VISITAÇÃO Á MUSEUS- Grupo B -<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Roteiro:</u> Dia 08/03 às 13 horas - Anfiteatro da SEDUC, <br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 22/03 às 8 horas visita ao Museu de Arte (MASP)<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 05/04 às 8 horas visita ao Museu de Arte Contenpotânea (MAM) <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 19/04 às 8 horas visita ao Museu Lasar Segal<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 03/05  às 8 horas visita à Pinacoteca e Museu da Lingua Portuguesa <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 17/05  às 8 horas visita ao Museu de Arte Sacra <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
              Dia 31/05 às 8 horas visita ao Museu Catavento  </b><br/>
              &nbsp&nbsp&nbsp&nbsp&nbsp<b></b><br/>
 
