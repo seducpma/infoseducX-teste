@@ -31,7 +31,7 @@
                  <%=h @dadosparticipa.unidade.nome %>
              <%end%>
             <br/>Email:
-              <%if @dadosparticipa.email.nil?%>
+              <%if @dadosparticipa.email== 'email_nao_cadastrado@favor_cadastar.com.br'%>
                  <font color="red"><b> NÃO CONSTA E-MAIL NO CADASTRO - <u><%= link_to 'FAVOR ATUALIZAR CADASTRO', edit_participante_path(@dadosparticipa) %></u> </b></font> <br/>
              <%else%>
                  <%=h @dadosparticipa.email %><br/>
