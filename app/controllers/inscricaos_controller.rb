@@ -60,7 +60,6 @@ class InscricaosController < ApplicationController
   # GET /inscricaos/new
   # GET /inscricaos/new.xml
   def new
-    
     @inscricao = Inscricao.find_by_participante_id(params[:participante])
     if @inscricao.present?
       @participante = Participante.find(@inscricao.participante_id)

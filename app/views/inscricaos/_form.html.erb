@@ -81,7 +81,7 @@
 
     <tr><td>&nbsp&nbsp<b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b></td></tr>
 -->
- 
+
      <% @cursos.in_groups_of(2, false) do |row_cursos| %>
       <tr>
         <% row_cursos.each do |curso| %>
@@ -99,6 +99,7 @@
               </td>
             <%end%>
         <%end%>
+ 
       </tr>
     <%end%>
       <tr>

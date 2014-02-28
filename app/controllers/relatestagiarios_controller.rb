@@ -12,7 +12,7 @@ end
 
 def load_estagiarios
 
-    @estagiarios = Estagiario.find(:all, :conditions =>  ["etinerante= 0 and desligado=0 and flag =0"], :order => 'nome ASC')
+    @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag =0"], :order => 'nome ASC')
   end
 
   def index
