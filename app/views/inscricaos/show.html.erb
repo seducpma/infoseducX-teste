@@ -39,6 +39,13 @@
                 <td colspan="2"><b>Inscrição efetuada em:</b>
                   <%=h  @inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
               </tr>
+            <% if  @inscricao.participante.email == 'email_nao_cadastrado@favor_cadastar.com.br'%>
+                <tr>
+                  <td width="10%"><b>Email:</b></td>
+                  <td colspan="5" >EMAIL NÃO CADASTRADO</td>
+               </tr>
+            <%end%>
+
           </table>
         </fieldset>
         <div class="botao">
