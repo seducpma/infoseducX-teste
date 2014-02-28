@@ -39,9 +39,11 @@
               <%if @dadosparticipa.obs.nil?%>
                  <br/>
               <%else%>
-                Obs: <%if @dadosparticipa.email.nil?%>
-                          <font color="red" size="3"><b>PARA FAZER INSCRIÇÃO É OBRIGATÓRIO CONSTAR SEU E_MAIL NO CADASTRO <br/>
-                              &nbsp&nbsp&nbsp<blink><u>FAVOR ATUALIZAR SEU CADASTRO ANTES DE PROSSEGUIR.</u></blink></b></font> <br/>
+                Obs: <%if @dadosparticipa.email == 'EMAIL NÃO CADASTRADO'%>
+                          <font color="red" size="4"><b>PARA FAZER INSCRIÇÃO É OBRIGATÓRIO CONSTAR SEU E_MAIL NO CADASTRO <br/>
+                              &nbsp&nbsp&nbsp<blink><u>FAVOR ATUALIZAR SEU CADASTRO ANTES DE PROSSEGUIR.</u></blink></b></font><BR/><BR/>
+                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <u><%= link_to 'CLIQUE AQUI PARA ATUALIZAR SEU CADASTRO', edit_participante_path(@dadosparticipa) %></u> </b>
                       <%else%>
                          <%=h @dadosparticipa.obs %><br/>
                       <%end%>
