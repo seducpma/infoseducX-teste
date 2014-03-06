@@ -175,9 +175,7 @@ display: none;
                   </ul>
                 </li>
               <%end%>
-
-
-                     <li>
+                   <li>
                      <%= link_to "Ponto Eletrônico", pontos_path %>
                      </li>
                      <li><a>Relatórios</a>
@@ -304,13 +302,10 @@ display: none;
                   </ul>
                 </li>
               <%end%>
-
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
               <li><span class="divider divider-vert" ></span></li>
                <li><a class="item-primary" href="#;">Ordem Serviço</a>
                  <ul style="width:108px;">
-
-
-                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
                    <li><a>Informática</a>
                     <ul style="width:108px;">
                      <li><a>OS Interno</a>
@@ -354,7 +349,42 @@ display: none;
                  </ul>
                </li>
              <%end%>
-             <% if (current_user.has_role?('administrador') or current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
+              <% if (current_user.has_role?('administrador') ) %>
+                  <li><span class="divider divider-vert" ></span></li>
+                   <li><a class="item-primary" href="#;">Documentos</a>
+                    <ul>
+                     <li><a class="item-primary" href="#;">Oficios</a>
+                        <ul>
+                          <li><%= link_to "Novo",new_oficio_path %></li>
+                          <li><%= link_to "Ofícios", oficios_oficios_path  %></li>
+                          <li><%= link_to "Consulta", consulta_oficios_path  %></li>
+                        </ul>
+                     </li>
+                     <li><span class="divider divider-vert" ></span></li>
+                     <li><a class="item-primary" href="#;">Protocolos</a>
+                        <ul>
+                          <li><%= link_to "Novo"%></li>
+                          <li><%= link_to "Consulta"%></li>
+                          <li><a href=>Protocolos</a>
+                           <ul>
+                              <li><%= link_to "Em Aberto" %></li>
+                              <li><%= link_to "Encerrados"  %></li>
+                          </ul>
+                          </li>
+                        </ul>
+                      </li>
+                     <li><span class="divider divider-vert" ></span></li>
+                     <li><a class="item-primary" href="#;">Serviços Internos</a>
+                        <ul>
+                          <li><%= link_to "Novo",new_servicos_interno_path %></li>
+                          <li><%= link_to "Serviços Interno", servicos_internos_path  %></li>
+                          <li><%= link_to "Consulta", consulta_servicos_internos_path  %></li>
+                        </ul>
+                     </li>
+                    </ul>
+                  </li>
+             <%else%>
+             <% if (current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
               <li><span class="divider divider-vert" ></span></li>
                  <li><a class="item-primary" href="#;">Oficios</a>
                     <ul>
@@ -363,6 +393,7 @@ display: none;
                       <li><%= link_to "Consulta", consulta_oficios_path  %></li>
                     </ul>
                  </li>
+                 <!--
                  <li><span class="divider divider-vert" ></span></li>
                  <li><a class="item-primary" href="#;">Protocolos</a>
                     <ul>
@@ -376,6 +407,7 @@ display: none;
                       </li>
                     </ul>
                   </li>
+                 -->
                  <li><span class="divider divider-vert" ></span></li>
                  <li><a class="item-primary" href="#;">Serviços Internos</a>
                     <ul>
@@ -385,6 +417,12 @@ display: none;
                     </ul>
                  </li>
            <%end%>
+         <%end%>
+
+
+
+
+
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">
