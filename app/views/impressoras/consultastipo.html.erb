@@ -1,13 +1,16 @@
 <br/><br/><br/>
-<table class="tabelas" align="center" width="80%">
-  <tr>
-     <td colspan="2" align="left">
-       <font  size=5 color="black"> <b>  IMPRESSORAS - CONSULTA POR PERTENCE</b></font>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <br/>
+<table class="tabelas2" align="center">
+ <tr>
+    <th align="left">
+       <font size=5 color="black"> <b> CONSULTA IMPRESSORA por Tipo</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+ <tr>
+  <td colspan="2">
+   <br/>
     <table>
      <tr>
       <td>
@@ -15,7 +18,7 @@
         <table>
           <tr>
             <td>
-               <font  size="4"> Pertence: <%= collection_select :impressora, :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+               <font  size="4"> Tipo: <%= collection_select :impressora, :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
              </td>
           </tr>
        </table>

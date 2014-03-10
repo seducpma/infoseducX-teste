@@ -18,12 +18,12 @@ window.print();
   <td colspan="2">
     <br/><br/>
     <div class="botao">
-      <table width="100%">
+      <table width="100%" >
         <tr>
           <% form_for @search do |f| %>
             <tr>
               <!--<td width="8%" align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>-->
-               <td align="left" width="100%"><font  size="3" color="black"> Selecione Período:<%= f.select :periodo_trab_equals, options_for_select(PERIODO), :include_blank => true%></font></td>
+               <td align="left" width="4%"><font  size="3" color="black"> Selecione Período:<%= f.select :periodo_trab_equals, options_for_select(PERIODO), :include_blank => true%></font></td>
                <td align="left"  width="8%"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar"></td>
            </tr>
           <% end %>

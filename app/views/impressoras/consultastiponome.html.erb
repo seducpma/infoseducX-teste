@@ -1,12 +1,15 @@
 <br/><br/>
-<table class="tabelas" align="center" width="60%">
+<table class="tabelas2" align="center" width="60%">
  <tr>
-     <td colspan="2" align="left">
-       <font  size=5 color="black"> <b> IMPRESSORAS - CONSULTA ESPECÍFICA</b></font>
-    </td>
+    <th align="left">
+       <font size=5 color="black"> <b> CONSULTA IMPRESSORA Específica</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
  </tr>
  <tr>
-  <td>
+  <td colspan="2">
    <br/>
    <table>
     <tr>
@@ -14,7 +17,7 @@
         <div class="botao">
         <table>
           <tr>
-             <td align="left"><font size="4">Pertence</font></td>
+             <td align="left"><font size="4">Tipo:</font></td>
              <td colspan="3" align="left"><%= collection_select :impressora, :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- '  %></td>
                      <%= observe_field 'impressora_tipo_controle_id',
                         :frequency => 0.2,

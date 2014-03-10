@@ -15,14 +15,14 @@ class ImpressorasController < ApplicationController
 
   def index
    if (params[:search].nil? || params[:search].empty?)
-    @impressoras = Impressora.find(:all)
+    @impressoras = Impressora.find(:all, :conditions => ["baixado =?",0])
    #   @impressoras = Impressora.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 6
    #   $var = 0
     else
-      @impressoras = Impressora.find(:all, :joins => :unidade, :conditions => ["unidades.nome like ?", "%" + params[:search].to_s + "%"], :order => 'nome ASC')
+      @impressoras = Impressora.find(:all, :joins => :unidade, :conditions => ["unidades.nome like ? and baixado=?", "%" + params[:search].to_s + "%",0], :order => 'nome ASC')
    #   $var=1
    end
-   
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @impressoras }
@@ -108,7 +108,7 @@ class ImpressorasController < ApplicationController
 
 def lista_unidades
     $unidade = params[:impressora_unidade_id]
-    @impressoras = Impressora.find(:all, :conditions => ['unidade_id='+ $unidade])
+    @impressoras = Impressora.find(:all, :conditions => ['unidade_id=? and baixado=?',$unidade, 0])
     render :partial => 'lista_unidades'
   end
 
@@ -118,7 +118,7 @@ def consultatipo
 
 def lista_tipos
     $tipo = params[:impressora_tipo_controle_id]
-    @impressoras = Impressora.find(:all, :conditions => ['tipo_controle_id='+ $tipo])
+    @impressoras = Impressora.find(:all, :conditions => ['tipo_controle_id=? and baixado=?', $tipo, 0])
     render :partial => 'lista_unidades'
   end
 def consultatiponome
@@ -135,12 +135,12 @@ end
 
 def lista_tipounidades
     $unidade = params[:impressora_unidade_id]
-    @impressoras = Impressora.find(:all, :conditions => ['unidade_id=? and tipo_controle_id=?',$unidade, $tipo])
+    @impressoras = Impressora.find(:all, :conditions => ['unidade_id=? and tipo_controle_id=?  and baixado=?',$unidade, $tipo, 0])
     render :partial => 'lista_unidades'
   end
 
 def totalizaI
-    @impressoras = Impressora.find(:all)
+    @impressoras = Impressora.find(:all, :conditions =>[ 'baixado=?',0])
     respond_to do |format|
        format.html # index.html.erb
       format.xml  { render :xml => @impressoras }

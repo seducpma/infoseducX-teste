@@ -186,7 +186,6 @@ display: none;
                        </ul>
                      </li>
                     <%end%>
-
               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario itinerante') %>
                 <li><a>Itinerancia</a>
                   <ul style="width:108px;">
@@ -231,11 +230,127 @@ display: none;
               </li>
               <%end%>
               <li><span class="divider divider-vert" ></span></li>
-                  <% if current_user.has_role?('administrador') %>
+                  <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario')  %>
               <li><a class="item-primary" href="#;">Infoseduc</a>
                  <ul style="width:108px;">
-                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario')  %>
+                    <li><a>Equipamentos</a>
+                       <ul style="width:108px;">
+                     <!--
+                        <li><a>Computadores</a>
+                         <ul>
+                            <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') %>
+                              <li><%= link_to 'Cadastrar',new_computadore_path  %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', computadores_path%></li>
+                            <li><a>Consultar</a>
+                              <ul>
+                                <li><%= link_to 'Específica',  c_comp_tpuni_path %></li>
+                                <li><%= link_to 'por Pertence', c_comp_tp_path %></li>
+                                <li><%= link_to 'por Unidade', c_comp_uni_path %></li>
+                              </ul>
+                            <li><%= link_to 'Totalização', totalizaC_path %></li>
+                         </ul>
+                        </li>
+                        <li><a>Data Show</a>
+                         <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Cadastrar',new_datashow_path  %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', datashows_path%></li>
+                            <li><%= link_to 'Consultar', c_datashow_uni_path %></li>
+                            <li><%= link_to 'Totalização', totalizaS_path %></li>
+                         </ul>
+                        </li>
+                       -->
+                        <li><a>Impressoras</a>
+                         <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Cadastrar',new_impressora_path  %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', impressoras_path%></li>
+                            <li><a>Consultar</a>
+                              <ul>
+                                <li><%= link_to 'Específica',  c_imp_tpuni_path %></li>
+                                <li><%= link_to 'por Tipo', c_imp_tp_path %></li>
+                                <li><%= link_to 'por Unidade', c_imp_uni_path %></li>
+                              </ul>
+                            </li>
+                            <li><%= link_to 'Totalização', totalizaI_path %></li>
+                         </ul>
+                        </li>
+                       <!--
+                        <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                        <li><a>Secretaria</a>
+                          <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Entrada',new_equipamento_path %></li>
+                            <%end%>
+                            <li><%= link_to 'Consulta', consulta_equipamentos_path %></li>
+                            <li><%= link_to 'Encerrados', encerrado_equipamentos_path %></li>
+                          </ul>
+                        </li>
+                        <li><a>Rede/Internet</a>
+                          <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Cadastrar',new_administracao_path %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', administracaos_path %></li>
+                            <li><a>Consultar</a>
+                              <ul>
+                                <li><%= link_to 'Específica',  c_adm_tpuni_path %></li>
+                                <li><%= link_to 'Internet',  internet_administracaos_path %></li>
+                                <li><%= link_to 'por Pertence', c_adm_tp_path %></li>
+                                <li><%= link_to 'por Unidade', c_adm_uni_path %></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                       <%end%>
+                       -->
+                       </ul>
+                    </li>
                     <li><%= link_to 'Empresa', new_empresa_path %></li>
+                    <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                      <li><a class="item-primary" href="#;">Estoque</a>
+                       <ul style="width:108px;">
+                         <% if current_user.has_role?('administrador') %>
+                           <li><a>Cadastrar</a>
+                            <ul>
+                              <li><%= link_to "Estoque", new_estoque_path%></li>
+                              <li><%= link_to "Componente", new_componente_path%></li>
+                            </ul>
+                           </li>
+                         <%end%>
+                         <li><%= link_to "Em Estoque", estoques_path%></li>
+                         <li><a>Lançamentos</a>
+                          <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                              <li><%= link_to "Entradas",new_entrada_path %></li>
+                            <%end%>
+                            <li><%= link_to "Saidas",new_saida_path  %></li>
+                          </ul>
+                         </li>
+                         <% if current_user.has_role?('administrador') %>
+                          <li><a>Verificar Lançtos</a>
+                            <ul>
+                              <li><%= link_to "Entradas",entradas_path %></li>
+                              <li><%= link_to "Saidas",saidas_path %></li>
+                            </ul>
+                          </li>
+                         <%end%>
+                         <% if current_user.has_role?('administrador') %>
+                          <li><a>Em Falta</a>
+                            <ul>
+                              <li><%= link_to "Cadastrar", new_emfalta_path%></li>
+                              <li><%= link_to "Consultar", emfaltas_path%></li>
+                            </ul>
+                          </li>
+                         <%end%>
+
+                       </ul>
+                      </li>
+                    <%end%>
                     <li><a>Fornecedores</a>
                       <ul>
                         <% if current_user.has_role?('administrador') %>
