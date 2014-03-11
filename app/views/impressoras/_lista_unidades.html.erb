@@ -7,19 +7,21 @@
       <%$impr = 0%>
       <tr>
         <th>Unidade</th>
-        <th>Tipo Controle</th>
+        <th>Tipo</th>
         <th>Quantidade</th>
         <th>Configuração</th>
         <th>Usuário</th>
-        <th>Nº Patrimônio</th>
+        <th>Contato</th>
+        <th align="center">Nº Patrimônio</th>
       </tr>
      <% for imp in @impressoras %>
       <tr>
        <td><%=h imp.unidade.nome %></td>
        <td><%=h imp.tipo_controle.nome %></td>
-       <td><%=h imp.quant %></td>
+       <td align="CENTER"><%=h imp.quant %></td>
        <td><%=h imp.config %></td>
        <td><%=h imp.user %></td>
+       <td><%=h imp.contato %></td>
        <%if imp.tipo_controle.nome == 'TERCEIROS'%>
          <td><%=h imp.pertence %></td>
        <%else%>
