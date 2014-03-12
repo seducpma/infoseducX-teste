@@ -10,7 +10,7 @@ class EstagiariosController < ApplicationController
 
   def lista
     @estagiarios = Estagiario.find(:all, :joins => :unidade, :order => 'unidades.nome ASC',:conditions => ['flag=?',0])
-    @estagiarios1 = Estagiario.find(:all, :joins => :regiao,  :order => 'regiaos.regiao ASC',:conditions => ['flag=?',0])
+    #@estagiarios1 = Estagiario.find(:all, :joins => :regiao,  :order => 'regiaos.regiao ASC',:conditions => ['flag=?',0])
     respond_to do |format|
       format.html
       format.xml  { render :xml => @estagiarios }
