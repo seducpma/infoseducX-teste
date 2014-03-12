@@ -11,8 +11,22 @@ end
 
 
 def load_estagiarios
+    @estagiarios = type_user(current_user.unidade_id)
+  end
 
-    @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag =0"], :order => 'nome ASC')
+  def type_user(unit)
+    if  unit == 53 or unit == 100
+      # type = 53 => usuário administrativo
+      @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0"], :order => 'nome ASC')
+    else
+      if unit == 99
+        # type = 99 => usuário itinerante
+        #@regiao = Regiao.all
+        @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0 and unidade_id is ?", nil], :order => 'nome ASC')
+      else
+        @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0 and unidade_id = ?", unit], :order => 'nome ASC')
+      end
+    end
   end
 
   def index
