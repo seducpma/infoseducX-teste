@@ -6,7 +6,7 @@ class RelatestagiariosController < ApplicationController
   layout "application"
     
 def load_unidades
-  if current_user.unidade_id == 100 or current_user == 53
+  if current_user.unidade_id == 100
     @unidades = Unidade.find(:all,:order => 'nome ASC')
   else
     @unidades = Unidade.find(:all, :conditions =>  ["id= ?",current_user.unidade_id],:order => 'nome ASC')
@@ -19,7 +19,7 @@ def load_estagiarios
   end
 
   def type_user(unit)
-    if  unit == 53 or unit == 100
+    if  unit == 100
       # type = 53 => usuário administrativo
       @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0"], :order => 'nome ASC')
     else
