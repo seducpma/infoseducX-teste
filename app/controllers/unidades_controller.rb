@@ -25,7 +25,7 @@ def load_estagiarios
   end
 
    def load_unidades
-    @unidades = Unidade.find(:all, :order => 'nome ASC')
+    @unidades = Unidade.find(:all, :order => 'nome ASC',:conditions => ['id != 71 and id !=72 and id !=73 and id !=76 and id !=77 and id !=75'] )
   end
   
   def index
