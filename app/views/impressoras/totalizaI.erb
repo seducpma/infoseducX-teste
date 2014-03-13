@@ -100,7 +100,7 @@
                </tr>
                <% for imp in @impressoras %>
                <%if imp.tipo_controle.nome == 'ADMINITRAÇÃO'%>
-               <%if imp.unidade_id != 53 then%>
+               <%if imp.unidade_id != 53 and imp.tipo_controle.nome != 'SALA AEE' then%>
                <tr>
                  <td valign="top"align="left"><font  size="1"><%=h imp.unidade.nome %></font></td>
                  <td valign="top"align="left"><font  size="1"><%=h imp.config %></font></td>
@@ -148,7 +148,33 @@
                     </tr>
                   </table>
                  </fieldset><br/>
-                
+
+               <fieldset><legend><font  size=2> Sala AEE - Unidades/SEDUC</font></legend>
+                 <table border="1" width="100%">
+                   <%$totalA = 0%>
+                    <tr>
+                         <th  valign="top" align="left" width ="60%"><font  size="1">Usuário</font></th>
+                         <th  valign="top" align="left"><font  size="1">configuração</font></th>
+                         <th  valign="top" align="center" colspan="2"><font  size="1">Quantidade</font></th>
+                    </tr>
+                    <% for imp in @impressoras %>
+                    <%if imp.tipo_controle.nome == 'SALA AEE'%>
+                     <tr>
+                       <td valign="top"align="left"><font  size="1"><%=h imp.unidade.nome %></font></td>
+                       <td valign="top"align="left"><font  size="1"><%=h imp.config %></font></td>
+                       <td valign="top"align="center"><font  size="1"><%=h imp.quant %></font></td>
+                       <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "15x15"), imp, :title => "Exibir Dados" %></td>
+                       <%$totalA = $totalA + imp.quant%>
+                    </tr>
+                   <% end %>
+                   <% end %>
+                   <tr>
+                      <td colspan="4" align="left"><font  size="2"><b> Total  => <%= $totalC %></b></font> </td>
+                    </tr>
+                  </table>
+                 </fieldset><br/>
+
+
                 <fieldset><legend><font  size=2> Pertencente à Terceiros</font></legend>
                     <table  border="1" width="100%" >
                       <%$totalC2 = 0%>
@@ -212,7 +238,7 @@
     </tr>
     <tr>
        <td  bgcolor="#F5DEB3"width="6%" align="right">
-        <font color="black"  size="2"><b> TOTAL GERAL IMPRESSORAS: <%= $totalC2 + $totalC1 + $totalC + $totals%></b></font> </td>
+        <font color="black"  size="2"><b> TOTAL GERAL IMPRESSORAS: <%= $totalA+ $totalC2 + $totalC1 + $totalC + $totals%></b></font> </td>
 
     </tr>
     <tr>
