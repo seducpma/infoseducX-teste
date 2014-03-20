@@ -136,4 +136,33 @@ def indexe
       format.xml  { head :ok }
     end
   end
+
+def create_despachos
+      @despacho = Despacho.new(params[:despacho])
+      $teste=@despacho.despacho
+      $teste2=@despacho.para
+      $teste3=@despacho.destino
+      if @despacho.save
+        @despachos = Despacho.all(:conditions => ["prefprotocolo_id is null"])
+        @despachos.id =
+        session[:despacho_id] = @despacho.id
+
+          redirect_to(new_despacho_path)
+      end
+    end
+
+ # def create_familiares
+#      @familiar = Familiare.new(params[:familiare])
+#      $teste=@familiar.nome
+#      $teste2=@familiar.parentesco
+#      if @familiar.save
+#        @familiares = Familiare.all(:conditions => ["funcionario_id is null"])
+#        session[:familiare_id] = @familiar.id
+#         render :update do |page|
+#            page.replace_html 'lista', :partial => "lista_familiares"
+#        end
+#      end
+#    end
+
+
 end

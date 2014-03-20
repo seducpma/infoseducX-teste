@@ -1,12 +1,12 @@
 <div style='display:none'>
   <div id='inline_despacho' style='padding:10px; background:#EEE9E9;'>
-    <% form_remote_for(:despacho,:url => { :action => 'create_despacho' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
+    <% form_remote_for(:despacho,:url => { :action => 'create_despachos' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
      <h1>DESPACHOS PROTOCOLO</h1>
       <%= error_messages_for 'contact' %>
         <table  width="100%" bgcolor="#F5F5F5">
         <tr>
-            <td><b><%= f.label :despacho, 'Despacho:' %></b><font color="red" size="1"><b> ( Nº ISBN (Campo não obrigatório))</b></font><br/>
-            <%= f.text_field :despacho %></td>
+            <td width="10%"><b><%= f.label :despacho, 'Despacho:' %></b><font color="red" size="1"></font></td>
+            <td><%= f.text_field :despacho, :size =>'50' %></td>
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Para:</b></font></td>
