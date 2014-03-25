@@ -236,7 +236,7 @@ display: none;
                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario')  %>
                     <li><a>Equipamentos</a>
                        <ul style="width:108px;">
-                     <!--
+
                         <li><a>Computadores</a>
                          <ul>
                             <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') %>
@@ -252,6 +252,7 @@ display: none;
                             <li><%= link_to 'Totalização', totalizaC_path %></li>
                          </ul>
                         </li>
+<!--
                         <li><a>Data Show</a>
                          <ul>
                             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
@@ -262,7 +263,7 @@ display: none;
                             <li><%= link_to 'Totalização', totalizaS_path %></li>
                          </ul>
                         </li>
-                       -->
+-->
                         <li><a>Impressoras</a>
                          <ul>
                             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
