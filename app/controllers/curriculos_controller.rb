@@ -13,7 +13,7 @@ class CurriculosController < ApplicationController
        end
         else if params[:type_of].to_i == 2
             @contador = Curriculo.all(:conditions => ["STATUS is null"]).count
-            @curriculos = Curriculo.all(:conditions => ["STATUS is null"],:order => 'nome ASC')
+            @curriculos = Curriculo.all(:conditions => ["STATUS is null"],:order => 'created_at DESC')
             render :update do |page|
               page.replace_html 'curriculos', :partial => "curriculos"
             end
