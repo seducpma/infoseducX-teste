@@ -28,20 +28,41 @@ def protocolo
             page.replace_html 'protocolo', :partial => "protocolos"
           end
           else if params[:type_of].to_i == 2
-          @contador = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"]).count
-          @prefprotocolos = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
-          render :update do |page|
+           @contador = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"]).count
+           @prefprotocolos = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+           render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
-          end
-            else if params[:type_of].to_i == 3
-          @contador = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"]).count
-          @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
-          render :update do |page|
+           end
+          else if params[:type_of].to_i == 3
+           @contador = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"]).count
+           @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+           render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
-          end
+           end
+          else if params[:type_of].to_i == 7
+           @contador = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"]).count
+           @prefprotocolos = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+           render :update do |page|
+            page.replace_html 'protocolo', :partial => "protocolos"
+           end
          end
        end
      end
+   end
+   end
+       if params[:type_of].to_i == 5
+        @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","0"]).count
+        @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order => 'id ASC' )
+        render :update do |page|
+         page.replace_html 'protocolo', :partial => "protocolos"
+        end
+       else if params[:type_of].to_i == 6
+        @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","1"]).count
+        @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","1"],:order => 'id ASC' )
+        render :update do |page|
+          page.replace_html 'protocolo', :partial => "protocolos"
+        end
+       end
    end
 end
 
@@ -89,6 +110,7 @@ def indexe
   # GET /prefprotocolos/1/edit
   def edit
     @prefprotocolo = Prefprotocolo.find(params[:id])
+    $id = params[:id]
   end
 
   # POST /prefprotocolos
@@ -137,32 +159,41 @@ def indexe
     end
   end
 
-def create_despachos
-      @despacho = Despacho.new(params[:despacho])
-      $teste=@despacho.despacho
-      $teste2=@despacho.para
-      $teste3=@despacho.destino
-      if @despacho.save
-        @despachos = Despacho.all(:conditions => ["prefprotocolo_id is null"])
-        @despachos.id =
-        session[:despacho_id] = @despacho.id
+#def create_despachos
+#      @despacho = Despacho.new(params[:despacho])
+#      $teste=@despacho.despacho
+#      $teste2=@despacho.para
+#      $teste3=@despacho.destino
+#      if @despacho.save
+#        @despachos = Despacho.all(:conditions => ["prefprotocolo_id is null"])
+#        @despachos.id =
+##        session[:despacho_id] = @despacho.id
 
-          redirect_to(new_despacho_path)
-      end
-    end
-
- # def create_familiares
-#      @familiar = Familiare.new(params[:familiare])
-#      $teste=@familiar.nome
-#      $teste2=@familiar.parentesco
-#      if @familiar.save
-#        @familiares = Familiare.all(:conditions => ["funcionario_id is null"])
-#        session[:familiare_id] = @familiar.id
-#         render :update do |page|
-#            page.replace_html 'lista', :partial => "lista_familiares"
-#        end
+#          redirect_to(new_despacho_path)
 #      end
 #    end
+
+
+def create_despacho
+      @despacho = Despacho.new(params[:despacho])
+      @prefprotocolo = Prefprotocolo.find($id)
+      @despacho.prefprotocolo_id =@prefprotocolo.id
+      @despacho.procedencia =@prefprotocolo.destino
+      @despacho.data_saida = Time.now
+      if @despacho.destino =='ENCERRADO'
+        @prefprotocolo.encerrado = true
+        @prefprotocolo.data_encerramento = Time.now
+        @prefprotocolo.save
+
+      end
+      if @despacho.save
+        render :update do |page|
+          page.replace_html 'dados', :partial => "despachos"
+          page.replace_html 'edit'
+        end
+       end
+
+end
 
 
 end

@@ -31,11 +31,16 @@
         <tr>
           <td align="left" >
                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "1") %></a>Assunto
-               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a>Emissor
                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "3") %></a>Destinatário
+               <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "5") %></a>Em Aberto
+               <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "6") %></a>Encerrados
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "7") %></a>Protocolo
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a>Requerente
                <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "4") %></a>Todos
            </td>
-           <td><div class="consulta" style="display:none"> <%= render "consulta" %>  </div></td>
+         </tr>
+         <tr>
+           <td align="right"><div class="consulta" style="display:none"> <%= render "consulta" %>  </div></td>
        </tr>
       </table>
     <% end %>

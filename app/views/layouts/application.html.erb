@@ -133,14 +133,9 @@ display: none;
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Protocolos</a>
                         <ul>
-                          <li><%= link_to "Novo"%> </li>
-                          <li><%= link_to "Consulta"%></li>
-                          <li><a href=>Protocolos</a>
-                           <ul>
-                              <li><%= link_to "Em Aberto" %></li>
-                              <li><%= link_to "Encerrados"  %></li>
-                          </ul>
-                          </li>
+                          <li><%= link_to "Novo", new_prefprotocolo_path%> </li>
+                          <li><%= link_to "Despachar", prefprotocolos_path%></li>
+                          <li><%= link_to "Consulta", consulta_prefprotocolos_path %></li>
                         </ul>
                       </li>
                      <li><span class="divider divider-vert" ></span></li>

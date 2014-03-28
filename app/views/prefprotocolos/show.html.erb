@@ -12,46 +12,38 @@
  <tr>
    <td colspan="2">
     <fieldset><legend><font  size=4>PROTOCOLO</font></legend>
-       <table width="100%">
+       <table>
           <tr>
-            <td width="6%"></td>
-            <td align="left" valign="Top" width="9%"><b>Protocolo:</b></td>
-            <td align="left"><%=h @prefprotocolo.codigo %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td align="left"><b>Requerente: </b></td>
-            <td align="left"><%=h @prefprotocolo.de %></td>
+            <td width="1%"></td>
+            <td width="1%" valign="Top" width="9%"><b>Protocolo:</b></td>
+            <td width="5%"><%=h @prefprotocolo.codigo %></td>
+            <td width="1%"align="right"><b>Requerente: </b></td>
+            <td width="10%"align="left"><%=h @prefprotocolo.de %></td>
           </tr>
           <tr>
             <td></td>
             <td align="left"><b>Assunto: </b></td>
-            <td align="left"><%=h @prefprotocolo.assunto%></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td align="left"><font size="2"><b>Data:</b></font></td>
-            <td align="left"><font size="2">  <%=h @prefprotocolo.data.strftime("%d de %B de %Y") %></font></td><p>
-          </tr>
-          <tr>
-            <td></td>
-            <td align="left"><font size="2"><b>Para:</b></font></td>
-            <td align="left"><font size="2">  <%=h @prefprotocolo.para %></font></td><p>
+            <td colspan="3"align="left"><%=h @prefprotocolo.assunto%></td>
           </tr>
           <tr>
             <td></td>
             <td align="left"><b>Destinatario: </b></td>
-            <td align="left"><%=h  @prefprotocolo.destino %></td>
+            <td colspan="3"align="left"><%=h  @prefprotocolo.destino %>
+                &nbsp&nbsp<b>Para:</b> <%=h @prefprotocolo.para %>
+                &nbsp&nbsp<b>em:</b> <%=h @prefprotocolo.data.strftime("%d/%b/%Y")%>
+             </td>
           </tr>
           <tr>
             <td></td>
-            <td align="left"><b>Encerrado: </b></td>
-            <% if @prefprotocolo.encerrado == 0 %>
-               <td align="left"> NÃO</td>
-            <%  else  %>
-                <td align="left"> em  <%=h @prefprotocolo.data_encerramento.strftime("%d de %B de %Y") %> SIM</td>
-            <% end %>
+            <td align="left" valign="top"><b>Despachos: </b></td>
+            <td align="left" colspan="3"> <%= render :partial => 'despachos'  %></td>
           </tr>
+           <% if @prefprotocolo.encerrado != 0 %>
+              <tr>
+                <td></td>
+                <td colspan="4"><b>Encerrado em</b>  <%=h @prefprotocolo.data_encerramento.strftime("%d de %B de %Y") %></td>
+              </tr>
+            <% end %>
 
        </table>
     </fieldset>
