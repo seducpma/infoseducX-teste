@@ -1,0 +1,31 @@
+<div style='display:none'>
+  <div id='inline_despacho' style='padding:10px; background:#EEE9E9;'>
+    <% form_remote_for(:despacho,:url => { :action => 'create_despacho' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
+     <h1>DESPACHO PROTOCOLO <%=h @prefprotocolo.codigo %></h1>
+      <%= error_messages_for 'contact' %>
+        <table  width="100%" bgcolor="#F5F5F5">
+         <tr>
+            <td width="10%"><b><%= f.label :procedencia, 'Funcinário:' %></b><font color="red" size="1"></font></td>
+            <td><%= f.text_field :procedencia, :size =>'40' %></td>
+
+         </tr>
+        <tr>
+            <td width="10%"><b><%= f.label :despacho, 'Despacho:' %></b><font color="red" size="1"></font></td>
+            <td><%= f.text_field :despacho, :size =>'40' %></td>
+        </tr>
+        <tr>
+           <td align="left"><font size="2"><b>Destino:</b></font></td>
+           <td align="left" colspan="3"><font size="2"> <%=  f.select :destino, Prefprotocolo::DESTINO, :include_blank => '---Selecione---'%></font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size="2"><b>Para:</b></font></td>
+           <td align="left" colspan="3"><font size="2"> <%=  f.select :para, Prefprotocolo::PARA, :include_blank => '---Selecione---'%></font></td>
+        </tr>
+         <tr>
+            <td colspan="2"><%= f.submit "Salvar" %></td>
+          </tr>
+        </table>
+      <%end%>
+      <hr>
+  </div>
+</div>

@@ -12,7 +12,6 @@
             <th width ="10%">Destinatário</th>
             <th width ="50%">Data</th>
             <th width ="1%">Status</th>
-            <th width ="1%"></th>
           </tr>
 
             <% for protocolo in @prefprotocolos %>
@@ -27,9 +26,26 @@
                <% else %>
                  <td align="center"> Em Aberto</td>
                <%end%>
-               <td><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "20x20"), protocolo, :title => "Exibir" %>
-               </td>
-          </tr>
+           </tr>
+           <tr>
+             <td colspan="6">
+
+                <% if protocolo.encerrado == 1 %>
+                  <table align="right">
+                    <tr>
+                      <td colspan="6" align="right"><%= button_to('Protocolo',{:action => "show", :id =>protocolo}, :method => "get", :title => "Protocolo") %></td>
+                    </tr>
+                  </table>
+               <% else %>
+                  <table align="right">
+                    <tr>
+                       <td colspan="2" align="right"><%= button_to('Protocolo',{:action => "show", :id =>protocolo}, :method => "get", :title => "Protocolo") %></td>
+                       <td width="1%" align="right"> <%= button_to('Despachar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                    </tr>
+                  </table>
+               <%end%>
+             </td>
+           </tr>
             <%end%>
 
      </table>

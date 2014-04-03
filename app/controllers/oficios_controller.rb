@@ -34,6 +34,13 @@ def consultaof
           render :update do |page|
             page.replace_html 'consultaoficio', :partial => "oficios"
           end
+          else if params[:type_of].to_i == 5
+          @contador = Oficio.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"]).count
+          @oficios = Oficio.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          render :update do |page|
+            page.replace_html 'consultaoficio', :partial => "oficios"
+          end
+         end
          end
        end
      end

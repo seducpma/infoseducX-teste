@@ -8,18 +8,54 @@
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
    </td>
  </tr>
+  <div class="botao">
   <tr>
-    <td colspan="2">
-      <table border="2" width="100%">
+   <td colspan="3">
+     <table>
+      <tr>
+         <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+         <td width="2%"align="right" ><%= button_to('Protocolos',prefprotocolos_path, :method => "get", :title => "Protocolos") %></td>
+         <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <td  width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
+      </tr>
+    </table>
+   </td>
+  </tr>
+ </div>
+ <tr>
+   <td colspan="3">
+     <% form_remote_tag :url => protocolo_prefprotocolos_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+       <table width="100%">
+        <tr>
+          <td align="left" >
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "3", true) %></a>Departamento
+               <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "4") %></a>Todos
+           </td>
+         </tr>
+         <tr>
+           <td colspan="2"align="right"><font size="2"> <b class="label_busca">Selecionar Departamento:</b></font>
+            <!--<%= text_field_tag :search, params[:search], :class=> "txt_busca" %>-->
+            <%=  select_tag :search, options_for_select(Prefprotocolo::DESTINO), :include_blank => '---Selecione---', :class=> "txt_busca"%>
+            <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
+           </td>
+         </tr>
+      </table>
+    <% end %>
+    <br/>
+    <hr>
+   </td>
+ </tr>
+<tr>
+  <td colspan="3">
+   <div id="protocolo"> <table border="2" width="100%">
          <tr>
             <th width ="1%" align="center"> Protocolo</th>
             <th width ="10%">Requente</th>
             <th width ="90%">Assunto</th>
             <th width ="50%">Data</th>
             <th width ="10%">Para</th>
+            <th width ="5%">Departamento</th>
             <th> Encerrado</th>
-            <th colspan="4"></th>
-
           </tr>
 
             <% for protocolo in @prefprotocolos %>
@@ -29,24 +65,54 @@
                <td><%=h protocolo.assunto %></td>
                <td><%=h protocolo.data.strftime("%d/%m/%y")%></td>
                <td><%=h protocolo.para %></td>
+               <td><%=h protocolo.destino %></td>
                <% if  protocolo.encerrado == 0 %>
                  <td align="center"> NÃO </td>
                <%  else  %>
                  <td align="center"><font color="red" > SIM</font> </td>
                <% end %>
-               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "20x20"), protocolo, :title => "Exibir" %></td>
-               <% if current_user.has_role?('administrador') or current_user.has_role?('oficios') %>
-                <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/write.png", :size => "20x20"),  edit_prefprotocolo_path(protocolo), :title => "Despachar"%></td>
-                    <% if current_user.has_role?('administrador')%>
-                        <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"), protocolo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
-                    <%end%>
+            </tr>
+           <tr>
+             <td colspan="7">
+
+                <% if protocolo.encerrado == 1 %>
+                  <table align="right">
+                    <tr>
+                      <td colspan="2" align="right"><%= button_to('Protocolo',{:action => "show", :id =>protocolo}, :method => "get", :title => "Protocolo") %></td>
+                    </tr>
+                  </table>
+               <% else %>
+                  <table align="right">
+                    <tr>
+                       <td colspan="2" align="right"><%= button_to('Protocolo',{:action => "show", :id =>protocolo}, :method => "get", :title => "Protocolo") %></td>
+                       <td width="1%" align="right"> <%= button_to('Despachar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                    </tr>
+                  </table>
                <%end%>
-               
-          </tr>
-            <%end%>
+             </td>
+           </tr>
+       <%end%>
 
      </table>
-    </td>
+
+   </div>
+  </td>
+</tr>
+  <div class="botao">
+  <tr>
+   <td colspan="3">
+     <table>
+      <tr>
+         <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+         <td width="2%"align="right" ><%= button_to('Protocolos',prefprotocolos_path, :method => "get", :title => "Protocolos") %></td>
+         <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <td  width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
+      </tr>
+    </table>
+   </td>
+  </tr>
+ </div>
+
 </table>
 
 <br/>

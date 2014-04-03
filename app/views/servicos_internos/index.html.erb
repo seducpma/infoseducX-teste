@@ -11,17 +11,22 @@
   <tr>
     <td colspan="2">
       <br/>
-      <div class="botao">
-        <table width="10%">
-           <tr>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_servicos_interno_path, :title => "Novo Serviço Interno"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_servicos_internos_path, :title => "Consulta Serviços Internos" %></td>
-             <td align="left"><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    <div class="botao">
+      <tr>
+       <td colspan="2">
+         <table>
+          <tr>
+             <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+             <td width="2%"align="right" ><%= button_to('Serviços Internos',servicos_internos_path, :method => "get", :title => "Serviços Internos") %></td>
+             <td width="2%"align="right" ><%= button_to('Novo', new_servicos_interno_path, :title => "Novo")%></td>
+             <td  width="2%" align="right"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
           </tr>
         </table>
-        <br/>
-      </div>
+       </td>
+      </tr>
+     </div>
+    <tr>
+      <td colspan="2">
       <font  size="2">
         <table border="2" width="100%">
           <tr>
@@ -45,21 +50,24 @@
 
           </tr>
             <%end%>
-
-
-  </table>
-  </font>
+        </table>
+     </font>
+     </td>
+    </tr>
     <div class="botao">
-      <table width="100%" align="center">
-       <br/>
-           <tr>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_servicos_interno_path, :title => "Novo Serviço Interno"%></td>
-             <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_servicos_internos_path, :title => "Consulta Serviço Intenro" %></td>
-             <td align="left"><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <tr>
+       <td colspan="2">
+         <table>
+          <tr>
+             <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+             <td width="2%"align="right" ><%= button_to('Serviços Internos',servicos_internos_path, :method => "get", :title => "Serviços Internos") %></td>
+             <td width="2%"align="right" ><%= button_to('Novo', new_servicos_interno_path, :title => "Novo")%></td>
+             <td  width="2%" align="right"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
           </tr>
-       </table>
-    </div>
+        </table>
+       </td>
+      </tr>
+     </div>
  </td>
 </table>
 

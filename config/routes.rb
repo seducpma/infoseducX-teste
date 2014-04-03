@@ -135,6 +135,7 @@ ActionController::Routing::Routes.draw do |map|
   map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
   map.protocolo 'protocolo', :controller => 'sessions', :action => 'protocolo'
   map.interno 'interno', :controller => 'sessions', :action => 'interno'
+
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
@@ -163,6 +164,8 @@ ActionController::Routing::Routes.draw do |map|
   #map.c_curso '/c_curso', :controller => 'cursos', :action => 'consulta'
   map.c_curso_and '/c_curso_and', :controller => 'cursos', :action => 'consulta_and'
   map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
+  map.prefprot '/prefprot', :controller => 'prefprotocolos', :action => 'index'
+  map.teste '/teste', :controller => 'prefprotocolos', :action => 'teste'
 
 
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'

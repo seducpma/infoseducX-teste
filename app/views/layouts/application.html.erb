@@ -82,8 +82,11 @@ display: none;
                                       <% if (current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
                                         - SISOFI - Sistema de Controle Emissão de Documentos
                                       <%else%>
-                                            - Bem vindo ao Sistema INFOSEDUC
-
+                                           <%if (current_user.has_role?('protocolo'))%>
+                                              - SISPROT - Sistema de Controle de Protocolos
+                                            <%else%>
+                                              - Bem vindo ao Sistema INFOSEDUC
+                                            <%end%>
                                       <%end%>
                                   <%end%>
                              <%end%>
@@ -119,7 +122,8 @@ display: none;
                   <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
-              <% if (current_user.has_role?('administrador') ) %>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo')) %>
+               <% if (current_user.has_role?('administrador') ) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">Documentos</a>
                     <ul>
@@ -130,6 +134,7 @@ display: none;
                           <li><%= link_to "Consulta", consulta_oficios_path  %></li>
                         </ul>
                      </li>
+                 <%end%>
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Protocolos</a>
                         <ul>
@@ -138,6 +143,7 @@ display: none;
                           <li><%= link_to "Consulta", consulta_prefprotocolos_path %></li>
                         </ul>
                       </li>
+                 <% if (current_user.has_role?('administrador') ) %>
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Serviços Internos</a>
                         <ul>
@@ -148,7 +154,8 @@ display: none;
                      </li>
                     </ul>
                   </li>
-             <%end%>
+               <%end%>
+              <%end%>
              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Estagiários</a>

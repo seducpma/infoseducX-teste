@@ -34,6 +34,13 @@ def consultaint
           render :update do |page|
             page.replace_html 'interno', :partial => "internos"
           end
+          else if params[:type_of].to_i == 5
+          @contador = ServicosInterno.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"]).count
+          @servicos_internos = ServicosInterno.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          render :update do |page|
+            page.replace_html 'interno', :partial => "internos"
+           end
+          end
          end
        end
      end

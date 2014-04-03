@@ -13,10 +13,10 @@
    <td colspan="2">
      <table>
       <tr>
-       <td width="2%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
-       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), prefprotocolos_path, :title => "Protocolos Cadastrados"%></td>
-       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_prefprotocolo_path, :title => "Novo Protocolo"%></td>
-       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_prefprotocolos_path, :title => "Consulta Protocolos" %></td>
+         <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+         <td width="2%"align="right" ><%= button_to('Protocolos',prefprotocolos_path, :method => "get", :title => "Protocolos") %></td>
+         <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <td  width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
       </tr>
     </table>
    </td>
@@ -30,11 +30,11 @@
        <table width="100%">
         <tr>
           <td align="left" >
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "7") %></a>Nº Protocolo
                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "1") %></a>Assunto
-               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "3") %></a>Destinatário
+               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "3") %></a>Departamento
                <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "5") %></a>Em Aberto
                <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "6") %></a>Encerrados
-               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "7") %></a>Protocolo
                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a>Requerente
                <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "4") %></a>Todos
            </td>
@@ -48,14 +48,20 @@
     <hr>
      <div id="protocolo"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
     <br/>
-  <table>
-    <tr>
-       <td width="2%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
-       <td width="2%" align="left"><%= link_to image_tag("/stylesheets/images/buscar.png", :size => "30x30"), prefprotocolos_path, :title => "Protocolos Cadastrados"%></td>
-       <td width="2%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "35x35"),  new_prefprotocolo_path, :title => "Novo Protocolos"%></td>
-       <td align="left"><%= link_to image_tag("/stylesheets/images/consulta1.png", :size => "40x40"), consulta_prefprotocolos_path, :title => "Consulta Procolos" %></td>
-    </tr>
-  </table>
+     <div class="botao">
+      <tr>
+       <td colspan="2">
+         <table>
+          <tr>
+             <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+             <td width="2%"align="right" ><%= button_to('Protocolos',prefprotocolos_path, :method => "get", :title => "Protocolos") %></td>
+             <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+             <td  width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
+          </tr>
+        </table>
+       </td>
+      </tr>
+     </div>
  </div>
  </td>
  </tr>
