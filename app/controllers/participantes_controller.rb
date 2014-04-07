@@ -86,8 +86,8 @@ def index
   # GET /participantes/new
   # GET /participantes/new.xml
   def new
+    $parti=0
     @participante = Participante.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @participante }
@@ -96,6 +96,7 @@ def index
 
   # GET /participantes/1/edit
   def edit
+    $parti=1
     @participante = Participante.find(params[:id])
   end
 

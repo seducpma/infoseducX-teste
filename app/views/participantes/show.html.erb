@@ -58,12 +58,11 @@
         </table>
     </fieldset>
      <% if @participante.unidade_id.nil? %>
-     
      <%else%>
-   <fieldset><legend><font  size=4> Se Professor ou Funcionário SEDUC </font></legend>
-       <table width ="20%"width="100%">
+     <fieldset><legend><font  size=4> Se Professor ou Funcionário SEDUC </font></legend>
+       <table width="100%" >
                 <tr>
-                   <td align="left"><b>Matrícula: </b></td>
+                   <td  width="10%"align="left"><b>Matrícula: </b></td>
                    <td align="left"><%=h @participante.matricula %></td>
                 </tr>
                 <tr>
@@ -81,19 +80,20 @@
         </table>
     </fieldset>
       <%end%>
-     <div class="botao">
-      <table>
-        <tr>
-            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-
-
-                <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_participante_path(@participante), :title => "Alterar Dados"%></td>
-
-
-           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      
+      <div class="botao">
+         <tr>
+           <td colspan="4">
+            <table align="right">
+              <tr>
+                <td align="right"> <%= button_to('Participante',{:action => "edit", :id =>@participante}, :method => "get", :title => "Particpante") %></td>
+                <td width="1%"align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+              </tr>
+            </table>
+           </td>
          </tr>
-      </table>
-   </div>
+       </div>
+
  </td>
 </tr>
 </table>

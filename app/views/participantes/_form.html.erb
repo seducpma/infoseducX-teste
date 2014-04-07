@@ -15,14 +15,22 @@
       <fieldset><legend><font  size=4> Participante</font></legend>
         <table width="100%" align="center">
             <tr>
-              
-              <td align="left" colspan="2"><font size="3" color =" red"><b>*
-                  Campos com preenchimento obrigatório</b></font></td>
+              <% if $parti == 1 %>
+                <br>
+                <td align="left" colspan="2"><font size="5" color =" red"><b>*
+                 NÃO CONSTA E_MAIL - FAVOR CADASTAR </b></font>
+                </td>
+              <%else%>
+                <td align="left" colspan="2"><font size="3" color =" red"><b>*
+                  Campos com preenchimento obrigatório</b></font>
+                 </td>
+              <%end%>
             </tr>
           <tr>
                <td align="left"><font size="3" color =" red"><b>*</font> Nome: </b></td>
                <td align="left"><%= f.text_field :nome, :size =>68%></td>
             </tr>
+         <% if $parti != 1 %>
             <tr>
                <td align="left"><b>Profissão:</b></td>
                <td align="left"><%= f.text_field :profissao, :size =>24%>
@@ -53,8 +61,9 @@
                    <b>CEP:</b><%= f.text_field :CEP, :size =>10 %>
                </td>
             </tr>
+       <% end %>
             <tr>
-               <td align="left"><font size="3" color =" red"><b>* </font>E-mail:</b></td>
+               <td align="left"><b><font size="3" color =" red">* </font>E-mail:</b></td>
                <td align="left"><%= f.text_field :email, :size =>68 %></td>
             </tr>
         </table>
@@ -84,14 +93,22 @@
       </fieldset>
       <div class="botao">
         <table width="100%" align="left">
-           <tr>
-             <div id='Certeza'>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+         <tr>
+           <td colspan="2">
+              <div class="botao">
+                <table width="40%" align="right">
+                   <tr>
+                     <td align="right"><%= f.submit "Gravar" %> </td>
+        <% end %>
+                      <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+
+                   </tr>
+                </table>
               </div>
-              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
-<% end %>
-            </tr>
-        </table>
+
+           </td>
+          </tr>
+       </table>
       </div>
     </td>
    </tr>

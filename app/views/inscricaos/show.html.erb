@@ -48,33 +48,38 @@
 
           </table>
         </fieldset>
-        <div class="botao">
-          <table width="100%" align="left"  >
+     
+       <table width="100%" align="left" >
           <tr>
             <td colspan="3">
-              <b><font color="red" size="2"> <u>IMPORTANTE:</u></b>
+              <b><font color="red" size="2"> <u>IMPORTANTE:</u></font></b>
             </td>
           </tr>
           <tr>
             <td colspan="3"><b>
               <dd><li> Este comprovante é a garantia da efetivação de sua inscriação</li></dd>
               <dd><li> Imprima e guarde este comprovante</li></dd>
-              <dd><li> O comprovante pode ser solicitado para ingresso no dia do curso</li></b></dd>
+              <dd><li> O comprovante pode ser solicitado para ingresso no dia do curso</li></dd>
             </td>
           </tr>
           <tr>
              <td colspan="3"><hr></td>
         </tr>
-          <tr>
-            <td width="1%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-            <td width="1%"><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "40x40"), new_inscricao_path, :title => 'Nova Inscrição'  %></td>
-            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          </tr>
-        </table>
-       </div>
-
-      </td>
-    </tr>
+        <% $idparticipante =  @inscricao.participante_id%>
+    <div class="botao">
+       <tr>
+         <td colspan="4">
+          <table align="right">
+            <tr>
+              <td align="right"><%= button_to('Inscrições Anteriores',{:controller =>"inscricaos" ,:action => "consultas1", :id =>@inscricao}, :method => "get", :title => "Inscrições Anteirores") %></td>
+              <td width="1%" align="right"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
+              <td width="1%" align="right"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+              <td width="1%"align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+            </tr>
+          </table>
+         </td>
+       </tr>
+     </div>
  </table>
 </font>
 <br/>

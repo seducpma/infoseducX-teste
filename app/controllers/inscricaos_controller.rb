@@ -258,6 +258,11 @@ def gera_pdf
 
  end
 
+
+ def consultas1
+   @inscricaos = Inscricao.find(:all, :conditions => ['participante_id=?',  $idparticipante ],:order => "created_at DESC")
+ end
+
  def lista_inscricaos
      $participante = params[:inscricao_inscricao_participante_id]
     @inscricaos = Inscricao.find(:all, :conditions => ['participante_id=?',  $participante ])

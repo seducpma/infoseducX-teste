@@ -32,11 +32,19 @@
         <td width =20%"  valign="top">
            <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %><br/>
            <div class="botao">
-             &nbsp&nbsp<b><u>OBS:</u> 1) ANTES DE SE CADASTRAR, VERIFIQUE SE SEU NOME CONSTA NA LISTA</b><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-             <b>2) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES</b><br/>
-             <font color="blue">&nbsp<b>&#183; Se nome não consta na lista acima, favor cadastrar</b> ===============></font>
-             <%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_participante_path, :title => "Cadastrar Participante" %>
+            <br/>
+             <table>
+               <tr>
+                 <td> &nbsp&nbsp<b><u><font color="red" size="3">OBS:</font></u> 1) SE NOME NÃO CONSTA NA LISTA ACIMA. Clique aqui para cadastrar</b> =====></td>
+                 <td><%= link_to image_tag("/stylesheets/images/participante.jpeg", :size => "180x25"), new_participante_path, :title => "Cadastrar Participante" %></td>
+              </tr>
+              <tr>
+                 <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>2) ANTES DE SE CADASTRAR, VERIFIQUE SE SEU NOME CONSTA NA LISTA</b></td>
+               </tr>
+               <tr>
+                 <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>3) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES</b></td>
+               </tr>
+             </table>
            </div>
          </td>
          <!--
@@ -45,7 +53,6 @@
 
         </td>-->
      <%end%>
-
   </tr>
 
           <%= observe_field  :inscricao_participante_id,
@@ -105,15 +112,16 @@
         <th colspan="2"><font size="2">
           <center><font size ="3"color="red"><u>LEIA COM ATENÇÃO</u></font></center>
           <u>Obs:</u> Para maiores informações posicione o mouse sobre caixa de opção e aguarde alguns segundos.<br/>
-             &nbsp&nbsp&nbsp&nbsp <b><font color="blue">> WORKSHOP SOBRE DROGAS:</u></b></font><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Professores Ed.Infantil e ADI (do período da matutino e do vespertino) <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 07, 14 e 28 de Abril <br/>
+             &nbsp&nbsp&nbsp&nbsp <b>> OFICINA DE CINEMA</b>:<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Todos os professores de rede municipal<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 08, 15 e 29 de Abril / 06 e 27 de Maio / 03 e 10 de Junho <br/>
              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Hário / Local:</u> 18:30 às 21:30 horas no anfiteatro da SEDUC<br/>
 
-             &nbsp&nbsp&nbsp&nbsp <b><font color="blue">> <u>WORKSHOP SOBRE DROGAS:</u></b></font><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Professores Ensino Fundamental e ADI (do período da matutino e do vespertino) <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 09, 16 e 23 de Abril<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Hário / Local:</u> 18:30 às 21:30 horas no anfiteatro da SEDUC<br/>
+             &nbsp&nbsp&nbsp&nbsp <b>> PRÓ LETRAMENTO MATEMÁTICA</b>:<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Profesores PB 1 - Educação Infantil<br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Todas as Terças-Feiras a partir de 25/03/2014 <br/>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Hário / Local:</u> 18:30 às 21:30 horas no CIEP Cidade Jardim<br/>
+
     </font></th>
           </tr>             
   </table>
@@ -122,14 +130,16 @@
 
          <table width="100%" align="left">
            <tr>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               
                <!--
                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÂO <b></font></td>
                -->
-               <td align="left">   <%= f.submit "INSCREVER" %></td>
+               <td align="right">   <%= f.submit "INSCREVER" %></td>
+      <% end %>
+               <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
            </tr>
        </table>
-      <% end %>
+
     </td>
   </tr>
   </table>
