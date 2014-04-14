@@ -1,19 +1,17 @@
 <div style='display:none'>
   <div id='inline_despacho' style='padding:10px; background:#EEE9E9;'>
     <% form_remote_for(:despacho,:url => { :action => 'create_despacho' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
-     <h1>DESPACHO <br/><br/> PROTOCOLO<%=h @prefprotocolo.codigo %></h1>
+     <h1>DESPACHO <br/> PROTOCOLO<%=h @prefprotocolo.codigo %></h1>
       <hr>
        <%= error_messages_for 'contact' %>
-      <br/>
-        <table  width="100%" bgcolor="#F5F5F5">
+       <table  width="100%" bgcolor="#F5F5F5">
          <tr>
-            <td width="10%"><b><%= f.label :procedencia, 'Funcinário:' %></b><font color="red" size="1"></font></td>
-            <td><%= f.text_field :procedencia, :size =>'57' %></td>
-
+            <td width="10%"><font size="2"><b><%= f.label :funcionario, 'Funcinário:' %></b></font></td>
+            <td><%= f.text_field :funcionario, :size =>'40' %></td>
          </tr>
         <tr>
-            <td width="10%" valign="top"><b><%= f.label :despacho, 'Despacho:' %></b><font color="red" size="1"></font></td>
-            <td><%= f.text_area :despacho, :cols=>'70', :rows=> '4' %></td>
+            <td width="10%" valign="top"><b><font size="2"><%= f.label :despacho, 'Despacho:' %></font></b></td>
+            <td><%= f.text_area :despacho, :cols=>'50', :rows=> '4' %></td>
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Destino:</b></font></td>
@@ -21,14 +19,22 @@
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Para:</b></font></td>
-           <td align="left" colspan="3"><font size="2"> <%=  f.select :para, Prefprotocolo::PARA, :include_blank => '---Selecione---'%></font></td>
-        </tr>      
-         <tr>
+           <td align="left" colspan="3"><font size="2"> <%=  f.select :para, Prefprotocolo::PARA, :include_blank => '---Selecione---'%></font><br/>
+                           <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "1", :checked => "true") %></a> <font size="2">Em tramite</font>
+                           <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a><font size="2">Final</font>
+           </td>
+        </tr>
+
+       <tr>
+           <td colspan="2"align="left"><div class="final" style="display:none"> <%= render "final" %>  </div></td>
+       </tr>
+
+
+
+        <tr>
             <td align="right" colspan="2"><br/><%= f.submit "Salvar" %></td>
-          </tr>
-        </table>
+        </tr>
+       </table>
       <%end%>
-      <br/>
-      <hr>
   </div>
 </div>

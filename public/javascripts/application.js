@@ -36,10 +36,12 @@ jQuery(document).ready(function( $ ){
       $(".txt_busca").hide();
       $(".label_busca").hide();
       $(".consulta").show();
+      $(".final").hide();
 
     });
   $(".filtro").click(function ()
    {
+     $(".final").show();
      $(".consulta").show();
      $(".txt_busca").show();
      $(".texto1").show();

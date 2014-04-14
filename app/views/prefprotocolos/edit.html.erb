@@ -33,7 +33,6 @@
            <td align="left"><font size="2"><%=h  @prefprotocolo.destino %></font></td>
            <td align="right"><font size="2"><b>Para:</b></font></td>
            <td align="left"><font size="2"> <%=h @prefprotocolo.para %></font></td>
-
         </tr>
         <tr>
           <td align="left" valign="top"><font size="2"><b>Despachos:</b></font></td>
@@ -42,7 +41,7 @@
         <% if  @prefprotocolo.encerrado == 1  %>
         <tr>
            <td align="left"><b>Encerrado:</b></td>
-           <td align="left" colspan="3"> <b>em</b> <%= f.check_box :encerrado %> EM <%= f.date_select(:data_encerramento, :order => [:day, :month, :year]) %></td>
+           <td align="left" colspan="3">  EM <%= f.date_select(:data_encerramento, :order => [:day, :month, :year]) %></td>
         </tr>
         <%end%>
 

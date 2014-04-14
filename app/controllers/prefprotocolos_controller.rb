@@ -11,7 +11,7 @@ end
 
   def consulta
       if params[:type_of].nil?
-        @prefprotocolos = Prefprotocolo.all(:order => 'id DESC')
+        @prefprotocolos = Prefprotocolo.all(:order =>  'created_at DESC')
       end
       $testeI=0;
     render 'consulta'
@@ -21,15 +21,15 @@ def protocolo
    #unless params[:search].present?
      if params[:type_of].to_i == 4
        if ($testeI==1)
-         @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order => 'id ASC' ).count
-         @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order => 'id ASC' )
+         @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","0"] ).count
+         @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order => 'created_at DESC' )
          render :update do |page|
            page.replace_html 'protocolo', :partial => "protocolosindex"
          end
       $testeI=1;
       else
          @contador = Prefprotocolo.all.count
-         @prefprotocolos = Prefprotocolo.all(:order => 'id DESC')
+         @prefprotocolos = Prefprotocolo.all(:order =>  'created_at DESC')
          render :update do |page|
            page.replace_html 'protocolo', :partial => "protocolos"
          end
@@ -39,33 +39,33 @@ def protocolo
    #else
       if params[:type_of].to_i == 1
           @contador = Prefprotocolo.all(:conditions => ["assunto like ?", "%" + params[:search].to_s + "%"]).count
-          @prefprotocolos = Prefprotocolo.all(:conditions => ["assunto like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+          @prefprotocolos = Prefprotocolo.all(:conditions => ["assunto like ?", "%" + params[:search].to_s + "%"],:order =>  'created_at DESC')
           render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
           end
           else if params[:type_of].to_i == 2
            @contador = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"]).count
-           @prefprotocolos = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+           @prefprotocolos = Prefprotocolo.all(:conditions => ["de like ?", "%" + params[:search].to_s + "%"],:order =>  'created_at DESC')
            render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
            end
           else if params[:type_of].to_i == 3
              if ($testeI==1)
                @contador = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ? ", "%" + params[:search].to_s + "%", "0"]).count
-               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ?", "%" + params[:search].to_s + "%", "0"],:order => 'id ASC')
+               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ?", "%" + params[:search].to_s + "%", "0"],:order =>  'created_at DESC')
                render :update do |page|
                 page.replace_html 'protocolo', :partial => "protocolosindex"
                end
              else
                @contador = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"]).count
-               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order =>  'created_at DESC')
                render :update do |page|
                 page.replace_html 'protocolo', :partial => "protocolos"
                end
              end
           else if params[:type_of].to_i == 7
            @contador = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"]).count
-           @prefprotocolos = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"],:order => 'id ASC')
+           @prefprotocolos = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"],:order =>  'created_at DESC')
            render :update do |page|
             page.replace_html 'protocolo', :partial => "protocolos"
            end
@@ -77,7 +77,7 @@ def protocolo
    #unless params[:search].present?
        if params[:type_of].to_i == 5
         @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","0"]).count
-        @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order => 'id ASC' )
+        @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order =>  'created_at DESC' )
         render :update do |page|
          page.replace_html 'protocolo', :partial => "protocolos"
         end
@@ -85,14 +85,14 @@ def protocolo
        else if params[:type_of].to_i == 6
          if ($testeI==1)
             @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","1"]).count
-            @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado =?","1"],:order => 'id ASC')
+            @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado =?","1"],:order =>  'created_at DESC')
             $testeI=1
             render :update do |page|
               page.replace_html 'protocolo', :partial => "protocolosindex"
             end
          else
             @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","1"]).count
-            @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado =?","1"],:order => 'id ASC')
+            @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado =?","1"],:order =>  'created_at DESC')
             render :update do |page|
               page.replace_html 'protocolo', :partial => "protocolos"
             end
@@ -216,11 +216,14 @@ def create_despacho
       @despacho.prefprotocolo_id =@prefprotocolo.id
       @despacho.procedencia =@prefprotocolo.destino
       @despacho.data_saida = Time.now
-      if @despacho.destino =='ENCERRADO'
+      if @despacho.para =='ENCERRADO'
         @prefprotocolo.encerrado = true
         @prefprotocolo.data_encerramento = Time.now
         @prefprotocolo.save
-
+      else
+        @despacho.para =='ENCERRADO'
+        @prefprotocolo.encerrado = false
+        @prefprotocolo.save
       end
       if @despacho.save
         render :update do |page|
@@ -228,6 +231,11 @@ def create_despacho
           page.replace_html 'edit'
         end
        end
+
+end
+
+def destinofinal
+  render :partial => 'consulta'
 
 end
 

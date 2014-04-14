@@ -33,7 +33,9 @@
                 <% if protocolo.encerrado == 1 %>
                   <table align="right">
                     <tr>
-                      <td colspan="6" align="right"><%= button_to('Protocolo',{:action => "show", :id =>protocolo}, :method => "get", :title => "Protocolo") %></td>
+                       <td colspan="2" align="right"><%= button_to('Protocolo',{:action => "show", :id =>protocolo}, :method => "get", :title => "Protocolo") %></td>
+                       <td width="1%" align="right"> <%= button_to('Reabrir',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Reabrir") %></td>
+
                     </tr>
                   </table>
                <% else %>

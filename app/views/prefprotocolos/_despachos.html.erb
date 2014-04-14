@@ -1,8 +1,12 @@
 <% c=0 %>
-<% @prefprotocolo.despachos.each do |despacho| %>
+<% @prefprotocolo.despachos.each do |despacho|%>
       <b><%= c=c+1%>.</b><b><u>Despacho:</u></b> <%="#{despacho.despacho}" %>  <br/>
       &nbsp <b> de:</b> <%="#{despacho.procedencia}" %> <b>em</b> <%="#{despacho.data_saida.strftime("%d de %B de %Y")}" %><br/>
+      &nbsp <b> despachado por:</b> <%="#{despacho.funcionario}" %> <br/>
       &nbsp <b> destino:</b> <%="#{despacho.destino}" %> <b>para:</b> <%="#{despacho.para}"%><br/>
+      <%if despacho.para == "ENCERRADO"%>
+         &nbsp <b> Destino Final:</b> <%="#{despacho.destinofinal}" %> <br/>
+      <%end%>
       &nbsp ---------------------------------------------------------<br/>
 
 
