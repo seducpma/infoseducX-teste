@@ -11,7 +11,7 @@
          </tr>
         <tr>
             <td width="10%" valign="top"><b><font size="2"><%= f.label :despacho, 'Despacho:' %></font></b></td>
-            <td><%= f.text_area :despacho, :cols=>'50', :rows=> '4' %></td>
+            <td><%= f.text_area :despacho, :cols=>'50', :rows=> '3' %></td>
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Destino:</b></font></td>
@@ -28,11 +28,8 @@
        <tr>
            <td colspan="2"align="left"><div class="final" style="display:none"> <%= render "final" %>  </div></td>
        </tr>
-
-
-
         <tr>
-            <td align="right" colspan="2"><br/><%= f.submit "Salvar" %></td>
+            <td align="right" colspan="2"><%= f.submit "Salvar" %></td>
         </tr>
        </table>
       <%end%>
