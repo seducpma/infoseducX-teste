@@ -2,19 +2,25 @@
 <font size="2">
  <table  class="tabelas"   align="center" width="60%">
    <tr>
-     <th colspan="2" align="left">
-        <font  size=4><b> GERENCIAMENTO DE ACESSO</b></font>
-     </th>
-   </tr>
+        <th align="left">
+           <font size=5 color="black"> <b>  GERENCIAMENTO DE ACESSO</b></font>
+        </th>
+        <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
+    </tr>
+   <div class="botao">
    <tr>
-    <td>
+    <td colspan="2">
       <table>
-       <tr>
-          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-          <td width="6%" align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          <td align="left" ><%= link_to image_tag("/stylesheets/images/associar.png", :size => "30x30"),new_roles_user_path, :title => "Imprimir" %></td>
-        </tr>
+           <tr>
+              <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+              <td align="right" width="4%" ><%= button_to('Imprimir', onclick="javascript:window.print()", :title => "Imprimir") %></td>
+              <td align="right" width="4%"><%= button_to('Roles/User',new_roles_user_path, :title => "Direitos") %></td>
+            </tr>
       </table>
+   </div>
+    <br/>
       <table border="2" align="center">
         <tr>
           <th>Login</th>
@@ -34,12 +40,12 @@
         <tr>
            <td colspan="12">
              <div class="botao">
-             <table>
-                 <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),role_user, :title => "Exibir Dados" %></td>
+             <table align="right">
+                 <td align="right" colspan="1"><%= button_to('Usuário',role_user, :method => "get", :title => "Exibir Dados") %></td>
                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id =>role_user}, :method => "get", :title => "Alterar Dados"%></td>
+                    <td align="right" colspan="1"><%= button_to('Editar',{:action => "edit", :id =>role_user}, :method => "get", :title => "Editar Usuário")%></td>
                        <% if current_user.has_role?('administrador')%>
-                         <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), role_user, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                         <td align="right" colspan="1"><%= button_to('Excluir', role_user, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir") %></td>
                        <%end%>
                  <%end%>
              </table>
@@ -49,13 +55,13 @@
         <% end %>
 
        </table>
-      <table width="60%"  align="left">
-        <tr>
-          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-          <td width="6%" align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          <td align="left" ><%= link_to image_tag("/stylesheets/images/associar.png", :size => "30x30"),new_roles_user_path, :title => "Imprimir" %></td>
-        </tr>
-     </table>
+      <table>
+           <tr>
+              <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+              <td align="right" width="4%" ><%= button_to('Imprimir', onclick="javascript:window.print()", :title => "Imprimir") %></td>
+              <td align="right" width="4%"><%= button_to('Roles/User',new_roles_user_path, :title => "Direitos") %></td>
+            </tr>
+      </table>
    </td>
   </tr>
 </table>

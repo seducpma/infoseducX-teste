@@ -26,11 +26,16 @@
      <br/>
      <table  width="100%" align="center">
       <tr>
-        <div id='Certeza'>
-           <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-        </div>
-         <td align="left"><input type="image" src="/stylesheets/images/associar.png" title="Associar Usuários"></td>
-        <% end %>
+      <div id="certeza">
+        <table width="40%" align="right">
+           <tr>
+             <td align="right"><%= f.submit "Gravar" %> </td>
+<% end %>
+              <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+           </tr>
+        </table>
+      </div>
+
      </tr>
      </table>
      </font>

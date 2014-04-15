@@ -29,17 +29,17 @@
               <%end%>
       </tr>
      </table>
-      <div class="botao">
-       <table>
-        <tr>
-          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-          <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-              <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id => @role_user}, :method => "get", :title => "Alterar Dados"%></td>
-          <%end%>
-          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-        </tr>
+   <div class="botao">
+      <table>
+           <tr>
+              <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="right" width="4%" ><%= button_to('Editar',{:action => "edit", :id => @role_user}, :method => "get", :title => "Editar")%></td>
+              <%end%>
+              <td align="right" width="4%" ><%= button_to('Imprimir', onclick="javascript:window.print()", :title => "Imprimir") %></td>
+            </tr>
       </table>
-      </div>
+   </div>
    </td>
   </tr>
  </table>

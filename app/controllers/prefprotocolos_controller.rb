@@ -50,19 +50,29 @@ def protocolo
             page.replace_html 'protocolo', :partial => "protocolos"
            end
           else if params[:type_of].to_i == 3
+
              if ($testeI==1)
+              if (params[:search].to_s == 'PROTOCOLO_INTERNO')
                @contador = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ? ", "%" + params[:search].to_s + "%", "0"]).count
-               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ?", "%" + params[:search].to_s + "%", "0"],:order =>  'created_at DESC')
-               render :update do |page|
+               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order =>  'updated_at DESC')
+              else
+               @contador = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ? ", "%" + params[:search].to_s + "%", "0"]).count
+               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ?", "%" + params[:search].to_s + "%", "0"],:order =>  'updated_at DESC')
+              end
+                render :update do |page|
                 page.replace_html 'protocolo', :partial => "protocolosindex"
-               end
+              end
+
              else
                @contador = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"]).count
-               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order =>  'created_at DESC')
+               @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order =>  'updated_at DESC')
                render :update do |page|
                 page.replace_html 'protocolo', :partial => "protocolos"
                end
              end
+
+
+
           else if params[:type_of].to_i == 7
            @contador = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"]).count
            @prefprotocolos = Prefprotocolo.all(:conditions => ["codigo like ?", "%" + params[:search].to_s + "%"],:order =>  'created_at DESC')

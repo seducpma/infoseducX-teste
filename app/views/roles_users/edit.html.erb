@@ -1,12 +1,15 @@
 <br/><br/>
-<table width="50%" class="tabelas" align="center">
+<table width="50%" class="tabelas3" align="center">
+   <tr>
+        <th align="left">
+           <font size=5 color="black"> <b> NÍVEL DE ACESSO</b></font>
+        </th>
+        <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
+    </tr>
  <tr>
-  <th align="left">
-   <font  size=5><b> NÍVEL DE ACESSO</b></font>
-  </th>
- </tr>
- <tr>
-   <td>
+   <td colspan="2">
    <font  size=2>
    <table width="100%">
      <% form_for(@role_user) do |f| %>
@@ -29,11 +32,15 @@
  <br/>
  <table  width="50%" align="left">
   <tr>
-        <div id='Certeza'>
-           <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-        </div>
-         <td align="left"><input type="image" src="/stylesheets/images/associar.png" title="Associar Usuários"></td>
-        <% end %>
+      <div id="certeza">
+        <table width="40%" align="right">
+           <tr>
+             <td align="right"><%= f.submit "Gravar" %> </td>
+<% end %>
+              <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+           </tr>
+        </table>
+      </div>
    </tr>
 </table>
  
