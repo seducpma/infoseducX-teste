@@ -18,21 +18,18 @@
   <tr>
   <td colspan="2">
 <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
-  <table width="100%"  >
+  <table width="100%">
   <tr>
     <td width ="1%" valign="top"><b>Participante:</b></td>
      <% if @participante.present? %>
         <%= @participante.nome %>
         <td valign="top">
-         <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %>
-
+         <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %><br/>
         </td>
-
      <%else%>
         <td width =20%"  valign="top">
-           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %><br/>
+           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>&nbsp&nbsp<b>(Selecione seu nome)</b>
            <div class="botao">
-            <br/>
              <table>
                <tr>
                  <td> &nbsp&nbsp<b><u><font color="red" size="3">OBS:</font></u> 1) SE NOME NÃO CONSTA NA LISTA ACIMA. Clique aqui para cadastrar</b> =====></td>
