@@ -15,12 +15,10 @@
        <table>
           <tr>
             <td width="1%"></td>
-            <td width="1%" valign="Top" width="9%"><b>Protocolo:</b></td>
-            <td width="10%"><%=h @prefprotocolo.codigo %>
+            <td align="left"><b>Protocolo:</b></td>
+            <td colspan="3" valign="Top"><%=h @prefprotocolo.codigo %>
             &nbsp&nbsp<b>dia:</b> <%=h @prefprotocolo.data.strftime("%d/%m/%Y")%>
-            </td>
-            <td width="1%"align="right"><b>Requerente: </b></td>
-            <td width="10%"align="left"><%=h @prefprotocolo.de %></td>
+            &nbsp&nbsp<b>Requerente: </b><%=h @prefprotocolo.de %></td>
           </tr>
           <tr>
             <td></td>
