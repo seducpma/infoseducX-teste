@@ -122,7 +122,7 @@ display: none;
                   <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
-              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios') or current_user.has_role?('diretor_SEDUC')) %>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')) %>
                <% if (current_user.has_role?('administrador') ) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">Documentos</a>
@@ -156,7 +156,13 @@ display: none;
                   </li>
                <%end%>
               <%end%>
-             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') or current_user.has_role?('diretor_SEDUC') %>
+
+
+
+
+
+             
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('diretor_SEDUC') %>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Estagiários</a>
                  <ul style="width:108px;">
@@ -184,10 +190,17 @@ display: none;
                      <li><a>Curriculos</a>
                         <ul>
                           <li><%= link_to 'Cadastrar', new_curriculo_path%></li>
-                          <li><%= link_to 'Consultar', curriculos_path%></li>
+                          <li><a>Consultar</a>
+                            <ul>
+                              <li><%= link_to "Adminstração", indexadmin_curriculos_path%> </li>
+                              <li><%= link_to "Informática", curriculos_path%></li>
+                              <li><%= link_to "Pedagogia", indexpedag_curriculos_path %></li>
+                            </ul>
+                          </li>
                        </ul>
                      </li>
                     <%end%>
+              
               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario itinerante') %>
                 <li><a>Itinerancia</a>
                   <ul style="width:108px;">
@@ -210,6 +223,7 @@ display: none;
                   </ul>
                 </li>
               <%end%>
+              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')%>
                    <li>
                      <%= link_to "Ponto Eletrônico", pontos_path %>
                      </li>
@@ -228,6 +242,7 @@ display: none;
                           <!-- <li><%= link_to_remote('Validar',:update => "tela", :url => { :action => "valida", :controller => 'relatestagiarios'}) %></li> -->
                         </ul>
                      </li>
+                <%end%>
                  </ul>
               </li>
               <%end%>
