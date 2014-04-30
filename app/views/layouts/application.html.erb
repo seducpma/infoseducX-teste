@@ -122,11 +122,7 @@ display: none;
                   <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
-<<<<<<< HEAD
-              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios') or current_user.has_role?('diretor_SEDUC')) %>
-=======
               <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')) %>
->>>>>>> 8479a184064693a92d88002725028e6e19a577a5
                <% if (current_user.has_role?('administrador') ) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">Documentos</a>
@@ -156,27 +152,16 @@ display: none;
                           <li><%= link_to "Consulta", consulta_servicos_internos_path  %></li>
                         </ul>
                      </li>
-                     <li><span class="divider divider-vert" ></span></li>
-                     <li><a class="item-primary" href="#;">Solicitações</a>
-                        <ul>
-                          <li><%= link_to "Novo",new_acompanhamento_path %></li>
-                          <li><%= link_to "Solicitações", acompanhamentos_path  %></li>
-                          <li><%= link_to "Consulta", consulta_acompanhamentos_path  %></li>
-                        </ul>
-                     </li>
                     </ul>
                   </li>
                <%end%>
               <%end%>
-<<<<<<< HEAD
-=======
 
 
 
 
 
-             
->>>>>>> 8479a184064693a92d88002725028e6e19a577a5
+
              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('diretor_SEDUC') %>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Estagiários</a>
@@ -212,14 +197,10 @@ display: none;
                               <li><%= link_to "Pedagogia", indexpedag_curriculos_path %></li>
                             </ul>
                           </li>
-<<<<<<< HEAD
-
-=======
->>>>>>> 8479a184064693a92d88002725028e6e19a577a5
                        </ul>
                      </li>
                     <%end%>
-              
+
               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario itinerante') %>
                 <li><a>Itinerancia</a>
                   <ul style="width:108px;">
@@ -242,11 +223,7 @@ display: none;
                   </ul>
                 </li>
               <%end%>
-<<<<<<< HEAD
-                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
-=======
               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')%>
->>>>>>> 8479a184064693a92d88002725028e6e19a577a5
                    <li>
                      <%= link_to "Ponto Eletrônico", pontos_path %>
                      </li>
@@ -265,11 +242,7 @@ display: none;
                           <!-- <li><%= link_to_remote('Validar',:update => "tela", :url => { :action => "valida", :controller => 'relatestagiarios'}) %></li> -->
                         </ul>
                      </li>
-<<<<<<< HEAD
-                   <%end%>
-=======
                 <%end%>
->>>>>>> 8479a184064693a92d88002725028e6e19a577a5
                  </ul>
               </li>
               <%end%>
