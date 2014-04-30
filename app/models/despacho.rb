@@ -15,10 +15,6 @@ class Despacho < ActiveRecord::Base
         @anterior.save
      end
 
-     #@saldo.saldo = @saldo.saldo - self.quantidade
-
-     #@saldo.save
-
   end
 
 

@@ -3,7 +3,18 @@
 <table class="tabelas1"width="40%"align="center">
  <tr>
     <th align="left">
-       <font size=5 color="black"> <b> CURRICULO ESTÁGIÁRIO</b></font>
+       <font size=5 color="black"> <b> CURRICULO ESTÁGIÁRIO
+       <% if @curriculo.atuacao == "ADMINISTRATIVA" %>
+           - ADMINISTRAÇÃO
+       <% else if @curriculo.atuacao == 'INFORMÁTICA' %>
+           - INFORMATICA
+          <% else%>
+              - PEDAGOGIA
+           <%end%>
+       <%end%>
+
+
+       </b></font>
     </th>
     <td width="5%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -158,12 +169,19 @@
             </td>
            </tr>
            <div class="botao">
-           <table>
-             <tr>
-               <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-            </tr>
-          </table>
+              <table align="right">
+                   <tr>
+                      <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+                      <% if @curriculo.atuacao == "ADMINISTRATIVA" %>
+                      <td width="2%" align="right"><%= button_to "Consultar", indexadmin_curriculos_path, :title => "Consultar" %></td>
+                       <% else if @curriculo.atuacao == 'INFORMÁTICA' %>
+                        <td width="2%" align="right"><%= button_to "Consultar", curriculos_path, :method => "get", :title => "Consultar" %></td>
+                          <% else%>
+                           <td width="2%" align="right"><%= button_to "Consultar", indexpedag_curriculos_path, :title => "Consultar" %></td>
+                          <%end%>
+                       <%end%>
+                    </tr>
+              </table>
           </div>
            </table>
          </font>

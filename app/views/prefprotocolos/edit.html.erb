@@ -28,12 +28,13 @@
            <td align="left"><font size="2"><b>Assunto:</b></font></td>
            <td align="left" colspan="3"><font size="2"><%=h @prefprotocolo.assunto%></font></td>
         </tr>
-        <tr>
-           <td align="left"><font size="2"><b>Destino:</b></font></td>
-           <td align="left"><font size="2"><%=h  @prefprotocolo.destino %></font></td>
-           <td align="right"><font size="2"><b>Para:</b></font></td>
-           <td align="left"><font size="2"> <%=h @prefprotocolo.para %></font></td>
-        </tr>
+          <tr>
+            <td align="left"><b>Destinatário: </b></td>
+            <td colspan="3"align="left"><%=h  @prefprotocolo.destino %>
+              &nbsp&nbsp<b>em:</b> <%=h @prefprotocolo.created_at.strftime("%d/%m/%Y")%>
+              &nbsp&nbsp<b>Para:</b> <%=h @prefprotocolo.para %>
+             </td>
+          </tr>
         <tr>
           <td align="left" valign="top"><font size="2"><b>Despachos:</b></font></td>
           <td colspan="3"><div id="dados"> <%= render :partial => 'despachos'  %></div></td>

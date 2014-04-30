@@ -15,10 +15,10 @@
        <table>
           <tr>
             <td width="1%"></td>
-            <td width="1%" valign="Top" width="9%"><b>Protocolo:</b></td>
-            <td width="5%"><%=h @prefprotocolo.codigo %></td>
-            <td width="1%"align="right"><b>Requerente: </b></td>
-            <td width="10%"align="left"><%=h @prefprotocolo.de %></td>
+            <td align="left"><b>Protocolo:</b></td>
+            <td colspan="3" valign="Top"><%=h @prefprotocolo.codigo %>
+            &nbsp&nbsp<b>dia:</b> <%=h @prefprotocolo.data.strftime("%d/%m/%Y")%>
+            &nbsp&nbsp<b>Requerente: </b><%=h @prefprotocolo.de %></td>
           </tr>
           <tr>
             <td></td>
@@ -27,10 +27,10 @@
           </tr>
           <tr>
             <td></td>
-            <td align="left"><b>Destinatario: </b></td>
+            <td align="left"><b>Destinatário: </b></td>
             <td colspan="3"align="left"><%=h  @prefprotocolo.destino %>
-                &nbsp&nbsp<b>Para:</b> <%=h @prefprotocolo.para %>
-                &nbsp&nbsp<b>em:</b> <%=h @prefprotocolo.data.strftime("%d/%b/%Y")%>
+              &nbsp&nbsp<b>em:</b> <%=h @prefprotocolo.created_at.strftime("%d/%m/%Y")%>
+              &nbsp&nbsp<b>Para:</b> <%=h @prefprotocolo.para %>
              </td>
           </tr>
           <tr>

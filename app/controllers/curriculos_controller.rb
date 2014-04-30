@@ -3,53 +3,52 @@ class CurriculosController < ApplicationController
   # GET /curriculos.xml
 
 
-  def index
-   unless params[:search].present?
+   def index
      if params[:type_of].to_i == 8
-       @contador = Curriculo.all.count
-       @curriculos = Curriculo.all(:order => 'nome ASC')
+       @contador = Curriculo.all(:conditions => ["ATUACAO like ?","INFORMÁTICA"]).count
+       @curriculos = Curriculo.all(:conditions => ["ATUACAO like ?","INFORMÁTICA"],:order => 'nome ASC')
        render :update do |page|
          page.replace_html 'curriculos', :partial => "curriculos"
        end
         else if params[:type_of].to_i == 2
-            @contador = Curriculo.all(:conditions => ["STATUS is null"]).count
-            @curriculos = Curriculo.all(:conditions => ["STATUS is null"],:order => 'created_at DESC')
+            @contador = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ?","INFORMÁTICA"]).count
+            @curriculos = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ?","INFORMÁTICA"],:order => 'created_at DESC')
             render :update do |page|
               page.replace_html 'curriculos', :partial => "curriculos"
             end
             else if params[:type_of].to_i == 3
-              @contador = Curriculo.all(:conditions => ["STATUS like ?", "NIVEL-0"],:order => 'nome ASC').count
-              @curriculos = Curriculo.all(:conditions => ["STATUS like?", "NIVEL-0"],:order => 'nome ASC',:order => 'nome ASC')
+              @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-0","INFORMÁTICA"],:order => 'nome ASC').count
+              @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-0","INFORMÁTICA"],:order => 'nome ASC',:order => 'nome ASC')
               render :update do |page|
                  page.replace_html 'curriculos', :partial => "curriculos"
               end
               else if params[:type_of].to_i == 4
-                @contador = Curriculo.all(:conditions => ["STATUS like ?", "NIVEL-1"],:order => 'nome ASC').count
-                @curriculos = Curriculo.all(:conditions => ["STATUS like?", "NIVEL-1"],:order => 'nome ASC',:order => 'nome ASC')
+                @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-1","INFORMÁTICA"],:order => 'nome ASC').count
+                @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-1","INFORMÁTICA"],:order => 'nome ASC',:order => 'nome ASC')
                 render :update do |page|
                    page.replace_html 'curriculos', :partial => "curriculos"
                 end
                 else if params[:type_of].to_i == 5
-                  @contador = Curriculo.all(:conditions => ["STATUS like ?", "NIVEL-2"],:order => 'nome ASC').count
-                  @curriculos = Curriculo.all(:conditions => ["STATUS like?", "NIVEL-2"],:order => 'nome ASC',:order => 'nome ASC')
+                  @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-2","INFORMÁTICA"],:order => 'nome ASC').count
+                  @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-2","INFORMÁTICA"],:order => 'nome ASC',:order => 'nome ASC')
                   render :update do |page|
                      page.replace_html 'curriculos', :partial => "curriculos"
                   end
                   else if params[:type_of].to_i == 6
-                  @contador = Curriculo.all(:conditions => ["STATUS like ?", "NIVEL-3"],:order => 'nome ASC').count
-                  @curriculos = Curriculo.all(:conditions => ["STATUS like?", "NIVEL-3"],:order => 'nome ASC',:order => 'nome ASC')
+                  @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-3","INFORMÁTICA"],:order => 'nome ASC').count
+                  @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-3","INFORMÁTICA"],:order => 'nome ASC',:order => 'nome ASC')
                   render :update do |page|
                      page.replace_html 'curriculos', :partial => "curriculos"
                   end
                   else if params[:type_of].to_i == 1
-                     @contador = Curriculo.all(:conditions => ["STATUS like ?", "CONTRATADO"],:order => 'nome ASC').count
-                     @curriculos = Curriculo.all(:conditions => ["STATUS like ?" , "CONTRATADO"],:order => 'nome ASC')
+                     @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "CONTRATADO","INFORMÁTICA"],:order => 'nome ASC').count
+                     @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "CONTRATADO","INFORMÁTICA"],:order => 'nome ASC')
                      render :update do |page|
                        page.replace_html 'curriculos', :partial => "curriculos"
                      end
                       else if params[:type_of].to_i == 7
-                         @contador = Curriculo.all(:conditions => ["STATUS like ?  or STATUS like ? or STATUS like ? or STATUS like ? or STATUS is NULL", "NIVEL-3", "NIVEL-2", "NIVEL-1", "NIVEL-0" ],:order => 'nome ASC').count
-                         @curriculos = Curriculo.all(:conditions => ["STATUS like ?  or STATUS like ? or STATUS like ? or STATUS like ? or STATUS is NULL", "NIVEL-3", "NIVEL-2", "NIVEL-1", "NIVEL-0" ],:order => 'nome ASC')
+                         @contador = Curriculo.all(:conditions => ["STATUS != 'CONTRATADO'AND ATUACAO like ?","INFORMÁTICA"],:order => 'nome ASC').count
+                         @curriculos = Curriculo.all(:conditions => ["STATUS != 'CONTRATADO' AND ATUACAO like ?" , "INFORMÁTICA" ],:order => 'nome ASC')
                          render :update do |page|
                            page.replace_html 'curriculos', :partial => "curriculos"
                          end
@@ -61,10 +60,124 @@ class CurriculosController < ApplicationController
             end
           end
       end
-   else
+  end
 
-   end
+  def indexadmin
+     if params[:type_of].to_i == 8
+       @contador = Curriculo.all(:conditions => ["ATUACAO like ?","ADMINISTRATIVA"]).count
+       @curriculos = Curriculo.all(:conditions => ["ATUACAO like ?","ADMINISTRATIVA"],:order => 'nome ASC')
+       render :update do |page|
+         page.replace_html 'curriculos', :partial => "curriculos"
+       end
+        else if params[:type_of].to_i == 2
+            @contador = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ?","ADMINISTRATIVA"]).count
+            @curriculos = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ?","ADMINISTRATIVA"],:order => 'created_at DESC')
+            render :update do |page|
+              page.replace_html 'curriculos', :partial => "curriculos"
+            end
+            else if params[:type_of].to_i == 3
+              @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-0","ADMINISTRATIVA"],:order => 'nome ASC').count
+              @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-0","ADMINISTRATIVA"],:order => 'nome ASC',:order => 'nome ASC')
+              render :update do |page|
+                 page.replace_html 'curriculos', :partial => "curriculos"
+              end
+              else if params[:type_of].to_i == 4
+                @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-1","ADMINISTRATIVA"],:order => 'nome ASC').count
+                @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-1","ADMINISTRATIVA"],:order => 'nome ASC',:order => 'nome ASC')
+                render :update do |page|
+                   page.replace_html 'curriculos', :partial => "curriculos"
+                end
+                else if params[:type_of].to_i == 5
+                  @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-2","ADMINISTRATIVA"],:order => 'nome ASC').count
+                  @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-2","ADMINISTRATIVA"],:order => 'nome ASC',:order => 'nome ASC')
+                  render :update do |page|
+                     page.replace_html 'curriculos', :partial => "curriculos"
+                  end
+                  else if params[:type_of].to_i == 6
+                  @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-3","ADMINISTRATIVA"],:order => 'nome ASC').count
+                  @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-3","ADMINISTRATIVA"],:order => 'nome ASC',:order => 'nome ASC')
+                  render :update do |page|
+                     page.replace_html 'curriculos', :partial => "curriculos"
+                  end
+                  else if params[:type_of].to_i == 1
+                     @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "CONTRATADO","ADMINISTRATIVA"],:order => 'nome ASC').count
+                     @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "CONTRATADO","ADMINISTRATIVA"],:order => 'nome ASC')
+                     render :update do |page|
+                       page.replace_html 'curriculos', :partial => "curriculos"
+                     end
+                      else if params[:type_of].to_i == 7
+                         @contador = Curriculo.all(:conditions => ["STATUS != 'CONTRATADO'AND ATUACAO like ?","ADMINISTRATIVA"],:order => 'nome ASC').count
+                         @curriculos = Curriculo.all(:conditions => ["STATUS != 'CONTRATADO' AND ATUACAO like ?" , "ADMINISTRATIVA" ],:order => 'nome ASC')
+                         render :update do |page|
+                           page.replace_html 'curriculos', :partial => "curriculos"
+                         end
+                     end
+                  end
+                 end
+                end
+              end
+            end
+          end
+      end
+  end
 
+  def indexpedag
+     if params[:type_of].to_i == 8
+       @contador = Curriculo.all(:conditions => ["ATUACAO like ?","PEDAGÓGICA"]).count
+       @curriculos = Curriculo.all(:conditions => ["ATUACAO like ?","PEDAGÓGICA"],:order => 'nome ASC')
+       render :update do |page|
+         page.replace_html 'curriculos', :partial => "curriculos"
+       end
+        else if params[:type_of].to_i == 2
+            @contador = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ?","PEDAGÓGICA"]).count
+            @curriculos = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ?","PEDAGÓGICA"],:order => 'created_at DESC')
+            render :update do |page|
+              page.replace_html 'curriculos', :partial => "curriculos"
+            end
+            else if params[:type_of].to_i == 3
+              @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-0","PEDAGÓGICA"],:order => 'nome ASC').count
+              @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-0","PEDAGÓGICA"],:order => 'nome ASC',:order => 'nome ASC')
+              render :update do |page|
+                 page.replace_html 'curriculos', :partial => "curriculos"
+              end
+              else if params[:type_of].to_i == 4
+                @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-1","PEDAGÓGICA"],:order => 'nome ASC').count
+                @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-1","PEDAGÓGICA"],:order => 'nome ASC',:order => 'nome ASC')
+                render :update do |page|
+                   page.replace_html 'curriculos', :partial => "curriculos"
+                end
+                else if params[:type_of].to_i == 5
+                  @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-2","PEDAGÓGICA"],:order => 'nome ASC').count
+                  @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-2","PEDAGÓGICA"],:order => 'nome ASC',:order => 'nome ASC')
+                  render :update do |page|
+                     page.replace_html 'curriculos', :partial => "curriculos"
+                  end
+                  else if params[:type_of].to_i == 6
+                  @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-3","PEDAGÓGICA"],:order => 'nome ASC').count
+                  @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "NIVEL-3","PEDAGÓGICA"],:order => 'nome ASC',:order => 'nome ASC')
+                  render :update do |page|
+                     page.replace_html 'curriculos', :partial => "curriculos"
+                  end
+                  else if params[:type_of].to_i == 1
+                     @contador = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "CONTRATADO","PEDAGÓGICA"],:order => 'nome ASC').count
+                     @curriculos = Curriculo.all(:conditions => ["STATUS like ? AND ATUACAO like ?", "CONTRATADO","PEDAGÓGICA"],:order => 'nome ASC')
+                     render :update do |page|
+                       page.replace_html 'curriculos', :partial => "curriculos"
+                     end
+                      else if params[:type_of].to_i == 7
+                         @contador = Curriculo.all(:conditions => ["STATUS != 'CONTRATADO'AND ATUACAO like ?","PEDAGÓGICA"],:order => 'nome ASC').count
+                         @curriculos = Curriculo.all(:conditions => ["STATUS != 'CONTRATADO' AND ATUACAO like ?" , "PEDAGÓGICA" ],:order => 'nome ASC')
+                         render :update do |page|
+                           page.replace_html 'curriculos', :partial => "curriculos"
+                         end
+                     end
+                  end
+                 end
+                end
+              end
+            end
+          end
+      end
   end
 
   # GET /curriculos/1

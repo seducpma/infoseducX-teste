@@ -1,0 +1,37 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  crianca: MyString
+  mae: MyString
+  responsavel: MyString
+  nascimento: 2014-04-22 10:25:38
+  endereco: MyString
+  num: 1
+  complemento: MyString
+  cep: MyString
+  bairro: MyString
+  cidade: MyString
+  fone: MyString
+  cel: MyString
+  email: MyString
+  assunto: MyString
+  encerrado: 1
+  obs: MyString
+
+two:
+  crianca: MyString
+  mae: MyString
+  responsavel: MyString
+  nascimento: 2014-04-22 10:25:38
+  endereco: MyString
+  num: 1
+  complemento: MyString
+  cep: MyString
+  bairro: MyString
+  cidade: MyString
+  fone: MyString
+  cel: MyString
+  email: MyString
+  assunto: MyString
+  encerrado: 1
+  obs: MyString

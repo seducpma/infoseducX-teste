@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  despacho: 
+  despacho: MyString
+  data: 2014-04-22 10:25:57
+  obs: MyString
+
+two:
+  despacho: 
+  despacho: MyString
+  data: 2014-04-22 10:25:57
+  obs: MyString

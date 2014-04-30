@@ -19,12 +19,26 @@
    </tr>
    <tr>
      <td colspan="2">
+       <fieldset><legend><font  size=4>Área de Atuação</font></legend>
+         <table>
+           <tr>
+             <td align="left"><font size="2"><b>Área desejada:</b></font></td>
+             <td><%=  f.select :atuacao, Curriculo::ATUACAO, :include_blank => '---Selecione---'%>
+              &nbsp&nbsp <b><u>OBS:</u></b> É necessário estar regularmente matriculado em algum curso na área de atuação desejada.
+             </td>
+           </tr>
+         </table>
+       </fieldset>
+     </td>
+   </tr>
+   <tr>
+     <td colspan="2">
        <fieldset><legend><font  size=4>Dados Pessoais</font></legend>
         <font size="2">
          <table width="100%">
              <tr>
                <td colspan="4" align="center">
-                 <font color="red" size="3"><center><u><b>*** ATENÇÃO - PREENCHER TODOS OS CAMPOS DO FORMULÁRIO ***</b></u></center></font>
+                 <font color="red" size="3"><center><u><b>*** ATENÇÃO - PREENCHER TODOS OS CAMPOS DO FORMULÁRIO ***</b></u></center></font><br/>
                </td>
              </tr>
              <tr>
@@ -113,7 +127,7 @@
                <td align="left"><%= f.text_area(:pergunta2, :cols =>"58", :rows => "3") %></td>
             </tr>
             <tr>
-               <td align="left"><font size="2"><b>3) Quais são seus conhecimentos na área de informática</b></font></td>
+               <td align="left"><font size="2"><b>3) Quais são seus conhecimentos na área de atuação desejada</b></font></td>
                <td align="left"><font size="2"><b>4) Outras informações </b></font></td>
             </tr>
             <tr>
@@ -124,14 +138,12 @@
         </table>
       </fieldset>
       <div class="botao">
-        <table width="100%" align="left">
+        <table width="40%" align="right">
            <tr>
-             <div id='Certeza'>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-              </div>
-              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+             <td align="right"><%= f.submit "Gravar" %> </td>
 <% end %>
-            </tr>
+              <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+           </tr>
         </table>
       </div>
     </td>

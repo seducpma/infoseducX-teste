@@ -1,0 +1,52 @@
+      <font  size="2">
+      <table border="2" width="100%">
+         <tr>
+          <td align="left" colspan="9"><b>TOTAL DE SOLICITAÇÕES: </b>
+              <font color ="red "size="2"><b><%= @contador %></b></font>
+          </td>
+        </tr>
+         <tr>
+            <th width ="1%" align="center">Nº</th>
+            <th width ="10%">Criança</th>
+            <th width ="10%">Nascimento</th>
+            <th width ="90%">Assunto</th>
+            <th width ="50%">Data</th>
+            <th> Encerrado</th>
+          </tr>
+
+            <% for protocolo in @acompanhamentos %>
+           <tr>
+               <td><b><font color="red" size="3"><center><%=h protocolo.codigo %></center></font></b></td>
+               <td><%=h protocolo.crianca %></td>
+               <td><%=h protocolo.nascimento.strftime("%d/%m/%y")%></td>
+               <td><%=h protocolo.assunto %></td>
+               <td><%=h protocolo.created_at.strftime("%d/%m/%y") %></td>
+               <% if  protocolo.encerrado == 0 %>
+                 <td align="center"> NÃO </td>
+               <%  else  %>
+                 <td align="center"><font color="red" > <%=h protocolo.data_encerrado.strftime("%d/%m/%y") %></font> </td>
+               <% end %>
+            </tr>
+           <tr>
+             <td colspan="7">
+                <% if protocolo.encerrado == 1 %>
+                  <table align="right">
+                    <tr>
+                      <td colspan="2" align="right"><%= button_to('Solicitação',{:action => "show", :id =>protocolo}, :method => "get", :title => "Solicitação") %></td>
+                      <td width="2%" align="right"> <%= button_to('Reabrir',{:action => "edit", :id =>@acompanhamento}, :method => "get", :title => "Reabrir") %></td>
+                    </tr>
+                  </table>
+               <% else %>
+                  <table align="right">
+                    <tr>
+                       <td colspan="2" align="right"><%= button_to('Solicitação',{:action => "show", :id =>protocolo}, :method => "get", :title => "Solicitação") %></td>
+                       <td width="1%" align="right"> <%= button_to('Despachar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                    </tr>
+                  </table>
+               <%end%>
+             </td>
+           </tr>
+       <%end%>
+     </table>
+   </font>
+

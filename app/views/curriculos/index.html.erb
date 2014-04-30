@@ -2,7 +2,7 @@
  <table class="tabelas" align="center" width="100%">
  <tr>
     <th align="left">
-       <font size=5 color="black"> <b>CURRICULOS PARA ESTÁGIO</b></font>
+       <font size=5 color="black"> <b>CURRICULOS PARA ESTÁGIO DE INFORMÁTICA</b></font>
     </th>
     <td width="5%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -37,12 +37,12 @@
     <div id="curriculos"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
     <br/>
 <div class="botao">
-  <table>
-    <tr>
-     <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "35x35"), root_path, :title => "Voltar" %></td>
-     <td align="left"><%= link_to image_tag("/stylesheets/images/consulta.png", :size => "40x40"), curriculos_path, :title => "Nova Consulta" %></td>
-    </tr>
-  </table>
+    <table>
+          <tr>
+             <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+             <td  width="2%" align="right"><%= button_to "Consultar", curriculos_path, :method => "get", :title => "Consultar" %></td>
+          </tr>
+     </table>
 </div>   
  </td>
  </tr>

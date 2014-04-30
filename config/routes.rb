@@ -1,14 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :acompanhamento_despachos
+
+  map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get}
+
   map.resources :despachos
 
   map.resources :prefprotocolos, :collection => {:consulta => :get, :protocolo=>:get, :protocolos => :get, :indexe => :get}
-
   
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
 
   map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
 
-  map.resources :curriculos, :collection => {:curriculo => :get}
+  map.resources :curriculos, :collection => {:curriculo => :get, :indexadmin => :get, :indexpedag => :get}
 
   map.resources :chefias
 

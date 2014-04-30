@@ -1,0 +1,28 @@
+<h1>Editing acompanhamento_despacho</h1>
+
+<% form_for(@acompanhamento_despacho) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :despacho %><br />
+    <%= f.text_field :despacho %>
+  </p>
+  <p>
+    <%= f.label :despacho %><br />
+    <%= f.text_field :despacho %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @acompanhamento_despacho %> |
+<%= link_to 'Back', acompanhamento_despachos_path %>
