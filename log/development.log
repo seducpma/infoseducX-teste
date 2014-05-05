@@ -736,3 +736,50 @@ Rendered homes/_informe (2.9ms)
   [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
   [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
 Completed in 186ms (View: 151, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (13.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-05 14:30:39) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 31ms (DB: 13) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-05-05 14:30:39) [GET]
+  [4;36;1mCurso Load (48.7ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 169ms (View: 102, DB: 54) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-05 14:30:40) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-05-05 14:30:40) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 60ms (View: 26, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#new (for 127.0.0.1 at 2014-05-05 14:30:43) [GET]
+  [4;36;1mCurriculo Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendering template within layouts/curriculos
+Rendering curriculos/new
+Rendered curriculos/_form (217.4ms)
+  [4;35;1mInformativo Load (0.9ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-05 17:30:44' AND ends_at >= '2014-05-05 17:30:44') [0m
+Completed in 763ms (View: 300, DB: 4) | 200 OK [http://localhost/curriculos/new]
