@@ -1,7 +1,7 @@
 <div style='display:none'>
   <div id='inline_acompanhamento_despacho' style='padding:10px; background:#EEE9E9;'>
     <% form_remote_for(:acompanhamento_despacho,:url => { :action => 'create_acompanhamento_despacho' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
-     <center><h2>DESPACHO </h2><h1>SOLICITAÇÃO - <%=h @acompanhamento.codigo %><br/>
+     <center><h1>SOLICITAÇÃO - <%=h @acompanhamento.codigo %><br/>
      <%=h @acompanhamento.crianca %></h1></center>
       <hr>
        <%= error_messages_for 'contact' %>
