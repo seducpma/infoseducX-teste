@@ -27,6 +27,13 @@
           </tr>
           <tr>
             <td width="1%"></td>
+            <td width="1%" valign="Top" width="9%"><b>RA:</b></td>
+            <td width="5%"><%=h @acompanhamento.RA %></td>
+            <td width="1%"align="right"><b>Inscrição: </b></td>
+            <td width="10%"align="left"><%=h @acompanhamento.inscricao%></td>
+          </tr>
+          <tr>
+            <td width="1%"></td>
             <td width="1%" valign="Top" width="9%"><b>Mãe:</b></td>
             <td width="5%"><%=h @acompanhamento.mae %></td>
             <td width="1%"align="right"><b>Responsável: </b></td>
@@ -95,8 +102,9 @@
       <table>
            <tr>
               <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+              <td width="2%" align="right"> <%= button_to('Editar',{:action => "editar", :id =>@acompanhamento}, :method => "get", :title => "Editar",  $despachar =>1) %></td>
               <td width="2%"align="right" ><%= button_to('Solicitações',acompanhamentos_path, :method => "get", :title => "Solicitações") %></td>
-              <% if @acompanhamento.encerrado == 0 %>
+                       <% if @acompanhamento.encerrado == 0 %>
                  <td width="2%" align="right"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
                  <td width="2%" align="right"> <%= button_to('Despachar',{:action => "edit", :id =>@acompanhamento}, :method => "get", :title => "Despachar") %></td>
               <%else%>

@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :acompanhamento_despachos
 
-  map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get}
+  map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get, :editar => :get}
 
   map.resources :despachos
 

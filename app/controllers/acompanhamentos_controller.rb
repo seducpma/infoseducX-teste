@@ -38,6 +38,11 @@ class AcompanhamentosController < ApplicationController
     $id = params[:id]
   end
 
+ def editar
+    @acompanhamento = Acompanhamento.find(params[:id])
+    $id = params[:id]
+  end
+
   # POST /acompanhamentos
   # POST /acompanhamentos.xml
   def create
