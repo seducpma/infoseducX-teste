@@ -238,7 +238,7 @@ class CurriculosController < ApplicationController
     respond_to do |format|
       if @curriculo.update_attributes(params[:curriculo])
         flash[:notice] = 'CADASTRADO COM SUCESSO'
-        format.html { redirect_to(@curriculo) }
+        format.html { render :action => "index" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
