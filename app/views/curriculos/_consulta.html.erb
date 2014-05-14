@@ -1,7 +1,10 @@
 <table width="100%" align="center" >
    <tr>
-     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Digitar nome:</b></font>
-         <%= text_field_tag :search, params[:search], :class=> "txt_busca" %>
+     <td colspan="2"align="right"left">
+   
+            <a href="#" class="label_busca"><%= radio_button_tag(:type_of, "9") %>Matutino</a>
+            <a href="#" class="label_busca"><%= radio_button_tag(:type_of, "10") %>Vespertino</a>
+            <a href="#" class="label_busca"><%= radio_button_tag(:type_of, "11") %>Noturno</a>
          <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
      </td>
    </tr>

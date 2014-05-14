@@ -52,11 +52,32 @@ class CurriculosController < ApplicationController
                          render :update do |page|
                            page.replace_html 'curriculos', :partial => "curriculos"
                          end
+                         else if params[:type_of].to_i == 9
+                           @contador = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ? AND PERIODO like ?","INFORMÁTICA", "MATUTINO"]).count
+                           @curriculos = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ? AND PERIODO like ?","INFORMÁTICA", "MATUTINO"],:order => 'created_at DESC')
+                           render :update do |page|
+                              page.replace_html 'curriculos', :partial => "curriculos"
+                           end
+                           else if params[:type_of].to_i == 10
+                             @contador = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ? AND PERIODO like ?","INFORMÁTICA", "VESPERTINO"]).count
+                             @curriculos = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ? AND PERIODO like ?","INFORMÁTICA", "VESPERTINO"],:order => 'created_at DESC')
+                             render :update do |page|
+                               page.replace_html 'curriculos', :partial => "curriculos"
+                              end
+                             else if params[:type_of].to_i == 11
+                                @contador = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ? AND PERIODO like ?","INFORMÁTICA", "NOTURNO"]).count
+                                @curriculos = Curriculo.all(:conditions => ["STATUS is null AND ATUACAO like ? AND PERIODO like ?","INFORMÁTICA", "NOTURNO"],:order => 'created_at DESC')
+                                render :update do |page|
+                                   page.replace_html 'curriculos', :partial => "curriculos"
+                                end
+                              end
+                           end
+                         end
+                       end
                      end
-                  end
+                   end
                  end
-                end
-              end
+               end
             end
           end
       end

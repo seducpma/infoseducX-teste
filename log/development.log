@@ -8319,3 +8319,2058 @@ Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 11:22:32) [GE
   [4;36;1mCurriculo Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
 Rendered curriculos/_curriculos (169.1ms)
 Completed in 196ms (View: 169, DB: 8) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=2&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1399990951718]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#update (for 127.0.0.1 at 2014-05-13 13:59:40) [PUT]
+  Parameters: {"commit"=>"Gravar", "id"=>"18", "curriculo"=>{"data_entrevista(2i)"=>"5", "status"=>"NIVEL-0", "data_termino(1i)"=>"2014", "data_entrevista(3i)"=>"13", "data_termino(2i)"=>"5", "cel"=>"testeteste, 111", "complemento"=>"TESTETESTE, 111", "modalidade"=>"SUPERIOR", "cidade"=>"TESTETESTE, 111", "data_termino(3i)"=>"1", "fone"=>"testeteste, 111", "pergunta3"=>"TESTETESTE, 111", "pergunta2"=>"TESTETESTE, 111", "pergunta1"=>"TESTETESTE, 111", "RG"=>"testeteste, ", "endereco"=>"TESTETESTE, 111", "aval"=>"", "semestre"=>"1ºSEM", "nome"=>"TESTETESTE, 111", "instituicao"=>"TESTETESTE, 111", "email"=>"testeteste, 111@testeteste.com", "CPF"=>"testeteste, 11", "nascimento(2i)"=>"4", "data_ingresso(1i)"=>"2014", "atuacao"=>"INFORMÁTICA", "data_entrevista(1i)"=>"2014", "curso"=>"TESTETESTE, 111", "data_ingresso(2i)"=>"4", "data_ingresso(3i)"=>"1", "periodo"=>"MATUTINO", "bairro"=>"TESTETESTE, 111", "civil"=>"SOLTEIRO(A)", "obs"=>"TESTETESTE, 111", "nascimento(1i)"=>"2014", "nascimento(3i)"=>"25"}, "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ="}
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+  [4;36;1mCurriculo Load (0.5ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (`curriculos`.`id` = 18) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCurriculo Load (0.5ms)[0m   [0;1mSELECT `curriculos`.id FROM `curriculos` WHERE (`curriculos`.`RG` = BINARY 'testeteste, ' AND `curriculos`.id <> 18) LIMIT 1[0m
+  [4;35;1mCurriculo Load (0.3ms)[0m   [0mSELECT `curriculos`.id FROM `curriculos` WHERE (`curriculos`.`CPF` = BINARY 'testeteste, 11' AND `curriculos`.id <> 18) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 16:59:40' AND ends_at >= '2014-05-13 16:59:40') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 92ms (View: 56, DB: 7) | 200 OK [http://localhost/curriculos/18]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#update (for 127.0.0.1 at 2014-05-13 14:02:18) [PUT]
+  Parameters: {"commit"=>"Gravar", "id"=>"18", "curriculo"=>{"data_entrevista(2i)"=>"5", "status"=>"NIVEL-0", "data_termino(1i)"=>"2014", "data_entrevista(3i)"=>"13", "data_termino(2i)"=>"5", "cel"=>"testeteste, 111", "complemento"=>"TESTETESTE, 111", "modalidade"=>"SUPERIOR", "cidade"=>"TESTETESTE, 111", "data_termino(3i)"=>"1", "fone"=>"testeteste, 111", "pergunta3"=>"TESTETESTE, 111", "pergunta2"=>"TESTETESTE, 111", "pergunta1"=>"TESTETESTE, 111", "RG"=>"testeteste, ", "endereco"=>"TESTETESTE, 111", "aval"=>"", "semestre"=>"1ºSEM", "nome"=>"TESTETESTE, 111", "instituicao"=>"TESTETESTE, 111", "email"=>"testeteste, 111@testeteste.com", "CPF"=>"testeteste, 11", "nascimento(2i)"=>"4", "data_ingresso(1i)"=>"2014", "atuacao"=>"INFORMÁTICA", "data_entrevista(1i)"=>"2014", "curso"=>"TESTETESTE, 111", "data_ingresso(2i)"=>"4", "data_ingresso(3i)"=>"1", "periodo"=>"MATUTINO", "bairro"=>"TESTETESTE, 111", "civil"=>"SOLTEIRO(A)", "obs"=>"TESTETESTE, 111", "nascimento(1i)"=>"2014", "nascimento(3i)"=>"25"}, "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ="}
+  [4;35;1mCurriculo Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+  [4;36;1mCurriculo Load (0.1ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (`curriculos`.`id` = 18) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT `curriculos`.id FROM `curriculos` WHERE (`curriculos`.`RG` = BINARY 'testeteste, ' AND `curriculos`.id <> 18) LIMIT 1[0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT `curriculos`.id FROM `curriculos` WHERE (`curriculos`.`CPF` = BINARY 'testeteste, 11' AND `curriculos`.id <> 18) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:02:18' AND ends_at >= '2014-05-13 17:02:18') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 92ms (View: 56, DB: 7) | 200 OK [http://localhost/curriculos/18]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:02:22) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:02:22' AND ends_at >= '2014-05-13 17:02:22') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 80ms (View: 67, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:03:26) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:03:26' AND ends_at >= '2014-05-13 17:03:26') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 63ms (View: 50, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:03:36) [GET]
+  Parameters: {"_"=>"1400000616416", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"1"}
+  [4;35;1mCurriculo Load (0.6ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (53.6ms)
+Completed in 73ms (View: 49, DB: 9) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=1&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400000616416]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:03:40) [GET]
+  Parameters: {"_"=>"1400000620306", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"7"}
+  [4;35;1mCurriculo Load (0.7ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS != 'CONTRATADO'AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mCurriculo Load (0.5ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS != 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (132.4ms)
+Completed in 154ms (View: 133, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=7&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400000620306]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:03:46) [GET]
+  Parameters: {"_"=>"1400000625676", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"2"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;36;1mCurriculo Load (0.1ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (42.4ms)
+Completed in 62ms (View: 42, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=2&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400000625676]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:05:09) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.5ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:05:10' AND ends_at >= '2014-05-13 17:05:10') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 145ms (View: 133, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:06:01) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:06:01' AND ends_at >= '2014-05-13 17:06:01') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 68ms (View: 56, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:06:54) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.5ms)
+  [4;35;1mInformativo Load (1.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:06:54' AND ends_at >= '2014-05-13 17:06:54') [0m
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 87ms (View: 72, DB: 6) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:06:58) [GET]
+  Parameters: {"_"=>"1400000818232", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"1"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (68.0ms)
+Completed in 164ms (View: 144, DB: 7) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=1&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400000818232]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:07:48) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.6ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:07:48' AND ends_at >= '2014-05-13 17:07:48') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 70ms (View: 57, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:07:53) [GET]
+  Parameters: {"_"=>"1400000873183", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"8"}
+  [4;35;1mCurriculo Load (0.7ms)[0m   [0mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') [0m
+  [4;36;1mCurriculo Load (0.6ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (54.2ms)
+Completed in 79ms (View: 56, DB: 7) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=8&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400000873183]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:07:58) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.5ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:07:58' AND ends_at >= '2014-05-13 17:07:58') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 63ms (View: 50, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:08:30) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.5ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:08:30' AND ends_at >= '2014-05-13 17:08:30') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 79ms (View: 66, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:02) [GET]
+  Parameters: {"_"=>"1400001302082", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"8"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') [0m
+  [4;36;1mCurriculo Load (0.1ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (58.0ms)
+Completed in 83ms (View: 61, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=8&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400001302082]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:07) [GET]
+  Parameters: {"_"=>"1400001307242", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"3"}
+  [4;35;1mCurriculo Load (0.7ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-0' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-0' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (43.8ms)
+Completed in 64ms (View: 44, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=3&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400001307242]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:14) [GET]
+  Parameters: {"_"=>"1400001313686", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.8ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (87.6ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:15) [GET]
+  Parameters: {"_"=>"1400001315211", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (57.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:16) [GET]
+  Parameters: {"_"=>"1400001315768", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (62.3ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:16) [GET]
+  Parameters: {"_"=>"1400001316019", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (156.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:16) [GET]
+  Parameters: {"_"=>"1400001316225", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (59.3ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:17) [GET]
+  Parameters: {"_"=>"1400001317286", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (155.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:18) [GET]
+  Parameters: {"_"=>"1400001317553", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (59.8ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:18) [GET]
+  Parameters: {"_"=>"1400001317991", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (161.6ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:18) [GET]
+  Parameters: {"_"=>"1400001318284", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (60.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:19) [GET]
+  Parameters: {"_"=>"1400001318543", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (151.6ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:19) [GET]
+  Parameters: {"_"=>"1400001318768", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (62.1ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:20) [GET]
+  Parameters: {"_"=>"1400001319015", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (64.9ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:20) [GET]
+  Parameters: {"_"=>"1400001319233", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'NIVEL-3' AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY nome ASC[0m
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 2) in: STATUS like ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:60:in `index'
+
+Rendered rescues/_trace (58.6ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:23) [GET]
+  Parameters: {"_"=>"1400001322784", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"10"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 3) in: STATUS like ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:65:in `index'
+
+Rendered rescues/_trace (61.3ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:23) [GET]
+  Parameters: {"_"=>"1400001323573", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"10"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 3) in: STATUS like ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:65:in `index'
+
+Rendered rescues/_trace (57.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:24) [GET]
+  Parameters: {"_"=>"1400001323817", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"10"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 3) in: STATUS like ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:65:in `index'
+
+Rendered rescues/_trace (60.4ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:24) [GET]
+  Parameters: {"_"=>"1400001324040", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"10"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 3) in: STATUS like ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:65:in `index'
+
+Rendered rescues/_trace (81.1ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:25) [GET]
+  Parameters: {"_"=>"1400001324230", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"10"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (4 for 3) in: STATUS like ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:65:in `index'
+
+Rendered rescues/_trace (61.3ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:26) [GET]
+  Parameters: {"_"=>"1400001326361", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"11"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (3 for 2) in: STATUS != 'CONTRATADO'AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:71:in `index'
+
+Rendered rescues/_trace (152.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:27) [GET]
+  Parameters: {"_"=>"1400001326623", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"11"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (3 for 2) in: STATUS != 'CONTRATADO'AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:71:in `index'
+
+Rendered rescues/_trace (59.0ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:27) [GET]
+  Parameters: {"_"=>"1400001327031", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"11"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (3 for 2) in: STATUS != 'CONTRATADO'AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:71:in `index'
+
+Rendered rescues/_trace (158.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:27) [GET]
+  Parameters: {"_"=>"1400001327281", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"11"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (3 for 2) in: STATUS != 'CONTRATADO'AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:71:in `index'
+
+Rendered rescues/_trace (59.9ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:15:28) [GET]
+  Parameters: {"_"=>"1400001327510", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"11"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (3 for 2) in: STATUS != 'CONTRATADO'AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:71:in `index'
+
+Rendered rescues/_trace (167.8ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:18:35) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.5ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:18:35' AND ends_at >= '2014-05-13 17:18:35') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 64ms (View: 51, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:18:43) [GET]
+  Parameters: {"_"=>"1400001522656", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 3) in: STATUS is null ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (61.6ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:20:29) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.1ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:20:29' AND ends_at >= '2014-05-13 17:20:29') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 85ms (View: 68, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:20:35) [GET]
+  Parameters: {"_"=>"1400001635395", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 3) in: STATUS is null ? AND ATUACAO like ? PERIODO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (59.9ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:21:48) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.1ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:21:48' AND ends_at >= '2014-05-13 17:21:48') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 176ms (View: 161, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:21:51) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.5ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:21:51' AND ends_at >= '2014-05-13 17:21:51') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 64ms (View: 51, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:22:48) [GET]
+  Parameters: {"_"=>"1400001768363", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"8"}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (67.0ms)
+Completed in 90ms (View: 69, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=8&search=&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400001768363]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:23:20) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.6ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:23:20' AND ends_at >= '2014-05-13 17:23:20') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 70ms (View: 58, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:23:46) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.2ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:23:46' AND ends_at >= '2014-05-13 17:23:46') [0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 88ms (View: 68, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:23:55) [GET]
+  Parameters: {"_"=>"1400001834917", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 3) in: STATUS is null ? AND ATUACAO like ? AND PERIODO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (62.2ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:25:13) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:25:13' AND ends_at >= '2014-05-13 17:25:13') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 64ms (View: 51, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:25:20) [GET]
+  Parameters: {"_"=>"1400001920468", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (58.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:27:00) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:27:00' AND ends_at >= '2014-05-13 17:27:00') [0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 160ms (View: 147, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-13 14:27:03) [GET]
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.1ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.1ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:27:03' AND ends_at >= '2014-05-13 17:27:03') [0m
+  [4;36;1mroles_users Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 79ms (View: 45, DB: 5) | 200 OK [http://localhost/homes]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:27:10) [GET]
+  Parameters: {"_"=>"1400002029908", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;36;1mCurriculo Load (0.1ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (42.8ms)
+Completed in 63ms (View: 42, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=9&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400002029908]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:28:04) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.4ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:28:04' AND ends_at >= '2014-05-13 17:28:04') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 158ms (View: 145, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:28:12) [GET]
+  Parameters: {"_"=>"1400002091828", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 1) in: STATUS is null AND ATUACAO like ? AND PERIODO):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (57.2ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:31:47) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.3ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:31:48' AND ends_at >= '2014-05-13 17:31:48') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 69ms (View: 55, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:31:54) [GET]
+  Parameters: {"_"=>"1400002314501", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (157.5ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:32) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:32:32' AND ends_at >= '2014-05-13 17:32:32') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 67ms (View: 53, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:39) [GET]
+  Parameters: {"_"=>"1400002359058", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (63.4ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:44) [GET]
+  Parameters: {"_"=>"1400002364192", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"2"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;36;1mCurriculo Load (0.1ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (44.2ms)
+Completed in 64ms (View: 44, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=2&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400002364192]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:49) [GET]
+  Parameters: {"_"=>"1400002369405", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (63.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:50) [GET]
+  Parameters: {"_"=>"1400002370483", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (60.2ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:52) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.3ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:32:52' AND ends_at >= '2014-05-13 17:32:52') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 68ms (View: 54, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:32:57) [GET]
+  Parameters: {"_"=>"1400002377541", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (155.1ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:35:55) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (5.6ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:35:55' AND ends_at >= '2014-05-13 17:35:55') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 73ms (View: 60, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:35:57) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (95.9ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:35:57' AND ends_at >= '2014-05-13 17:35:57') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 162ms (View: 149, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:36:00) [GET]
+  Parameters: {"_"=>"1400002560494", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"8"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') [0m
+  [4;36;1mCurriculo Load (0.1ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (52.6ms)
+Completed in 75ms (View: 54, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=8&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400002560494]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:36:06) [GET]
+  Parameters: {"_"=>"1400002566197", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"1"}
+  [4;35;1mCurriculo Load (0.2ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS like 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS like 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCurriculo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (42.1ms)
+Completed in 62ms (View: 41, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&type_of=1&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&authenticity_token=9K1P37zXu6ktBA5UGe13N4%2FXuS1fQiySGakSKgcdgsQ%3D&_=1400002566197]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:36:10) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (4.5ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:36:10' AND ends_at >= '2014-05-13 17:36:10') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 67ms (View: 54, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:36:16) [GET]
+  Parameters: {"_"=>"1400002576502", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (59.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-13 14:37:05) [GET]
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.1ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.8ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:37:05' AND ends_at >= '2014-05-13 17:37:05') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 76ms (View: 43, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:37:18) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (4.4ms)
+  [4;36;1mInformativo Load (1.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:37:18' AND ends_at >= '2014-05-13 17:37:18') [0m
+  [4;35;1mUser Columns (5.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 169ms (View: 142, DB: 11) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:37:26) [GET]
+  Parameters: {"_"=>"1400002646061", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (60.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:38:12) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.5ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:38:12' AND ends_at >= '2014-05-13 17:38:12') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 67ms (View: 54, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:39:01) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:39:01' AND ends_at >= '2014-05-13 17:39:01') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 73ms (View: 60, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-13 14:39:08) [GET]
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.3ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.0ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:39:08' AND ends_at >= '2014-05-13 17:39:08') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 86ms (View: 45, DB: 5) | 200 OK [http://localhost/homes]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:39:22) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (13.0ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 17:39:22' AND ends_at >= '2014-05-13 17:39:22') [0m
+  [4;36;1mUser Columns (4.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (8.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 380ms (View: 341, DB: 15) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-13 14:39:36) [GET]
+  Parameters: {"_"=>"1400002776460", "search"=>"", "authenticity_token"=>"9K1P37zXu6ktBA5UGe13N4/XuS1fQiySGakSKgcdgsQ=", "type_of"=>"9"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (57.6ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2014-05-13 15:05:22) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Redirected to http://localhost:3000/
+Completed in 32ms (DB: 0) | 302 Found [http://localhost/logout]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-13 15:05:22) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-05-13 15:05:22) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 31ms (View: 13, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2014-05-13 15:05:25) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2014-05-13 15:05:38) [POST]
+  Parameters: {"login"=>"testeoficio", "commit"=>"Entrar", "authenticity_token"=>"MpNVDXwxbUhoGs089xJVO0bc+7XQDjY1+8b6255xOrY=", "password"=>"123123"}
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'testeoficio') AND (`users`.`login` = 'testeoficio') LIMIT 1[0m
+Failed login for 'testeoficio' from 127.0.0.1 at Tue May 13 18:05:38 UTC 2014
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;36;1mCurso Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+Completed in 54ms (View: 13, DB: 3) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2014-05-13 15:05:39) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 23ms (View: 6, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2014-05-13 15:05:46) [POST]
+  Parameters: {"login"=>"testeoficio", "commit"=>"Entrar", "authenticity_token"=>"MpNVDXwxbUhoGs089xJVO0bc+7XQDjY1+8b6255xOrY=", "password"=>"123456"}
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'testeoficio') AND (`users`.`login` = 'testeoficio') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 150 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Redirected to http://localhost:3000/oficios
+Completed in 46ms (DB: 4) | 302 Found [http://localhost/session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OficiosController#index (for 127.0.0.1 at 2014-05-13 15:05:47) [GET]
+  [4;36;1mOficio Load (0.2ms)[0m   [0;1mSELECT * FROM `oficios` ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering oficios/index
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 18:05:47' AND ends_at >= '2014-05-13 18:05:47') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 150) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 150 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 73ms (View: 53, DB: 4) | 200 OK [http://localhost/oficios]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#index (for 127.0.0.1 at 2014-05-13 15:05:51) [GET]
+  [4;35;1mAcompanhamento Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (encerrado = '0') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/index
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 18:05:51' AND ends_at >= '2014-05-13 18:05:51') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 150) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 150 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 182ms (View: 161, DB: 6) | 200 OK [http://localhost/acompanhamentos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#new (for 127.0.0.1 at 2014-05-13 15:05:53) [POST]
+  Parameters: {"authenticity_token"=>"MpNVDXwxbUhoGs089xJVO0bc+7XQDjY1+8b6255xOrY="}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/new
+Rendered acompanhamentos/_form (45.9ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-13 18:05:53' AND ends_at >= '2014-05-13 18:05:53') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 150) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 150 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 144ms (View: 121, DB: 6) | 200 OK [http://localhost/acompanhamentos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (7.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-14 14:48:33) [GET]
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (28.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 150) LIMIT 1[0m
+  [4;36;1mNoticia Load (4.0ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (12.2ms)
+  [4;35;1mInformativo Load (13.0ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:48:33' AND ends_at >= '2014-05-14 17:48:33') [0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (2.5ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 150 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 492ms (View: 274, DB: 60) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-14 14:48:41) [GET]
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 150) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.8ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:48:41' AND ends_at >= '2014-05-14 17:48:41') [0m
+  [4;35;1mroles_users Columns (4.4ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 150 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 81ms (View: 43, DB: 8) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2014-05-14 14:48:52) [GET]
+  [4;36;1mCurso Load (22.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Redirected to http://localhost:3000/
+Completed in 91ms (DB: 22) | 302 Found [http://localhost/logout]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-14 14:48:54) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 3) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-05-14 14:48:55) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;36;1mCurso Columns (3.1ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+Completed in 98ms (View: 79, DB: 3) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2014-05-14 14:49:00) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 50ms (View: 32, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2014-05-14 14:49:08) [POST]
+  Parameters: {"commit"=>"Entrar", "login"=>"ngarcia", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM=", "password"=>"mus@and2"}
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'ngarcia') AND (`users`.`login` = 'ngarcia') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Redirected to http://localhost:3000/
+Completed in 48ms (DB: 5) | 302 Found [http://localhost/session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-14 14:49:09) [GET]
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.1ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:49:09' AND ends_at >= '2014-05-14 17:49:09') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 80ms (View: 47, DB: 4) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:49:23) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.8ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:49:23' AND ends_at >= '2014-05-14 17:49:23') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 140ms (View: 127, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-14 14:49:30) [GET]
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.9ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:49:30' AND ends_at >= '2014-05-14 17:49:30') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 83ms (View: 48, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:50:15) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:50:15' AND ends_at >= '2014-05-14 17:50:15') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 140ms (View: 128, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:50:21) [GET]
+  Parameters: {"_"=>"1400089821403", "type_of"=>"2", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.7ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.5ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (63.0ms)
+Completed in 102ms (View: 67, DB: 7) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=2&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400089821403]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:50:37) [GET]
+  Parameters: {"_"=>"1400089837322", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (147.6ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:50:41) [GET]
+  Parameters: {"_"=>"1400089840936", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: STATUS is null ? AND ATUACAO like ?):
+  app/controllers/curriculos_controller.rb:59:in `index'
+
+Rendered rescues/_trace (58.4ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:51:31) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:51:31' AND ends_at >= '2014-05-14 17:51:31') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 155ms (View: 55, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:51:39) [GET]
+  Parameters: {"_"=>"1400089899377", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.8ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (52.0ms)
+Completed in 164ms (View: 143, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400089899377]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:52:40) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:52:40' AND ends_at >= '2014-05-14 17:52:40') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 66ms (View: 52, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:52:49) [GET]
+  Parameters: {"_"=>"1400089969270", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (144.0ms)
+Completed in 172ms (View: 147, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400089969270]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:53:04) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:53:04' AND ends_at >= '2014-05-14 17:53:04') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 65ms (View: 52, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:53:11) [GET]
+  Parameters: {"_"=>"1400089990793", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (43.8ms)
+Completed in 147ms (View: 43, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400089990793]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:10) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:54:10' AND ends_at >= '2014-05-14 17:54:10') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 71ms (View: 57, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:17) [GET]
+  Parameters: {"_"=>"1400090057108", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.6ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (43.8ms)
+Completed in 64ms (View: 43, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090057108]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:28) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:54:28' AND ends_at >= '2014-05-14 17:54:28') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 63ms (View: 50, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:32) [GET]
+  Parameters: {"_"=>"1400090071923", "type_of"=>"7", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.7ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS != 'CONTRATADO'AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mCurriculo Load (0.6ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS != 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (46.6ms)
+Completed in 69ms (View: 47, DB: 7) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=7&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090071923]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:40) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:54:40' AND ends_at >= '2014-05-14 17:54:40') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 150ms (View: 138, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:45) [GET]
+  Parameters: {"_"=>"1400090084785", "type_of"=>"2", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (47.1ms)
+Completed in 67ms (View: 47, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=2&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090084785]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:48) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:54:48' AND ends_at >= '2014-05-14 17:54:48') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 153ms (View: 141, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:54:54) [GET]
+  Parameters: {"_"=>"1400090094263", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (41.3ms)
+Completed in 64ms (View: 41, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090094263]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:55:38) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:55:38' AND ends_at >= '2014-05-14 17:55:38') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 154ms (View: 142, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:55:44) [GET]
+  Parameters: {"_"=>"1400090144056", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.5ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (38.6ms)
+Completed in 58ms (View: 37, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090144056]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:56:57) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.5ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:56:57' AND ends_at >= '2014-05-14 17:56:57') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 79ms (View: 65, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:57:04) [GET]
+  Parameters: {"_"=>"1400090224341", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (127.0ms)
+Completed in 145ms (View: 126, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&search=&type_of=9&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090224341]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:57:12) [GET]
+  Parameters: {"_"=>"1400090231956", "type_of"=>"2", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (41.4ms)
+Completed in 66ms (View: 41, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=2&search=&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090231956]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:57:19) [GET]
+  Parameters: {"_"=>"1400090239023", "type_of"=>"9", "search"=>"", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (135.0ms)
+Completed in 153ms (View: 134, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&search=&type_of=9&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090239023]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:57:55) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.3ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:57:55' AND ends_at >= '2014-05-14 17:57:55') [0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 84ms (View: 70, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:58:10) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (2.3ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:58:11' AND ends_at >= '2014-05-14 17:58:11') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 73ms (View: 59, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:58:15) [GET]
+  Parameters: {"_"=>"1400090295386", "type_of"=>"9", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (138.4ms)
+Completed in 157ms (View: 136, DB: 7) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090295386]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:59:02) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 17:59:02' AND ends_at >= '2014-05-14 17:59:02') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 72ms (View: 58, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 14:59:07) [GET]
+  Parameters: {"_"=>"1400090347306", "type_of"=>"10", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.6ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'VESPERTINO') [0m
+  [4;35;1mCurriculo Load (0.4ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'VESPERTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (51.3ms)
+Completed in 160ms (View: 50, DB: 8) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=10&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090347306]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:05) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.3ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 18:06:05' AND ends_at >= '2014-05-14 18:06:05') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 72ms (View: 59, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:12) [GET]
+  Parameters: {"_"=>"1400090772633", "type_of"=>"9", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (40.3ms)
+Completed in 59ms (View: 39, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090772633]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:18) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 18:06:18' AND ends_at >= '2014-05-14 18:06:18') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 63ms (View: 50, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:25) [GET]
+  Parameters: {"_"=>"1400090785585", "type_of"=>"2", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (47.9ms)
+Completed in 68ms (View: 48, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=2&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090785585]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:30) [GET]
+  Parameters: {"_"=>"1400090790342", "type_of"=>"9", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (9.3ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (123.7ms)
+Completed in 142ms (View: 113, DB: 15) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090790342]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:34) [GET]
+  Parameters: {"_"=>"1400090793820", "type_of"=>"10", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'VESPERTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'VESPERTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (40.0ms)
+Completed in 59ms (View: 39, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=10&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090793820]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:06:45) [GET]
+  Parameters: {"_"=>"1400090805588", "type_of"=>"7", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS != 'CONTRATADO'AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS != 'CONTRATADO' AND ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (44.2ms)
+Completed in 64ms (View: 45, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=7&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090805588]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:08:54) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 18:08:54' AND ends_at >= '2014-05-14 18:08:54') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 65ms (View: 52, DB: 4) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:08:59) [GET]
+  Parameters: {"_"=>"1400090938761", "type_of"=>"2", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (149.9ms)
+Completed in 173ms (View: 153, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=2&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090938761]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:09:11) [GET]
+Rendering template within layouts/curriculos
+Rendering curriculos/index
+Rendered curriculos/_consulta (1.2ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-14 18:09:11' AND ends_at >= '2014-05-14 18:09:11') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 70ms (View: 56, DB: 5) | 200 OK [http://localhost/curriculos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:09:16) [GET]
+  Parameters: {"_"=>"1400090956423", "type_of"=>"8", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.8ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (ATUACAO like 'INFORMÁTICA') ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (87.6ms)
+Completed in 118ms (View: 96, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=8&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090956423]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CurriculosController#index (for 127.0.0.1 at 2014-05-14 15:09:22) [GET]
+  Parameters: {"_"=>"1400090961767", "type_of"=>"9", "authenticity_token"=>"taAMlH1JDCcdTkctGckSZG9zWhpyLoi/n3kmg7yqgqM="}
+  [4;36;1mCurriculo Load (0.2ms)[0m   [0;1mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') [0m
+  [4;35;1mCurriculo Load (0.1ms)[0m   [0mSELECT * FROM `curriculos` WHERE (STATUS is null AND ATUACAO like 'INFORMÁTICA' AND PERIODO like 'MATUTINO') ORDER BY created_at DESC[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCurriculo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `curriculos`[0m
+Rendered curriculos/_curriculos (127.4ms)
+Completed in 146ms (View: 126, DB: 6) | 200 OK [http://localhost/curriculos?authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&type_of=9&authenticity_token=taAMlH1JDCcdTkctGckSZG9zWhpyLoi%2Fn3kmg7yqgqM%3D&_=1400090961767]
