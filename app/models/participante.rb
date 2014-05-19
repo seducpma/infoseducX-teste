@@ -13,12 +13,7 @@ class Participante < ActiveRecord::Base
   attr_accessor :email_confirmation
 def before_save
     self.nome.upcase!
-    self.profissao.upcase!
-    self.endereco.upcase!
-    self.complemento.upcase!
-    self.funcao.upcase!
-    self.bairro.upcase!
-    self.cidade.upcase!
+    
 #    self.obs.upcase!
 end
 
