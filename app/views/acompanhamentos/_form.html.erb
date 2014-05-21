@@ -20,10 +20,10 @@
            <td align="left"><font size="2"><%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 15)) %></font></td>
         </tr>
         <tr>
-           <td width="10%"align="left"><font size="2"><b>RA:</b></font></td>
-           <td align="left"><font size="2"><%= f.text_field :RA, :size =>25 %></font></td>
-           <td align="left"><font size="2"><b>Inscrição:</b></font></td>
+           <td width="10%"align="left"><font size="2"><b>Inscrição/RA:</b></font></td>
            <td align="left"><font size="2"><%= f.text_field :inscricao, :size =>35 %></font></td>
+           <td align="left"><font size="2"><b>Atendido  por:</b></font></td>
+           <td align="left" colspan="3"><font size="2"> <%=  $usuario%></font></td>
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Mãe:</b></font></td>
@@ -61,6 +61,7 @@
            <td align="left" valign="top"><font size="2"><b>Assunto:</b></font></td>
            <td align="left" colspan="3"><font size="2"><%= f.text_area :assunto, :cols=>'108', :rows=> '3' %></font></td>
         </tr>
+        
      </table>
    </td>
  </tr>

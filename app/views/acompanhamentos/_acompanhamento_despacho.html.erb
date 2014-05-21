@@ -8,7 +8,7 @@
        <table  width="100%" bgcolor="#F5F5F5">
         <tr>
             <td width="10%" valign="top"><b><font size="2"><%= f.label :funcionario, 'Funcionário:' %></font></b></td>
-            <td><%= f.text_field :funcionario, :size=>'40' %></td>
+            <td><%= $usuario%></td>
         </tr>
         <tr>
             <td width="10%" valign="top"><b><font size="2"><%= f.label :despacho, 'Despacho:' %></font></b></td>
@@ -20,8 +20,8 @@
         </tr>
         <tr>
            <td align="left" colspan="3"><font size="2"></font><br/>
-                           <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "1", :checked => "true") %></a> <font size="2">Recusado</font>
-                           <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a><font size="2">Aceitado</font>
+                           <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "1", :checked => "true") %></a> <font size="2">Pendente</font>
+                           <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a><font size="2">Encerrado</font>
            </td>
         </tr>
 

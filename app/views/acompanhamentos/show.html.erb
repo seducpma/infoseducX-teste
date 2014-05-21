@@ -27,10 +27,10 @@
           </tr>
           <tr>
             <td width="1%"></td>
-            <td width="1%" valign="Top" width="9%"><b>RA:</b></td>
-            <td width="5%"><%=h @acompanhamento.RA %></td>
-            <td width="1%"align="right"><b>Inscrição: </b></td>
-            <td width="10%"align="left"><%=h @acompanhamento.inscricao%></td>
+            <td width="1%" valign="Top" width="9%"><b>Inscrição/RA:</b></td>
+            <td width="5%"><%=h @acompanhamento.inscricao %></td>
+            <td width="1%" align="right"><b>Atendimento: </b></td>
+            <td width="10%"align="left">por <%=h @acompanhamento.por%></td>
           </tr>
           <tr>
             <td width="1%"></td>
@@ -70,8 +70,10 @@
           </tr>
           <tr>
             <td></td>
-            <td align="left"><b>Solicitante: </b></td>
-            <td colspan="3"align="left"><%=h @acompanhamento.solicitante%></td>
+            <td width="1%" align="left"><b>Solicitante: </b></td>
+            <td width="5%" align="left"><%=h @acompanhamento.solicitante%></td>
+            <td width="1%" align="right"><b>Atendido por: </b></td>
+            <td width="10%"align="left"><%=h @acompanhamento.funcionario%></td>
           </tr>
 
           <tr>
@@ -95,7 +97,6 @@
                 <td colspan="4"><b>NÃO Encerrado</b></td>
               </tr>
             <% end %>
-
        </table>
     </fieldset>
     <div class="botao">

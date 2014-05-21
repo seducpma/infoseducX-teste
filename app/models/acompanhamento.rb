@@ -1,7 +1,13 @@
 class Acompanhamento < ActiveRecord::Base
   has_many :acompanhamento_despachos
   after_create :geracodigo
+ # before_save :gravafuncionario
 
+ POR = %w(TELEFONE PESSOALMENTE OFICIO)
+
+  def before_create
+    self.funcionario = $usuario
+  end
 
   def before_save
     self.crianca.upcase!
@@ -21,4 +27,9 @@ def geracodigo
 
 end
 
+#def gravafuncionario
+ #   self.funcionario = $usuario
+ #   self.save
+
+#end
 end
