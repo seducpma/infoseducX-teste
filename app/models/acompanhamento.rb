@@ -5,9 +5,6 @@ class Acompanhamento < ActiveRecord::Base
 
  POR = %w(TELEFONE PESSOALMENTE OFICIO)
 
-  def before_create
-    self.funcionario = $usuario
-  end
 
   def before_save
     self.crianca.upcase!
