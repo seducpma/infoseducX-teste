@@ -13443,3 +13443,296 @@ Rendered homes/_informe (7.2ms)
   [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
   [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
 Completed in 177ms (View: 143, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#consulta (for 127.0.0.1 at 2014-05-22 08:33:08) [GET]
+  [4;36;1mUnidade Load (20.8ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id != 71 and id !=72 and id !=73 and id !=76 and id !=77 and id !=75) ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (3.8ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.7ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mUnidade Load (25.0ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.5ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+Rendering template within layouts/application
+Rendering unidades/consultas
+  [4;35;1mUnidade Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-22 11:33:09' AND ends_at >= '2014-05-22 11:33:09') [0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 447ms (View: 306, DB: 58) | 200 OK [http://localhost/c_uni_uni]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#lista_unidade (for 127.0.0.1 at 2014-05-22 08:33:14) [POST]
+  Parameters: {"unidade_unidade_id"=>"41", "authenticity_token"=>"BDnejub5g9kdfsNeLyK66etUdDvr7mMIt7RyPXDUu0Y="}
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id != 71 and id !=72 and id !=73 and id !=76 and id !=77 and id !=75) ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.5ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.1ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;35;1mUnidade Load (0.5ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=41) [0m
+  [4;36;1mUnidade Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mTipo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mTipo Load (0.4ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRegiao Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mRegiao Load (0.3ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mEstagiario Load (1.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 3) [0m
+  [4;35;1mEstagiario Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+Rendered unidades/_lista_unidades (107.3ms)
+Completed in 256ms (View: 102, DB: 14) | 200 OK [http://localhost/unidades/lista_unidade]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ChamadosController#new (for 127.0.0.1 at 2014-05-22 08:33:24) [GET]
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (1.9ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.9ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (desligado=0 and unidade_id=53 and id<>2 and id<>47) ORDER BY nome ASC[0m
+  [4;35;1mSituacaoChamado Load (0.3ms)[0m   [0mSELECT * FROM `situacao_chamados` [0m
+  [4;36;1mTiposProblema Load (0.3ms)[0m   [0;1mSELECT * FROM `tipos_problemas` [0m
+  [4;35;1mChamado Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `chamados`[0m
+Rendering template within layouts/application
+Rendering chamados/new
+  [4;36;1mUnidade Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered chamados/_form (33.3ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-22 11:33:24' AND ends_at >= '2014-05-22 11:33:24') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 283ms (View: 99, DB: 11) | 200 OK [http://localhost/chamados/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ChamadosController#create (for 127.0.0.1 at 2014-05-22 08:34:26) [POST]
+  Parameters: {"authenticity_token"=>"BDnejub5g9kdfsNeLyK66etUdDvr7mMIt7RyPXDUu0Y=", "x"=>"12", "y"=>"8", "chamado"=>{"data_sol(4i)"=>"08", "data_sol(5i)"=>"33", "data_sol(1i)"=>"2014", "solicitante"=>"Luzia", "data_sol(2i)"=>"5", "obs"=>"", "problema"=>"VIvo não atendeu à solcitação de manutenção da linha telefonica - protocolo de solicitação C4300064806", "unidade_id"=>"41", "data_sol(3i)"=>"22", "forma_sol"=>"E-MAIL"}}
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.3ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (desligado=0) ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.2ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (desligado=0 and unidade_id=53 and id<>2 and id<>47) ORDER BY nome ASC[0m
+  [4;36;1mSituacaoChamado Load (0.1ms)[0m   [0;1mSELECT * FROM `situacao_chamados` [0m
+  [4;35;1mTiposProblema Load (0.2ms)[0m   [0mSELECT * FROM `tipos_problemas` [0m
+  [4;36;1mChamado Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `chamados`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mChamado Create (34.9ms)[0m   [0;1mINSERT INTO `chamados` (`data_sol`, `local`, `solicitante`, `tipos_problema_id`, `depto`, `updated_at`, `email`, `procedimentos`, `situacao_chamado_id`, `data_enc`, `created_at`, `unidade_id`, `problema`, `data_aten`, `estagiario_id`, `obs`, `forma_sol`, `patrimonio`) VALUES('2014-05-22 11:33:00', NULL, 'LUZIA', NULL, NULL, '2014-05-22 11:34:26', NULL, NULL, 1, NULL, '2014-05-22 11:34:26', 41, 'VIVO NÃO ATENDEU À SOLCITAÇÃO DE MANUTENÇÃO DA LINHA TELEFONICA - PROTOCOLO DE SOLICITAÇÃO C4300064806', NULL, NULL, '', 'E-MAIL', NULL)[0m
+  [4;35;1mSQL (60.4ms)[0m   [0mCOMMIT[0m
+Sent mail to administrador@seducpma.com
+
+Date: Thu, 22 May 2014 08:34:26 -0300
+From: administrador@seducpma.com
+To: administrador@seducpma.com
+Subject: =?utf-8?Q?Teste_de_abertura_chamado_t=C3=A9cnico?=
+Mime-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<h1>Abertura de chamado realizada com sucesso</h1>
+<h2>Não responda este email. Email gerado automaticamente.</h2>
+<h2>Sistema de Controle Informático - Infoseduc</h2>
+<h3>Prefeitura Municipal de Americana - Secretaria de Educação</h3>
+
+<p>
+<h1><b>Protocolo Nº: </b><font color="red"> 1797</font></h1><br/>
+</p>
+<p>
+  <b>Solicitado por: </b>
+  <font color="green"> LUZIA</font><br/>
+</p>
+<p>
+  <b>Problema Informado: </b>
+  <font color="blue"> VIVO NÃO ATENDEU À SOLCITAÇÃO DE MANUTENÇÃO DA LINHA TELEFONICA - PROTOCOLO DE SOLICITAÇÃO C4300064806</font><br/>
+</p>
+
+
+Site: <a href="infoseduc.seducpma.com">Acessar Infoseduc</a>
+Redirected to http://localhost:3000/chamados/1797
+Completed in 3052ms (DB: 100) | 302 Found [http://localhost/chamados]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ChamadosController#show (for 127.0.0.1 at 2014-05-22 08:34:29) [GET]
+  Parameters: {"id"=>"1797"}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.3ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.1ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (desligado=0 and unidade_id=53 and id<>2 and id<>47) ORDER BY nome ASC[0m
+  [4;35;1mSituacaoChamado Load (0.2ms)[0m   [0mSELECT * FROM `situacao_chamados` [0m
+  [4;36;1mTiposProblema Load (0.1ms)[0m   [0;1mSELECT * FROM `tipos_problemas` [0m
+  [4;35;1mChamado Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `chamados`[0m
+  [4;36;1mChamado Load (0.3ms)[0m   [0;1mSELECT * FROM `chamados` WHERE (`chamados`.`id` = 1797) [0m
+Rendering template within layouts/application
+Rendering chamados/show
+  [4;35;1mUnidade Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.4ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 41) [0m
+Rendered chamados/_formshow (15.8ms)
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-22 11:34:29' AND ends_at >= '2014-05-22 11:34:29') [0m
+Completed in 253ms (View: 74, DB: 9) | 200 OK [http://localhost/chamados/1797]
+  [4;36;1mSQL (42.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (19.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-27 12:49:39) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 36ms (DB: 62) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-05-27 12:49:39) [GET]
+  [4;36;1mCurso Load (155.6ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 318ms (View: 127, DB: 171) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2014-05-27 12:49:43) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 117ms (View: 13, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2014-05-27 12:49:50) [POST]
+  Parameters: {"authenticity_token"=>"uxjL1xkMmK4KfJFao39nZfJ5brcSqiCvyPsxYxB5kAU=", "login"=>"ngarcia", "password"=>"mus@and2", "commit"=>"Entrar"}
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (16.5ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'ngarcia') AND (`users`.`login` = 'ngarcia') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (13.5ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Redirected to http://localhost:3000/
+Completed in 172ms (DB: 35) | 302 Found [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-05-27 12:49:50) [GET]
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.5ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (20.9ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-27 15:49:51' AND ends_at >= '2014-05-27 15:49:51') [0m
+  [4;35;1mroles_users Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 466ms (View: 417, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#index (for 127.0.0.1 at 2014-05-27 12:50:02) [GET]
+  [4;36;1mPrefprotocolo Load (10.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (26.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '0') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/index
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mInformativo Load (1.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-27 15:50:02' AND ends_at >= '2014-05-27 15:50:02') [0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 460ms (View: 224, DB: 43) | 200 OK [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-05-27 12:50:10) [GET]
+  Parameters: {"id"=>"25"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 25) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (5.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 25) [0m
+  [4;35;1mDespacho Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (120.7ms)
+Rendered prefprotocolos/_final (6.3ms)
+Rendered prefprotocolos/_despacho (36.0ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-05-27 15:50:10' AND ends_at >= '2014-05-27 15:50:10') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 282ms (View: 254, DB: 12) | 200 OK [http://localhost/prefprotocolos/25/edit]
+  [4;36;1mSQL (81.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (151.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-02 15:22:32) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 23ms (DB: 233) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-06-02 15:22:32) [GET]
+  [4;36;1mCurso Load (196.5ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 352ms (View: 131, DB: 199) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-02 15:22:33) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-02 15:22:34) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-06-02 15:22:34) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 32ms (View: 13, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-06-02 15:22:34) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 34ms (View: 13, DB: 2) | 200 OK [http://localhost/session/new]
