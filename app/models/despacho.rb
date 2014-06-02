@@ -2,9 +2,7 @@ class Despacho < ActiveRecord::Base
   belongs_to :prefprotocolo, :dependent => :destroy
   before_save :acerto
   
-  def before_create
-    self.funcionario = $usuario
-  end
+
 
   def acerto
 
