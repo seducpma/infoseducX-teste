@@ -71,12 +71,12 @@ class User < ActiveRecord::Base
 
 
   def self.authenticate(login, password)
-    #u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
-    #u && u.authenticated?(password) ? u : nil
-
-    return nil if login.blank? || password.blank?
-    u = find_by_login(login.downcase, :conditions => ['login = ?', login]) # need to get the salt
+    u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
     u && u.authenticated?(password) ? u : nil
+#ACERTAR AQUI SE FOR O CASO ........<<<<<<<<<
+    #return nil if login.blank? || password.blank?
+    #u = find_by_login(login.downcase, :conditions => ['login = ?', login]) # need to get the salt
+    #u && u.authenticated?(password) ? u : nil
   end
 
   def login=(value)

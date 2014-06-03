@@ -35,12 +35,12 @@ class AcompanhamentosController < ApplicationController
   # GET /acompanhamentos/1/edit
   def edit
     @acompanhamento = Acompanhamento.find(params[:id])
-    $id = params[:id]
+     session[:id] = params[:id]
   end
 
  def editar
     @acompanhamento = Acompanhamento.find(params[:id])
-    $id = params[:id]
+     session[:id] = params[:id]
   end
 
   # POST /acompanhamentos
@@ -92,7 +92,7 @@ class AcompanhamentosController < ApplicationController
 
 def create_acompanhamento_despacho
       @acompanhamento_despacho = AcompanhamentoDespacho.new(params[:acompanhamento_despacho])
-      @acompanhamento = Acompanhamento.find($id)
+      @acompanhamento = Acompanhamento.find(session[:id])
       @acompanhamento_despacho.acompanhamento_id = @acompanhamento.id
       @acompanhamento_despacho.data = Time.now
       @acompanhamento.data_encerrado = Time.now

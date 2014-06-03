@@ -156,7 +156,7 @@ def indexe
   # GET /prefprotocolos/1/edit
   def edit
     @prefprotocolo = Prefprotocolo.find(params[:id])
-    $id = params[:id]
+     session[:id] = params[:id]
   end
 
   # POST /prefprotocolos
@@ -222,7 +222,7 @@ def indexe
 
 def create_despacho
       @despacho = Despacho.new(params[:despacho])
-      @prefprotocolo = Prefprotocolo.find($id)
+      @prefprotocolo = Prefprotocolo.find(session[:id])
       @despacho.prefprotocolo_id =@prefprotocolo.id
       @despacho.procedencia =@prefprotocolo.destino
       @despacho.data_saida = Time.now
