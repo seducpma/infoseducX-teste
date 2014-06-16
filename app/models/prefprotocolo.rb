@@ -27,11 +27,10 @@ def before_update
 if $reabre == 0
   if self.encerrado = 1
         self.encerrado = 0
-        $reabre == 1
+        $reabre = 1
   end
-    
  end
-end
+ end
 
  	
 

@@ -20001,3 +20001,1841 @@ Rendered prefprotocolos/_despachos (12.1ms)
   [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
   [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
 Completed in 120ms (View: 95, DB: 7) | 200 OK [http://localhost/prefprotocolos/46]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-16 11:11:20) [GET]
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.4ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:11:20' AND ends_at >= '2014-06-16 14:11:20') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 86ms (View: 48, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#new (for 127.0.0.1 at 2014-06-16 11:11:25) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/new
+Rendered prefprotocolos/_form (26.8ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:11:25' AND ends_at >= '2014-06-16 14:11:25') [0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 207ms (View: 185, DB: 6) | 200 OK [http://localhost/prefprotocolos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 11:11:32) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.7ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (1.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:11:32' AND ends_at >= '2014-06-16 14:11:32') [0m
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 126ms (View: 102, DB: 8) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:11:41) [GET]
+  Parameters: {"search"=>"", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"6", "_"=>"1402927900682"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (30.3ms)
+Completed in 64ms (View: 40, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=6&search=&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402927900682]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-16 11:11:49) [GET]
+  Parameters: {"id"=>"39"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 39) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;35;1mDespacho Load (0.6ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 39) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.4ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (13.0ms)
+  [4;35;1mInformativo Load (1.0ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:11:49' AND ends_at >= '2014-06-16 14:11:49') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 215ms (View: 189, DB: 8) | 200 OK [http://localhost/prefprotocolos/reabrir/39]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:11:57) [PUT]
+  Parameters: {"id"=>"39", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "destino"=>"INFORMÁTICA"}}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 39) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 39) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.2ms)
+Rendered prefprotocolos/_final (4.4ms)
+Rendered prefprotocolos/_despacho (12.9ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:11:57' AND ends_at >= '2014-06-16 14:11:57') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 122ms (View: 92, DB: 7) | 200 OK [http://localhost/prefprotocolos/39]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:12:19) [PUT]
+  Parameters: {"id"=>"39", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "destino"=>"INFORMÁTICA"}}
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 39) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.5ms)[0m   [0;1mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 14:12:19', `encerrado` = 0, `destino` = 'INFORMÁTICA' WHERE `id` = 39[0m
+  [4;35;1mSQL (37.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/39
+Completed in 67ms (DB: 40) | 302 Found [http://localhost/prefprotocolos/39]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:12:21) [GET]
+  Parameters: {"id"=>"39"}
+  [4;36;1mPrefprotocolo Load (0.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 39) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 39) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.3ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:12:21' AND ends_at >= '2014-06-16 14:12:21') [0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 107ms (View: 79, DB: 9) | 200 OK [http://localhost/prefprotocolos/39]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 11:12:27) [GET]
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.7ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.8ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:12:27' AND ends_at >= '2014-06-16 14:12:27') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 107ms (View: 85, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:12:32) [GET]
+  Parameters: {"search"=>"", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"6", "_"=>"1402927952156"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.6ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (21.1ms)
+Completed in 47ms (View: 28, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=6&search=&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402927952156]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-16 11:12:38) [GET]
+  Parameters: {"id"=>"24"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 24) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;36;1mDespacho Load (0.8ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 24) [0m
+  [4;35;1mDespacho Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (17.7ms)
+Rendered prefprotocolos/_final (6.7ms)
+Rendered prefprotocolos/_despacho (19.2ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:12:38' AND ends_at >= '2014-06-16 14:12:38') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 156ms (View: 124, DB: 8) | 200 OK [http://localhost/prefprotocolos/reabrir/24]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:12:54) [PUT]
+  Parameters: {"id"=>"24", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "destino"=>"INFORMÁTICA"}}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 24) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.4ms)[0m   [0;1mUPDATE `prefprotocolos` SET `para` = 'ASSINAR', `updated_at` = '2014-06-16 14:12:54', `encerrado` = 0, `destino` = 'INFORMÁTICA' WHERE `id` = 24[0m
+  [4;35;1mSQL (44.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/24
+Completed in 164ms (DB: 47) | 302 Found [http://localhost/prefprotocolos/24]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:12:54) [GET]
+  Parameters: {"id"=>"24"}
+  [4;36;1mPrefprotocolo Load (1.0ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 24) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 24) [0m
+  [4;36;1mDespacho Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (16.9ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:12:54' AND ends_at >= '2014-06-16 14:12:54') [0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 147ms (View: 114, DB: 10) | 200 OK [http://localhost/prefprotocolos/24]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-16 11:13:04) [GET]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.0ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:13:04' AND ends_at >= '2014-06-16 14:13:04') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 177ms (View: 49, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#index (for 127.0.0.1 at 2014-06-16 11:13:10) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.6ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '0') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/index
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:13:10' AND ends_at >= '2014-06-16 14:13:10') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 253ms (View: 230, DB: 6) | 200 OK [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:13:17) [GET]
+  Parameters: {"search"=>"INFORMÁTICA", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"3", "_"=>"1402927997448"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0' ) [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0') ORDER BY updated_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolosindex (11.7ms)
+Completed in 36ms (View: 16, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=3&search=INFORM%C3%81TICA&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402927997448]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:13:25) [GET]
+  Parameters: {"id"=>"24"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 24) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 24) [0m
+  [4;35;1mDespacho Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.3ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (12.4ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:13:25' AND ends_at >= '2014-06-16 14:13:25') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 210ms (View: 186, DB: 7) | 200 OK [http://localhost/prefprotocolos/24/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OficiosController#new (for 127.0.0.1 at 2014-06-16 11:13:42) [GET]
+  [4;36;1mOficio Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `oficios`[0m
+Rendering template within layouts/application
+Rendering oficios/new
+Rendered oficios/_form (21.1ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:13:42' AND ends_at >= '2014-06-16 14:13:42') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 114ms (View: 94, DB: 5) | 200 OK [http://localhost/oficios/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OficiosController#create (for 127.0.0.1 at 2014-06-16 11:14:01) [POST]
+  Parameters: {"oficio"=>{"assunto"=>"teste2", "emissor"=>"teste2", "destinatario"=>"teste2", "data(1i)"=>"2014", "data(2i)"=>"6", "data(3i)"=>"16", "obs"=>"teste2"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;35;1mOficio Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `oficios`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOficio Create (0.4ms)[0m   [0mINSERT INTO `oficios` (`assunto`, `emissor`, `data`, `destinatario`, `created_at`, `codigo`, `obs`, `updated_at`) VALUES('TESTE2', 'TESTE2', '2014-06-16 03:00:00', 'TESTE2', '2014-06-16 14:14:01', NULL, 'teste2', '2014-06-16 14:14:01')[0m
+  [4;36;1mOficio Update (0.4ms)[0m   [0;1mUPDATE `oficios` SET `codigo` = '41/2014', `created_at` = '2014-06-16 14:14:01', `data` = '2014-06-16 03:00:00', `updated_at` = '2014-06-16 14:14:01', `assunto` = 'TESTE2', `obs` = 'teste2', `destinatario` = 'TESTE2', `emissor` = 'TESTE2' WHERE `id` = 55[0m
+  [4;35;1mSQL (41.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering oficios/show
+  [4;36;1mInformativo Load (1.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:14:01' AND ends_at >= '2014-06-16 14:14:01') [0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 182ms (View: 109, DB: 49) | 200 OK [http://localhost/oficios]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#new (for 127.0.0.1 at 2014-06-16 11:14:08) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/new
+Rendered prefprotocolos/_form (27.4ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:14:08' AND ends_at >= '2014-06-16 14:14:08') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 133ms (View: 109, DB: 6) | 200 OK [http://localhost/prefprotocolos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create (for 127.0.0.1 at 2014-06-16 11:14:24) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "assunto"=>"teste2", "data(1i)"=>"2014", "de"=>"teste2", "data(2i)"=>"6", "destino"=>"INFORMÁTICA", "data(3i)"=>"16", "codigo"=>"teste2"}}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Create (0.4ms)[0m   [0mINSERT INTO `prefprotocolos` (`assunto`, `para`, `data_encerramento`, `data`, `de`, `destino`, `encerrado`, `created_at`, `codigo`, `updated_at`) VALUES('TESTE2', 'ASSINAR', NULL, '2014-06-16 03:00:00', 'TESTE2', 'INFORMÁTICA', 0, '2014-06-16 14:14:24', 'teste2', '2014-06-16 14:14:24')[0m
+  [4;36;1mSQL (38.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/47
+Completed in 64ms (DB: 40) | 302 Found [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:14:24) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.9ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.6ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (6.8ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:14:24' AND ends_at >= '2014-06-16 14:14:24') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 101ms (View: 76, DB: 7) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-16 11:14:30) [GET]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.1ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.0ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:14:30' AND ends_at >= '2014-06-16 14:14:30') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 181ms (View: 140, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#index (for 127.0.0.1 at 2014-06-16 11:14:34) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '0') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/index
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:14:34' AND ends_at >= '2014-06-16 14:14:34') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 127ms (View: 105, DB: 6) | 200 OK [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:14:41) [GET]
+  Parameters: {"search"=>"INFORMÁTICA", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"3", "_"=>"1402928080916"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0' ) [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0') ORDER BY updated_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolosindex (13.5ms)
+Completed in 39ms (View: 19, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=3&search=INFORM%C3%81TICA&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928080916]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:14:44) [GET]
+  Parameters: {"search"=>"INFORMÁTICA", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"3", "_"=>"1402928084354"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0' ) [0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0') ORDER BY updated_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolosindex (13.4ms)
+Completed in 37ms (View: 18, DB: 2) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=3&search=INFORM%C3%81TICA&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928084354]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:14:46) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (5.7ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (12.4ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:14:46' AND ends_at >= '2014-06-16 14:14:46') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 210ms (View: 188, DB: 6) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 11:15:17) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"tese22", "destinofinal"=>"teste22", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"teste22"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.5ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 14:15:17', `updated_at` = '2014-06-16 14:15:17', `encerrado` = 1 WHERE `id` = 47[0m
+  [4;35;1mSQL (46.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mPrefprotocolo Update (0.3ms)[0m   [0;1mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 14:15:17', `destino` = 'PROTOCOLO_INTERNO' WHERE `id` = 47[0m
+  [4;35;1mDespacho Create (0.2ms)[0m   [0mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'tese22', 'teste22', '2014-06-16 14:15:17', 'INFORMÁTICA', NULL, 47, 'PROTOCOLO_INTERNO', '2014-06-16 14:15:17', '2014-06-16 14:15:17', 'teste22')[0m
+  [4;36;1mSQL (52.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mDespacho Load (0.7ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (3.4ms)
+Completed in 147ms (View: 7, DB: 104) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:15:22) [PUT]
+  Parameters: {"id"=>"47", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;36;1mPrefprotocolo Load (0.9ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/47
+Completed in 24ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/47]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:15:22) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.0ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:15:22' AND ends_at >= '2014-06-16 14:15:22') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 104ms (View: 79, DB: 7) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 11:15:30) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.7ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:15:30' AND ends_at >= '2014-06-16 14:15:30') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 187ms (View: 167, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:15:37) [GET]
+  Parameters: {"search"=>"", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"6", "_"=>"1402928137222"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (21.5ms)
+Completed in 50ms (View: 30, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=6&search=&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928137222]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-16 11:15:41) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (11.6ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (13.4ms)
+Rendered prefprotocolos/_final (4.4ms)
+Rendered prefprotocolos/_despacho (17.2ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:15:41' AND ends_at >= '2014-06-16 14:15:41') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 221ms (View: 107, DB: 19) | 200 OK [http://localhost/prefprotocolos/reabrir/47]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:15:55) [PUT]
+  Parameters: {"id"=>"47", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"DISTRIBUIÇÃO", "destino"=>"INFORMÁTICA"}}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Update (0.5ms)[0m   [0mUPDATE `prefprotocolos` SET `para` = 'DISTRIBUIÇÃO', `updated_at` = '2014-06-16 14:15:55', `encerrado` = 0, `destino` = 'INFORMÁTICA' WHERE `id` = 47[0m
+  [4;36;1mSQL (48.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/47
+Completed in 75ms (DB: 51) | 302 Found [http://localhost/prefprotocolos/47]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:15:55) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (1.0ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.4ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:15:56' AND ends_at >= '2014-06-16 14:15:56') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 195ms (View: 80, DB: 8) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 11:16:02) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.6ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (1.1ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:16:02' AND ends_at >= '2014-06-16 14:16:02') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 241ms (View: 220, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:16:16) [GET]
+  Parameters: {"search"=>"teste2", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928176335"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste2%') [0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste2%') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (8.2ms)
+Completed in 31ms (View: 11, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste2&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928176335]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:16:20) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.0ms)
+Rendered prefprotocolos/_final (8.7ms)
+Rendered prefprotocolos/_despacho (17.1ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:16:20' AND ends_at >= '2014-06-16 14:16:20') [0m
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 256ms (View: 225, DB: 8) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 11:16:58) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"teste222", "destinofinal"=>"teste222", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"teste222"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.6ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.4ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 14:16:58', `updated_at` = '2014-06-16 14:16:58' WHERE `id` = 47[0m
+  [4;35;1mSQL (57.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mPrefprotocolo Update (0.4ms)[0m   [0;1mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 14:16:58', `destino` = 'PROTOCOLO_INTERNO' WHERE `id` = 47[0m
+  [4;35;1mDespacho Create (0.3ms)[0m   [0mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'teste222', 'teste222', '2014-06-16 14:16:58', 'INFORMÁTICA', NULL, 47, 'PROTOCOLO_INTERNO', '2014-06-16 14:16:58', '2014-06-16 14:16:58', 'teste222')[0m
+  [4;36;1mSQL (45.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mDespacho Load (0.8ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (3.8ms)
+Completed in 168ms (View: 8, DB: 109) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 11:17:11) [GET]
+  [4;36;1mPrefprotocolo Load (1.0ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.6ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:17:11' AND ends_at >= '2014-06-16 14:17:11') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 200ms (View: 178, DB: 6) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:17:17) [GET]
+  Parameters: {"search"=>"", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"6", "_"=>"1402928237307"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (21.1ms)
+Completed in 49ms (View: 28, DB: 2) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=6&search=&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928237307]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:17:21) [GET]
+  Parameters: {"id"=>"41"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 41) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.6ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 41) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.2ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:17:21' AND ends_at >= '2014-06-16 14:17:21') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 192ms (View: 168, DB: 8) | 200 OK [http://localhost/prefprotocolos/41]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:17:42) [GET]
+  Parameters: {"search"=>"teste2", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928261861"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.6ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste2%') [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste2%') ORDER BY created_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (8.3ms)
+Completed in 30ms (View: 11, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste2&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928261861]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:17:51) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.2ms)
+Rendered prefprotocolos/_final (4.9ms)
+Rendered prefprotocolos/_despacho (104.5ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:17:51' AND ends_at >= '2014-06-16 14:17:51') [0m
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 212ms (View: 189, DB: 8) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:18:00) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (13.0ms)
+Rendered prefprotocolos/_final (4.4ms)
+Rendered prefprotocolos/_despacho (17.6ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:18:00' AND ends_at >= '2014-06-16 14:18:00') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (14.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 223ms (View: 184, DB: 21) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:19:15) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.2ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (12.4ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:19:15' AND ends_at >= '2014-06-16 14:19:15') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 116ms (View: 92, DB: 7) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 11:19:47) [POST]
+  Parameters: {"despacho"=>{"para"=>"", "despacho"=>"teste222", "destinofinal"=>"teste222", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"teste222"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+  [4;36;1mPrefprotocolo Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mDespacho Create (0.3ms)[0m   [0;1mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('', 'teste222', 'teste222', '2014-06-16 14:19:47', 'PROTOCOLO_INTERNO', NULL, 47, 'PROTOCOLO_INTERNO', '2014-06-16 14:19:47', '2014-06-16 14:19:47', 'teste222')[0m
+  [4;35;1mSQL (39.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mDespacho Load (0.6ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (3.7ms)
+Completed in 85ms (View: 7, DB: 44) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:19:58) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;35;1mDespacho Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.8ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (13.0ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:19:58' AND ends_at >= '2014-06-16 14:19:58') [0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 216ms (View: 190, DB: 8) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:20:58) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;35;1mDespacho Load (0.7ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.0ms)
+Rendered prefprotocolos/_final (4.4ms)
+Rendered prefprotocolos/_despacho (12.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:20:59' AND ends_at >= '2014-06-16 14:20:59') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 116ms (View: 91, DB: 7) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 11:21:35) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"teste222", "destinofinal"=>"teste222", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"teste222"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.5ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 14:21:35', `updated_at` = '2014-06-16 14:21:35' WHERE `id` = 47[0m
+  [4;35;1mSQL (38.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mDespacho Create (0.3ms)[0m   [0;1mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'teste222', 'teste222', '2014-06-16 14:21:35', 'PROTOCOLO_INTERNO', NULL, 47, 'PROTOCOLO_INTERNO', '2014-06-16 14:21:35', '2014-06-16 14:21:35', 'teste222')[0m
+  [4;35;1mSQL (37.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mDespacho Load (0.6ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (3.0ms)
+Completed in 122ms (View: 6, DB: 82) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:21:40) [PUT]
+  Parameters: {"id"=>"47", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;35;1mPrefprotocolo Load (0.8ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/47
+Completed in 26ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/47]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:21:40) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (17.4ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:21:40' AND ends_at >= '2014-06-16 14:21:40') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 219ms (View: 188, DB: 8) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 11:21:53) [GET]
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.7ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:21:53' AND ends_at >= '2014-06-16 14:21:53') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 92ms (View: 71, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:04) [GET]
+  Parameters: {"search"=>"", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"6", "_"=>"1402928523782"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.6ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (21.1ms)
+Completed in 49ms (View: 27, DB: 4) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=6&search=&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928523782]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:17) [GET]
+  Parameters: {"search"=>"teste222", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928536704"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste222%') [0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste222%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 21ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste222&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928536704]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:20) [GET]
+  Parameters: {"search"=>"teste22", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928540426"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') [0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 20ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste22&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928540426]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:22) [GET]
+  Parameters: {"search"=>"teste22", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928541843"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') [0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 21ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste22&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928541843]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:23) [GET]
+  Parameters: {"search"=>"teste22", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928543374"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') [0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 21ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste22&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928543374]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:24) [GET]
+  Parameters: {"search"=>"teste22", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928544121"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') [0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 20ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste22&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928544121]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:24) [GET]
+  Parameters: {"search"=>"teste22", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928544614"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') [0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 20ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste22&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928544614]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:25) [GET]
+  Parameters: {"search"=>"teste22", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928545096"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') [0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste22%') ORDER BY created_at DESC[0m
+Rendered prefprotocolos/_protocolos (0.3ms)
+Completed in 22ms (View: 4, DB: 1) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste22&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928545096]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 11:22:31) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"1", "_"=>"1402928550753"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.6ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste%') [0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (assunto like '%teste%') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (15.3ms)
+Completed in 41ms (View: 20, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=1&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402928550753]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:22:39) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.3ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:22:39' AND ends_at >= '2014-06-16 14:22:39') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 201ms (View: 177, DB: 7) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:23:50) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.6ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;35;1mDespacho Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.0ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:23:50' AND ends_at >= '2014-06-16 14:23:50') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 105ms (View: 79, DB: 7) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 11:23:53) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.7ms)
+Rendered prefprotocolos/_final (5.1ms)
+Rendered prefprotocolos/_despacho (13.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:23:53' AND ends_at >= '2014-06-16 14:23:53') [0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 134ms (View: 108, DB: 8) | 200 OK [http://localhost/prefprotocolos/47/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 11:24:20) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"teste222", "destinofinal"=>"teste222", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"teste222"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.5ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 14:24:20', `updated_at` = '2014-06-16 14:24:20' WHERE `id` = 47[0m
+  [4;35;1mSQL (33.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mDespacho Create (0.5ms)[0m   [0;1mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'teste222', 'teste222', '2014-06-16 14:24:20', 'PROTOCOLO_INTERNO', NULL, 47, 'PROTOCOLO_INTERNO', '2014-06-16 14:24:20', '2014-06-16 14:24:20', 'teste222')[0m
+  [4;35;1mSQL (28.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mDespacho Load (0.6ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+Rendered prefprotocolos/_despachos (3.0ms)
+Completed in 109ms (View: 6, DB: 67) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 11:24:26) [PUT]
+  Parameters: {"id"=>"47", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;35;1mPrefprotocolo Load (0.8ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/47
+Completed in 26ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/47]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 11:24:26) [GET]
+  Parameters: {"id"=>"47"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 47) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.7ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 14:24:26' AND ends_at >= '2014-06-16 14:24:26') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 101ms (View: 77, DB: 7) | 200 OK [http://localhost/prefprotocolos/47]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:36:28) [GET]
+  Parameters: {"id"=>"47"}
+  [4;35;1mPrefprotocolo Load (1.1ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 47) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Prefprotocolo with ID=47):
+  app/controllers/prefprotocolos_controller.rb:137:in `show'
+
+Rendered rescues/_trace (68.1ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#new (for 127.0.0.1 at 2014-06-16 13:36:39) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/new
+Rendered prefprotocolos/_form (117.4ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:36:40' AND ends_at >= '2014-06-16 16:36:40') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 207ms (View: 186, DB: 6) | 200 OK [http://localhost/prefprotocolos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create (for 127.0.0.1 at 2014-06-16 13:37:03) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "assunto"=>"teste", "data(1i)"=>"2014", "de"=>"teste", "data(2i)"=>"6", "destino"=>"INFORMÁTICA", "data(3i)"=>"16", "codigo"=>"teste"}}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Create (0.4ms)[0m   [0mINSERT INTO `prefprotocolos` (`assunto`, `para`, `data_encerramento`, `data`, `de`, `destino`, `encerrado`, `created_at`, `codigo`, `updated_at`) VALUES('TESTE', 'ASSINAR', NULL, '2014-06-16 03:00:00', 'TESTE', 'INFORMÁTICA', 0, '2014-06-16 16:37:03', 'teste', '2014-06-16 16:37:03')[0m
+  [4;36;1mSQL (56.4ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/48
+Completed in 82ms (DB: 59) | 302 Found [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:37:04) [GET]
+  Parameters: {"id"=>"48"}
+  [4;35;1mPrefprotocolo Load (0.8ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.6ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+Rendered prefprotocolos/_despachos (100.7ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:37:04' AND ends_at >= '2014-06-16 16:37:04') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 209ms (View: 186, DB: 7) | 200 OK [http://localhost/prefprotocolos/48]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-16 13:37:11) [GET]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.9ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:37:11' AND ends_at >= '2014-06-16 16:37:11') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 77ms (View: 43, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#index (for 127.0.0.1 at 2014-06-16 13:37:18) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.7ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '0') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/index
+  [4;36;1mPrefprotocolo Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:37:18' AND ends_at >= '2014-06-16 16:37:18') [0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 132ms (View: 108, DB: 6) | 200 OK [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:37:26) [GET]
+  Parameters: {"search"=>"INFORMÁTICA", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"3", "_"=>"1402936645702"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0' ) [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0') ORDER BY updated_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolosindex (13.4ms)
+Completed in 38ms (View: 19, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=3&search=INFORM%C3%81TICA&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936645702]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 13:37:32) [GET]
+  Parameters: {"id"=>"48"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+Rendered prefprotocolos/_despachos (5.9ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (12.5ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:37:32' AND ends_at >= '2014-06-16 16:37:32') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 121ms (View: 97, DB: 7) | 200 OK [http://localhost/prefprotocolos/48/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 13:38:01) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"teste", "destinofinal"=>"teste", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"teste"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.5ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 16:38:01', `updated_at` = '2014-06-16 16:38:01', `encerrado` = 1 WHERE `id` = 48[0m
+  [4;35;1mSQL (56.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;36;1mPrefprotocolo Update (0.4ms)[0m   [0;1mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 16:38:01', `destino` = 'PROTOCOLO_INTERNO' WHERE `id` = 48[0m
+  [4;35;1mDespacho Create (0.3ms)[0m   [0mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'teste', 'teste', '2014-06-16 16:38:01', 'INFORMÁTICA', NULL, 48, 'PROTOCOLO_INTERNO', '2014-06-16 16:38:01', '2014-06-16 16:38:01', 'teste')[0m
+  [4;36;1mSQL (39.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mDespacho Load (0.7ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+Rendered prefprotocolos/_despachos (3.5ms)
+Completed in 155ms (View: 7, DB: 103) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 13:38:09) [PUT]
+  Parameters: {"id"=>"48", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;36;1mPrefprotocolo Load (0.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/48
+Completed in 26ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/48]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:38:10) [GET]
+  Parameters: {"id"=>"48"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;35;1mDespacho Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.3ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:38:10' AND ends_at >= '2014-06-16 16:38:10') [0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 237ms (View: 212, DB: 8) | 200 OK [http://localhost/prefprotocolos/48]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#index (for 127.0.0.1 at 2014-06-16 13:38:27) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '0') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/index
+  [4;36;1mPrefprotocolo Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:38:27' AND ends_at >= '2014-06-16 16:38:27') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (4.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 126ms (View: 100, DB: 10) | 200 OK [http://localhost/prefprotocolos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:38:34) [GET]
+  Parameters: {"search"=>"INFORMÁTICA", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"3", "_"=>"1402936714264"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0' ) [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (destino like '%INFORMÁTICA%' and encerrado = '0') ORDER BY updated_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolosindex (11.5ms)
+Completed in 35ms (View: 16, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=3&search=INFORM%C3%81TICA&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936714264]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 13:38:39) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:38:39' AND ends_at >= '2014-06-16 16:38:39') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 95ms (View: 73, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:38:46) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"7", "_"=>"1402936726297"}
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.6ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') [0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') ORDER BY created_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (10.6ms)
+Completed in 42ms (View: 14, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936726297]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-16 13:38:52) [GET]
+  Parameters: {"id"=>"48"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;35;1mDespacho Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (15.3ms)
+Rendered prefprotocolos/_final (7.6ms)
+Rendered prefprotocolos/_despacho (19.3ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:38:52' AND ends_at >= '2014-06-16 16:38:52') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 145ms (View: 120, DB: 8) | 200 OK [http://localhost/prefprotocolos/reabrir/48]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 13:39:07) [PUT]
+  Parameters: {"id"=>"48", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "destino"=>"INFORMÁTICA"}}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.4ms)[0m   [0;1mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 16:39:07', `encerrado` = 0, `destino` = 'INFORMÁTICA' WHERE `id` = 48[0m
+  [4;35;1mSQL (34.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/48
+Completed in 63ms (DB: 38) | 302 Found [http://localhost/prefprotocolos/48]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:39:08) [GET]
+  Parameters: {"id"=>"48"}
+  [4;36;1mPrefprotocolo Load (0.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.1ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:39:08' AND ends_at >= '2014-06-16 16:39:08') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 100ms (View: 75, DB: 8) | 200 OK [http://localhost/prefprotocolos/48]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#index (for 127.0.0.1 at 2014-06-16 13:39:54) [GET]
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.5ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado = '0') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/index
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:39:54' AND ends_at >= '2014-06-16 16:39:54') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 125ms (View: 102, DB: 6) | 200 OK [http://localhost/prefprotocolos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 13:39:59) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.7ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:39:59' AND ends_at >= '2014-06-16 16:39:59') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 96ms (View: 74, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:40:09) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"7", "_"=>"1402936808877"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') [0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (4.8ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (15.1ms)
+Completed in 38ms (View: 15, DB: 6) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936808877]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 13:40:19) [GET]
+  Parameters: {"id"=>"48"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.9ms)
+Rendered prefprotocolos/_final (4.5ms)
+Rendered prefprotocolos/_despacho (13.3ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:40:19' AND ends_at >= '2014-06-16 16:40:19') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 211ms (View: 96, DB: 7) | 200 OK [http://localhost/prefprotocolos/48/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 13:40:54) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"testeteste", "destinofinal"=>"testeteste", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"testeteste"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.5ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 16:40:54', `updated_at` = '2014-06-16 16:40:54', `encerrado` = 1 WHERE `id` = 48[0m
+  [4;35;1mSQL (32.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;36;1mPrefprotocolo Update (0.3ms)[0m   [0;1mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 16:40:54', `destino` = 'PROTOCOLO_INTERNO' WHERE `id` = 48[0m
+  [4;35;1mDespacho Create (0.2ms)[0m   [0mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'testeteste', 'testeteste', '2014-06-16 16:40:54', 'INFORMÁTICA', NULL, 48, 'PROTOCOLO_INTERNO', '2014-06-16 16:40:54', '2014-06-16 16:40:54', 'testeteste')[0m
+  [4;36;1mSQL (27.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mDespacho Load (0.6ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+Rendered prefprotocolos/_despachos (2.8ms)
+Completed in 105ms (View: 6, DB: 65) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 13:41:02) [PUT]
+  Parameters: {"id"=>"48", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;36;1mPrefprotocolo Load (0.8ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/48
+Completed in 26ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/48]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:41:03) [GET]
+  Parameters: {"id"=>"48"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;35;1mDespacho Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.0ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:41:03' AND ends_at >= '2014-06-16 16:41:03') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 111ms (View: 86, DB: 7) | 200 OK [http://localhost/prefprotocolos/48]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 13:41:11) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.8ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (2.0ms)
+  [4;36;1mInformativo Load (6.1ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:41:12' AND ends_at >= '2014-06-16 16:41:12') [0m
+  [4;35;1mUser Columns (11.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 174ms (View: 132, DB: 25) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:41:21) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"7", "_"=>"1402936881620"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') [0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (8.4ms)
+Completed in 30ms (View: 11, DB: 2) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936881620]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 13:41:31) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:41:31' AND ends_at >= '2014-06-16 16:41:31') [0m
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 113ms (View: 90, DB: 6) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:41:40) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"7", "_"=>"1402936900015"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') [0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (11.0ms)
+Completed in 32ms (View: 15, DB: 2) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936900015]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-16 13:41:42) [GET]
+  Parameters: {"id"=>"48"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.0ms)
+Rendered prefprotocolos/_final (4.4ms)
+Rendered prefprotocolos/_despacho (12.7ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:41:42' AND ends_at >= '2014-06-16 16:41:42') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 119ms (View: 95, DB: 7) | 200 OK [http://localhost/prefprotocolos/reabrir/48]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 13:41:46) [PUT]
+  Parameters: {"id"=>"48", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar", "prefprotocolo"=>{"para"=>"ASSINAR", "destino"=>"PROTOCOLO_INTERNO"}}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Update (0.4ms)[0m   [0mUPDATE `prefprotocolos` SET `updated_at` = '2014-06-16 16:41:46', `encerrado` = 0 WHERE `id` = 48[0m
+  [4;36;1mSQL (37.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/48
+Completed in 62ms (DB: 39) | 302 Found [http://localhost/prefprotocolos/48]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:41:47) [GET]
+  Parameters: {"id"=>"48"}
+  [4;35;1mPrefprotocolo Load (0.8ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (13.0ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:41:47' AND ends_at >= '2014-06-16 16:41:47') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 108ms (View: 81, DB: 8) | 200 OK [http://localhost/prefprotocolos/48]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:41:56) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"7", "_"=>"1402936916549"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') [0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (8.0ms)
+Completed in 29ms (View: 11, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936916549]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-16 13:42:08) [GET]
+  Parameters: {"id"=>"48"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.9ms)
+Rendered prefprotocolos/_final (4.4ms)
+Rendered prefprotocolos/_despacho (12.8ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:42:08' AND ends_at >= '2014-06-16 16:42:08') [0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 120ms (View: 95, DB: 7) | 200 OK [http://localhost/prefprotocolos/48/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-16 13:42:35) [POST]
+  Parameters: {"despacho"=>{"para"=>"ENCERRADO", "despacho"=>"testetetstetestetetste", "destinofinal"=>"cxcxcx", "destino"=>"PROTOCOLO_INTERNO", "funcionario"=>"testetetste"}, "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"2"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.4ms)[0m   [0;1mUPDATE `prefprotocolos` SET `data_encerramento` = '2014-06-16 16:42:35', `updated_at` = '2014-06-16 16:42:35', `encerrado` = 1 WHERE `id` = 48[0m
+  [4;35;1mSQL (43.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Load (0.4ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;36;1mDespacho Create (0.3ms)[0m   [0;1mINSERT INTO `despachos` (`para`, `despacho`, `destinofinal`, `data_saida`, `procedencia`, `data_recebimento`, `prefprotocolo_id`, `destino`, `created_at`, `updated_at`, `funcionario`) VALUES('ENCERRADO', 'testetetstetestetetste', 'cxcxcx', '2014-06-16 16:42:35', 'PROTOCOLO_INTERNO', NULL, 48, 'PROTOCOLO_INTERNO', '2014-06-16 16:42:35', '2014-06-16 16:42:35', 'testetetste')[0m
+  [4;35;1mSQL (37.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mDespacho Load (0.7ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+Rendered prefprotocolos/_despachos (5.7ms)
+Completed in 218ms (View: 10, DB: 86) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-16 13:42:46) [PUT]
+  Parameters: {"id"=>"48", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "commit"=>"Gravar"}
+  [4;35;1mPrefprotocolo Load (0.7ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/48
+Completed in 25ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/48]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-16 13:42:46) [GET]
+  Parameters: {"id"=>"48"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 48) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 48) [0m
+  [4;36;1mDespacho Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (18.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:42:46' AND ends_at >= '2014-06-16 16:42:46') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 115ms (View: 87, DB: 7) | 200 OK [http://localhost/prefprotocolos/48]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-16 13:42:58) [POST]
+  Parameters: {"authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI="}
+  [4;35;1mPrefprotocolo Load (6.1ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (13.7ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (10.5ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-16 16:42:58' AND ends_at >= '2014-06-16 16:42:58') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (4.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (9.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 249ms (View: 183, DB: 36) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:43:07) [GET]
+  Parameters: {"search"=>"teste", "authenticity_token"=>"WPu+Lm2WenukdYNK9zXX+m0vAxtO+r93hEboIUs2RsI=", "type_of"=>"7", "_"=>"1402936986659"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') [0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (codigo like '%teste%') ORDER BY created_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (15.2ms)
+Completed in 38ms (View: 19, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936986659]
