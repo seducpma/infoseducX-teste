@@ -1,6 +1,6 @@
 class Prefprotocolo < ActiveRecord::Base
  has_many :despachos
-
+ #defore_update :reabrir
  validates_presence_of :de, :assunto, :para, :destino, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
 
   PARA = %w(APROVAÇÃO ARQUIVAR ASSINAR ATUALIZAÇÃO CADASTRAMENTO CIÊNCIA_E_PROVIDÊNCIA CONHECIMENTO_E_CIẾNCIA CONHECIMENTO_E_MANIFESTAÇÃO
@@ -22,6 +22,18 @@ def before_save
     self.destino.upcase!
 #    self.obs.upcase!
 end
+
+def before_update
+if $reabre == 0
+  if self.encerrado = 1
+        self.encerrado = 0
+  end
+    
+ end
+end
+
+ 	
+
 
 
 end

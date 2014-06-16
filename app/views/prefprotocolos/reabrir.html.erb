@@ -15,31 +15,32 @@
      <table width="100%">
         <tr>
            <td width="10%"align="left"><font size="2"><b>Protocolo:</b></font></td>
-           <td align="left"><font size="2"><%= f.text_field :codigo, :size =>10 %></font></td>
-           <td align="left"><font size="2"><b>Data:</b></font></td>
-           <td align="left"><font size="2"><%= f.date_select(:data, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></font></td>
+           <td width="10%"align="left"><font size="2"><%=h @prefprotocolo.codigo %></font></td>
+           <td width="10%"align="right"><font size="2"><b>Data:</b></font></td>
+           <td align="left"><font size="2"><%=h @prefprotocolo.data.strftime("%d de %B de %Y") %></font></td>
 
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Requerente:</b></font></td>
-           <td align="left" colspan="3"><font size="2"><%= f.text_field :de, :size =>55 %></font></td>
+           <td align="left" colspan="3"><font size="2"><%=h @prefprotocolo.de %></font></td>
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Assunto:</b></font></td>
-           <td align="left" colspan="3"><font size="2"><%= f.text_field :assunto, :size =>55 %></font></td>
+           <td align="left" colspan="3"><font size="2"><%=h @prefprotocolo.assunto%></font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size="2"><b>Destino:</b></font></td>
+           <td align="left" colspan="3"><font size="2"><%= f.select  :destino, Prefprotocolo::DESTINO, :include_blank => '---Selecione---'%></font></td>
         </tr>
         <tr>
            <td align="left"><font size="2"><b>Para:</b></font></td>
            <td align="left" colspan="3"><font size="2"> <%=  f.select :para, Prefprotocolo::PARA, :include_blank => '---Selecione---'%></font></td>
         </tr>
-
         <tr>
-           <td align="left"><font size="2"><b>Destino:</b></font></td>
-           <td align="left" colspan="3"><font size="2"><%= f.select  :destino, Prefprotocolo::DESTINO, :include_blank => '---Selecione---'%></font></td>
+          <td align="left" valign="top"><font size="2"><b>Despachos:</b></font></td>
+          <td colspan="3"><div id="dados"> <%= render :partial => 'despachos'  %></div></td>
         </tr>
-     
-      
-
+     <% $reabre = 0 %>
      </table>
    </td>
  </tr>
@@ -48,18 +49,20 @@
       <div class="botao">
         <table width="40%" align="right">
            <tr>
-             <td align="right"><%= f.submit "Gravar" %> </td>
+              <td align="right"><%= f.submit "Gravar" %> </td>
 <% end %>
               <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
               <td width="2%" align="right" ><%= button_to('Protocolos', prefprotocolos_path, :method => "get",  :title => "Protocolos")%></td>
               <td width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
-           </tr>
+              <td width="2%" align="right"><%= link_to image_tag("/stylesheets/images/despachar.jpeg", :size => "100x26"), "#inline_despacho", :class =>"inline", :title => "Despachar" %></td>
+            <tr>
         </table>
       </div>
 
    </td>
   </tr>
-      <%  $reabre  = 1 %>
  </table>
  </font>
 <br/>
+
+    <%= render "despacho" %>

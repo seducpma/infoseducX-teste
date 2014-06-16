@@ -13,6 +13,10 @@
    <td colspan="2">
     <fieldset><legend><font  size=4>PROTOCOLO</font></legend>
        <table>
+         <tr>
+           <td>
+           </td>
+          </tr>
           <tr>
             <td width="1%"></td>
             <td align="left"><b>Protocolo:</b></td>
@@ -43,7 +47,14 @@
                 <td></td>
                 <td colspan="4"><b>Encerrado em</b>  <%=h @prefprotocolo.data_encerramento.strftime("%d de %B de %Y") %></td>
               </tr>
-            <% end %>
+            <%else%>
+              <tr>
+                <td></td>
+                <td colspan="4"><b>Aberto em</b>  <%=h @prefprotocolo. 	updated_at.strftime("%d de %B de %Y") %></td>
+              </tr>
+
+              <% end %>
+
 
        </table>
     </fieldset>

@@ -159,6 +159,13 @@ def indexe
      session[:id] = params[:id]
   end
 
+ def reabrir
+    @prefprotocolo = Prefprotocolo.find(params[:id])
+     session[:id] = params[:id]
+
+  end
+
+
   # POST /prefprotocolos
   # POST /prefprotocolos.xml
   def create
