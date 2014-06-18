@@ -21839,3 +21839,1206 @@ Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-16 13:43
   [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
 Rendered prefprotocolos/_protocolos (15.2ms)
 Completed in 38ms (View: 19, DB: 3) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&type_of=7&search=teste&authenticity_token=WPu%2BLm2WenukdYNK9zXX%2Bm0vAxtO%2Br93hEboIUs2RsI%3D&_=1402936986659]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 14:56:17) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 30ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-06-18 14:56:17) [GET]
+  [4;36;1mCurso Load (2.0ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (5.3ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 206ms (View: 166, DB: 8) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2014-06-18 14:58:59) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 32ms (View: 14, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2014-06-18 14:59:06) [POST]
+  Parameters: {"password"=>"musand12", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "login"=>"ngarcia", "commit"=>"Entrar"}
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'ngarcia' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mUser Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Failed login for 'ngarcia' from 127.0.0.1 at Wed Jun 18 17:59:06 UTC 2014
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;36;1mCurso Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+Completed in 70ms (View: 13, DB: 4) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2014-06-18 14:59:08) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 22ms (View: 6, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2014-06-18 14:59:14) [POST]
+  Parameters: {"password"=>"mus@and2", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "login"=>"ngarcia", "commit"=>"Entrar"}
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'ngarcia' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.8ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Redirected to http://localhost:3000/
+Completed in 137ms (DB: 5) | 302 Found [http://localhost/session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 14:59:14) [GET]
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.4ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (5.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 17:59:15' AND ends_at >= '2014-06-18 17:59:15') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 329ms (View: 293, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#new (for 127.0.0.1 at 2014-06-18 14:59:41) [GET]
+  [4;35;1mAcompanhamento Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/new
+Rendered acompanhamentos/_form (31.1ms)
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 17:59:41' AND ends_at >= '2014-06-18 17:59:41') [0m
+  [4;35;1mUser Columns (7.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (11.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 323ms (View: 283, DB: 23) | 200 OK [http://localhost/acompanhamentos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#create (for 127.0.0.1 at 2014-06-18 15:00:32) [POST]
+  Parameters: {"authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "acompanhamento"=>{"assunto"=>"testextestetestexteste testextestetestexteste testextestetestexteste", "inscricao"=>"testexteste", "nascimento(3i)"=>"18", "complemento"=>"testexteste", "bairro"=>"testexteste", "nascimento(1i)"=>"2014", "responsavel"=>"testexteste", "mae"=>"testexteste", "fone"=>"testexteste", "solicitante"=>"testexteste", "endereco"=>"testexteste", "cel"=>"", "fone1"=>"testexteste", "cep"=>"testexteste", "funcionario"=>"testexteste", "email"=>"testexteste", "cidade"=>"testexteste", "nascimento(2i)"=>"6", "crianca"=>"testexteste"}, "commit"=>"Gravar"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mAcompanhamento Create (153.4ms)[0m   [0;1mINSERT INTO `acompanhamentos` (`codigo`, `inscricao`, `nascimento`, `assunto`, `complemento`, `data_encerrado`, `updated_at`, `num`, `bairro`, `encerrado`, `mae`, `responsavel`, `fone`, `solicitante`, `endereco`, `obs`, `cep`, `fone1`, `cel`, `funcionario`, `created_at`, `crianca`, `cidade`, `email`, `por`) VALUES(NULL, 'testexteste', '2014-06-18 03:00:00', 'TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE', 'testexteste', NULL, '2014-06-18 18:00:32', NULL, 'TESTEXTESTE', 0, 'TESTEXTESTE', 'TESTEXTESTE', 'testexteste', 'testexteste', 'TESTEXTESTE', NULL, 'testexteste', 'testexteste', '', 'testexteste', '2014-06-18 18:00:32', 'TESTEXTESTE', 'TESTEXTESTE', 'testexteste', NULL)[0m
+  [4;35;1mAcompanhamento Update (12.6ms)[0m   [0mUPDATE `acompanhamentos` SET `cidade` = 'TESTEXTESTE', `cel` = '', `endereco` = 'TESTEXTESTE', `solicitante` = 'testexteste', `crianca` = 'TESTEXTESTE', `mae` = 'TESTEXTESTE', `complemento` = 'testexteste', `codigo` = '34/2014', `cep` = 'testexteste', `fone` = 'testexteste', `nascimento` = '2014-06-18 03:00:00', `assunto` = 'TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE', `inscricao` = 'testexteste', `funcionario` = 'testexteste', `updated_at` = '2014-06-18 18:00:32', `email` = 'testexteste', `created_at` = '2014-06-18 18:00:32', `responsavel` = 'TESTEXTESTE', `fone1` = 'testexteste', `bairro` = 'TESTEXTESTE' WHERE `id` = 34[0m
+  [4;36;1mSQL (67.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/acompanhamentos/34
+Completed in 273ms (DB: 236) | 302 Found [http://localhost/acompanhamentos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:00:32) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.4ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;35;1mAcompanhamentoDespacho Load (0.5ms)[0m   [0mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (7.4ms)
+  [4;36;1mInformativo Load (12.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:00:32' AND ends_at >= '2014-06-18 18:00:32') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 216ms (View: 181, DB: 19) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:01:34) [GET]
+  Parameters: {"id"=>"34"}
+  [4;36;1mAcompanhamento Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.1ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:01:34' AND ends_at >= '2014-06-18 18:01:34') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 105ms (View: 82, DB: 8) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:01:56) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;35;1mAcompanhamentoDespacho Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.2ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:01:56' AND ends_at >= '2014-06-18 18:01:56') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 112ms (View: 83, DB: 6) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:02:38) [GET]
+  Parameters: {"id"=>"34"}
+  [4;36;1mAcompanhamento Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (8.6ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:02:38' AND ends_at >= '2014-06-18 18:02:38') [0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 153ms (View: 121, DB: 8) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:03:09) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;35;1mAcompanhamentoDespacho Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:03:09' AND ends_at >= '2014-06-18 18:03:09') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 117ms (View: 87, DB: 8) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:03:34) [GET]
+  Parameters: {"id"=>"34"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.3ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:03:34' AND ends_at >= '2014-06-18 18:03:34') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 110ms (View: 86, DB: 6) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#create (for 127.0.0.1 at 2014-06-18 15:04:06) [POST]
+  Parameters: {"authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "acompanhamento"=>{"assunto"=>"testextestetestexteste testextestetestexteste testextestetestexteste", "inscricao"=>"testexteste", "nascimento(3i)"=>"18", "complemento"=>"testexteste", "bairro"=>"testexteste", "nascimento(1i)"=>"2014", "responsavel"=>"testexteste", "mae"=>"testexteste", "fone"=>"testexteste", "solicitante"=>"testexteste", "endereco"=>"testexteste", "cel"=>"testextexte", "fone1"=>"testexteste", "cep"=>"testexteste", "funcionario"=>"testexteste", "email"=>"testexteste", "cidade"=>"testexteste", "nascimento(2i)"=>"6", "crianca"=>"testexteste"}, "commit"=>"Gravar"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mAcompanhamento Create (0.6ms)[0m   [0mINSERT INTO `acompanhamentos` (`codigo`, `inscricao`, `nascimento`, `assunto`, `complemento`, `data_encerrado`, `updated_at`, `num`, `bairro`, `encerrado`, `mae`, `responsavel`, `fone`, `solicitante`, `endereco`, `obs`, `cep`, `fone1`, `cel`, `funcionario`, `created_at`, `crianca`, `cidade`, `email`, `por`) VALUES(NULL, 'testexteste', '2014-06-18 03:00:00', 'TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE', 'testexteste', NULL, '2014-06-18 18:04:06', NULL, 'TESTEXTESTE', 0, 'TESTEXTESTE', 'TESTEXTESTE', 'testexteste', 'testexteste', 'TESTEXTESTE', NULL, 'testexteste', 'testexteste', 'testextexte', 'testexteste', '2014-06-18 18:04:06', 'TESTEXTESTE', 'TESTEXTESTE', 'testexteste', NULL)[0m
+  [4;36;1mAcompanhamento Update (0.4ms)[0m   [0;1mUPDATE `acompanhamentos` SET `cidade` = 'TESTEXTESTE', `cel` = 'testextexte', `endereco` = 'TESTEXTESTE', `solicitante` = 'testexteste', `crianca` = 'TESTEXTESTE', `mae` = 'TESTEXTESTE', `complemento` = 'testexteste', `codigo` = '35/2014', `cep` = 'testexteste', `fone` = 'testexteste', `nascimento` = '2014-06-18 03:00:00', `assunto` = 'TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE', `inscricao` = 'testexteste', `funcionario` = 'testexteste', `updated_at` = '2014-06-18 18:04:06', `email` = 'testexteste', `created_at` = '2014-06-18 18:04:06', `responsavel` = 'TESTEXTESTE', `fone1` = 'testexteste', `bairro` = 'TESTEXTESTE' WHERE `id` = 35[0m
+  [4;35;1mSQL (47.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/acompanhamentos/35
+Completed in 88ms (DB: 50) | 302 Found [http://localhost/acompanhamentos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:04:07) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.4ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.4ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 35) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.7ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:04:07' AND ends_at >= '2014-06-18 18:04:07') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 100ms (View: 76, DB: 7) | 200 OK [http://localhost/acompanhamentos/35]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#edit (for 127.0.0.1 at 2014-06-18 15:04:14) [GET]
+  Parameters: {"id"=>"35"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/edit
+  [4;35;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 35) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.6ms)
+Rendered acompanhamentos/_acompanhamento_despacho (13.3ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:04:14' AND ends_at >= '2014-06-18 18:04:14') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 217ms (View: 196, DB: 6) | 200 OK [http://localhost/acompanhamentos/35/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#consulta (for 127.0.0.1 at 2014-06-18 15:04:29) [POST]
+  Parameters: {"authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM="}
+  [4;36;1mAcompanhamento Load (1.0ms)[0m   [0;1mSELECT * FROM `acompanhamentos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/consulta
+Rendered acompanhamentos/_consulta (1.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:04:29' AND ends_at >= '2014-06-18 18:04:29') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 205ms (View: 184, DB: 5) | 200 OK [http://localhost/acompanhamentos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#acompanhamento (for 127.0.0.1 at 2014-06-18 15:04:36) [GET]
+  Parameters: {"_"=>"1403114675950", "type_of"=>"4", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>"35"}
+  [4;35;1mAcompanhamento Load (17.5ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (codigo like '%35%') [0m
+  [4;36;1mAcompanhamento Load (0.4ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (codigo like '%35%') ORDER BY created_at DESC[0m
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendered acompanhamentos/_acompanhamento (16.3ms)
+Completed in 59ms (View: 23, DB: 20) | 200 OK [http://localhost/acompanhamentos/acompanhamento?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=4&search=35&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403114675950]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:04:40) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 35) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (5.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:04:40' AND ends_at >= '2014-06-18 18:04:40') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 189ms (View: 164, DB: 6) | 200 OK [http://localhost/acompanhamentos/35]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:04:45) [GET]
+  Parameters: {"id"=>"35"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:04:45' AND ends_at >= '2014-06-18 18:04:45') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 125ms (View: 101, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#consulta (for 127.0.0.1 at 2014-06-18 15:05:03) [GET]
+  [4;35;1mAcompanhamento Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamentos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/consulta
+Rendered acompanhamentos/_consulta (1.1ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:05:03' AND ends_at >= '2014-06-18 18:05:03') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 97ms (View: 77, DB: 4) | 200 OK [http://localhost/acompanhamentos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#acompanhamento (for 127.0.0.1 at 2014-06-18 15:05:10) [GET]
+  Parameters: {"_"=>"1403114710232", "type_of"=>"4", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>"35"}
+  [4;36;1mAcompanhamento Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (codigo like '%35%') [0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (codigo like '%35%') ORDER BY created_at DESC[0m
+  [4;36;1mAcompanhamento Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendered acompanhamentos/_acompanhamento (10.8ms)
+Completed in 32ms (View: 13, DB: 2) | 200 OK [http://localhost/acompanhamentos/acompanhamento?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=4&search=35&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403114710232]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:05:13) [GET]
+  Parameters: {"id"=>"35"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;35;1mAcompanhamentoDespacho Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 35) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:05:13' AND ends_at >= '2014-06-18 18:05:13') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 99ms (View: 76, DB: 6) | 200 OK [http://localhost/acompanhamentos/35]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:05:18) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:05:18' AND ends_at >= '2014-06-18 18:05:18') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 117ms (View: 94, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:06:51) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:06:51' AND ends_at >= '2014-06-18 18:06:51') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 218ms (View: 195, DB: 7) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:07:30) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:07:30' AND ends_at >= '2014-06-18 18:07:30') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 117ms (View: 94, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:07:33) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:07:33' AND ends_at >= '2014-06-18 18:07:33') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 114ms (View: 91, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:08:08) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:08:08' AND ends_at >= '2014-06-18 18:08:08') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 116ms (View: 92, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#consulta (for 127.0.0.1 at 2014-06-18 15:08:17) [GET]
+  [4;36;1mAcompanhamento Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamentos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/consulta
+Rendered acompanhamentos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:08:17' AND ends_at >= '2014-06-18 18:08:17') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 94ms (View: 74, DB: 4) | 200 OK [http://localhost/acompanhamentos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#acompanhamento (for 127.0.0.1 at 2014-06-18 15:08:25) [GET]
+  Parameters: {"_"=>"1403114905589", "type_of"=>"4", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>"34"}
+  [4;35;1mAcompanhamento Load (0.7ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (codigo like '%34%') [0m
+  [4;36;1mAcompanhamento Load (0.4ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (codigo like '%34%') ORDER BY created_at DESC[0m
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendered acompanhamentos/_acompanhamento (10.5ms)
+Completed in 32ms (View: 13, DB: 3) | 200 OK [http://localhost/acompanhamentos/acompanhamento?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=4&search=34&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403114905589]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:08:31) [GET]
+  Parameters: {"id"=>"34"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.4ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:08:31' AND ends_at >= '2014-06-18 18:08:31') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 101ms (View: 77, DB: 6) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:08:36) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:08:36' AND ends_at >= '2014-06-18 18:08:36') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 214ms (View: 192, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/34]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 15:08:55) [GET]
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.9ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:08:56' AND ends_at >= '2014-06-18 18:08:56') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 83ms (View: 43, DB: 8) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#consulta (for 127.0.0.1 at 2014-06-18 15:09:03) [GET]
+  [4;36;1mAcompanhamento Load (0.3ms)[0m   [0;1mSELECT * FROM `acompanhamentos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/consulta
+Rendered acompanhamentos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (6.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:09:03' AND ends_at >= '2014-06-18 18:09:03') [0m
+  [4;36;1mUser Columns (13.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (5.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (4.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (5.6ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (4.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 325ms (View: 248, DB: 41) | 200 OK [http://localhost/acompanhamentos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#acompanhamento (for 127.0.0.1 at 2014-06-18 15:09:13) [GET]
+  Parameters: {"_"=>"1403114953106", "type_of"=>"4", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>"34"}
+  [4;35;1mAcompanhamento Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (codigo like '%34%') [0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (codigo like '%34%') ORDER BY created_at DESC[0m
+  [4;35;1mAcompanhamento Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendered acompanhamentos/_acompanhamento (114.5ms)
+Completed in 133ms (View: 117, DB: 2) | 200 OK [http://localhost/acompanhamentos/acompanhamento?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=4&search=34&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403114953106]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:09:16) [GET]
+  Parameters: {"id"=>"34"}
+  [4;36;1mAcompanhamento Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.1ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (7.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:09:16' AND ends_at >= '2014-06-18 18:09:16') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 111ms (View: 86, DB: 7) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:09:19) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:09:19' AND ends_at >= '2014-06-18 18:09:19') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 206ms (View: 185, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/34]
+  [4;35;1mSQL (1.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:09:54) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:09:54' AND ends_at >= '2014-06-18 18:09:54') [0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 223ms (View: 200, DB: 10) | 200 OK [http://localhost/acompanhamentos/editar/34]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:10:08) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:10:08' AND ends_at >= '2014-06-18 18:10:08') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 115ms (View: 92, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/34]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:10:20) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:10:20' AND ends_at >= '2014-06-18 18:10:20') [0m
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 172ms (View: 140, DB: 7) | 200 OK [http://localhost/acompanhamentos/editar/34]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:10:43) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:10:43' AND ends_at >= '2014-06-18 18:10:43') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 124ms (View: 101, DB: 6) | 200 OK [http://localhost/acompanhamentos/editar/34]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#update (for 127.0.0.1 at 2014-06-18 15:10:48) [PUT]
+  Parameters: {"id"=>"34", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "acompanhamento"=>{"assunto"=>"TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE TESTEXTESTETESTEXTESTE", "inscricao"=>"testexteste", "nascimento(3i)"=>"18", "complemento"=>"testexteste", "bairro"=>"TESTEXTESTE", "nascimento(1i)"=>"2014", "responsavel"=>"TESTEXTESTE", "mae"=>"TESTEXTESTE", "fone"=>"testexteste", "solicitante"=>"testexteste", "endereco"=>"TESTEXTESTE", "cel"=>"", "fone1"=>"testexteste", "cep"=>"testexteste", "email"=>"testexteste", "cidade"=>"TESTEXTESTE", "nascimento(2i)"=>"6", "crianca"=>"TESTEXTESTE"}, "commit"=>"Gravar"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mAcompanhamento Update (0.4ms)[0m   [0;1mUPDATE `acompanhamentos` SET `data_encerrado` = '2014-06-18 18:10:48', `updated_at` = '2014-06-18 18:10:48' WHERE `id` = 34[0m
+  [4;35;1mSQL (50.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/acompanhamentos/34
+Completed in 80ms (DB: 53) | 302 Found [http://localhost/acompanhamentos/34]
+  [4;36;1mSQL (3.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:10:49) [GET]
+  Parameters: {"id"=>"34"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.4ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:10:49' AND ends_at >= '2014-06-18 18:10:49') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 102ms (View: 78, DB: 9) | 200 OK [http://localhost/acompanhamentos/34]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#edit (for 127.0.0.1 at 2014-06-18 15:10:52) [GET]
+  Parameters: {"id"=>"34"}
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 34) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/edit
+  [4;35;1mAcompanhamentoDespacho Load (0.2ms)[0m   [0mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 34) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.3ms)
+Rendered acompanhamentos/_acompanhamento_despacho (8.0ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:10:52' AND ends_at >= '2014-06-18 18:10:52') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 119ms (View: 96, DB: 6) | 200 OK [http://localhost/acompanhamentos/34/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 15:11:09) [GET]
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.1ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.0ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:11:09' AND ends_at >= '2014-06-18 18:11:09') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 170ms (View: 138, DB: 4) | 200 OK [http://localhost/homes]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-18 15:11:17) [GET]
+  [4;35;1mPrefprotocolo Load (1.5ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.7ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (1.5ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:11:17' AND ends_at >= '2014-06-18 18:11:17') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (4.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 365ms (View: 334, DB: 14) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-18 15:13:36) [GET]
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:13:36' AND ends_at >= '2014-06-18 18:13:36') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 93ms (View: 72, DB: 4) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-18 15:13:41) [GET]
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:13:41' AND ends_at >= '2014-06-18 18:13:41') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 96ms (View: 75, DB: 4) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 15:13:52) [GET]
+  Parameters: {"authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM="}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.0ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:13:53' AND ends_at >= '2014-06-18 18:13:53') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 174ms (View: 48, DB: 5) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 15:14:02) [GET]
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.1ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:14:02' AND ends_at >= '2014-06-18 18:14:02') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (12.6ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 210ms (View: 160, DB: 17) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-18 15:14:32) [GET]
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.8ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:14:32' AND ends_at >= '2014-06-18 18:14:32') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 96ms (View: 75, DB: 5) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-18 15:14:38) [GET]
+  Parameters: {"_"=>"1403115278499", "type_of"=>"6", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>""}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Load (24.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (30.8ms)
+Completed in 87ms (View: 43, DB: 27) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=6&search=&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403115278499]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-18 15:14:44) [GET]
+  Parameters: {"id"=>"26"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.5ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;36;1mDespacho Load (0.8ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;35;1mDespacho Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (18.8ms)
+Rendered prefprotocolos/_final (7.0ms)
+Rendered prefprotocolos/_despacho (31.2ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:14:44' AND ends_at >= '2014-06-18 18:14:44') [0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (16.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 305ms (View: 261, DB: 27) | 200 OK [http://localhost/prefprotocolos/reabrir/26]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-18 15:14:54) [PUT]
+  Parameters: {"id"=>"26", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "commit"=>"Gravar", "prefprotocolo"=>{"destino"=>"EDUCAÇÃO_INFANTIL", "para"=>"APROVAÇÃO"}}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+
+NameError (undefined local variable or method `session' for #<Prefprotocolo:0xb5d69038>):
+  app/models/prefprotocolo.rb:27:in `before_update'
+  app/controllers/prefprotocolos_controller.rb:192:in `update'
+  app/controllers/prefprotocolos_controller.rb:191:in `update'
+
+Rendered rescues/_trace (65.4ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-18 15:15:55) [PUT]
+  Parameters: {"id"=>"26", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "commit"=>"Gravar", "prefprotocolo"=>{"destino"=>"EDUCAÇÃO_INFANTIL", "para"=>"APROVAÇÃO"}}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/26
+Completed in 25ms (DB: 2) | 302 Found [http://localhost/prefprotocolos/26]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-18 15:15:56) [GET]
+  Parameters: {"id"=>"26"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (15.1ms)
+  [4;35;1mInformativo Load (0.8ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:15:56' AND ends_at >= '2014-06-18 18:15:56') [0m
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 134ms (View: 108, DB: 8) | 200 OK [http://localhost/prefprotocolos/26]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-18 15:27:30) [GET]
+  Parameters: {"id"=>"26"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;35;1mDespacho Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.8ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:27:30' AND ends_at >= '2014-06-18 18:27:30') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 102ms (View: 77, DB: 7) | 200 OK [http://localhost/prefprotocolos/26]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-18 15:27:38) [GET]
+  Parameters: {"id"=>"26"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.1ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (16.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:27:38' AND ends_at >= '2014-06-18 18:27:38') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 109ms (View: 84, DB: 7) | 200 OK [http://localhost/prefprotocolos/26]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 15:27:40) [GET]
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.1ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.0ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:27:41' AND ends_at >= '2014-06-18 18:27:41') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 171ms (View: 46, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#consulta (for 127.0.0.1 at 2014-06-18 15:27:46) [GET]
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering prefprotocolos/consulta
+Rendered prefprotocolos/_consulta (0.7ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:27:46' AND ends_at >= '2014-06-18 18:27:46') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 90ms (View: 71, DB: 4) | 200 OK [http://localhost/prefprotocolos/consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#protocolo (for 127.0.0.1 at 2014-06-18 15:28:00) [GET]
+  Parameters: {"_"=>"1403116079965", "type_of"=>"6", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>""}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (encerrado = '1') [0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (encerrado ='1') ORDER BY created_at DESC[0m
+  [4;35;1mPrefprotocolo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+Rendered prefprotocolos/_protocolos (22.0ms)
+Completed in 49ms (View: 29, DB: 2) | 200 OK [http://localhost/prefprotocolos/protocolo?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=6&search=&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403116079965]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-18 15:28:03) [GET]
+  Parameters: {"id"=>"26"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.1ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.9ms)
+Rendered prefprotocolos/_final (4.2ms)
+Rendered prefprotocolos/_despacho (12.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:28:03' AND ends_at >= '2014-06-18 18:28:03') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 226ms (View: 202, DB: 7) | 200 OK [http://localhost/prefprotocolos/reabrir/26]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#reabrir (for 127.0.0.1 at 2014-06-18 15:29:12) [GET]
+  Parameters: {"id"=>"26"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/reabrir
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.8ms)
+Rendered prefprotocolos/_final (4.2ms)
+Rendered prefprotocolos/_despacho (12.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:29:12' AND ends_at >= '2014-06-18 18:29:12') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 209ms (View: 185, DB: 8) | 200 OK [http://localhost/prefprotocolos/reabrir/26]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-18 15:29:16) [PUT]
+  Parameters: {"id"=>"26", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "commit"=>"Gravar", "prefprotocolo"=>{"destino"=>"EDUCAÇÃO_INFANTIL", "para"=>"APROVAÇÃO"}}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Update (0.6ms)[0m   [0;1mUPDATE `prefprotocolos` SET `encerrado` = 0, `updated_at` = '2014-06-18 18:29:16' WHERE `id` = 26[0m
+  [4;35;1mSQL (77.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/26
+Completed in 108ms (DB: 81) | 302 Found [http://localhost/prefprotocolos/26]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-18 15:29:16) [GET]
+  Parameters: {"id"=>"26"}
+  [4;36;1mPrefprotocolo Load (0.9ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;36;1mDespacho Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (11.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:29:16' AND ends_at >= '2014-06-18 18:29:16') [0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 201ms (View: 177, DB: 8) | 200 OK [http://localhost/prefprotocolos/26]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#edit (for 127.0.0.1 at 2014-06-18 15:29:23) [GET]
+  Parameters: {"id"=>"26"}
+  [4;35;1mPrefprotocolo Load (0.2ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/edit
+  [4;36;1mDespacho Load (0.2ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;35;1mDespacho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (12.1ms)
+Rendered prefprotocolos/_final (4.3ms)
+Rendered prefprotocolos/_despacho (12.4ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:29:23' AND ends_at >= '2014-06-18 18:29:23') [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 138ms (View: 113, DB: 9) | 200 OK [http://localhost/prefprotocolos/26/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#create_despacho (for 127.0.0.1 at 2014-06-18 15:29:48) [POST]
+  Parameters: {"type_of"=>"2", "despacho"=>{"despacho"=>"fgfggfgfgf", "destinofinal"=>"fgfggfgfgf", "destino"=>"PROTOCOLO_INTERNO", "para"=>"ENCERRADO", "funcionario"=>"gfgffggfgf"}, "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM="}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mDespacho Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `despachos`[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.1ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPrefprotocolo Update (0.4ms)[0m   [0mUPDATE `prefprotocolos` SET `encerrado` = 1, `updated_at` = '2014-06-18 18:29:48', `data_encerramento` = '2014-06-18 18:29:48' WHERE `id` = 26[0m
+  [4;36;1mSQL (42.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPrefprotocolo Load (0.3ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+  [4;35;1mPrefprotocolo Update (0.3ms)[0m   [0mUPDATE `prefprotocolos` SET `destino` = 'PROTOCOLO_INTERNO', `updated_at` = '2014-06-18 18:29:48' WHERE `id` = 26[0m
+  [4;36;1mDespacho Create (0.3ms)[0m   [0;1mINSERT INTO `despachos` (`updated_at`, `despacho`, `data_saida`, `destinofinal`, `destino`, `prefprotocolo_id`, `para`, `procedencia`, `funcionario`, `created_at`, `data_recebimento`) VALUES('2014-06-18 18:29:48', 'fgfggfgfgf', '2014-06-18 18:29:48', 'fgfggfgfgf', 'PROTOCOLO_INTERNO', 26, 'ENCERRADO', 'EDUCAÇÃO_INFANTIL', 'gfgffggfgf', '2014-06-18 18:29:48', NULL)[0m
+  [4;35;1mSQL (43.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mDespacho Load (0.7ms)[0m   [0;1mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+Rendered prefprotocolos/_despachos (5.0ms)
+Completed in 140ms (View: 13, DB: 91) | 200 OK [http://localhost/prefprotocolos/create_despacho]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#update (for 127.0.0.1 at 2014-06-18 15:29:52) [PUT]
+  Parameters: {"id"=>"26", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "commit"=>"Gravar"}
+  [4;35;1mPrefprotocolo Load (0.8ms)[0m   [0mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;36;1mPrefprotocolo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;35;1mPrefprotocolo Load (0.3ms)[0m   [0mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/prefprotocolos/26
+Completed in 26ms (DB: 3) | 302 Found [http://localhost/prefprotocolos/26]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PrefprotocolosController#show (for 127.0.0.1 at 2014-06-18 15:29:52) [GET]
+  Parameters: {"id"=>"26"}
+  [4;36;1mPrefprotocolo Load (0.2ms)[0m   [0;1mSELECT * FROM `prefprotocolos` ORDER BY destino ASC[0m
+  [4;35;1mPrefprotocolo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `prefprotocolos`[0m
+  [4;36;1mPrefprotocolo Load (0.4ms)[0m   [0;1mSELECT * FROM `prefprotocolos` WHERE (`prefprotocolos`.`id` = 26) [0m
+Rendering template within layouts/application
+Rendering prefprotocolos/show
+  [4;35;1mDespacho Load (0.2ms)[0m   [0mSELECT * FROM `despachos` WHERE (`despachos`.prefprotocolo_id = 26) [0m
+  [4;36;1mDespacho Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `despachos`[0m
+Rendered prefprotocolos/_despachos (14.2ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:29:52' AND ends_at >= '2014-06-18 18:29:52') [0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 210ms (View: 186, DB: 8) | 200 OK [http://localhost/prefprotocolos/26]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-06-18 15:29:56) [GET]
+  Parameters: {"authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM="}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.1ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.9ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:29:56' AND ends_at >= '2014-06-18 18:29:56') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 77ms (View: 44, DB: 4) | 200 OK [http://localhost/homes]

@@ -131,7 +131,7 @@ display: none;
                         <ul>
                           <li><%= link_to "Novo",new_oficio_path %></li>
                           <li><%= link_to "Ofícios", oficios_oficios_path  %></li>
-                          <li><%= link_to "Consulta", consulta_oficios_path  %></li>
+                          <li><%= link_to "Consultar", consulta_oficios_path  %></li>
                         </ul>
                      </li>
                  <%end%>
@@ -140,7 +140,7 @@ display: none;
                         <ul>
                           <li><%= link_to "Novo", new_prefprotocolo_path%> </li>
                           <li><%= link_to "Despachar", prefprotocolos_path%></li>
-                          <li><%= link_to "Consulta", consulta_prefprotocolos_path %></li>
+                          <li><%= link_to "Consultar", consulta_prefprotocolos_path %></li>
                         </ul>
                       </li>
                  <% if (current_user.has_role?('administrador') ) %>
@@ -149,7 +149,7 @@ display: none;
                         <ul>
                           <li><%= link_to "Novo",new_servicos_interno_path %></li>
                           <li><%= link_to "Serviços Interno", servicos_internos_path  %></li>
-                          <li><%= link_to "Consulta", consulta_servicos_internos_path  %></li>
+                          <li><%= link_to "Consultar", consulta_servicos_internos_path  %></li>
                         </ul>
                      </li>
                      <li><span class="divider divider-vert" ></span></li>
@@ -157,7 +157,7 @@ display: none;
                         <ul>
                           <li><%= link_to "Novo",new_acompanhamento_path %></li>
                           <li><%= link_to "Solicitações", acompanhamentos_path  %></li>
-                          <li><%= link_to "Consulta", consulta_acompanhamentos_path  %></li>
+                          <li><%= link_to "Consultar", consulta_acompanhamentos_path  %></li>
                         </ul>
                      </li>
                     </ul>

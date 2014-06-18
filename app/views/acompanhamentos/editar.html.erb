@@ -5,7 +5,7 @@
 <table class="tabelas" align="center">
  <tr>
     <th align="left">
-       <font size=5 color="black"> <b>  CONTROLE DE PROTOCOLO - SEDUC/PMA</b></font>
+       <font size=5 color="black"> <b>  CONTROLE DE ACOMPANHAMENTOS - SEDUC/PMA</b></font>
     </th>
     <td width="5%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -77,7 +77,6 @@
               <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
               <td width="2%" align="right" ><%= button_to('Solicitações', acompanhamentos_path, :method => "get",  :title => "Solicitações")%></td>
               <td width="2%" align="right"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
-              <td width="2%" align="right"><%= link_to image_tag("/stylesheets/images/despachar.jpeg", :size => "100x26"), "#inline_acompanhamento_despacho", :class =>"inline", :title => "Despachar" %></td>
             <tr>
         </table>
       </div>

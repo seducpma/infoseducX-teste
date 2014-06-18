@@ -21,16 +21,15 @@
           <tr>
             <td width="1%"></td>
             <td width="1%" valign="Top" width="9%"><b>Criança:</b></td>
-            <td width="5%"><%=h @acompanhamento.crianca %></td>
-            <td width="1%"align="right"><b>Nascimento: </b></td>
-            <td width="10%"align="left"><%=h @acompanhamento.nascimento.strftime("%d/%m/%Y") %> </td>
+            <td colspan="3"width="5%"><%=h @acompanhamento.crianca %></td>
           </tr>
           <tr>
             <td width="1%"></td>
+            <td width="1%"align="left"><b>Nascimento: </b></td>
+            <td width="5%"align="left"><%=h @acompanhamento.nascimento.strftime("%d/%m/%Y") %> </td>
             <td width="1%" valign="Top" width="9%"><b>Inscrição/RA:</b></td>
-            <td width="5%"><%=h @acompanhamento.inscricao %></td>
-            <td width="1%" align="right"><b>Atendimento: </b></td>
-            <td width="10%"align="left">por <%=h @acompanhamento.por%></td>
+            <td width="10%"><%=h @acompanhamento.inscricao %></td>
+
           </tr>
           <tr>
             <td width="1%"></td>
