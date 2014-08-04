@@ -23042,3 +23042,679 @@ Rendered homes/_informe (2.9ms)
   [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
   [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
 Completed in 77ms (View: 44, DB: 4) | 200 OK [http://localhost/homes]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EstagiariosController#consulta (for 127.0.0.1 at 2014-06-18 15:32:10) [GET]
+  [4;36;1mUnidade Load (2.1ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (1.9ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.7ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (flag=1) ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.5ms)[0m   [0;1mSELECT * FROM `regiaos` [0m
+Rendering template within layouts/application
+Rendering estagiarios/consultas
+  [4;35;1mEstagiario Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:32:10' AND ends_at >= '2014-06-18 18:32:10') [0m
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 248ms (View: 187, DB: 12) | 200 OK [http://localhost/c_est_nom]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EstagiariosController#baixas (for 127.0.0.1 at 2014-06-18 15:32:30) [GET]
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.3ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.1ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (flag=1) ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` [0m
+  [4;35;1mEstagiario Load (3.1ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (desligado=1) ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering estagiarios/baixas
+  [4;36;1mEstagiario Columns (3.5ms)[0m   [0;1mSHOW FIELDS FROM `estagiarios`[0m
+  [4;35;1mUnidade Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.4ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Load (0.4ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mUnidade Load (0.4ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 73) [0m
+  [4;36;1mUnidade Load (0.7ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;35;1mUnidade Load (0.6ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 10) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;36;1mUnidade Load (0.4ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 73) [0m
+  [4;36;1mRegiao Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mRegiao Load (0.3ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 9) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;36;1mUnidade Load (0.5ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mRegiao Load (0.4ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 9) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 73) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 10) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 10) [0m
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:32:32' AND ends_at >= '2014-06-18 18:32:32') [0m
+Completed in 1207ms (View: 1133, DB: 21) | 200 OK [http://localhost/baixas]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:32) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/77/thumb/ADRIANO.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:33) [GET]
+
+ActionController::RoutingError (No route matches "/photos/thumb/missing.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:33) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/41/thumb/AMANDA.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:33) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/89/thumb/2012-02-16%2007.32.40.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:34) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/7/thumb/CAUE.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:34) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/67/thumb/CLAYTON.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:34) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/101/thumb/20120817_092444.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:35) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/1/thumb/FABRICIO%20BADAN.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:35) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/88/thumb/2012-02-16%2007.32.14.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:35) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/99/thumb/2012-05-31%2015.36.43.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:36) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/71/thumb/GIOVANI.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:36) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/79/thumb/GIULIANA.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:36) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/19/thumb/GLAUBER.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:37) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/61/thumb/GUILHERME%20ROCHA.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:37) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/16/thumb/GUILHERME%20PONCE.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:37) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/56/thumb/GUILHERME%20MATHEUS.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:38) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/57/thumb/GUSTAVO%20BERNO.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:38) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/50/thumb/HIGOR.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:38) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/6/thumb/LEANDRO.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:39) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/18/thumb/LEONARDO.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:39) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/43/thumb/VERONICA.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:39) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/68/thumb/MATHEUS.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:40) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/62/thumb/NATANAEL.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:40) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/69/thumb/MARCELO.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:40) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/30/thumb/MARIANA.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:41) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/82/thumb/mateus.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:41) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/81/thumb/LUCAS.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:41) [GET]
+
+ActionController::RoutingError (No route matches "/system/photos/98/thumb/2012-05-31%2008.22.11.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EstagiariosController#baixas (for 127.0.0.1 at 2014-06-18 15:32:42) [GET]
+  Parameters: {"x"=>"0", "y"=>"0", "search"=>"carlos"}
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.3ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.1ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=1) ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` [0m
+  [4;36;1mEstagiario Load (0.9ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (nome like '%carlos%' and desligado = 1) ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering estagiarios/baixas
+  [4;35;1mEstagiario Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+  [4;36;1mRegiao Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:32:42' AND ends_at >= '2014-06-18 18:32:42') [0m
+Completed in 152ms (View: 87, DB: 9) | 200 OK [http://localhost/baixas?search=carlos&x=0&y=0]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:32:42) [GET]
+
+ActionController::RoutingError (No route matches "/photos/thumb/missing.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EstagiariosController#consulta (for 127.0.0.1 at 2014-06-18 15:32:48) [GET]
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.3ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.1ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (flag=1) ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` [0m
+Rendering template within layouts/application
+Rendering estagiarios/consultas
+  [4;35;1mEstagiario Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:32:48' AND ends_at >= '2014-06-18 18:32:48') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 125ms (View: 70, DB: 7) | 200 OK [http://localhost/c_est_nom]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EstagiariosController#lista_estagiario (for 127.0.0.1 at 2014-06-18 15:33:01) [POST]
+  Parameters: {"estagiario_estagiario_id"=>"116", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM="}
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.3ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.1ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (flag=1) ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (flag=0 and desligado=0) ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` [0m
+  [4;35;1mEstagiario Load (0.6ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (id='116' and desligado=0) [0m
+  [4;36;1mEstagiario Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `estagiarios`[0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 7) [0m
+Rendered estagiarios/_lista_estagiarios (61.1ms)
+Completed in 120ms (View: 61, DB: 9) | 200 OK [http://localhost/estagiarios/lista_estagiario]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2014-06-18 15:33:02) [GET]
+
+ActionController::RoutingError (No route matches "/photos/thumb/missing.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#index (for 127.0.0.1 at 2014-06-18 15:33:28) [GET]
+  [4;36;1mAcompanhamento Load (0.9ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (encerrado = '0') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/index
+  [4;35;1mAcompanhamento Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:33:28' AND ends_at >= '2014-06-18 18:33:28') [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 138ms (View: 115, DB: 7) | 200 OK [http://localhost/acompanhamentos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#consulta (for 127.0.0.1 at 2014-06-18 15:33:35) [POST]
+  Parameters: {"authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM="}
+  [4;36;1mAcompanhamento Load (1.3ms)[0m   [0;1mSELECT * FROM `acompanhamentos` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering acompanhamentos/consulta
+Rendered acompanhamentos/_consulta (1.1ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:33:35' AND ends_at >= '2014-06-18 18:33:35') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 118ms (View: 95, DB: 6) | 200 OK [http://localhost/acompanhamentos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#acompanhamento (for 127.0.0.1 at 2014-06-18 15:33:41) [GET]
+  Parameters: {"_"=>"1403116420592", "type_of"=>"3", "authenticity_token"=>"i8c9DlVJXj9HFADtvxhkDl55i/Hbs6YD6occwu6KUbM=", "search"=>""}
+  [4;35;1mAcompanhamento Load (0.7ms)[0m   [0mSELECT * FROM `acompanhamentos` [0m
+  [4;36;1mAcompanhamento Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamentos` ORDER BY created_at DESC[0m
+  [4;35;1mAcompanhamento Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+Rendered acompanhamentos/_acompanhamento (61.8ms)
+Completed in 193ms (View: 173, DB: 3) | 200 OK [http://localhost/acompanhamentos/acompanhamento?authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&type_of=3&search=&authenticity_token=i8c9DlVJXj9HFADtvxhkDl55i%2FHbs6YD6occwu6KUbM%3D&_=1403116420592]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#show (for 127.0.0.1 at 2014-06-18 15:33:45) [GET]
+  Parameters: {"id"=>"35"}
+  [4;36;1mAcompanhamento Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;35;1mAcompanhamento Load (0.5ms)[0m   [0mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/show
+  [4;36;1mAcompanhamentoDespacho Load (0.1ms)[0m   [0;1mSELECT * FROM `acompanhamento_despachos` WHERE (`acompanhamento_despachos`.acompanhamento_id = 35) [0m
+Rendered acompanhamentos/_acompanhamento_despachos (6.1ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:33:45' AND ends_at >= '2014-06-18 18:33:45') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 99ms (View: 75, DB: 7) | 200 OK [http://localhost/acompanhamentos/35]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AcompanhamentosController#editar (for 127.0.0.1 at 2014-06-18 15:33:51) [GET]
+  Parameters: {"id"=>"35"}
+  [4;35;1mAcompanhamento Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `acompanhamentos`[0m
+  [4;36;1mAcompanhamento Load (0.2ms)[0m   [0;1mSELECT * FROM `acompanhamentos` WHERE (`acompanhamentos`.`id` = 35) [0m
+Rendering template within layouts/application
+Rendering acompanhamentos/editar
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-18 18:33:51' AND ends_at >= '2014-06-18 18:33:51') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 125ms (View: 98, DB: 7) | 200 OK [http://localhost/acompanhamentos/editar/35]
+  [4;35;1mSQL (65.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PontosController#index (for 127.0.0.1 at 2014-06-23 07:35:34) [GET]
+  [4;35;1mUser Columns (280.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (41.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mEstagiario Load (398.4ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (desligado=0 and flag = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering pontos/index
+  [4;36;1mPonto Columns (17.7ms)[0m   [0;1mSHOW FIELDS FROM `pontos`[0m
+  [4;35;1mEstagiario Columns (14.4ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+Rendered pontos/_calendar (26.8ms)
+  [4;36;1mInformativo Load (44.9ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-23 10:35:36' AND ends_at >= '2014-06-23 10:35:36') [0m
+  [4;35;1mroles_users Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 1761ms (View: 336, DB: 866) | 200 OK [http://localhost/pontos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PontosController#index (for 127.0.0.1 at 2014-06-23 07:35:37) [GET]
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mEstagiario Load (0.3ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (desligado=0 and flag = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering pontos/index
+  [4;35;1mPonto Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pontos`[0m
+  [4;36;1mEstagiario Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `estagiarios`[0m
+Rendered pontos/_calendar (0.1ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-23 10:35:37' AND ends_at >= '2014-06-23 10:35:37') [0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 111ms (View: 58, DB: 8) | 200 OK [http://localhost/pontos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PontosController#index (for 127.0.0.1 at 2014-06-23 07:35:40) [GET]
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mEstagiario Load (0.3ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (desligado=0 and flag = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering pontos/index
+  [4;36;1mPonto Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pontos`[0m
+  [4;35;1mEstagiario Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+Rendered pontos/_calendar (0.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-06-23 10:35:40' AND ends_at >= '2014-06-23 10:35:40') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 114ms (View: 60, DB: 8) | 200 OK [http://localhost/pontos]
+  [4;36;1mSQL (33.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (20.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-08-01 10:55:43) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 22ms (DB: 54) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-08-01 10:55:44) [GET]
+  [4;36;1mCurso Load (118.5ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 275ms (View: 137, DB: 120) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-08-04 13:41:22) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2014-08-04 13:41:23) [GET]
+  [4;36;1mCurso Load (29.4ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 160ms (View: 112, DB: 31) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2014-08-04 14:00:13) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mParticipante Load (2.3ms)[0m   [0mSELECT * FROM `participantes` WHERE (flag = 1) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.5ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mUnidade Load (1.7ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.3ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;36;1mParticipante Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `participantes`[0m
+  [4;35;1mCurso Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+  [4;36;1mCurso Load (9.1ms)[0m   [0;1mSELECT `cursos`.id FROM `cursos` INNER JOIN `cursos_inscricaos` ON `cursos`.id = `cursos_inscricaos`.curso_id WHERE (`cursos`.`id` = 1) AND (`cursos_inscricaos`.inscricao_id = NULL ) LIMIT 1[0m
+Rendered inscricaos/_form (90.2ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-04 17:00:14' AND ends_at >= '2014-08-04 17:00:14') [0m
+Completed in 458ms (View: 293, DB: 20) | 200 OK [http://localhost/inscricaos/new]
