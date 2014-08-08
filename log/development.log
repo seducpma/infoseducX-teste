@@ -24723,3 +24723,174 @@ Rendering emprestimos/show
   [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
   [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:23:01' AND ends_at >= '2014-08-08 17:23:01') [0m
 Completed in 234ms (View: 177, DB: 9) | 200 OK [http://localhost/emprestimos/26]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2014-08-08 14:43:05) [GET]
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mNoticia Load (0.2ms)[0m   [0mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (3.5ms)
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:43:05' AND ends_at >= '2014-08-08 17:43:05') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 175ms (View: 50, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#index (for 127.0.0.1 at 2014-08-08 14:43:11) [GET]
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mDepartamento Load (0.2ms)[0m   [0mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;36;1mEmprestimo Load (0.2ms)[0m   [0;1mSELECT * FROM `emprestimos` [0m
+Rendering template within layouts/application
+Rendering emprestimos/index
+  [4;35;1mEmprestimo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `emprestimos`[0m
+  [4;36;1mUnidade Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 33) [0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;35;1mDepartamento Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `departamentos`[0m
+  [4;36;1mDepartamento Load (0.1ms)[0m   [0;1mSELECT * FROM `departamentos` WHERE (`departamentos`.`id` = 2) [0m
+Rendered emprestimos/_calendar (153.6ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:43:11' AND ends_at >= '2014-08-08 17:43:11') [0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 265ms (View: 216, DB: 10) | 200 OK [http://localhost/emprestimos]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#new (for 127.0.0.1 at 2014-08-08 14:43:14) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mDepartamento Load (0.1ms)[0m   [0;1mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;35;1mEmprestimo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `emprestimos`[0m
+Rendering template within layouts/application
+Rendering emprestimos/new
+  [4;36;1mUnidade Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered emprestimos/_form (128.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:43:14' AND ends_at >= '2014-08-08 17:43:14') [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 235ms (View: 188, DB: 8) | 200 OK [http://localhost/emprestimos/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#seleciona (for 127.0.0.1 at 2014-08-08 14:43:18) [POST]
+  Parameters: {"authenticity_token"=>"uKsBS44HzUjwYJy/qEcWy4tr46IMscRY7/vTznuctKE=", "emprestimo_unidade_id"=>"11"}
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mDepartamento Load (0.1ms)[0m   [0;1mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+Rendered emprestimos/_selecao_nada (0.3ms)
+Completed in 37ms (View: 3, DB: 1) | 200 OK [http://localhost/emprestimos/seleciona]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#create (for 127.0.0.1 at 2014-08-08 14:43:24) [POST]
+  Parameters: {"emprestimo"=>{"devolucao(2i)"=>"8", "emprestimo(2i)"=>"8", "emprestimo(3i)"=>"8", "emprestimo(1i)"=>"2014", "unidade_id"=>"11", "devolucao(3i)"=>"8", "responsavel"=>"uiiuooiu", "devolucao(1i)"=>"2014", "obs"=>"uioiuoiuopiuop", "periodo"=>"iuoiouiou"}, "x"=>"18", "y"=>"9", "authenticity_token"=>"uKsBS44HzUjwYJy/qEcWy4tr46IMscRY7/vTznuctKE="}
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mDepartamento Load (0.2ms)[0m   [0;1mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;35;1mEmprestimo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `emprestimos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEmprestimo Create (0.3ms)[0m   [0mINSERT INTO `emprestimos` (`devolucao`, `unidade_id`, `emprestimo`, `created_at`, `departamento_id`, `responsavel`, `periodo`, `obs`, `updated_at`) VALUES('2014-08-08 03:00:00', 11, '2014-08-08 03:00:00', '2014-08-08 17:43:24', 1, 'uiiuooiu', 'iuoiouiou', 'uioiuoiuopiuop', '2014-08-08 17:43:24')[0m
+  [4;36;1mSQL (29.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3001/emprestimos/27
+Completed in 82ms (DB: 32) | 302 Found [http://localhost/emprestimos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#show (for 127.0.0.1 at 2014-08-08 14:43:24) [GET]
+  Parameters: {"id"=>"27"}
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mDepartamento Load (0.2ms)[0m   [0;1mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;35;1mEmprestimo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `emprestimos`[0m
+  [4;36;1mEmprestimo Load (0.3ms)[0m   [0;1mSELECT * FROM `emprestimos` WHERE (`emprestimos`.`id` = 27) [0m
+Rendering template within layouts/application
+Rendering emprestimos/show
+  [4;35;1mUnidade Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 11) [0m
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:43:24' AND ends_at >= '2014-08-08 17:43:24') [0m
+Completed in 235ms (View: 186, DB: 8) | 200 OK [http://localhost/emprestimos/27]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#new (for 127.0.0.1 at 2014-08-08 14:43:32) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mDepartamento Load (0.1ms)[0m   [0;1mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;35;1mEmprestimo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `emprestimos`[0m
+Rendering template within layouts/application
+Rendering emprestimos/new
+  [4;36;1mUnidade Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered emprestimos/_form (52.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:43:32' AND ends_at >= '2014-08-08 17:43:32') [0m
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 289ms (View: 239, DB: 9) | 200 OK [http://localhost/emprestimos/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#seleciona (for 127.0.0.1 at 2014-08-08 14:43:37) [POST]
+  Parameters: {"authenticity_token"=>"uKsBS44HzUjwYJy/qEcWy4tr46IMscRY7/vTznuctKE=", "emprestimo_unidade_id"=>"53"}
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mDepartamento Load (0.2ms)[0m   [0;1mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;35;1mDepartamento Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `departamentos`[0m
+Rendered emprestimos/_selecao_depart (3.9ms)
+Completed in 41ms (View: 5, DB: 2) | 200 OK [http://localhost/emprestimos/seleciona]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#create (for 127.0.0.1 at 2014-08-08 14:43:46) [POST]
+  Parameters: {"emprestimo"=>{"devolucao(2i)"=>"8", "emprestimo(2i)"=>"8", "emprestimo(3i)"=>"8", "emprestimo(1i)"=>"2014", "unidade_id"=>"53", "devolucao(3i)"=>"8", "responsavel"=>"]]]]", "devolucao(1i)"=>"2014", "departamento_id"=>"2", "obs"=>"]ç]]", "periodo"=>"çç]ç"}, "x"=>"10", "y"=>"21", "authenticity_token"=>"uKsBS44HzUjwYJy/qEcWy4tr46IMscRY7/vTznuctKE="}
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mDepartamento Load (0.2ms)[0m   [0mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;36;1mEmprestimo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `emprestimos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEmprestimo Create (0.3ms)[0m   [0;1mINSERT INTO `emprestimos` (`devolucao`, `unidade_id`, `emprestimo`, `created_at`, `departamento_id`, `responsavel`, `periodo`, `obs`, `updated_at`) VALUES('2014-08-08 03:00:00', 53, '2014-08-08 03:00:00', '2014-08-08 17:43:46', 2, ']]]]', 'çç]ç', ']ç]]', '2014-08-08 17:43:46')[0m
+  [4;35;1mSQL (46.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/emprestimos/28
+Completed in 198ms (DB: 49) | 302 Found [http://localhost/emprestimos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EmprestimosController#show (for 127.0.0.1 at 2014-08-08 14:43:47) [GET]
+  Parameters: {"id"=>"28"}
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mDepartamento Load (0.1ms)[0m   [0mSELECT * FROM `departamentos` ORDER BY depto ASC[0m
+  [4;36;1mEmprestimo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `emprestimos`[0m
+  [4;35;1mEmprestimo Load (0.3ms)[0m   [0mSELECT * FROM `emprestimos` WHERE (`emprestimos`.`id` = 28) [0m
+Rendering template within layouts/application
+Rendering emprestimos/show
+  [4;36;1mUnidade Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 53) [0m
+  [4;36;1mDepartamento Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `departamentos`[0m
+  [4;35;1mDepartamento Load (0.1ms)[0m   [0mSELECT * FROM `departamentos` WHERE (`departamentos`.`id` = 2) [0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2014-08-08 17:43:47' AND ends_at >= '2014-08-08 17:43:47') [0m
+Completed in 127ms (View: 77, DB: 9) | 200 OK [http://localhost/emprestimos/28]
