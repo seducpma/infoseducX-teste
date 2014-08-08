@@ -21,11 +21,15 @@
          </tr>
        <%end%>
         <tr>
-           <td align="left"><font size=2><b>Data Emprestimo:</b></font></td>
+           <td align="left"><font size=2><b>Emprestimo:</b></font></td>
            <td align="left"><font size=2><%=h @emprestimo.emprestimo.strftime("%d/%m/%Y") %></font></td>
        </tr>
+        <tr>
+           <td align="left"><font size=2><b>Período:</b></font></td>
+           <td align="left"><font size=2><%=h @emprestimo.periodo %></font></td>
+       </tr>
        <tr>
-           <td align="left"><font size=2><b>Data Devolução:</b></font></td>
+           <td align="left"><font size=2><b>Devolução:</b></font></td>
            <td align="left"><font size=2><%=h @emprestimo.devolucao.strftime("%d/%m/%Y") %></font></td>
       </tr>
       <tr>

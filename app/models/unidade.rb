@@ -16,7 +16,7 @@ has_many :computadores
 has_many :impressoras
 has_many :datashows
 has_many :departamentos
-
+has_many :emprestimos
 has_many :protocolos
 has_many :c_externos
 has_many :relatestagiarios
