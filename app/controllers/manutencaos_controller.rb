@@ -40,7 +40,7 @@ class ManutencaosController < ApplicationController
    end
 
 def consulta
-   
+
    render 'consultas'
   end
 
@@ -161,7 +161,7 @@ def lista_manutencao
  def impressao_manutencao
    @manutencao = Manutencao.find(params[:id])
    $idmanutencao= @manutencao.id
-  
+
  end
 
 

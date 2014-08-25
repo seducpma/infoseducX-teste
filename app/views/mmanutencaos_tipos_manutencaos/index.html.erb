@@ -1,0 +1,22 @@
+<h1>Listing mmanutencaos_tipos_manutencaos</h1>
+
+<table>
+  <tr>
+    <th>Tipos manutencao</th>
+    <th>Mmanutencao</th>
+  </tr>
+
+<% @mmanutencaos_tipos_manutencaos.each do |mmanutencaos_tipos_manutencao| %>
+  <tr>
+    <td><%=h mmanutencaos_tipos_manutencao.tipos_manutencao %></td>
+    <td><%=h mmanutencaos_tipos_manutencao.mmanutencao %></td>
+    <td><%= link_to 'Show', mmanutencaos_tipos_manutencao %></td>
+    <td><%= link_to 'Edit', edit_mmanutencaos_tipos_manutencao_path(mmanutencaos_tipos_manutencao) %></td>
+    <td><%= link_to 'Destroy', mmanutencaos_tipos_manutencao, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New mmanutencaos_tipos_manutencao', new_mmanutencaos_tipos_manutencao_path %>

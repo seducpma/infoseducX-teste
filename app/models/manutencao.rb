@@ -1,5 +1,5 @@
 class Manutencao < ActiveRecord::Base
-  validates_presence_of :unidade_id, :message => ' - SELECIONAR UNIDADE  - '
+ validates_presence_of :unidade_id, :message => ' - SELECIONAR UNIDADE  - '
   belongs_to :unidade, :dependent => :destroy
   belongs_to :situacao_manutencao
   belongs_to :user
@@ -22,9 +22,8 @@ def data_encerramento
  if ($teste == 'ENCAMINHADO')then
       self.data_ate = Time.now
  end
-   
+
 
 
 end
-
 end

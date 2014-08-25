@@ -1,4 +1,5 @@
 class SituacaoManutencao < ActiveRecord::Base
 
-  has_many :manutencaos
+  
+  has_many :mmanutencaos
 end

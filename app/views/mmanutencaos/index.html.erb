@@ -1,0 +1,94 @@
+<br/>
+ <table  class="tabelas1"   align="center" width="100%">
+  <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font>
+    </th>
+    <td width="3%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <br/>
+      <font  size="2">
+        <table border="2" width="100%">
+          <tr>
+            <th width ="1%" align="center">Proto- colo</th>
+            <th width ="5%">Data Solicitação</th>
+            <th width ="10%">Solicitante</th>
+            <th width ="15%">Unidade</th>
+            <th width ="20%"colspan="2">Problema</th>
+            <th width ="20%"  >Procedimentos Executados</th>
+            <th width="8%">Status</th>
+          </tr>
+          <%$cont=0%>
+          <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
+            <% for chamado in @mmanutencaos %>
+             <tr>
+               <td align="center"><%=h chamado.id %></td>
+               <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+               <td><%=h chamado.solicitante %></td>
+               <td><%=h chamado.unidade.nome %></td>
+               <td colspan="2"><%=h chamado.descricao %></td>
+               <td> <%=h chamado.procedimentos%>  </td>
+               <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                   <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+               <% else %>
+                   <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                      <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                   <% else %>
+                      <td><%=h chamado.situacao_manutencao.situacao %> <br/>
+                        <%if chamado.chefia.nil? %>
+                           p/ <%=h chamado.user.login %>
+                        <%else%>
+                           p/ <%=h chamado.chefia.nome %> 
+                        <%end%>
+                       </td>
+                      <%end%>
+               <% end %>
+              </tr>
+              <tr>
+                <td align="right" colspan="8">
+                   <table>
+                      <tr>
+                         <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') %>
+                           <td align="right" ><%= link_to image_tag("/stylesheets/images/encaminhar.png" ), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhar" %>
+                           <td align="right" ><%= link_to image_tag("/stylesheets/images/ordem.png" ), {:action => "ordemservico", :id=>chamado }, :method => "get", :title => "Ordem de Serviço" %></td>
+                         <%end%>
+                         <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao')  %>
+                           <td align="right" ><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "show", :id =>chamado}, :method => "get", :title => "Serviço" %>
+                         <%end%>
+                       </tr>
+                    </table>
+                </td>
+              </tr>
+            <%$cont=$cont+1%>
+            <%end%>
+              <tr>
+                <td  colspan="12">
+                  <b>Total de Ordem de Serviços em aberto:</b> <%= $cont %>
+                </td>
+              </tr>
+          <%end%>
+
+
+  </table>
+  </font>
+    <div class="botao">
+      <table align="right">
+       <tr>
+          <td align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+          <td align="right"><%= button_to('Imprimir',  onclick="javascript:window.print()", :title => "Imprimir")%></td>
+       </tr>
+       </table>
+    </div>
+ </td>
+  </tr>
+</table>
+
+<br/>
+
+
+
+

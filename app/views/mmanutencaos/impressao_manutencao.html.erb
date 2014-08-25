@@ -1,0 +1,107 @@
+
+  <div id="protocolo">
+
+
+
+<br/>
+<font  size="2"><b>
+<table  class="tabelas" width="100%"align="center">
+   <tr>
+    <th align="left">
+       <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+   </tr>
+ <tr>
+   <td colspan="2"align="center">
+     <br/>
+        <font  size=4 color="black"><u> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO </b></font>
+     <br/>
+   </td>
+ </tr>
+  <tr>
+   <td colspan="2">
+     <table width="100%">
+        <tr>
+         <td colspan="2">
+           <table border="2" width="100%">
+      
+
+             <tr>
+                <th> Ordem</th>
+                <th> Protocolo</th>
+                <th width ="15%"><font size="3"><b> Solicitação</b></font></th>
+                <th width ="15%"><font size="3"><b> Encaminhamento</b></font></th>
+                <th width ="20%"><font size="3"><b> Solicitante</b></font></th>
+                <th> <font size="3"><b>Unidade</b></font></th>
+             </tr>
+                <tr>
+                 <td width="3%" align="center"><%= text_field_tag($ordem,nil,:size => 1) %></td>
+                 <td width="3%" align="center"><%=h @mmanutencao.id %></td>
+                 <td><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y")%></td>
+                 <td><%= "#{Time.now.strftime("%d/%m/%Y")}" %></td>
+                 <td><%=h @mmanutencao.solicitante %></td>
+                 <td><%=h @mmanutencao.unidade.nome %></td>
+               </tr>
+               <tr>
+                  <th colspan="2" ><font size="4"><b>Problema</b></font></th>
+                  <td colspan="4" align="left"><font size="3"><%=h @mmanutencao.descricao %><br/></font></td>
+               </tr>
+               <tr>
+                 <th colspan="2"><font size="4"><b>Procedimento à realizar</b></font></th>
+                 <td colspan="4" align="left"><font size="3"><%=h @mmanutencao.procedimentos %><br/></td>
+              </tr>
+                <tr>
+                  <th colspan="2"><font size="3"><b>Procedimento realizado</b></font></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/><br/><br/></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><font size="3"><b>Assinatura</b></font></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/><br/><br/> </td>
+                </tr>
+
+
+
+
+
+     </table>
+
+ <table width="100%">
+  </table>
+  <table width="100%" align="center" >
+    <tr>
+      <td  colspan="2"align="right">   <%= "Americana, #{Time.now.strftime("%d de %B de %Y")}" %></td>
+
+    </tr>
+   <tr>
+     <td align="center" colspan="2">
+       OBS:<%= text_field_tag(:obs1,nil,:size => 100 ) %>
+     </td>
+   </tr>
+   <tr>
+     <td align="center" colspan="2">
+       <%= text_field_tag(:obs2,nil,:size => 104) %>
+     </td>
+   </tr>
+   <tr>
+     <td align="center"colspan="2">
+       <font size="3"><br/><b>Funcionário:</b><%= collection_select :nome ,:estagiario_id, @funcionarios, :id, :nome, :include_blank => ' -- Selecione -- ', :size=> 20 %></font>
+     </td>
+
+    </tr>
+     <tr class="botao">
+      <td align="right" > <%= button_to("Voltar", homes_path, :method => "get", :title => "Voltar") %></td>
+      <td width="6%"align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path($idmanutencao)}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>
+   </tr>
+   </table>
+ </td>
+ </tr>
+ </table>
+ </td>
+ </tr>
+ </table>
+ <br/>
+</font>
+</div>

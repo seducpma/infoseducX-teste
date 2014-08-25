@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  situacao_manutencao: 
+  funcionario: 
+  chefia: 
+  user: 
+  descricao: MyString
+  data_sol: 2014-08-19 11:06:06
+  data_ate: 2014-08-19 11:06:06
+  data_enc: 2014-08-19 11:06:06
+
+two:
+  situacao_manutencao: 
+  funcionario: 
+  chefia: 
+  user: 
+  descricao: MyString
+  data_sol: 2014-08-19 11:06:06
+  data_ate: 2014-08-19 11:06:06
+  data_enc: 2014-08-19 11:06:06

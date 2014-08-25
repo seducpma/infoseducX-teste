@@ -1,0 +1,44 @@
+<h1>Editing mmanutencao</h1>
+
+<% form_for(@mmanutencao) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :situacao_manutencao %><br />
+    <%= f.text_field :situacao_manutencao %>
+  </p>
+  <p>
+    <%= f.label :funcionario %><br />
+    <%= f.text_field :funcionario %>
+  </p>
+  <p>
+    <%= f.label :chefia %><br />
+    <%= f.text_field :chefia %>
+  </p>
+  <p>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :data_sol %><br />
+    <%= f.datetime_select :data_sol %>
+  </p>
+  <p>
+    <%= f.label :data_ate %><br />
+    <%= f.datetime_select :data_ate %>
+  </p>
+  <p>
+    <%= f.label :data_enc %><br />
+    <%= f.datetime_select :data_enc %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @mmanutencao %> |
+<%= link_to 'Back', mmanutencaos_path %>

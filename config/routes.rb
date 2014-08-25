@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :mmanutencaos_tipos_manutencaos
+
+  #map.resources :mmanutencaos
+
+  #map.resources :manutencaos
+
   map.resources :acompanhamento_despachos
 
   map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get, :editar => :get}
@@ -21,7 +27,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :manutencaos_tipos_manutencaos
 
-  map.resources :manutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get}
+  #map.resources :manutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get}
+
+  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get}
 
   map.resources :tipos_manutencaos
 
@@ -30,118 +38,114 @@ ActionController::Routing::Routes.draw do |map|
 #  map.resources :participantes
 #  map.resources :cursos
 
-
-
   map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get, :listagem_participantes => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :consultas => :get,:por_curso => :get}
 
   map.resources :cursos, :collection => {:voltar => :get, :c_curso => :get}
 
   map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get}, :member => [:addemail,:update_email]
 
-
-
-
   map.resources :noticias
 
   map.resources :importar
+
   map.resources :contato_internos
 
   map.resources :anexos
 
   map.resources :equipamentos, :collection => {:encerrado => :get, :consulta => :get}
+
   map.resources :justificativas
+
   map.resources :chats, :collection => {:busca => :get, :classe => :get}
+
   map.resources :informativos
+
   map.resources :mes_bases
+
   map.resources :pontos
+
   map.resources :relatestagiarios, :collection => {:validacao => :get}
+
   map.resources :tipo_osexternas
+
   map.resources :c_externos, :has_many => :documentos, :collection => {:instrucao => :get}
+
   map.resources :empresas
+
   map.resources :listaestagiarios
+
   map.resources :protocolos
+
   map.resources :emprestimos
+
   map.resources :regiaos
+
   map.resources :emfaltas
+
   map.resources :tipo_controles
+
   map.resources :datashows
+
   map.resources :impressoras
+
   map.resources :computadores
+
   map.resources :itinerarios
+
   map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
+
   map.resources :situacao_chamados
+
   map.resources :tipos_problemas
+
   map.resources :fornecedores
+
   map.resources :componentes
+
   map.resources :relatorios
+
   map.resources :saidas
+
   map.resources :entradas
+
   map.resources :estoques
+
   map.resources :senhas
+
   map.resources :tipos
+
   map.resources :departamentos
+
   map.resources :seduc
+
   map.resources :administracaos, :collection => {:internet => :get}
+
   map.resources :estagiarios, :collection => {:periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
 
-  #
   map.resources :unidades, :collection => {:print_all => :get}
+
   map.resources :users
 
   map.resource :session, :informatica => :get
+
   map.resources :roles_users
+
   map.desconectar '/chat/desconectar', :controller => 'chats', :action => 'desconectar'
   #map.connect '/homes/acertar_online_users', :controller => 'homes', :action => 'acertar_online_users'
+
   map.resources :homes, :collection => {:push_data => :get}
+
   map.resource :password
+
   map.connect '/estagiarios/rel_ponto/:year/:month', :controller => 'estagiarios', :action => 'rel_ponto', :year => nil, :month => nil
   map.connect '/estagiarios/carga_horaria/:estagiario_id_equals/:year/:month', :controller => 'estagiarios', :action => 'carga_horaria', :year => nil, :month => nil
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:
-  #   --------------------------------++-+', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
   map.root :controller => 'homes', :action => 'index'
-  # See how all your routes lay out with "rake routes"
   map.internos 'internos', :controller => 'servicos_internos', :action => 'index'
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
   map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
   map.protocolo 'protocolo', :controller => 'sessions', :action => 'protocolo'
   map.interno 'interno', :controller => 'sessions', :action => 'interno'
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing the them or commenting them out if you're using named routes and resources.
   map.upload 'upload', :controller => 'importar', :action => 'index'
   map.termo '/termo_servico', :controller => 'administracaos', :action => 'termo_servico'
   map.modelo '/download', :controller => 'inscricaos', :action => 'modelo'
@@ -169,7 +173,6 @@ ActionController::Routing::Routes.draw do |map|
   map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
   map.prefprot '/prefprot', :controller => 'prefprotocolos', :action => 'index'
   map.teste '/teste', :controller => 'prefprotocolos', :action => 'teste'
-
 
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'
   map.c_uni_tp '/c_uni_tp', :controller => 'unidades', :action => 'consultatipo'

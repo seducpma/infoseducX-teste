@@ -1,0 +1,107 @@
+<br/>
+<font size="2">
+<table  class="tabelas1" width="100%"align="center">
+ <tr>
+    <th align="left">
+     <font  size=5 color="black"> <b> SOLICITAÇÃO DE ORDEM DE SERVIÇO</b></font>
+    </th>
+    <td width="3%">
+      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+</tr>
+<tr>
+  <td colspan="2">
+     <table>
+       <tr>
+         <td width="25%" valign="TOP">
+           <%= render 'formshow' %>
+         </td>
+         <td valign="top"width="30%">
+           <fieldset><legend><font  size=4> Encaminhamento</font></legend>
+           <% form_for(@mmanutencao) do |f| %>
+           <%= f.error_messages %>
+           <table>
+            <tr>
+              <td align="left" width="20%"><b>Nome:</b></td>
+              <td aligntop ="left"><%= @mmanutencao.user.name%></td>
+
+             </tr>
+           <tr>
+              <td align="left" valign="top"><b>Despacho:</b></td>
+              <td align="left"><%= @mmanutencao.procedimentos %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Para:</b></td>
+              <% if @mmanutencao.chefia.nil? %>
+                <td> NÃO ENCAMINHADO</td>
+              <%else%>
+                <td align="left"><%= @mmanutencao.chefia.nome%></td>
+              <%end%>
+           </tr>
+           <tr>
+              <td align="left"><b>Situação Chamado:</b></td>
+              <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
+           </tr>
+           <tr>
+              <td align="left" width="20%"><b>Data:</b></td>
+              <%if @mmanutencao.data_ate.nil?%>
+                <td>Serviço não realizado</td>
+              <%else%>
+                <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%b/%Y")%></td>
+              <%end%>
+           </tr>
+
+           </table>
+        </fieldset>
+      </td>
+      <td valign="top"width="30%">
+           <fieldset><legend><font  size=4> Serviço</font></legend>
+           <table>
+            <tr>
+              <td align="left" width="20%"><b>Funcionário:</b></td>
+              <% if @mmanutencao.chefia.nil? %>
+                <td> EM ABERTO</td>
+              <%else%>
+                <td align="left"><%= @mmanutencao.chefia.nome%></td>
+              <%end%>
+           </tr>
+           <tr>
+              <td align="left" valign="top"><b>Serviços Excutados:</b></td>
+              <td align="left"><%= f.text_area :executado, :cols =>"20", :rows => "5" %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Funcionário:</b></td>
+               <td align="left"><%= f.collection_select :funcionario_id, @funcionarios, :id, :nome, :include_blank => ' -- Selecione -- ', :size=> 20 %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Situação Chamado:</b></td>
+              <td align="left"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecione -- '%></td>
+           </tr>
+           <tr>
+              <td align="left" width="20%"><b>Data do Despacho:</b></td>
+              <td align="left"><%= Time.now.strftime("%d/%m/%Y")%></td>
+             </tr>
+
+           </table>
+        </fieldset>
+         <table>
+            <tr >
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar1.png"), homes_path, :title => "Voltar" %></td>
+             <div id='Certeza'>
+               <td width="5%"align="left"><input type="image" src="/stylesheets/images/salvar9.png" title="Gravar"></td>
+             </div>
+             <%end%>
+               <td align="left" ><%= link_to image_tag("/stylesheets/images/servicos.png"), mmanutencaos_path, {:method => "get"}, :title => "Ordem de Serviço" %></td>
+             </tr>
+         </table>
+      </td>
+      </tr>
+
+
+    </table>
+  </td>
+ </tr>
+</table>
+</font>
+<br/>
+
