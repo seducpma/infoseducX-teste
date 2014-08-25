@@ -583,6 +583,9 @@ display: none;
                        </li>
                        <li><span class="divider divider-horiz" ></span></li>
                        <li><%= link_to "Mapa", geo_path%></li>
+                       <% if current_user.has_role?('administrador') or  current_user.has_role?('diretor_unidade')%>
+                           <li><%= link_to "Itinerantes", itinerarios_path%></li>
+                       <%end%>
                  </ul>
               </li>
               <li class="clear">&nbsp;</li>
