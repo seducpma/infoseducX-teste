@@ -1,9 +1,9 @@
 <table>
          <tr>
             <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-           <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+
                 <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "25x25"),  new_itinerario_path, :title => "Cadastrar"%></td>
-           <%end%>
+
             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
           </tr>
 <tr>

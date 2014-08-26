@@ -2,9 +2,10 @@ class ItinerariosController < ApplicationController
   # GET /itinerarios
   # GET /itinerarios.xml
 
-   before_filter :load_estagiarios
+  before_filter :load_estagiarios
   before_filter :load_unidades
-
+  layout :define_layout
+  before_filter :login_required, :except => ["index"]
 
 def load_unidades
 
@@ -20,6 +21,7 @@ def load_estagiarios
 
 
   def index
+   define_layout
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
    @search = Itinerario.search(params[:search])
    if (params[:search].blank?)
@@ -101,6 +103,14 @@ def load_estagiarios
     respond_to do |format|
       format.html { redirect_to(itinerarios_url) }
       format.xml  { head :ok }
+    end
+  end
+
+   def define_layout
+    if logged_in?
+      'application'
+    else
+      'login'
     end
   end
 end
