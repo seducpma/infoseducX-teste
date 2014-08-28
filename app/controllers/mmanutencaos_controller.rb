@@ -98,7 +98,7 @@ class MmanutencaosController < ApplicationController
     respond_to do |format|
       if @mmanutencao.save
         flash[:notice] = 'Manutencao solicitada.'
-        ChamadoMailer.deliver_notificar_mmanutencao(@mmanutencao)
+        MmanutencaoMailer.deliver_notificar_mmanutencao(@mmanutencao)
         format.html { redirect_to(@mmanutencao) }
         format.xml  { render :xml => @mmanutencao, :status => :created, :location => @mmanutencao }
       else
