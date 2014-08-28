@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sala: 
+  servico: 
+  data_reserva: 2014-08-27 14:32:26
+  horario_reserva: 2014-08-27 14:32:26
+  utilizacao: MyString
+  solicitante: MyString
+  obs: MyString
+
+two:
+  sala: 
+  servico: 
+  data_reserva: 2014-08-27 14:32:26
+  horario_reserva: 2014-08-27 14:32:26
+  utilizacao: MyString
+  solicitante: MyString
+  obs: MyString

@@ -1,0 +1,22 @@
+<h1>Listing servicos_salas</h1>
+
+<table>
+  <tr>
+    <th>Servico</th>
+    <th>Obs</th>
+  </tr>
+
+<% @servicos_salas.each do |servicos_sala| %>
+  <tr>
+    <td><%=h servicos_sala.servico %></td>
+    <td><%=h servicos_sala.obs %></td>
+    <td><%= link_to 'Show', servicos_sala %></td>
+    <td><%= link_to 'Edit', edit_servicos_sala_path(servicos_sala) %></td>
+    <td><%= link_to 'Destroy', servicos_sala, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New servicos_sala', new_servicos_sala_path %>

@@ -1,5 +1,22 @@
 class ChamadoMailer < ActionMailer::Base
 
+ def notificar_mmanutencao(mmanutencao)
+    if RAILS_ENV == "production"
+      recipients mmanutencao.user.email
+    else
+      recipients "administrador@seducpma.com"
+    end
+    from  "administrador@seducpma.com"
+    if RAILS_ENV == "production"
+      subject "Abertura socitação de manutenção"
+    else
+      subject "Teste de abertura chamado técnico"
+    end
+    body :mmanutencao => mmanutencao
+  end
+
+
+
   def notificar(chamado)
     if RAILS_ENV == "production"
       recipients chamado.unidade.email

@@ -94,9 +94,11 @@ class MmanutencaosController < ApplicationController
     @mmanutencao = Mmanutencao.new(params[:mmanutencao])
     @mmanutencao.data_sol= Time.now
     @mmanutencao.user_id = current_user.id
+    
     respond_to do |format|
       if @mmanutencao.save
-        flash[:notice] = 'Mmanutencao was successfully created.'
+        flash[:notice] = 'Manutencao solicitada.'
+        ChamadoMailer.deliver_notificar_mmanutencao(@mmanutencao)
         format.html { redirect_to(@mmanutencao) }
         format.xml  { render :xml => @mmanutencao, :status => :created, :location => @mmanutencao }
       else

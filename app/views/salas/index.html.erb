@@ -1,0 +1,26 @@
+<h1>Listing salas</h1>
+
+<table>
+  <tr>
+    <th>Sala</th>
+    <th>Descricao</th>
+    <th>Localizacao</th>
+    <th>Obs</th>
+  </tr>
+
+<% @salas.each do |sala| %>
+  <tr>
+    <td><%=h sala.sala %></td>
+    <td><%=h sala.descricao %></td>
+    <td><%=h sala.localizacao %></td>
+    <td><%=h sala.obs %></td>
+    <td><%= link_to 'Show', sala %></td>
+    <td><%= link_to 'Edit', edit_sala_path(sala) %></td>
+    <td><%= link_to 'Destroy', sala, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New sala', new_sala_path %>

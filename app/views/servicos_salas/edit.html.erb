@@ -1,0 +1,20 @@
+<h1>Editing servicos_sala</h1>
+
+<% form_for(@servicos_sala) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :servico %><br />
+    <%= f.text_field :servico %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @servicos_sala %> |
+<%= link_to 'Back', servicos_salas_path %>
