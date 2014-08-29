@@ -58,7 +58,6 @@
 
 
 logo{
-
 margin:90px 0px;
 background-image:url(Imagens/logo.jpg);
 background-repeat: no-repeat;
@@ -171,7 +170,20 @@ margin:25px;
    border-right: double;
    }
 
-   #rodape_login{
+ #caderno{
+ background-image: url(Imagens/CADERNO.png);
+ background-repeat: no-repeat;
+ padding: 20px 40px 220px 5px;
+    float:right;
+    height:auto;
+    overflow: auto;
+    margin:0;
+}
+
+
+
+
+#rodape_login{
     background-image:url(Imagens/fundo_rodape.jpg);
 
   	position:relative;

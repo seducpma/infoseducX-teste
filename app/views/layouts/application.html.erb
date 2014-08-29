@@ -164,12 +164,6 @@ display: none;
                   </li>
                <%end%>
               <%end%>
-
-
-
-
-
-
              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('diretor_SEDUC') %>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Estagiários</a>
@@ -588,6 +582,42 @@ display: none;
                        <%end%>
                  </ul>
               </li>
+
+
+              <li><span class="divider divider-vert" ></span></li>
+              <li><a class="item-primary" href="#">Reservar</a>
+                 <ul style="width:108px;">
+                   <li><a>Salasr</a>
+                      <ul>
+                        <% if current_user.has_role?('administrador')%>
+                           <li><%= link_to "Cadastrar",new_sala_path %></li>
+                        <%end%>
+
+                             <li><%= link_to('por Endereço', c_uni_end_path) %></li>
+                             <li><%= link_to('por Nome', c_uni_uni_path) %></li>
+                             <li><%= link_to('por Tipo', c_uni_tp_path) %></li>
+                             <li><%= link_to('Todas', unidades_path)%></li>
+                              <% if current_user.has_role?('administrador') %>
+                                 <li><%= link_to "C/Estagiario", lista_path%></li>
+                                 <li><%= link_to 'S/Estagiario', sem_estagiario_path %></li>
+                             <%end%>
+                           </ul>
+                       </li>
+                       <li><span class="divider divider-horiz" ></span></li>
+                       <li><%= link_to "Mapa", geo_path%></li>
+                       <% if current_user.has_role?('administrador') or  current_user.has_role?('diretor_unidade')%>
+                           <li><%= link_to "Itinerantes", itinerarios_path%></li>
+                       <%end%>
+                 </ul>
+              </li>
+
+
+
+
+
+
+
+
               <li class="clear">&nbsp;</li>
         </div>
       </div>

@@ -1,4 +1,4 @@
 class ReservarSala < ActiveRecord::Base
   belongs_to :sala
-  belongs_to :servico
+  has_and_belongs_to :servicos_sala
 end
