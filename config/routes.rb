@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :reservar_salas
-
   map.resources :servicos_salas
 
   map.resources :salas
