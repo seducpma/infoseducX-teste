@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>SGI - SEDUC / PMA</title>
 
- 
+    <%= stylesheet_link_tag 'infoseduc', 'calendar',"style",'menu',"colorbox", :cache => true %>
     <%= stylesheet_link_tag 'impressao', :media => "print" %>
     <%= stylesheet_link_tag 'calendar_impressao', :media => "print" %>
     <%= stylesheet_link_tag "jquery-ui-1.8.16.custom"%>
@@ -164,6 +164,12 @@ display: none;
                   </li>
                <%end%>
               <%end%>
+
+
+
+
+
+
              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('diretor_SEDUC') %>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Estagiários</a>
@@ -582,14 +588,6 @@ display: none;
                        <%end%>
                  </ul>
               </li>
-
-
-
-
-
-
-
-
               <li class="clear">&nbsp;</li>
         </div>
       </div>
