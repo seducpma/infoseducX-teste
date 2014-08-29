@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>SGI - SEDUC / PMA</title>
 
-    <%= stylesheet_link_tag 'infoseduc', 'calendar',"style",'menu',"colorbox", :cache => true %>
+ 
     <%= stylesheet_link_tag 'impressao', :media => "print" %>
     <%= stylesheet_link_tag 'calendar_impressao', :media => "print" %>
     <%= stylesheet_link_tag "jquery-ui-1.8.16.custom"%>
@@ -565,34 +565,6 @@ display: none;
                        <%end%>
                        <li><a>Consultar</a>
                            <ul>
-                             <li><%= link_to('por Endereço', c_uni_end_path) %></li>
-                             <li><%= link_to('por Nome', c_uni_uni_path) %></li>
-                             <li><%= link_to('por Tipo', c_uni_tp_path) %></li>
-                             <li><%= link_to('Todas', unidades_path)%></li>
-                              <% if current_user.has_role?('administrador') %>
-                                 <li><%= link_to "C/Estagiario", lista_path%></li>
-                                 <li><%= link_to 'S/Estagiario', sem_estagiario_path %></li>
-                             <%end%>
-                           </ul>
-                       </li>
-                       <li><span class="divider divider-horiz" ></span></li>
-                       <li><%= link_to "Mapa", geo_path%></li>
-                       <% if current_user.has_role?('administrador') or  current_user.has_role?('diretor_unidade')%>
-                           <li><%= link_to "Itinerantes", itinerarios_path%></li>
-                       <%end%>
-                 </ul>
-              </li>
-
-
-              <li><span class="divider divider-vert" ></span></li>
-              <li><a class="item-primary" href="#">Reservar</a>
-                 <ul style="width:108px;">
-                   <li><a>Salasr</a>
-                      <ul>
-                        <% if current_user.has_role?('administrador')%>
-                           <li><%= link_to "Cadastrar",new_sala_path %></li>
-                        <%end%>
-
                              <li><%= link_to('por Endereço', c_uni_end_path) %></li>
                              <li><%= link_to('por Nome', c_uni_uni_path) %></li>
                              <li><%= link_to('por Tipo', c_uni_tp_path) %></li>
