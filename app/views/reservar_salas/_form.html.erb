@@ -1,46 +1,79 @@
 <% form_for(@reservar_sala) do |f| %>
-  <%= f.error_messages %>
+<%= f.error_messages %>
 <font  size="2">
- <table class="tabelas" width="60%" align="center">
+ <table class="tabelas" width="50%" align="center">
   <tr>
-   <th colspan="2" align="left">
-     <font  size=5><b> RESERVA DE SALA / AUDITÓRIO</b></font>
+   <th align="left">
+     <font  size=5><b> RESERVA DE SALA / AUTIDÓRIO</b></font>
    </th>
+    <td width="10%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+    </td>
   </tr>
   <tr>
-  <tr>
-    <td>
-     <fieldset><legend><font  size=4> Roteiro</font></legend>
-       <table>
-          <tr>
-            <td align="left"><font size=2><b>Local:</b></font></td>
-            <td align="left"><font size=2><%= f.collection_select :estagiario_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font></td>
+    <td colspan="3">
+      <fieldset><legend><font size ="4"><b>Reserva</b></font></legend>
+        <table align="center"  width="100%">
+           <tr>
+               <td align="left"><font size=2><b>Local:</b></font></td>
+               <td align="left"><font size=2><%= f.collection_select :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font></td>           </tr>
+           <tr>
+              <td align="left"><font size=2><b>Data Reserva:</b></font></td>
+              <td align="left"><font size=2><%= f.date_select :data_reserva %></font></td>
+           </tr>
+           <tr>
+              <td align="left"><font size=2><b>Inicio:</b></font></td>
+              <td align="left"><font size=2><%= f.time_select :horario_reservai %></font></td>
+           </tr>       <tr>
+              <td align="left"><font size=2><b>Encerramento:</b></font></td>
+              <td align="left"><font size=2><%= f.time_select :horario_reservaf %></font></td>
+           </tr>
+           <tr>
+              <td align="left"><font size=2><b>Solicitante:</b></font></td>
+              <td align="left"><%= f.text_field :solicitante%></td>
+           </tr>
+           <tr>
+              <td align="left"><font size=2><b>Utilização:</b></font></td>
+              <td align="left"><%= f.text_field :utilizacao%></td>
+           </tr>
+            <tr>
+              <td colspan="2">
+                <fieldset><legend><font size ="2"><b>Serviços:</b></font></legend>
+                   <table align="center"  width="100%">
+
+                      <% @servicos_salas.in_groups_of(3, false) do |row_servicos_salas| %>
+                        <tr>
+                          <% row_servicos_salas.each do |servicos_sala| %>
+                              <td align="left"><%= check_box_tag "reservar_sala[servicos_sala_ids][]", servicos_sala.id, @reservar_sala.servicos_salas.include?(servicos_sala), :title => "#{servicos_sala.servico}"%><%= "#{servicos_sala.servico} " %></td>
+                          <%end%>
+                        </tr>
+                       <%end%>
+
+
+
+
+
+                    </table>
+                  </fieldset>
+             </td>
           </tr>
-         <tr>
-            <td align="left"><font size=2><b>Unidade:</b></font></td>
-            <td align="left"><font size=2><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %></font></td>
-         </tr>
-         <tr>
-            <td align="left"><font size=2><b>Data Visita:</b></font></td>
-            <td align="left"><font size=2><%= f.date_select :data_visita %></font></td>
-         </tr>
-         <tr>
-            <td align="left" valign="top"><font size=2><b>Observações:</b></font></td>
-           <td align="left"><font size=2><%= f.text_area(:obs, :cols =>50, :rows => "2") %></font></td>
-         </tr>
-        </table>
-     </field>
-      <table width="60%" align="left">
           <tr>
-           <div id='Certeza'>
-              <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+              <td align="left" valign="top"><font size=2><b>Observações:</b></font></td>
+              <td align="left"><font size=2><%= f.text_field(:obs,:cols =>50, :rows => "2") %></font></td>
+          </tr>
+         </table>
+         </fieldset>
+            <div class="botao">
+              <table width="100%" align="right">
+                 <tr>
+                    <td align="right"><input type="image" src="/stylesheets/images/salvar10.png" title="Gravar"></td>
+      <% end %>
+                    <td width="2%" align="right" > <%= button_to("Voltar", homes_path, :title => "Voltar") %></td>
+                  </tr>
+              </table>
             </div>
-            <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
-          <% end %>
-          </tr>
-        </table>
-      </td>
-   </tr>
- </table>     
-  <br/>
+    </td>
+  </tr>
+  </table>
 </font>
+

@@ -1,34 +1,45 @@
-<table>
-         <tr>
-            <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+<br/>
+<table align="right" >
+  <tr>
+    <td><font size="3" color="red">
+      <b>ANTES DE RESERVAR UMA SALA VERIFIQUE SE ESTÀ DISPONÍVEL<br/>
+      E SE NÂO CONSTA MENHUMA RESERVA NO MESMO DIA E HORA.</font></b>
+    </td>
+    <td align="right" ><%= button_to("Voltar",  homes_path, :method => "get", :title => "Voltar")%></td>
+    <td width="2%" align="right" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+    <td width="2%"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
+   <tr>
+</table>
 
-                <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "25x25"),  new_reservar_saça_path, :title => "Reservar"%></td>
-
-            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          </tr>
-<tr>
-  <td colspan="3">
-<% if sala.present? %>
+<% if @reservar_salas.present? %>
   <div id="calendar">
     <h2 id="month">
       <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
       <%=h @date.strftime("%B %Y") %>
       <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
     </h2>
-    <% calendar_for @sala, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+    <% calendar_for @reservar_salas, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
       <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
-      <% calendar.day(:day_method => :data_visita) do |date, articles| %>
+      <% calendar.day(:day_method => :data_reserva) do |date, articles| %>
         <%= date.day %>
         <ul>
           <% for data in articles %>
-            <li><%= link_to h(data.sala.sala), data%></li>
+            <li><%= link_to h(data.sala.sala), data%><br/>
+                das <%= data.horario_reservai.strftime("%T")%> às<%= data.horario_reservaf.strftime("%T")%>
+            </li>
+
           <% end %>
         </ul>
       <% end %>
     <% end %>
   </div>
 <%end%>
-</td>
-</tr>
-
+<br/>
+<table align="right">
+  <tr>
+    <td align="right" ><%= button_to("Voltar",  homes_path, :method => "get", :title => "Voltar")%></td>
+    <td align="right" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+    <td width="4%"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
+   <tr>
 </table>
+

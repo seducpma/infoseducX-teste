@@ -2,12 +2,15 @@
   <%= f.error_messages %>
  <table class="tabelas" width="50%" align="center">
   <tr>
-   <td colspan="2" align="left">
+   <th align="left">
      <font  size=5><b> EMPRESTIMO DATASHOW</b></font>
-   </td>
+   </th>
+    <td width="10%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+    </td>
   </tr>
    <tr>
-     <td>
+     <td colspan="2">
        <table>
         <tr>
            <td align="left"><font size=2><b>Unidade:</b></font></td>

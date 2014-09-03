@@ -2,9 +2,9 @@ class Unidade < ActiveRecord::Base
 belongs_to :unidades_gpd
 belongs_to :tipo
 belongs_to :regiao
+
 has_many :manutencaos
 has_many :mmanutencaos
-
 has_many :anexos
 has_many :estagiarios
 has_many :senhas
@@ -23,6 +23,7 @@ has_many :c_externos
 has_many :relatestagiarios
 has_many :users
 has_many :equipamentos
+
 
 validates_presence_of :nome, :message => ' - DIGITAR NOME DA UNIDADE - '
 validates_presence_of :tipo_id, :message => ' - SELECIONAR TIPO DE UNIDADE - '

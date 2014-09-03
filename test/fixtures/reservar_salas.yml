@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sala: 
+  data_reserva: 2014-09-01 09:37:57
+  horario_reservari: 2014-09-01 09:37:57
+
+two:
+  sala: 
+  data_reserva: 2014-09-01 09:37:57
+  horario_reservari: 2014-09-01 09:37:57
