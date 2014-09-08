@@ -25,7 +25,7 @@
         <ul>
           <% for data in articles %>
             <li><%= link_to h(data.sala.sala), data%><br/>
-                das <%= data.horario_reservai.strftime("%H:%M")%> às <%= data.horario_reservaf.strftime("%H:%M")%>
+                das <%= data.horario_reservai.strftime("%H:%M")%> às <%= data.horario_reservaf.strftime("%H:%M")%> horas
             </li>
 
           <% end %>
