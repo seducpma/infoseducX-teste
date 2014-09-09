@@ -13,9 +13,15 @@
 <div id="contents">
   <div id="header">
     <br/>
-    <div id="topo">
-      <br/><br/> <br/><br/><br/>
-      <table width="100%">
+   <div id="topo">
+      <br/><br/>  <br/><br/>
+     <table width="100%">
+       <tr><td></td> <tr><tr><td></td> <tr>
+          <td width="72%"align="left"></td>
+          <td align="right"> <h4><font   size ="2"> Americana <%= Time.now.strftime("%d de %B de %Y") %></font></h4></td>
+        </tr>
+      </table>
+<!--  <table width="100%">
         <tr>
           <td align="right">
             <marquee behavior="alternate"><blink>
@@ -24,7 +30,7 @@
         </tr>
         <br/>
       </table>
-    </div>      
+--> </div>
 
   </div>
   <p style="color: red"><%= flash[:notice] %></p>
