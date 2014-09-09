@@ -59,7 +59,7 @@
                        <td><b><font color="red">  Não executado</b></font></td>
                      <%else%>
                       <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
-                      <td><%=h chamado.funcionario.nome %></td>
+                      <td><%=h chamado.ffuncionario %></td>
                      <%end%>
                       <td><%=h chamado.situacao_manutencao.situacao %></td>
                       <td align="center" colspan="1"><%= button_to('Serviço', {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir Dados") %></td>

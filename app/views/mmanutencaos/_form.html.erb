@@ -37,7 +37,7 @@
                       <% @tipos_manutencaos.in_groups_of(3, false) do |row_tipos_manutencaos| %>
                         <tr>
                           <% row_tipos_manutencaos.each do |tipos_manutencao| %>
-                              <td align="left"><%= check_box_tag "mmanutencao[tipos_manutencao_ids][]", tipos_manutencao.id, @mmanutencao.tipos_manutencaos.include?(tipos_manutencao), :title => "#{tipos_manutencao.servico}"%><%= "#{tipos_manutencao.servico} " %></td>
+                              <td align="left"><%= radio_button_tag "mmanutencao[tipos_manutencao_ids][]", tipos_manutencao.id, @mmanutencao.tipos_manutencaos.include?(tipos_manutencao), :title => "#{tipos_manutencao.servico}"%><%= "#{tipos_manutencao.servico} " %></td>
                           <%end%>
                         </tr>
                        <%end%>
@@ -49,6 +49,14 @@
           <tr>
            <td align="left" valign="top"><b>Descrição da <br/>Solicitação:</b></td>
            <td> <%= f.text_area :descricao, :cols =>"60", :rows => "3" %></td>
+         </tr>
+          <tr>
+           <td  colspan="2" align="left" valign="top">
+             <font color="red"><b> Favor descrever, de forma específica, todos os serviços e respectivos locais  <br/>
+             <u>Exemplo:</u> Trocar tomadas da sala nº 5
+
+           </b></td>
+
          </tr>
 
 

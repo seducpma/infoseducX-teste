@@ -44,7 +44,7 @@ class AcompanhamentoDespachosController < ApplicationController
 
     respond_to do |format|
       if @acompanhamento_despacho.save
-        flash[:notice] = 'AcompanhamentoDespacho was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@acompanhamento_despacho) }
         format.xml  { render :xml => @acompanhamento_despacho, :status => :created, :location => @acompanhamento_despacho }
       else
@@ -61,7 +61,7 @@ class AcompanhamentoDespachosController < ApplicationController
 
     respond_to do |format|
       if @acompanhamento_despacho.update_attributes(params[:acompanhamento_despacho])
-        flash[:notice] = 'AcompanhamentoDespacho was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@acompanhamento_despacho) }
         format.xml  { head :ok }
       else

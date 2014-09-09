@@ -15,7 +15,7 @@
       <fieldset><legend><font size ="4"><b>Reserva</b></font></legend>
         <table align="center"  width="100%">
            <tr>
-               <td align="left"><font size=2><b>Local:</b></font></td>
+               <td align="left" width="8%"><font size=2><b>Local:</b></font></td>
                <td align="left"><font size=2><%= f.collection_select :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font></td>           </tr>
            <tr>
               <td align="left"><font size=2><b>Data Reserva:</b></font></td>
@@ -58,8 +58,11 @@
              </td>
           </tr>
           <tr>
-              <td align="left" valign="top"><font size=2><b>Observações:</b></font></td>
-              <td align="left"><font size=2><%= f.text_field(:obs,:cols =>50, :rows => "2") %></font></td>
+              <td align="left" valign="top"><font size=2><b>* Obsservação:</b></font></td>
+              <td align="left"><font size=2><%= f.text_field(:obs,:cols =>50, :rows => "3") %></font></td>
+          </tr>
+          <tr>
+              <td align="left" colspan="2"valign="top"><font color="red"><b>Informar no campo <u>* Observação</u> o número participantes do evento</b></font></td>
           </tr>
          </table>
          </fieldset>

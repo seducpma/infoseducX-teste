@@ -91,11 +91,11 @@
                      </tr>
 
                      <tr>
-                       <td align="left"><b>Data:</b></td>
+                       <td align="left" valign="top"><b>Data:</b></td>
                        <%if @mmanutencao.data_ate.nil?%>
                        <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
                        <%else%>
-                         <td align="left"><%=h @mmanutencao.data_ate.strftime("%d/%b/%Y" ) %></td>
+                         <td align="left"><%=h @mmanutencao.data_ate.strftime("%d/%b/%Y  %H:%M horas"  ) %></td>
                        <%end%>
                      </tr>
                    </table>
@@ -116,10 +116,10 @@
                      </tr>
                       <tr>
                        <td align="left"><b>Por:</b></td>
-                       <%if @mmanutencao.funcionario_id.nil?%>
+                       <%if @mmanutencao.ffuncionario.nil?%>
                        <td align="left"> <font color="red">Serviço não executado</font></td>
                        <%else%>
-                          <td align="left"><%=h @mmanutencao.funcionario.nome%></td>
+                          <td align="left"><%=h @mmanutencao.ffuncionario%></td>
                        <%end%>
                       </tr>
                      <tr>
@@ -127,7 +127,7 @@
                        <%if @mmanutencao.data_enc.nil?%>
                        <td align="left"> <font color="red"><%= @mmanutencao.situacao_manutencao.situacao %></font></td>
                        <%else%>
-                        <td align="left"><%=h @mmanutencao.data_enc.strftime("%d/%m/%Y" ) %></td>
+                        <td align="left"><%=h @mmanutencao.data_enc.strftime("%d/%m/%Y %H:%M horas" ) %></td>
                        <%end%>
                      </tr>
                  </table>

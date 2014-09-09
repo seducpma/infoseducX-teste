@@ -64,7 +64,7 @@ class SituacaoChamadosController < ApplicationController
 
     respond_to do |format|
       if @situacao_chamados.update_attributes(params[:situacao_chamado])
-        flash[:notice] = 'SituacaoChamados was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@situacao_chamados) }
         format.xml  { head :ok }
       else

@@ -59,7 +59,7 @@ before_filter :login_required, :except => ["index", "show", "create", "new","edi
 
     respond_to do |format|
       if @reservar_sala.save
-        flash[:notice] = 'ReservarSala was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@reservar_sala) }
         format.xml  { render :xml => @reservar_sala, :status => :created, :location => @reservar_sala }
       else
@@ -76,7 +76,7 @@ before_filter :login_required, :except => ["index", "show", "create", "new","edi
 
     respond_to do |format|
       if @reservar_sala.update_attributes(params[:reservar_sala])
-        flash[:notice] = 'ReservarSala was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@reservar_sala) }
         format.xml  { head :ok }
       else

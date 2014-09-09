@@ -44,7 +44,7 @@ class DespachosController < ApplicationController
 
     respond_to do |format|
       if @despacho.save
-        flash[:notice] = 'Despacho was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@despacho) }
         format.xml  { render :xml => @despacho, :status => :created, :location => @despacho }
       else
@@ -61,7 +61,7 @@ class DespachosController < ApplicationController
 
     respond_to do |format|
       if @despacho.update_attributes(params[:despacho])
-        flash[:notice] = 'Despacho was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@despacho) }
         format.xml  { head :ok }
       else

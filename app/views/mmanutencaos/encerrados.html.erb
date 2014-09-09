@@ -43,7 +43,7 @@
            <td><%if chamado.data_ate.nil?%>
                    ---
                <%else%>   
-                  <%=h chamado.data_ate.strftime("%d/%m/%Y")%>
+                  <%=h chamado.data_ate.strftime("%d/%m/%Y %H:%M")%>
                <%end%>
            </td>
            <td> <%if chamado.chefia.nil?%>
@@ -51,7 +51,11 @@
                 <%else%>
                     <%=h chamado.chefia.nome %></td>
                 <%end%>
-           <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
+           <td><% if  chamado.data_enc.nil?%>
+               <%else%>
+                   <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%></td>
+
+               <%end%>
            <td><%if chamado.funcionario.nil?%>
                     <%=h chamado.user.login%> </td>
                 <%else%>

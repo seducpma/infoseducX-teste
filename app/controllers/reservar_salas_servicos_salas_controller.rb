@@ -44,7 +44,7 @@ class ReservarSalasServicosSalasController < ApplicationController
 
     respond_to do |format|
       if @reservar_salas_servicos_sala.save
-        flash[:notice] = 'ReservarSalasServicosSala was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@reservar_salas_servicos_sala) }
         format.xml  { render :xml => @reservar_salas_servicos_sala, :status => :created, :location => @reservar_salas_servicos_sala }
       else

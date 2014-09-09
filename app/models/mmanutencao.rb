@@ -17,11 +17,19 @@ def data_encerramento
 
   $teste= self.situacao_manutencao.situacao
  if ($teste == 'ENCERRADO')then
-      self.data_enc = Time.now
+      if self.chefia_id == 1
+        self.data_ate = Time.now
+      else
+        self.data_enc = Time.now
+      end
  end
 
  if ($teste == 'ENCAMINHADO')then
-      self.data_ate = Time.now
+      if self.chefia_id == 1
+        
+      else
+        self.data_ate = Time.now
+      end
  end
 
 

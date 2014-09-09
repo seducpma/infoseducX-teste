@@ -115,7 +115,7 @@ class MmanutencaosController < ApplicationController
     
     respond_to do |format|
       if @mmanutencao.update_attributes(params[:mmanutencao])
-        flash[:notice] = 'Mmanutencao was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@mmanutencao) }
         format.xml  { head :ok }
       else
@@ -187,7 +187,7 @@ def lista_manutencao
 
 
    def encerrados
-    @mmanutencaos = Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id =?',2], :order => 'data_enc DESC')
+    @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2 and unidade_id = ?",current_user.unidade_id ], :order => 'data_enc DESC')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @mmanutencaos }

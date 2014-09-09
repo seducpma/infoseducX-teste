@@ -44,7 +44,7 @@ class MmanutencaosTiposManutencaosController < ApplicationController
 
     respond_to do |format|
       if @mmanutencaos_tipos_manutencao.save
-        flash[:notice] = 'MmanutencaosTiposManutencao was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@mmanutencaos_tipos_manutencao) }
         format.xml  { render :xml => @mmanutencaos_tipos_manutencao, :status => :created, :location => @mmanutencaos_tipos_manutencao }
       else
@@ -61,7 +61,7 @@ class MmanutencaosTiposManutencaosController < ApplicationController
 
     respond_to do |format|
       if @mmanutencaos_tipos_manutencao.update_attributes(params[:mmanutencaos_tipos_manutencao])
-        flash[:notice] = 'MmanutencaosTiposManutencao was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@mmanutencaos_tipos_manutencao) }
         format.xml  { head :ok }
       else

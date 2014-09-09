@@ -60,6 +60,7 @@ def protocolo
       @remember_me = params[:remember_me]
       render :action => 'new'
     end
+    $usuario = user
   end
 
 

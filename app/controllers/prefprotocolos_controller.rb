@@ -173,7 +173,7 @@ def indexe
 
     respond_to do |format|
       if @prefprotocolo.save
-        flash[:notice] = 'Prefprotocolo was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@prefprotocolo) }
         format.xml  { render :xml => @prefprotocolo, :status => :created, :location => @prefprotocolo }
       else
@@ -190,7 +190,7 @@ def indexe
 
     respond_to do |format|
       if @prefprotocolo.update_attributes(params[:prefprotocolo])
-        flash[:notice] = 'Prefprotocolo was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@prefprotocolo) }
         format.xml  { head :ok }
       else

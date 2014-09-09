@@ -50,7 +50,7 @@ class AcompanhamentosController < ApplicationController
 
     respond_to do |format|
       if @acompanhamento.save
-        flash[:notice] = 'Acompanhamento was successfully created.'
+        flash[:notice] = 'Cadastrado com sucesso.'
         format.html { redirect_to(@acompanhamento) }
         format.xml  { render :xml => @acompanhamento, :status => :created, :location => @acompanhamento }
       else
@@ -67,7 +67,7 @@ class AcompanhamentosController < ApplicationController
     @acompanhamento.data_encerrado = Time.now
     respond_to do |format|
       if @acompanhamento.update_attributes(params[:acompanhamento])
-        flash[:notice] = 'Acompanhamento was successfully updated.'
+        flash[:notice] = 'Cadastrado com sucessoS.'
         format.html { redirect_to(@acompanhamento) }
         format.xml  { head :ok }
       else
