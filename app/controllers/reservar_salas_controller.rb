@@ -106,4 +106,11 @@ before_filter :login_required, :except => ["index", "show", "create", "new","edi
       'login'
     end
   end
+
+
+def lista
+     $sala = params[:reservar_sala_sala_id]
+     @reservar_sala = ReservarSala(:all, :conditions => ['sala_id=' + $sala])
+    render :partial => 'lista_capacidade'
+  end
 end

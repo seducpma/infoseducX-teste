@@ -16,7 +16,13 @@
         <table align="center"  width="100%">
            <tr>
                <td align="left" width="8%"><font size=2><b>Local:</b></font></td>
-               <td align="left"><font size=2><%= f.collection_select :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font></td>           </tr>
+               <td align="left"><font size=2><%= f.collection_select :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font>           
+                 <%= observe_field 'reservar_sala_sala_id',
+                    :update => "listagem",
+                    :url    => { :action => 'lista' },
+                    :with   => 'reservar_sala_sala_id' %>
+              <div id="listagem"></div></td>
+           </tr>
            <tr>
               <td align="left"><font size=2><b>Data Reserva:</b></font></td>
               <td align="left"><font size=2><%= f.date_select :data_reserva %></font></td>
@@ -58,11 +64,17 @@
              </td>
           </tr>
           <tr>
+              <td align="left" valign="top"><font size=2><b>Participantes:</b></font></td>
+              <td align="left"><font size=2><%= f.text_field(:quantidade,:size =>"1")%></font>
+               <font color="red"><b>(Informar quantidade de pessoas) </b></font>
+              </td>
+          </tr>
+          <tr>
               <td align="left" valign="top"><font size=2><b>Observação:</b></font></td>
               <td align="left"><font size=2><%= f.text_field(:obs,:cols =>50, :rows => "3") %></font></td>
           </tr>
           <tr>
-              <td align="left" colspan="2"valign="top"><font color="red"><b>Informar no campo <u>* Observação</u> o número participantes do evento</b></font></td>
+              <td align="left" colspan="2"valign="top"></td>
           </tr>
          </table>
          </fieldset>
