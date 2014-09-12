@@ -60,7 +60,21 @@ class MmanutencaosController < ApplicationController
   end
 
  def estatistica
-      @mmanutencaos_total = Mmanutencao.all
+      @mmanutencaos= Mmanutencao.all
+      #Todos chamados não encerrados
+
+
+      #@chamados = Chamado.nao_encerrado
+
+        #nivel de chamado técnico
+       # @chamados_aberto = Chamado.aberto
+        #@chamados_encerrado = Chamado.encerrado
+        #@chamados_terceiros = Chamado.terceiro
+        #@chamados_motoristas = Chamado.motorista
+        #@chamados_compras = Chamado.compras
+        #@chamados_atendimento = Chamado.atendimento
+        #@chamados_externo = Chamado.externo
+
 
     if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
        @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")

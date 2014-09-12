@@ -1,7 +1,7 @@
 <br/>
  <table  class="tabelas1"   align="center" width="100%">
   <tr>
-    <th align="left" colspan="4">
+    <th align="left" >
        <font  size=5 color="black"> <b> ESTATÍSTICAS SERVIÇO DE MANUTENÇÃO</b></font>
     </th>
     <td width="3%">
@@ -9,35 +9,42 @@
    </td>
   </tr>
   <tr>
-    <td align="left" colspan="5">
-       <font color ="black" size="3" ><b><u><center> ESTATÍSTICA</u> </center></b></font>
-    </td>
-  </tr>
-  <tr>
-    <td width="10%"align="center">
-      <font color ="black "size="2">
-        <b>Solicitações:</b>
-     </font>
-   </td>
-    <td align="center" >
-     <font color ="black "size="2">
-      <b> Total:<%= @mmanutencaos_total.count %></b>
-     </font>
-    </td>
-    <td align="center">
-     <font color ="red "size="2">
-      <b>Em Aberto: <%=  %></b>
-     </font>
-    </td>
-    <td  align="center">
-      <font color="green" size="2">
-       <b>Em Atendimento: <%=  %></b>
-      </font>
-    </td>
-    <td  align="center" >
-      <font color="black" size="2">
-       <b>Encerrados: <%=  %></b>
-      </font>
+    <td colspan="3">
+      <table border="2">
+        <tr>
+          <td align="left" colspan="5">
+             <font color ="black" size="3" ><b><center><u> ESTATÍSTICA</u> </center></b></font>
+          </td>
+        </tr>
+        <tr>
+          <td width="10%"align="center">
+            <font color ="black "size="2">
+              <b>Solicitações:</b>
+           </font>
+         </td>
+          <td width="10%" align="center" >
+           <font color ="black "size="2">
+            <b> Total:<%= @mmanutencaos.all.count %></b>
+           </font>
+          </td>
+          <td width="12%" align="center">
+           <font color ="red "size="2">
+            <b>Em Aberto: <%= @mmanutencaos_aberto = Mmanutencao.all(:conditions => ["situacao_manutencao_id= ?",1] ).count %></b>
+           </font>
+          </td>
+          <td  align="center">
+            <font color="green" size="2">
+             <b>Em Atendimento: <%=  %></b>
+            </font>
+          </td>
+          <td  align="center" >
+            <font color="black" size="2">
+             <b>Encerrados: <%=  %></b>
+            </font>
+          </td>
+
+        </tr>
+      </table>
     </td>
    </tr>
 </table>
