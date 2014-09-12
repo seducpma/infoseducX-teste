@@ -1,0 +1,43 @@
+<br/>
+ <table  class="tabelas1"   align="center" width="100%">
+  <tr>
+    <th align="left" colspan="4">
+       <font  size=5 color="black"> <b> ESTATÍSTICAS SERVIÇO DE MANUTENÇÃO</b></font>
+    </th>
+    <td width="3%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+  </tr>
+  <tr>
+    <td align="left" colspan="5">
+       <font color ="black" size="3" ><b><u><center> ESTATÍSTICA</u> </center></b></font>
+    </td>
+  </tr>
+  <tr>
+    <td width="10%"align="center">
+      <font color ="black "size="2">
+        <b>Solicitações:</b>
+     </font>
+   </td>
+    <td align="center" >
+     <font color ="black "size="2">
+      <b> Total:<%= @mmanutencaos_total.count %></b>
+     </font>
+    </td>
+    <td align="center">
+     <font color ="red "size="2">
+      <b>Em Aberto: <%=  %></b>
+     </font>
+    </td>
+    <td  align="center">
+      <font color="green" size="2">
+       <b>Em Atendimento: <%=  %></b>
+      </font>
+    </td>
+    <td  align="center" >
+      <font color="black" size="2">
+       <b>Encerrados: <%=  %></b>
+      </font>
+    </td>
+   </tr>
+</table>

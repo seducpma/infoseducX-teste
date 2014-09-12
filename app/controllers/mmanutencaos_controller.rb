@@ -59,6 +59,27 @@ class MmanutencaosController < ApplicationController
     end
   end
 
+ def estatistica
+      @mmanutencaos_total = Mmanutencao.all
+
+    if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+       @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
+
+    else
+      if current_user.has_role?('diretor_unidade')
+       @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and unidade_id = ?",current_user.unidade_id ])
+      else
+       @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and user_id = ?",current_user])
+       $chefia1=@mmanutencaos.user_id.current_user
+      end
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @mmanutencaos }
+    end
+  end
+
+
   # GET /mmanutencaos/1
   # GET /mmanutencaos/1.xml
   def show

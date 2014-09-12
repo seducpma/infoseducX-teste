@@ -509,6 +509,9 @@ display: none;
                    <li><a>Manutenção</a>
                     <ul style="width:108px;">
                       <li><%= link_to "Abrir",new_mmanutencao_path %></li>
+                      <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') %>
+                         <li><%= link_to "Estatística",estatistica_mmanutencaos_path %></li>
+                      <%end%>
                       <li><%= link_to "Consultas", busca_protocolo_mmanutencaos_path  %></li>
                         <% if  current_user.has_role?('chefia_manutencao') %>
                            <li><%= link_to "Em Aberto", consultas_mmanutencaos_path %></li>
