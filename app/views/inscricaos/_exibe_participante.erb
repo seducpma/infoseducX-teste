@@ -5,7 +5,9 @@
                <table>
                  <tr>
                    <td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <b><font color="red"><u>ATENÇÃO:</u> PARTICIPANTE JÁ POSSUI INSCRIÇÃO. </font>Clique aqui para verificar</b> ==></td>
+                        <b><font color="red"><u>ATENÇÃO:</u> PARTICIPANTE JÁ POSSUI INSCRIÇÃO. <br/>
+                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        </font>Clique aqui para verificar</b> ==></td>
                    <td><%= button_to('Consutar Inscrições', {:controller =>"inscricaos" ,:action => "consultas1", :id =>@dadosparticipa}, :method => "get",:title => "Consutar Inscrições")%></td>
                   </tr>
                </table>
@@ -19,8 +21,7 @@
                  <tr>
                    <td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                        <font color="blue"><b><u>ATENÇÃO:</u> CADASTRO ESTÁ INCOMPLETO <br/>
-                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                        Favor atualizar cadastro</b></font> ===========></td>
                    <td><%= button_to('Atualizar Cadastro',{:controller =>"participantes" ,:action => "edit", :id =>@dadosparticipa}, :method => "get", :title => "Atualizar Cadastro Participante")%></td>
 
