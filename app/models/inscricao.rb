@@ -35,8 +35,6 @@ class Inscricao < ActiveRecord::Base
         errors.add(:vagas,"Vagas indisponíveispara o curso #{course.nome_curto}")
       end
     end
-
-
   end
 
   def valida_vaga

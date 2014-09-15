@@ -55,13 +55,7 @@
                    <td align="left"><%=h @participante.obs %></td>
                 </tr>
                <%end%>
-        </table>
-    </fieldset>
-     <% if @participante.unidade_id.nil? %>
-     <%else%>
-     <fieldset><legend><font  size=4> Se Professor ou Funcionário SEDUC </font></legend>
-       <table width="100%" >
-                <tr>
+           <tr>
                    <td  width="10%"align="left"><b>Matrícula: </b></td>
                    <td align="left"><%=h @participante.matricula %></td>
                 </tr>
@@ -79,7 +73,7 @@
                 </tr>
         </table>
     </fieldset>
-      <%end%>
+
       
       <div class="botao">
          <tr>

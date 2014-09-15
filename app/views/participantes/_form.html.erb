@@ -27,25 +27,25 @@
               <%end%>
             </tr>
           <tr>
-               <td align="left"><font size="3" color =" red"><b>*</font> Nome: </b></td>
+               <td align="left"><font size="3" color =" red"><b>*</b></font><b>Nome: </b></td>
                <td align="left"><%= f.text_field :nome, :size =>68%></td>
             </tr>
          <% if $parti != 1 %>
             <tr>
                <td align="left"><b>Profissão:</b></td>
-               <td align="left"><%= f.text_field :profissao, :size =>24%>
+               <td align="left" colspan="3"><%= f.text_field :profissao, :size =>24%>
                  - <b>CPF:</b> <%= f.text_field :cpf, :size =>9%>
                  - <b>RG:</b> <%= f.text_field :rg, :size =>9%> </td>
             </tr>
             <tr>
                <td align="left"><b>Endereço:</b></td>
-               <td align="left"><%= f.text_field :endereco, :size => 55 %>
+               <td align="left" colspan="3"><%= f.text_field :endereco, :size => 55 %>
                    <b>Nº</b><%= f.text_field :num, :size => 4%>
               </td>
             </tr>
             <tr>
                <td align="left"><b>Complemento:</b></td>
-               <td align="left"><%= f.text_field :complemento, :size =>24 %>
+               <td align="left"colspan="3"><%= f.text_field :complemento, :size =>24 %>
                 - <b>Fone:</b><%= f.text_field :telefone, :size =>9 %> -
                    <b>Cel:</b><%= f.text_field :cel, :size => 9 %>
 
@@ -53,38 +53,27 @@
             </tr>
             <tr>
                <td align="left"><b>Cidade/Estado:</b></td>
-               <td align="left"><%= f.text_field :cidade, :size =>68 %></td>
-            </tr>
-            <tr>
-               <td align="left"><b>Bairro:</b></td>
-               <td align="left"><%= f.text_field :bairro, :size =>46 %> -
-                   <b>CEP:</b><%= f.text_field :CEP, :size =>10 %>
+               <td align="left"colspan="3"><%= f.text_field :cidade, :size =>19%>
+                     <b>Bairro:</b><%= f.text_field :bairro, :size =>20 %> -
+                   <b>CEP:</b><%= f.text_field :CEP, :size =>3 %>
                </td>
             </tr>
        <% end %>
             <tr>
-               <td align="left"><b><font size="3" color =" red">* </font>E-mail:</b></td>
-               <td align="left"><%= f.text_field :email, :size =>68 %></td>
+               <td align="left"><b><font size="3" color =" red">*</font>E-mail:</b></td>
+               <td align="left" colspan="3"><%= f.text_field :email, :size =>68 %></td>
             </tr>
-        </table>
-      </fieldset>
-      <fieldset><legend><font  size=4> Se Funcionário Público Municipal</font></legend>
-        <table width="100%" align="center">
             <tr>
-               <td align="left"><font size="3" color =" red"><b>* </font>Nº Matricula:</b></td>
-               <td align="left"><%= f.text_field :matricula, :size => 6 %></td>
-               <td align="left"><font size="3" color =" red"><b>* </font>Unidade:</b></td>
-               <td align="left"><%= collection_select  :participante, :unidade_id, @unidades, :id, :nome, :include_blank => ' --- Selecione opção ---'  %></td>
+               <td align="left"><font size="3" color =" red"><b>*</b></font><b>NºMatricula:</b></td>
+               <td align="left"> <%= f.text_field :matricula, :size => 4 %>
+                                 <font size="3" color =" red"><b>*</b></font><b>Unidade:</b>
+                                 <%= collection_select  :participante, :unidade_id, @unidades, :id, :nome, :include_blank => ' --- Selecione opção ---'  %>
+               </td>
             </tr>
              <tr>
                <td align="left"><b>Função:</b></td>
                <td colspan="3" align="left"><%= f.text_field :funcao, :size =>68 %></td>
             </tr>
-        </table>
-        </fieldset>
-  
-       <fieldset><legend><font  size=4> Outras Informações     </font></legend>
-        <table>
              <tr>
                <td align="left"><b>Observação:</b></td>
                <td colspan="3" align="left"><%= f.text_field :obs, :size =>70 %></td>

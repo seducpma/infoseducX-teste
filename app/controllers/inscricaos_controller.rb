@@ -301,7 +301,7 @@ protected
     if params[:participante].present?
       @participante = Participante.find(params[:participante], :order => 'nome ASC')
     else
-      @participantes = Participante.find(:all, :conditions => 'flag = 1', :order => 'nome ASC')
+      @participantes = Participante.find(:all, :conditions => ['flag = 1 and funcao is not null'], :order => 'nome ASC')
     end
   end
 

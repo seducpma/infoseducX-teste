@@ -5,12 +5,16 @@ class Participante < ActiveRecord::Base
   has_many :cursos
   validates_presence_of :nome, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
   validates_presence_of :email, :message => ' - FAVOR CASDASTRAR E_MAIL'
-
+  validates_presence_of :unidade_id, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
+  validates_presence_of :funcao, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
+  validates_presence_of :matricula, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   #validates_uniqueness_of   :email
   # validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
   #validates :email, :if => :verifica_email?, :message => "Email precisa ser confirmado"
   attr_accessor :email_confirmation
+
+  
 def before_save
     self.nome.upcase!
     
