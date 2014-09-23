@@ -18,7 +18,7 @@
         </tr>
 <!-- NO MẼS   NO MẼS   NO MẼS   NO MẼS   NO MẼS   -->
        <tr>
-         <th colspan="6" align="left"><font size="4"><b><%=(Date.today.strftime("%B"))%>/<%=(Date.today.year)%></b></font></th>
+         <th colspan="6" align="left"><font size="4" color="white"><b><%=(Date.today.strftime("%B"))%>/<%=(Date.today.year)%></b></font></th>
        </tr>
             <%  session[:ano] =(Date.today.year).to_s%>
             <%  session[:mes] =(Date.today.month).to_s%>
@@ -126,7 +126,7 @@
 
 <!-- mes anterior  mes anterior mes anterior mes anterior mes anterior-->
        <tr>
-         <th colspan="6" align="left"><font size="4"><b><%=(Date.today<<1).strftime("%B")%>/<%=(Date.today.year)%></b></font></th>
+         <th colspan="6" align="left"><font size="4"color="white"><b><%=(Date.today<<1).strftime("%B")%>/<%=(Date.today.year)%></b></font></th>
        </tr>
             <%  session[:ano] =(Date.today.year).to_s%>
             <%  session[:mes] =((Date.today.month)-1).to_s%>
@@ -235,7 +235,7 @@
        
 <!-- GERAL GERAL GERAL GERAL GERAL GERAL -->
        <tr>
-         <th colspan="6" align="left"><font size="3"><b>GERAL</b></font></th>
+         <th colspan="6" align="left"><font size="3"color="white"><b>GERAL</b></font></th>
        </tr>
         <tr>
           <td rowspan="3" align="right" valign="top">
