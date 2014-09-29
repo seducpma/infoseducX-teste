@@ -122,12 +122,12 @@ display: none;
                   <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
-              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')or current_user.has_role?('admin_protocolo')) %>
-               <% if (current_user.has_role?('administrador') ) %>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')or current_user.has_role?('admin_protocolo')  ) %>
+               <% if (current_user.has_role?('administrador')or current_user.has_role?('admin_protocolo') ) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">Documentos</a>
                     <ul>
-                     <li><a class="item-primary" href="#;">Oficios</a>
+                       <li><a class="item-primary" href="#;">Oficios</a>
                         <ul>
                           <li><%= link_to "Novo",new_oficio_path %></li>
                           <li><%= link_to "Ofícios", oficios_oficios_path  %></li>
@@ -145,7 +145,7 @@ display: none;
                           <li><%= link_to "Consultar", consulta_prefprotocolos_path %></li>
                         </ul>
                       </li>
-                 <% if (current_user.has_role?('administrador') ) %>
+                 <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')) %>
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Serviços Internos</a>
                         <ul>

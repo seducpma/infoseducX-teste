@@ -103,15 +103,15 @@ before_filter :login_required, :except => ["index", "show", "create", "new","edi
     if logged_in?
       'application'
     else
-      'application2'
+      'inscricao'
     end
   end
 
 
 def detalhes
      $sala = params[:reservar_sala_sala_id]
-     @sala = Sala.find(:all, :conditions => ['id=' + $sala])
-   render :update do |page|
+     @dados = Sala.find(:all, :conditions => ['id=' + $sala])
+   render update do |page|
       page.replace_html 'especifica', :partial => 'especificacao'
     end
   end
