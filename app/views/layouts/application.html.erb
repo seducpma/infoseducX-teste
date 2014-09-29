@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'calendar_impressao', :media => "print" %>
     <%= stylesheet_link_tag "jquery-ui-1.8.16.custom"%>
     <%= javascript_include_tag 'jquery-1.7','jquery-ui-1.8.16.custom.min',"jquery-ui-timepicker-addon.js","jquery-ui-i18n.min",'jrails',"msg.js","jquery.colorbox","colorbox.js",'application.js' %>
-
+    
 <style media="print">
 .botao {
 display: none;
@@ -122,7 +122,7 @@ display: none;
                   <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
-              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')) %>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')or current_user.has_role?('admin_protocolo')) %>
                <% if (current_user.has_role?('administrador') ) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">Documentos</a>
@@ -138,7 +138,9 @@ display: none;
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Protocolos</a>
                         <ul>
-                          <li><%= link_to "Novo", new_prefprotocolo_path%> </li>
+                          <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')) %>
+                                <li><%= link_to "Novo", new_prefprotocolo_path%> </li>
+                           <%end%>
                           <li><%= link_to "Despachar", prefprotocolos_path%></li>
                           <li><%= link_to "Consultar", consulta_prefprotocolos_path %></li>
                         </ul>

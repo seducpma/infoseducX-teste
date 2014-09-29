@@ -5,7 +5,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["index", "show", "create", "new","edit"]
+before_filter :login_required, :except => ["index", "show", "create", "new","edit","detalhes"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all)
@@ -103,14 +103,17 @@ before_filter :login_required, :except => ["index", "show", "create", "new","edi
     if logged_in?
       'application'
     else
-      'login'
+      'application2'
     end
   end
 
 
-def lista
+def detalhes
      $sala = params[:reservar_sala_sala_id]
-     @reservar_sala = ReservarSala(:all, :conditions => ['sala_id=' + $sala])
-    render :partial => 'lista_capacidade'
+     @sala = Sala.find(:all, :conditions => ['id=' + $sala])
+   render :update do |page|
+      page.replace_html 'especifica', :partial => 'especificacao'
+    end
   end
-end
+
+  end

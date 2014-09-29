@@ -2,7 +2,7 @@ class Entrada < ActiveRecord::Base
  
   belongs_to :componente
   belongs_to :estoque
-before_create :soma_saldo
+  before_create :soma_saldo
 
 
 def before_save

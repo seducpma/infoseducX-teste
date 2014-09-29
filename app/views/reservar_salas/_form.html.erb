@@ -16,12 +16,15 @@
         <table align="center"  width="100%">
            <tr>
                <td align="left" width="8%"><font size=2><b>Local:</b></font></td>
-               <td align="left"><font size=2><%= f.collection_select :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font>           
-                 <%= observe_field 'reservar_sala_sala_id',
-                    :update => "listagem",
-                    :url    => { :action => 'lista' },
-                    :with   => 'reservar_sala_sala_id' %>
-              <div id="listagem"></div></td>
+               <td align="left"><font size=2><%= f.collection_select  :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font>
+               <%= observe_field 'reservar_sala_sala_id',
+                     :frequency => 0.1,
+                     :with   => :reservar_sala_sala_id,
+                     :update => "especifica",
+                     :url  => { :action => 'detalhes' }
+                     %>
+               
+              <div id="especifica"></div></td>
            </tr>
            <tr>
               <td align="left"><font size=2><b>Data Reserva:</b></font></td>

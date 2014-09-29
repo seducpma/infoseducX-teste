@@ -15,7 +15,9 @@
       <tr>
          <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
          <td width="2%"align="right" ><%= button_to('Protocolos',prefprotocolos_path, :method => "get", :title => "Protocolos") %></td>
-         <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')) %>
+            <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <% end %>
          <td  width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
       </tr>
     </table>
@@ -105,7 +107,9 @@
       <tr>
          <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
          <td width="2%"align="right" ><%= button_to('Protocolos',prefprotocolos_path, :method => "get", :title => "Protocolos") %></td>
-         <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')) %>
+             <td width="2%"align="right" ><%= button_to('Novo', new_prefprotocolo_path, :title => "Novo Protocolo")%></td>
+         <%end%>
          <td  width="2%" align="right"><%= button_to "Consultar", consulta_prefprotocolos_path, :title => "Consultar" %></td>
       </tr>
     </table>
