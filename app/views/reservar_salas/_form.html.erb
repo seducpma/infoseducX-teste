@@ -14,21 +14,32 @@
     <td colspan="3">
       <fieldset><legend><font size ="4"><b>Reserva</b></font></legend>
         <table align="center"  width="100%">
-           <tr>
+         <tr>
+           <td colspan="2">
+             <font style="color: red"><b><u><%= flash[:notice] %></u></b></font>
+           </td>
+         </tr>
+
+         <tr>
                <td align="left" width="8%"><font size=2><b>Local:</b></font></td>
                <td align="left"><font size=2><%= f.collection_select  :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font>
                <%= observe_field 'reservar_sala_sala_id',
-                     :frequency => 0.1,
                      :with   => :reservar_sala_sala_id,
                      :update => "especifica",
-                     :url  => { :action => 'detalhes' }
+                     :url  => { :action => 'sel_dados' }
                      %>
-               
+
               <div id="especifica"></div></td>
            </tr>
            <tr>
               <td align="left"><font size=2><b>Data Reserva:</b></font></td>
               <td align="left"><font size=2><%= f.date_select :data_reserva %></font></td>
+              <%= $testetest = params[:data_reserva]  %>
+               <%= observe_field 'reservar_sala_data_reserva',
+                     :with   => :reservar_sala_data_reserva,
+                     :url  => { :action => 'sel_data' }
+                     %>
+
            </tr>
            <tr>
               <td align="left"><font size=2><b>Inicio:</b></font></td>
