@@ -584,7 +584,6 @@ class MmanutencaosController < ApplicationController
                                               else if (params[:estatisticas].to_i == 10)
                                                     @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and situacao_manutencao_id=2 and created_at > ? and created_at < ?", $datai, $dataf])
                                                     session[:nome_manutencao]= "PLAYGROUND"
-                                                    render "estatisticasM"
                                                     else if (params[:estatisticas].to_i == 11)
                                                           @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and situacao_manutencao_id=2 and created_at > ? and created_at < ?", $datai, $dataf])
                                                           session[:nome_manutencao]= "SERRALHERIA"
@@ -825,7 +824,12 @@ def lista_manutencao
 
 
    def encerrados
-    @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2 and unidade_id = ?",current_user.unidade_id ], :order => 'data_enc DESC')
+
+    if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+      @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2" ], :order => 'data_enc DESC')
+    else
+      @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2 and unidade_id = ?",current_user.unidade_id ], :order => 'data_enc DESC')
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @mmanutencaos }
