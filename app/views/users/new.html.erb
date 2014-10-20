@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                   <td align="left">Unidade:</td>
-                  <td align="left"><%= f.collection_select :unidade_id,Unidade.all,:id,:nome, :include_blank => true %></td>
+                  <td align="left"><%= f.collection_select :unidade_id,Unidade.find(:all, :order => 'nome ASC'),:id,:nome, :include_blank => true, :order => 'nome ASC'  %></td>
                 <tr>
                 </tr>
                 <tr>

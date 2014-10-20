@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :seduc_candidatos, :collection => {:votacao => :get,}
+  
+  map.resources :seduc_funcionarios
+
   map.resources :reservar_salas_servicos_salas
 
   map.resources :reservar_salas
@@ -151,6 +155,7 @@ ActionController::Routing::Routes.draw do |map|
   map.internos 'internos', :controller => 'servicos_internos', :action => 'index'
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
+  map.seduc_candidato 'seduc_candidato', :controller => 'sessions', :action => 'seduc_candidato'
   map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
   map.protocolo 'protocolo', :controller => 'sessions', :action => 'protocolo'
   map.interno 'interno', :controller => 'sessions', :action => 'interno'

@@ -52,10 +52,27 @@
                <tr>
                  <th colspan="2"><font size="4"><b>Procedimento à realizar</b></font></th>
                  <td colspan="4" align="left"><font size="3"><%=h @mmanutencao.procedimentos %><br/></td>
+
               </tr>
                 <tr>
                   <th colspan="2"><font size="3"><b>Procedimento realizado</b></font></th>
-                  <td colspan="4" style="padding-bottom:5px"><br/><br/><br/><br/></td>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/><br/><br/>
+                                   <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+                 <br/>
+   
+                 <br/></td>
+
+
                 </tr>
                 <tr>
                   <th colspan="2"><font size="3"><b>Assinatura</b></font></th>
@@ -85,15 +102,12 @@
        <%= text_field_tag(:obs2,nil,:size => 104) %>
      </td>
    </tr>
-   <tr>
-     <td align="center"colspan="2">
-       <font size="3"><br/><b>Funcionário:</b><%= collection_select :nome ,:estagiario_id, @funcionarios, :id, :nome, :include_blank => ' -- Selecione -- ', :size=> 20 %></font>
-     </td>
 
-    </tr>
      <tr class="botao">
       <td align="right" > <%= button_to("Voltar", homes_path, :method => "get", :title => "Voltar") %></td>
-      <td width="6%"align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path($idmanutencao)}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>
+<!--      <td width="6%"align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path($idmanutencao)}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>-->
+          <td width="6%"align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:window.print()", :title => "Imprimir" %></b></td>
+      
    </tr>
    </table>
  </td>

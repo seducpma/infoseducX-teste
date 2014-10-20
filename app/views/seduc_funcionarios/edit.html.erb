@@ -1,0 +1,52 @@
+<h1>Editing seduc_funcionario</h1>
+
+<% form_for(@seduc_funcionario) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :matricula %><br />
+    <%= f.text_field :matricula %>
+  </p>
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :apelido %><br />
+    <%= f.text_field :apelido %>
+  </p>
+  <p>
+    <%= f.label :funcao %><br />
+    <%= f.text_field :funcao %>
+  </p>
+  <p>
+    <%= f.label :unidade %><br />
+    <%= f.text_field :unidade %>
+  </p>
+  <p>
+    <%= f.label :obs1 %><br />
+    <%= f.text_field :obs1 %>
+  </p>
+  <p>
+    <%= f.label :situacao %><br />
+    <%= f.text_field :situacao %>
+  </p>
+  <p>
+    <%= f.label :inicio %><br />
+    <%= f.datetime_select :inicio %>
+  </p>
+  <p>
+    <%= f.label :obs2 %><br />
+    <%= f.text_field :obs2 %>
+  </p>
+  <p>
+    <%= f.label :votou %><br />
+    <%= f.text_field :votou %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @seduc_funcionario %> |
+<%= link_to 'Back', seduc_funcionarios_path %>

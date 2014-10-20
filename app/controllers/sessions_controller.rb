@@ -34,6 +34,11 @@ def protocolo
     render 'protocolo'
  end
 
+def seduc_candidato
+    render 'seduc_candidato'
+ end
+
+
   def create
    logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])
@@ -49,10 +54,13 @@ def protocolo
         redirect_to oficios_path
         #redirect_to livros_cadastrados_livros_path
         flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.3"
-      else
-      redirect_back_or_default('/')
-      flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.3"
-
+            else if (current_user.has_role?('votacao'))
+               redirect_to votacao_seduc_candidatos_path
+               flash[:notice] = "BEM VINDO AO INFOSEDUC/ SISTEMA DE VOTAÇÂO ver.5.3"
+           else
+              redirect_back_or_default('/')
+              flash[:notice] = "BEM VINDO AO INFOSEDUC ver.5.3"
+           end
       end
     else
       note_failed_signin

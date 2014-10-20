@@ -1,0 +1,2 @@
+module SeducFuncionariosHelper
+end

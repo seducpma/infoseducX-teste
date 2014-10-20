@@ -1,0 +1,32 @@
+<h1>Listing seduc_candidatos</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Apelido</th>
+    <th>Matricula</th>
+    <th>Funcao</th>
+    <th>Unidade</th>
+    <th>Votos</th>
+    <th>Seduc funcionario</th>
+  </tr>
+
+<% @seduc_candidatos.each do |seduc_candidato| %>
+  <tr>
+    <td><%=h seduc_candidato.nome %></td>
+    <td><%=h seduc_candidato.apelido %></td>
+    <td><%=h seduc_candidato.matricula %></td>
+    <td><%=h seduc_candidato.funcao %></td>
+    <td><%=h seduc_candidato.unidade %></td>
+    <td><%=h seduc_candidato.votos %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New seduc_candidato', new_seduc_candidato_path %>

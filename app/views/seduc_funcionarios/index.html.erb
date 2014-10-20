@@ -1,0 +1,38 @@
+<h1>Listing seduc_funcionarios</h1>
+
+<table>
+  <tr>
+    <th>Matricula</th>
+    <th>Nome</th>
+    <th>Apelido</th>
+    <th>Funcao</th>
+    <th>Unidade</th>
+    <th>Obs1</th>
+    <th>Situacao</th>
+    <th>Inicio</th>
+    <th>Obs2</th>
+    <th>Votou</th>
+  </tr>
+
+<% @seduc_funcionarios.each do |seduc_funcionario| %>
+  <tr>
+    <td><%=h seduc_funcionario.matricula %></td>
+    <td><%=h seduc_funcionario.nome %></td>
+    <td><%=h seduc_funcionario.apelido %></td>
+    <td><%=h seduc_funcionario.funcao %></td>
+    <td><%=h seduc_funcionario.unidade %></td>
+    <td><%=h seduc_funcionario.obs1 %></td>
+    <td><%=h seduc_funcionario.situacao %></td>
+    <td><%=h seduc_funcionario.inicio %></td>
+    <td><%=h seduc_funcionario.obs2 %></td>
+    <td><%=h seduc_funcionario.votou %></td>
+    <td><%= link_to 'Show', seduc_funcionario %></td>
+    <td><%= link_to 'Edit', edit_seduc_funcionario_path(seduc_funcionario) %></td>
+    <td><%= link_to 'Destroy', seduc_funcionario, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New seduc_funcionario', new_seduc_funcionario_path %>
