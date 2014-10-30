@@ -176,7 +176,7 @@ def sem_estagiarios
 
 
      #@sem_estagiarios= Unidade.find(:all, :conditions => ["estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'nome ASC')
-     #@sem_estagiarios_reg =  Regiao.all
+     @sem_estagiarios_reg =  Regiao.all
   
     respond_to do |format|
       format.html # index.html.erb

@@ -76,9 +76,21 @@
                  <%=h unidade.regiao.regiao %>
               <%end%>
         </td>
-
      </tr>
+    <%end%>
+
+    <% for unidadesemreg in @sem_estagiarios_reg %>
+      <%if unidadesemreg.sem_esta == true%>
+             <tr>
+
+               <td align="left"><%=h unidadesemreg.regiao%></td>
+               <td align="left" <font>Sem estagiários</font></td>
+
+              <div class="botao">
+                  <td>Itinerância</td>
+              </div>
+            </tr>
      <%end%>
-  </table>
+    <%end%>
  </font>
  <br/><br/>
