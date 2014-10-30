@@ -2,7 +2,7 @@
  <table   class="tabelas2"align="center">
 <tr>
       <th align="left">
-         <font  size=5 color="black"> <b> UNIDADES SEM ESTAGIÁRIOS</b></font>
+         <font  size=5 color="black"> <b> UNIDADES & ESTAGIÁRIOS </b></font>
       </th>
        <td width="5%">
          <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -10,8 +10,8 @@
   </tr>
   <tr>
     <td colspan="2">
-       <br/>
-       <div class="botao">
+      <font  size="2">
+      <table border="2" width="100%">
        <table width="100%" align="center">
         <tr>
           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
@@ -22,68 +22,63 @@
       </div>
       <font  size="2">
       <table border="2" width="100%">
-       <tr>
-         <th>Nome</th>
-         <th>Ensino</th>
-         <th>Período</th>
-         <div class="botao">
-             <th >  </th>
-         </div>
-       </tr>
-       <% for unidadesem in @sem_estagiarios %>
-        <%if  (unidadesem.id != 62)and (unidadesem.id != 64)and (unidadesem.id != 59)and (unidadesem.id != 65)and (unidadesem.id != 66)and (unidadesem.id != 77)and (unidadesem.id != 76)and (unidadesem.id != 71)%>
+      <tr>
+       <th width="20%">Nome</th>
+       <th>Estagiários</th>
+       <th>Região</th>
+      </tr>
 
-         <%if unidadesem.estagiarioE == 0%>
-          <%if unidadesem.nome != 'PATRIMÔNIO'%>
-             <tr>
-               <td align="left"><%=h unidadesem.nome %></td>
-               <td align="left"><%=h unidadesem.tipo.nome %></td>
-                <%if unidadesem.estagiarioM == 0%>
-                     <td>Matutino</td>
-                  <%else if unidadesem.estagiarioV == 0%>
-                       <td>Vespertino</td>
-                    <%else if unidadesem.estagiarioN == 0%>
-                        <td>Noturno</td>
+     <% for unidade in @unidade_estagiario%>
+    
+      <tr>
+       <td valign="top"><%=h unidade.nome %></td>
+        <td align="left">
+             <%if (unidade.estagiarioE == 1) then%>
+              <% unidade.estagiarios.each do |est| %>
+                 <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
+                   <%=h est.nome %> (Itinerante)<br/>
+                <%end%>
+              <%end%>
+           <%else%>
+           <%if (unidade.estagiarioM == 1) then%>
+             <% unidade.estagiarios.each do |est| %>
+                 <% if (est.desligado == 0 and est.periodo_trab == 'MATUTINO') then%>
+                   <%=h est.nome %> (Matutino)<br/>
+                <%end%>
+              <%end%>
+             <%else%>
+                   Unidade sem estagiário Matutino <br/>
+             <%end%>
+            <%if (unidade.estagiarioV == 1) then%>
+             <% unidade.estagiarios.each do |est| %>
+                 <% if (est.desligado == 0 and est.periodo_trab == 'VESPERTINO') then%>
+                   <%=h est.nome %> (Vespertino) <br/>
+                <%end%>
+              <%end%>
+             <%else%>
+                  <font color="red"> Unidade sem estagiário Vespertino</font> <br/>
+             <%end%>
+               <%if (unidade.estagiarioN == 1) then%>
+                  <% unidade.estagiarios.each do |est| %>
+                     <% if (est.desligado == 0 and est.periodo_trab == 'NOTURNO') then%>
+                        <%=h est.nome %> (Noturno) <br/>
                     <%end%>
-                   <%end%>
-                 <%end%>
-              <div class="botao">
-                  <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),{:action => "show", :id =>unidadesem}, :method => "get", :title => "Exibir Unidade" %></td>
-              </div>
-            </tr>
-          <%end%>
-        <%end%>
+                <%end%>
+              <%else%>
+                  <font color="red"> Unidade sem estagiário Noturno</font><br/>
+             <%end%>
+           <%end%>
+           </td>
+           <td colspan="2">
+              <% if unidade.regiao_id.nil? then %>
+                  Estagiário Fixo
+              <%else%>
+                 <%=h unidade.regiao.regiao %>
+              <%end%>
+        </td>
 
-      <%end %>
+     </tr>
      <%end%>
-    <% for unidadesemreg in @sem_estagiarios_reg %>
-      <%if unidadesemreg.sem_esta == true%>
-             <tr>
-               
-               <td align="left"><%=h unidadesemreg.regiao%></td>
-               <td align="left" colspan="2">Matutino/Vespertino</td>
- 
-              <div class="botao">
-                  <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),{ :controller => 'regiaos',:action => "show", :id =>unidadesemreg}, :method => "get", :title => "Exibir Unidade" %></td>
-              </div>
-            </tr>
-     <%end%>
-     
-
-    <%end%>
-
-     </table>
-      <div class="botao">
-         <table width="100%" align="center">
-          <tr>
-          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-
-        </table>
-        </div>
-     </font>
   </table>
-  
-  <br/>
-
-   
+ </font>
+ <br/><br/>

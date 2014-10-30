@@ -577,11 +577,6 @@ display: none;
                       <li><%= link_to('Sala/Auditório', reservar_salas_path) %></li>
                 </ul>
               </li>
-
-
-
-
-
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">
@@ -595,8 +590,7 @@ display: none;
                              <li><%= link_to('por Tipo', c_uni_tp_path) %></li>
                              <li><%= link_to('Todas', unidades_path)%></li>
                               <% if current_user.has_role?('administrador') %>
-                                 <li><%= link_to "C/Estagiario", lista_path%></li>
-                                 <li><%= link_to 'S/Estagiario', sem_estagiario_path %></li>
+                                 <li><%= link_to 'Estagiarios', sem_estagiario_path %></li>
                              <%end%>
                            </ul>
                        </li>
@@ -607,6 +601,10 @@ display: none;
                        <%end%>
                  </ul>
               </li>
+
+
+
+
               <li class="clear">&nbsp;</li>
         </div>
       </div>

@@ -9,7 +9,9 @@ class EstagiariosController < ApplicationController
   before_filter :load_regiaos
 
   def lista
-    @estagiarios = Estagiario.find(:all, :joins => :unidade,:conditions => ['flag=?',0], :order => 'unidades.nome ASC')
+    #@sem_estagiarios= Unidade.find(:all, :conditions => ["estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'nome ASC')
+    #@estagiarios = Unidade.find(:all, :joins => :estagiario,:conditions => ['flag=?',1], :order => 'unidades.nome ASC')
+    @estagiarios = Estagiario.find(:all, :joins => :unidade,:conditions => ["flag=0 and estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'unidades.nome ASC')
     @estagiarios1 = Estagiario.find(:all, :joins => :regiao,  :order => 'regiaos.regiao ASC',:conditions => ['flag=?',0])
     respond_to do |format|
       format.html

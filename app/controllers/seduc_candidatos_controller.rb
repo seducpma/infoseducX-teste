@@ -1,42 +1,49 @@
 class SeducCandidatosController < ApplicationController
   # GET /seduc_candidatos
   # GET /seduc_candidatos.xml
-   
-
-
-
-
-def votacao
+ layout 'application'
+ 
+  def votacao
   @funcionarios = SeducFuncionario.find(:all, :conditions=>['unidade_id =?', current_user.unidade_id ],:order => 'nome ASC')
  render 'votacao'
 
   end
 
 
-def sel_participa
-    @dadosparticipa = Participante.find(params[:inscricao_participante_id])
-    @inscricao = Inscricao.find_by_participante_id(params[:inscricao_participante_id], :conditions => ['status = 1 and encerrado = 0'])
+ def sel_dados
+    @dados = Sala.find(params[:reservar_sala_sala_id])
+    session[:reservasala]= params[:reservar_sala_sala_id]
+    #render :partial => 'exibe_dados'=>'dados_funcionario'
     render :update do |page|
-      page.replace_html "informacoes", :partial => 'exibe_participante'
-      unless @inscricao.present?
-        if @dadosparticipa.possuidadosobrigatorios?
-          page.replace_html "final", :text => "<input id='inscricao_submit' type='submit' value='Confirmar' name='commit'>"
-        else
-          page.replace_html "final", :text => "<a href='/participantes/#{params[:inscricao_participante_id]}/addemail'>Favor atualizar dados</a>"
-        end
-      else
-        page.replace_html "final", :text => "<a href='/inscricaos/#{@inscricao.id}'>Inscrição já efetuada - visualize</a>"
-      end
-
+      page.replace_html "especifica", :partial => 'exibe_dados'
     end
   end
 
 def verificacao_funcionario
-  @dadosfuncionario = SeducFuncionario.find(params[:seduc_funcionario_id])
-    render :update do |page|
-      page.replace_html "dados_funcionario", :partial => 'funcionario'
-    end
+ @dadosfuncionario = SeducFuncionario.find(params[:seduc_funcionario_seduc_funcionario_id])
+ session[:matriculabase]= @dadosfuncionario.matricula
+   render :partial => 'funcionario'
+
+
 end
+
+def verificacao
+ @fun = SeducFuncionario.all(:conditions => ["matricula = ?", params[:search]])
+  render :update do |page|
+       page.replace_html 'dados_funcionario', :partial => "habilitacao"
+  end
+  
+  #if session[:matriculabase] = @funcionario.matricula
+ #  render :partial => 'habilitado',  :text => 'HABILITADO'
+ #else
+ #  render :partial => 'naohabilitado', :text => 'NÂO HABILITADO'
+ #end
+
+end
+
+
+
+
 
   def index
     @seduc_candidatos = SeducCandidato.all

@@ -167,20 +167,16 @@ def lista_tipo
   end
 
 def sem_estagiarios
-      #@sem_estagiarios = Unidade.find(:all, :order => 'nome ASC')
-      @sem_estagiarios= Unidade.find(:all, :conditions => ["estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'nome ASC')
-      #@estagiarios = Estagiario.find(:all, :joins => :unidade, :order => 'unidades.nome ASC',:conditions => ['flag=?',0])
-      #@estagiarios1 = Estagiario.find(:all, :joins => :regiao,  :order => 'regiaos.regiao ASC',:conditions => ['flag=?',0])
-      #@s2= Unidade.find(:all, :joins => :regiao, :conditions => ['estagiarioE =?',1], :select => 'distinct regiao_id', :order => 'nome ASC')
-      #@sem_estagiarios= @s1 + @s2
-      #@sem_estagiarios_reg = Estagiario.find(:all,:joins => :regiao,:conditions => ['flag=? and etinerante=?' ,0,1], :select => "distinct regiao_id",  :order => 'regiaos.regiao ASC')
 
-              #@sem_estagiarios_reg = Estagiario.find_by_sql("SELECT * FROM `estagiarios` INNER JOIN `unidades` ON `unidades`.id = `estagiarios`.unidade_id WHERE (flag=0)is not in SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiarios`.regiao_id WHERE (flag=0) ORDER BY regiaos.regiao ASC")
-              #@sem_estagiarios_reg = Estagiario.find_by_sql('SELECT * FROM `estagiarios` INNER JOIN `unidades` ON `unidade`.id = `estagiarios`.unidade_id WHERE (flag=0)is not in SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiarios`.regiao_id WHERE (flag=0) ORDER BY regiaos.regiao ASC')
-              #@sem_estagiarios_reg = Estagiario.find_by_sql("SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiari' at  SELECT * FROM `estagiarios` INNER JOIN `unidades` ON `unidade`.id = `estagiarios`.unidade_id WHERE (flag=0)is not in SELECT * FROM `estagiarios` INNER JOIN `regiaos` ON `regiaos`.id = `estagiarios`.regiao_id WHERE (flag=0) ORDER BY regiaos.regiao ASC")
+     #@sem_estagiarios= Estagiario.find(:all, :joins => :unidade , :conditions => ["unidades.estagiarioV=0 or unidades.estagiarioM=0 or unidades.estagiarioN=0 or (unidades.id=53 or unidades.id=1 or unidades.id=3 or unidades.id=4 or unidades.id=5 or unidades.id=6 or unidades.id=7 or unidades.id=8 or unidades.id=9 or unidades.id=10) and (estagiarios.flag = 0 and desligado)= 0"], :order => 'unidades.nome ASC')
 
-    #@sem_estagiarios_reg = Estagiario.find(:all,:joins => :regiao,:conditions => ['flag=? and etinerante=?' ,0,1], :select => "distinct regiao_id",  :order => 'regiaos.regiao ASC')
-     @sem_estagiarios_reg =  Regiao.all
+     @unidade_estagiario =Unidade.find(:all, :conditions => ["( unidades.id=1 or unidades.id=2 or unidades.id=3 or unidades.id=4 or unidades.id=5 or unidades.id=6 or unidades.id=7 or unidades.id=8 or unidades.id=9 or unidades.id=10 or unidades.id = 53)"], :order => 'unidades.nome ASC')
+     
+
+
+
+     #@sem_estagiarios= Unidade.find(:all, :conditions => ["estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'nome ASC')
+     #@sem_estagiarios_reg =  Regiao.all
   
     respond_to do |format|
       format.html # index.html.erb

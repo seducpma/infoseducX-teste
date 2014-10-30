@@ -1,12 +1,24 @@
-<% for curso in @cursosparticipa %>
-     <b>Nome:<%=h curso.nome %><br/>
-        Ministrante: <%=h curso.ministrante %><br/>
-        Tipo: <%=h curso.tipo %><br/>
-        Carga Horaria: <%=h curso.carga_horaria%> horas<br/>
-        Data e Horário:<%=h curso.data_hora.strftime("%d de %B de %Y - %H:%M horas") %><br/>
-        Observações:<%=h curso.obs %>
-      </b>
-     <% end %>
+<table align="center"  width="80%">
+  <tr>
+    <td width="50%">
+      <b>Nome:</b> <%=h @dadosfuncionario.nome %><br/>
+      <b>Unidade:</b> <%=h @dadosfuncionario.unidade.nome %><br/>
+      <b>Função:</b> <%=h @dadosfuncionario.funcao %><br/>
+      <% form_remote_tag :url => verificacao_seduc_candidatos_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+      <b>Digite sua matrícula:</b>
+         <%= text_field_tag :search, params[:search], :size =>5  %>
+            <%= submit_tag "Verificar" %>
+        <%end%>
+
+
+
+  </tr>
+</table>
+
+
+
+
+
 
 
 

@@ -35,8 +35,12 @@
           <%else%>
              <td align="left"><%=h estagiarios.regiao.regiao %></td>
           <%end%>
+          <%if (estagiarios.desligado == 0 ) %>
              <td align="left"><%=h estagiarios.nome %></td>
-             <td align="left"><%=h estagiarios.periodo_trab %></td>
+          <%else%>
+             <td align="left"><%=h %></td>
+          <%end%>
+          <td align="left"><%=h estagiarios.periodo_trab %></td>
          </tr>
          <% end %>
          <% end %>
