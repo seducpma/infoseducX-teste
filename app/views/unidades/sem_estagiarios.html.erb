@@ -23,7 +23,7 @@
       <font  size="2">
       <table border="2" width="100%">
       <tr>
-       <th width="20%">Nome</th>
+       <th width="30%">Nome</th>
        <th>Estagiários</th>
        <th>Região</th>
       </tr>
@@ -47,7 +47,7 @@
                 <%end%>
               <%end%>
              <%else%>
-                   Unidade sem estagiário Matutino <br/>
+                  <font color="red"> Unidade sem estagiário Matutino </font><br/>
              <%end%>
             <%if (unidade.estagiarioV == 1) then%>
              <% unidade.estagiarios.each do |est| %>
