@@ -30,7 +30,12 @@
              <tr>
                 <td align="left"><font size="2"><%=h reg.regiao %></font></td>
                 <td align="left"><font size="2"><%=h reg.local %></font></td>
-                <td align="center"><font size="2"><%=h reg.unidade %></font></td>
+                <td align="left">
+                    <% reg.unidades.each do |unidade| %>
+                       <font size="2"><%=h unidade.nome %> /
+                    <%end%>
+                    </font></td>
+
                 <% reg.estagiarios.each do |est| %>
                   <%if est.desligado == 0 then%>
                     <td align="left"><font size="2"><%=h est.nome %></font></td>
