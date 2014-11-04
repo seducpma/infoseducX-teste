@@ -32,7 +32,10 @@
                 <td align="left"><font size="2"><%=h reg.local %></font></td>
                 <td align="left">
                     <% reg.unidades.each do |unidade| %>
+                        <%if unidade.nil?%>
+                    <%else%>
                        <font size="2"><%=h unidade.nome %> /
+                    <%end%>
                     <%end%>
                     </font></td>
 

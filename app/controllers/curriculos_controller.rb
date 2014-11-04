@@ -5,8 +5,8 @@ class CurriculosController < ApplicationController
 
    def index
      if params[:type_of].to_i == 8
-       @contador = Curriculo.all(:conditions => ["ATUACAO like ?","INFORMÁTICA"]).count
-       @curriculos = Curriculo.all(:conditions => ["ATUACAO like ?","INFORMÁTICA"],:order => 'nome ASC')
+       @contador = Curriculo.all(:conditions => ["ATUACAO like ? AND STATUS <> 'DESCONSIDERAR'","INFORMÁTICA"]).count
+       @curriculos = Curriculo.all(:conditions => ["ATUACAO like ? AND STATUS <> 'DESCONSIDERAR'","INFORMÁTICA"],:order => 'nome ASC')
        render :update do |page|
          page.replace_html 'curriculos', :partial => "curriculos"
        end
