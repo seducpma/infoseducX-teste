@@ -1,0 +1,12 @@
+
+<% form_for(@candidato) do |f| %>
+  <tr>
+    <td>
+      CANDIDATO SELECIONADO: <%=h @candidato.nome%>
+    </td>
+  </tr>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>

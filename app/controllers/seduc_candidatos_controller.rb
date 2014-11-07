@@ -2,10 +2,16 @@ class SeducCandidatosController < ApplicationController
   # GET /seduc_candidatos
   # GET /seduc_candidatos.xml
  layout 'application'
+
+before_filter :load_candidatos
+
+   def load_candidatos
+    @candidatos = SeducCandidato.find(:all, :order => 'nome ASC')
+  end
  
   def votacao
   @funcionarios = SeducFuncionario.find(:all, :conditions=>['unidade_id =?', current_user.unidade_id ],:order => 'nome ASC')
- render 'votacao'
+  render 'votacao'
 
   end
 
@@ -28,7 +34,8 @@ def verificacao_funcionario
 end
 
 def verificacao
- @fun = SeducFuncionario.all(:conditions => ["matricula = ?", params[:search]])
+  @fun = SeducFuncionario.all(:conditions => ["matricula = ?", params[:search].to_i])
+  session[:matricula]= params[:search].to_i
   render :update do |page|
        page.replace_html 'dados_funcionario', :partial => "habilitacao"
   end
@@ -128,7 +135,13 @@ end
   end
 
 
+def botao_votacao
+  @candidato = SeducCandidato.find(params[:seduc_candidato_seduc_candidato_id])
+ render :update do |page|
+    page.replace_html 'botao_votacao', :partial => "votar"
+  end
 
+end
 
 
 

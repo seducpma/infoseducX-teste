@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :seduc_candidatos, :collection => {:votacao => :get,:verificacao => :get, :votar => :get}
   
   map.resources :seduc_funcionarios

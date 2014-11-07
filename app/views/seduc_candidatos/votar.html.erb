@@ -1,12 +1,42 @@
 <br/>
-
+<table class="tabelas2" align="center">
+ <tr>
+    <th align="left">
+       <font size=5 color="black"> <b>  ELEIÇÃO MEMBROS DA CIPA - SEDUC/PMA</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+ <tr>
+   <td colspan="2">
       <fieldset><legend><font size ="4"><b>VOTAÇÃO</b></font></legend>
-        <table width="100%">
+        <table>
           <tr>
-            <td>
-               votação 
+            <td><font size ="2"><b>Selecione o Candidato:</b></font></td>
+            <td><font  size="4"> <%= collection_select :seduc_candidato, :seduc_candidato_id, @candidatos, :id, :nome, :include_blank =>' -- Selecione -- '  %></font></td>
+          </tr>
+          <tr>
+            <td colspan="2"><br/><br/>
+               <%= observe_field 'seduc_candidato_seduc_candidato_id',
+                   :update => "botao_votacao",
+                   :url    => { :action => 'botao_votacao' },
+                   :with   => 'seduc_candidato_seduc_candidato_id' %>
+              
+
             </td>
           </tr>
+          <tr>
+            <td>
+                <div id="botao_votacao"> </div>
+            </td>
+          </tr>
+
+          
         </table>
       </fieldset>
- <br/>
+    <br/>
+   </td>
+  </tr>
+ </table>
+ <br/><br/>
