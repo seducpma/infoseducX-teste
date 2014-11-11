@@ -150,7 +150,15 @@
             Sem Estagiário 
           </td>
           <td>
-            Atendimento pela unidade escola mais próxima
+            <% if ((unidade.id == 64) or (unidade.id == 37) or (unidade.id == 62) )%>
+                Atendimento pela SEDUC
+            <%else if (unidade.id == 60)%>
+                Atendimento pelo CAIC
+              <%else if (unidade.id == 74)%>
+                  <%end%>
+                      Atendimento pelo CIEP Jaguari
+              <%end%>
+            <%end%>
           </td>
           
          </tr>
