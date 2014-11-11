@@ -30,7 +30,7 @@
      <% for unidade in @unidade_estagiario%>
     
       <tr>
-       <td valign="top"><%=h unidade.nome %></td>
+       <td valign="top"><%=h unidade.tipo.nome%> <%=h unidade.nome %></td>
         <td align="left">
              <%if (unidade.estagiarioE == 1) then%>
               <% unidade.estagiarios.each do |est| %>
@@ -143,7 +143,7 @@
 
        <% if (unidade.regiao_id.nil?)and ((unidade.tipo_id == 2) or (unidade.tipo_id == 5) or (unidade.tipo_id == 8)  or (unidade.id == 64))%>
          <tr>
-           <td><%=h unidade.nome %> 
+           <td><%=h unidade.tipo.nome%> <%=h unidade.nome %> 
               
           </td>
           <td>
