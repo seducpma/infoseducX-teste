@@ -11,7 +11,6 @@
   <tr>
     <td colspan="2">
       <font  size="2">
-      <table border="2" width="100%">
        <table width="100%" align="center">
         <tr>
           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
@@ -91,7 +90,7 @@
               </div>
             </tr>
       <%else%>
-                   <tr>
+            <tr>
 
                <td align="left"><%=h unidadesemreg.regiao%></td>
                
@@ -100,16 +99,27 @@
                     <td align="left"><font size="2"><%=h est.nome %></font></td>
                   <%end%>
                 <%end%>
-               
-
-               
-
-              <div class="botao">
+               <div class="botao">
                   <td>Itinerância</td>
               </div>
             </tr>
 
      <%end%>
     <%end%>
- </font>
- <br/><br/>
+   </table>
+   </td>
+  </tr>
+  <tr>
+    <td>
+
+         <table width="100%" align="center">
+        <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+       </tr>
+      </table>
+    </td>
+  </tr>
+
+ </table>
+<br/><br/>
