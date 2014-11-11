@@ -1,5 +1,5 @@
 <br/>
- <table   class="tabelas1"align="center">
+ <table   class="tabelas2"align="center">
 <tr>
       <th align="left">
          <font  size=5 color="black"> <b> UNIDADES & ESTAGIÁRIOS </b></font>
@@ -30,7 +30,7 @@
      <% for unidade in @unidade_estagiario%>
     
       <tr>
-       <td valign="top"><%=h unidade.tipo.nome%> <%=h unidade.nome %></td>
+       <td valign="top"><%=h unidade.nome %></td>
         <td align="left">
              <%if (unidade.estagiarioE == 1) then%>
               <% unidade.estagiarios.each do |est| %>
@@ -84,7 +84,21 @@
 
                <td align="left"><%=h unidadesemreg.regiao%></td>
                <td align="left"><font color="red">Sem estagiários</font>
- 
+                   <% if (unidadesemreg.regiao == 'REGIÃO 1') %>
+                      <br> <font color="blue"> Atendimento CAIC </font>
+                   <%else if (unidadesemreg.regiao == 'REGIÃO 2')%>
+                          <br> <font color="blue"> Atendimento SEDUC </font>
+                         <%else if (unidadesemreg.regiao == 'REGIÃO 3')%>
+                             <br> <font color="blue"> Atendimento CIEP ZANAGA </font>
+                                <%else if (unidadesemreg.regiao == 'REGIÃO 4')%>
+                                  <br> <font color="blue"> Atendimento CIEP SÃO VITO </font>
+                                       <%else if (unidadesemreg.regiao == 'REGIÃO 5') %>
+                                         <br> <font color="blue"> Atendimento CIEP CIDADE JARDIM </font>
+                                              <%end%>  
+                                       <%end%> 
+                                <%end%>   
+                         <%end%> 
+                   <%end%>
 
                </td>
 
@@ -119,22 +133,6 @@
                        <font size="2"><%=h unidade.nome %> /
                     <%end%>
                     <%end%>
-                   <% if (unidadesemreg.regiao == 'REGIÃO 1') %>
-                      <font color="blue"> Atendimento CAIC</font>
-                   <%else if (unidadesemreg.regiao == 'REGIÃO 2')%>
-                          <font color="blue"> Atendimento SEDUC</font>
-                         <%else if (unidadesemreg.regiao == 'REGIÃO 3')%>
-                               <font color="blue"> Atendimento CIEP ZANAGA</font>
-                                <%else if (unidadesemreg.regiao == 'REGIÃO 4')%>
-                                    <br/> - Atendimento CIEP SÃO VITO</font>
-                                       <%else if (unidadesemreg.regiao == 'REGIÃO 5') %>
-                                         <font color="blue"> Atendimento CIEP CIDADE JARDIM </font>
-                                              <%end%>
-                                       <%end%>
-                                <%end%>
-                         <%end%>
-                   <%end%>
-
                   </td>
               </div>
             </tr>
@@ -145,7 +143,7 @@
 
        <% if (unidade.regiao_id.nil?)and ((unidade.tipo_id == 2) or (unidade.tipo_id == 5) or (unidade.tipo_id == 8)  or (unidade.id == 64))%>
          <tr>
-           <td><%=h unidade.tipo.nome%> <%=h unidade.nome %> 
+           <td><%=h unidade.nome %> <%=h unidade.tipo.nome %>
               
           </td>
           <td>
@@ -153,12 +151,12 @@
           </td>
           <td>
             <% if ((unidade.id == 64) or (unidade.id == 37) or (unidade.id == 62) )%>
-                <font color="blue"> Atendimento pela SEDUC </font>
+                <font color="blue"> Atendimento pela SEDUC</font>
             <%else if (unidade.id == 60)%>
-                <font color="blue"> Atendimento pelo CAIC </font>
+                <font color="blue"> Atendimento pelo CAIC</font>
               <%else if (unidade.id == 74)%>
                   <%end%>
-                      <font color="blue"> Atendimento pelo CIEP Jaguari </font>
+                      <font color="blue"> Atendimento pelo CIEP Jaguari</font>
               <%end%>
             <%end%>
           </td>
