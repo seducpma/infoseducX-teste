@@ -22,9 +22,9 @@
       <font  size="2">
       <table border="2" width="100%">
       <tr>
-       <th width="20%">Nome</th>
+       <th width="30%">Nome</th>
        <th width="30%">Estagiários</th>
-       <th colspan="2">Região</th>
+       <th colspan="2">Tipo</th>
       </tr>
 
      <% for unidade in @unidade_estagiario%>
@@ -104,7 +104,7 @@
 
 
               <div class="botao">
-                  <td>Itinerância</td>
+                  
                   <td>
                    <% unidadesemreg.unidades.each do |unidade| %>
                         <%if unidade.nil?%>
@@ -126,7 +126,7 @@
                   <%end%>
                 <%end%>
                <div class="botao">
-                  <td>Itinerância</td>
+                  
                   <td><% unidadesemreg.unidades.each do |unidade| %>
                         <%if unidade.nil?%>
                         <%else%>
