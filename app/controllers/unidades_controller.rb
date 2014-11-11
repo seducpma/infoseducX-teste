@@ -171,6 +171,7 @@ def sem_estagiarios
      #@sem_estagiarios= Estagiario.find(:all, :joins => :unidade , :conditions => ["unidades.estagiarioV=0 or unidades.estagiarioM=0 or unidades.estagiarioN=0 or (unidades.id=53 or unidades.id=1 or unidades.id=3 or unidades.id=4 or unidades.id=5 or unidades.id=6 or unidades.id=7 or unidades.id=8 or unidades.id=9 or unidades.id=10) and (estagiarios.flag = 0 and desligado)= 0"], :order => 'unidades.nome ASC')
 
      @unidade_estagiario =Unidade.find(:all, :conditions => ["( unidades.id=1 or unidades.id=2 or unidades.id=3 or unidades.id=4 or unidades.id=5 or unidades.id=6 or unidades.id=7 or unidades.id=8 or unidades.id=9 or unidades.id=10 or unidades.id = 53)"], :order => 'unidades.nome ASC')
+     @unidade_estagiario1 =Unidade.find(:all)
      
 
 

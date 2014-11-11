@@ -138,7 +138,25 @@
             </tr>
 
      <%end%>
+     <%end%>
+     <% for unidade in @unidade_estagiario1%>
+
+       <% if (unidade.regiao_id.nil?)and ((unidade.tipo_id == 2) or (unidade.tipo_id == 5) or (unidade.tipo_id == 8)  or (unidade.id == 64))%>
+         <tr>
+           <td><%=h unidade.nome %> 
+              
+          </td>
+          <td>
+            Sem Estagiário 
+          </td>
+          <td>
+            Atendimento pela unidade escola mais próxima
+          </td>
+          
+         </tr>
+     <%end%>
     <%end%>
+
    </table>
    </td>
   </tr>
