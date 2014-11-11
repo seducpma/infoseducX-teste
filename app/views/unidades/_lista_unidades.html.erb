@@ -49,11 +49,16 @@
      <tr>
         <td colspan="2" align="left">
              <%if (unidade.estagiarioE == 1) then%>
-              <% unidade.regiao.estagiarios.each do |est| %>
-                 <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
-                   <%=h est.nome %> (Itinerante)<br/>
-                <%end%>
+               <%if unidade.regiao_id.nil?%>
+                 Sem estagiário
+               <%else%>
+                <% unidade.regiao.estagiarios.each do |est| %>
+                     <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
+                       <%=h est.nome %> (Itinerante)<br/>
+                    <%end%>
+                  <%end%>
               <%end%>
+              
            <%else%>
            <%if (unidade.estagiarioM == 1) then%>
              <% unidade.estagiarios.each do |est| %>
