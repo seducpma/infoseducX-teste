@@ -105,6 +105,14 @@
 
               <div class="botao">
                   <td>Itinerância</td>
+                  <td>
+                   <% unidadesemreg.unidades.each do |unidade| %>
+                        <%if unidade.nil?%>
+                        <%else%>
+                       <font size="2"><%=h unidade.nome %> /
+                    <%end%>
+                    <%end%>
+                  </td>
               </div>
             </tr>
       <%else%>
@@ -119,6 +127,13 @@
                 <%end%>
                <div class="botao">
                   <td>Itinerância</td>
+                  <td><% unidadesemreg.unidades.each do |unidade| %>
+                        <%if unidade.nil?%>
+                        <%else%>
+                       <font size="2"><%=h unidade.nome %> /
+                    <%end%>
+                    <%end%>
+                  </td>
               </div>
             </tr>
 
