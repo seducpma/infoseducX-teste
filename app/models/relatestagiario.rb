@@ -3,6 +3,7 @@ class Relatestagiario < ActiveRecord::Base
   belongs_to :unidade
   attr_accessor :password, :segunda,:terca,:quarta,:quinta, :sexta
   validates_presence_of :estagiario_id, :message => ' - SELECIONAR ESTAGIARIO  - '
+  validates_presence_of :unidade_id, :message => ' - SELECIONAR UNIDADE  - '
 
 
   before_save :concatenacao, :caixa_alta

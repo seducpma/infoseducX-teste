@@ -90,6 +90,25 @@
                   <td>Itinerância</td>
               </div>
             </tr>
+      <%else%>
+                   <tr>
+
+               <td align="left"><%=h unidadesemreg.regiao%></td>
+               
+                 <% unidadesemreg.estagiarios.each do |est| %>
+                  <%if est.desligado == 0 then%>
+                    <td align="left"><font size="2"><%=h est.nome %></font></td>
+                  <%end%>
+                <%end%>
+               
+
+               
+
+              <div class="botao">
+                  <td>Itinerância</td>
+              </div>
+            </tr>
+
      <%end%>
     <%end%>
  </font>
