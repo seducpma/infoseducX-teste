@@ -83,7 +83,25 @@
              <tr>
 
                <td align="left"><%=h unidadesemreg.regiao%></td>
-               <td align="left"><font color="red">Sem estagiários</font></td>
+               <td align="left"><font color="red">Sem estagiários</font>
+                   <% if (unidadesemreg.regiao == 'REGIÃO 1') %>
+                      - Atendimento CAIC
+                   <%else if (unidadesemreg.regiao == 'REGIÃO 2')%>
+                            - Atendimento SEDUC
+                         <%else if (unidadesemreg.regiao == 'REGIÃO 3')%>
+                                  - Atendimento CIEP ZANAGA
+                                <%else if (unidadesemreg.regiao == 'REGIÃO 4')%>
+                                    - Atendimento CIEP SÃO VITO
+                                       <%else if (unidadesemreg.regiao == 'REGIÃO 5') %>
+                                               - Atendimento CIEP CIDADE JARDIM   
+                                              <%end%>  
+                                       <%end%> 
+                                <%end%>   
+                         <%end%> 
+                   <%end%>
+
+               </td>
+
 
               <div class="botao">
                   <td>Itinerância</td>
