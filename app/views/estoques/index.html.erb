@@ -36,6 +36,7 @@
         <th>Produto</th>
         <th>Especificação</th>
         <th>Saldo</th>
+        <th>Procedências</th>
         <th>Observação</th>
       </tr>
       <%$totalc = 0%>
@@ -45,6 +46,7 @@
         <td><%=h estoques.componente.nome %></td>
         <td><%=h estoques.especifica %></td>
         <td align="center"><b><%=h estoques.saldo %></b></td>
+        <td><%=h estoques.condicao %></td>
         <td><%=h estoques.obs %></td>
       </tr>
       <%$totalc= $totalc + estoques.saldo%>

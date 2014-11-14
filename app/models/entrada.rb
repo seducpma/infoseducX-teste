@@ -18,6 +18,8 @@ def soma_saldo
 
      @saldo.saldo = @saldo.saldo + self.quantidade
 
+     @saldo.condicao = self.procedencia
+
      @saldo.save
 
   end
