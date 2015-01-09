@@ -19,7 +19,7 @@ class Acompanhamento < ActiveRecord::Base
 end
 
 def geracodigo
-    self.codigo = [self.id].to_s + ("/2014")
+    self.codigo = [self.id].to_s + ("/2015")
     self.save
 
 end
