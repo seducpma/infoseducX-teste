@@ -10,21 +10,15 @@
   <div class="lof-main-outer">
   	<ul class="lof-main-wapper">
       <% unless (@imagens.present?)%>
-
   		<li>
-             <%= image_tag("default.jpg", :title => "Prefeitura de Americana", :size => "400x400") %>
-             <div class="lof-main-item-desc">
-              <h3><a target="_parent" title="Americana" href="#">Prefeitura de Americana</a></h3>
-              <p>Um governo de trabalho</p>
-             </div>
+             <%= image_tag("bandeira_americana.jpg", :title => "Prefeitura de Americana", :size => "400x300") %>
+        </li>
+  		<li>
+             <%= image_tag("bandeira2_americana.jpg", :title => "Prefeitura de Americana", :size => "400x300") %>
         </li>
        <li>
-             <%= image_tag("rede_conhecimento.jpg", :title => "Secretaria de Educação", :size => "400x400")       %>
-        	 <div class="lof-main-item-desc">
-                <h3><a target="_parent" title="Newsflash 1" href="#">Secretaria de Educação</a></h3>
-                <p>Secretaria de Educação</p>
+             <%= image_tag("educacao.jpg", :title => "Secretaria de Educação", :size => "400x400")       %>
 
-             </div>
         </li>
       <%else%>
         <% @imagens.each do |image| %>
@@ -47,16 +41,25 @@
           <%unless (@imagens.present?)%>
             <li>
             	<div>
-                    <%= image_tag("default.jpg", :title => "Prefeitura de Americana", :size => "400x400") %>
-                	<h3> Prefeitura de Americana </h3>
-                  	<span>Um governo de trabalho</span>
+                    <%= image_tag("bandeira_americana.jpg", :title => "Prefeitura de Americana", :size => "200x400") %>
+                	<h3> Prefeitura de Americana<br/>
+                         (Bambeira atual)
+                     </h3>
+
                 </div>
             </li>
+            <li>
+            	<div>
+                    <%= image_tag("bandeira2_americana.jpg", :title => "Prefeitura de Americana", :size => "200x400") %>
+                	<h3> Prefeitura de Americana <br/>
+                         (Bambeira anterior)</h3>
 
+                </div>
+            </li>
              <li>
              	<div>
-                    <%= image_tag("rede_conhecimento.jpg", :title => "Secretaria de Educação", :size => "400x400")       %>
-                 	<h3> Secretaria de Educação </h3>
+                    <%= image_tag("educacao.jpg", :title => "Secretaria de Educação", :size => "400x400")       %>
+                 	<h3> Secretaria de Educação </h3>   
                   	<span>Secretaria de Educação</span>
                 </div>
           <%else%>
