@@ -104,10 +104,6 @@
         </td>
      </tr>
     <%end%>
-
-
-
-
     <% for unidadesemreg in @sem_estagiarios_reg %>
       <%if unidadesemreg.sem_esta == true%>
              <tr>
@@ -129,21 +125,12 @@
                                 <%end%>   
                          <%end%> 
                    <%end%>
-
                </td>
-
-
-              <div class="botao">
-                  
-                  <td>
-                   <% unidadesemreg.unidades.each do |unidade| %>
-                        <%if unidade.nil?%>
-                        <%else%>
-                       <font size="2"><%=h unidade.nome %> /
+               <td>
+                   <% if unidadesemreg.id=2 %>
+                       <font size="2"><%= unidadesemreg.unidade%> /
                     <%end%>
-                    <%end%>
-                  </td>
-              </div>
+               </td>
             </tr>
       <%else%>
             <tr>
