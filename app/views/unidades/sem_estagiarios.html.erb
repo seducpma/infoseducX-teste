@@ -114,15 +114,15 @@
 
                <td align="left"><%=h unidadesemreg.regiao%></td>
                <td align="left"><font color="red">Sem estagiários</font>
-                   <% if (unidadesemreg.regiao == 'REGIÃO 1') %>
+                   <% if (unidadesemreg.id=1) %>
                       <br> <font color="blue"> Atendimento CAIC </font>
-                   <%else if (unidadesemreg.regiao == 'REGIÃO 2')%>
+                   <%else if (unidadesemreg.id = 2)%>
                           <br> <font color="blue"> Atendimento SEDUC </font>
-                         <%else if (unidadesemreg.regiao == 'REGIÃO 3')%>
+                         <%else if (unidadesemreg.id=3)%>
                              <br> <font color="blue"> Atendimento CIEP ZANAGA </font>
-                                <%else if (unidadesemreg.regiao == 'REGIÃO 4')%>
+                                <%else if (unidadesemreg.id=4)%>
                                   <br> <font color="blue"> Atendimento CIEP SÃO VITO </font>
-                                       <%else if (unidadesemreg.regiao == 'REGIÃO 5') %>
+                                       <%else if (unidadesemreg.id= 5) %>
                                          <br> <font color="blue"> Atendimento CIEP CIDADE JARDIM </font>
                                               <%end%>  
                                        <%end%> 
@@ -171,28 +171,6 @@
      <%end%>
      <% for unidade in @unidade_estagiario1%>
 
-       <% if (unidade.regiao_id.nil?)and ((unidade.tipo_id == 2) or (unidade.tipo_id == 5) or (unidade.tipo_id == 8)  or (unidade.id == 64))%>
-         <tr>
-           <td><%=h unidade.nome %> <%=h unidade.tipo.nome %>
-              
-          </td>
-          <td>
-            Sem Estagiário 
-          </td>
-          <td>
-            <% if ((unidade.id == 64) or (unidade.id == 37) or (unidade.id == 62) )%>
-                <font color="blue"> Atendimento pela SEDUC</font>
-            <%else if (unidade.id == 60)%>
-                <font color="blue"> Atendimento pelo CAIC</font>
-              <%else if (unidade.id == 74)%>
-                  <%end%>
-                      <font color="blue"> Atendimento pelo CIEP Jaguari</font>
-              <%end%>
-            <%end%>
-          </td>
-          
-         </tr>
-     <%end%>
     <%end%>
 
    </table>
