@@ -1,6 +1,6 @@
 <br/>
- <table   class="tabelas2"align="center">
-<tr>
+ <table class="tabelas2"align="center">
+  <tr>
       <th align="left">
          <font  size=5 color="black"> <b> UNIDADES & ESTAGIÁRIOS </b></font>
       </th>
@@ -24,11 +24,9 @@
       <tr>
        <th width="30%">Nome</th>
        <th width="30%">Estagiários</th>
-       <th colspan="2">Tipo</th>
+       <th colspan="2">Atendimento</th>
       </tr>
-
      <% for unidade in @unidade_estagiario%>
-    
       <tr>
        <td valign="top"><%=h unidade.nome %></td>
         <td align="left">
@@ -69,14 +67,46 @@
            <%end%>
            </td>
            <td colspan="2">
-              <% if unidade.regiao_id.nil? then %>
-                  Estagiário Fixo
-              <%else%>
-                 <%=h unidade.regiao.regiao %>
+              <% if unidade.id==1 %>
+                 EMEI Jaci - Creche CAIC
+              <%else if unidade.id==2%>
+                CC Juriti - CC Maira - CC Aracy
+                <%else if unidade.id==3%>
+                  CC Panamby - CC Pitanga - Creche Tayna
+                  <%else if unidade.id==4%>
+                    Creche Maracá - Creche Anajá - Creche Chuí <br/>
+                    EMEI Manai - EMEI Caramdá - CC Arauna - CC Grauna
+                    <%else if unidade.id==5%>
+                      CC Urupê - CC Curió - CC Taragua - EMEI Patativa
+                      <%else if unidade.id==6%>
+                        Creche Curumã - Creche Taperá - EMEI Indaiá - EMEI Potira
+                        <%else if unidade.id==7%>
+                          CC Jaguari - EMEI  Araçari - EMEI Paturi
+                          <%else if unidade.id==8%>
+                            CC Arapiranga - Creche Wanda P. Muller
+                            <%else if unidade.id==9%>
+                              EMEI Aracati - EMEI Corimbó
+                              <%else if unidade.id==10%>
+                                EMEI Sabia - CC Bitu
+                                <%else if unidade.id=53%>
+                                  EMEI Curumim - EMEI Jacina - EMEI Cunhatai - CC  Manacá - Merenda
+                                <%end%>
+                              <%end%>                              
+                            <%end%>
+                          <%end%>
+                       <%end%>
+                      <%end%>
+                    <%end%>
+                  <%end%>
+                <%end%>
               <%end%>
+            <%end%>
         </td>
      </tr>
     <%end%>
+
+
+
 
     <% for unidadesemreg in @sem_estagiarios_reg %>
       <%if unidadesemreg.sem_esta == true%>
