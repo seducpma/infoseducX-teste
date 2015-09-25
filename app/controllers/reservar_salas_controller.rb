@@ -12,7 +12,7 @@ before_filter :login_required, :except => ["index", "show", "create", "new","edi
   end
 
  def load_salas
-  @salas = Sala.find(:all, :order => "sala ASC")
+  @salas = Sala.find(:all, :order => "sala ASC" , :conditions=>['status = 1'])
   end
 
   def index
