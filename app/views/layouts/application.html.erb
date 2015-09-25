@@ -586,6 +586,8 @@ display: none;
                        <%end%>
                        <li><a>Consultar</a>
                            <ul>
+                             <li><a href="https://www.google.com/maps/d/edit?hl=pt-BR&authuser=0&mid=zNj5sTNCo6CY.kex3W_prFKOA">Localizações</a></li>
+
                              <li><%= link_to('por Endereço', c_uni_end_path) %></li>
                              <li><%= link_to('por Nome', c_uni_uni_path) %></li>
                              <li><%= link_to('por Tipo', c_uni_tp_path) %></li>
@@ -593,6 +595,8 @@ display: none;
                               <% if current_user.has_role?('administrador') %>
                                  <li><%= link_to 'Estagiarios', sem_estagiario_path %></li>
                              <%end%>
+
+
                            </ul>
                        </li>
                        <li><span class="divider divider-horiz" ></span></li>
