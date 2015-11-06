@@ -58,8 +58,11 @@
       </tr>
       <tr>
         <% if estagiarios.unidade_id.nil? then %>
-              <td><%=h estagiarios.regiao.regiao  %></td>
+            <% if estgiarios.regiao.nil? %>
             <%else%>
+              <td><%=h estagiarios.regiao.regiao  %></td>
+            <%end%>
+          <%else%>
               <td><%=h estagiarios.unidade.nome  %></td>
             <%end%>
          <td><%=h estagiarios.periodo_trab %></td>
