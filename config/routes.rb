@@ -150,6 +150,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :password
 
+  map.novo 'novo', :controller => 'chamados', :action => 'novo'
+
   map.connect '/estagiarios/rel_ponto/:year/:month', :controller => 'estagiarios', :action => 'rel_ponto', :year => nil, :month => nil
   map.connect '/estagiarios/carga_horaria/:estagiario_id_equals/:year/:month', :controller => 'estagiarios', :action => 'carga_horaria', :year => nil, :month => nil
   map.root :controller => 'homes', :action => 'index'

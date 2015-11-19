@@ -2,7 +2,8 @@ class ChamadosController < ApplicationController
   # GET /chamados
   # GET /chamados.xml
   layout :define_layout
-  before_filter :login_required, :except => ["busca_protocolo"]
+  #before_filter :login_required, :except => ["busca_protocolo", ""]
+  # require_role ["seduc","admin","escola","secretaria"], :for => :update # don't allow contractors to update
   before_filter :load_unidades
   before_filter :load_estagiarios
   before_filter :load_situacaos
@@ -21,6 +22,7 @@ class ChamadosController < ApplicationController
   end
 
   def index
+    define_layout
       if (params[:search].nil? || params[:search].empty?)
 
         @chamados_totais = Chamado.all
@@ -59,11 +61,14 @@ class ChamadosController < ApplicationController
     end
   end
 
+def novo
 
+end
 
   # GET /chamados/1
   # GET /chamados/1.xml
   def show
+   define_layout
     @chamados = Chamado.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -74,6 +79,7 @@ class ChamadosController < ApplicationController
   # GET /chamados/new
   # GET /chamados/new.xml
   def new
+   define_layout
     @chamados = Chamado.new
     respond_to do |format|
       format.html # new.html.erb
@@ -83,12 +89,14 @@ class ChamadosController < ApplicationController
 
   # GET /chamados/1/edit
   def edit
+    define_layout
     @chamados = Chamado.find(params[:id])
   end
 
   # POST /chamados
   # POST /chamados.xml
   def create
+    define_layout
     @chamados = Chamado.new(params[:chamado])
     respond_to do |format|
       if @chamados.save
@@ -106,6 +114,7 @@ class ChamadosController < ApplicationController
   # PUT /chamados/1
   # PUT /chamados/1.xml
   def update
+    define_layout
     @chamados = Chamado.find(params[:id])
     respond_to do |format|
       if @chamados.update_attributes(params[:chamado])
@@ -122,6 +131,7 @@ class ChamadosController < ApplicationController
   # DELETE /chamados/1
   # DELETE /chamados/1.xml
   def destroy
+    define_layout
     @chamados = Chamado.find(params[:id])
     @chamados.destroy
     respond_to do |format|
@@ -131,10 +141,12 @@ class ChamadosController < ApplicationController
   end
 
   def ordemservico
+    define_layout
     @chamados = Chamado.find(params[:id])
   end
 
   def encerrados
+    define_layout
 
       @chamados = Chamado.find(:all, :conditions => ['situacao_chamado_id =?',2], :order => 'data_enc DESC')
 
@@ -158,6 +170,7 @@ class ChamadosController < ApplicationController
   end
 
  def showencerrado
+   define_layout
      @chamados = Chamado.find(params[:id])
     respond_to do |format|
       format.html
@@ -173,7 +186,7 @@ class ChamadosController < ApplicationController
     if logged_in?
       'application'
     else
-      'login'
+      'application_chamados'
     end
   end
 

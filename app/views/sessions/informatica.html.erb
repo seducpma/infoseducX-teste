@@ -23,11 +23,15 @@
                     <tr>
                       <td>
                          <%= submit_tag 'Entrar' %>
-                         <br/><br/>
+                         <br/><br/><br/>
                       </td>
-                      <td width="40%">
-                        
+                      <td width ="10%"></td>
+               <% end %>
+                      <td>
+                        <%= button_to "Sem Senha", novo_path  %>
+                        <br/><br/>
                       </td>
+                      <td width ="10%"></td>
                       <td>
                          <%= button_to "Sair", homes_path %>
                          <br/><br/>
@@ -35,7 +39,7 @@
                     </tr>
                   </table>
                   
-               <% end %>
+
              </td>
                         
            </tr>
