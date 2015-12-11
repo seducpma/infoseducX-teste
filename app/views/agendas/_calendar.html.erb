@@ -1,0 +1,35 @@
+<table bwidth="100%">
+<tr>
+  <td colspan="3">
+<% if @agenda.present? %>
+  <div id="calendar">
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+    </h2>
+    <% calendar_for @agenda, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <% calendar.day(:day_method => :data) do |date, articles| %>
+        <%= date.day %>
+        <ul>
+          <% for data in articles %>
+            <li><%= link_to h(data.solicitante), data%><br/>
+                 <% if (data.horai.nil? or data.horaf.nil?) %>
+               <%else%>
+                  <%= data.horai.strftime("%H:%M")%> às <%= data.horaf.strftime("%H:%M")%> horas
+               <%end%>
+            </li>
+
+            
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<%end%>
+
+</td>
+</tr>
+
+</table>

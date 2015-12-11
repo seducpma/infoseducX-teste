@@ -28,9 +28,7 @@ def load_estagiarios
      
    else
       @itinerante = @search.all
-      
    end
-
   end
 
   # GET /itinerarios/1

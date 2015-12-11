@@ -1,0 +1,46 @@
+<div class="botao">
+<br/><br/>
+<table class="tabelas1" align="center">
+  <tr>
+    <th align="left" align="right" colspan="2">
+       <font  size=5 color="black"> <b> AGENDA DE UTILIZAÇÃO - LABORATÓRIO DE INFORMÁTICA</b></font>
+    </th>
+    <td width="5%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+   </tr>
+   <tr>
+     <td align="right" colspan="3">
+       <table>
+         <tr>
+            <% form_for @search do |f| %>
+            <td align="right" width="95%"><font size="3"><br/>
+              <%= f.label:unidade_id, "Unidade:" %>
+               <%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => true%></font>
+            </td>
+             <td align="left"><br/><%= f.submit 'Visualizar' %></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <%= render :partial => "calendar" %>
+            </td>
+          </tr>
+        </table>
+     </td>
+    </tr>
+    <% end %>
+   <tr>
+     <td align="left" colspan="3">
+       <table>
+         <tr>
+           <td align="right" width="4%"> <%= button_to("Voltar", homes_path, :method => 'get',:title => "Voltar" )%></td>
+           <td align="left"  ><%= button_to "Agendar",  new_agenda_path, :title => "Cadastrar"%></td>
+         </tr>
+       </table>
+     </td>
+  </tr>
+  </table>
+ <br/>
+</div>
+    
+

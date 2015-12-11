@@ -13,7 +13,7 @@
       <table>
         <tr>
            <td align="left"><font size=2><b>Local:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.sala.sala%> <%=h $idreserva %> </font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.unidade.nome%> <%=h $idreserva %> </font></td>
         </tr>   
         <tr>
            <td align="left"><font size=2><b>Data Reserva:</b></font></td>
@@ -21,11 +21,11 @@
         </tr>
         <tr>
            <td align="left"><font size=2><b>Inicio:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.horario_reservai.strftime("%H:%M")%> horas</font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.horai.strftime("%H:%M")%> horas</font></td>
         </tr>
         <tr>
            <td align="left"><font size=2><b>Final:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.horario_reservaf.strftime("%H:%M")%> horas</font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.horaf.strftime("%H:%M")%> horas</font></td>
         </tr>
         <tr>
            <td align="left"><font size=2><b>Solicitante:</b></font></td>
@@ -33,21 +33,8 @@
         </tr>
         <tr>
            <td align="left"><font size=2><b>Utilização:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.utilizacao%></font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.proposito%></font></td>
         </tr>
-         <tr>
-            <td valign="top"><b>Serviços Solicitados:</b></td>
-            <td>
-                <% @reservar_sala.servicos_salas.each do |servico| %>
-                  - <%=h servico.servico%><br/>
-                <% end %>
-            </td>
-          </tr>
-        <tr>
-           <td align="left"><font size=2><b>Nº Particpantes:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.quantidade%> pessoas</font></td>
-        </tr>
-        <tr>
            <td align="left"><font size=2><b>Observação:</b></font></td>
            <td align="left"><font size=2><%=h @reservar_sala.obs%></font></td>
         </tr>

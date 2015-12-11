@@ -23,6 +23,7 @@ has_many :c_externos
 has_many :relatestagiarios
 has_many :users
 has_many :equipamentos
+has_many :agendas
 
 
 validates_presence_of :nome, :message => ' - DIGITAR NOME DA UNIDADE - '

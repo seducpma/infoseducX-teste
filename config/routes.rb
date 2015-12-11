@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :seduc_funcionarios
 
+   map.resources :agendas
+
   map.resources :reservar_salas_servicos_salas
 
   map.resources :reservar_salas

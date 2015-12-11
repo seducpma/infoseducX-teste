@@ -9,6 +9,7 @@ class Estagiario < ActiveRecord::Base
   has_many :protocolos
   has_many :relatestagiarios
   has_many :equipamentos
+  has_many :agendas
   before_save :etinerancia
   before_update :sem_est, :if => :verify?
   before_save :com_est, :if => :verify?

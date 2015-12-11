@@ -86,7 +86,11 @@ display: none;
                                            <%if (current_user.has_role?('protocolo'))%>
                                               - SISPROT - Sistema de Controle de Protocolos
                                             <%else%>
-                                              - Bem vindo ao Sistema INFOSEDUC
+                                                <%if (current_user.has_role?('manutencao'))%>
+                                                     - SISMAN - Sistema de Manutenção
+                                                <%else%>
+                                                    - Bem vindo ao Sistema INFOSEDUC
+                                                <%end%>
                                             <%end%>
                                       <%end%>
                                   <%end%>
@@ -107,7 +111,7 @@ display: none;
            <img src="/stylesheets/images/nav-bg-l.jpg" alt="" class="float-left" />
            <img src="/stylesheets/images/nav-bg-r.jpg" alt="" class="float-right" />
            <ul id="nav-container" class="nav-container">
-              <li><a class="item-primary" href="#">Arquivo</a>
+              <li><a class="item-primary" href="#">INFOSEDUC</a>
                 <ul style="width:108px;">
                   <li><%= link_to 'Inicio', root_path %></li>
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
@@ -167,12 +171,6 @@ display: none;
                   </li>
                <%end%>
               <%end%>
-
-
-
-
-
-
              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('diretor_SEDUC') %>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Estagiários</a>
@@ -482,11 +480,11 @@ display: none;
               <%end%>
 
 
-             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') %>
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')%>
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">Ordem Serviço</a>
                   <ul style="width:108px;">
-                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') %>
+                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('manutencao') %>
                    <li><a>Informática</a>
                     <ul style="width:108px;">
                      <li><a>OS Interno</a>
@@ -497,6 +495,7 @@ display: none;
                          <li><%= link_to "Encerrados", encerrados_path  %></li>
                       </ul>
                      </li>
+                     <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')%>
                      <li><a href=>OS Externo</a>
                        <ul>
                          <li><%= link_to "Abrir", new_c_externo_path %></li>
@@ -504,7 +503,8 @@ display: none;
                          <li><%= link_to "Encerrados", exencerra_path  %></li>
                        </ul>
                      </li>
-                     <li><%= link_to "Datashow", emprestimos_path %></li>
+                     <%end%>
+                     <!-- <li><%= link_to "Datashow", emprestimos_path %></li> -->
                     </ul>
                   </li>
                  <%end%>
@@ -570,7 +570,7 @@ display: none;
                      </li>
                <%end%>
 
-
+              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Reservas</a>
                  <ul style="width:108px;">
@@ -578,6 +578,7 @@ display: none;
                       <li><%= link_to('Sala/Auditório', reservar_salas_path) %></li>
                 </ul>
               </li>
+              <%end%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Unidades</a>
                  <ul style="width:108px;">
@@ -606,12 +607,23 @@ display: none;
                        <%end%>
                  </ul>
               </li>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')%>
+            <li><span class="divider divider-vert" ></span></li>
+              <li><a class="item-primary" href="#">Agenda</a>
+                 <ul style="width:108px;">
+                     <li><%= link_to('Agendar', agendas_path) %></li>
+                 </ul>
+              </li> 
+              <li class="clear">&nbsp;</li>
+            <%end%>
+<!--
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Votação</a>
                  <ul style="width:108px;">
                      <li><%= link_to('Votar', votacao_seduc_candidatos_path) %></li>
                  </ul>
               <li class="clear">&nbsp;</li>
+-->
         </div>
       </div>
    </div>

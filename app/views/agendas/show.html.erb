@@ -1,0 +1,65 @@
+<<br/>
+<table  class="tabelas" width="50%"align="center">
+  <tr>
+   <th align="left">
+     <font  size=5><b> LABORATÓRIO DE INFORMÁTICA</b></font>
+   </th>
+    <td width="10%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  reservar_salas_path, {:method => "get"}, :title => "Fechar"%></center>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <table>
+        <tr>
+           <td align="left"><font size=2><b>Local:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.unidade.nome%> <%=h $idreserva %> </font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size=2><b>Data Reserva:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.data.strftime("%d/%m/%Y")%></font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size=2><b>Inicio:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.horai.strftime("%H:%M")%> horas</font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size=2><b>Final:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.horaf.strftime("%H:%M")%> horas</font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size=2><b>Solicitante:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.solicitante%></font></td>
+        </tr>
+        <tr>
+           <td align="left"><font size=2><b>Utilização:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.proposito%></font></td>
+        </tr>
+           <td align="left"><font size=2><b>Observação:</b></font></td>
+           <td align="left"><font size=2><%=h @agenda.obs%></font></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+            <div class="botao">
+        <table width="100%" align="right">
+           <tr>
+              <td  align="right"><%= link_to image_tag("/stylesheets/images/botaoA.png"), agendas_path, :title => "Agenda"%></td>
+
+              <td width="2"align="right" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+        </table>
+      </div>
+    </td>
+  </tr>
+     </table>
+
+
+<br/>
+
+
+
+
+
+
