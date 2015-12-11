@@ -28,9 +28,6 @@
        <table>
         <tr>
           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-          <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-            <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_chamado_path(@chamados), :title => "Alterar OS"%></td>
-          <%end%>
           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
         </tr>
       </table>
