@@ -1,3 +1,83 @@
+<% if current_user.has_role?(nil)%>
+
+        <br/>
+         <table  class="tabelas1"   align="center" width="100%">
+          <tr>
+           <th colspan="2" align="left">
+                 <font  size=5><b> ORDEM DE SERVIÇO INTERNO</b></font>
+           </th>
+          </tr>
+          <tr>
+            <td>
+              <br/>
+              <div class="botao">
+                <table width="100%">
+                   <tr>
+                     <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+                     <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+                    <td align="right"><b>Chamados Internos:</b>
+                        <font color ="red "size="2"><b>Em Aberto: <%= @chamados_aberto.count %></b></font>
+                        <font color="green" size="2"><b>Em Atendimento: <%= @chamados_atendimento.count %></b></font>
+                    </td>
+                  </tr>
+                </table>
+                <br/>
+              </div>
+              <font  size="2">
+                <table border="2" width="100%">
+                  <tr>
+                    <th width ="1%" align="center"> Nº Ordem</th>
+                    <th width ="5%">Data sol</th>
+                    <th width ="10%">Solicitante</th>
+                    <th width ="15%">Unidade</th>
+                    <th width ="20%"colspan="2">Problema</th>
+                    <th width ="20%"  >Procedimentos</th>
+                    <th width="8%">Status</th>
+                    <% if current_user.has_role?('administrador') %>
+                    <th align="center">OS</th>
+                    <%end%>
+                  </tr>
+                  <%form_tag selected_print_chamados_path, :method => :get do %>
+                    <% for chamado in @chamados %>
+                      <tr>
+                       <td align="center"><%=h chamado.id %></td>
+                       <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+                       <td><%=h chamado.solicitante %></td>
+                       <td><%=h chamado.unidade.nome %></td>
+                       <td colspan="2"><%=h chamado.problema %></td>
+                       <%if (chamado.tipos_problema !=1) or (chamado.tipos_problema !=2)%>
+                           <td> <%=h chamado.procedimentos%>  </td>
+                       <%end%>
+                       <% if chamado.situacao_chamado_id == 1  %>
+                          <td><font color="red"><%=h chamado.situacao_chamado.situacao %></font></td>
+                       <%else if chamado.situacao_chamado_id == 6%>
+                           <td><font color="green"><%=h chamado.situacao_chamado.situacao %></font></td>
+                       <%else%>
+                           <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                       <%end%>   <%end%>
+                      </tr>
+                    <%end%>
+                    <tr>
+                  <%end%>
+          </font>
+            <div class="botao">
+              <table width="100%" align="center">
+               <br/>
+               <tr>
+                <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+               </tr>
+               </table>
+            </div>
+         </td>
+        </table>
+
+        <br/>
+
+
+
+<%else%>
+
 <br/>
  <table  class="tabelas1"   align="center" width="100%">
   <tr>
@@ -52,9 +132,9 @@
                <%if (chamado.tipos_problema !=1) or (chamado.tipos_problema !=2)%>
                    <td> <%=h chamado.procedimentos%>  </td>
                <%end%>
-               <% if chamado.situacao_chamado.id == 1  %>
+               <% if chamado.situacao_chamado_id == 1  %>
                   <td><font color="red"><%=h chamado.situacao_chamado.situacao %></font></td>
-               <%else if chamado.situacao_chamado.id == 6%>
+               <%else if chamado.situacao_chamado_id == 6%>
                    <td><font color="green"><%=h chamado.situacao_chamado.situacao %></font></td>
                <%else%>
                    <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
@@ -210,3 +290,4 @@
 </table>
 
 <br/>
+<%end%>
