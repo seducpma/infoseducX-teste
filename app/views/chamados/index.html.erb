@@ -33,9 +33,7 @@
                     <th width ="20%"colspan="2">Problema</th>
                     <th width ="20%"  >Procedimentos</th>
                     <th width="8%">Status</th>
-                    <% if current_user.has_role?('administrador') %>
-                    <th align="center">OS</th>
-                    <%end%>
+
                   </tr>
                   <%form_tag selected_print_chamados_path, :method => :get do %>
                     <% for chamado in @chamados %>
