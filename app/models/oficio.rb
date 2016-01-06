@@ -3,7 +3,7 @@ class Oficio < ActiveRecord::Base
 after_create :geracodigo
 
 def geracodigo
-    self.codigo = [self.id-166].to_s + ("/2015")
+    self.codigo = [self.id-311].to_s + ("/2016")
     self.save
 
 end
