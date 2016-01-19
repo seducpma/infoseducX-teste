@@ -24,6 +24,7 @@ has_many :relatestagiarios
 has_many :users
 has_many :equipamentos
 has_many :agendas
+has_many :reservar_salas
 
 
 validates_presence_of :nome, :message => ' - DIGITAR NOME DA UNIDADE - '

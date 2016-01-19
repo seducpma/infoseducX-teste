@@ -2,7 +2,7 @@
 <table  class="tabelas" width="50%"align="center">
   <tr>
    <th align="left">
-     <font  size=5><b> RESERVA DE SALA / AUDITÓRIO</b></font>
+     <font  size=5><b> RESERVA DE SALA REUNIÃO</b></font>
    </th>
     <td width="10%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  reservar_salas_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -13,7 +13,7 @@
       <table>
         <tr>
            <td align="left"><font size=2><b>Local:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.unidade.nome%> <%=h $idreserva %> </font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.sala.sala%> <%=h $idreserva %> </font></td>
         </tr>   
         <tr>
            <td align="left"><font size=2><b>Data Reserva:</b></font></td>
@@ -21,11 +21,11 @@
         </tr>
         <tr>
            <td align="left"><font size=2><b>Inicio:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.horai.strftime("%H:%M")%> horas</font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.horario_reservai.strftime("%H:%M")%> horas</font></td>
         </tr>
         <tr>
            <td align="left"><font size=2><b>Final:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.horaf.strftime("%H:%M")%> horas</font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.horario_reservai.strftime("%H:%M")%> horas</font></td>
         </tr>
         <tr>
            <td align="left"><font size=2><b>Solicitante:</b></font></td>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
            <td align="left"><font size=2><b>Utilização:</b></font></td>
-           <td align="left"><font size=2><%=h @reservar_sala.proposito%></font></td>
+           <td align="left"><font size=2><%=h @reservar_sala.utilizacao%></font></td>
         </tr>
            <td align="left"><font size=2><b>Observação:</b></font></td>
            <td align="left"><font size=2><%=h @reservar_sala.obs%></font></td>

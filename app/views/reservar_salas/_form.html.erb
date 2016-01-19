@@ -4,7 +4,7 @@
  <table class="tabelas" width="50%" align="center">
   <tr>
    <th align="left">
-     <font  size=5><b> RESERVA DE SALA / AUDITÓRIO</b></font>
+     <font  size=5><b> RESERVA DE SALA PARA REUNIÃO</b></font>
    </th>
     <td width="10%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -56,27 +56,6 @@
               <td align="left"><font size=2><b>Utilização:</b></font></td>
               <td align="left"><%= f.text_field :utilizacao%></td>
            </tr>
-            <tr>
-              <td colspan="2">
-                <fieldset><legend><font size ="2"><b>Serviços:</b></font></legend>
-                   <table align="center"  width="100%">
-
-                      <% @servicos_salas.in_groups_of(3, false) do |row_servicos_salas| %>
-                        <tr>
-                          <% row_servicos_salas.each do |servicos_sala| %>
-                              <td align="left"><%= check_box_tag "reservar_sala[servicos_sala_ids][]", servicos_sala.id, @reservar_sala.servicos_salas.include?(servicos_sala), :title => "#{servicos_sala.servico}"%><%= "#{servicos_sala.servico} " %></td>
-                          <%end%>
-                        </tr>
-                       <%end%>
-
-
-
-
-
-                    </table>
-                  </fieldset>
-             </td>
-          </tr>
           <tr>
               <td align="left" valign="top"><font size=2><b>Participantes:</b></font></td>
               <td align="left"><font size=2><%= f.text_field(:quantidade,:size =>"1")%></font>
