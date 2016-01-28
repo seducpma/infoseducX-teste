@@ -17,7 +17,8 @@
             <li><%= link_to h(data.solicitante), data%><br/>
                  <% if (data.horai.nil? or data.horaf.nil?) %>
                <%else%>
-                  <%= data.horai.strftime("%H:%M")%> às <%= data.horaf.strftime("%H:%M")%> horas
+              <font Color="black"><b><%= data.horai.strftime("%H:%M")%> às <%= data.horaf.strftime("%H:%M")%> horas</b></font>
+                  ---------------------------------
                <%end%>
             </li>
 

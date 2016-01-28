@@ -1,0 +1,40 @@
+<br/>
+<table  class="tabelas" width="50%"align="center">
+  <tr>
+   <th align="left">
+     <font  size=5><b> Confirmação</b></font>
+   </th>
+    <td width="10%">
+     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  reservar_salas_path, :title => "Fechar"%></center>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <table>
+        <tr>
+           <td align="left"><font size=4><br/><b>ANTES DE AGENDAR VERIFIQUE NA AGENDA SE</b> <br/><br/></font>
+           <font size=4><b> O DIA E HORAS JÁ NÂO ESTÃO RESERVADOS</b> </font><br/></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+            <div class="botao">
+        <table width="100%" align="right">
+           <tr>
+              <td  align="right"><%= link_to image_tag("/stylesheets/images/botaoA.png"), reservar_salas_path, :title => "Agenda"%></td>
+              <td width="2%"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
+           </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+     </table>
+
+
+<br/>
+
+
+
+

@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :reservar_salas_servicos_salas
 
-  map.resources :reservar_salas
+  map.resources :reservar_salas, :collection => {:confirma_agenda => :get}
 
   map.resources :servicos_salas
 
@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
 
-  map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
+  map.resources :oficios, :collection => {:consulta => :get, :c=>:get, :oficios => :get,}
 
   map.resources :curriculos, :collection => {:curriculo => :get, :indexadmin => :get, :indexpedag => :get}
 
@@ -191,6 +191,9 @@ ActionController::Routing::Routes.draw do |map|
   map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
   map.prefprot '/prefprot', :controller => 'prefprotocolos', :action => 'index'
   map.teste '/teste', :controller => 'prefprotocolos', :action => 'teste'
+ 
+
+
 
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'
   map.c_uni_tp '/c_uni_tp', :controller => 'unidades', :action => 'consultatipo'
