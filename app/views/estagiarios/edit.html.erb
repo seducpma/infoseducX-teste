@@ -90,6 +90,10 @@
             <tr>
                <td align="left"><b> Período:</b></td>
                <td align="left" colspan="3"><%= f.select :periodo_trab, PERIODOT, :include_blank => '---Selecione---',  :size =>19 %>
+                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 <b>Matricula (PMA): </b><%= f.text_field :matriculaPMA, :size =>10 %>
                     <%= observe_field 'estagiario_periodo_trab',
                                 :with => :estagiario_periodo_trab,
                                 :url => { :action => 'seleciona' },
@@ -102,7 +106,7 @@
                 <td align="left"><b>Admissão:</b></td>
                 <td align="left" colspan="3"><%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
                       <b>Desligado:</b>SIM <%= f.check_box :desligado %> <%= f.date_select(:data_desliga, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
-                      <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>7%></td>
+                      <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>10%></td>
              </tr>
              <% if current_user.has_role?('administrador') %>
                 <tr>

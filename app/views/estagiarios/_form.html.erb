@@ -103,7 +103,9 @@
              <tr>
                 <td align="left"><b>Admissão:</b></td>
                 <td align="left" colspan="3">    <%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
-                <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>25%></td>
+                <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>15%>
+                <b>Matricula (PMA): </b><%= f.text_field :matriculaPMA, :size =>5%>
+                </td>
              </tr>
              <% if current_user.has_role?('administrador') %>
                 <tr>

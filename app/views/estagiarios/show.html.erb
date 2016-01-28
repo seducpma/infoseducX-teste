@@ -136,6 +136,10 @@
                      <td align="left"><b>Admissão:</b></td>
                     <td align="left"> <%=h @estagiarios.data_admissao.strftime("%d/%B/%Y") %></td>
                    </tr>
+                    <tr>
+                     <td align="left"><b>Matricula (PMA):</b></td>
+                    <td align="left"> <%=h @estagiarios.matriculaPMA%></td>
+                   </tr>
                   <tr>
                       <% if @estagiarios.desligado == 1 %>
                       <td colspan="2" align="left"><b>Estagiário DESLIGADO</b></td>
