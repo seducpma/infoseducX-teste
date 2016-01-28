@@ -53,7 +53,7 @@ def estagi
     self.bairro.upcase!
     self.diretor.upcase!
     self.coordenador.upcase!
-    self.obs.upcase!
+ 
 
   end
 
