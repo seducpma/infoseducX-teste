@@ -10,6 +10,7 @@
        <th colspan="2">Endereco</th>
        <th>Num</th>
        <th>Complemento</th>
+       <th>Matricula(PMA)</th>
      </tr>
      <tr>
        <td align="center"><%=h estagiarios.nome %></td>
@@ -18,6 +19,7 @@
        <td  align="center"colspan="2"><%=h estagiarios.endereco %></td>
        <td align="center"><%=h estagiarios.num %></td>
        <td align="center"><%=h estagiarios.complemento %></td>
+       <td align="center"><%=h estagiarios.matriculaPMA%></td>
     </tr>
     <tr>
        <th>Foto</th>
@@ -26,7 +28,7 @@
        <th>Fone</th>
        <th>Cel</th>
        <th>Data Nasc</th>
-       <th>Email</th>
+       <th colspan="2">Email</th>
     </tr>
     <tr>
        <td rowspan="4" valign="top">
@@ -37,7 +39,7 @@
        <td align="center"><%=h estagiarios.fone %></td>
        <td align="center"><%=h estagiarios.cel %></td>
        <td align="center"><%=h estagiarios.data_nasc.strftime("%d/%m/%Y") %></td>
-       <td align="center"><%=h estagiarios.email %></td>
+       <td align="center" colspan="2"><%=h estagiarios.email %></td>
     </tr>
     <% if current_user.has_role?('administrador')%>
     <tr>
@@ -45,14 +47,14 @@
         <th>Período</th>
         <th>Ingresso</th>
         <th>Termino</th>
-        <th colspan="2">Faculdade</th>
+        <th colspan="3">Faculdade</th>
      <tr/>
      <tr>
        <td align="center"><%=h estagiarios.matricula %></td>
        <td align="center"><%=h estagiarios.periodo_est %></td>
        <td align="center"><%=h estagiarios.data_ingresso.strftime("%d/%m/%Y") %></td>
        <td align="center"><%=h estagiarios.data_termino.strftime("%d/%m/%Y") %></td>
-       <td  align="center"colspan="2"><%=h estagiarios.faculdade %></td>
+       <td  align="center"colspan="3"><%=h estagiarios.faculdade %></td>
     </tr>
     <tr>
         <th>Contrato </th>
@@ -61,7 +63,7 @@
         <th>Analista</th>
         <th>Admissao</th>
         <th>Desligamento</th>
-        <th>Locacao</th>
+        <th colspan="2">Locacao</th>
     </tr>
      <tr>
          <%if (((estagiarios.data_admissao.to_time)+ 20.months) < Date.today)%>
@@ -88,9 +90,9 @@
              <td align="center"> EM ATIVIDADE</td>
           <%end%>
          <%if estagiarios.unidade_id.nil?%>
-           <td align="center"><%=h estagiarios.regiao.regiao %></td>
+           <td colspan="2" align="center"><%=h estagiarios.regiao.regiao %></td>
          <%else%>
-           <td align="center"><%=h estagiarios.unidade.nome %></td>
+           <td align="center"colspan="2"><%=h estagiarios.unidade.nome %></td>
         <%end%>
     </tr>
     <%end%>
