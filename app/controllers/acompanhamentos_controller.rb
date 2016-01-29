@@ -120,7 +120,7 @@ end
       if params[:type_of].nil?
           @acompanhamentos = Acompanhamento.all:order => 'created_at DESC'
       end
-      $testeI=0;
+      session[:testeI]=0
     render 'consulta'
  end
 

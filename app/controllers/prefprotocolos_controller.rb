@@ -13,27 +13,27 @@ end
       if params[:type_of].nil?
         @prefprotocolos = Prefprotocolo.all(:order =>  'created_at DESC')
       end
-      $testeI=0;
+      session[:testeI]=0
     render 'consulta'
  end
 
 def protocolo
    #unless params[:search].present?
      if params[:type_of].to_i == 4
-       if ($testeI==1)
+       if session[:testeI]==1
          @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","0"] ).count
          @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?","0"],:order => 'created_at DESC' )
          render :update do |page|
            page.replace_html 'protocolo', :partial => "protocolosindex"
          end
-      $testeI=1;
+      session[:testeI]=1;
       else
          @contador = Prefprotocolo.all.count
          @prefprotocolos = Prefprotocolo.all(:order =>  'created_at DESC')
          render :update do |page|
            page.replace_html 'protocolo', :partial => "protocolos"
          end
-       $testeI=0;
+       session[:testeI]=0;
       end
      end
    #else
@@ -51,7 +51,7 @@ def protocolo
            end
           else if params[:type_of].to_i == 3
 
-             if ($testeI==1)
+             if (session[:testeI]==1)
               if (params[:search].to_s == 'PROTOCOLO_INTERNO')
                @contador = Prefprotocolo.all(:conditions => ["destino like ? and encerrado = ? ", "%" + params[:search].to_s + "%", "0"]).count
                @prefprotocolos = Prefprotocolo.all(:conditions => ["destino like ?", "%" + params[:search].to_s + "%"],:order =>  'updated_at DESC')
@@ -91,12 +91,12 @@ def protocolo
         render :update do |page|
          page.replace_html 'protocolo', :partial => "protocolos"
         end
-        $testeI=0;
+        session[:testeI]=0;
        else if params[:type_of].to_i == 6
-         if ($testeI==1)
+         if (session[:testeI]==1)
             @contador = Prefprotocolo.all(:conditions => ["encerrado = ?","1"]).count
             @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado =?","1"],:order =>  'created_at DESC')
-            $testeI=1
+           session[:testeI]=1
             render :update do |page|
               page.replace_html 'protocolo', :partial => "protocolosindex"
             end
@@ -106,7 +106,7 @@ def protocolo
             render :update do |page|
               page.replace_html 'protocolo', :partial => "protocolos"
             end
-            $testeI=0;
+            session[:testeI]=0;
          end
      end
    end
@@ -117,13 +117,13 @@ end
 
 def index
  @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?", "0"], :order => 'id DESC' )
-  $testeI=1
+  session[:testeI]=1
 end
 
 
 def indexe
     @prefprotocolos = Prefprotocolo.all(:conditions => ["encerrado = ?", "1"], :order => 'id DESC' )
-  $testeI=1
+  session[:testeI]=1
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @prefprotocolos }
