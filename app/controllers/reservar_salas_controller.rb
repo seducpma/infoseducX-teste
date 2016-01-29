@@ -5,7 +5,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["index", "show", "create", "new","edit","sel_dados", "confirma"]
+before_filter :login_required, :except => ["index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -139,7 +139,9 @@ def create
   end
 
 
+def confirma_agenda
 
+end
  def sel_dados
     @dados = Sala.find(params[:reservar_sala_sala_id])
     session[:reservasala]= params[:reservar_sala_sala_id]
