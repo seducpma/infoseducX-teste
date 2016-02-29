@@ -91,14 +91,15 @@ margin:25px;
 }
 
 #imagem_login{
-   background-image:url(Imagens/banner.jpg);
+   background-image:url(Imagens/infoseduc.jpg);
    background-repeat: no-repeat;
+   background-position:center;
    text-align: center;
    color:white;
-   width:99%;
-   height:150px;
+   width:100%;
+   height:300px;
    margin:0;
-   font:bold;
+   font-weight:bold;
    border-color:black;
    border-left: double;
    border-bottom: double;

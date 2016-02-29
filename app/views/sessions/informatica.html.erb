@@ -1,66 +1,49 @@
-  <table width ="100%" border="2">
-    <tr>
-      <td valign="top">
-        <table width="40%" border="1" align="center" ><br/>
-          <tr>
-            <td valign="top">
-               <div id="imagem_login"></div>
-            </td>
-          </tr>
-          <tr>
-            <td width="100%" align="center">
-              <p><font  size="5" color="black"><b><u>INFOSEDUC</u></b></font></p>
-              <p><font  size="4" color="black"><b><u>Gerenciamento de Informática</u></b></font></p>
-              <p align="center"><font  size="1"  color="black"><b>LOGIN DE ACESSO</b></font></p>
-              <% form_tag session_path do -%>
-                  <font  size="2" color="black">
-                    <p><b><%= label_tag 'Usuário' %></b>
-                      <%= text_field_tag 'login', @login, :size =>15 %></p>
-                    <p><b><%= label_tag 'Senha' %></b>&nbsp;&nbsp;&nbsp;
-                     <%= password_field_tag 'password', nil, :size =>15 %></p>
-                  </font>
-                  <table>
-                    <tr>
-                      <td>
-                         <%= submit_tag 'Entrar' %>
-                         <br/><br/><br/>
-                      </td>
-                      <td width ="10%"></td>
-               <% end %>
 
-                      <td>
-                         <%= button_to "Sair", homes_path %>
-                         <br/><br/>
-                      </td>
-                    </tr>
-                  </table>
-                  
-
-             </td>
-                        
-           </tr>
-
-           <tr>
-              <td colspan="2" align="center">
-                <font  size="2" color="black"><b>Não possui senha?</b></font><br/>
-                       <%= button_to 'Cadastrar Usuário/Senha', signup_path%>
-                       <%= link_to 'Esqueci a Senha', new_password_path%>
-              </td>
-           </tr>
-           
-        </table>
-        <br/>
+  <br/><br/>
+<div id="conteudo">
+<table width="55%" border="1" align="center">
+  <tr>
+    <td colspan="2" align="center">
+<!--      <font color="red" size="4">< %= link_to "Área de Consultas", visaos_path %></font>-->
+    </td>
+  </tr>
+  <tr>
+     <td rowspan="2">
+       <center><div id="imagem_login"></div></center>
      </td>
-     </tr>
-   </table>
-  </td>
- </tr>
- <tr>
-    <td colspan="5">
-         <div id="rodape_login">
-             © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados. Ver.4.11 - 2013
-         </div>
-      </td>
-     </tr>
+     <td width="40%">
+       <p align="center"><font color="blue" size="3">INFOSEDUC</font></p>
+         <% form_tag session_path do -%>
+            <p align="center"><b><label for="login">Login</label></b>
+           &nbsp'<%= text_field_tag 'login','',:size => 10 %><br/>
+          <b><label for="password">Senha</label></b>
+          <%= password_field_tag 'password','',:size => 10 %><br/><br/>
 
-  </table>
+  <!--        <%= check_box_tag 'Memorizar' %>
+          <font size="2"><b>Memorizar usuário</b></font><br/> !-->
+          <%= submit_tag 'Entrar' %></p>
+         <% end -%>
+  <br/>
+  <br/>
+      <!-- < %= link_to 'Esqueci a Senha', new_password_path%>-->
+     </td>
+  </tr>
+  <tr>
+   <td colspan="2" align="center">
+        <font size="2"><b>Problemas com a senha?</b></font><br/>
+        <%= link_to 'Não possui senha', signup_path %>  <br/>
+        <%= link_to 'Esqueci a senha', new_password_path%>
+   </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <!-- Inicio do botao do Firefox -->
+      Utilize preferencialmente o navegador
+      <a href="http://br.mozdev.org/" target="_blank"><img src="http://www.mozilla.org/contribute/buttons/110x32bubble_r_pt.png" alt="Firefox" width="110" height="32" style="border-style:none;" title="Mozilla Firefox" /></a>
+      <!-- Fim do botao do Firefox -->
+    </td>
+  </tr>
+
+ </table>
+</div>
+<br/>
