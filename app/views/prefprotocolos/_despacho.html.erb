@@ -1,7 +1,7 @@
 <div style='display:none'>
   <div id='inline_despacho' style='padding:10px; background:#EEE9E9;'>
     <% form_remote_for(:despacho,:url => { :action => 'create_despacho' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
-     <h1>DESPACHO <br/> PROTOCOLO<%=h @prefprotocolo.codigo %></h1>
+     <h1>DESPACHO <br/> Nº ORDEM<%=h @prefprotocolo.codigo %></h1>
       <hr>
        <%= error_messages_for 'contact' %>
        <table  width="100%" bgcolor="#F5F5F5">

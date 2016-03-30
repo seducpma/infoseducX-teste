@@ -3,7 +3,7 @@
 <table class="tabelas1" align="center" width="90%">
   <tr>
     <th align="left">
-       <font  size=5 color="black"> <b>  CONSULTA PROTOCOLO ORDEM DE MANUTENÇÃO</b></font>
+       <font  size=5 color="black"> <b>  CONSULTA ORDEM DE MANUTENÇÃO</b></font>
     </th>
     <td width="3%">
      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -16,7 +16,7 @@
         <tr>
           <td align="left">
             <% form_tag busca_protocolo_mmanutencaos_path, :method => 'get' do %>
-            <font size="4"> Nº Protocolo:</font>
+            <font size="4"> Nº Ordem Seviço:</font>
              <%= text_field_tag :search, params[:search], :size => '1' %>
           </td>
           <td align="right">
@@ -31,7 +31,7 @@
                 <%if @mmanutencao.present?%>
                  <% for chamado in @mmanutencao %>
                  <tr>
-                    <th width="1%"> Protocolo</th>
+                    <th width="1%"> Nº Ordem</th>
                     <th> Unidade</th>
                     <th> Solicitado</th>
                     <th> Solicitante</th>

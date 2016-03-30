@@ -19,7 +19,7 @@
                  <fieldset><legend><font  size=4> Solicitação</font></legend>
                  <table>
                    <tr>
-                         <td align="left" width="50%"><b>Nº Protocolo:  </b></td>
+                         <td align="left" width="50%"><b>Nº Ordem :  </b></td>
                          <td align="left"><%=h @mmanutencao.id%></td>
                    </tr>
                    <tr>
@@ -73,7 +73,7 @@
                 <fieldset><legend><font  size=4> Encaminhamento</font></legend>
                    <table>
                      <tr>
-                       <td align="left"><b>Despacho:</b></td>
+                       <td align="left" valign="top"><b>Despacho:</b></td>
                        <%if @mmanutencao.procedimentos.nil?%>
                           <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
                        <%else%>
@@ -181,7 +181,7 @@
               <td>
                 <font><b>
                     <ul>
-                      <li> IMPRIMA E GUARDE ESTE PROTOCOLO</li>
+                      <li> IMPRIMA E GUARDE ESTE DOCUMENTO</li>
                       <li> ESTA ORDEM DE SERVIÇO SERÁ ATENDIDA ASSIM QUE POSSÍVEL</li>
                       <li> QUALQUER DÚVIDA ENTRAR EM CONTARO COM A SEDUC</li>
                      </ul>

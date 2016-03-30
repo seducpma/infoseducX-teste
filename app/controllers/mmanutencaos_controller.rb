@@ -47,10 +47,21 @@ class MmanutencaosController < ApplicationController
        @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
     else
       if current_user.has_role?('diretor_unidade')
-       @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and unidade_id = ?",current_user.unidade_id ])
+#        $cont1=0
+#        @contmanutencaos = Mmanutencao.all
+#        for count in @contmanutencaos
+#          if count.unidade_id != current_user.unidade_id
+#            $cont1=$cont1+1
+#          end
+#         end
+#       @contador = Mmanutencao.all.count
+#       @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and unidade_id = ?",current_user.unidade_id ])
+       @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
       else
-       @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and user_id = ?",current_user])
-       $chefia1=@mmanutencaos.user_id.current_user
+
+        @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and user_id = ?",current_user])
+
+       #$chefia1=@mmanutencaos.user_id.current_user
       end
     end
     respond_to do |format|

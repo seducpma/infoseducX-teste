@@ -508,7 +508,7 @@ display: none;
                     </ul>
                   </li>
                  <%end%>
-                 <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') %>
+                 <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao') %>
                    <li><a>Manutenção</a>
                     <ul style="width:108px;">
                       <li><%= link_to "Abrir",new_mmanutencao_path %></li>

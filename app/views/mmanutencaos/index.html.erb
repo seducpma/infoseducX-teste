@@ -25,16 +25,34 @@
           <%$cont=0%>
           <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
             <% for chamado in @mmanutencaos %>
+             <% if current_user.unidade_id != 53 %>
              <tr>
                <td align="center"><%=h chamado.id %></td>
                <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
-               <td><%=h chamado.solicitante %></td>
-               <td><%=h chamado.unidade.nome %></td>
-               <td colspan="2"><%=h chamado.descricao %></td>
-               <td> <%=h chamado.procedimentos%>  </td>
+               <% if (chamado.unidade_id != current_user.unidade_id) %>
+                   <td>----</td>
+               <%else%>
+                   <td><%=h chamado.solicitante %></td>
+               <%end%>
+               <% if chamado.unidade_id != current_user.unidade_id %>
+                  <td>----</td>
+               <%else%>
+                   <td><%=h chamado.unidade.nome %></td>
+               <%end%>
+               <% if chamado.unidade_id != current_user.unidade_id %>
+                   <td colspan="2">----</td>
+               <%else%>
+                   <td colspan="2"><%=h chamado.descricao %></td>
+               <%end%>
+               <% if chamado.unidade_id != current_user.unidade_id %>
+                   <td>----</td>
+               <%else%>
+                   <td> <%=h chamado.procedimentos%>  </td>
+               <%end%>
                <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
                    <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
                <% else %>
+
                    <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
                       <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
                    <% else %>
@@ -48,13 +66,41 @@
                       <%end%>
                <% end %>
               </tr>
+              <%else%>
+             <tr>
+               <td align="center"><%=h chamado.id %></td>
+               <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+               <td><%=h chamado.solicitante %></td>
+               <td><%=h chamado.unidade.nome %></td>
+               <td colspan="2"><%=h chamado.descricao %></td>
+               <td> <%=h chamado.procedimentos%>  </td>
+               <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                   <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+               <% else %>
+
+                   <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                      <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                   <% else %>
+                      <td><%=h chamado.situacao_manutencao.situacao %> <br/>
+                        <%if chamado.chefia.nil? %>
+                           p/ <%=h chamado.user.login %>
+                        <%else%>
+                           p/ <%=h chamado.chefia.nome %>
+                        <%end%>
+                       </td>
+                      <%end%>
+               <% end %>
+              </tr>
+              <%end%>
+              
               <tr>
                 <td align="right" colspan="8">
                    <table>
                       <tr>
                          <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') %>
-                           <td align="right" ><%= link_to image_tag("/stylesheets/images/encaminhar.png" ), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhar" %>
-                           <td align="right" ><%= link_to image_tag("/stylesheets/images/ordem.png" ), {:action => "ordemservico", :id=>chamado }, :method => "get", :title => "Ordem de Serviço" %></td>
+                           <td width="6% align="right" ><%= link_to image_tag("/stylesheets/images/encaminhar.png" ), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhar" %>
+                           <td width="6% align="right" ><%= link_to image_tag("/stylesheets/images/ordem.png" ), {:action => "ordemservico", :id=>chamado }, :method => "get", :title => "Ordem de Serviço" %></td>
+                           <td align="left" "align="left" > <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimir" %></td>
                          <%end%>
                          <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao')  %>
                            <td align="right" ><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "show", :id =>chamado}, :method => "get", :title => "Serviço" %>
@@ -67,7 +113,7 @@
             <%end%>
               <tr>
                 <td  colspan="12">
-                  <b>Total de Ordem de Serviços em aberto:</b> <%= $cont %>
+                  <b>Total de Ordem de Serviços em aberto:  <%= $cont %> </b>
                 </td>
               </tr>
           <%end%>
