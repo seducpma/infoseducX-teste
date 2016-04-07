@@ -101,7 +101,7 @@ end
     respond_to do |format|
       if @chamados.save
         flash[:notice] = 'SOLICITAÇÃO DE SERVIÇO CADASTRADA COM SUCESSO.'
-        #ChamadoMailer.deliver_notificar(@chamados)
+        ChamadoMailer.deliver_notificar(@chamados)
         format.html { redirect_to(@chamados) }
         format.xml  { render :xml => @chamados, :status => :created, :location => @chamados }
       else
