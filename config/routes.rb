@@ -191,7 +191,7 @@ ActionController::Routing::Routes.draw do |map|
   map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
   map.prefprot '/prefprot', :controller => 'prefprotocolos', :action => 'index'
   map.teste '/teste', :controller => 'prefprotocolos', :action => 'teste'
- 
+  map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
 
 
 

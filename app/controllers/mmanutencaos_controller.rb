@@ -713,7 +713,7 @@ def estatisticasMANTAt
   # GET /mmanutencaos/1.xml
   def show
     @mmanutencao = Mmanutencao.find(params[:id])
-    $idprotocolo = @mmanutencao.id
+    session[:idprotocolo]= @mmanutencao.id
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @mmanutencao }
@@ -746,7 +746,7 @@ def estatisticasMANTAt
     respond_to do |format|
       if @mmanutencao.save
         flash[:notice] = 'Manutencao solicitada.'
-        MmanutencaoMailer.deliver_notificar_mmanutencao(@mmanutencao)
+        #MmanutencaoMailer.deliver_notificar_mmanutencao(@mmanutencao)
         format.html { redirect_to(@mmanutencao) }
         format.xml  { render :xml => @mmanutencao, :status => :created, :location => @mmanutencao }
       else
@@ -755,6 +755,13 @@ def estatisticasMANTAt
       end
     end
   end
+
+  def impressao_chamado_manutencao
+      @mmanutencao = Mmanutencao.find(params[:id])
+      sesssion[:idprotocolo] = @mmanutencao.id
+    render :layout => "impressao"
+  end
+
 
   # PUT /mmanutencaos/1
   # PUT /mmanutencaos/1.xml
@@ -820,9 +827,9 @@ def lista_manutencao
 
  def protocolo
     @mmanutencao = Mmanutencao.find(params[:id])
-    $idprotocolo = @mmanutencao.id
-    t= $idprotocolo
-    @mmanutencao= Mmanutencao.find(t)
+    sesssion[:idprotocolo] = @mmanutencao.id
+
+    @mmanutencao= Mmanutencao.find(sesssion[:idprotocolo])
    render :layout => "protocolo"
   end
 

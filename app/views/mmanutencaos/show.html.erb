@@ -1,9 +1,9 @@
 <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('admin_manutencao')  %>
      <br/>
       <font size="2">
-      <table  class="tabelas " width="50%"align="center">
+      <table  class="tabelas " width="100%"align="center">
        <tr>
-          <th align="left">
+         <th colspan="" align="left">
              <font  size=5 color="black"> <b> SOLICITAÇÃO DE ORDEM DE SERVIÇO</b></font>
           </th>
           <td width="3%">
@@ -11,12 +11,14 @@
          </td>
          </tr>
        <tr>
-         <td colspan="3">
-          <font  size="2">
+       </tr>
+       <td colspan="2" >
+
+         
            <table width="100%">
             <tr>
               <td>
-                 <fieldset><legend><font  size=4> Solicitação</font></legend>
+                 <fieldset><legend><font  size=4> Solicitaçãos</font></legend>
                  <table>
                    <tr>
                          <td align="left" width="50%"><b>Nº Ordem :  </b></td>
@@ -67,6 +69,14 @@
                      <td align="left"><%=h @mmanutencao.obs%></td>
                    </tr>
                   </table>
+                   <tr>
+                     <td colspan="2"align="left">
+                       <%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_chamado_manutencao_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
+                     </td>
+                     
+                   </tr>
+                  </table>
+
                 </fieldset>
               </td>
               <td valign="top">
