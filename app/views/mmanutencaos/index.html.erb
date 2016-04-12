@@ -25,7 +25,7 @@
           <%$cont=0%>
           <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
             <% for chamado in @mmanutencaos %>
-             <% if current_user.unidade_id != 53 %>
+             <% if current_user.unidade_id != 52 %>
              <tr>
                <td align="center"><%=h chamado.id %></td>
                <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
