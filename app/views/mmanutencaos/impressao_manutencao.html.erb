@@ -43,7 +43,7 @@
                  <td><font size="4"><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y")%></font></td>
                  <td><font size="4"><%= "#{Time.now.strftime("%d/%m/%Y")}" %></font></td>
                  <td><font size="4"><%=h @mmanutencao.solicitante %></font></td>
-                 <td><font size="4"><%=h @mmanutencao.unidade.nome %></font></td>
+                 <td><font size="4"><%=h @mmanutencao.unidade.tipo.nome %> <%=h @mmanutencao.unidade.nome %></font></td>
                </tr>
                <tr>
                  <th><font size="4"><b>Problema</b></font></th>

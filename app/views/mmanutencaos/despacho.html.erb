@@ -19,11 +19,6 @@
            <% form_for(@mmanutencao) do |f| %>
            <%= f.error_messages %>
            <table>
-            <tr>
-              <td align="left" width="20%"><b>Nome:</b></td>
-              <td align="left"><%= $usuario%></td>
-
-             </tr>
            <tr>
               <td align="left" valign="top"><b>Despacho:</b></td>
               <td align="left"><%= f.text_area :procedimentos, :cols =>"40", :rows => "3" %></td>
