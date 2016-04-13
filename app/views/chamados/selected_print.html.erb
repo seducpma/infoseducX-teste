@@ -1,5 +1,5 @@
 <br/>
-
+<font  size="2"><b>
 <table  class="tabelas" width="100%"align="center">
  <tr>
    <th align="left">
@@ -19,14 +19,14 @@
               <% for chamados in @chamados %>
                <%if (chamados.situacao_chamado_id != 2) then %>
              <tr>
-        
+                <th> Prioridade</th>
                 <th> Ordem Serviço</th>
                 <th> Data solicitação</th>
                 <th> Solicitante</th>
                 <th> Unidade</th>
              </tr>
                 <tr>
-        
+                 <td width="3%" align="center"><%= text_field_tag(:priority,nil,:size => 1) %></td>
                  <td width="3%" align="center"><%=h chamados.id %></td>
                  <td><%=h chamados.data_sol.strftime("%d/%m/%Y %H:%M horas")%></td>
                  <td><%=h chamados.solicitante %></td>
