@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :name,     :maximum => 100
-  validates_uniqueness_of   :login,:email, :message => "Usuário já existe no sistema"
+  validates_uniqueness_of   :login,   :message => "Usuário já existe no sistema"
   before_save :encrypt_password
   
 

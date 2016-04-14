@@ -25,9 +25,9 @@
             <th width="15%"> Unidade</th>
             <th width="15%"> Solicitado</th>
             <th width="15%"> Solicitante</th>
-            <th width="15%"> Encaminhado</th>
+            <th width="10%"> Encaminhado</th>
             <th width="15%"> Para</th>
-            <th width="15%"> Executado</th>
+            <th width="20%"> Executado</th>
             <th width="15%"> Por</th>
             <div class="botao">
             <th align="center">Visualizar</th>
@@ -53,7 +53,8 @@
                 <%end%>
            <td><% if  chamado.data_enc.nil?%>
                <%else%>
-                   <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%></td>
+                  <%=h chamado.procedimentos %>  
+                  <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%></td>
 
                <%end%>
            <td><%if chamado.funcionario.nil?%>

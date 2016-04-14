@@ -19,16 +19,19 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
+      t=0
+       render :action => 'criado'
       # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       # self.current_user = @user # !! now logged in
-      redirect_to(homes_path)
+      
       flash[:notice] = ""
     else
+
       flash[:error]  = "Erro na criação"
-      redirect_to homes_path
+      
     end
   end
 

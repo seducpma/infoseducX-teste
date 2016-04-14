@@ -9,31 +9,46 @@
     <td>
       <fieldset><legend><font  size=4>Usuário</font></legend>
       <font  size="2">
-         <table>
-           <% @user.password = @user.password_confirmation = nil %>
-           <%= error_messages_for :user %>
-           <% form_for :user, :url => users_path do |f| -%>
-              <tr>
-                  <td align="left">Usuário:</td>
-                  <td align="left"><%= f.text_field :login %></td>
-                </tr>
-                <tr>
-                  <td align="left">Unidade:</td>
-                  <td align="left"><%= f.collection_select :unidade_id,Unidade.find(:all, :order => 'nome ASC'),:id,:nome, :include_blank => true, :order => 'nome ASC'  %></td>
-                <tr>
-                </tr>
-                <tr>
-                  <td align="left">e-mail:</td>
-                  <td align="left"><%= f.text_field :email %></td>
-                 <tr>
-                   <td align="left">Senha:</td>
-                   <td align="left"><%= f.password_field :password %></td>
-                 </tr>
-                 <tr>
-                   <td align="left"  width="22%">Confirma Senha:</td>
-                   <td align="left"><%= f.password_field :password_confirmation %></td>
-                 </tr>
-         </table>
+                      <table >
+                 <% @user.password = @user.password_confirmation = nil %>
+                 <%= error_messages_for :user %>
+                 <% form_for :user, :url => users_path do |f| -%>
+                     <tr>
+                        <td align="left">
+                          <b>Usuário:</b></td>
+                        <td colspan="2" align="left"><%= f.text_field :login, :size => "50" %> <br/>
+                           <font  color="red" size="2" ><b>Utilize o padrão unidade.nome - Ex: anaja.jose</b></font>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"><b>e-mail:</b></td>
+                        <td align="left" colspan="2" align="left"><%= f.text_field :email, :size => "50" %>
+                        </td>
+                      </tr>
+                      <tr>
+                         <td align="left" ><b>Senha:</b></td>
+                         <td align="left"><%= f.password_field :password, :size => "10" %></td>
+                         <td align="left"><b><i><font  color="red" size="2" >Escolha uma senha com no mínimo 8 <b>DÍGITOS</b></font></i></b></td>
+                       </tr>
+                       <tr>
+                         <td align="left"width="12%"><b>Confirma Senha:</b></td>
+                         <td align="left"><%= f.password_field :password_confirmation, :size => "10" %></td>
+
+                         <td align="left"><b><i><font  color="red" size="2" >Digitar novamente a senha</font></i></b></td>
+                         <td></td>
+                       </tr>
+                      <tr>
+                        <td align="left"><b>Unidade:</b></td>
+                        <td colspan="2" align="left"><%= f.collection_select :unidade_id,Unidade.all(:order => 'nome ASC'),:id,:nome, :include_blank => true %>
+
+                        &nbsp&nbsp<b><i><font  color="red" size="2" >Selecionar Unidade</font></i></b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3"><br/></td>
+                      </tr>
+
+
+               </table>
        </font>
      </fieldset>
         <table>
