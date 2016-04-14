@@ -52,16 +52,15 @@
                     <%=h chamado.chefia.nome %></td>
                 <%end%>
            <td><% if  chamado.data_enc.nil?%>
+                   <%=h chamado.procedimentos %></td>
                <%else%>
-                  <%=h chamado.procedimentos %>  
+                  <%=h chamado.procedimentos %>
                   <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%></td>
 
                <%end%>
-           <td><%if chamado.funcionario.nil?%>
-                    <%=h chamado.user.login%> </td>
-                <%else%>
-                    <%=h chamado.funcionario.nome %></td>
-                <%end%>
+           <td>
+                    <%=h chamado.ffuncionario %></td>
+                
 
            <div class="botao">
              <td align="center" colspan="1"><%= button_to("Serviço", {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir") %></td>
