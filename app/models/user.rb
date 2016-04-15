@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # You may wish to modify it to suit your need
   has_one :chat
   has_many :anexos
+  has_many :roles_user
   has_and_belongs_to_many :chats
   has_and_belongs_to_many :roles
   belongs_to :estagiario

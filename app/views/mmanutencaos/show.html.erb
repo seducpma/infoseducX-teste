@@ -71,7 +71,7 @@
                   </table>
                    <tr>
                      <td colspan="2"align="left">
-                       <%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_chamado_manutencao_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
+                        <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>@mmanutencao}, :method => "get", :title => "Imprimir" %>
                      </td>
                      
                    </tr>

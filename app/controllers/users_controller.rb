@@ -13,25 +13,26 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
- 
+
+
+  def criado
+
+  end
+
+
   def create
-    #logout_keeping_session!
+      logout_keeping_session!
     @user = User.new(params[:user])
+    
     success = @user && @user.save
     if success && @user.errors.empty?
+     # redirect_back_or_default('/')
+      render :action => 'criado'
+      flash[:notice] = "USUÁRIO CRIADO COM SUCESSO, ENTRE EM CONTATO COM O ADMINISTRADOR DO SISTEMA PARA LIBERAÇÃO."
       t=0
-       render :action => 'criado'
-      # Protects against session fixation attacks, causes request forgery
-      # protection if visitor resubmits an earlier form using back
-      # button. Uncomment if you understand the tradeoffs.
-      # reset session
-      # self.current_user = @user # !! now logged in
-      
-      flash[:notice] = ""
     else
-
-      flash[:error]  = "Erro na criação"
-      
+      flash[:error]  = "SENHA OU USUÁRIO NÃO AUTORIZADO "
+      render :action => 'new'
     end
   end
 
