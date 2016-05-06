@@ -26,9 +26,11 @@
              <td align="left"> <b>Soliciante:</b></td>
               <td><%= f.text_field :solicitante, :size => 44 %></td>
             </tr>
+<!--
            <tr>
              <td colspan="2" align="left"><b>Forma Solicitação:</b> <%= f.select :forma, options_for_select(Chamado::Solicitacao), :include_blank => "---Selecione---" %> <b>Data/Hora:</b><%= Time.now.strftime("%d/%m/%Y %H:%M")%> horas</td>
            </tr>
+-->
             <tr>
               <td colspan="2">
                 <fieldset><legend><font size ="2"><b>Serviços:</b></font></legend>
@@ -48,12 +50,20 @@
           </tr>
           <tr>
            <td align="left" valign="top"><b>Descrição da <br/>Solicitação:</b></td>
-           <td> <%= f.text_area :descricao, :cols =>"60", :rows => "3" %></td>
+           <td> <%= f.text_area :descricao, :cols =>"70", :rows => "3" %></td>
+         </tr>
+          <tr>
+           <td align="left" valign="top"><font size="2" color ="red"><b>*</b></font><b>Justificativa:</b></td>
+           <td> <%= f.text_area :justificativa, :cols =>"70", :rows => "3" %></td>
          </tr>
           <tr>
            <td  colspan="2" align="left" valign="top">
-             <font color="red"><b> Favor descrever, de forma específica, todos os serviços e respectivos locais  <br/>
-             <u>Exemplo:</u> Trocar tomadas da sala nº 5
+             <font color="red"><b> Favor descrever, de forma específica, todos os serviços, respectivos locais e <br/>
+             apresentar JUSTIFICATIVA (este campo é obrigatório).<br/>
+                 <u>Exemplo:</u> Trocar lampadas da sala nº 5 <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             JUSTIFICATIVA: Lampada queimadas e as salas de aula necessitam iluminação <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            adequada para atender as atividades desenvolvidas
+
 
            </b></td>
 
