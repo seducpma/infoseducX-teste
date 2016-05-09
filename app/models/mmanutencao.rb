@@ -1,6 +1,6 @@
 class Mmanutencao < ActiveRecord::Base
 
-  validates_presence_of :unidade_id, :justificativa, :message => ' - SELECIONAR UNIDADE  - '
+  validates_presence_of :unidade_id, :message => ' - SELECIONAR UNIDADE  - '
   belongs_to :unidade, :dependent => :destroy
   belongs_to :situacao_manutencao
   belongs_to :user
