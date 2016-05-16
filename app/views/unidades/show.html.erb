@@ -72,10 +72,13 @@
             <td align="left" valign="top"><b>Estagiários:</b></td>
             <td align="left">
              <%if (@unidades.estagiarioE == 1) then%>
-                <% @unidades.regiao.estagiarios.each do |est| %>
-                   <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
-                     <%=h est.nome %> (Itinerante)<br/>
-                  <%end%>
+                   <%if @unidades.regiao.nil?%>
+                   <%else%>
+                        <% @unidades.regiao.estagiarios.each do |est| %>
+                          <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
+                           <%=h est.nome %> (Itinerante)<br/>
+                          <%end%>
+                       <%end%>
                 <%end%>
              <%else%>
              <%if (@unidades.estagiarioM == 1) then%>
