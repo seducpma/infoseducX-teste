@@ -106,7 +106,7 @@ class InscricaosController < ApplicationController
       if @inscricao.save
         @inscricao.valida_vaga
         flash[:notice] = 'INSCRIÇÃO CONFIRMADA COM SUCESSO.'
-        InscricaoMailer.deliver_confirmacao_inscricao(@inscricao,@inscricao.participante)
+        #InscricaoMailer.deliver_confirmacao_inscricao(@inscricao,@inscricao.participante)
         format.html { redirect_to(@inscricao) }
         format.xml  { render :xml => @inscricao, :status => :created, :location => @inscricao }
       else
