@@ -1,6 +1,6 @@
 <div id="posicao_login" >
   <br/>
-  <table align="center" width="90%">
+  <table align="center" width="90%" >
 
 
         <tr>
@@ -11,14 +11,14 @@
         </tr>
         <br/>
    <tr>
-     <td width="10%" align="center">
+     <td width="10%" align="center" style="height: 100%">
        <%= link_to image_tag("/stylesheets/Imagens/infoseduc.jpg", :size => "200x100"), informatica_path, :title => "Informática"%>
      </td>
      <td width="10%" align="center">
        <%= link_to image_tag("/stylesheets/Imagens/sisgered.jpg", :size => "200x100"),  "http://sisgered.seducpma.com", :title => "Sistema de Gerenciamento Escolar"%>
      </td>
      <td width="10%" align="center">
-       <%= link_to image_tag("/stylesheets/Imagens/inscricao.jpg", :size => "200x100"), "https://docs.google.com/forms/d/1lnMn4R-wtHHx4wrq-ov8tLtolpDHskaxFXVpIa97In8/viewform?usp=send_form#start=invite", :title => "Inscrição"%>
+       <%= link_to image_tag("/stylesheets/Imagens/palestras.jpg", :size => "200x100"), new_inscricao_path, :title => "Inscrições"%>
      </td>
      <td rowspan="4" valign="top" align="left">
         <div id="caderno">
@@ -38,7 +38,7 @@
 
                             <% row_cursos.each do |curso| %>
                                 <%if curso.existe_vaga %>
-                                  <td id="demo" align="left"><%=$cont%>.<%= "#{curso.nome}"%> <br/> <font color="blue"> &nbsp&nbsp<%="Total de vagas: #{curso.qtde}"%> <br/> &nbsp&nbsp<%="Vagas disponíveis: #{curso.vagas_disponiveis}"%></font></td>
+                                  <td id="demo" align="left"><%=$cont%>.<%= "#{curso.nome_curto}"%> <br/> <font color="blue"> &nbsp&nbsp<%="Total de vagas: #{curso.qtde}"%> <br/> &nbsp&nbsp<%="Vagas disponíveis: #{curso.vagas_disponiveis}"%></font></td>
                                 <%else%>
                                   <td><%= " #{curso.nome}"%>  <br/>
                                     <font color="red"> <b>TODAS AS <%="#{curso.qtde}"%> VAGAS<br/> ESTÃO COMPLETAS </b></font> </td>
@@ -67,7 +67,7 @@
     </td>
    </tr>
    <tr>
-     <td width="10%" align="center">
+     <td width="10%" align="center"  style="height: 100%">
        <%= link_to image_tag("/stylesheets/Imagens/professores1.jpg", :size => "200x100"), "http://pontua.seducpma.com", :title => "Pontuação"%>
      </td>
      <td align="center">
@@ -78,7 +78,7 @@
      </td>
    </tr>
    <tr>
-     <td align="center">
+     <td align="center"   style="height: 100%">
        <%= link_to image_tag("/stylesheets/Imagens/estagioB.jpg", :size => "200x100"), new_curriculo_path, :title => "Curriculos"%>
     </td>
      <td align="center" >
@@ -92,13 +92,13 @@
    </tr>
 
    <tr>
-     <td align="center">
+     <td align="center" valign="top">
       <%= link_to image_tag("/stylesheets/Imagens/bannerinfo1.jpg", :size => "200x100"), informatica_path, :title => "Manutenção Informática"%>
     </td>
-     <td align="center">
+     <td align="center" valign="top">
        <%= link_to image_tag("/stylesheets/Imagens/oficio.jpg", :size => "200x100"), oficio_path, :title => "Oficios"%>
      </td>
-     <td align="center">
+     <td align="center" valign="top">
        <%= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100"), reservar_salas_path, :title => "Reservas de Sala"%>
     </td>
    </tr>
@@ -108,7 +108,7 @@
       
       <br/><br/>
          <div id="rodape_login">
-          <font size="2"> © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.  -----   ver.5.3 - 2014</font>
+          <font size="2"> © 2010 . Prefeitura de Americana - SEDUC - Todos os Direitos Reservados.  -----   ver.6.1 - 2016</font>
          </div>
       </td>
      </tr>

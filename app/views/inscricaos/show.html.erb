@@ -28,12 +28,27 @@
                <td colspan="5" ><%=h  @inscricao.participante.nome %></td>
              </tr>
               <tr>
-                <td valign="top"><b>Cursos:</b></td>
-                <td>
-                   <% @inscricao.cursos.each do |curso| %>
-                      - <%=h curso.nome_curto %><br/>
-                    <% end %>
-                </td>
+                <td valign="top"><b>Curso: </b></td>
+               <td colspan="5" >
+                    <% if @inscricao.curso_id ==1 %>
+                         Brincadeiras Cantadas
+                    <%end%>
+                    <% if @inscricao.curso_id ==2 %>
+                         Ciclos de cinema I: cinema, infância e sociedade
+                    <%end%>
+                    <% if @inscricao.curso_id ==3 %>
+                         Compreendendo a visão e a deficiencia visual
+                    <%end%>
+                    <% if @inscricao.curso_id ==4 %>
+                         LIBRAS I – Introdução à língua brasileira de sinais
+                    <%end%>
+                    <% if @inscricao.curso_id ==5 %>
+                         Teoria elementar de música
+                    <%end%>
+                    <% if @inscricao.curso_id ==6 %>
+                         Vivências corporais
+                    <%end%>
+                 </td>
               </tr>
               <tr>
                 <td colspan="2"><b>Inscrição efetuada em:</b>
@@ -64,12 +79,11 @@
     <div class="botao">
        <tr>
          <td colspan="4">
-          <table align="right">
+           <table align="left" >
             <tr>
-              <td align="right"><%= button_to('Inscrições Anteriores',{:controller =>"inscricaos" ,:action => "consultas1", :id =>@inscricao}, :method => "get", :title => "Inscrições Anteirores") %></td>
-              <td width="1%" align="right"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
-              <td width="1%" align="right"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
-              <td width="1%"align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+              <td width="1%" align="left"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
+              <td width="1%" align="left"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+              <td align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
             </tr>
           </table>
          </td>

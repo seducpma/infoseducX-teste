@@ -11,53 +11,34 @@
    </td>
   </tr>
   <tr>
-    <td colspan="2">
-      <marquee behavior="alternate"><font  size=5 color="RED"> <b> FAVOR LER ATENTAMENTE TODAS AS INSTRUÇÕES PARA EFETUAR SUA INSCRIÇÃO</b></font></marquee>
-    </td>
-  </tr>
-  <tr>
   <td colspan="2">
-<fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
-  <table width="100%">
-  <tr>
-    <td width ="1%" valign="top"><b>Participante:</b></td>
-     <% if @participante.present? %>
-        <%= @participante.nome %>
-        <td valign="top">
-         <%= f.hidden_field(:participante_id,:value => @participante.id) %> <%= link_to 'Cadastre-se já', new_participante_path %><br/>
-        </td>
-     <%else%>
-        <td width =20%"  valign="top">
-           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>&nbsp&nbsp<b>(Selecione seu nome)</b>
-           <div class="botao">
-             <table>
-               <tr>
-                 <td> &nbsp&nbsp<b><u><font color="red" size="3">OBS:</font></u> 1) SE NOME NÃO CONSTA NA LISTA ACIMA. <br/>
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp > Clique aqui </b> =================></td>
-                 <td><%= link_to image_tag("/stylesheets/images/participante.jpeg", :size => "180x25"), new_participante_path, :title => "Cadastrar Participante" %></td>
-              </tr>
-              <tr>
-                 <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>2) ANTES DE SE CADASTRAR, VERIFIQUE SE SEU NOME CONSTA NA LISTA</b></td>
+   <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
+     <table width="100%">
+       <tr>
+         <td colspan="2" align="center"><font  size=5 color="RED"> <b> FAVOR LER ATENTAMENTE TODAS AS INSTRUÇÕES PARA EFETUAR SUA INSCRIÇÃO</b></font></td>
+      </tr>
+       <tr>
+         <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>1) ANTES DE SE INSCREVER VERIFIQUE SE SEU NOME CONSTA NA LISTA DE PARTICIPANTES.</td>
+       </tr>
+       <tr>
+         <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>2) SE SEU NOME NÃO CONSTAR NA LISTA, FAÇA SEU CADASTRO DE PARTICIPANTE. CLIQUE AQUI </b> ============>
+                     <%= link_to image_tag("/stylesheets/images/participante.jpeg", :size => "180x25"), new_participante_path, :title => "Cadastrar Participante" %> </b></td>
                </tr>
                <tr>
-                 <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>3) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES</b></td>
+                 <td colspan="2"><br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>3) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES.</b></td>
                </tr>
-             </table>
-           </div>
-         </td>
-         <!--
-        <td colspan="">
-          <font color="blue"><b>Curso disponível somente para quem   cursou o módulo I</b>
 
-        </td>-->
-     <%end%>
+      <tr>
+        <td  colspan="2" align="center"> <font size ="3"><br/><b>Participante:</b>
+           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>&nbsp&nbsp<b>(Selecione seu nome)</b></font></td>
+
   </tr>
 
-          <%= observe_field  :inscricao_participante_id,
+ <!--         <%= observe_field  :inscricao_participante_id,
               :with => :inscricao_participante_id,
-              :url => { :action => 'sel_participa' } %>
-
-  <tr>
+             :url => { :action => 'sel_participa' } %>
+-->
+  <tr><td></td>
     <td colspan="4">
      <%if @participante.present?%>
       Matricula: <%=h @participante.matricula %><br/>
@@ -72,78 +53,40 @@
   </tr>
  </table>
 
-   <table class="tabelas1" align="center" width="100%" >
-     <tr>
-      <th colspan="2" style=" font-size: large">CURSOS DISPONÍVEIS </th>
-     </tr>
+   <table align="center" width="100%" >
 
-    <tr>
-      <td colspan="2">
-         <b>Selecione a opção desejada  </b>
-      </td>
-    </tr>
 <!--
     <tr><td>&nbsp&nbsp<b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b></td></tr>
 -->
-
-     <% @cursos.in_groups_of(2, false) do |row_cursos| %>
       <tr>
-        <% row_cursos.each do |curso| %>
-            <%if curso.existe_vaga %>
-             <td width="50%"id="demo" align="left"><%= check_box_tag "inscricao[curso_ids][]", curso.id, @inscricao.cursos.include?(curso), :title => "#{curso.ementa}"%>
-                                        <%= "#{curso.nome_curto}"%><br/>&nbsp&nbsp&nbsp
-                                        <%=" #{curso.qtde} vagas / #{curso.vagas_disponiveis} disponíveis" %>
-             ________________________________________________
-             </td>
-
-            <%else%>
-              <td><%= "CURSO #{curso.nome}"%><br/>
-                <font color="red"><b>Nº DE VAGAS COMPLETO </b></font>
-             ________________________________________________
-              </td>
+        <td colspan="3"><font size="2">
+            <center><font size ="5"color="red"><b><u>CURSOS DISPONÍVEIS</u></b></font></center><br/>
+        </td>
+     </tr>
+     <% for curso in @cursos %>
+        <%if curso.vagas_disponiveis > 0 %>
+             <tr><td width =" 10%"></td>
+               <td><b>><font size="3" color ="blue"> OFICINA: "<%=h curso.nome %>" </b></font> &nbsp - &nbsp <font size ="3"color="red"><b>Vagas disponíveis:</b> <%=h curso.vagas_disponiveis%></font><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Professor(a) formador(a):</u> <%=h curso.ministrante %><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> <%=h curso.publico %><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias <%=h curso.datas %> &nbsp - &nbsp <u>Carga Horária: <%=h curso.carga_horaria%> </u><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> das <%=h curso.horario %><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> <%=h curso.local %><br/>
+         ---------------------------------------------------------------------------------------------------------------
+               </td>
+             </tr>
             <%end%>
-        <%end%>
-
-      </tr>
-    <%end%>
+     <%end%>
       <tr>
-        <th colspan="2"><font size="2">
-          <center><font size ="4"color="red"><u>LEIA COM ATENÇÃO</u></font></center>
-          <u>Obs:</u> Para maiores informações posicione o mouse sobre caixa de opção e aguarde alguns segundos.<br/><br/>
-             &nbsp&nbsp&nbsp&nbsp <b>><font size="3" color ="blue"> OFICINA: "CONHECENDO A CRIANÇA E SUAS FASES DE DESENVOLVIMENTO " </b></font><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Professora formadora:</u>Dalva  Storare  Pupo</br>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> ADI e PC<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 09, 16 e 23 Junho<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> das 18:30 as  21:30 horas <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> auditório Carlos Drumond de Andrade na SEDUC<br/>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ---------------------------------------------------------------------------------------------- </br>
-             &nbsp&nbsp&nbsp&nbsp <b>><font size="3" color ="blue"> OFICINA: "O MOVIMENTO E A EDUCAÇÃO INFANTIL: UM DIÁLOGO POSSÍVEL E NECESSÁRIO" </b></font><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Professor formador:</u>Tiago Henrique Mendes</br>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> PEBI Infantil<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 02,  09 e 16 de junho<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> das 18:30 as  21:30 horas <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> Ciep Professor Otavio Cesar Borghi , Rua das Hortênsias, 1550,  Cidade Jardim<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>OBS:</u> Necessario utilização de roupas leves e conforáveis<br/><br/>
+        <td colspan="2" align="center"><b><u>OBS:</u></b> Somente um curso por inscrição, se desejar fazer mais de um curso é necessário fazer uma inscrição por cada curso.</td>
+     </tr>
 
- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ---------------------------------------------------------------------------------------------- </br>
-             &nbsp&nbsp&nbsp&nbsp <b>><font size="3" color ="blue"> OFICINA: "FILOSOFIA NA EDUCAÇÃO INFANTIL" </b></font><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Professor formador:</u>Juscelino Lino</br>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Professores da Educação Infantil – níveis 1 e 2<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias 11, 18 e 25 junho<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> das 18:30 as  21:30 horas <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> Ciep Professor Otavio Cesar Borghi , Rua das Hortênsias, 1550,  Cidade Jardim<br/><br/>
-
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ---------------------------------------------------------------------------------------------- </br>
-             &nbsp&nbsp&nbsp&nbsp <b>><font size="3" color ="blue"> FINANÇAS PESSOAIS / EDUCAÇÂO FINANCEIRA" </b></font><br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Professor formador:</u>Adalberto Zorzo<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> Funcinários que trabalhos no periodo <br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontro:</u> Dias 02/06 das 20:30 as 22:00 horas<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> FATEC - rua Emilio Menezes s/n Vila Amorim sala B-10<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontro:</u> Dias 09 e 16/06 das 14:00 as 16:00 horas<br/>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> FATEC - rua Emilio Menezes s/n Vila Amorim sala A-04<br/><br/>
-
-          </font></th>
-      </tr>             
+    <tr>
+      <td colspan="2" align="center"><br/>
+         <font size="3"><b>Selecione o curso desejado participar: <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecione -- ' %> </font>    </b>
+         <br/><br/>
+      </td>
+    </tr>
 
 
 

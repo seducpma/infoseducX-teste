@@ -2,7 +2,7 @@ class Participante < ActiveRecord::Base
 
   has_many :inscricaos
   belongs_to :unidade
-  has_many :cursos
+  belongs_to :curso
   validates_presence_of :nome, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
   validates_presence_of :email, :message => ' - FAVOR CASDASTRAR E_MAIL'
   validates_presence_of :unidade_id, :message => ' - PREENCHIMENTO OBRIGATÓRIO'
