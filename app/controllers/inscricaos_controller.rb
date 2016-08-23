@@ -293,7 +293,7 @@ protected
   end
 
   def load_cursos
-    @cursos = Curso.find(:all, :order => 'nome ASC', :conditions => ['status = 0 AND vagas_disponiveis > 0'])
+    @cursos = Curso.find(:all, :conditions => ['status = 0 AND vagas_disponiveis > 0'])
   end
 
 
