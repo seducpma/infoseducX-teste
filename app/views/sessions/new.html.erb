@@ -38,7 +38,7 @@
 
                             <% row_cursos.each do |curso| %>
                                 <%if curso.existe_vaga %>
-                                  <td id="demo" align="left"><%=$cont%>.<%= "#{curso.nome_curto}"%> <br/> <font color="blue"> &nbsp&nbsp<%="Total de vagas: #{curso.qtde}"%> <br/> &nbsp&nbsp<%="Vagas disponíveis: #{curso.vagas_disponiveis}"%></font></td>
+                                  <td id="demo" align="left"><%=$cont%>.<%= "#{curso.nome_curto}"%> <br/> <font color="blue"> &nbsp&nbsp<%="Total de vagas: #{curso.qtde}"%> <br/> &nbsp&nbsp<%="Vagas disponíveis: #{curso.vagas_disponiveis}"%> <br/> &nbsp&nbsp<%="Vagas disponíveis: #{curso.datas}"%></font></td>
                                 <%else%>
                                   <td><%= " #{curso.nome}"%>  <br/>
                                     <font color="red"> <b>TODAS AS <%="#{curso.qtde}"%> VAGAS<br/> ESTÃO COMPLETAS </b></font> </td>
