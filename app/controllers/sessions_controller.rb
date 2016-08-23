@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
  before_filter :load_cursos
   def load_cursos
-    @cursos = Curso.find(:all, :order => 'nome ASC', :conditions => ['status = 0'])
+    @cursos = Curso.find(:all, :conditions => ['status = 0'])
   end
 
   layout "login"
