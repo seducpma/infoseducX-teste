@@ -1,5 +1,4 @@
 class Curso < ActiveRecord::Base
-  has_and_belongs_to_many :inscricaos
   has_many :unidades
   has_many :participantes
   has_many :inscricaos

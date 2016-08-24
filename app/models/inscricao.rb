@@ -1,11 +1,11 @@
 class Inscricao < ActiveRecord::Base
-
+  belongs_to :curso
   belongs_to :participante, :dependent => :destroy
   #belongs_to :opcao1, :class_name => 'Unidade', :foreign_key => "opcao1"
   #belongs_to :opcao2, :class_name => 'Unidade', :foreign_key => "opcao2"
   #validates_presence_of :existe_vaga?, :message => "Não existe mais vagas dispiveis a este curso"
   #has_and_belongs_to_many :cursos
-  belongs_to :curso
+  
   accepts_nested_attributes_for :participante
   validates_presence_of :participante_id
   #validates_uniqueness_of :participante_id, :if => :tem_inscricao?,:message => " Error => Este participante já efetuou a inscrição"
