@@ -68,6 +68,8 @@ class EstagiariosController < ApplicationController
 
     respond_to do |format|
       if @estagiarios.save
+        w1=@estagiarios.photo_file_name
+        t=0
         flash[:notice] = 'ESTAGIÁRIO CADASTRADO COM SUCESSO.'
         format.html { redirect_to(@estagiarios) }
         format.xml  { render :xml => @estagiarios, :status => :created, :location => @estagiarios }
