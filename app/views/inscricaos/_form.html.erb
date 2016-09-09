@@ -66,13 +66,13 @@
      <% for curso in @cursos %>
         <%if curso.vagas_disponiveis > 0 %>
              <tr><td width =" 10%"></td>
-               <td><b>><font size="3" color ="blue"> "<%=h curso.nome %>" </b></font> &nbsp - &nbsp <font size ="3"color="red"><b>Vagas disponíveis:</b> <%=h curso.vagas_disponiveis%></font><br/>
+               <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font> &nbsp - &nbsp <font size ="3"color="red"><b>Vagas disponíveis:</b> <%=h curso.vagas_disponiveis%></font><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u></u> <%=h curso.ministrante %><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> <%=h curso.publico %><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias <%=h curso.datas %> &nbsp - &nbsp <u>Carga Horária: <%=h curso.carga_horaria%> </u><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> <%=h curso.horario %><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> <%=h curso.local %><br/>
-                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>OBS:</u> Levar holerith para pagar 1/2 entrada ($ 10,00)  entrada intera sem holerith ($20,00)<br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>OBS:</u><b> Caso o número de inscritos seja inferior a 35 participantes, a visita será CANCELADA</b>
          ---------------------------------------------------------------------------------------------------------------
                </td>
              </tr>
