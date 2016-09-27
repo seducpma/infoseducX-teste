@@ -241,7 +241,7 @@ def gera_pdf
 
  def lista_inscricao
     $curso = params[:curso_curso_id]
-    @inscricaos = Inscricao.find(:all, :conditions => ['curso_id=' + $curso ])
+    @inscricaos = Inscricao.find(:all, :conditions => ['curso_id=?', params[:curso_curso_id] ])
     render :partial => 'lista_inscricao'
  end
 
@@ -265,7 +265,7 @@ def gera_pdf
 
  def lista_inscricaos
      $participante = params[:inscricao_inscricao_participante_id]
-    @inscricaos = Inscricao.find(:all, :conditions => ['participante_id=?',  $participante ])
+     @inscricaos = Inscricao.find(:all, :conditions => ['participante_id=?',  params[:inscricao_inscricao_participante_id]])
     render :partial => 'inscricaos'
  end
 

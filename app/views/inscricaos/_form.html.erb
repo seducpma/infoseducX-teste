@@ -103,6 +103,7 @@
                -->
                <td align="right">   <%= f.submit "INSCREVER" %></td>
       <% end %>
+               <td width="2%" align="right"><%= button_to(' CONSULTA INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
                <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
            </tr>
        </table>

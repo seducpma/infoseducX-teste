@@ -29,29 +29,7 @@
              </tr>
               <tr>
                 <td valign="top"><b>Curso: </b></td>
-               <td colspan="5" >
-                    <% if @inscricao.curso_id ==16 %>
-                         OFICINA: Brincadeiras Cantadas
-                    <%end%>
-                    <% if @inscricao.curso_id ==17 %>
-                        OFICINA: Ciclos de cinema I: cinema, infância e sociedade –Turma 2
-                    <%end%>
-                    <% if @inscricao.curso_id ==18 %>
-                         OFICINA: Contribuições para atuação no Transtorno do Espectro Autista.
-                    <%end%>
-                    <% if @inscricao.curso_id ==19 %>
-                         OFICINA: Transformando cantos para vivenciar encantos(Matutino)
-                    <%end%>
-                    <% if @inscricao.curso_id ==20 %>
-                           OFICINA: Transformando cantos para vivenciar encantos(Vespertino)
-                    <%end%>
-                    <% if @inscricao.curso_id ==21 %>
-                         OFICINA: LIBRAS II – Língua brasileira de sinais.
-                    <%end%>
-                    <% if @inscricao.curso_id ==23 %>
-                         OS MUITOS E O UM: ARTE CONTEMPORÂNEA  BRASILEIRA.
-                    <%end%>
-                 </td>
+               <td colspan="5" ><%=h  @inscricao.curso.nome %></td>
               </tr>
               <tr>
                 <td colspan="2"><b>Inscrição efetuada em:</b>
@@ -78,21 +56,26 @@
           <tr>
              <td colspan="3"><hr></td>
         </tr>
+
         <% $idparticipante =  @inscricao.participante_id%>
-    <div class="botao">
-       <tr>
-         <td colspan="4">
-           <table align="left" >
-            <tr>
-              <td width="1%" align="left"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
-              <td width="1%" align="left"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
-              <td align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-            </tr>
-          </table>
-         </td>
-       </tr>
-     </div>
- </table>
+        <div class="botao">
+           <tr>
+             <td colspan="4">
+               <table align="left" >
+                <tr>
+                  <td width="1%" align="left"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
+                  <td width="1%" align="left"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+                  <td align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+                </tr>
+              </table>
+             </td>
+           </tr>
+         </div>
+        </table>
+       </fieldset>
+    </td>
+  </tr>
+  </table>]
 </font>
 <br/>
 

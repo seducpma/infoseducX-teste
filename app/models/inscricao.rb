@@ -1,5 +1,5 @@
 class Inscricao < ActiveRecord::Base
-  belongs_to :curso
+  belongs_to :curso, :dependent => :destroy
   belongs_to :participante, :dependent => :destroy
   #belongs_to :opcao1, :class_name => 'Unidade', :foreign_key => "opcao1"
   #belongs_to :opcao2, :class_name => 'Unidade', :foreign_key => "opcao2"
@@ -9,7 +9,7 @@ class Inscricao < ActiveRecord::Base
   accepts_nested_attributes_for :participante
   validates_presence_of :participante_id
   #validates_uniqueness_of :participante_id, :if => :tem_inscricao?,:message => " Error => Este participante já efetuou a inscrição"
-  attr_accessor :vagas, :curso
+  attr_accessor :vagas
   Periodo = %w(Matutino Vespertino Noturno Sabado_Matutino)
   before_save :ativa_inscricao
 

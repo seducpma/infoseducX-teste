@@ -11,10 +11,7 @@
       <% for inscricao in @inscricaos %>
       <tr>
        <td><%=h inscricao.participante.nome %></td>
-       <td><% inscricao.cursos.each do |curso| %>
-             <%=h curso.nome %>
-           <% end %>
-      </td>
+       <td><%=h inscricao.curso.nome %></td>
        <td><%=h inscricao.data_inscricao.strftime("%d/%b/%y") %> </td>
        <td align="center">
             <% if inscricao.encerrado == true %>
