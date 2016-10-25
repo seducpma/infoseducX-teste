@@ -45,7 +45,7 @@ class MmanutencaosController < ApplicationController
   def index
     if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
        @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
-       @mmanutencaos_unidade = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2 and unidade_id=?", current_user.unidade_id])
+       @mmanutencaos_unidade = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2"])
     else
       if current_user.has_role?('diretor_unidade')
 #        $cont1=0

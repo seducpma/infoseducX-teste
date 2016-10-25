@@ -13,13 +13,15 @@
       <br/>
       <font  size="2">
         <table border="2" width="100%">
-          <% cont_outras =  0 %>
-           <% for chamado in @mmanutencaos %>
-              <% if current_user.unidade_id != 53 %>
-                <% if (chamado.unidade_id != current_user.unidade_id) %>
-                   <% cont_outras =  cont_outras+1 %>
-                <%end%>
-             <%end%>
+          <% if current_user.unidade_id != 53 %>
+            <% cont_outras =  0 %>
+             <% for chamado in @mmanutencaos %>
+                <% if current_user.unidade_id != 53 %>
+                  <% if (chamado.unidade_id != current_user.unidade_id) %>
+                     <% cont_outras =  cont_outras+1 %>
+                  <%end%>
+               <%end%>
+            <%end%>
           <%end%>
           <tr>
             <td colspan="8">
