@@ -57,39 +57,39 @@ display: none;
       </table>
    </div>
         <%if logged_in? then%>
-          <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %></font>
-
+          <font size="3" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %></font>
+          <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
             <% if current_user.has_role?('administrador') %>
-             - Administrador INFOSEDUC
+             <font size="1"> - Administrador INFOSEDUC - <% uni = @unidade.first.nome  %><%= uni %></font>
             <%else%>
               <% if current_user.has_role?('estagiario SEDUC') %>
-                  - Estagiário(a) INFOSEDUC
+                  <font size="1"> - Estagiário(a) INFOSEDUC - <% uni = @unidade.first.nome  %><%= uni %></font>
                   <%else%>
                     <% if current_user.has_role?('estagiario itinerante') %>
-                       Itinerante INFOSEDUC
+                       <font size="1"> Itinerante INFOSEDUC - <% uni = @unidade.first.nome  %><%= uni %></font>
                     <%else%>
                        <% if current_user.has_role?('estagiario itinerante') %>
-                          - Itinerante INFOSEDUC
+                          <font size="1"> - Itinerante INFOSEDUC - <% uni = @unidade.first.nome  %><%= uni %></font>
                         <%else%>
                           <% if current_user.has_role?('admin_manutencao') %>
-                             - Administrador SISMAN - Sistema de Manutenção
+                             <font size="1"> - Administrador SISMAN - Sistema de Manutenção -<% uni = @unidade.first.nome  %><%= uni %></font>
                             <%else%>
                               <% if current_user.has_role?('chefia_manutencao') %>
-                                - Chefia SISMAN - Sistema de Manutenção
+                                <font size="1"> - Chefia SISMAN - Sistema de Manutenção - <% uni = @unidade.first.nome  %><%= uni %></font>
                               <%else%>
                                   <% if current_user.has_role?('diretor_unidade') %>
-                                    - SISMAN - Sistema de Manutenção
+                                    <font size="1"> - SISMAN - Sistema de Manutenção - <% uni = @unidade.first.nome  %><%= uni %></font>
                                   <%else%>
                                       <% if (current_user.has_role?('oficios') or current_user.has_role?('internos')) %>
-                                        - SISOFI - Sistema de Controle Emissão de Documentos
+                                        <font size="1"> - SISOFI - Sistema de Controle Emissão de Documentos - </font>
                                       <%else%>
                                            <%if (current_user.has_role?('protocolo'))%>
-                                              - SISPROT - Sistema de Controle de Protocolos
+                                              <font size="1"> - SISPROT - Sistema de Controle de Protocolos</font>
                                             <%else%>
                                                 <%if (current_user.has_role?('manutencao'))%>
-                                                     - SISMAN - Sistema de Manutenção
+                                                     <font size="1"> - SISMAN - Sistema de Manutenção -<% uni = @unidade.first.nome  %><%= uni %></font>
                                                 <%else%>
-                                                    - Bem vindo ao Sistema INFOSEDUC
+                                                    <font size="1"> - Bem vindo ao Sistema INFOSEDUC -<% uni = @unidade.first.nome  %><%= uni %></font>
                                                 <%end%>
                                             <%end%>
                                       <%end%>
@@ -258,6 +258,105 @@ display: none;
                  </ul>
               </li>
               <%end%>
+
+
+
+
+
+
+              <li><span class="divider divider-vert" ></span></li>
+                  <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario')  %>
+                   <li><a>Computadores</a>
+                       <ul style="width:108px;">
+                        <li><a>Computadores</a>
+                         <ul>
+                            <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') %>
+                              <li><%= link_to 'Cadastrar',new_computadore_path  %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', computadores_path%></li>
+                            <li><a>Consultar</a>
+                              <ul>
+                                <li><%= link_to 'Específica',  c_comp_tpuni_path %></li>
+                                <li><%= link_to 'por Pertence', c_comp_tp_path %></li>
+                                <li><%= link_to 'por Unidade', c_comp_uni_path %></li>
+                              </ul>
+                            <li><%= link_to 'Totalização', totalizaC_path %></li>
+                         </ul>
+                        </li>
+<!--
+                        <li><a>Data Show</a>
+                         <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Cadastrar',new_datashow_path  %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', datashows_path%></li>
+                            <li><%= link_to 'Consultar', c_datashow_uni_path %></li>
+                            <li><%= link_to 'Totalização', totalizaS_path %></li>
+                         </ul>
+                        </li>
+-->
+                        <li><a>Impressoras</a>
+                         <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Cadastrar',new_impressora_path  %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', impressoras_path%></li>
+                            <li><a>Consultar</a>
+                              <ul>
+                                <li><%= link_to 'Específica',  c_imp_tpuni_path %></li>
+                                <li><%= link_to 'por Tipo', c_imp_tp_path %></li>
+                                <li><%= link_to 'por Unidade', c_imp_uni_path %></li>
+                              </ul>
+                            </li>
+                            <li><%= link_to 'Totalização', totalizaI_path %></li>
+                         </ul>
+                        </li>
+                       <!--
+                        <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                        <li><a>Secretaria</a>
+                          <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Entrada',new_equipamento_path %></li>
+                            <%end%>
+                            <li><%= link_to 'Consulta', consulta_equipamentos_path %></li>
+                            <li><%= link_to 'Encerrados', encerrado_equipamentos_path %></li>
+                          </ul>
+                        </li>
+                        <li><a>Rede/Internet</a>
+                          <ul>
+                            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC')%>
+                              <li><%= link_to 'Cadastrar',new_administracao_path %></li>
+                            <%end%>
+                            <li><%= link_to 'Cadastrados', administracaos_path %></li>
+                            <li><a>Consultar</a>
+                              <ul>
+                                <li><%= link_to 'Específica',  c_adm_tpuni_path %></li>
+                                <li><%= link_to 'Internet',  internet_administracaos_path %></li>
+                                <li><%= link_to 'por Pertence', c_adm_tp_path %></li>
+                                <li><%= link_to 'por Unidade', c_adm_uni_path %></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                       <%end%>
+                       -->
+                 </ul>
+              </li>
+              <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <li><span class="divider divider-vert" ></span></li>
                   <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario')  %>
               <li><a class="item-primary" href="#;">Infoseduc</a>
