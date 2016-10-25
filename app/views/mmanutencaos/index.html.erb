@@ -13,6 +13,22 @@
       <br/>
       <font  size="2">
         <table border="2" width="100%">
+          <% if current_user.unidade_id != 53 %>
+            <% cont_outras =  0 %>
+             <% for chamado in @mmanutencaos %>
+                <% if current_user.unidade_id != 53 %>
+                  <% if (chamado.unidade_id != current_user.unidade_id) %>
+                     <% cont_outras =  cont_outras+1 %>
+                  <%end%>
+               <%end%>
+            <%end%>
+
+            <tr>
+              <td colspan="8">
+                <b><font color="red" size ="3"> Exitem <%= cont_outras %> chamados anteriores a serem atendidos</font></b>
+              </td>
+            </tr>
+          <%end%>
           <tr>
             <th width ="1%" align="center">Proto- colo</th>
             <th width ="5%">Data Solicitação</th>
@@ -24,48 +40,34 @@
           </tr>
           <%$cont=0%>
           <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
-            <% for chamado in @mmanutencaos %>
+            <% for chamado in @mmanutencaos_unidade %>
              <% if current_user.unidade_id != 53 %>
-             <tr>
-               <td align="center"><%=h chamado.id %></td>
-               <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
-               <% if (chamado.unidade_id != current_user.unidade_id) %>
-                   <td>----</td>
-               <%else%>
-                   <td><%=h chamado.solicitante %></td>
-               <%end%>
-               <% if chamado.unidade_id != current_user.unidade_id %>
-                  <td>----</td>
-               <%else%>
-                   <td><%=h chamado.unidade.nome %></td>
-               <%end%>
-               <% if chamado.unidade_id != current_user.unidade_id %>
-                   <td colspan="2">----</td>
-               <%else%>
-                   <td colspan="2"><%=h chamado.descricao %></td>
-               <%end%>
-               <% if chamado.unidade_id != current_user.unidade_id %>
-                   <td>----</td>
-               <%else%>
-                   <td> <%=h chamado.procedimentos%>  </td>
-               <%end%>
-               <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
-                   <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
-               <% else %>
 
-                   <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
-                      <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
-                   <% else %>
-                      <td><%=h chamado.situacao_manutencao.situacao %> <br/>
-                        <%if chamado.chefia.nil? %>
-                           p/ <%=h chamado.user.login %>
-                        <%else%>
-                           p/ <%=h chamado.chefia.nome %> 
-                        <%end%>
-                       </td>
-                      <%end%>
-               <% end %>
-              </tr>
+                   <tr>
+                     <td align="center"><%=h chamado.id %></td>
+                     <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+                     <td><%=h chamado.solicitante %></td>
+                     <td><%=h chamado.unidade.nome %></td>
+                     <td colspan="2"><%=h chamado.descricao %></td>
+                     <td> <%=h chamado.procedimentos%>  </td>
+                     <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                         <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                     <% else %>
+
+                         <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                            <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                         <% else %>
+                            <td><%=h chamado.situacao_manutencao.situacao %> <br/>
+                              <%if chamado.chefia.nil? %>
+                                 p/ <%=h chamado.user.login %>
+                              <%else%>
+                                 p/ <%=h chamado.chefia.nome %>
+                              <%end%>
+                             </td>
+                            <%end%>
+                     <% end %>
+                 </tr>
+
               <%else%>
              <tr>
                <td align="center"><%=h chamado.id %></td>
@@ -92,7 +94,7 @@
                <% end %>
               </tr>
               <%end%>
-              
+
               <tr>
                 <td align="right" colspan="8">
                    <table>
@@ -134,7 +136,4 @@
 </table>
 
 <br/>
-
-
-
 
