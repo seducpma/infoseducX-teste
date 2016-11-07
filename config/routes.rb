@@ -180,6 +180,7 @@ ActionController::Routing::Routes.draw do |map|
   map.c_imp_tp '/c_imp_tp', :controller => 'impressoras', :action => 'consultatipo'
   map.c_imp_uni '/c_imp_uni', :controller => 'impressoras', :action => 'consulta'
   map.c_comp_tpuni '/c_comp_tpuni', :controller => 'computadores', :action => 'consultatiponome'
+  map.c_comp_fabr '/c_comp_fabr', :controller => 'computadores', :action => 'consultasfabricante'
   map.c_comp_tp '/c_comp_tp', :controller => 'computadores', :action => 'consultatipo'
   map.c_comp_uni '/c_comp_uni', :controller => 'computadores', :action => 'consulta'
   map.c_adm_tpuni '/c_adm_tpuni', :controller => 'administracaos', :action => 'consultatiponome'

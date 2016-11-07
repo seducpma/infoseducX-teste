@@ -2,7 +2,7 @@
 <table class="tabelas" align="center" width="80%">
   <tr>
       <th align="left">
-         <font  size=5 color="black"> <b> COMPUTADORES CONSULTA POR UNIDADE</b></font>
+         <font  size=5 color="black"> <b> COMPUTADORES CONSULTA POR FABRICANTE</b></font>
       </th>
        <td width="5%">
          <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
@@ -16,7 +16,7 @@
           <table width="100%">
           <tr>
             <td>
-              <font  size="4"><b> Unidade: </b><%= collection_select :computadore, :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+              <font  size="4"><b> FABRICANTE: </b><%= collection_select :computadore, :fabricante, @fabricante  %></font>
              </td>
           </tr>
        </table>

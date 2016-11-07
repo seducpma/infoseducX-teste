@@ -273,13 +273,16 @@ display: none;
                             <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') %>
                               <li><%= link_to 'Cadastrar',new_computadore_path  %></li>
                             <%end%>
-                            <li><%= link_to 'Cadastrados', computadores_path%></li>
+<!--                            <li><%= link_to 'Cadastrados', computadores_path%></li>-->
                             <li><a>Consultar</a>
                               <ul>
-                                <li><%= link_to 'Específica',  c_comp_tpuni_path %></li>
-                                <li><%= link_to 'por Pertence', c_comp_tp_path %></li>
+<!--                                <li><%= link_to 'Específica',  c_comp_tp_path  %></li>-->
+                                <li><%= link_to 'por Fabricante', c_comp_fabr_path %></li>
+                                <li><%= link_to 'por Tipo' %></li>
+                                <li><%= link_to 'por Local',c_comp_tpuni_path %></li>
                                 <li><%= link_to 'por Unidade', c_comp_uni_path %></li>
                               </ul>
+                            </li>
                             <li><%= link_to 'Totalização', totalizaC_path %></li>
                          </ul>
                         </li>

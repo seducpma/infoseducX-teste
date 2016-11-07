@@ -6,11 +6,13 @@ class ComputadoresController < ApplicationController
 
 
    def load_tipocontroles
-    @tipo_controles = TipoControle.find(:all)
+    @tipo_controles = TipoControle.find(:all,:order => 'nome ASC')
   end
   
    def load_unidades
     @unidades = Unidade.find(:all, :order => 'nome ASC')
+    @tipo = ["DESKTOP","NOTEBOOK","SERVIDOR"]
+    @fabricante = ["ACER","COMPAQ","HP","POSITIVO", "GENERICO"]
   end
 
   def index
@@ -116,8 +118,9 @@ def consulta
   end
 
 def lista_unidades
-    $unidade = params[:computadore_unidade_id]
-    @computadores = Computadore.find(:all, :conditions => ['unidade_id='+ $unidade])
+    session[:unidade] = params[:computadore_unidade_id]
+
+    @computadores = Computadore.find(:all, :conditions => ['unidade_id=?', session[:unidade]], :order => 'tipo_controle_id ASC')
     render :partial => 'lista_unidades'
   end
 
@@ -126,8 +129,8 @@ def consultatipo
  end
 
 def lista_tipos
-    $tipo = params[:computadore_tipo_controle_id]
-     @computadores = Computadore.find(:all, :conditions => ['tipo_controle_id='+ $tipo])
+    session[:tipo] = params[:computadore_tipo_controle_id]
+     @computadores = Computadore.find(:all, :conditions => ['tipo_controle_id='+ session[:tipo]])
     render :partial => 'lista_unidades'
   end
 
@@ -135,17 +138,29 @@ def consultatiponome
     render 'consultastiponome'
  end
 
+def consultasfabricante
+    render 'consultasfabricante'
+ end
+
 def lista_tiponome
-   $tipo = params[:computadore_tipo_controle_id]
-   @unidade = Unidade.find :all, :conditions => {:tipo_id => params[:computadore_tipo_controle_id]}
+   session[:tipo] = params[:computadore_tipo_controle_id]
+
+   if session[:tipo] == '2' or session[:tipo]== '6'or session[:tipo] == '7'
+     @unidades = Unidade.find(:all, :conditions => ['tipo_id = 1 OR tipo_id = 4 OR tipo_id = 7'], :order => 'nome ASC')
+   else
+    #@unidades = Unidade.find :all, :conditions => {:tipo_id => params[:computadore_tipo_controle_id]}
+    @unidades = Unidade.find(:all, :order => 'nome ASC')
+
+   end
      render :update do |page|
       page.replace_html 'esp_unidade', :partial => 'unidade_box'
   end
 end
 
 def lista_tipounidades
-    $unidade = params[:computadore_unidade_id]
-    @computadores = Computadore.find(:all, :conditions => ['unidade_id=? and tipo_controle_id=?',$unidade, $tipo])
+    session[:unidade] = params[:computadore_unidade_id]
+    t=0
+    @computadores = Computadore.find(:all, :conditions => ['unidade_id=? and tipo_controle_id=?',session[:unidade], session[:tipo]])
     render :partial => 'lista_unidades'
   end
 

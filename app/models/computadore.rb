@@ -6,10 +6,18 @@ class Computadore < ActiveRecord::Base
 validates_presence_of :tipo_controle_id, :message => ' - SELECIONAR A QUEM PERTENCE - '
 
 def before_save
-    self.config.upcase!
-    self.user.upcase!
-    self.contato.upcase!
-    self.pertence.upcase!
+    if !self.config.nil?
+      self.config.upcase!
+    end
+    if !self.user.nil?
+       self.user.upcase!
+    end
+    if !self.contato.nil?
+       self.contato.upcase!
+    end
+    if !self.pertence.nil?
+       self.pertence.upcase!
+    end
 end
 
 

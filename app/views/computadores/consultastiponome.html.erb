@@ -1,29 +1,31 @@
 <br/><br/>
 <table class="tabelas" align="center" width="60%">
- <tr>
-     <td colspan="2" align="left">
-       <font  size=5 color="black"> <b> COMPUTADORES - CONSULTA ESPECÍFICA</b></font>
-    </td>
-   </tr>
- <tr>
-  <td>
+  <tr>
+      <th align="left">
+         <font  size=5 color="black"> <b>CONSULTA COMPUTADORES - LOCAL </b></font>
+      </th>
+       <td width="5%">
+         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+       </td>
+  </tr>
+   <td colspan="2">
   <br/>
+  
    <table>
     <tr>
       <td>
         <div class="botao">
-        <table>
+          <table>
           <tr>
-             <td align="left"><font size="4">Pertence</font></td>
+            <td align="left" width ="15%"><font size="4"><b>Local:&nbsp&nbsp </b></font></td>
              <td colspan="3" align="left"><%= collection_select :computadore, :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- '  %></td>
                      <%= observe_field 'computadore_tipo_controle_id',
-                        :frequency => 0.2,
                         :with   => 'computadore_tipo_controle_id',
                         :url    => { :action => 'lista_tiponome' }%>
           </tr>
           <tr>
-              <td align="left"><font size="4">Unidade:</font></td>
-               <td colspan="3"align="left"><div id= 'esp_unidade'></div></td>
+              
+               <td colspan="4"align="left"><div id= 'esp_unidade'></div></td>
   
 
              
@@ -34,10 +36,12 @@
      </tr>
     <tr>
       <td>
-
         <div id="listagem"> </div>
      </td>
    </tr>
+
+    </table>
+  <hr/>
       <div class="botao">
        <table width="100%">
         <tr>
@@ -46,6 +50,5 @@
         </tr>
       </table>
      </div>
-    </table>
  </table>
 <br/>

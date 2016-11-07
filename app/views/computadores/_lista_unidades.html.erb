@@ -1,47 +1,51 @@
-<br/>  <br/>
-<font size="2">
- <table  class="tabelas" border ="1" cellpadding="1" cellspacing="1" width="100%" >
-  <%$comp = 0%>
+<% if @computadores.present? %>
+    <br/>  <br/>
+    <font size="2">
+     <table  class="tabelas" border ="1" cellpadding="1" cellspacing="1" width="100%" >
+      <%session[:comp] = 0%>
+
+       <tr>
+         <td><b>Unidade: </b></td>
+         <td colspan="7"><b><%=h @computadores[0].unidade.tipo.nome %> <%=h @computadores[0].unidade.nome %> - <%=h @computadores[0].unidade.endereco%>, <%=h @computadores[0].unidade.num %> -  <%=h @computadores[0].unidade.bairro %></b></td>
+       </tr>
+          <tr>
+            <th><font color="white"><b>  LOCALIZAÇÃO </b></font></th>
+            <th><b><font color ="white"> CONFIGURAÇÂO </font></b></th>
+            <th><b><font color ="white"> USUÁRIO </font></b></th>
+            <th><b><font color ="white"> Nº PATRIMÔNIO </font></b></th>
+            <th><b><font color ="white"> Nº SÉRIE </font></b></th>
+            <th colspan="3"></th>
+          </tr>
+         <% for comp in @computadores %>
+          <tr>
+           <td><b><%=h comp.tipo_controle.nome %></b></td>
+           <td><%=h comp.config %></td>
+           <td><%=h comp.user %></td>
+           <td><%=h comp.pat %></td>
+           <td><%=h comp.serie %></td>
+           <%session[:comp] = session[:comp] + comp.quant%>
+           <div class="botao">
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                        <%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_computadore_path(comp), :title => "Alterar Dados"%>
+                     <% if current_user.has_role?('administrador')%>
+                        <%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), comp, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %>
+                     <%end%>
+                <%end%>
+              </td>
+            </div>
+
+         </tr>
+        <% end %>
+        <tr>
+          <td align="left"colspan="7"><font color="blue"><b>Total de Computadores  => <%=  session[:comp]%></b></font></td>
+        </tr>
+       </table>
+    </font>
+<%else%>
+    <table>
       <tr>
-        <th>Unidade</th>
-         <th>Tipo Controle</th>
-        <th>Quantidade</th>
-        <th>Configuração</th>
-        <th>Usuário</th>
-        <th>Nº Patrimônio</th>
+        <td><br/><br/><b><center><font size="4" color="blue"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp REGISTROS NÃO ENCONTRADOS<font></center></b></td>
       </tr>
-     <% for comp in @computadores %>
-      <tr>
-       <td><%=h comp.unidade.nome %></td>
-       <td><%=h comp.tipo_controle.nome %></td>
-       <td><%=h comp.quant %></td>
-       <td><%=h comp.config %></td>
-       <td><%=h comp.user %></td>
-       <%if comp.tipo_controle.nome == 'TERCEIROS'%>
-         <td><%=h comp.pertence %></td>
-        <%else%>
-         <td align="left"><%=h comp.pat %></td>
-        <%end%>
-     </tr>
-       <%$comp = $comp + comp.quant%>
-    <tr>
-      <td colspan="7">
-        <div class="botao">
-        <table>
-           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %></td>
-            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_computadore_path(comp), :title => "Alterar Dados"%></td>
-                 <% if current_user.has_role?('administrador')%>
-                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), comp, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
-                 <%end%>
-            <%end%>
-        </table>
-        </div>
-       </td>
-    </tr>
-    <% end %>
-    <tr>
-       <td align="left"colspan="7"><font color="black">Total de Computadores  => <%=  $comp%></font></td>
-    </tr>
-   </table>
-</font>
+    </table>
+<%end%>
