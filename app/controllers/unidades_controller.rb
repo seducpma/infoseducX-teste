@@ -8,6 +8,10 @@ class UnidadesController < ApplicationController
    before_filter :load_sem_estagiarios
    before_filter :load_regiaos
 
+def sobre
+  
+end
+
 def load_regiaos
     @regiaos = Regiao.find(:all, :order => 'regiao ASC')
   end

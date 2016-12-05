@@ -1,3 +1,10 @@
+#internoS{
+    width:50%;
+    margin-top: 20px;
+    margin-left: 350px;
+    font-size:12px;
+}
+
 #chat_form{
     position:relative;
     left: 63px;
