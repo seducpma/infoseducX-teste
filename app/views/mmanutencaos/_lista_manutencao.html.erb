@@ -9,16 +9,10 @@
             <th width ="20%"colspan="2">Problema</th>
             <th width ="20%"  >Procedimentos Executados</th>
             <th width="8%">Status</th>
-            <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')  %>
-               <th align="center">Encaminhar</th>
-                <th>Visualizar</th>
-            <%end%>
             <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao')  %>
-                <th align="center">OS</th>
+               <th>Visualizar</th>
             <%end%>
-            <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao')  %>
-                <th align="center">Imprimir</th>
-            <%end%>
+
           </tr>
           <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
             <% for chamado in @mmanutencaos %>
@@ -29,19 +23,16 @@
                <td><%=h chamado.unidade.nome %></td>
                <td colspan="2"><%=h chamado.descricao %></td>
                <td> <%=h chamado.procedimentos%>  </td>
+
+
                <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
                    <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
                <% else %>
                     <td><%=h chamado.situacao_manutencao.situacao %></td>
                <% end %>
-               <% if current_user.has_role?('administrador')  or current_user.has_role?('admin_manutencao')  %>
-                   <td align="center" width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/encaminhar.png"), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhamento" %></td>
-                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/imprimir.png"), chamado, :title => "Visualização" %></td>
-                <%end%>
                <% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao')  %>
                     <td align="center" width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/servico.png"), {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Ordem de Serviço" %></td>
                <%end%>
-                     <td align="center" width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimir" %></td>
               </tr>
             <%end%>
           <%end%>

@@ -36,7 +36,17 @@ class MmanutencaosController < ApplicationController
    end
 
    def load_unidades
-       @unidades =  Unidade.find(:all, :order => 'nome ASC')
+   if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+       @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
+      else
+        if (current_user.unidade_id== 53)
+           @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
+        else
+          @unidades_manutencao =  Unidade.find(:all, :conditions => ['id = ?',current_user.unidade_id ],:order => 'nome ASC')
+        end
+    end
+     @unidades =  Unidade.find(:all, :order => 'nome ASC')
+      
    end
 
 
@@ -806,6 +816,12 @@ def lista_manutencao
   end
 
 
+def lista_unidade
+    @mmanutencaos   = Mmanutencao.find(:all, :conditions => ['unidade_id= ? and situacao_manutencao_id != 2', params[:unidade_unidade_id] ])
+    render :partial => 'lista_manutencao'
+  end
+
+
   def despacho
     @mmanutencao = Mmanutencao.find(params[:id])
     @mmanutencao.data_ate = Time.now
@@ -885,6 +901,8 @@ $ok=1
       format.xml  { render :xml => @mmanutencao }
     end
   end
+
+
 
 
 end

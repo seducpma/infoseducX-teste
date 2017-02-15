@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.resources :manutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get}
 
-  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get}
+  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
 
   map.resources :tipos_manutencaos
 
@@ -195,7 +195,7 @@ ActionController::Routing::Routes.draw do |map|
   map.prefprot '/prefprot', :controller => 'prefprotocolos', :action => 'index'
   map.teste '/teste', :controller => 'prefprotocolos', :action => 'teste'
   map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
-
+  
 
 
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'
