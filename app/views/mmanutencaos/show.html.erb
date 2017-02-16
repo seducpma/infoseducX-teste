@@ -17,7 +17,7 @@
          
            <table width="100%">
             <tr>
-              <td>
+              <td width ="30%">
                  <fieldset><legend><font  size=4> Solicitaçãos</font></legend>
                  <table>
                    <tr>
@@ -58,7 +58,7 @@
                      <td align="left"><%=h @mmanutencao.descricao %></td>
                    </tr>
                    <tr>
-                     <td align="left"><b>Justificativa:</b></td>
+                     <td align="left" valign="top">  <b>Justificativa:</b></td>
                      <td align="left"><%=h @mmanutencao.justificativa%></td>
                    </tr>
                    <tr>
@@ -73,7 +73,7 @@
                      <td align="left"><b>Observação:</b></td>
                      <td align="left"><%=h @mmanutencao.obs%></td>
                    </tr>
-                  </table>
+                 </fieldset>
                    <tr>
                      <td colspan="2"align="left">
                         <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>@mmanutencao}, :method => "get", :title => "Imprimir" %>
@@ -82,9 +82,9 @@
                    </tr>
                   </table>
 
-                </fieldset>
+
               </td>
-              <td valign="top">
+              <td valign="top" width ="30%" >
                 <fieldset><legend><font  size=4> Encaminhamento</font></legend>
                    <table>
                      <tr>
@@ -116,7 +116,7 @@
 
 
               </td>
-              <td valign="top">
+              <td valign="top" width ="30%">
                 <fieldset><legend><font  size=4> Ordem Serviço</font></legend>
                    <table>
                      <tr>
