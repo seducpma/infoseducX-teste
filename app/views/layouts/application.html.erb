@@ -117,19 +117,21 @@ display: none;
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
                    <li><%= link_to 'Sobre', sobre_path %></li>
                   <li><a class="item-primary" href="#">Tutoriais</a>
+                    <% if (current_user.has_role?('administrador') or current_user.has_role?('estagiario unidade') or current_user.has_role?('estagiario SEDUC') ) %>
                      <ul style="width:108px;">
                          <li><a>Roteadores</a>
                            <ul>
                             <li><a href="http://youtu.be/-B-gxSZyNHQ">Configuração WDS</a></li>
                           </ul>
                          </li>
-                     </ul>
+                      </ul>
+                    <%end%>
                   </li>
                   <li><%= link_to 'Upload',anexos_path %></li>
                 </ul>
               </li>
-              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')or current_user.has_role?('admin_protocolo')  ) %>
-               <% if (current_user.has_role?('administrador')or current_user.has_role?('admin_protocolo') ) %>
+              <% if (current_user.has_role?('administrador') or current_user.has_role?('protocolo') or current_user.has_role?('oficios')or current_user.has_role?('diretor_SEDUC')or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') ) %>
+               <% if (current_user.has_role?('administrador')or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') ) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">Documentos</a>
                     <ul>
@@ -144,14 +146,14 @@ display: none;
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Protocolos</a>
                         <ul>
-                          <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')) %>
+                          <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade')) %>
                                 <li><%= link_to "Novo", new_prefprotocolo_path%> </li>
                            <%end%>
                           <li><%= link_to "Despachar", prefprotocolos_path%></li>
                           <li><%= link_to "Consultar", consulta_prefprotocolos_path %></li>
                         </ul>
                       </li>
-                 <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')) %>
+                 <% if (current_user.has_role?('administrador') or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade')) %>
                      <li><span class="divider divider-vert" ></span></li>
                      <li><a class="item-primary" href="#;">Serviços Internos</a>
                         <ul>
@@ -347,20 +349,6 @@ display: none;
                  </ul>
               </li>
               <%end%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               <li><span class="divider divider-vert" ></span></li>
                   <% if current_user.has_role?('administrador')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario')  %>
               <li><a class="item-primary" href="#;">Infoseduc</a>
@@ -516,7 +504,9 @@ display: none;
                       </ul>
                     </li>
                      -->
-                   <li><%= link_to 'Senhas',senhas_path %></li>
+                     <% if (current_user.has_role?('administrador') ) %>
+                          <li><%= link_to 'Senhas',senhas_path %></li>
+                     <%end%>
                   <%end%>
                   <% if current_user.has_role?('administrador') %>
                   <li><a>Tabelas</a>
@@ -586,7 +576,7 @@ display: none;
               <%end%>
 -->
 
-             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('seducpma')%>
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('seducpma') %>
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">Ordem Serviço</a>
                   <ul style="width:108px;">
@@ -712,12 +702,14 @@ display: none;
                        <%end%>
                  </ul>
               </li>
-            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')%>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') %>
             <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">Agenda</a>
                  <ul style="width:108px;">
-                     <li><%= link_to('Laboratórios', agendas_path) %></li>
-                     <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')%>
+                     <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao') %>
+                         <li><%= link_to('Laboratórios', agendas_path) %></li>
+                     <%end%>
+                     <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')   or current_user.has_role?('diretor_unidade')%>
                             <li><%= link_to('Sala Reunião', reservar_salas_path) %></li>
                      <%end%>
                  </ul>
