@@ -26,7 +26,8 @@
             <li><%= link_to h(data.sala.sala), data%><br/>
                <% if (data.horario_reservai.nil? or data.horario_reservaf.nil?) %>
                <%else%>
-              <b><font color ="red">das <%= data.horario_reservai.strftime("%H:%M")%> às <%= data.horario_reservaf.strftime("%H:%M")%> horas</font></b>
+              <b><font color ="red">das <%= data.horario_reservai.strftime("%H:%M")%> às <%= data.horario_reservaf.strftime("%H:%M")%> horas</font></b><br/>
+              <b><font color ="black">Solicitante: <%= truncate(data.solicitante, :length => 22,:omission => "...") %> </font></b><br/>
                 --------------------------------
                <%end%>
             </li>
@@ -43,6 +44,6 @@
     <td align="right" ><%= button_to("Voltar",  homes_path, :method => "get", :title => "Voltar")%></td>
     <td width="2%" align="right" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
     <td width="2%" align="right"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
-   <tr>
+   </tr>
 </table>
 

@@ -30,7 +30,7 @@
            <table>
             <%= render :partial => "calendar" %>
                 <%if !@ponto.present? %>
-                  <%if (params[:search]).present? %>
+                  <%if !(params[:search]).nil? %>
                       <%= button_to'Criar Ponto',:action => "new", :estagiario_id => params[:search][:estagiario_id_equals] %>
                       <br/>
                   <%end%>
