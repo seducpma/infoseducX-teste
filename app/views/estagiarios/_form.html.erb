@@ -88,7 +88,7 @@
       </fieldset>
       <br/>
       <fieldset><legend><font  size=4> Dados Contrato</font></legend>
-          <table>
+          <table border="1">
             <tr>
                <td align="left"><b> Período:</b></td>
                <td align="left" colspan="3"><%= f.select :periodo_trab, PERIODOT, :include_blank => '---Selecione---',  :size =>19 %>
@@ -96,7 +96,10 @@
                                 :with => :estagiario_periodo_trab,
                                 :url => { :action => 'seleciona' },
                                 :update => "selecao" %>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b> Típo de Estágio:</b>&nbsp&nbsp
+                  <%= collection_select  :estagiario, :tipo, @estagio, :nome, :nome, :include_blank => ' --- Selecione opção ---'  %>
                </td>
+               </tr>
              <tr>
                <td colspan="4" align="left"> <div id="selecao"></div></td>
              </tr>
@@ -121,9 +124,9 @@
         <table width="100%" align="left">
            <tr>
              <div id='Certeza'>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+              <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
               </div>
-              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <td align="left"><%= f.submit_tag "Salvar", :class => "btn_filtrar" %></td>
 <% end %>
             </tr>
         </table>

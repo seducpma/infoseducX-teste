@@ -1,5 +1,6 @@
 class Estagiario < ActiveRecord::Base
   belongs_to :unidade
+  belongs_to :tipos_estagios
   belongs_to :regiao
   has_many :users
   has_many :justificativas
@@ -142,15 +143,30 @@ def com_est
 end
 
  def before_save
-    self.nome.upcase!
-    self.endereco.upcase!
-    self.complemento.upcase!
-    self.bairro.upcase!
-    self.cidade.upcase!
-    self.faculdade.upcase!
-    self.responsavel.upcase!
-    self.aval.upcase!
-    self.obs.upcase!
+    if  !self.endereco.nil?
+       self.endereco.upcase!
+    end
+    if  !self.complemento.nil?
+       self.complemento.upcase!
+    end
+    if  !self.bairro.nil?
+        self.bairro.upcase!
+    end
+    if  !self.cidade.nil?    
+       self.cidade.upcase!
+    end
+    if  !self.faculdade.nil?
+         self.faculdade.upcase!
+    end
+    if  !self.responsavel.nil?
+         self.responsavel.upcase!
+    end
+    if  !self.aval.nil?
+        self.aval.upcase!
+    end
+    if  !self.obs.nil?
+         self.obs.upcase!
+    end
 end
 
 

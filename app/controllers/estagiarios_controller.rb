@@ -174,7 +174,7 @@ class EstagiariosController < ApplicationController
 
   def seleciona
     $periodo = params[:estagiario_periodo_trab]
-    if ($periodo == 'ITINERANTE')then
+    if (params[:estagiario_periodo_trab] == 'ITINERANTE')then
        render :partial => 'selecao_regiaos'
     else
        @unidades= Unidade.find(:all, :conditions => "regiao_id is null")
@@ -184,7 +184,7 @@ class EstagiariosController < ApplicationController
 
   def regiao_unidade
    $regiao = params[:estagiario_regiao_id]
-   if ($regiao == 6) then
+   if (params[:estagiario_regiao_id] == 6) then
      @unidades = Unidade.find(:all)
       render :update do |page|
         page.replace_html 'selecao', :partial => 'selecao_unidades'
@@ -292,6 +292,7 @@ class EstagiariosController < ApplicationController
 
   def load_estagiariosa
       @estagiariosa = Estagiario.find(:all, :order => 'nome ASC',:conditions => ['flag=? and desligado=?',0,0])
+      @estagio =TiposEstagio.find(:all, :order => 'nome ASC')
   end
 
 

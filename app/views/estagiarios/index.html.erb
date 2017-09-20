@@ -14,20 +14,17 @@
        <div class="botao">
        <table width="100%">
         <tr>
-             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-             <td align="right">
+           <td align="right">
            <div class="botao">
-           <table>
-            <tr>
-            <% form_tag estagiarios_path, :method => 'get' do %>
-            <td align="right"><font size="4"> Digite nome:</font>
-               <%= text_field_tag :search, params[:search] %>
-               <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
-            </td>
-            <% end %>
-            </tr>
-         </table>
+
+                <% form_tag estagiarios_path, :method => 'get' do %>
+                <font size="4"> Digite nome:</font>
+                   <%= text_field_tag :search, params[:search] %>
+                   <%= submit_tag "Consultar", :class => "btn_filtrar" %>
+                   
+
+                <% end %>
+
          </div>
          </td>
        </tr>
@@ -67,7 +64,7 @@
         </tr>
         <tr>
           <%if estagiarios.unidade_id.nil?%>
-               <td colspan="2"><%=h estagiarios.regiao.regiao %></td>
+               <td colspan="2"></td>
           <%else%>
                <td colspan="2"><%=h estagiarios.unidade.nome %></td>
           <%end%>
@@ -82,7 +79,7 @@
         <td colspan="7">
            <div class="botao">
             <table>
-               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), estagiarios, :title => "Exibir Dados" %></td>
+               <td align="center" colspan="1"><td width="6%"align="left"><%= button_to('Visualizar', {:action => "show", :id => estagiarios},:method => "get", :title => "Visualizar") %></td></td>
                 <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estagiario_path(estagiarios), :title => "Alterar Dados"%></td>
                      <% if current_user.has_role?('administrador')%>
@@ -100,9 +97,9 @@
       <div class="botao">
          <table width="100%" align="center">
           <tr>
-             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-            <% if  $var == 0 then %>
+               <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+               <td align="left" ><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+                <% if  $var == 0 then %>
                <td align="left" colspan="4"><%= will_paginate @estagiarios %></td>
             <%end%>
           </tr>

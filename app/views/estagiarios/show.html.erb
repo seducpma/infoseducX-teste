@@ -29,18 +29,18 @@
                       </tr>
                       <tr>
                         <td align="left"><b>Fone:</b></td>
-                        <td align="left"><%=h @estagiarios.fone %>
+                        <td align="left"><%=h @estagiarios.fone %></td>
                       </tr>
                       <tr>
                         <td align="left"><b>Celular:</b></td>
-                        <td align="left"><%=h @estagiarios.cel %>
+                        <td align="left"><%=h @estagiarios.cel %></td>
                       </tr>
                    </table>
                   </td>
                </tr>
                <tr>
                  <td align="left"><b> Endereço:</b></td>
-                 <td align="left"> <%=h @estagiarios.endereco %>
+                 <td align="left"> <%=h @estagiarios.endereco %></td>
                </tr>
               <tr>
                  <td align="left"><b>Nº: </b></td>
@@ -77,6 +77,15 @@
                </tr>
                 <tr>
                 <td valign="top" align="left"><b>Status:</b></td>
+                <td align="left">  <% if  @estagiarios.desligado == 1 %>
+                                          DESLIGADO
+                                  <%else%>
+                                         EM ANDAMENTO
+                                  <%end%>
+                </td>
+               </tr>
+                <tr>
+                <td valign="top" align="left"><b>Observações:</b></td>
                 <td align="left">  <%=h @estagiarios.obs %></td>
                </tr>
              </table>
@@ -121,9 +130,13 @@
                  <fieldset><legend><font  size=4> Dados Contrato</font></legend>
                  <table>
                    <tr>
+                      <td align="left"><b>Tipo Estágio:</b></td>
+                      <td align="left"><%=h @estagiarios.tipo %> </td>
+                    </tr>
+                   <tr>
                        <td align="left" width="10%"><b>Unidade:</b></td>
                         <%if @estagiarios.unidade_id.nil?%>
-                          <td align="left"><%=h @estagiarios.regiao.regiao %></td>
+                          <td align="left"></td>
                         <%else%>
                           <td align="left"><%=h @estagiarios.unidade.nome %></td>
                         <%end%>
@@ -175,11 +188,11 @@
            <div class="botao">
            <table>
              <tr>
-               <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+               <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
                 <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
                     <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estagiario_path(@estagiarios), :title => "Alterar Dados"%></td>
                   <%end%>
-               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+               <td align="left" ><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>  
             </tr>
           </table>
           </div>
@@ -260,11 +273,11 @@
          <div class="botao">
          <table>
           <tr>
-            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
                 <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estagiario_path(@estagiarios), :title => "Alterar Dados"%></td>
             <%end%>
-           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+           <td align="left" ><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
           </tr>
         </table>
         </div>

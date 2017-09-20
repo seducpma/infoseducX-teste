@@ -1,80 +1,93 @@
 <font  size="2">
-    <table border="2" width="100%">
+    <table border="1" width="100%" align="center">
      <% for estagiarios in @estagiarios %>
      <%if (estagiarios.flag == 0 and estagiarios.desligado == 0) then %>
 
      <tr>
        <th>Nome</th>
+       <th>Estágio</th>
        <th>RG</th>
        <th>CPF</th>
-       <th colspan="2">Endereco</th>
+       <th colspan="3">Endereco</th>
        <th>Num</th>
-       <th>Complemento</th>
-       <th>Matricula(PMA)</th>
+       <th colspan="2">Complemento</th>
+
      </tr>
      <tr>
        <td align="center"><%=h estagiarios.nome %></td>
+       <td align="center"><%=h estagiarios.tipo %></td>
        <td align="center"><%=h estagiarios.RG %></td>
        <td align="center"><%=h estagiarios.CPF %></td>
-       <td  align="center"colspan="2"><%=h estagiarios.endereco %></td>
+       <td  align="center"colspan="3"><%=h estagiarios.endereco %></td>
        <td align="center"><%=h estagiarios.num %></td>
-       <td align="center"><%=h estagiarios.complemento %></td>
-       <td align="center"><%=h estagiarios.matriculaPMA%></td>
+       <td colspan="2" align="center"><%=h estagiarios.complemento %></td>
+
     </tr>
     <tr>
        <th>Foto</th>
+       <th colspan="2">Cidade</th>
        <th>Bairro</th>
-       <th>Cidade</th>
        <th>Fone</th>
        <th>Cel</th>
        <th>Data Nasc</th>
-       <th colspan="2">Email</th>
+       <th colspan="3">Email</th>
     </tr>
     <tr>
-       <td rowspan="4" valign="top">
+       <td rowspan="8" valign="top">
          <%= image_tag estagiarios.photo.url(:thumb) %>
        </td>
+       <td colspan="2" align="center"><%=h estagiarios.cidade %></td>
        <td align="center"><%=h estagiarios.bairro %></td>
-       <td align="center"><%=h estagiarios.cidade %></td>
        <td align="center"><%=h estagiarios.fone %></td>
        <td align="center"><%=h estagiarios.cel %></td>
        <td align="center"><%=h estagiarios.data_nasc.strftime("%d/%m/%Y") %></td>
-       <td align="center" colspan="2"><%=h estagiarios.email %></td>
+       <td align="center" colspan="3"><%=h estagiarios.email %></td>
     </tr>
-    <% if current_user.has_role?('administrador')%>
+
+
+
+    <% if current_user.has_role?('administrador') or current_user.has_role?('seducpmaRH') %>
     <tr>
-        <th>Matricula</th>
-        <th>Período</th>
+        <th colspan="3">Onde Estuda</th>
+        <th colspan="2">Matricula </th>
+        <th colspan="2">Período</th>
         <th>Ingresso</th>
         <th>Termino</th>
-        <th colspan="3">Faculdade</th>
+        
      <tr/>
      <tr>
-       <td align="center"><%=h estagiarios.matricula %></td>
-       <td align="center"><%=h estagiarios.periodo_est %></td>
+       <td align="left"colspan="3"><%=h estagiarios.faculdade %></td>
+       <td  align="center" colspan="2"><%=h estagiarios.matricula %></td>
+       <td align="center" colspan="2"><%=h estagiarios.periodo_est %></td>
        <td align="center"><%=h estagiarios.data_ingresso.strftime("%d/%m/%Y") %></td>
        <td align="center"><%=h estagiarios.data_termino.strftime("%d/%m/%Y") %></td>
-       <td  align="center"colspan="3"><%=h estagiarios.faculdade %></td>
+
     </tr>
     <tr>
+        <th colspan="2">Local Estágio</th>
+        <th>Matricula(PMA)</th>
         <th>Contrato </th>
-        <th>Id </th>
         <th>Período</th>
-        <th>Analista</th>
+        <th colspan="2">Responsável</th>
         <th>Admissao</th>
         <th>Desligamento</th>
-        <th colspan="2">Locacao</th>
+        
     </tr>
      <tr>
+         <%if estagiarios.unidade_id.nil?%>
+           <td colspan="2" align="center"></td>
+         <%else%>
+           <td align="center"colspan="2"><%=h estagiarios.unidade.nome %></td>
+        <%end%>
+        <td align="center"><%=h estagiarios.matriculaPMA%></td>
          <%if (((estagiarios.data_admissao.to_time)+ 20.months) < Date.today)%>
            <td><font color="red" size="2"><b>CONTRATO TERMINANDO</b></font></td>
          <%else%>
            <td>CONTRATO EM ANDAMENTO</td>
-      <%end%>
+         <%end%>
 
-        <td align="center"><%=h estagiarios.id %></td>
         <td align="center"><%=h estagiarios.periodo_trab %></td>
-        <td align="center"><%=h estagiarios.responsavel %></td>
+        <td align="center" colspan="2"><%=h estagiarios.responsavel %></td>
         <% if estagiarios.data_admissao.nil? then %>
            <td align="center"><%=h estagiarios.data_admissao("%d/%m/%Y") %></td>
         <%else%>
@@ -89,11 +102,12 @@
          <%else%>
              <td align="center"> EM ATIVIDADE</td>
           <%end%>
-         <%if estagiarios.unidade_id.nil?%>
-           <td colspan="2" align="center"><%=h estagiarios.regiao.regiao %></td>
-         <%else%>
-           <td align="center"colspan="2"><%=h estagiarios.unidade.nome %></td>
-        <%end%>
+    </tr>
+    <tr>
+        <th colspan="10">Observações</th>
+    </tr>
+     <tr>
+         <td align="left" colspan="10"><%=h estagiarios.obs %></td>
     </tr>
     <%end%>
     </tr>
@@ -101,7 +115,10 @@
       <td colspan="12">
         <div class="botao">
         <table>
-               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), estagiarios, :title => "Exibir Unidade" %></td>
+               <td width="6%"align="left"><%= button_to('Visualizar', {:action => "show", :id => estagiarios},:method => "get", :title => "Visualizar") %></td>
+               <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+               <td align="left" ><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+
                 <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estagiario_path(estagiarios), :title => "Alterar Unidade"%></td>
                      <% if current_user.has_role?('administrador')%>

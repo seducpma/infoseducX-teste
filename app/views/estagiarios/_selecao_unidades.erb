@@ -1,1 +1,2 @@
-<b>Unidade:</b><%= collection_select  :estagiario, :unidade_id, @unidades, :id, :nome, :include_blank => ' --- Selecione opção ---'  %>
+<% @unidades1 = Unidade.find(:all, :order => 'nome ASC') %>
+<b>Unidade:</b><%= collection_select  :estagiario, :unidade_id, @unidades1, :id, :nome, :include_blank => ' --- Selecione opção ---'  %>
