@@ -106,11 +106,11 @@
                 <td align="left"><b>Admissão:</b></td>
                 <td align="left" colspan="3"><%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
                       <b>Desligado:</b>SIM <%= f.check_box :desligado %> <%= f.date_select(:data_desliga, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
-                      <b>Analista Responsável:</b> <%= f.text_field :responsavel, :size =>10%></td>
+                      <b> Responsável:</b> <%= f.text_field :responsavel, :size =>30%></td>
              </tr>
-             <% if current_user.has_role?('administrador') %>
+             <% if current_user.has_role?('administrador') or current_user.has_role?('seducpmaRH') %>
                 <tr>
-                   <td valign="top"><b>Status:</b></td>
+                   <td valign="top"><b>Obserfvações:</b></td>
                    <td  align="left"><%= f.text_area(:obs, :cols =>"60", :rows => "1") %></td>
                    <td align="left"><b> Avaliação:</b></td>
                    <td align="left" ><%= f.text_field :aval, :size =>"34"   %></td>
@@ -122,9 +122,9 @@
         <table width="100%" align="left">
            <tr>
              <div id='Certeza'>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
               </div>
-              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <td align="left"><%= f.submit "Salvar", :class => "btn_filtrar" %></td>
 <% end %>
             </tr>
         </table>

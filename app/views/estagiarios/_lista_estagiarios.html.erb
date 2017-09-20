@@ -119,8 +119,8 @@
                <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
                <td align="left" ><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
 
-                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estagiario_path(estagiarios), :title => "Alterar Unidade"%></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('seducpmaRH') %>
+                  <td align="center" colspan="1"><%= button_to('Editar', {:action => "edit", :id => estagiarios},:method => "get", :title => "Visualizar") %></td>
                      <% if current_user.has_role?('administrador')%>
                        <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), estagiarios, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
                      <%end%>
