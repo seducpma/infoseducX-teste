@@ -1,0 +1,77 @@
+<script Language="JavaScript">
+function Imprimir(){
+window.print();
+}
+</script>
+<br/><br/>
+<% t=0 %>
+<font size="2">
+<table  class="tabelas" align="center" width="80%">
+ <tr>
+   <th align="left">
+     <font  size=5 color="black"> <b> ESTAGIÁRIO / TIPO DE ESTÁGIO</b></font>
+   </th>
+   <td width="5%">
+      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
+   </td>
+ </tr>
+<tr>
+  <td colspan="2">
+    <br/><br/>
+    <div class="botao">
+      <table width="100%" >
+        <tr>
+          <% form_for @search do |f| %>
+            <tr>
+               <td align="left" width="20%"><font  size="3" color="black">Tipo Estágio:<%= f.select :periodo_est_equals, TiposEstagio.all.collect {|p| [ p.nome, p.nome ]}, :include_blank => true%></font>
+
+               <%= submit_tag "Consultar", :class => "btn_filtrar" %></td>
+           </tr>
+          <% end %>
+          </tr>
+        </table>
+    </div>
+    <table border ="1" width="100%"  class="tabelas">
+        <tr style="font-size:12px">
+         <br/>
+            <th width="50%">Nome Estagiario</th>
+            <th width="15%">Periodo</th>
+            <th width="35%">Sede</th>
+        </tr>
+        <%if @estagiario_estagio == "Selecione o tipo de estagio"%>
+          <center><b><%= @estagiario_estagio %></b></center>
+          <br/>
+        <%else%>
+            <h3 align="center">Estagiários tipo:  <%= params[:search][:periodo_est_equals] %></h3>
+          <% for periodo in @estagiario_estagio %>
+            <tr>
+
+              <td><center><%=h periodo.nome %></center></td>
+              <td><center><%=h periodo.periodo_trab %></center></td>
+              <% if periodo.unidade_id.present? %>
+                <td><center><%=h periodo.unidade.nome %></center></td>
+              <%else%>
+                <td><center></center></td>
+              <%end%>
+            </tr>
+            <tr>
+            </tr>
+        <% end %>
+
+    <%end%>
+    </table>
+
+    <br/>
+
+    <table>
+      <tr>
+          <% if @estagiario_estagio != "Selecione o tipo de estagio" %>
+            <div class="botao">
+               <td width="6%"align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+               <td align="left" ><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>            </div>
+          <%end%>
+      </tr>
+    </table>
+</table>
+</font>
+<br/>

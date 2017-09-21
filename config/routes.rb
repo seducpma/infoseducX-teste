@@ -135,7 +135,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :administracaos, :collection => {:internet => :get}
 
-  map.resources :estagiarios, :collection => {:periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
+  map.resources :estagiarios, :collection => {:periodo_estagio => :get, :periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
 
   map.resources :unidades, :collection => {:print_all => :get}
 
@@ -197,7 +197,7 @@ ActionController::Routing::Routes.draw do |map|
   map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
   
 
-
+  map.estagio'/estagio', :controller => 'estagiarios', :action => 'estagio'
   map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'
   map.c_uni_tp '/c_uni_tp', :controller => 'unidades', :action => 'consultatipo'
   map.c_uni_uni '/c_uni_uni', :controller => 'unidades', :action => 'consulta'

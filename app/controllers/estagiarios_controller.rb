@@ -139,7 +139,13 @@ class EstagiariosController < ApplicationController
 
   def lista_estagiario
     $estagiario = params[:estagiario_estagiario_id]
-    @estagiarios = Estagiario.find(:all, :conditions => ['id=? and desligado=?',  $estagiario,0])
+    @estagiarios = Estagiario.find(:all, :conditions => ['id=? and desligado=?',  params[:estagiario_estagiario_id],0])
+    render :partial => 'lista_estagiarios'
+  end
+
+    def lista_estagiario_estagio
+
+    @estagiarios = Estagiario.find(:all, :conditions => ['tipo =? and desligado=?',  params[:estagiario_tipo],0])
     render :partial => 'lista_estagiarios'
   end
 
@@ -263,7 +269,7 @@ class EstagiariosController < ApplicationController
   end
 
   def periodo_trabalho
-
+t=0
       @search = Estagiario.search(params[:search])
 
     if (params[:search]).present?
@@ -283,6 +289,68 @@ class EstagiariosController < ApplicationController
 
   end
 
+def periodo_estagio
+
+      @search = Estagiario.search(params[:search])
+    if (params[:search]).present?
+     w=params[:search][:periodo_est_equals].present?
+     t=0
+      if (params[:search][:periodo_est_equals].present?)
+        if (params[:search][:periodo_est_equals] == "TODOS")
+          @estagiario_estagio = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
+          t=0
+        else
+          #@estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
+          @estagiario_estagio =  Estagiario.find(:all, :conditions => ['desligado=? and flag = 0 and tipo =?',0, params[:search][:periodo_est_equals]], :order => :unidade_id)
+        end
+      else
+        @estagiario_estagio = "Selecione o tipo de estagio"
+      end
+   else
+      @estagiario_estagio = "Selecione o tipo de estagio"
+   end
+    render :action => 'periodo_estagio'
+
+  end
+
+
+  def estagio
+      @search = Estagiario.search(params[:search])
+
+    if (params[:search]).present?
+        t=0
+      if (params[:search][:tipo_equals].present?)
+          @estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
+      else
+        @estagiario_estagio = "Selecione o periodo"
+      end
+   else
+      @estagiario_estagio = "Selecione o periodo"
+   end
+    render :action => 'estagio'
+
+  end
+
+
+
+  def estagio
+
+      @search = Estagiario.search(params[:search])
+
+    if (params[:search]).present?
+      if (params[:search][:tipo_equals].present?)
+          @estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
+     else
+        @estagio = "Selecionar Estágio"
+      end
+   else
+      @estagiao = "Selecione Estágio"
+   end
+
+    render :action => 'estagio'
+
+  end
+
 
   protected
 
@@ -292,7 +360,8 @@ class EstagiariosController < ApplicationController
 
   def load_estagiariosa
       @estagiariosa = Estagiario.find(:all, :order => 'nome ASC',:conditions => ['flag=? and desligado=?',0,0])
-      @estagio =TiposEstagio.find(:all, :order => 'nome ASC')
+      @estagios =TiposEstagio.find(:all, :select => 'nome',:order => 'nome ASC')
+
   end
 
 

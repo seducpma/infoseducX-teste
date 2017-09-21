@@ -191,11 +191,14 @@ display: none;
                      <li><a>Consultar</a>
                         <ul>
                           <li><%= link_to 'Atuais', estagiarios_path%></li>
-                          <% if current_user.has_role?('administrador') %>
+                         <% if current_user.has_role?('administrador')or current_user.has_role?('seducpmaRH') %>
+                              <li><%= link_to "Estágio",periodo_estagio_estagiarios_path %></li>
+                          <%end%>
+                          <% if current_user.has_role?('administrador')or current_user.has_role?('seducpmaRH') %>
                               <li><%= link_to 'Baixados', baixas_path%></li>
                           <%end%>
                            <li><%= link_to "Período",periodo_trabalho_estagiarios_path %></li>
-                          <% if current_user.has_role?('administrador') %>
+                          <% if current_user.has_role?('administrador') or current_user.has_role?('seducpmaRH')%>
                               <li><%= link_to 'Todos', print_all_estagiarios_path(:tipo => "todos")%></li>
                           <%end%>
                        </ul>
