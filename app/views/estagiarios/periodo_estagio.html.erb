@@ -6,7 +6,7 @@ window.print();
 <br/><br/>
 <% t=0 %>
 <font size="2">
-<table  class="tabelas" align="center" width="80%">
+<table  class="tabelas4" align="center" width="80%">
  <tr>
    <th align="left">
      <font  size=5 color="black"> <b> ESTAGIÁRIO / TIPO DE ESTÁGIO</b></font>
@@ -32,27 +32,30 @@ window.print();
         </table>
     </div>
     <table border ="1" width="100%"  class="tabelas">
-        <tr style="font-size:12px">
-         <br/>
-            <th width="50%">Nome Estagiario</th>
-            <th width="15%">Periodo</th>
-            <th width="35%">Sede</th>
-        </tr>
+
         <%if @estagiario_estagio == "Selecione o tipo de estagio"%>
           <center><b><%= @estagiario_estagio %></b></center>
           <br/>
         <%else%>
+            <tr style="font-size:12px">
+             <br/>
+                <th>Nome_Estagiario</th>
+                <th>Horário</th>
+                <th>Carga_Horária</th>
+                <th colspan="2">Unidade</th>
+            </tr>
             <h3 align="center">Estagiários tipo:  <%= params[:search][:periodo_est_equals] %></h3>
           <% for periodo in @estagiario_estagio %>
             <tr>
-
-              <td><center><%=h periodo.nome %></center></td>
-              <td><center><%=h periodo.periodo_trab %></center></td>
+              <td><%=h periodo.nome %></td>
+              <td><center><%=h periodo.horario%></center></td>
+              <td><center><%=h periodo.carga_horaria %></center></td>
               <% if periodo.unidade_id.present? %>
-                <td><center><%=h periodo.unidade.nome %></center></td>
+                <td><%=h periodo.unidade.nome %></td>
               <%else%>
-                <td><center></center></td>
+                <td></td>
               <%end%>
+               <td width="6%"align="left"><%= button_to('Visualizar', {:action => "show", :id => periodo},:method => "get", :title => "Visualizar") %></td>
             </tr>
             <tr>
             </tr>

@@ -404,6 +404,12 @@ margin-left: 300px;
   width: 30%;
 
 }
+.tabelas4 {
+  border: solid 1px;
+  border-collapse: separate;
+  border-color:black;
+  width: 65%;
+}
 .tabelasT {
   border: solid 1px;
   border-collapse: separate;
@@ -446,7 +452,14 @@ margin-left: 300px;
   padding-bottom: 4px;
   text-align: left;
 }
-
+.tabelas4 th {
+  font-size: 12px;
+  color: black;
+  background-image:url(Imagens/fundolinha.jpg);
+  padding: 4px 8px;
+  padding-bottom: 4px;
+  text-align: left;
+}
 .tabelasT th {
   font-size: 12px;
   color: black;
@@ -461,6 +474,10 @@ margin-left: 300px;
 }
 
 .tabelas2 th.titulo {
+    background-color: yellow;
+}
+
+.tabelas4 th.titulo {
     background-color: yellow;
 }
 
@@ -494,6 +511,12 @@ margin-left: 300px;
   color:black;
 }
 
+.tabelas4 td {
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #e3f4fc;
+  color:black;
+}
 
 .tabelas3 td {
   font-size: 12px;

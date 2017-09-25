@@ -135,7 +135,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :administracaos, :collection => {:internet => :get}
 
-  map.resources :estagiarios, :collection => {:periodo_estagio => :get, :periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
+  map.resources :estagiarios, :collection => {:periodo_unidade => :get, :periodo_estagio => :get, :periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
 
   map.resources :unidades, :collection => {:print_all => :get}
 

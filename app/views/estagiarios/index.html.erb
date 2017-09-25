@@ -18,21 +18,15 @@
            <div class="botao">
 
                 <% form_tag estagiarios_path, :method => 'get' do %>
-                <font size="4"> Digite nome:</font>
+                <font size="4"> Estagiário:</font>
                    <%= text_field_tag :search, params[:search] %>
                    <%= submit_tag "Consultar", :class => "btn_filtrar" %>
-                   
-
                 <% end %>
 
          </div>
          </td>
        </tr>
-       <tr>
-          <% if  $var == 0 then %>
-             <td align="left" colspan="4"><%= will_paginate @estagiarios %></td>
-          <%end%>
-        </tr>
+
       </table>
       <br/>
       </div>
@@ -42,39 +36,49 @@
         <% for estagiarios in @estagiarios %>
         <%if (estagiarios.flag == 0 and estagiarios.desligado == 0 ) then %>
         <tr>
-          <td rowspan="4" valign="top">
+          <td rowspan="6" valign="top">
              <%= image_tag estagiarios.photo.url(:thumb) %><br/>
            </td>
           <th>Nome</th>
           <th>Fone</th>
           <th>Cel</th>
-          <th>Email</th>
+          <th colspan="3">Email</th>
         </tr>
         <tr>
           <td align="center"><%=h estagiarios.nome %></td>
           <td align="center"><%=h estagiarios.fone %></td>
           <td align="center"><%=h estagiarios.cel %></td>
-          <td><%=h estagiarios.email %></td>
+          <td colspan="3"><%=h estagiarios.email %></td>
         </tr>
         <tr>
-
-          <th colspan="2">Unidade</th>
+          <th>Unidade</th>
           <th>Período</th>
+          <th>Horário</th>
+          <th>C.Horária</th>
           <th>Contrado em</th>
         </tr>
         <tr>
           <%if estagiarios.unidade_id.nil?%>
-               <td colspan="2"></td>
+               <td ></td>
           <%else%>
-               <td colspan="2"><%=h estagiarios.unidade.nome %></td>
+               <td ><%=h estagiarios.unidade.nome %></td>
           <%end%>
           <td><%=h estagiarios.periodo_trab %></td>
+          <td><%=h estagiarios.horario %></td>
+          <td><%=h estagiarios.carga_horaria%></td>
           <td><%=h estagiarios.data_admissao.strftime("%d/%m/%Y") %>
              <%if (((estagiarios.data_admissao.to_time)+ 20.months) < Date.today)%>
                <font color="red" size="2"><b>  -  CONTRATO ESTÁ TERMINANDO</b></font>
              <%end%>
           </td>
         </tr>
+        <tr>
+            <th colspan="5">Observação</th>
+        </tr>
+        <tr>
+            <td colspan="5"><%=h estagiarios.obs %></td>
+        </tr>
+
       <tr>
         <td colspan="7">
            <div class="botao">

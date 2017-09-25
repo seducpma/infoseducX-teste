@@ -313,46 +313,54 @@ def periodo_estagio
 
   end
 
+def periodo_estagio
 
-  def estagio
       @search = Estagiario.search(params[:search])
-
     if (params[:search]).present?
-        t=0
-      if (params[:search][:tipo_equals].present?)
-          @estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
+     w=params[:search][:periodo_est_equals].present?
+     t=0
+      if (params[:search][:periodo_est_equals].present?)
+        if (params[:search][:periodo_est_equals] == "TODOS")
+          @estagiario_estagio = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
+          t=0
+        else
+          #@estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
+          @estagiario_estagio =  Estagiario.find(:all, :conditions => ['desligado=? and flag = 0 and tipo =?',0, params[:search][:periodo_est_equals]], :order => :unidade_id)
+        end
       else
-        @estagiario_estagio = "Selecione o periodo"
+        @estagiario_estagio = "Selecione o tipo de estagio"
       end
    else
-      @estagiario_estagio = "Selecione o periodo"
+      @estagiario_estagio = "Selecione o tipo de estagio"
    end
-    render :action => 'estagio'
+    render :action => 'periodo_estagio'
 
   end
 
-
-
-  def estagio
+def periodo_unidade
 
       @search = Estagiario.search(params[:search])
-
     if (params[:search]).present?
-      if (params[:search][:tipo_equals].present?)
-          @estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
-     else
-        @estagio = "Selecionar Estágio"
+     params[:search][:unidade_id_equals].present?
+     if (params[:search][:unidade_id_equals].present?)
+        if (params[:search][:unidade_id_equals] == "TODOS")
+          @estagiario_unidade = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
+        else
+          #@estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
+          @estagiario_unidade =  Estagiario.find(:all, :conditions => ['desligado=? and flag = 0 and unidade_id =?',0, params[:search][:unidade_id_equals]], :order => :unidade_id)
+        end
+      else
+        @estagiario_unidade = "Selecione o tipo de unidade"
       end
    else
-      @estagiao = "Selecione Estágio"
+      @estagiario_unidade = "Selecione o tipo de unidade"
    end
-
-    render :action => 'estagio'
+    render :action => 'periodo_unidade'
 
   end
 
 
-  protected
+    protected
 
   def load_regiaos
       @regiaos = Regiao.find(:all)
@@ -375,6 +383,7 @@ def periodo_estagio
 
   def load_unidades
       @unidades = Unidade.find(:all, :order => 'nome ASC')
+      @unidades1 = Unidade.find(:all, :select => 'nome, id', :conditions => ['id != 9 and id != 12 and id != 65 and id != 62 and id != 71 and id != 72 and id != 75 and id != 76 and id != 79 and id != 59', ], :order => 'nome ASC')
   end
 
 end

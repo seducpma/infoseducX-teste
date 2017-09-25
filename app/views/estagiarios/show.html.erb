@@ -1,6 +1,6 @@
 <br/>
 <%if @estagiarios.flag == 0%>
-<table  class="tabelas" width="80%"align="center">
+<table  class="tabelas4" width="80%"align="center">
    <tr>
       <th align="left">
          <font  size=5 color="black"> <b> ESTAGIÁRIO</b></font>
@@ -78,9 +78,9 @@
                 <tr>
                 <td valign="top" align="left"><b>Status:</b></td>
                 <td align="left">  <% if  @estagiarios.desligado == 1 %>
-                                          DESLIGADO
+                                         <b> DESLIGADO</b>
                                   <%else%>
-                                         EM ANDAMENTO
+                                         <b>EM ATIVIDADE</b>
                                   <%end%>
                 </td>
                </tr>
@@ -129,6 +129,10 @@
                 <td>
                  <fieldset><legend><font  size=4> Dados Contrato</font></legend>
                  <table>
+                    <tr>
+                     <td align="left"><b>Matricula(PMA):</b></td>
+                    <td align="left"> <%=h @estagiarios.matriculaPMA%></td>
+                   </tr>
                    <tr>
                       <td align="left"><b>Tipo Estágio:</b></td>
                       <td align="left"><%=h @estagiarios.tipo %> </td>
@@ -142,8 +146,12 @@
                         <%end%>
                    </tr>
                    <tr>
+                      <td align="left"><b>Horário:</b></td>
+                      <td align="left"><%=h @estagiarios.horario %> </td>
+                    </tr>
+                   <tr>
                       <td align="left"><b>Período:</b></td>
-                      <td align="left"><%=h @estagiarios.periodo_trab %> </td>
+                      <td align="left"><%=h @estagiarios.periodo_trab %>  &nbsp&nbsp <b>Período:</b> <%=h @estagiarios.carga_horaria %> </td>
                     </tr>
                     <tr>
                      <td align="left"><b>Admissão:</b></td>
@@ -153,24 +161,22 @@
                      <td align="left"><b>Matricula (PMA):</b></td>
                     <td align="left"> <%=h @estagiarios.matriculaPMA%></td>
                    </tr>
-                  <tr>
+                 
                       <% if @estagiarios.desligado == 1 %>
-                      <td colspan="2" align="left"><b>Estagiário DESLIGADO</b></td>
-                      <%else%>
-                      <td colspan="2" align="left"><b>Estagiário EM ATIVIDADE</b></td>
-                      <%end%>
-                  </tr>
-                  <tr>
-                     <td align="left"><b>Desligamento:</b></td>
-                      <% if @estagiarios.desligado == 1 %>
+                        <tr>
+                            <td align="left"><b>Encerrado em:</b></td>
                             <td align="left"><%=h @estagiarios.data_desliga.strftime("%d/%m/%y") %></td>
-                        <%end%>
-                   </tr>
+                        </tr>   
+                        <tr>
+                            <td align="left"><b>Motivo: </b></td>
+                             <td align="left"><%=h @estagiarios.etinerante%></td>
+                        </tr>
+                       <%end%>
                   <tr>
-                      <td align="left"><b>Analista:</b></td>
+                      <td align="left"><b>Responsável:</b></td>
                       <td align="left"><%=h @estagiarios.responsavel %> </td>
                   </tr>
-                   <% if current_user.has_role?('administrador') %>
+                   <% if current_user.has_role?('administrador')or current_user.has_role?('seducpmaRH') %>
                        <tr>
                         <td align="left"><b> Avaliação</b></td>
                         <td align="left"><%=h @estagiarios.aval %></td>
