@@ -2,7 +2,7 @@
 set :application, "192.168.0.14"
 #set :repository, "git://github.com/seducpma/sisgered.git"
 set :repository, "git://github.com/seducpma/infoseduc.git"
-set :user, "servidor"
+set :user, "atena"
 set :use_sudo, false
 #set :deploy_to, "/home/#{user}/sisgered.seducpma.com"
 set :deploy_to, "/home/#{user}/infoseduc.seducpma.com"
