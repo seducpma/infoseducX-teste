@@ -80,7 +80,8 @@ class EventualsController < ApplicationController
 
   
     def load_iniciais
-         session[:base]= 'sisgered_development'
+         #session[:base]= 'sisgered_development'
+         session[:base]= 'sisgered_production'
             @unidades = Unidade.find(:all, :order => 'nome ASC')
             @eventuals = Eventual.find(:all,:select => "id", :conditions => ['ano_letivo=?', Time.now.year])
             @professores= Professor.find_by_sql("SELECT id, nome FROM professors WHERE `id` NOT IN ( SELECT professor_id FROM eventuals )ORDER BY nome ASC" )
