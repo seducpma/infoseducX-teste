@@ -1,96 +1,102 @@
-<br/>
-<font size="2">
-<table  class="tabelas1" width="100%"align="center">
- <tr>
-    <th align="left">
-     <font  size=5 color="black"> <b> SOLICITAÇÃO DE ORDEM DE SERVIÇO</b></font>
-    </th>
-    <td width="3%">
-      <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  mmanutencaos_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-</tr>
-<tr>
-  <td colspan="2">
-     <table>
-       <tr>
-         <td width="25%" valign="TOP">
-           <%= render 'formshow' %>
-         </td>
-         <td valign="top"width="30%">
-           <fieldset><legend><font  size=4> Encaminhamento</font></legend>
-           <% form_for(@mmanutencao) do |f| %>
-           <%= f.error_messages %>
-           <table>
 
-           <tr>
-              <td align="left" valign="top"><b>Despacho:</b></td>
-              <td align="left"><%= @mmanutencao.procedimentos %></td>
-           </tr>
-           <tr>
-              <td align="left"><b>Para:</b></td>
-              <% if @mmanutencao.chefia.nil? %>
-                <td> NÃO ENCAMINHADO</td>
-              <%else%>
-                <td align="left"><%= @mmanutencao.chefia.nome%></td>
-              <%end%>
-           </tr>
-           <tr>
-              <td align="left"><b>Situação Chamado:</b></td>
-              <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
-           </tr>
-           <tr>
-              <td align="left" width="20%" valign="top"><b>Data:</b></td>
-              <%if @mmanutencao.data_ate.nil?%>
-                <td>Serviço não realizado</td>
-              <%else%>
-                <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
-              <%end%>
-           </tr>
-
-           </table>
-        </fieldset>
-      </td>
-      <td valign="top"width="30%">
-           <fieldset><legend><font  size=4> Serviço</font></legend>
-           <table>
-
-           <tr>
-              <td align="left" valign="top"><b>Serviços Executados:</b></td>
-              <td align="left"><%= f.text_area :executado, :cols =>"40", :rows => "5" %></td>
-           </tr>
-           <tr>
-              <td align="left"><b>Funcionário:</b></td>
-               <td align="left"><%= f.text_field :ffuncionario, :size=> 16 %></td>
-           </tr>
-           <tr>
-              <td align="left"><b>Situação Chamado:</b></td>
-              <td align="left"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecione -- '%></td>
-           </tr>
-           <tr>
-              <td align="left" width="20%" valign="top"><b>Data do Serviço:</b></td>
-              <td align="left"><%= Time.now.strftime("%d/%m/%Y %H:%M")%></td>
-             </tr>
-
-           </table>
-        </fieldset>
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+     <tr bgcolor ="#E6E2D">
+        <td align="left">
+         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO - MANUTENÇÃO GERAL</b></font>
+           <hr/>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2">
          <table>
-            <tr >
-             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar1.png"), mmanutencaos_path, :title => "Voltar" %></td>
-             <div id='Certeza'>
-               <td width="5%"align="left"><input type="image" src="/stylesheets/images/salvar9.png" title="Gravar"></td>
-             </div>
-             <%end%>
-               <td align="left" ><%= link_to image_tag("/stylesheets/images/servicos.png"), mmanutencaos_path, {:method => "get"}, :title => "Ordem de Serviço" %></td>
-             </tr>
-         </table>
+           <t r>
+             <td width="30%" valign="TOP">
+               <%= render 'formshow' %>
+             </td>
+             <td valign="top"width="30%">
+               <fieldset><legend><font  size=4> Encaminhamento</font></legend>
+               <% form_for(@mmanutencao) do |f| %>
+               <%= f.error_messages %>
+               <table>
+
+               <tr>
+                  <td align="left" valign="top"><b>Despacho:</b></td>
+                  <td align="left"><%= @mmanutencao.procedimentos %></td>
+               </tr>
+               <tr>
+                  <td align="left"><b>Para:</b></td>
+                  <% if @mmanutencao.chefia.nil? %>
+                    <td> NÃO ENCAMINHADO</td>
+                  <%else%>
+                    <td align="left"><%= @mmanutencao.chefia.nome%></td>
+                  <%end%>
+               </tr>
+               <tr>
+                  <td align="left"><b>Situação Chamado:</b></td>
+                  <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
+               </tr>
+               <tr>
+                  <td align="left" width="20%" valign="top"><b>Data:</b></td>
+                  <%if @mmanutencao.data_ate.nil?%>
+                    <td>Serviço não realizado</td>
+                  <%else%>
+                    <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
+                  <%end%>
+               </tr>
+
+               </table>
+            </fieldset>
+          </td>
+          <td valign="top"width="30%">
+               <fieldset><legend><font  size=4> Serviço</font></legend>
+               <table>
+
+               <tr>
+                  <td align="left" valign="top"><b>Serviços Executados:</b></td>
+                  <td align="left"><%= f.text_area :executado, :cols =>"40", :rows => "5" %></td>
+               </tr>
+               <tr>
+                  <td align="left"><b>Funcionário:</b></td>
+                   <td align="left"><%= f.text_field :ffuncionario, :size=> 16 %></td>
+               </tr>
+               <tr>
+                  <td align="left"><b>Situação Chamado:</b></td>
+                  <td align="left"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecionar -- '%></td>
+               </tr>
+               <tr>
+                  <td align="left" width="20%" valign="top"><b>Data do Serviço:</b></td>
+                  <td align="left"><%= Time.now.strftime("%d/%m/%Y %H:%M")%></td>
+                 </tr>
+
+               </table>
+            </fieldset>
+             <table>
+                <tr >
+                 <div id='Certeza'>
+                   <td align="right"><%= f.submit "Salvar" %> </td>
+                 </div>
+                 <%end%>
+                   <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                   <td align="left" ><%= button_to('Serviços em Aberto', mmanutencaos_path, :method => "get", :title => "Servicos em Aberto") %></td>
+                 </tr>
+             </table>
+          </td>
+          </tr>
+
+
+        </table>
       </td>
-      </tr>
-
-
+     </tr>
     </table>
-  </td>
- </tr>
-</table>
 </font>
+
+</div>
 <br/>
 

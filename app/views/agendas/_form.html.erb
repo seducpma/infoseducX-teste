@@ -1,26 +1,25 @@
 <% form_for(@agenda) do |f| %>
   <%= f.error_messages %>
-<font  size="2">
- <table class="tabelas2" width="45%" align="center">
-  <tr>
-   <th  align="left">
-     <font  size=5><b> AGENDA - Laboratório de Informática</b></font>
-   </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-  </tr>
-  <tr>
-    <td colspan="2">
 
-       <table>
+    <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+        <tr>
+             <td colspan="8" align="center"><b><font size="3"> &nbsp AGENDAMENTO  &nbsp  </b></td>
+       </tr>
+       <tr>
+               <td colspan="8"><hr></td>
+       </tr>
+         <tr>
+             <td colspan="2" align="center">
+             <font style="color: red"><b><u><%= flash[:notice] %></u></b></font>
+           </td>
+         </tr>
          <tr>
             <td align="left"><font size=2><b>Unidade:</b></font></td>
-            <td align="left"><font size=2><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %></font></td>
+            <td align="left"><font size=2><%= f.collection_select :unidade_id, @unidades_fudamental, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font></td>
          </tr>
          <tr>
             <td align="left"><font size=2><b>Estagiário:</b></font></td>
-            <td align="left"><font size=2><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- '  %></font></td>
+            <td align="left"><font size=2><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font></td>
           </tr>
          <tr>
             <td align="left"><font size=2><b>Data:</b></font></td>
@@ -42,29 +41,24 @@
             <td align="left" valign="top"><font size=2><b>Observações:</b></font></td>
            <td align="left"><font size=2><%= f.text_area(:obs, :cols =>58, :rows => "2") %></font></td>
          </tr>
-        </table>
-     
-           
-      <table width="100%" >
+
+
          <tr>
-           <td width="4%"align="left"><b><div id='Certeza'><%= f.submit 'Salvar' %></div></b></td>
+              <td align="left" colspan="2"valign="top"></td>
+          </tr>
 
-<%end%>
-             <td width="4%"> <%= button_to("Voltar", homes_path, :method => 'get',:title => "Voltar" )%></td>
-             <td> <%= button_to("Agenda", agendas_path, :method => 'get',:title => "Voltar" )%></td>
+                   </table>
+
+                     <table width="100%"  align="center">
+                            <tr>
+                               <td width="5px%"align="left"><%= f.submit 'Salvar' %></td>
+              <% end %>
+                              <td width="4%"> <%= button_to("Voltar", home_path, :method => 'get',:title => "Voltar" )%></td>
+                             <td> <%= button_to("Agenda", agendas_path, :method => 'get',:title => "Voltar" )%></td>
+                           </tr>
+                        </table>
 
 
 
-         </tr>
-       </table>
-     
 
 
-
-
-
-      </td>
-   </tr>
- </table>     
-  <br/>
-</font>

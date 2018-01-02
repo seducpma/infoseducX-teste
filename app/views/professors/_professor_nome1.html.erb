@@ -1,0 +1,17 @@
+<% if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+       <% @professors = Professor.find( :all,:conditions => [" desligado = 0"  ],:order => 'nome ASC') %>
+ <%  else %>
+       <% @professors = Professor.find( :all,:conditions => ["desligado = 0 and unidade_id=?" , current_user.unidade_id],:order => 'nome ASC') %>
+ <% end %>
+
+<table width="100%" align="center" bgcolor="#DCDCDC" >
+          <tr>
+            <td colspan="2"align="right"><font size="2"> <b>Professor:</b></font>
+               &nbsp&nbsp&nbsp
+                <%= collection_select :professor, :id, @professors, :id, :nome, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca1"  %>
+               <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
+          </td>
+        </tr>
+       </table>
+
+

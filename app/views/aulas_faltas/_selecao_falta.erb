@@ -1,0 +1,51 @@
+<table width="100%">
+  <% if session[:professor] == 1 %>
+      <%if  @professores.present?%>
+         <tr>
+             <td align="left" width ="60%" valign="top"><b> Professor: </b>&nbsp&nbsp <%= collection_select :aulas_falta, :professor_id, @professores, :id, :nome, :include_blank => ' -- Selecionar caso seja professor -- ' %>
+                                                    <%= observe_field 'aulas_falta_professor_id',
+                                                     :with   => :aulas_falta_professor_id,
+                                                     :url  => { :action => 'classe_professor' },
+                                                     :update => "classe_professor"%>
+             </td>
+         </tr>
+         <tr>
+             <td><div id="classe_professor"></div></td>
+
+         </tr>
+     <%else%>
+        <tr>
+            <td align="left" colspan="2"><b> &nbsp&nbsp NÃO há Professor cadastrado para esta unidade </b></td>
+         </tr>
+
+     <%end%>
+     
+  <%end%>
+  <%if  session[:funcionario] == 1 %>
+     <%if  @funcionarios.present?%>
+         <tr>
+             <td align="left"><b> Funcionario: </b><%= collection_select :aulas_falta, :funcionario_id, @funcionarios, :id, :nome, :include_blank => ' -- Selecionar caso seja funcionário -- ' %>
+                <%= observe_field 'aulas_falta_funcionario_id',
+                       :with   => :aulas_falta_funcionario_id,
+                       :url  => { :action => 'setor_funcionario' },
+                       :update => "setor_funcionario"%>
+             </td>
+         </tr>
+         <tr>
+             <td><div id="setor_funcionario"></div></td>
+         </tr>
+     <%else%>
+        <tr>
+             <td align="left"><b> &nbsp&nbsp NÃO há Funcionario cadastrado para esta unidade </b></td>
+         </tr>
+
+     <%end%>
+     
+  <%end%>
+ 
+
+</table>
+
+
+
+

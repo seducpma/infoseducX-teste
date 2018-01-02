@@ -1,17 +1,12 @@
-<br/>
-<table align="right" >
-  <tr>
-    <td>
-      <b><font size="5"color="red"><u><%= flash[:notice] %></u></font></b>
-    </td>
-    <td align="right" ><%= button_to("Voltar",  homes_path, :method => "get", :title => "Voltar")%></td>
-    <td width="2%" align="right" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
-    <td width="2%"><%= button_to("Agendar", confirma_agenda_reservar_salas_path,  :title => "Agendar") %></td>
-   <tr>
-</table>
+
+<link rel="stylesheet" media="all" href="css/calendar.css" />
 
 <% if @reservar_salas.present? %>
   <div id="calendar">
+         <h2><center> <b>AGENDA DE RESERVA DE SALA -  SEDUC </b></center> </h2>
+
+  <hr/>
+  <b><center>  <font size="5"color="red"><u><%= flash[:notice] %></u></font></center></b>
     <h2 id="month">
       <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
       <%=h @date.strftime("%B %Y") %>
@@ -41,8 +36,7 @@
 <br/>
 <table align="right">
   <tr>
-    <td align="right" ><%= button_to("Voltar",  homes_path, :method => "get", :title => "Voltar")%></td>
-    <td width="2%" align="right" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+    <td align="right" ><%= button_to("Voltar",  home_path, :method => "get", :title => "Voltar")%></td>
     <td width="2%" align="right"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
    </tr>
 </table>

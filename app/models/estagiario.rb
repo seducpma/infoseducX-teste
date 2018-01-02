@@ -1,48 +1,21 @@
 class Estagiario < ActiveRecord::Base
   belongs_to :unidade
-  belongs_to :tipos_estagios
   belongs_to :regiao
-  has_many :users
-  has_many :justificativas
-  has_many :saidas
-  has_many :relatorios
   has_many :chamados
-  has_many :protocolos
-  has_many :relatestagiarios
-  has_many :equipamentos
-  has_many :agendas
-  before_save :etinerancia
+
   before_update :sem_est, :if => :verify?
   before_save :com_est, :if => :verify?
   before_update :sai, :if => :verify?
   has_attached_file :photo, :styles => {:thumb=> "100x100#", :small  => "150x150>" }
-  
+
   def verify?
     self.unidade_id.present?
   end
 
-
-  def self.type(estagiario)
+def self.type(estagiario)
     find(estagiario).periodo_trab
-  end
+end
 
-  def to_param
-    "#{id}-#{nome}"
-  end
-protected
-
-def etinerancia
-     
-     if (self.periodo_trab == 'ITINERANTE' ) then
-        self.etinerante = 1
-        self.unidade_id = nil
-     else
-        self.etinerante = 0
-        
-
-
-     end
-  end
 
 def desliga
    if desligado == false then
@@ -50,7 +23,7 @@ def desliga
    else
       return "SIM"
    end
-  
+
   end
   def sai
    if desligado == 1 then
@@ -142,7 +115,12 @@ def com_est
   end
 end
 
- def before_save
+def before_save
+
+
+    if  !self.nome.nil?
+       self.nome.upcase!
+    end
     if  !self.endereco.nil?
        self.endereco.upcase!
     end
@@ -152,7 +130,7 @@ end
     if  !self.bairro.nil?
         self.bairro.upcase!
     end
-    if  !self.cidade.nil?    
+    if  !self.cidade.nil?
        self.cidade.upcase!
     end
     if  !self.faculdade.nil?
@@ -170,6 +148,6 @@ end
 end
 
 
-end
 
-      
+
+end

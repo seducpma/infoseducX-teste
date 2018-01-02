@@ -1,0 +1,14 @@
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"><font size="2"> <b class="label_busca2">Função:</b></font>
+        <%= collection_select :funcionario, :funcao, @funcao, :funcao, :funcao, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca1"  %>
+          <%= observe_field 'funcionario_funcao',
+               :update => "dados",
+               :url    => { :action => 'lista_consulta_funcao' },
+               :with   => 'funcionario_funcao' %>
+
+
+     </td>
+   </tr>
+  </table>
+

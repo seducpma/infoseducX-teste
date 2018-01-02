@@ -1,96 +1,89 @@
- <table class="tabelas1"  align="center" width="100%">
-  <tr>
-       <th align="left">
-         <font  size=5 color="black"> <b>SENHAS</b></font>
-       </th>
-   <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
- </tr>
- <tr>
-   <td colspan="2">   <br/>
-   <div class="botao">
-     <table width="100%">
-    <tr>
-      <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-      <td width="1%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>
-      <td align="right">
-        <div class="botao">
-          <table>
-            <tr>
-              <% form_tag senhas_path, :method => 'get' do %>
-              <td align="right"><font size="4"> Digite local:</font>
-                 <%= text_field_tag :search, params[:search] %>
-               <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
-              </td>
-              <% end %>
-           </tr>
-     </table>
-     </div>
-     </td>
-   </tr>  
-   <tr>
-     <% if  $var == 0 then %>
-        <td width="20%" align="left" colspan="4"><%= will_paginate @senhas %></td>
-      <%end%>
-
-
-   </tr>
-  </table>
-  <br/>
-  </div>
-    <font  size="2">
-    <table border="2" width="100%">
-
-     <tr>
-        <th>Local</th>
-        <th>De</th>
-        <th>Usuario</th>
-        <th>Senha</th>
-        <th>Fone Instalado</th>
-        <th>Observações</th>
-    </tr>
-    <% for senhas in @senhas %>
-    <tr>
-        <td><%=h senhas.unidade.nome %></td>
-        <td><%=h senhas.de %></td>
-        <td><%=h senhas.usuario %></td>
-        <td><%=h senhas.senha %></td>
-        <td><%=h senhas.fone %></td>
-        <td><%=h senhas.obs %></td>
-    </tr>
-    <tr>
-      <td colspan="12">
-        <div class="botao">
-        <table>
-            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id =>senhas}, :method => "get", :title => "Alterar Dados"%></td>
-                  <% if current_user.has_role?('administrador')%>
-                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), senhas, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
-                     <%end%>
-               <%end%>
-        </table>
+<div id="interno6">
+    <% title "SAUDES".singularize %>
+    <div class="tabs">
+        <div id="caixa_titulo">
+            <font size="3"><strong>SENHAS - SEDUC/PMA</strong></font><br/>
         </div>
-       </td>
-    </tr>
-    <% end %>
-   </table>
-   </font>
-  <div class="botao">
-   <table width="100%" >
-    <tr>
-      <td width="4%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-      <td align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>
-      <% if  $var == 0 then %>
-        <td align="left" ><%= will_paginate @senhas %></td>
-      <%end%>
-   </tr>
-  </table>
-  </div>
-  </table>
+        <div class="tabs">
 
-<br/>
+            <table bgcolor="#F5F5F5"  width="100%">
+
+                <tr bgcolor="#F5F5F5"   width="100%">
+                    <td colspan="2">
+
+                            <table width="100%">
+                                <tr>
+                                    <td width="1%" align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                                    <td width="1%"align="left" ><%= button_to 'Cadastrar', new_senha_path, :title => "Cadastrar" %></td>
+                                    <td align="right">
+
+                                            <table>
+                                                <tr>
+                                                    <% form_tag senhas_path, :method => 'get' do %>
+                                                        <td align="right"><font size="4"> Digite local:</font>
+                                                            <%= text_field_tag :search, params[:search] %></td>
+                                                        <td align="left"><%= submit_tag "Filtrar", :class => "btn_filtrar" %></td>
+                                                    <% end %>
+                                                </tr>
+                                            </table>
+
+                                    </td>
+                                </tr>
+                                <tr>
 
 
 
+                                </tr>
+                            </table>
+                            <br/>
+                            <table border="2" width="100%">
+                                <tr>
+                                    <th>Local</th>
+                                    <th>De</th>
+                                    <th>Usuario</th>
+                                    <th>Senha</th>
+                                    <th >Fone-Instalado</th>
+                                    <th>Observações</th>
+                                </tr>
+                                <% for senhas in @senhas %>
+                                    <tr>
+                                        <td><%=h senhas.unidade.nome %></td>
+                                        <td><%=h senhas.de %></td>
+                                        <td align="center"><%=h senhas.usuario %></td>
+                                        <td align="center"><%=h senhas.senha %></td>
+                                        <td width="8%"><%=h senhas.fone %></td>
+                                        <td><%=h senhas.obs %></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="12" align="right">
+                                                <table>
+                                                    <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') %>
+                                                        <td align="center" colspan="1"><%= button_to 'Editar', {:action => "edit", :id =>senhas}, :method => "get", :title => "Editar"%></td>
+                                                        <% if current_user.has_role?('admin')%>
+                                                            <td align="center" colspan="1"><%= button_to 'Excluir', senhas, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+
+                                                        <%end%>
+                                                    <%end%>
+                                                </table>
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            </table>
+
+                            <table width="100%" >
+                                <tr>
+                                    <td width="1%" align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                                    <td align="left" ><%= button_to 'Cadastrar', new_senha_path, :title => "Cadastrar" %></td>                                </tr>
+                            </table>
+
+            </table>
+
+
+
+ </div>
+        <br/>
+
+    </div>
+
+            <br/>
 

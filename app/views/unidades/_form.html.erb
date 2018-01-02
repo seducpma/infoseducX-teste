@@ -1,104 +1,63 @@
+<% form_for @unidade do |f| %>
+ <%= f.error_messages %>
+  <font  size="2">
+    <fieldset><legend><font  size=3> Unidade</font></legend>
+      <table width="100%" bgcolor="#F5F5F5">
+        <tr>
+            <td width ="5%"><b>Tipo: </b></td>
+            <td colspan="3"><%= f.select :tipo_id, (TIPOUNIDADE).sort, :include_blank => '-- Selecionar --' %><b>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Nome:</b>
+               &nbsp&nbsp&nbsp <%= f.text_field :nome, :size =>"82" %>
+            </td>
+        </tr>
+        <tr>
+           <td><b>Endereço: </b></td>
+           <td colspan="3"><%= f.text_field :endereco, :size=>"60" %>
+               &nbsp&nbsp&nbsp&nbsp <b>Nº</b>
+               &nbsp <%= f.text_field :num, :size =>"2" %>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Bairro: </b>
+               &nbsp&nbsp<%= f.text_field :bairro, :size =>"33" %>
+           </td>
+        </tr>
+        <tr>
+            <td><b>CEP: </b></td>
+            <td colspan="3"><%= f.text_field :CEP, :size =>"12" %>
+                  &nbsp&nbsp&nbsp&nbsp<b> Fones: </b>
+                  &nbsp&nbsp <%= f.text_field :fone, :size =>"30" %>
+                  &nbsp&nbsp&nbsp&nbsp <b>&nbsp E_mail: </b>
+                  &nbsp&nbsp   <%= f.text_field :email, :size=>"46" %>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Diretor: </b></td>
+            <td colspan="3"> <%= f.text_field :diretor, :size =>"26" %>
+               &nbsp&nbsp&nbsp&nbsp <b>Vice-diretor:</b>
+               &nbsp <%= f.text_field :vice, :size =>"26" %>
+               &nbsp&nbsp&nbsp&nbsp <b>Coordenador:</b>
+               &nbsp <%= f.text_field :coordenador, :size =>"26" %>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Superisão: </b></td>
+            <td colspan="3"> <%= f.text_field :supervisao, :size =>"26" %>
+               &nbsp&nbsp&nbsp&nbsp <b>Bibliotecaria:</b>
+               &nbsp <%= f.text_field :biblioteca, :size =>"26" %>
+               &nbsp&nbsp&nbsp&nbsp <b>Nº IP:</b>
+               &nbsp <%= f.text_field :ip, :size =>"33" %>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><b>Observação: </b></td>
+            <td colspan="3"> <%= f.text_area(:obs, :cols =>"125", :rows => "3") %></td>
+        </tr>
 
-<% form_for(@unidades) do |f| %>
-<%= f.error_messages %>
-<font  size="2">
- <table class="tabelas" width="100%" align="center" >
-  <tr>
-      <th align="left">
-         <font  size=5 color="black"> <b> UNIDADES</b></font>
-      </th>
-       <td width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-  </tr>
-    <td colspan="2">
-      <fieldset><legend><font  size=4> Unidade</font></legend>
-        <table>
-           <tr>
-              <td width="50%">
-                <table>
-                 <tr>
-                   <td align="left"><b>Nome:</b></td>
-                   <td><%= f.text_field :nome, :size =>26 %></td>
-                       <%= observe_field :unidade_nome,
-                        :with => :unidade_nome,
-                        :url => { :action => 'mesmo_nome' } %>
-                 </tr>
-                 <tr>
-                     <td colspan="2">
-                      <font size="4" color="red">
-                        <div id='nome_aviso'></div>
-                      </font>
-                    </td>
-                 </tr>
 
-                 <tr>
-                   <td align="left"><b> Endereço:</b></td>
-                   <td> <%= f.text_field :endereco,:size =>16 %>
-                       <b>Nº </b>
-                       <%= f.text_field :num, :size => 1 %></td>
-                 </tr>
-                 <tr>
-                   <td align="left"><b> Bairro:</b></td>
-                   <td><%= f.text_field :bairro, :size =>26 %></td>
-                 </tr>
-                 <tr>
-                   <td align="left"><b> Complemento:</b></td>
-                   <td><%= f.text_field :complemento, :size =>7%>
-                      <b>Fone</b>
-                      <%= f.text_field :fone, :size =>7%>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td align="left"><b>Tipo:</b></td>
-                   <td align="left"><%= f.collection_select  :tipo_id, @tipos, :id, :nome, :include_blank => ' -- Selecione -- ' %></td>
-                 </tr>
-                 <tr>
-                   <td align="left"><b>Região:</b></td>
-                   <td align="left"><%= f.collection_select  :regiao_id, @regiaos, :id, :regiao, :include_blank => ' -- Selecione -- ' %></td>
-                 </tr>
-                 <tr>
-                   <td align="left"><b>E_mail:</b></td>
-                   <td><%= f.text_field :email, :size =>26 %></td>
-                 </tr>
-               </table>
-              </td>
-              <td valign="top">
-                <table>
-                  <tr>
-                   <td align="left"><b>Diretor(a):</b></td>
-                   <td> <%= f.text_field :diretor, :size =>24%></td>
-                 </tr>
-                 <tr>
-                   <td align="left"><b>Coordenador(a):</b></td>
-                   <td> <%= f.text_field :coordenador, :size =>24%></td>
-                 </tr>
-                  <tr>
-                   <td align="left"><b>Biblioteca:</b></td>
-                   <td> <%= f.text_field :biblioteca, :size =>24%></td>
-                 </tr>
-                  <tr>
-                   <td align="left"><b>IP:</b></td>
-                   <td> <%= f.text_field :ip, :size =>24%></td>
-                 </tr>
-
-                 <tr >
-                    <td valign="top"><b>Observações:</b></td>
-                    <td valign="top"><%= f.text_area(:obs, :cols =>"32", :rows => "6") %></td>
-                 </tr>
-                </table>
-              </td>
+     </table>
+   </fieldset>
+    <table>
+      <tr>
+         <td width="4%"> <%= f.submit "Salvar" %></td>
+     <% end %>
+          <td ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
           </tr>
-        </table>
-     </fieldset>    
-         <table width="100%" align="left">
-           <tr>
-               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
-           </tr>
-       </table>
-      <% end %>
-    </td>
-  </tr>
-  </table>
-</font>
+      </table>

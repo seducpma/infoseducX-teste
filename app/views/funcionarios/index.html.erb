@@ -1,69 +1,54 @@
-<table width="100%"class="tabelas" align="center">
- <tr>
-    <th align="left"><font  size=5><b>SERVIDOR DA SEDUC</b></font></th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
- </tr>
-  <% form_for @search do |f| %>
-    <tr>
-      <td align="left" colspan="2">
-        <a href="#" class="filtro"><%= radio_button_tag(:teste,"0", :checked => "checked") %></a>Ativos
-        <a href="#" class="filtro"><%= radio_button_tag(:teste,"1" ) %></a>Desligados
-         &nbsp &nbsp &nbsp &nbsp
-        <%= f.label :nome_like, "Nome:" %>
-        <%= f.text_field :nome_like, :size => 20 %>
+<h1>Listing funcionarios</h1>
 
-        <%= f.submit "Buscar" %>
-
-    </td>
-  </tr>
-  <% end %>
-
+<table>
   <tr>
-    <td colspan="2">
-      <table border="1">
-        <tr>
-            <th>Matricula</th>
-            <th>Nome</th>
-            <th>Setor</th>
-            <th>Atribuicao</th>
-            <th>Chefia</th>
-            <th>Status</th>
-            <th width="5%" colspan="2">Administrar</th>
-        </tr>
-        <% for funcionario in @funcionarios %>
-        <tr>
-          <td><%=h funcionario.matricula %></td>
-          <td><%=h funcionario.nome %></td>
-          <td><%=h funcionario.setor %></td>
-          <td><%=h funcionario.atribuicao %></td>
-          <td><%=h funcionario.chefia.nome%></td>
-           <% if funcionario.desligado == false %>
-             <td>Ativo</td>
-           <%else%>
-             <td>Desligado</td>
-           <%end%>
-           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "20x20"), funcionario, :title => "Exibir" %></td>
-           <td><center><%= link_to image_tag("/stylesheets/images/edit.png", :size => "20x20"), edit_funcionario_path(funcionario), :title => "Editar" %></center></td>
-        </tr>
-        <% end %>
-        </table>
-    </td>
+    <th>Matricula</th>
+    <th>Nome</th>
+    <th>Nascimento</th>
+    <th>Endereco</th>
+    <th>Num</th>
+    <th>Complemento</th>
+    <th>Cep</th>
+    <th>Bairro</th>
+    <th>Cidade</th>
+    <th>Fone</th>
+    <th>Cel</th>
+    <th>Email</th>
+    <th>Unidade</th>
+    <th>Funcao</th>
+    <th>Setor</th>
+    <th>Horario</th>
+    <th>Status</th>
+    <th>Obs</th>
   </tr>
- <tr>
-   <td colspan="2">
-     <table width="100%" align="center">
-       <tr>
-         <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-         <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-      </tr>
-    </table>
-   </td>
- </tr>
 
+<% @funcionarios.each do |funcionario| %>
+  <tr>
+    <td><%=h funcionario.matricula %></td>
+    <td><%=h funcionario.nome %></td>
+    <td><%=h funcionario.nascimento %></td>
+    <td><%=h funcionario.endereco %></td>
+    <td><%=h funcionario.num %></td>
+    <td><%=h funcionario.complemento %></td>
+    <td><%=h funcionario.cep %></td>
+    <td><%=h funcionario.bairro %></td>
+    <td><%=h funcionario.cidade %></td>
+    <td><%=h funcionario.fone %></td>
+    <td><%=h funcionario.cel %></td>
+    <td><%=h funcionario.email %></td>
+    <td><%=h funcionario.unidade %></td>
+    <td><%=h funcionario.funcao %></td>
+    <td><%=h funcionario.setor %></td>
+    <td><%=h funcionario.horario %></td>
+    <td><%=h funcionario.status %></td>
+    <td><%=h funcionario.obs %></td>
+    <td><%= link_to 'Show', funcionario %></td>
+    <td><%= link_to 'Edit', edit_funcionario_path(funcionario) %></td>
+    <td><%= link_to 'Destroy', funcionario, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
 </table>
 
 <br />
 
-
+<%= link_to 'New funcionario', new_funcionario_path %>

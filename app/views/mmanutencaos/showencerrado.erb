@@ -1,14 +1,18 @@
-<br/>
-<font size="2">
-<table  class="tabelas1" width="100%"align="center">
-    <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font>
-    </th>
-    <td width="3%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-  </tr>
+
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr  bgcolor ="#E6E2D">
+            <td align="left">
+             <font  size=5 color="black"> <b> ENCAMINHAMENTO DE SERVIÇO - MANUTENÇÃO GERAL</b></font>
+               <hr/>
+            </td>
+        </tr>
   <tr>
     <td  colspan="2">
      <table>
@@ -112,19 +116,17 @@
         </fieldset>
       </td>
      </tr>
-         <div class="botao">
-          <table align="right">
+</table>
+          <table align="left">
             <tr>
-               <td align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-              <td align="right" ><%= button_to("Imprimir",  onclick="javascript:window.print()", :title => "Imprimir") %></td>
+               <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
             </tr>
          </table>
-        </div>
-      </table>
-    </td>
-  </tr>
- </table>
-</font>
 
+      </table>
+</font>
+</div>
 <br/>
+ </div>
 

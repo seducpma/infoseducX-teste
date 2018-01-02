@@ -1,225 +1,241 @@
-<% if current_user.has_role?('administrador') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('admin_manutencao')  %>
-     <br/>
-      <font size="2">
-      <table  class="tabelas " width="100%"align="center">
-       <tr>
-         <th colspan="" align="left">
-             <font  size=5 color="black"> <b> SOLICITAÇÃO DE ORDEM DE SERVIÇO</b></font>
-          </th>
-          <td width="3%">
-           <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-         </td>
-         </tr>
-       <tr>
-       </tr>
-       <td colspan="2" >
 
-         
-           <table width="100%">
-            <tr>
-              <td width ="30%">
-                 <fieldset><legend><font  size=4> Solicitaçãos</font></legend>
-                 <table>
+
+            <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('admin_manutencao')  %>
+            <div id="interno6">
+            <% title "CLASSES".singularize %>
+            <div class="tabs">
+             <div id="caixa_titulo">
+                 <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+             </div>
+                  <div class="tabs">
+                 <br/>
+                  <font size="2">
+                 <table width="100%" align="center"  bgcolor="#F5F5F5" >
+                   <tr bgcolor ="#E6E2D">
+                     <td colspan="6" align="left">
+                         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO - MANUTENÇÃO GERAL</b></font>
+                         <hr/>
+                      </td>
+                     </tr>
                    <tr>
-                         <td align="left" width="50%"><b>Nº Ordem :  </b></td>
-                         <td align="left"><%=h @mmanutencao.id%></td>
+                   
+                   <td colspan="2" >
+                       <table width="100%">
+                        <tr>
+                          <td width ="30%">
+                             <fieldset><legend><font  size=4> Solicitaçãos</font></legend>
+                             <table>
+                               <tr>
+                                     <td align="left" width="50%"><b>Nº Ordem :  </b></td>
+                                     <td align="left"><%=h @mmanutencao.id%>
+                                                      <%session[:idmanutencao] = @mmanutencao.id%>
+                                     </td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Data Solicitação:</b></td>
+                                 <td align="left"><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y" ) %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Horas Solicitação:</b></td>
+                                 <td align="left"><%=h @mmanutencao.data_sol.strftime("%H:%M horas") %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Solicitante</b></td>
+                                 <td align="left"><%=h @mmanutencao.solicitante %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left" valign="top"><b>Unidade:</b></td>
+                                 <td align="left"> <%=h @mmanutencao.unidade.nome %></td>
+                               </tr>
+            <!--                   <tr>
+                                 <td align="left"><b>Forma Solicitação:</b></td>
+                                 <td align="left"><%=h @mmanutencao.forma %></td>
+                               </tr>
+            -->
+                               <tr>
+                                  <td valign="top"><b>Tipo de Serviço:</b></td>
+                                  <td>
+                                     <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                                      - <%=h servico.servico%><br/>
+                                     <% end %>
+                                  </td>
+                              </tr>
+                               <tr>
+                                 <td align="left" valign="top"><b>Descrição Problema:</b></td>
+                                 <td align="left"><%=h @mmanutencao.descricao %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left" valign="top">  <b>Justificativa:</b></td>
+                                 <td align="left"><%=h @mmanutencao.justificativa%></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Quem abriu:</b></td>
+                                 <td align="left"><%=h @mmanutencao.user.name%></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Email:</b></td>
+                                 <td align="left"><%=h @mmanutencao.user.email%></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Observação:</b></td>
+                                 <td align="left"><%=h @mmanutencao.obs%></td>
+                               </tr>
+                           </table>
+                             </fieldset>
+                                 <tr>
+                                 <td colspan="2"align="left">
+                                    
+                                    <%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %>
+                                 </td>
+                               </tr>
+                            </table>
+                          </td>
+                          <td valign="top" width ="30%" >
+                            <fieldset><legend><font  size=4> Encaminhamento</font></legend>
+                               <table>
+                                 <tr>
+                                   <td align="left" valign="top"><b>Despacho:</b></td>
+                                   <%if @mmanutencao.procedimentos.nil?%>
+                                      <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
+                                   <%else%>
+                                       <td align="left"><%=h @mmanutencao.procedimentos%></td>
+                                   <%end%>
+                                 </tr>
+                                 <tr>
+                                  <td align="left"><b>Para:</b></td>
+                                      <%if @mmanutencao.chefia_id.nil?%>
+                                         <td align="left"> <font color="red">Serviço sem encaminhamento</font></td>
+                                      <%else%>
+                                        <td align="left"><%=h @mmanutencao.chefia.nome  %></td>
+                                     <%end%>
+                                 </tr>
+                                 <tr>
+                                   <td align="left" valign="top"><b>Data:</b></td>
+                                   <%if @mmanutencao.data_ate.nil?%>
+                                   <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
+                                   <%else%>
+                                     <td align="left"><%=h @mmanutencao.data_ate.strftime("%d/%b/%Y  %H:%M horas"  ) %></td>
+                                   <%end%>
+                                 </tr>
+                               </table>
+                            </fieldset>
+
+
+                          </td>
+                          <td valign="top" width ="30%">
+                            <fieldset><legend><font  size=4> Ordem Serviço</font></legend>
+                               <table>
+                                 <tr>
+                                   <td  valign="top"align="left"><b>Serviço:</b></td>
+                                   <%if @mmanutencao.executado.nil?%>
+                                   <td align="left"> <font color="red">Serviço não executado</font></td>
+                                   <%else%>
+                                      <td align="left"><%=h @mmanutencao.executado%></td>
+                                   <%end%>
+                                 </tr>
+                                  <tr>
+                                   <td align="left"><b>Por:</b></td>
+                                   <%if @mmanutencao.ffuncionario.nil?%>
+                                   <td align="left"> <font color="red">Serviço não executado</font></td>
+                                   <%else%>
+                                      <td align="left"><%=h @mmanutencao.ffuncionario%></td>
+                                   <%end%>
+                                  </tr>
+                                 <tr>
+                                   <td align="left"><b>Data:</b></td>
+                                   <%if @mmanutencao.data_enc.nil?%>
+                                   <td align="left"> <font color="red"><%= @mmanutencao.situacao_manutencao.situacao %></font></td>
+                                   <%else%>
+                                    <td align="left"><%=h @mmanutencao.data_enc.strftime("%d/%m/%Y %H:%M horas" ) %></td>
+                                   <%end%>
+                                 </tr>
+                             </table>
+                            </fieldset>
+                         
+                              <table >
+                          <tr>
+                            <td align="left" width="2%"><%= button_to('Fechar', mmanutencaos_path, :method => "get", :title => "Fechar")%></td>
+                            <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') %>
+                              <td width="2%"align="left" ><%= button_to('Encaminhar', {:action => "despacho", :id =>@mmanutencao}, :method => "get", :title => "Encaminhar") %></td>
+                              <td align="left" ><%= button_to('Serviço', {:action => "ordemservico", :id =>@mmanutencao }, :method => "get", :title => "Solicitação") %></td>
+                           <%end%>
+                           </tr>
+                        </table>
+                        
+
+
+                          </td>
+                        </tr>
+
+                       </table>
+                     </font>
+                   </td>
                    </tr>
+                  </table>
+                  </font>
+                  </div>
+                  <br/>
+            </div>
+            <%else%>
+                 <br/>
+        <div id="interno6">
+        <% title "CLASSES".singularize %>
+        <div class="tabs">
+         <div id="caixa_titulo">
+             <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+         </div>
+           <table width="100%" align="center"  bgcolor="#F5F5F5" >
                    <tr>
-                     <td align="left"><b>Data Solicitação:</b></td>
-                     <td align="left"><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y" ) %></td>
-                   </tr>
-                   <tr>
-                     <td align="left"><b>Horas Solicitação:</b></td>
-                     <td align="left"><%=h @mmanutencao.data_sol.strftime("%H:%M horas") %></td>
-                   </tr>
-                   <tr>
-                     <td align="left"><b>Solicitante</b></td>
-                     <td align="left"><%=h @mmanutencao.solicitante %></td>
-                   </tr>
-                   <tr>
-                     <td align="left" valign="top"><b>Unidade:</b></td>
-                     <td align="left"> <%=h @mmanutencao.unidade.nome %></td>
-                   </tr>
-<!--                   <tr>
-                     <td align="left"><b>Forma Solicitação:</b></td>
-                     <td align="left"><%=h @mmanutencao.forma %></td>
-                   </tr>
--->
-                   <tr>
-                      <td valign="top"><b>Tipo de Serviço:</b></td>
-                      <td>
-                         <% @mmanutencao.tipos_manutencaos.each do |servico| %>
-                          - <%=h servico.servico%><br/>
-                         <% end %>
+                     <td colspan="6" align="left">
+                         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO</b></font>
+                         <hr/>
                       </td>
                   </tr>
                    <tr>
-                     <td align="left" valign="top"><b>Descrição Problema:</b></td>
-                     <td align="left"><%=h @mmanutencao.descricao %></td>
-                   </tr>
-                   <tr>
-                     <td align="left" valign="top">  <b>Justificativa:</b></td>
-                     <td align="left"><%=h @mmanutencao.justificativa%></td>
-                   </tr>
-                   <tr>
-                     <td align="left"><b>Quem abriu:</b></td>
-                     <td align="left"><%=h @mmanutencao.user.name%></td>
-                   </tr>
-                   <tr>
-                     <td align="left"><b>Email:</b></td>
-                     <td align="left"><%=h @mmanutencao.user.email%></td>
-                   </tr>
-                   <tr>
-                     <td align="left"><b>Observação:</b></td>
-                     <td align="left"><%=h @mmanutencao.obs%></td>
-                   </tr>
-                 </fieldset>
-                   <tr>
-                     <td colspan="2"align="left">
-                        <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>@mmanutencao}, :method => "get", :title => "Imprimir" %>
-                     </td>
-                     
+                     <td colspan="2">
+                      <font  size="2">
+                       <table width="100%">
+                        <tr>
+                          <td>
+                            <%= render 'formshow' %>
+                          </td>
+                        </tr>
+                        
+                        <tr>
+                          <td>
+                            <font><b>
+                                
+                                   GUARDAR O NÚMERO DESTE PROCOLO.<br/>
+                                   O SERVIÇO SERÁ ATENDIDA ASSIM QUE POSSÍVEL.
+                                   QUALQUER DÚVIDA ENTRAR EM CONTATO COM A INFORMÁTICA.
+                                
+                            </b></font>
+                           </td>
+                        </tr>
+                        
+                       </table>
+                        
+                         <table align="left">
+                          <tr>
+                            <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') %>
+                              <td align="left"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_mmanutencao_path(@mmanutencao), :title => "Alterar"%></td>
+                            <%end%>
+                              
+                          </tr>
+                        </table>
+                        
+                     </font>
+                   </td>
                    </tr>
                   </table>
+                  </font>
+                  </div>
+<br/>
 
+</div>
+            <%end%>
 
-              </td>
-              <td valign="top" width ="30%" >
-                <fieldset><legend><font  size=4> Encaminhamento</font></legend>
-                   <table>
-                     <tr>
-                       <td align="left" valign="top"><b>Despacho:</b></td>
-                       <%if @mmanutencao.procedimentos.nil?%>
-                          <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
-                       <%else%>
-                           <td align="left"><%=h @mmanutencao.procedimentos%></td>
-                       <%end%>
-                     </tr>
-                     <tr>
-                      <td align="left"><b>Para:</b></td>
-                          <%if @mmanutencao.chefia_id.nil?%>
-                             <td align="left"> <font color="red">Serviço sem encaminhamento</font></td>
-                          <%else%>
-                            <td align="left"><%=h @mmanutencao.chefia.nome  %></td>
-                         <%end%>
-                     </tr>
-                     <tr>
-                       <td align="left" valign="top"><b>Data:</b></td>
-                       <%if @mmanutencao.data_ate.nil?%>
-                       <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
-                       <%else%>
-                         <td align="left"><%=h @mmanutencao.data_ate.strftime("%d/%b/%Y  %H:%M horas"  ) %></td>
-                       <%end%>
-                     </tr>
-                   </table>
-                </fieldset>
-
-
-              </td>
-              <td valign="top" width ="30%">
-                <fieldset><legend><font  size=4> Ordem Serviço</font></legend>
-                   <table>
-                     <tr>
-                       <td  valign="top"align="left"><b>Serviço:</b></td>
-                       <%if @mmanutencao.executado.nil?%>
-                       <td align="left"> <font color="red">Serviço não executado</font></td>
-                       <%else%>
-                          <td align="left"><%=h @mmanutencao.executado%></td>
-                       <%end%>
-                     </tr>
-                      <tr>
-                       <td align="left"><b>Por:</b></td>
-                       <%if @mmanutencao.ffuncionario.nil?%>
-                       <td align="left"> <font color="red">Serviço não executado</font></td>
-                       <%else%>
-                          <td align="left"><%=h @mmanutencao.ffuncionario%></td>
-                       <%end%>
-                      </tr>
-                     <tr>
-                       <td align="left"><b>Data:</b></td>
-                       <%if @mmanutencao.data_enc.nil?%>
-                       <td align="left"> <font color="red"><%= @mmanutencao.situacao_manutencao.situacao %></font></td>
-                       <%else%>
-                        <td align="left"><%=h @mmanutencao.data_enc.strftime("%d/%m/%Y %H:%M horas" ) %></td>
-                       <%end%>
-                     </tr>
-                 </table>
-                </fieldset>
-             <div class="botao">
-             <table>
-              <tr>
-                <td align="left" width="4%"><%= button_to('Voltar', mmanutencaos_path, :method => "get", :title => "Voltar")%></td>
-                <% if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao') %>
-                  <td width="6%"align="left" ><%= button_to('Encaminhar', {:action => "despacho", :id =>@mmanutencao}, :method => "get", :title => "Encaminhar") %></td>
-                  <td width="6%"align="left" ><%= button_to('Ordem Serviço', {:action => "ordemservico", :id =>@mmanutencao }, :method => "get", :title => "Ordem de Serviço") %></td>
-               <%end%>
-               </tr>
-            </table>
-            </div>
-
-
-              </td>
-            </tr>
-
-           </table>
-         </font>
-       </td>
-       </tr>
-      </table>
-      </font>
-      <br/>
-<%else%>
-     <br/>
-      <font size="2">
-      <table  class="tabelas" width="50%"align="center">
-        <tr>
-        <th align="left">
-           <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font>
-        </th>
-        <td width="7%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-      </tr>
-       <tr>
-         <td colspan="2">
-          <font  size="2">
-           <table width="100%">
-            <tr>
-              <td>
-                <%= render 'formshow' %>
-              </td>
-            </tr>
-            <div class="botao">
-            <tr>
-              <td>
-                <font><b>
-                    <ul>
-                      <li> IMPRIMA E GUARDE ESTE DOCUMENTO</li>
-                      <li> ESTA ORDEM DE SERVIÇO SERÁ ATENDIDA ASSIM QUE POSSÍVEL</li>
-                      <li> QUALQUER DÚVIDA ENTRAR EM CONTARO COM A SEDUC</li>
-                     </ul>
-                </b></font>
-               </td>
-            </tr>
-            </div>
-           </table>
-            <div class="botao">
-             <table align="right">
-              <tr>
-                <td align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                  <td align="left"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_mmanutencao_path(@mmanutencao), :title => "Alterar"%></td>
-                <%end%>
-                  <td align="left" ><b><%= button_to('Imprimir',  onclick="javascript:window.print()", :title => "Imprimir")%></b></td>
-              </tr>
-            </table>
-            </div>
-         </font>
-       </td>
-       </tr>
-      </table>
-      </font>
-      <br/>
-<%end%>
+    
 
 

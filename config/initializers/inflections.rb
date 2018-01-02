@@ -6,6 +6,14 @@
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'
-inflect.irregular 'justificativa', 'justificativas'
 #   inflect.uncountable %w( fish sheep )
+  inflect.irregular 'genero_midia', 'genero_midias'
+  inflect.irregular 'audio_visual', 'audio_visuais'
+  inflect.irregular 'identificaocao', 'identificacoes'
+  inflect.irregular 'localizacao','localizacoes'
+  inflect.irregular 'cantor','cantores'
+  #inflect.irregular 'item','itens'
+  inflect.irregular 'autor','autores'
+  inflect.irregular 'configuracao', 'configuracoes'
+  inflect.irregular 'devolucao', 'devolucoes'
  end

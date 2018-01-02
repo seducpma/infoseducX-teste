@@ -1,0 +1,40 @@
+<table width="100%" align="center" >
+            <tr>
+               <td align="left"><b>Nome:</b></td>
+               <td align="left" colspan="3"><%= text_field :participante, :nome, :size => 74 %>
+                   
+              </td>
+            </tr>
+            <tr>
+               <td align="left" width =" 5%"><b>Profissão:</b></td>
+               <td align="left" colspan="3"><%= text_field :participante, :profissao, :size =>74%></td>
+            </tr>
+            <tr>
+               <td align="left" width =" 5%"><b>CPF:</b></td>
+               <td align="left" colspan="3"> <%= text_field :participante, :cpf, :size =>16%> &nbsp&nbsp&nbsp
+                 <font size="3" color =" red"><b>*</b></font> <b>RG:</b> <%= text_field :participante, :rg, :size =>16%> &nbsp&nbsp&nbsp
+                 <b>CEP:</b><%= text_field :participante, :CEP, :size =>17 %>
+               </td>
+            </tr>
+
+            <tr>
+               <td align="left"><b>Endereço:</b></td>
+               <td align="left" colspan="3"><%= text_field :participante, :endereco, :size => 63 %>
+                   <b>Nº</b><%= text_field :participante, :num, :size => 4%>
+              </td>
+            </tr>
+            <tr>
+               <td align="left" colspan="4"><b>Complemento:</b> <%= text_field :participante, :complemento, :size =>26 %>
+                &nbsp <b>Fone:</b><%= text_field :participante, :telefone, :size =>10 %>
+                &nbsp <b>Cel:</b><%= text_field :participante, :cel, :size => 12%>
+              </td>
+            </tr>
+            <tr>
+               <td align="left"><b>Cidade:</b></td>
+                <td align="left" colspan="3"><%= text_field :participante, :cidade, :size =>31%>
+                 &nbsp <b>Bairro:</b><%= text_field :participante, :bairro, :size =>30 %>
+                   
+               </td>
+            </tr>
+  </table>
+

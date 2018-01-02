@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
   before_filter :login_required
-  skip_before_filter :login_required, :only => [:new, :create,:edit,:update]
+  skip_before_filter :login_required, :only => [:atualiza,:new, :create,:edit,:update]
   layout 'login'
   def new
   end
@@ -33,7 +33,8 @@ class PasswordsController < ApplicationController
     redirect_to new_user_path
   end
 
-  def update
+
+  def atualiza
     if params[:id].nil?
       render :action => 'new'
       return
@@ -47,12 +48,6 @@ class PasswordsController < ApplicationController
     raise if @user.nil?
     return if @user unless params[:password]
       if (params[:password] == params[:password_confirmation])
-      #Uncomment and comment lines with @user to have the user logged in after reset - not recommended
-        #self.current_user = @user #for the next two lines to work
-        #current_user.password_confirmation = params[:password_confirmation]
-        #current_user.password = params[:password]
-        #@user.reset_password
-    #flash[:notice] = current_user.save ? "Password reset" : "Password not reset"
     @user.password_confirmation = params[:password_confirmation]
     @user.password = params[:password]
     @user.reset_password
@@ -67,6 +62,9 @@ class PasswordsController < ApplicationController
     logger.error "Codigo de substituição de senha incompatível."
     flash[:notice] = "Desculpe - Este é um código de substituição de senha invalido. Favor confirir e tentar novamente."
     redirect_to new_user_path
+
+  end
+  def update
 
   end
 

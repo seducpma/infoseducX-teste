@@ -1,7 +1,0 @@
-<font size="4"><b>Unidade: </b> </font>          
-     <%= collection_select :computadore, :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %>
-                        <%= observe_field 'computadore_unidade_id',
-                           :update => "listagem",
-                           :url    => { :action => 'lista_tipounidades' },
-                           :with   => 'computadore_unidade_id' %>
-

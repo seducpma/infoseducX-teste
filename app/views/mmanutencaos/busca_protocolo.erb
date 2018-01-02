@@ -1,94 +1,97 @@
-<br/><br/>
-<font size="2">
-<table class="tabelas1" align="center" width="90%">
-  <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b>  CONSULTA ORDEM DE MANUTENÇÃO</b></font>
-    </th>
-    <td width="3%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-        
-   </tr>
-   <tr>
-     <td colspan="2">
-       <table width="100%" >
-        <tr>
-          <td align="left">
-            <% form_tag busca_protocolo_mmanutencaos_path, :method => 'get' do %>
-            <font size="4"> Nº Ordem Seviço:</font>
-             <%= text_field_tag :search, params[:search], :size => '1' %>
-          </td>
-          <td align="right">
-             <input type="image" src="/stylesheets/images/pesquisar.png" title="Pesquisar">
-          </td>
-          <% end %>
-        </tr>
-        <tr>
-          <td colspan="2">
 
-            <table border="1" width="100%">
-                <%if @mmanutencao.present?%>
-                 <% for chamado in @mmanutencao %>
-                 <tr>
-                    <th width="1%"> Nº Ordem</th>
-                    <th> Unidade</th>
-                    <th> Solicitado</th>
-                    <th> Solicitante</th>
-                    <th> Encaminhado</th>
-                    <th> Para</th>
-                    <th> Executado</th>
-                    <th> Por</th>
-                    <th>Status</th>
-                    <th>Visualizar</th>
-                 </tr>
-                 <tr>
-                    <td><center><%=h chamado.id %></center></td>
-                    <td><%=h chamado.unidade.nome %></td>
-                    <td><%=h chamado.data_sol.strftime("%d/%m/%Y")%></td>
-                    <td><%=h chamado.user.name %></td>
-                    <%if chamado.data_ate.nil?%>
-                       <td></td>
-                       <td><b><font color="red"> Não encaminhado</font></b></td>
-                     <%else%>
-                      <td><%=h chamado.data_ate.strftime("%d/%m/%Y")%></td>
-                      <td><%=h chamado.chefia.nome %></td>
-                    <%end%>
-                    <%if chamado.data_enc.nil?%>
-                       <td></td>
-                       <td><b><font color="red">  Não executado</b></font></td>
-                     <%else%>
-                      <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
-                      <td><%=h chamado.ffuncionario %></td>
-                     <%end%>
-                      <td><%=h chamado.situacao_manutencao.situacao %></td>
-                      <td align="center" colspan="1"><%= button_to('Serviço', {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir Dados") %></td>
-                      
-                 </tr>
-                 <%end%>
-               <%else%>
-               <tr>
-                 <%if $ok==0%>
-                   <td><b><font size="4" color="red"> Pesquisa Não Autorizada</font></b></td>
-                 <%else%>
-                   <td> Realizar Pesquisa </td>
-                 <%end%>
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr bgcolor ="#E6E2D">
+            <td align="left">
+             <font  size=4 color="black"> <b> CONSULTA SERVIÇO - MANUTENÇÃO GERAL</b></font>
+               <hr/>
+            </td>
+        </tr>
+           <tr>
+             <td colspan="2">
+                 <table width="100%" >
+                <tr >
+                   <% form_tag busca_protocolo_mmanutencaos_path, :method => 'get' do %>
+                   <td align="right">
+                    <font size="4"> Selecionar o Nº do Protocolo :</font>
+                       <%= select_tag :search, options_for_select(@protocolos.collect { |ff| [ff.id, ff.id] }.insert(0, '--Selecionar--')) %>
+                       <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
+                  </td>
+               <% end %>
+                </tr>
+                <tr>
+                  <td colspan="2">
+
+                      <table border="1" cellspacing="0" cellpadding="1" width="100%">
+                        <%if @mmanutencao.present?%>
+                         <% for chamado in @mmanutencao %>
+                         <tr>
+                            <th width="1%"> Nº Ordem</th>
+                            <th> Unidade</th>
+                            <th> Solicitado</th>
+                            <th> Solicitante</th>
+                            <th> Encaminhado</th>
+                            <th> Para</th>
+                            <th> Executado</th>
+                            <th> Por</th>
+                            <th>Status</th>
+                            <th>Visualizar</th>
+                         </tr>
+                         <tr>
+                            <td><center><%=h chamado.id %></center></td>
+                            <td><%=h chamado.unidade.nome %></td>
+                            <td><%=h chamado.data_sol.strftime("%d/%m/%Y")%></td>
+                            <td><%=h chamado.user.name %></td>
+                            <%if chamado.data_ate.nil?%>
+                               <td></td>
+                               <td><b><font color="red"> Não encaminhado</font></b></td>
+                             <%else%>
+                              <td><%=h chamado.data_ate.strftime("%d/%m/%Y")%></td>
+                              <td><%=h chamado.chefia.nome %></td>
+                            <%end%>
+                            <%if chamado.data_enc.nil?%>
+                               <td></td>
+                               <td><b><font color="red">  Não executado</b></font></td>
+                             <%else%>
+                              <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
+                              <td><%=h chamado.ffuncionario %></td>
+                             <%end%>
+                              <td><%=h chamado.situacao_manutencao.situacao %></td>
+                              <td align="center" colspan="1"><%= button_to('Serviço', {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir Dados") %></td>
+
+                         </tr>
+                         <%end%>
+                       <%else%>
+                       <tr>
+                         <%if $ok==0%>
+                           <td align="center"><b><font size="4" color="red"> Pesquisa Não Autorizada</font></b></td>
+                         <%else%>
+                           
+                         <%end%>
+                       </tr>
+                       <%end%>
+                      </table>
+
+                      <table align="LEFT">
+                       <tr>
+                          <td align="LEFT"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                       </tr>
+                       </table>
+
+                </td>
                </tr>
-               <%end%>
-              </table>
-            <div class="botao">
-              <table align="right">
-               <tr>
-                  <td align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-                  <td align="right"><%= button_to('Imprimir',  onclick="javascript:window.print()", :title => "Imprimir")%></td>
-               </tr>
-               </table>
-            </div>
-        </td>
-       </tr>
-     </table>
-    </td>
-   </tr>
-  </table>
-  <br/>
-</font>
+             </table>
+            </td>
+           </tr>
+          </table>
+          <br/>
+        </font>
+        </div>
+</div>
+<br/>

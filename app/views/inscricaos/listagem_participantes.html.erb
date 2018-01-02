@@ -15,14 +15,14 @@
           <tr>
             <td>
               <font size="3"> Curso: </font>
-               <%= collection_select(:curso, :get, @cursos, :id,:nome_curto, :include_blank => ' -- Selecione -- ' ) %>
+               <%= collection_select(:curso, :get, @cursos, :id,:nome_curto, :include_blank => ' -- Selecionar -- ' ) %>
 
             </td>
           </tr>
           <tr>
             <td>
               <font size="3"> Unidade: </font>
-              <%= collection_select :curso, :unidade, @locais, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+              <%= collection_select :curso, :unidade, @locais, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
               <font size="3"> Período: </font>
               <%= select_tag :periodo_opcao1, options_for_select(%w(Todos Matutino Vespertino Noturno Sabado_Matutino))%><br/>
             </td>

@@ -1,34 +1,12 @@
-<br/>
- <table class="tabelas" align="center" width="100%">
- <tr>
-    <th align="left">
-       <font size=5 color="black"> <b>CONTROLE DE OFICIOS</b></font>
-    </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
- </tr>
-     <div class="botao">
-      <tr>
-       <td colspan="2">
-         <table>
-          <tr>
-             <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-             <td width="2%"align="right" ><%= button_to('Ofícios',oficios_oficios_path, :method => "get", :title => "Ofícios") %></td>
-             <td width="2%"align="right" ><%= button_to('Novo', new_oficio_path, :title => "Novo")%></td>
-             <td  width="2%" align="right"><%= button_to "Consultar", consulta_oficios_path, :title => "Consultar" %></td>
-          </tr>
-        </table>
-       </td>
-      </tr>
-     </div>
-  <tr>
-    <td colspan="2">
-      <br/>
-       <div class="botao">
+<div id="interno6">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CONTROLE DE EMISSÃO DE OFICIOS - SEDUC/PMA</strong></font><br/>
+ </div>
        <% form_remote_tag :url => consultaof_oficios_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
-       <table width="100%">
-        <tr>
+       <table  width="100%" bgcolor="#F5F5F5">
+        <tr bgcolor="#F5F5F5">
           <td align="left" >
                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "5") %></a>Nº
                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "1") %></a>Assunto
@@ -37,33 +15,31 @@
                <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "4") %></a>Todos
            </td>
          </tr>
-         <tr>
-           <td><div class="consulta" style="display:none"> <%= render "consulta" %>  </div></td>
+         <tr bgcolor="#F5F5F5">
+           <td ><div class="consulta" style="display:none"> <%= render "consulta" %>  </div></td>
 
        </tr>
       </table>
     <% end %>
-
-    <br/>
-    <hr>
+   <hr>
     <div id="consultaoficio"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
-    <br/>
-     <div class="botao">
-      <tr>
+
+      <tr bgcolor="#F5F5F5">
        <td colspan="2">
-         <table>
+         <table bgcolor="#F5F5F5">
           <tr>
-             <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-             <td width="2%"align="right" ><%= button_to('Ofícios',oficios_oficios_path, :method => "get", :title => "Ofícios") %></td>
-             <td width="2%"align="right" ><%= button_to('Novo', new_oficio_path, :title => "Novo")%></td>
-             <td  width="2%" align="right"><%= button_to "Consultar", consulta_oficios_path, :title => "Consultar" %></td>
+             <td width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+             <td width="2%"align="left" ><%= button_to('Ofícios',oficios_oficios_path, :method => "get", :title => "Ofícios") %></td>
+             <td width="2%"align="left" ><%= button_to('Novo', new_oficio_path, :title => "Novo")%></td>
+             <td   align="left"><%= button_to "Consultar", consulta_oficios_path, :title => "Consultar" %></td>
           </tr>
         </table>
        </td>
       </tr>
-     </div>
- </div>
- </td>
- </tr>
- </table>
+
+ 
+
  <br/>
+ </div>
+<br/>
+</div>

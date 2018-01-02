@@ -9,7 +9,7 @@
       <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
     </h2>
     <% calendar_for @agenda, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
-      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado') %>
       <% calendar.day(:day_method => :data) do |date, articles| %>
         <%= date.day %>
         <ul>
@@ -17,7 +17,7 @@
             <li><%= link_to h(data.solicitante), data%><br/>
                  <% if (data.horai.nil? or data.horaf.nil?) %>
                <%else%>
-              <font Color="black"><b><%= data.horai.strftime("%H:%M")%> às <%= data.horaf.strftime("%H:%M")%> horas</b></font>
+              <font Color="black"><b><%= data.horai.strftime("%H:%M")%> às <%= data.horaf.strftime("%H:%M")%> horas</b></font><br/>
                   ---------------------------------
                <%end%>
             </li>

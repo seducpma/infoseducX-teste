@@ -1,3 +1,127 @@
+<div id="interno6">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CADASTRO DE ESTAGIÁRIO</strong></font><br/>
+ </div>
+      <div class="tabs">
+        <br/>
+    <%  if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+       <% @unidades= Unidade.find(:all, :order => 'nome ASC') %>
+     <%  else %>
+        <% @unidades= Unidade.find(:all , :conditions => ['id = ?', current_user.unidade_id]) %>
+      <% end%>
+        <% form_for @estagiario, :html => { :multipart => true } do |f| %>
+
+        <%= f.error_messages %>
+        <font  size="2">
+        <table  bgcolor="#F5F5F5" width="100%"  align="center">
+           <tr>
+             <td colspan="2">
+               <fieldset><legend><font  size=4> Dados Pessais</font></legend>
+                 <table width="100% " >
+                    <tr>
+                      <td align="left"><b>Nome:</b></td>
+                      <td align="left" colspan="3"><%= f.text_field :nome, :size => 80%>
+                            <b>RG:</b><%= f.text_field :RG, :size => 12 %>
+                            <b> CPF:</b><%= f.text_field :CPF, :size => 14 %></td>
+                    </tr>
+                   <tr>
+                      <td align="left"><b> Endereço:</b></td>
+                      <td align="left" colspan="3"> <%= f.text_field :endereco, :size => 60%>
+                            <b>Nº </b><%= f.text_field :num, :size => 5 %>
+                            <b> Complemento:</b><%= f.text_field :complemento, :size =>31%></td>
+                   </tr>
+                   <tr>
+                      <td align="left"><b> Bairro:</b></td>
+                      <td align="left" colspan="3"><%= f.text_field :bairro, :size =>56 %>
+                           &nbsp <b> Cidade:</b><%= f.text_field :cidade, :size =>52 %></td>
+                   </tr>
+                   <tr>
+                      <td align="left"><b>Telefone:</b></td>
+                      <td align="left" colspan="3"><%= f.text_field :fone, :size =>15 %>
+                          <b> Celular:</b><%= f.text_field :cel, :size =>15%>
+                          &nbsp <b> e_mail:</b><%= f.text_field :email, :size =>66%>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td align="left"><b>Data Nasc:</b></td>
+                       <td align="left"><%= f.date_select(:data_nasc, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %><BR /></td><p>
+                       <td align="left"></td>
+                       <td align="left"><b>Foto: </b> <%= f.file_field :photo%></td>
+                   </tr>
+                 </table>
+               </fieldset>
+              <br/>
+               <fieldset><legend><font  size=4> Dados Faculdade</font></legend>
+                 <table>
+                    <tr>
+                       <td align="left"><b>Faculdade:</b></td>
+                       <td align="left"> <%= f.text_field :faculdade, :size =>60 %></td>
+                       <td align="left"><b> Matricula:</b></td>
+                       <td align="left"><%= f.text_field :matricula, :size =>12  %>
+                        &nbsp&nbsp <b>Periodo: </b> <%= f.select :periodo_est, PERIODOT, :include_blank => '---Selecionar---',  :size =>19 %>            </td>
+                    </tr>
+                    <tr>
+                       <td align="left" colspan="2"><b>Inicio do Curso:</b> <%= f.date_select(:data_ingresso, :order => [:month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></td>
+                       <td align="left" colspan="2"><b>Previsão de Término do Curso:</b> <%= f.date_select(:data_termino, :order => [:month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year + 5)) %></td>
+                    </tr>
+                </table>
+              </fieldset>
+              <br/>
+              <fieldset><legend><font  size=4> Dados Contrato</font></legend>
+                  <table width =" 100%"  >
+                    <tr>
+                       <td align="left" width="26%"><b>Matricula (PMA): </b><%= f.text_field :matriculaPMA, :size =>12%></td>
+                       <td colspan="3">&nbsp
+                          <b> Típo de Estágio:</b>&nbsp
+                          <%= collection_select  :estagiario, :tipo, @estagios, :nome, :nome, :include_blank => ' --- Selecionar opção ---'  %>
+                          &nbsp&nbsp&nbsp&nbsp <b> Carga Horária:</b>&nbsp
+                          <%= f.select :carga_horaria, CHORARIA, :include_blank => '---Selecionar---',  :size =>19 %>
+                       </td>
+                     </tr>
+                    <tr>
+                       <td align="left" > <b> Horário:</b><%= f.text_field :horario, :size => 20%></td>
+                       <td align="left" width ="24%"> <b> Período:</b> &nbsp<%= f.select :periodo_trab, PERIODOT, :include_blank => '---Selecionar---' %></td>
+                       <td colspan="2" align="left"><b>Unidade:</b><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => ' --- Selecionar opção ---'  %></td>
+
+                     </tr>
+                     <tr>
+                        <td align="left" colspan="4"><b>Admissão:</b>&nbsp&nbsp    <%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
+                        &nbsp&nbsp <b> Responsável:</b> <%= f.text_field :responsavel, :size => 74%>
+
+                        </td>
+                     </tr>
+                     <% if current_user.has_role?('admin') %>
+                        <tr>
+                           <td colspan="2"  valign="top"><b>Observação:</b>&nbsp <%= f.text_field :obs, :size =>"48"   %></td>
+                           <td colspan="2" align="left"><b> Avaliação:</b>&nbsp <%= f.text_field :aval, :size =>"57"   %></td>
+                        </tr>
+                     <%end%>
+                </table>
+              </fieldset>
+
+                  <table width="100%"  align="left">
+                   <tr>
+                     <div id='Certeza'>
+                      <td width="6%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                      </div>
+                      <td align="left"><%= f.submit "Salvar", :class => "btn_filtrar" %></td>
+        <% end %>
+                    </tr>
+                </table>
+
+            </td>
+           </tr>
+          </table>
+        </font>
+        <br/>
+
+
+
+
+
+    </div>
+  </div>
 <br/>
-     <%= render 'form' %>
-<br/>
+</div>

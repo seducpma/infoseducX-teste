@@ -1,222 +1,158 @@
 ActionController::Routing::Routes.draw do |map|
-
-  map.resources :seduc_candidatos, :collection => {:votacao => :get,:verificacao => :get, :votar => :get}
-  
-  map.resources :seduc_funcionarios
-
-   map.resources :agendas
-
-  map.resources :reservar_salas_servicos_salas
-
+  map.resources :agendas
   map.resources :reservar_salas, :collection => {:confirma_agenda => :get}
-
+  map.resources :reservar_salas_servicos_salas
   map.resources :servicos_salas
-
-  map.resources :salas
-
-  map.resources :mmanutencaos_tipos_manutencaos
-
-  #map.resources :mmanutencaos
-
-  #map.resources :manutencaos
-
-  map.resources :acompanhamento_despachos
-
-  map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get, :editar => :get}
-
-  map.resources :despachos
-
-  map.resources :prefprotocolos, :collection => {:consulta => :get, :protocolo=>:get, :protocolos => :get, :indexe => :get, :reabrir => :get}
-  
-  map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
-
-  map.resources :oficios, :collection => {:consulta => :get, :c=>:get, :oficios => :get,}
-
-  map.resources :curriculos, :collection => {:curriculo => :get, :indexadmin => :get, :indexpedag => :get}
-
-  map.resources :chefias
-
-  map.resources :funcionarios
-
-  map.resources :situacao_manutencaos
-
-  map.resources :manutencaos_tipos_manutencaos
-
-  #map.resources :manutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get}
-
-  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
-
-  map.resources :tipos_manutencaos
-
-  map.resources :cursos_inscricaos
-#  map.resources :inscricaos
-#  map.resources :participantes
-#  map.resources :cursos
-
-  map.resources :inscricaos, :collection => {:gera_pdf => :get,:listagem => :get, :listagem_participantes => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :consultas => :get,:por_curso => :get}
-
-  map.resources :cursos, :collection => {:voltar => :get, :c_curso => :get}
-
-  map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get}, :member => [:addemail,:update_email]
-
-  map.resources :noticias
-
-  map.resources :importar
-
-  map.resources :contato_internos
-
-  map.resources :anexos
-
-  map.resources :equipamentos, :collection => {:encerrado => :get, :consulta => :get}
-
-  map.resources :justificativas
-
-  map.resources :chats, :collection => {:busca => :get, :classe => :get}
-
-  map.resources :informativos
-
-  map.resources :mes_bases
-
-  map.resources :pontos
-
-  map.resources :relatestagiarios, :collection => {:validacao => :get}
-
-  map.resources :tipo_osexternas
-
-  map.resources :c_externos, :has_many => :documentos, :collection => {:instrucao => :get}
-
-  map.resources :empresas
-
-  map.resources :listaestagiarios
-
-  map.resources :protocolos
-
-  map.resources :emprestimos
-
-  map.resources :regiaos
-
-  map.resources :emfaltas
-
-  map.resources :tipo_controles
-
-  map.resources :datashows
-
-  map.resources :impressoras
-
-  map.resources :computadores
-
-  map.resources :itinerarios
-
-  map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
-
-  map.resources :situacao_chamados
-
-  map.resources :tipos_problemas
-
-  map.resources :fornecedores
-
-  map.resources :componentes
-
-  map.resources :relatorios
-
-  map.resources :saidas
-
-  map.resources :entradas
-
-  map.resources :estoques
-
+  map.resources :inscricaos, :collection => {:listagem => :get, :listagem_participantes => :get,:checar => :get,:confirmacao => :get,:envia_email => :get,:estatistica => :get, :voltarinscricao => :get, :tipo_opcao => :get, :consultas => :get,:por_curso => :get, :aviso => :get}
+  map.resources :cursos, :collection => {:voltar => :get, :consulta => :get}
+  map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get, :aviso => :get}, :member => [:addemail,:update_email]
   map.resources :senhas
-
+  map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
+  map.resources :aulas_faltas, :collection => { :relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
+  map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
+  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
+  map.resources :mmanutencaos_tipos_manutencaos
+  map.resources :justificativas
+  map.resources :pontos
+  map.resources :estagiarios, :collection => {:periodo_unidade => :get, :periodo_estagio => :get, :periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get, :consultas => :get}
+  #map.resources :estagiarios, :collection => {:consultas => :get, :show =>:get}
+  map.resources :aulas_faltas, :collection => { :relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get }
+  map.resources :funcionarios, :collection => {:consultas => :get }
+  map.resources :aulas_eventuals, :collection => { :index2=>:get,   :relatorio_eventual_mes_professor => :get,  :relatorio_eventual_mes_unidade => :get}
+  map.resources :eventuals
+  map.resources :ufaltas
+  map.resources :matriculas,:collection => { :transferencia=>:get, :alterar=>:get, :saidas=>:get, :consultar => :get, :new1 => :get, :remanejamento=>:get, :aviso=>:get, :aviso1=>:get, :aviso2=>:get}
+  map.resources :disciplinas
+  map.resources :atribuicaos, :collection => { :consulta_classe=>:get, :relatorios_classe=>:get, :relatorios_anterior_classe=>:get, :lancar_notas => :get, :relatorio_classe => :get, :mapa_classe => :get, :mapa_classe_anterior => :get,:consulta_professor_classe=>:get, :historico_aluno=>:get, :historico => :get, :transferencia_aluno => :get, :transferenciaA=> :get,  :reserva_vaga=> :get,  :reserva_vagas=> :get,  :relatorio_observacoes=> :get, :editar_atribuicao=>:get, :aviso=>:get}
+  map.resources :classes_professors
+  map.resources :classes,:collection => { :editar_classe=>:get, :gerar_notas=>:get, :nucleo_basico =>:get, :consulta_classe_fone =>:get}
+  map.resources :professors,:collection => { :consulta_classe=>:get,  :consulta_classe_anterior=>:get }
   map.resources :tipos
-
-  map.resources :departamentos
-
-  map.resources :seduc
-
-  map.resources :administracaos, :collection => {:internet => :get}
-
-  map.resources :estagiarios, :collection => {:periodo_unidade => :get, :periodo_estagio => :get, :periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get}
-
-  map.resources :unidades, :collection => {:print_all => :get}
-
-  map.resources :users
-
-  map.resource :session, :informatica => :get
-
+  map.resources :unidades,  :collection => {:consultas => :get} 
+  map.resources :logs
   map.resources :roles_users
-
-  map.desconectar '/chat/desconectar', :controller => 'chats', :action => 'desconectar'
-  #map.connect '/homes/acertar_online_users', :controller => 'homes', :action => 'acertar_online_users'
-
-  map.resources :homes, :collection => {:push_data => :get}
-
-  map.resource :password
-
-  map.novo 'novo', :controller => 'chamados', :action => 'novo'
-
-  map.sobre '/sobre', :controller => 'unidades', :action => 'sobre'
-
-  map.connect '/estagiarios/rel_ponto/:year/:month', :controller => 'estagiarios', :action => 'rel_ponto', :year => nil, :month => nil
-  map.connect '/estagiarios/carga_horaria/:estagiario_id_equals/:year/:month', :controller => 'estagiarios', :action => 'carga_horaria', :year => nil, :month => nil
-  map.root :controller => 'homes', :action => 'index'
-  map.internos 'internos', :controller => 'servicos_internos', :action => 'index'
-  map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
-  map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
-  map.seduc_candidato 'seduc_candidato', :controller => 'sessions', :action => 'seduc_candidato'
-  map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
-  map.protocolo 'protocolo', :controller => 'sessions', :action => 'protocolo'
-  map.interno 'interno', :controller => 'sessions', :action => 'interno'
-  map.upload 'upload', :controller => 'importar', :action => 'index'
-  map.termo '/termo_servico', :controller => 'administracaos', :action => 'termo_servico'
-  map.modelo '/download', :controller => 'inscricaos', :action => 'modelo'
-  map.consulta_relatestagiario '/consulta_relatestagiario', :controller => 'relatestagiarios', :action => 'consulta1'
-  map.geo "/geos/geo/:id", :controller => "geos", :action => "geo"
-  map.exencerra '/exencerra', :controller => 'c_externos', :action => 'exencerra'
-  map.resources :fornecedores
-  map.consulta_unidade '/consulta_unidade', :controller => 'c_externos', :action => 'consultaunidade'
-  map.consulta_tipo '/consulta_tipo', :controller => 'c_externos', :action => 'consultatipo'
-  map.lista '/lista', :controller => 'estagiarios', :action => 'lista'
-  #map.c_rel_iti '/c_rel_iti', :controller => 'relatorios', :action => 'consulta'
-  map.c_datashow_uni '/c_datashow_uni', :controller => 'datashows', :action => 'consulta'
-  map.c_imp_tpuni '/c_imp_tpuni', :controller => 'impressoras', :action => 'consultatiponome'
-  map.c_imp_tp '/c_imp_tp', :controller => 'impressoras', :action => 'consultatipo'
-  map.c_imp_uni '/c_imp_uni', :controller => 'impressoras', :action => 'consulta'
-  map.c_comp_tpuni '/c_comp_tpuni', :controller => 'computadores', :action => 'consultatiponome'
-  map.c_comp_fabr '/c_comp_fabr', :controller => 'computadores', :action => 'consultasfabricante'
-  map.c_comp_tp '/c_comp_tp', :controller => 'computadores', :action => 'consultatipo'
-  map.c_comp_uni '/c_comp_uni', :controller => 'computadores', :action => 'consulta'
-  map.c_adm_tpuni '/c_adm_tpuni', :controller => 'administracaos', :action => 'consultatiponome'
-  map.c_adm_tp '/c_adm_tp', :controller => 'administracaos', :action => 'consultatipo'
-  map.c_adm_uni '/c_adm_uni', :controller => 'administracaos', :action => 'consulta'
-  map.c_est_nom '/c_est_nom', :controller => 'estagiarios', :action => 'consulta'
-  #map.c_curso '/c_curso', :controller => 'cursos', :action => 'consulta'
-  map.c_curso_and '/c_curso_and', :controller => 'cursos', :action => 'consulta_and'
-  map.c_curso_enc '/c_curso_enc', :controller => 'cursos', :action => 'consulta_enc'
-  map.prefprot '/prefprot', :controller => 'prefprotocolos', :action => 'index'
-  map.teste '/teste', :controller => 'prefprotocolos', :action => 'teste'
-  map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
+  map.resources :users
+  map.resources :classes
+  map.resources :informativos
+  map.resources :logs
+  map.resource :session, :informatica => :get
+  map.resources :graficos
+  map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+  map.root :controller => "home"
+  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   
+  map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
+  map.aviso_password '/aviso_password', :controller => 'sessions', :action => 'aviso'
 
-  map.estagio'/estagio', :controller => 'estagiarios', :action => 'estagio'
-  map.c_uni_end '/c_uni_end', :controller => 'unidades', :action => 'por_endereco'
-  map.c_uni_tp '/c_uni_tp', :controller => 'unidades', :action => 'consultatipo'
-  map.c_uni_uni '/c_uni_uni', :controller => 'unidades', :action => 'consulta'
-  map.totalizaS '/totalizaS', :controller => 'datashows', :action => 'totalizaS'
-  map.totalizaI '/totalizaI', :controller => 'impressoras', :action => 'totalizaI'
-  map.totalizaC '/totalizaC', :controller => 'computadores', :action => 'totalizaC'
+  map.lista_inscricaos '/lista_inscricaos', :controller => 'inscricaos', :action => 'lista_inscricaos'
   map.encerrados '/cencerrados', :controller => 'chamados', :action => 'encerrados'
-  map.consulta '/consultas', :controller => 'fornecedores', :action => 'consulta'
-  map.consulta_relatorio '/consulta_relatorio', :controller => 'relatestagiarios', :action => 'consulta'
-  map.valida '/valida', :controller => 'relatestagiarios', :action => 'valida'
   map.sem_estagiario '/sem_estagiario', :controller => 'unidades', :action => 'sem_estagiarios'
-  map.baixas '/baixas', :controller => 'estagiarios', :action => 'baixas'
-  map.analistas '/analistas', :controller => 'estagiarios', :action => 'analistas'
+  map.aulas_eventuals2 '/aulas_eventuals2', :controller => 'aulas_eventuals', :action => 'index2'
+  map.aulas_faltas2 '/aulas_faltas2', :controller => 'aulas_faltas', :action => 'index2'
+  map.aulas_faltas3 '/aulas_faltas3', :controller => 'aulas_faltas', :action => 'index3'
+  map.montar_classe '/montar_classe', :controller => 'classes', :action => 'montar_classe'
+  map.new_disciplinanota '/new_disciplinanota', :controller => 'disciplinas', :action => 'new_disciplinanota'
+  map.create_discipina_nota '/create_discipina_nota', :controller => 'disciplinas', :action => 'create_discipina_nota'
+
+  map.impressao_atendimento '/impressao_atendimento', :controller => 'chamados', :action => 'impressao_atendimento'
+  map.impressao_geral '/grafico/impressao_geral', :controller => 'grafico', :action => 'impressao_geral'
+  map.impressao_estagiarios_unidade '/impressao_estagiarios_unidade', :controller => 'unidades', :action => 'impressao_estagiarios_unidade'
+  map.impressao_classe '/impressao_classe', :controller => 'classes', :action => 'impressao_classe'
+  map.impressao_classe_fone '/impressao_classe_fone', :controller => 'classes', :action => 'impressao_classe_fone'
+  map.impressao_piloto '/impressao_piloto', :controller => 'classes', :action => 'impressao_piloto'
+  map.impressao_lista '/impressao_lista', :controller => 'classes', :action => 'impressao_lista'
+  map.impressao_bolsa_familia '/impressao_bolsa_familia', :controller => 'alunos', :action => 'impressao_bolsa_familia'
+  map.impressao_relatorio_aluno '/impressao_relatorio_aluno', :controller => 'atribuicaos', :action => 'impressao_relatorio_aluno'
+  map.impressao_relatorio_classe '/impressao_relatorio_classe', :controller => 'atribuicaos', :action => 'impressao_relatorio_classe'
+  map.impressao_relatorio_professor '/impressao_relatorio_professor', :controller => 'atribuicaos', :action => 'impressao_relatorio_professor'
+  map.impressao_nota_final '/impressao_nota_final', :controller => 'historicos', :action => 'impressao_nota_final'
+  map.impressao_lancamentos '/impressao_lancamentos', :controller => 'atribuicaos', :action => 'impressao_lancamentos'
+  map.impressao_alteracao_lancamentos '/impressao_alteracao_lancamentos', :controller => 'notas', :action => 'impressao_alteracao_lancamentos'
+  map.impressao_lancamentos_notas '/impressao_lancamentos_notas', :controller => 'notas', :action => 'impressao_lancamentos_notas'
+  map.impressao_transferencia_aluno'impressao_transferencia_aluno', :controller => 'atribuicaos', :action => 'impressao_transferencia_aluno'
+  #map.impressao_historico'impressao_historico', :controller => 'atribuicaos', :action => 'impressao_historico'
+  map.impressao_faltas '/impressao_faltas', :controller => 'aulas_faltas', :action => 'impressao_faltas'
+  map.impressao_faltas_professor '/impressao_faltas_professor', :controller => 'aulas_faltas', :action => 'impressao_faltas_professor'
+  map.impressao_faltas_funcionario '/impressao_faltas_funcionario', :controller => 'aulas_faltas', :action => 'impressao_faltas_funcionario'
+  map.impressao_eventuals '/impressao_eventuals', :controller => 'aulas_eventuals', :action => 'impressao_eventuals'
+  map.impressao_eventuals_professor '/impressao_eventuals_professor', :controller => 'aulas_eventuals', :action => 'impressao_eventuals_professor'
+  #map.download_historico '/download_historico', :controller => 'atribuicaos', :action => 'arquivo_historico'
+  map.impressao_unidade '/impressao_unidade', :controller => 'aulas_eventuals', :action => 'impressao_unidade'
+  map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
+
+  map.alteracao '/altera', :controller => 'alteracaos', :action => 'altera'
+  map.alteracao_matricula '/alteracao_matricula', :controller => 'matriculas', :action => 'alteracao_matricula'
+  map.editar_ficha_cadastral '/editar_ficha_cadastral', :controller => 'alunos', :action => 'editar_ficha_cadastral'
+  map.editar_transferencia_aluno '/editar_transferencia_aluno', :controller => 'transferencias', :action => 'editar_transferencia_aluno'
+  map.editar_classe_aluno '/editar_classe_aluno', :controller => 'classes', :action => 'editar_classe_aluno'
+  map.editar_atribuicao_classe '/editar_atribuicao_classe', :controller => 'atribuicaos', :action => 'editar_atribuicao_classe'
+  map.show_editar '/show_editar', :controller => 'atribuicaos', :action => 'show_editar'
+
+  map.consulta_professor_eventual '/consulta_professor_eventual', :controller => 'eventuals', :action => 'consultas'
+  map.consulta_unidade '/consulta_unidade', :controller => 'unidades', :action => 'consulta_unidade'
+  map.consulta_estagiario '/consulta_estagiario', :controller => 'estagiarios', :action => 'consulta_estagiario'
+  map.consulta_funcionario '/consulta_funcionario', :controller => 'funcionarios', :action => 'consulta_funcionario'
+  #map.consulta_estagiarioe '/consulta_estagiario', :controller => 'estagiarios', :action => 'consulta_estagiario'
+  map.consultaprofessor '/consultaprofessor', :controller => 'professors', :action => 'consultaprofessor'
+  map.saida_transf '/saida_transf', :controller => 'matriculas', :action => 'saida_transf'
+  map.consulta_professor_nome '/consulta_professor_nome', :controller => 'professors', :action => 'consulta_nome'
+  map.consulta_classe_aluno '/consulta_classe_aluno', :controller => 'classes', :action => 'consulta_classe_aluno'
+  map.consulta_classe_fone1 '/consulta_classe_fone1', :controller => 'classes', :action => 'consulta_classe_fone1'
+  map.consulta_classe_piloto'/consulta_classe_piloto', :controller => 'classes', :action => 'consulta_classe_piloto'
+  map.consulta_piloto'/consulta_piloto', :controller => 'classes', :action => 'consulta_piloto'
+  map.consulta_classe '/consulta_classe', :controller => 'classes', :action => 'consulta_classe'
+  map.consulta_classe_anteriores '/consulta_classe_anteriores', :controller => 'classes', :action => 'consulta_classe_anteriores'
+  map.consulta_lista_classe '/consulta_lista_classe', :controller => 'classes', :action => 'consulta_lista_classe'
+  map.consulta_lista '/consulta_lista', :controller => 'classes', :action => 'consulta_lista'
+  map.consulta_classe_professor '/consulta_classe_professor', :controller => 'professors', :action => 'consulta_classe_professor'
+  map.consulta_classe_anterior_professor '/consulta_classe_anterior_professor', :controller => 'professors', :action => 'consulta_classe_anterior_professor'
+  map.consulta_classe_nota1 '/consulta_classe_nota1', :controller => 'atribuicaos', :action => 'consulta_classe_nota1'
+  map.consulta_classe_nota '/consulta_classe_nota', :controller => 'atribuicaos', :action => 'consulta_classe_nota'
+  map.consultar_matricula '/consultar_matricula', :controller => 'matriculas', :action => 'consultar_matricula'
+  map.consultar_relatorio '/consultar_relatorio', :controller => 'relatorio', :action => 'consulta_relatorio'
+  map.consulta_atribuicao '/consulta_atribuicao', :controller => 'atribuicaos', :action => 'consulta_atribuicao'
+
+  map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
+  map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'
+  map.relatorios_faltas'/relatorios_faltas', :controller => 'aulas_faltas', :action => 'relatorios_faltas'
+  map.relatorios_faltas_professor'/relatorios_faltas_professor', :controller => 'aulas_faltas', :action => 'relatorios_faltas_professor'
+
+    
+  map.relatorios_faltas_funcionario'/relatorios_faltas_funcionario', :controller => 'aulas_faltas', :action => 'relatorios_faltas_funcionario'
+  map.relatorios_eventual_professor'/relatorios_eventual_professor', :controller => 'aulas_eventuals', :action => 'relatorios_eventual_professor'
+  map.relatorios_eventuals'/relatorios_eventuals', :controller => 'aulas_eventuals', :action => 'relatorios_eventuals'
+
+
+  map.substituicaos '/substituicaos', :controller => 'aulas_eventuals', :action => 'index'
+  map.edit_status '/edit_status', :controller => 'matriculas', :action => 'edit_status'
+  map.matriculas_saidas '/matriculas_saidas', :controller => 'matriculas', :action => 'matriculas_saidas'
+  map.matriculas_saidas_seduc '/matriculas_saidas_seduc', :controller => 'matriculas', :action => 'matriculas_saidas_seduc'
+  map.resources :roles_users, :collection => {:lista_users => :get}
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.resources :users
+  map.resource :session
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.register '/register', :controller => 'users', :action => 'create'
+  map.signup '/signup', :controller => 'users', :action => 'new'
+
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
+  map.resource :password
+
+  map.resources :users
+  map.resource :session
+  map.home '', :controller => 'home', :action => 'index'
+  map.root :controller => "home"
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-
+  map.geo "/geos/geo/:id", :controller => "geos", :action => "geo"
+  
 end

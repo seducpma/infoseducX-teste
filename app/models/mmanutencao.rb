@@ -10,7 +10,7 @@ class Mmanutencao < ActiveRecord::Base
   accepts_nested_attributes_for :unidade
   attr_accessor :tipos_manutencao
   Solicitacao = %w(Internet E-mail Telefone Pessoalmente Outros)
-
+  
   before_update :data_encerramento
 
 def data_encerramento

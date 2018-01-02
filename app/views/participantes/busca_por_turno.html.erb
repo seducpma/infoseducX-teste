@@ -13,7 +13,7 @@
             <tr>
               <td>
                 <% form_tag busca_por_turno_participantes_path, :method => 'get' do %>
-                  <b><font size="3">Periodo:</b></font><%= select_tag :turno, options_for_select(Inscricao::Periodo), :include_blank => "Selecione" %>
+                  <b><font size="3">Periodo:</b></font><%= select_tag :turno, options_for_select(Inscricao::Periodo), :include_blank => "Selecionar" %>
                   <input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
                 <% end %>
              </td>

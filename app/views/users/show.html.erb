@@ -1,44 +1,68 @@
-<br/><br/>
-<font size="2">
-<table  class="tabelas" width="50%"align="center">
-<tr>
- <td>
-   <table>
-     <tr>
-       <td colspan="2" align="left">
-         <font  size=5 color="black"> <b>DADOS DO USUÁRIO LOGADO</b></font>
-       </td>
-      </tr>
-    </table>
-    <fieldset><legend><font  size=4> Usuário</font></legend>
+<div id="interno8">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>USUÁRIO - INFOSEDUC</strong></font><br/>
+ </div>
+ <table bgcolor="#F5F5F5" width="100%">
+   <tr  bgcolor="#F5F5F5" width="100%">
+     <td>
+       <fieldset><legend><font  size=3><b> Usuário</b></font></legend>
+             <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
        <% form_for(@users) do |f| %>
        <%= f.error_messages %>
-        <font  size="2">
-        <table width="50%">
-          <tr>
-             <td align="left"><b>Usuário:</b></td>
-             <td align="left"><%=h @users.login %></td>
+         <tr bgcolor="	#F5F5F5">
+            <th align="left">Login:</th> <td><%=h @users.login %></td>
+         </tr>
+         <tr>
+             <%if Role.find(@users.roles_user.role_id).name == 'admin' then%>
+               <td>Administrador do sistema. Acesso total ao sistema.</td>
+             <%else%>
+                 <%if Role.find(@users.roles_user.role_id).name == 'empresa' then%>
+                    <th align="left">Nível de acesso:</th> <td>EMPRESA. Acesso restrito aos dados da empresa</td>
+                <%else%>
+                   <%if Role.find(@users.roles_user.role_id).name == 'obreiro' then%>
+                     <th align="left">Nível de acesso:</th> <td>OBREIRO. Acesso restrito aos dados do obreiro.</td>
+                   <%else%>
+                       <th align="left">Nível de acesso:</th> <td>Usuário sem acesso ao sistema.</td>
+                   <%end%>
+                <%end%>
+             <%end%>
+         </tr>
+         <tr>
+             <th align="left">Data Cadastramento:</th><td align="left"> <%=h @users.created_at.strftime("%d/%m/%y") %></td>
           </tr>
-           <tr>
-             <td align="left"><b> Data Cadastramento:</b></td>
-             <td align="left"> <%=h @users.created_at.strftime("%d/%m/%y") %></td>
-          </tr>
-         </table>
-        </font>
-        </fieldset>
-         <%end%>
+       <%end%>
+    </table>
+       </fieldset>
+     </td>
+   </tr>
+   <tr>
+       <td>
 
-         <div class="botao">
-           <table width="50%" align="left">
-            <tr>
-             <td align="left" width="8%"><%= button_to 'Voltar', homes_path, {:method => "get"} %></td>
-             <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
-            </tr>
-          </table>
-          </div>
+
+  <fieldset bgcolor="#F5F5F5"><legend><font  size="3" color="red"<b> ATENÇÃO</b></font></legend>
+        <table>
+      <tr bgcolor="#F5F5F5">
+          <td ><font color="red"><b>APÓS CRIAR USUÀRIO E SENHA É NECESSÁRIO CONTACTAR A INFORMÁTICA/SEDUC PARA LIBERÇÃO DO MESMO.</b></td>
+     </tr>
    </table>
- </font>
-<br/>
+  </fieldset>
+       </td>
+   </tr>
+      </table>
+    <table>
+      <tr>
+         <td width="8%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+         <% if current_user.has_role?('admin') or current_user.has_role?('escola') %>
+             <td><%= button_to "Editar",{:action => "edit", :id => @users}, :method => "get", :title => "Alterar Dados"%></td>
+        <%end%>
+
+     </tr>
+   </table>
+</div>
+  <br/>
+</div>
 
 
 

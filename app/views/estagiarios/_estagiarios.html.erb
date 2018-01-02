@@ -1,0 +1,45 @@
+    <div class="tabs">
+    <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+            <th width="40">Matricula</th>
+            <th width="300">Nome</th>
+            <th width="200">Tipo</th>
+            <th width="200">Periodo</th>
+            <th width="200">Unidade</th>
+            <th colspan="3"></th>
+        </tr>
+           <%$t=0%>
+           <% @estagiarios.each do |estagiario| %>
+           <%$t = $t+1%>
+             <tr bgcolor="#F5F5F5">
+                <td align="left"><%=h estagiario.matricula%></td>
+                <td align="left"><%=h estagiario.nome%></td>
+                <td align="left"><%=h estagiario.tipo%></td>
+                <td align="left"><%=h estagiario.periodo_est%></td>
+                <td align="left"><% if estagiario.unidade_id.nil?%>
+                                     Itinerante
+                                 <%else%>
+                                     <%=h estagiario.unidade.nome%>
+                                 <%end%>
+                </td>
+                <td align="center"><%= button_to('Visualizar', {:action => "show", :id =>estagiario},:method => "get", :title => "Visualizar") %></td>
+               <% if ((current_user.has_role?('admin') or current_user.has_role?('SEDUC')or  current_user.has_role?('diretor_unidade')) )%>
+                    <td align="center"><%= button_to 'Editar', {:action => "edit", :id =>estagiario}, :method => "get", :title => "Editar"%></td>
+                <%else%>
+                    <td align="center"> --- </td>
+                <%end%>
+
+              </tr>
+            <% end %>
+
+
+
+     </table>
+     <table bgcolor="#DCDCDC" width="100%">
+      <tr >
+        <td colspan="3" align="right"><b>TOTAL: </b>
+            <font color ="red "size="2"><b><%=$t %></b></font>
+          </td>
+      </tr>
+    </table>
+  </div>

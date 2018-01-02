@@ -9,7 +9,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218124152) do
+ActiveRecord::Schema.define(:version => 20170912154213) do
+
+  create_table "acompanhamento_despachos", :force => true do |t|
+    t.integer  "acompanhamento_id"
+    t.string   "despacho",          :limit => 600
+    t.datetime "data"
+    t.string   "funcionario"
+    t.string   "obs"
+    t.string   "aceite",                           :default => "RECUSADO"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "acompanhamentos", :force => true do |t|
+    t.string   "codigo"
+    t.string   "crianca"
+    t.string   "RA",             :limit => 20
+    t.string   "inscricao"
+    t.string   "mae"
+    t.string   "responsavel"
+    t.datetime "nascimento"
+    t.string   "endereco"
+    t.integer  "num"
+    t.string   "complemento"
+    t.string   "cep"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "fone"
+    t.string   "fone1"
+    t.string   "cel"
+    t.string   "email"
+    t.string   "assunto",        :limit => 600
+    t.integer  "encerrado",                     :default => 0
+    t.datetime "data_encerrado"
+    t.string   "obs"
+    t.string   "funcionario"
+    t.string   "solicitante"
+    t.string   "por",            :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "administracaos", :force => true do |t|
     t.integer  "unidade_id",       :null => false
@@ -18,6 +58,19 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "rede"
     t.string   "internet"
     t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "agendas", :force => true do |t|
+    t.integer  "unidade_id"
+    t.integer  "estagiario_id"
+    t.date     "data"
+    t.time     "horai"
+    t.time     "horaf"
+    t.string   "solicitante",   :limit => 100
+    t.string   "proposito",     :limit => 200
+    t.string   "obs",           :limit => 300
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +86,18 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.integer  "unidade_id"
+  end
+
+  create_table "aulas_faltas", :force => true do |t|
+    t.integer  "professor_id"
+    t.integer  "funcionario_id"
+    t.integer  "unidade_id"
+    t.string   "funcao"
+    t.string   "periodo"
+    t.date     "data"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "c_externos", :force => true do |t|
@@ -55,7 +120,6 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.datetime "data_sol"
     t.string   "solicitante"
     t.integer  "unidade_id"
-    t.string   "depto"
     t.string   "forma_sol"
     t.text     "problema"
     t.datetime "data_aten"
@@ -64,9 +128,9 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.integer  "patrimonio"
     t.string   "local"
     t.string   "procedimentos"
-    t.integer  "situacao_chamado_id", :default => 1
+    t.integer  "situacao_chamado_id",                :default => 1
     t.datetime "data_enc"
-    t.string   "obs"
+    t.string   "obs",                 :limit => 200
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
@@ -88,7 +152,7 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
   create_table "chefias", :force => true do |t|
     t.string   "nome"
     t.string   "setor"
-    t.boolean  "desligado",  :default => false
+    t.boolean  "desligado",  :default => false, :null => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -101,6 +165,23 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
   end
 
   create_table "computadores", :force => true do |t|
+    t.integer  "unidade_id"
+    t.integer  "tipo_controle_id"
+    t.integer  "quant",                           :default => 1
+    t.string   "config"
+    t.string   "pat",              :limit => 10
+    t.string   "serie",            :limit => 10
+    t.string   "user",             :limit => 100
+    t.string   "local",            :limit => 20
+    t.string   "pertence",         :limit => 50,  :default => "SEDUC"
+    t.string   "contato"
+    t.string   "tipo",             :limit => 10
+    t.string   "fabricante",       :limit => 15
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "computadores(ANTIGO)", :force => true do |t|
     t.integer  "unidade_id"
     t.integer  "tipo_controle_id"
     t.integer  "quant",            :default => 1
@@ -127,14 +208,14 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
   end
 
   create_table "curriculos", :force => true do |t|
+    t.string   "atuacao"
     t.string   "nome"
     t.string   "RG",              :limit => 12
     t.string   "CPF",             :limit => 14
     t.datetime "nascimento"
     t.string   "endereco"
-    t.integer  "num"
     t.string   "complemento"
-    t.string   "cep"
+    t.string   "CEP"
     t.string   "bairro"
     t.string   "cidade"
     t.string   "fone"
@@ -166,12 +247,13 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "carga_horaria"
     t.text     "ementa"
     t.text     "obs"
-    t.datetime "data_hora"
+    t.string   "horario",           :limit => 50
     t.integer  "qtde"
     t.integer  "vagas_disponiveis"
-    t.boolean  "status",            :default => false
-    t.date     "data_inicio"
-    t.date     "data_fim"
+    t.boolean  "status",                           :default => false
+    t.string   "datas",             :limit => 200
+    t.string   "publico",           :limit => 200
+    t.string   "local",             :limit => 250
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -211,8 +293,10 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "procedencia"
     t.datetime "data_recebimento"
     t.string   "para"
-    t.string   "despacho"
+    t.string   "despacho",         :limit => 600
+    t.string   "funcionario"
     t.string   "destino"
+    t.string   "destinofinal"
     t.datetime "data_saida"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -250,8 +334,9 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
 
   create_table "emprestimos", :force => true do |t|
     t.integer  "unidade_id"
-    t.integer  "departamento_id"
+    t.integer  "departamento_id",                :default => 1
     t.datetime "emprestimo"
+    t.string   "periodo",         :limit => 100
     t.datetime "devolucao"
     t.string   "responsavel"
     t.string   "obs"
@@ -311,29 +396,47 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "faculdade"
     t.string   "matricula"
     t.string   "periodo_est"
+    t.string   "carga_horaria",      :limit => 6
+    t.string   "horario",            :limit => 20
     t.string   "responsavel"
     t.datetime "data_ingresso"
     t.datetime "data_termino"
     t.datetime "data_admissao"
+    t.string   "matriculaPMA",       :limit => 10
     t.datetime "data_desliga"
     t.string   "locacao"
     t.string   "periodo_trab"
     t.string   "aval"
     t.string   "obs"
-    t.integer  "flag",               :default => 0
-    t.integer  "desligado",          :default => 0
-    t.integer  "etinerante",         :default => 0
+    t.integer  "flag",                             :default => 0
+    t.integer  "desligado",                        :default => 0
+    t.integer  "etinerante",                       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.string   "tipo",               :limit => 50
   end
 
   create_table "estoques", :force => true do |t|
-    t.integer  "componente_id",                :null => false
+    t.integer  "componente_id",                              :null => false
     t.string   "especifica"
-    t.integer  "saldo",         :default => 0
+    t.integer  "saldo",                       :default => 0
+    t.string   "condicao",      :limit => 20
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "eventuals", :force => true do |t|
+    t.integer  "professor_id"
+    t.integer  "unidade_id"
+    t.string   "categoria",       :limit => 20
+    t.string   "disponibilidade"
+    t.string   "periodo",         :limit => 25
+    t.string   "contato",         :limit => 200
+    t.integer  "ano_letivo"
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -359,10 +462,24 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
   create_table "funcionarios", :force => true do |t|
     t.integer  "chefia_id"
     t.string   "nome"
-    t.string   "matricula"
+    t.string   "matricula",   :limit => 15
+    t.date     "nascimento"
+    t.string   "endereco",    :limit => 200
+    t.string   "num",         :limit => 10
+    t.string   "complemento", :limit => 150
+    t.string   "cep",         :limit => 15
+    t.string   "bairro",      :limit => 150
+    t.string   "cidade",      :limit => 150
+    t.string   "fone",        :limit => 100
+    t.string   "cel",         :limit => 100
+    t.string   "email",       :limit => 150
+    t.integer  "unidade_id"
+    t.string   "funcao",      :limit => 50
     t.string   "setor"
     t.string   "atribuicao"
-    t.boolean  "desligado",  :default => false
+    t.string   "horario",     :limit => 20
+    t.string   "status",      :limit => 50
+    t.boolean  "desligado",                  :default => false
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -377,6 +494,7 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "user"
     t.string   "pertence"
     t.string   "contato"
+    t.integer  "baixado",          :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -391,11 +509,8 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
 
   create_table "inscricaos", :force => true do |t|
     t.integer  "participante_id",                    :null => false
+    t.integer  "curso_id",                           :null => false
     t.date     "data_inscricao"
-    t.integer  "opcao1"
-    t.integer  "opcao2"
-    t.string   "periodoop1"
-    t.string   "periodoop2"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "status",          :default => true
@@ -432,6 +547,7 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.integer  "unidade_id",                            :null => false
     t.integer  "situacao_manutencao_id", :default => 1
     t.integer  "funcionario_id"
+    t.string   "ffuncionario"
     t.integer  "chefia_id"
     t.integer  "user_id"
     t.string   "descricao"
@@ -458,6 +574,32 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.integer  "qtde_dias"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "mmanutencaos", :force => true do |t|
+    t.integer  "unidade_id",                                           :null => false
+    t.integer  "situacao_manutencao_id",                :default => 1
+    t.integer  "funcionario_id"
+    t.string   "ffuncionario",           :limit => 100
+    t.integer  "chefia_id"
+    t.integer  "user_id"
+    t.string   "descricao",              :limit => 500
+    t.datetime "data_sol"
+    t.datetime "data_ate"
+    t.datetime "data_enc"
+    t.string   "forma"
+    t.string   "solicitante"
+    t.string   "procedimentos"
+    t.string   "executado"
+    t.string   "justificativa"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mmanutencaos_tipos_manutencaos", :id => false, :force => true do |t|
+    t.integer "tipos_manutencao_id", :null => false
+    t.integer "mmanutencao_id",      :null => false
   end
 
   create_table "noticias", :force => true do |t|
@@ -497,6 +639,8 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "nome"
     t.string   "matricula"
     t.integer  "unidade_id"
+    t.integer  "professor_id"
+    t.integer  "funcionario_id"
     t.string   "funcao"
     t.string   "endereco"
     t.string   "num"
@@ -514,7 +658,33 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "CEP"
     t.string   "rg"
     t.string   "cpf"
-    t.boolean  "flag",              :default => true, :null => false
+    t.boolean  "desligado",         :default => true, :null => false
+  end
+
+  create_table "participantessss", :force => true do |t|
+    t.string   "nome"
+    t.string   "matricula"
+    t.integer  "unidade_id"
+    t.integer  "professor_id"
+    t.integer  "funcionario_id"
+    t.string   "funcao"
+    t.string   "endereco"
+    t.string   "num"
+    t.string   "complemento"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "telefone"
+    t.string   "cel"
+    t.string   "email"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tipo_participante"
+    t.string   "profissao"
+    t.string   "CEP"
+    t.string   "rg"
+    t.string   "cpf"
+    t.boolean  "desligado",         :default => true, :null => false
   end
 
   create_table "pontos", :force => true do |t|
@@ -533,7 +703,10 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.datetime "data"
     t.string   "de"
     t.string   "assunto"
+    t.string   "para"
     t.string   "destino"
+    t.integer  "encerrado",         :default => 0
+    t.datetime "data_encerramento"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -589,6 +762,24 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.datetime "updated_at"
   end
 
+  create_table "reservar_salas", :force => true do |t|
+    t.integer  "sala_id"
+    t.date     "data_reserva"
+    t.time     "horario_reservai"
+    t.time     "horario_reservaf"
+    t.string   "utilizacao"
+    t.string   "solicitante"
+    t.integer  "quantidade"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservar_salas_servicos_salas", :id => false, :force => true do |t|
+    t.integer "servicos_sala_id", :null => false
+    t.integer "reservar_sala_id", :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string "name"
   end
@@ -613,6 +804,16 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.datetime "updated_at"
   end
 
+  create_table "salas", :force => true do |t|
+    t.string   "sala"
+    t.string   "descricao"
+    t.string   "localizacao"
+    t.string   "obs"
+    t.boolean  "status",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "senhas", :force => true do |t|
     t.integer  "unidade_id", :null => false
     t.string   "de"
@@ -631,6 +832,14 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.string   "destinatario"
     t.datetime "data"
     t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "servicos_salas", :force => true do |t|
+    t.string   "servico"
+    t.string   "obs"
+    t.boolean  "status",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -674,6 +883,12 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.datetime "updated_at"
   end
 
+  create_table "tipos_estagios", :force => true do |t|
+    t.string   "nome",       :limit => 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tipos_manutencaos", :force => true do |t|
     t.string   "servico"
     t.string   "obs"
@@ -687,7 +902,7 @@ ActiveRecord::Schema.define(:version => 20140218124152) do
     t.datetime "updated_at"
   end
 
-  create_table "unidades", :force => true do |t|
+  create_table "unidadessss", :force => true do |t|
     t.integer  "tipo_id",                    :null => false
     t.integer  "regiao_id"
     t.string   "nome"

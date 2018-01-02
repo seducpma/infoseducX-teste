@@ -1,59 +1,54 @@
 <% form_for(@inscricao) do |f| %>
 <%= f.error_messages %>
 <font  size="2">
- <table class="tabelas1" align="center" >
-   <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b> CADASTRO DE INSCRIÇÕES</b></font>
-    </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-  </tr>
+ <table width="100%" align="center"  bgcolor="#F5F5F5" >
+   <tr   bgcolor ="#E6E2D">
+        <th align="center">
+           <font  size=5 color="black">  <b> CADASTRO DE INSCRIÇÃO </b></font>
+        </th>
+      </tr>
   <tr>
   <td colspan="2">
-   <fieldset><legend><font size ="4"><b>Inscrição</b></font></legend>
-     <table width="100%">
-       <tr>
-         <td colspan="2" align="center"><font  size=5 color="RED"> <b> FAVOR LER ATENTAMENTE TODAS AS INSTRUÇÕES PARA EFETUAR SUA INSCRIÇÃO</b></font></td>
-      </tr>
-       <tr>
-         <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>1) ANTES DE SE INSCREVER VERIFIQUE SE SEU NOME CONSTA NA LISTA DE PARTICIPANTES.</td>
-       </tr>
-       <tr>
-         <td colspan="2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>2) SE SEU NOME NÃO CONSTAR NA LISTA, FAÇA SEU CADASTRO DE PARTICIPANTE. CLIQUE AQUI </b> ============>
-                     <%= link_to image_tag("/stylesheets/images/participante.jpeg", :size => "180x25"), new_participante_path, :title => "Cadastrar Participante" %> </b></td>
+   <fieldset><legend><font size ="4"><b></b></font></legend>
+       <table width="100%" >
+             <tr>
+                 <td colspan="2" align="center"><font  size=5 color="RED"> <b><u> FAVOR LER ATENTAMENTE TODAS AS INSTRUÇÕES ANTES DE EFETUAR SUA INSCRIÇÃO</b></u></font><br/></td>
+              </tr>
+              <tr>
+                  <td colspan="2" ><br/></td>
+              </tr>
+              <tr>
+                <td  colspan="2" align="center"> <font size ="3"><br/><b>Participante:</b>
+                   <%= f.collection_select :participante_id, @participantesInscricao, :id, :nome, :include_blank => ' -- Selecionar seu nome -- ' %></b></font></td>
                </tr>
-               <tr>
-                 <td colspan="2"><br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>3) FAVOR NÃO CADASTRAR SEU NOME DUAS VEZES.</b></td>
-               </tr>
-
-      <tr>
-        <td  colspan="2" align="center"> <font size ="3"><br/><b>Participante:</b>
-           <%= f.collection_select :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecione -- ' %>&nbsp&nbsp<b>(Selecione seu nome)</b></font></td>
-
-  </tr>
 
  <!--         <%= observe_field  :inscricao_participante_id,
               :with => :inscricao_participante_id,
              :url => { :action => 'sel_participa' } %>
 -->
-  <tr><td></td>
-    <td colspan="4">
-     <%if @participante.present?%>
-      Matricula: <%=h @participante.matricula %><br/>
-      Nome:<%=h @participante.nome %><br/>
-      Cidade:<%=h @participante.cidade %><br/>
-      Email:<%=h @participante.email %><br/>
-        Observações: <%=h @participante.obs %><br/>
-    <%else%>
-      <div id="informacoes"></div>
-    <%end%>
-    </td>
-  </tr>
- </table>
+              <tr><td colspan="2"><br/></td></tr>
 
-   <table align="center" width="100%" >
+    
+               <tr>
+                   <td valign="middle"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><font color ="red" <u>ATENÇÃO:</u> SE SEU NOME NÃO CONSTAR NA LISTA ACIMA FAVOR CADASTRAR.</b>  ====================></td>
+                   <td valign="bottom"><%= link_to image_tag("/stylesheets/images/participante.png", :size => "180x30"), new_participante_path, :title => "Cadastrar Participante" %> </b></td>
+               </tr>
+              <tr><td></td>
+                <td colspan="4">
+                 <%if @participante.present?%>
+                  Matricula: <%=h @participante.matricula %><br/>
+                  Nome:<%=h @participante.nome %><br/>
+                  Cidade:<%=h @participante.cidade %><br/>
+                  Email:<%=h @participante.email %><br/>
+                    Observações: <%=h @participante.obs %><br/>
+                <%else%>
+                  <div id="informacoes"></div>
+                <%end%>
+                </td>
+              </tr>
+    </table>
+
+       <table align="center" width="100%" >
 
 <!--
     <tr><td>&nbsp&nbsp<b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b></td></tr>
@@ -81,11 +76,11 @@
     <!--
       <tr>
         <td colspan="2" align="center"><b><u>OBS:</u></b>  Entrada Gratuita - condicionada a apresentação de holerite recente. </td>
-     </tr>
+     </tr>-->
 
-    <tr>-->
-      <td colspan="2" align="center"><br/>
-         <font size="3"><b>Selecione a apresentação desejada <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecione -- ' %> </font>    </b>
+    <tr>
+      <td colspan="2" align="left"><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <font size="3"><b>Curso: <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' %> </font>    </b>
          <br/><br/>
       </td>
     </tr>
@@ -105,7 +100,7 @@
                <td align="right">   <%= f.submit "INSCREVER" %></td>
       <% end %>
                <td width="2%" align="right"><%= button_to(' CONSULTA INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
-               <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+               <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
            </tr>
        </table>
 

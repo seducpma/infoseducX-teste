@@ -1,0 +1,62 @@
+<% session[:anaja]=0%> <% session[:buriti]=0%> <% session[:ccaic]=0%> <% session[:chui]=0%> <% session[:curima]=0%> <% session[:majoi]=0%> <% session[:maraca]=0%> <% session[:tapera]=0%> <% session[:tupa]=0%> <% session[:wanda]=0%>
+<% session[:aracari]= 0%> <% session[:aracati]= 0%> <% session[:bacuri]= 0%> <% session[:batuira]= 0%>  <% session[:bore]= 0%> <% session[:caranda]= 0%>  <% session[:ceci]= 0%> <% session[:corimbo]= 0%> <% session[:curumim]=0%> <%session[:cunhatai]=0%> <% session[:indaia]= 0%> <% session[:jacina]= 0%> <% session[:jacy]= 0%> <% session[:manai]= 0%> <% session[:patativa]= 0%> <% session[:paturi]= 0%> <% session[:potira]= 0%> <% session[:sabia]= 0%> <% session[:tangara]= 0%>
+<% session[:aracy]= 0%> <% session[:arapiranga]= 0%> <% session[:arauna]= 0%> <% session[:baeti]= 0%> <% session[:curio]= 0%> <% session[:grauna]= 0%> <% session[:jaguari]= 0%> <% session[:juriti]= 0%> <% session[:maira]= 0%> <% session[:manaca]= 0%> <% session[:panambi]= 0%> <% session[:pitanga]= 0%> <% session[:thaira]= 0%> <% session[:taragua]= 0%> <% session[:urupe]= 0%>
+<% session[:total]= 0%>
+
+           <% if @aulas_faltas.present? %>
+              <div id="calendar">
+                  <%if !@aulas_faltas[0].present? %>
+                       <h2><center> <b>NÃO existe nada cadastado para este funcionario</b></center> </h2>
+                  <%else%>
+                        <h2><center> <b>AGENDA DE FALTAS- <%=  @aulas_faltas[0].funcionario.nome%> </b></center> </h2>
+                       
+                  <%end%>  
+                <h2 id="month">
+                  <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+                  <%=h @date.strftime("%B %Y") %>
+                  <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+                </h2>
+                <% calendar_for @aulas_faltas, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+               <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+                  <% calendar.day(:day_method => :data) do |date, articles| %>
+                    <%= date.day %>
+                    
+                    <ul>
+                      <% for data in articles %>
+                                 <li><% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')or  current_user.has_role?('diretor_unidade') )%>
+                                            <div  class ="invisible_to_print ">&nbsp <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy", :id =>data}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></div> <br/>
+                                        <%end%>
+                                     <b><font color ="blue"> <%= data.tipo%></font></b><br/>
+                                     <% session[:total]=  session[:total] +1%>
+                                      
+                                    <b>--------------------</b>
+                                </li>
+
+                         <br/>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                <% end %>
+              </div>
+            <%end%>
+            <table frame="box" rules="all" width="100%" style="border-color: white">
+              <tr style="border-color: white">
+                  <td style="border-color: white" width ="100px" valign="top"><b>Estatística:</b></td>
+
+
+                 <td style="border-color: white"  valign="top" width ="150px" valign="top"><b><u>Total:</u></b> <%= session[:total]%></td>
+               </tr>
+            </table>
+            <table cellspacing="0" cellpadding="0" align="right" class ="invisible_to_print " >
+              <tr class ="invisible_to_print " >
+                   <td align="right" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                   <td width="2%" align="right" ><%= button_to("Imprimir Agenda", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+                <td width="2%" align="right" ><%= button_to "Relatório / Mês", relatorio_falta_mes_funcionario_aulas_faltas_path %></td>
+                    <%if (params[:search]).present? %>
+                        <% if current_user.has_role?('SEDUC') or current_user.has_role?('admin')%>
+                           <td width="2%" align="right"><%= button_to'Cadastrar Falta',:action => "new", :funcionario_id => params[:search][:funcionario_id_equals],:target => '_blank' %></td>
+                        <%end%>
+                    <%end%>
+               </tr>
+            </table>
+

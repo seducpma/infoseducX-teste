@@ -1,6 +1,4 @@
 class InscricaosController < ApplicationController
-  # GET /inscricaos
-  # GET /inscricaos.xml
     before_filter :load_cursos
     before_filter :load_participantes
     before_filter :load_inscricaos
@@ -46,19 +44,20 @@ class InscricaosController < ApplicationController
 
   end
 
-  # GET /inscricaos/1
-  # GET /inscricaos/1.xml
   def show
     @inscricao = Inscricao.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @inscricao }
     end
   end
 
-  # GET /inscricaos/new
-  # GET /inscricaos/new.xml
+
+ def impressao
+    @inscricao = Inscricao.find(params[:id])
+   render :layout => "impressao"
+  end
+
   def new
     @inscricao = Inscricao.find_by_participante_id(params[:participante])
     if @inscricao.present?
@@ -73,7 +72,6 @@ class InscricaosController < ApplicationController
     end
   end
 
-  # GET /inscricaos/1/edit
   def edit
     @inscricao = Inscricao.find(params[:id])
   end
@@ -96,33 +94,33 @@ class InscricaosController < ApplicationController
 
     end
   end
-  # POST /inscricaos
-  # POST /inscricaos.xml
-  def create
+
+ def create
     @inscricao = Inscricao.new(params[:inscricao])
     @inscricao.data_inscricao = Time.now
-    respond_to do |format|
-
-      if @inscricao.save
-        @inscricao.valida_vaga
-        flash[:notice] = 'INSCRIÇÃO CONFIRMADA COM SUCESSO.'
-        #InscricaoMailer.deliver_confirmacao_inscricao(@inscricao,@inscricao.participante)
-        format.html { redirect_to(@inscricao) }
-        format.xml  { render :xml => @inscricao, :status => :created, :location => @inscricao }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @inscricao.errors, :status => :unprocessable_entity }
-      end
-
+    @inscricaoExiste=   Inscricao.find(:all, :select => 'id',  :conditions=> ['participante_id =? AND curso_id=?', @inscricao.participante_id, @inscricao.curso_id] )
+    if !@inscricaoExiste.empty?
+          respond_to do |format|
+               format.html { redirect_to(aviso_inscricaos_path) }
+               format.xml  { head :ok }
+          end
+    else
+        respond_to do |format|
+          if @inscricao.save
+            @inscricao.valida_vaga
+            flash[:notice] = 'INSCRIÇÃO CONFIRMADA COM SUCESSO.'
+            format.html { redirect_to(@inscricao) }
+            format.xml  { render :xml => @inscricao, :status => :created, :location => @inscricao }
+          else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @inscricao.errors, :status => :unprocessable_entity }
+          end
+        end
     end
   end
 
-  # PUT /inscricaos/1
-  # PUT /inscricaos/1.xml
   def update
     @inscricao = Inscricao.find(params[:id])
-
-
     respond_to do |format|
       if @inscricao.update_attributes(params[:inscricao])
         flash[:notice] = 'INSCRIÇÃO ATUALIZADA COM SUCESSO.'
@@ -135,12 +133,9 @@ class InscricaosController < ApplicationController
     end
   end
 
-  # DELETE /inscricaos/1
-  # DELETE /inscricaos/1.xml
   def destroy
     @inscricao = Inscricao.find(params[:id])
     @inscricao.destroy
-
     respond_to do |format|
       format.html { redirect_to(inscricaos_url) }
       format.xml  { head :ok }
@@ -160,25 +155,14 @@ class InscricaosController < ApplicationController
      session[:opcao] = params[:periodo_opcao1]
      session[:unidade] = params[:curso][:unidade]
      session[:curso] = params[:curso][:get]
-
-     
-     c = session[:curso]
-     o = session[:opcao]
-     u = session[:unidade]
      @search = Curso.find(params[:curso][:get])
      unless session[:opcao].present?
-       #@cursos_inscricaos = Inscricao.paginate(:all, {:page => params[:page],:per_page => 10, :include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id]})
        @cursos_inscricaos=@contador = Inscricao.all(:include => 'cursos',:conditions => [ 'cursos.id =? ', @search.id])
      else
-       #@cursos_inscricaos = Inscricao.paginate(:all, {:page => params[:page],:per_page => 10, :include => 'cursos',:conditions => [ 'cursos.id =? and (inscricaos.opcao1 = ? and inscricaos.periodo_opcao1 = ?)', @search.id,session[:unidade], session[:opcao] ]})
-       i=@search.id
-       u = session[:unidade]
-       o = session[:opcao]
        @cursos_inscricaos=@contador = Inscricao.all(:include => 'cursos',:conditions => [ 'cursos.id =? and inscricaos.opcao1 = ? and inscricaos.periodoop1 = ?', @search.id,session[:unidade], session[:opcao] ])
        render :update do |page|
            page.replace_html 'lista', :partial => "inscritos_participantes" 
        end
-       t=0
      end
      
 
@@ -255,7 +239,6 @@ def gera_pdf
 
  def consultas
    @participantess =  Participante.find_by_id(params[:inscricao_inscricao_participante_id])
-
  end
 
 
@@ -264,13 +247,38 @@ def gera_pdf
  end
 
  def lista_inscricaos
-     $participante = params[:inscricao_inscricao_participante_id]
-     @inscricaos = Inscricao.find(:all, :conditions => ['participante_id=?',  params[:inscricao_inscricao_participante_id]])
-    render :partial => 'inscricaos'
+     @inscricaos = Inscricao.find(:all, :joins => :participante, :conditions => ["participantes.nome like ?", "%" + params[:search1].to_s + "%"],:order => 'participantes.nome ASC')
+                     render :update do |page|
+                          page.replace_html 'listagem', :partial => "lista_inscricao"
+                     end
  end
 
-private
 
+def   lista_inscricaos_curso
+    @inscricao = Inscricao.find(:all, :select => "inscricaos.id, inscricaos.participante_id, inscricaos.curso_id, par.unidade_id,  par.funcao, uni.nome as uni_nome, par.nome as par_nome, cur.nome ", :joins => "LEFT JOIN cursos cur ON cur.id = inscricaos.curso_id LEFT JOIN participantes par ON par.id = inscricaos.participante_id   LEFT JOIN "+session[:base]+".unidades uni ON uni.id = par.unidade_id ", :conditions => ['inscricaos.curso_id=? AND cur.status = 0 ',  params[:inscricao_curso_id]])
+    render :partial => 'cursosAtivos'
+end
+
+ def gera_excel(inscricao)
+       ## Gera arquivo em pdf
+     #@inscricao = Inscricao.all(:include => "cursos",:conditions => [ 'cursos.id =1' ])
+     @report = DailyOrdersXlsFactory.new("simple report")
+     @report.add_column(10).add_column(40).add_column(30).add_column(30).add_column(30)
+     @report.add_row(["Prefeitura Municipal de Americana"], 30).join_last_row_heading(0..6)
+     @report.add_row(["Inscritos no curso: #{@search.truncar_curso} "], 30).join_last_row_heading(0..6)
+     @report.add_row(["Matricula","Nome","Unidade","Opção 1","Horario","Opçao 2","Horario"])
+     inscricao.each do |insc|
+       @report.add_row([insc.participante.matricula,insc.participante.nome,insc.participante.unidade.nome,insc.unidade(insc.opcao1),insc.periodo_opcao1,insc.unidade(insc.opcao2),insc.periodo_opcao2])
+     end
+     @rel = Relatorio.new
+       @rel.ip = request.remote_ip
+       @rel.user_id = current_user
+       @rel.path = @report.save_to_file("public/saidas/#{@search.truncar_curso}_#{Date.today.strftime("%d_%m_%Y")}_#{@rel.user.login}.xls")
+     @rel.save
+ end
+
+
+private
   def sort_column
     Inscricao.column_names.include?(params[:sort]) ? params[:sort] : "id"
   end
@@ -279,11 +287,7 @@ private
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
-
-
 protected
-
-
   def load_locais
     @locais = Unidade.find(:all, :order => 'nome ASC')
   end
@@ -301,9 +305,10 @@ protected
     if params[:participante].present?
       @participante = Participante.find(params[:participante], :order => 'nome ASC')
     else
-      @participantes = Participante.find(:all, :conditions => ['flag = 1 and funcao is not null'], :order => 'nome ASC')
+      @participantes = Participante.find(:all, :conditions => ['desligado = 0 and funcao is not null'], :order => 'nome ASC')
     end
+    @participantesInscricao = Participante.find(:all, :conditions => ['desligado = 0 '], :order => 'nome ASC')
+    @cursosAtivos = Curso.find(:all, :conditions => ['status = 0'], :order => 'nome ASC')
   end
-
 
 end

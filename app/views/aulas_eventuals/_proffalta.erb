@@ -1,0 +1,15 @@
+<link rel="stylesheet" media="all" href="css/calendar.css" />
+
+<%  for aula in @aula_falta%>
+<table width="100% ">
+           <tr>
+               <td align="left" width ="8%"><b>Classe: </b></td>
+               <td align="left" width ="40%"> <%=h aula.classe%>
+               <td align="left" width ="8%"><b>Periodo: </b></td>
+               <td align="left"  width ="40%"> <%=h aula.periodo%>
+
+            </td>
+        </tr>
+        </table>
+
+<%end%>

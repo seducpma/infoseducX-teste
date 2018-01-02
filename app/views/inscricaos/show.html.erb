@@ -1,84 +1,85 @@
-<br/>
-<font size="2">
-<table  class="tabelas" align="center">
-  <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b>SISTEMA DE INSCRIÇÃO ON-LINE</b></font>
-    </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-  </tr>
-  <tr>
-     <td colspan="2" align="left" >
-       <font  size=4 color="black"> <b><center>COMPROVANTE DE INSCRIÇÃO</b></center></font>
-    </td>
- </tr>
-  <tr>
-    <td colspan="2">
-       <fieldset><legend><font  size=4>  <div class="botao">Inscrição</div></font></legend>
-         <table width="100%" >
-           <br/>
-             <tr>
-               <td width="10%"><b>Nº Inscrião:</b></td>
-               <td colspan="5" ><%=h  @inscricao.id%></td>
-             </tr>
-             <tr>
-               <td width="10%"><b>Participante:</b></td>
-               <td colspan="5" ><%=h  @inscricao.participante.nome %></td>
-             </tr>
-              <tr>
-                <td valign="top"><b>Curso: </b></td>
-               <td colspan="5" ><%=h  @inscricao.curso.nome %></td>
-              </tr>
-              <tr>
-                <td colspan="2"><b>Inscrição efetuada em:</b>
-                  <%=h  @inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
-              </tr>
-            <% if  @inscricao.participante.email == 'email_nao_cadastrado@favor_cadastar.com.br'%>
-                <tr>
-                  <td width="10%"><b>Email:</b></td>
-                  <td colspan="5" >EMAIL NÃO CADASTRADO</td>
-               </tr>
-            <%end%>
-           <tr>
-            <td colspan="3">
-              <b><font color="red" size="2"> <u>IMPORTANTE:</u></font></b>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3"><b>
-              <dd><li> Este comprovante é a garantia da efetivação de sua inscriação</li></dd>
-              <dd><li> Imprima e guarde este comprovante</li></dd>
-              <dd><li> O comprovante pode ser solicitado para ingresso no dia do curso</li></dd>
-            </td>
-          </tr>
-          <tr>
-             <td colspan="3"><hr></td>
-        </tr>
+<div id="interno5">
+    <% title "CLASSES".singularize %>
+    <div class="tabs">
+        <div id="caixa_titulo">
+            <font size="3"><strong>SISTEMA DE INSCRIÇÃO</strong></font><br/>
+        </div>
+        <div class="tabs">
+            <font size="2">
+                <table width="100%" align="center" bgcolor="#F5F5F5" style="border-color: white" >
+                    <tr bgcolor ="#E6E2D" style="border-color: white">
+                        <td colspan="6" align="left" style="border-color: white">
+                            <font  size=5 color="black"> <b> INSCRIÇÃO ON LINE </b></font>
+                            <hr/>
+                        </td>
+                    </tr>
+                    <tr style="border-color: white">
+                        <td colspan="2" style="border-color: white">
+                           <fieldset><legend><font  size=4> Inscrição</font></legend>
+                             <table width="100%"  style="border-color: white">
+                               <br/>
+                                 <tr style="border-color: white">
+                                   <td  style="border-color: white"width="5%"><b>Nº Inscrião:</b></td>
+                                   <td  style="border-color: white"><%=h  @inscricao.id%></td>
+                                 </tr>
+                                 <tr style="border-color: white">
+                                   <td  style="border-color: white"><b>Participante:</b></td>
+                                   <td  style="border-color: white"><%=h  @inscricao.participante.nome %></td>
+                                 </tr>
+                                  <tr style="border-color: white">
+                                    <td style="border-color: white" valign="top"><b>Curso: </b></td>
+                                   <td  style="border-color: white"><%=h  @inscricao.curso.nome %></td>
+                                  </tr>
+                                  <tr style="border-color: white">
+                                    <td colspan="2"  style="border-color: white"><b>Inscrição efetuada em:</b>
+                                      <%=h  @inscricao.data_inscricao.strftime("%d de %B de %Y") %> </td>
+                                  </tr>
+                                <% if  @inscricao.participante.email == 'email_nao_cadastrado@favor_cadastar.com.br'%>
+                                    <tr style="border-color: white">
+                                      <td width="5%" style="border-color: white"><b>Email:</b></td>
+                                      <td  style="border-color: white" >EMAIL NÃO CADASTRADO</td>
+                                   </tr>
+                                <%end%>
+                               <tr  style="border-color: white">
+                                <td colspan="2" style="border-color: white">
+                                  <b><font color="red" size="2"> <u>IMPORTANTE:</u></font></b>
+                                </td>
+                              </tr>
+                              <tr style="border-color: white">
+                                <td colspan="2"  style="border-color: white"><b>
+                                  <dd><li> Este comprovante é a garantia da efetivação de sua inscriação</li></dd>
+                                  <dd><li> Imprima e guarde este comprovante</li></dd>
+                                  <dd><li> O comprovante pode ser solicitado para ingresso no dia do curso</li></dd>
+                                </td>
+                              </tr>
+                              <tr style="border-color: white">
+                                 <td colspan="2" style="border-color: white"><hr></td>
+                            </tr>
 
-        <% $idparticipante =  @inscricao.participante_id%>
-        <div class="botao">
-           <tr>
-             <td colspan="4">
-               <table align="left" >
-                <tr>
-                  <td width="1%" align="left"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
-                  <td width="1%" align="left"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
-                  <td align="left" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-                </tr>
-              </table>
-             </td>
-           </tr>
-         </div>
-        </table>
-       </fieldset>
-    </td>
+                            <% $idparticipante =  @inscricao.participante_id%>
+
+                               <tr style="border-color: white">
+                                 <td colspan="2"  style="border-color: white">
+                                   <table align="left" style="border-color: white" >
+                                    <tr  style="border-color: white">
+                                      <td width="1%" align="left" style="border-color: white"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
+                                      <td width="1%" align="left" style="border-color: white"><%= button_to "Imprimir", {:action => "impressao", :id =>@inscricao}, :method => "get", :title => "Imprimir" %></td>
+                                      <td align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                    </tr>
+                                  </table>
+                                 </td>
+                               </tr>
+
+                            </table>
+                           </fieldset>
+                        </td>
   </tr>
-  </table>]
+  </table>
 </font>
-<br/>
+  </div>
+        <br/>
 
+    </div>
 
 
 

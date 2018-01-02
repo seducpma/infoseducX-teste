@@ -1,27 +1,33 @@
-<br/><br/>
-<font size="2">
-<table class="tabelas" align="center" width="90%">
-  <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b> CONSULTA ORDEM DE SERVIÇO INTERNO</b></font>
-     </th>
-   </tr>
+
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO INFORMÁTICA</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr  bgcolor ="#E6E2D">
+            <td align="left">
+             <font  size=5 color="black"> <b> CONSULTA SERVIÇO - MANUTENÇÃO INFORMÁTICA</b></font>
+               <hr/>
+            </td>
+        </tr>
    <tr>
      <td>
        <table width="100%">
         <tr>
           <td align="right">
             <% form_tag busca_protocolo_chamados_path, :method => 'get' do %>
-            <font size="4"> Nº Ordem de Serviço:</font>
-
-            <%= text_field_tag :search, params[:search] %>
-            <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+            <font size="4"> Selecionar o Nº do Protocolo :</font>
+               <%= select_tag :search, options_for_select(@protocolos.collect { |ff| [ff.id, ff.id] }.insert(0, '--Selecionar--')) %>
+               <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
           </td>
           <% end %>
         </tr>
         <tr>
           <td colspan="2">
-              <table border="2" width="100%">
+                  <table border="1" cellspacing="0" cellpadding="1" width="100%">
                  <%if @chamados.present?%>
                  <% for chamado in @chamados %>
                  <tr>
@@ -53,18 +59,19 @@
                  <%end%>
                  <%end%>
               </table>
-          <div class="botao">
-           <table width="80%" align="left">
+
+           <table align="left">
               <tr>
-                <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-                <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>              </tr>
+                 <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+               </tr>
            </table>
-          </div>
+
         </td>
        </tr>
      </table>
     </td>
    </tr>
   </table>
-  <br/>
-</font>
+  </div>
+</div>
+<br/>

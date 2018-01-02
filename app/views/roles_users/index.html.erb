@@ -1,69 +1,26 @@
-<br/><br/>
-<font size="2">
- <table  class="tabelas"   align="center" width="60%">
-   <tr>
-        <th align="left">
-           <font size=5 color="black"> <b>  GERENCIAMENTO DE ACESSO</b></font>
-        </th>
-        <td width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-    </tr>
-   <div class="botao">
-   <tr>
-    <td colspan="2">
-      <table>
-           <tr>
-              <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-              <td align="right" width="4%" ><%= button_to('Imprimir', onclick="javascript:window.print()", :title => "Imprimir") %></td>
-              <td align="right" width="4%"><%= button_to('Roles/User',new_roles_user_path, :title => "Direitos") %></td>
-            </tr>
-      </table>
+<div id="interno6">
+<% title "GERENCIAMENTO DE USUÁRIOS", :id =>"users" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>GERENCIAMENTO DE USUÁRIOS</strong></font><br/>
    </div>
+  <div class="tabs">
     <br/>
-      <table border="2" align="center">
-        <tr>
-          <th>Login</th>
-          <th>Acesso de</th>
-          <th>Descricao</th>
-        </tr>
-        <% for role_user in @role_users %>
-        <tr>
-          <td align="center" width="25%"><%= User.find(role_user.user_id).login %></td>
-          <td align="center"><%= Role.find(role_user.role_id).name %></td>
-          <%if Role.find(role_user.role_id).name == 'administrador' then%>
-            <td align="center">Usuário administrador do sistema. Acesso total ao sistema.</td>
-          <%else%>
-             <td align="center">Usuário estagiário. Acesso restrito ao sistema.</td>
-          <%end%>
-        </tr>
-        <tr>
-           <td colspan="12">
-             <div class="botao">
-             <table align="right">
-                 <td align="right" colspan="1"><%= button_to('Usuário',role_user, :method => "get", :title => "Exibir Dados") %></td>
-                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                    <td align="right" colspan="1"><%= button_to('Editar',{:action => "edit", :id =>role_user}, :method => "get", :title => "Editar Usuário")%></td>
-                       <% if current_user.has_role?('administrador')%>
-                         <td align="right" colspan="1"><%= button_to('Excluir', role_user, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir") %></td>
-                       <%end%>
-                 <%end%>
-             </table>
-             </div>
-           </td>
-         </tr>
-        <% end %>
+    <div id="usuarios"><%= render :partial => "usuarios" %>
+      
+<div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+  <table>
+    <tr>
+     <td width="8%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+    </tr>
+  </table>
+ </div>
+ </div>
+  <br/>
+</div>
 
-       </table>
-      <table>
-           <tr>
-              <td align="right" ><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-              <td align="right" width="4%" ><%= button_to('Imprimir', onclick="javascript:window.print()", :title => "Imprimir") %></td>
-              <td align="right" width="4%"><%= button_to('Roles/User',new_roles_user_path, :title => "Direitos") %></td>
-            </tr>
-      </table>
-   </td>
-  </tr>
-</table>
-</font>
-<br/>
+
+
+
+

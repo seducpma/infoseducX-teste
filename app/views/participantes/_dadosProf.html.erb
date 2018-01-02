@@ -1,0 +1,35 @@
+    <div class="tabs">
+        <table width="100%" >
+      
+           <%$t=0%>
+           <% @dadosProf.each do |professor| %>
+           <%$t = $t+1%>
+             <tr>   <td align="left" width="11%"><b>Matricula:</b> </td> <td colspan="2"> <%=h professor.matricula%>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <b>Função:</b> &nbsp <%=h professor.funcao%></td>   
+             </tr>
+             <tr>
+                 <td align="left"><b>Unidade: </b></td> <td> <%=h professor.unidade.nome%></td>
+                       
+             </tr>
+             <tr>   <td align="left"><b>Endereço:</b> </td> <td colspan="2"> <%=h professor.endres%>, <%=h professor.num%>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <b>Complemento:</b>  <%=h professor.complemento%>
+                    </td>
+             </tr>
+             <tr>   <td align="left"><b>Bairro:</b> </td> <td colspan="2"> <%=h professor.bairro%>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     <b>Cidade:</b> &nbsp <%=h professor.cidade%>
+                 </td>
+             </tr>
+             <tr>
+                 <td align="left"><b>Fones:</b> </td> <td> <%=h professor.telefone%> - <%=h professor.cel%></td>
+
+            </tr>
+            <% end %>
+
+
+
+     </table>
+
+  </div>

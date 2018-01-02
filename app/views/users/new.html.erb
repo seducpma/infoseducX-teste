@@ -1,15 +1,16 @@
-<br/><br/>
-<table class="tabelas" width="70%" align="center">
-  <tr>
-    <td align="left">
-      <h1>NOVO USUÁRIO</h1>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <fieldset><legend><font  size=4>Usuário</font></legend>
-      <font  size="2">
-                      <table >
+<div id="interno5">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>NOVO USUÁRIO</strong></font><br/>
+ </div>
+      <div class="tabs">
+     <table  bgcolor="#F5F5F5" width="100%"  align="center">
+        <tr>
+          <td>
+            <fieldset><legend><font  size=4>Usuário</font></legend>
+            <font  size="2">
+              <table >
                  <% @user.password = @user.password_confirmation = nil %>
                  <%= error_messages_for :user %>
                  <% form_for :user, :url => users_path do |f| -%>
@@ -46,19 +47,39 @@
                       <tr>
                         <td colspan="3"><br/></td>
                       </tr>
+                      <tr>
+                        <td colspan="3">
+                          <fieldset><legend><b>SOMENTE PARA PROFESSORES </b></legend>
+                            <table>
+                              <tr>
+                                <td colspan="3" align="center"><b>Professores necessitam ser previamente cadastrado no sistema</b></td>
+                              </tr>
+                                <td align="left"><b>Professor:</b></td>
+                                <td colspan="2" align="left"><%= f.collection_select :professor_id, Professor.all(:order => 'nome ASC'),:id,:nome, :include_blank => true %>
+                                 <b><i><font  color="red" size="2" >Se seu nome não consta na lista favor entrar em contato com o diretor(a) de sua unidade escolar.</font></i></b></td>
+
+                            </table>
+                          </fieldset>
+                        </td>
+                      </tr>
 
 
                </table>
-       </font>
-     </fieldset>
-        <table>
-          <td width="8%"><%= submit_tag 'Cadastrar' %></td>
-          <td align="left"><%= button_to 'Voltar', homes_path, {:method => "get"}  %></td>
-        </table>
-     <% end -%>
+             </font>
+           </fieldset>
+            <table>
+                <td width="8%"><%= submit_tag 'Salvar' %></td>
+<% end %>
+                <td width="8%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                <td></td>
+              </table>
+           
 
-        </td>
-</tr>
-</table>
+              </td>
+      </tr>
+    </table>
+   </div>
+</div>
 <br/>
-
+</div>
+<br/>

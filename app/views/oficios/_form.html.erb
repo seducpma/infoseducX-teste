@@ -1,17 +1,11 @@
 <% form_for @oficio do |f| %>
 <%= f.error_messages %>
 <font  size="2">
-<table class="tabelas" align="center">
- <tr>
-    <th align="left">
-       <font size=5 color="black"> <b>  CONTROLE DE EMISSÃO DE OFICIOS - SEDUC/PMA</b></font>
-    </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
- </tr>
+ <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+
  <tr>
    <td colspan="2">
+    <fieldset><legend><font  size=3> Oficio</font></legend>
      <table width="100%">
         <tr>
            <td width="10%"align="left"><font size="2"><b>Emissor:</b></font></td>
@@ -34,21 +28,22 @@
            <td align="left"><font size="2"><%= f.text_field :obs, :size =>55 %></font></td>
         </tr>
      </table>
+    </fieldset>
    </td>
  </tr>
  <tr>
    <td colspan="2">
-      <div class="botao">
-        <table width="40%" align="right">
+
+        <table width="40%" align="left">
            <tr>
-             <td align="right"><%= f.submit "Gravar" %> </td>
+             <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
 <% end %>
-              <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-              <td width="2%" align="right" ><%= button_to('Ofícios', oficios_path, :method => "get",  :title => "Oficios")%></td>
-              <td width="2%" align="right"><%= button_to "Consultar", consulta_oficios_path, :title => "Consultar" %></td>
+              <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+              <td width="2%" align="left" ><%= button_to('Ofícios', oficios_path, :method => "get",  :title => "Oficios")%></td>
+              <td  align="left"><%= button_to "Consultar", consulta_oficios_path, :title => "Consultar" %></td>
            </tr>
         </table>
-      </div>
+
 
    </td>
   </tr>
@@ -56,5 +51,4 @@
 
  </table>
  </font>
-<br/>
  

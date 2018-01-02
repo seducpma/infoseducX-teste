@@ -12,32 +12,32 @@ class EstagiariosControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create estagiarios" do
-    assert_difference('Estagiarios.count') do
-      post :create, :estagiarios => { }
+  test "should create estagiario" do
+    assert_difference('Estagiario.count') do
+      post :create, :estagiario => { }
     end
 
-    assert_redirected_to estagiarios_path(assigns(:estagiarios))
+    assert_redirected_to estagiario_path(assigns(:estagiario))
   end
 
-  test "should show estagiarios" do
-    get :show, :id => estagiarios(:one).id
+  test "should show estagiario" do
+    get :show, :id => estagiarios(:one).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => estagiarios(:one).id
+    get :edit, :id => estagiarios(:one).to_param
     assert_response :success
   end
 
-  test "should update estagiarios" do
-    put :update, :id => estagiarios(:one).id, :estagiarios => { }
-    assert_redirected_to estagiarios_path(assigns(:estagiarios))
+  test "should update estagiario" do
+    put :update, :id => estagiarios(:one).to_param, :estagiario => { }
+    assert_redirected_to estagiario_path(assigns(:estagiario))
   end
 
-  test "should destroy estagiarios" do
-    assert_difference('Estagiarios.count', -1) do
-      delete :destroy, :id => estagiarios(:one).id
+  test "should destroy estagiario" do
+    assert_difference('Estagiario.count', -1) do
+      delete :destroy, :id => estagiarios(:one).to_param
     end
 
     assert_redirected_to estagiarios_path

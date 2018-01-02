@@ -1,52 +1,58 @@
-<br/><br/>
-<table class="tabelas1" align="center" >
-  <tr>
-      <th align="left">
-         <font  size=5 color="black"> <b> CONSULTA O.S. por unidade</b></font>
-      </th>
-       <td width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <br/>
-       <table>
-        <tr>
-          <td>
-            <div class="botao">
-            <table>
-              <tr>
-                <td>
-                   <font  size="4" color="black"> Unidade: <%= collection_select :mmanutencao, :unidade_id, @unidades_manutencao, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
-                 </td>
-              </tr>
+
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr bgcolor ="#E6E2D">
+            <td align="left">
+             <font  size=4 color="black"> <b> CONSULTA SERVIÇO POR UNIDADE - MANUTENÇÃO GERAL</b></font>
+               <hr/>
+            </td>
+        </tr>
+      <tr>
+        <td colspan="2">
+          <br/>
+          <table width="100%" >
+            <tr>
+              <td>
+                <table width="100%">
+                  <tr>
+                      <td align="right">
+                       <font  size="3" color="black"> Unidade: <%= collection_select :mmanutencao, :unidade_id, @unidades_manutencao, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font>
+                     </td>
+                  </tr>
+               </table>
+
+              </td>
+             </tr>
+            <tr>
+              <td>
+              <%= observe_field 'mmanutencao_unidade_id',
+                   :update => "listagem",
+                   :url    => { :action => 'lista_unidade' },
+                   :with   => 'unidade_unidade_id' %>
+                <div id="listagem"> </div>
+             </td>
+           </tr>
+
+            <table width="100%" align="left">
+               <tr>
+                  <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                  
+               </tr>
            </table>
-           </div>
-          </td>
-        <tr>
-          <td>
-          <%= observe_field 'mmanutencao_unidade_id',
-               :update => "listagem",
-               :url    => { :action => 'lista_unidade' },
-               :with   => 'unidade_unidade_id' %>
-            <div id="listagem"> </div>
-         </td>
-       </tr>
-       <div class="botao">
-        <table width="100%" align="left">
-          <tr>
-            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          </tr>
-       </table>
-      </div>
-    </table>
 
-</td>
+        </table>
+
+    </td>
+  </tr>
 </table>
-<br>
-
-
-  
+<br/>
+ </div>
+ </div>
+ <br/>
 

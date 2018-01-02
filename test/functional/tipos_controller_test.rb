@@ -12,32 +12,32 @@ class TiposControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create tipos" do
-    assert_difference('Tipos.count') do
-      post :create, :tipos => { }
+  test "should create tipo" do
+    assert_difference('Tipo.count') do
+      post :create, :tipo => { }
     end
 
-    assert_redirected_to tipos_path(assigns(:tipos))
+    assert_redirected_to tipo_path(assigns(:tipo))
   end
 
-  test "should show tipos" do
-    get :show, :id => tipos(:one).id
+  test "should show tipo" do
+    get :show, :id => tipos(:one).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => tipos(:one).id
+    get :edit, :id => tipos(:one).to_param
     assert_response :success
   end
 
-  test "should update tipos" do
-    put :update, :id => tipos(:one).id, :tipos => { }
-    assert_redirected_to tipos_path(assigns(:tipos))
+  test "should update tipo" do
+    put :update, :id => tipos(:one).to_param, :tipo => { }
+    assert_redirected_to tipo_path(assigns(:tipo))
   end
 
-  test "should destroy tipos" do
-    assert_difference('Tipos.count', -1) do
-      delete :destroy, :id => tipos(:one).id
+  test "should destroy tipo" do
+    assert_difference('Tipo.count', -1) do
+      delete :destroy, :id => tipos(:one).to_param
     end
 
     assert_redirected_to tipos_path

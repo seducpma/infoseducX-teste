@@ -1,87 +1,49 @@
-<br/><br/>
-<table class="tabelas1" align="center" width="80%">
- <tr>
-   <th colspan="2" align="left">
-      <font  size=5 color="black"> <b> INSCRIÇÕES POR CURSOS </b></font>
-   </th>
-  </tr>
-  <tr>
-    <td>
-      <br/>
-      <div class="botao">
-       <table width="100%">
-       <tr>
-            <% form_for @search do |f| %>
-              <tr>
-                <td width ="40%"align="left">
-                  <b><font size="3">Curso:</b></font>
-                  <%= f.select :cursos_id_equals, Curso.all.collect {|p| [ p.nome_curto, p.id ]}, :include_blank => true%>
-                </td>
-                <td align="left" colspan="2">
-                    <input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
-                  
-                </td>
-              </tr>
-           <% end %>
-          </tr>
-        </table>
-     </div>
-        <table width="100%" align="center" class="tabelas1"  border="1">
 
-            <%if @curso.present? %>
-                <h2 align="center">Inscrições no curso "<%= params[:search] ? Curso.find(params[:search][:cursos_id_equals]).nome_curto : "Selecione" %>"</h2>
-                <tr>
-                  <th>Matrícula</th>
-                  <th>Nome</th>
-                  <th>Unidade</th>
-                </tr>
-                <% @curso.each do |inscricao| %>
-                  <tr>
-                    <td align="center"><%=h inscricao.participante.matricula %></td>
-                    <td align="center"><%=h inscricao.participante.nome %></td>
-                    <%  if inscricao.participante.tipo_participante == 2 %>
-                      <td align="center"><%=h "Externo" %></td>
-                    <%else%>
-                      <%  if inscricao.participante.unidade.nil? %>
-                        <td align="center">--</td>
-                      <%else%>
-                         <td align="center"><%=h inscricao.participante.unidade.nome %></td>
-                      <%end%>
-
-
-
-
-
-
-
-
-
-                    <%end%>
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SISTEMA DE INSCRIÇÃO  ON LINE</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5"   style="border-color: white">
+         <tr  bgcolor ="#E6E2D" style="border-color: white">
+            <td align="left" style="border-color: white">
+             <font  size=5 color="black"> <b> CONSULTA INSCRIÇÕES POR CURSOS</b></font>
+               <hr/>
+            </td>
+        </tr>
+        <tr style="border-color: white">
+            <td align="right"style="border-color: white">
+                 <font  size="3" color="black"> Curso: <%= collection_select :inscricao, :curso_id, @cursosAtivos, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font>
+          </td>
+        </tr>
+        <tr style="border-color: white"><td style="border-color: white">  <hr/>   </td> </tr>
+        <tr style="border-color: white">
+          <td style="border-color: white">
+          <%= observe_field 'inscricao_curso_id',
+               :update => "listagem",
+               :url    => { :action => 'lista_inscricaos_curso' },
+               :with   => 'inscricao_curso_id' %>
+            <div id="listagem"> </div>
+         </td>
+       </tr>
+        <tr style="border-color: white">
+            <td style="border-color: white">
+                <table width="100%" align="left" style="border-color: white">
+                  <tr style="border-color: white">
+                          <td width="1%" align="left" style="border-color: white"><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+                          <td align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                   </tr>
-                <%end%>
+               </table>
+            </td>
+        </tr>
 
-            <tr>
-              <th colspan="3" align="left"> <b><%= "Existe(m) #{@curso.count} participante(s) inscrito(s) " %></b></th>
-            </tr>
-          <% end %>
-          </table>
+    </table>
 
-
-
-       <div class="botao">
-        <table width="100%" align="left">
-          <tr>
-            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          </tr>
-       </table>
-      </div>
-    </td>
-  </tr>
-</table>
-<br>
-
-
-
+</div>
+</div>
+<br/>
+</div>
 
 

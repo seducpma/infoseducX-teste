@@ -1,109 +1,172 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
- <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>SGI - SEDUC / PMA</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-    <%= stylesheet_link_tag 'infoseduc', 'calendar',"style",'menu',"colorbox", :cache => true %>
+    <title><%= "INFOSEDUC - Sistema de Gerenciamento - Secretaria Educação de Americana" %></title>
+
+
+    <%= stylesheet_link_tag 'application','calendar',"style",'menu',"colorbox", :cache => true%>
     <%= stylesheet_link_tag 'impressao', :media => "print" %>
     <%= stylesheet_link_tag 'calendar_impressao', :media => "print" %>
-    <%= stylesheet_link_tag "jquery-ui-1.8.16.custom"%>
-    <%= javascript_include_tag 'jquery-1.7','jquery-ui-1.8.16.custom.min',"jquery-ui-timepicker-addon.js","jquery-ui-i18n.min",'jrails',"msg.js","jquery.colorbox","colorbox.js",'application.js' %>
+    <%= stylesheet_link_tag 'calendar', :media => "all" %>
+    <%= stylesheet_link_tag '/javascripts/plugins/flexigrid/css/flexigrid.css' %>
+    <%= stylesheet_link_tag 'colorbox','geral',"jquery.tooltip.css","pepper-grinder/jquery-ui-1.8.16.custom","jquery.multiselect","ui.selectmenu" %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <%= javascript_include_tag 'jquery-1.7','jquery.printElement.min',"jquery.maskMoney.js",'jquery.bgiframe.js','jquery.dimensions.js','jquery.tooltip.js','jquery-ui-1.8.16.custom.min',"jquery.ui.datetimepicker.min","jquery-ui-i18n.min",'jrails',"jquery.colorbox","colorbox.js","jquery.multiselect.min","ui.selectmenu",'plugins/flexigrid/js/flexigrid.pack','application.js', "msg.js", "jquery-ui-timepicker-addon.js" %>
+    <%= yield(:head) %>
 
-<style media="print">
-.botao {
+  </head>
+
+<body>
+<style media="print" class ="invisible_to_print ">
+.invisible_to_print {
 display: none;
 }
 </style>
- </head>
- <body>
  <div id="contents">
-   <div class="botao">
-  <div id="informacao" class="tabelas">
-        <% unless informativos_corrente.empty? %>
-          <div id="announcement">
-            <table  width="100%" align="center">
-               <tr>
-                 <th> <font size="4"><center> QUADRO DE AVISOS</center> </font></th>
-               </tr>
-              <tr>
-                <td>
-                  <div id="color"  align="center">
-                     <%for informativo in informativos_corrente %>
-                       <%= informativo.mensagem %>
-                     <%end%>
-                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td align="right">
-                  <b><%= link_to_remote("Ocultar esta mensagem", :url => {:controller => 'javascripts', :action => 'hide_announcement'}) %></b>                </td>
-              </tr>
-       </table>
-     </div>
-    <%end%>
-  </div>
-</div>
-<div class="botao">
-  <div id="header">
-    <br/>
-    <div id="topo">
-      <br/><br/><br/><br/><br/><br/><br/>
-
-      <table width="100%">
-        <tr>
-          <td width="72%"align="left"></td>
-          <td align="right"> <h4><font   size ="2"> Americana <%= Time.now.strftime("%d de %B de %Y") %></font></h4></td>
-        </tr>
-      </table>
-   </div>
-        <%if logged_in? then%>
-          <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %>  </font>
-            <% if current_user.has_role?('administrador') %>
-              Acesso de Administrador do Sistema
-            <%else%>
-              <% if current_user.has_role?('estagiario SEDUC') %>
-                  Acesso de Estagiário(a)- SEDUC
-                  <%else%>
-                    <% if current_user.has_role?('estagiario itinerante') %>
-                       Acesso de  Estagiário(a) itinerante
-                    <%else%>
-                         Acesso de  Estagiário(a) unidade
+  <div id="informacao">
+    <% unless informativos_corrente.empty? %>
+     <div id="announcement" class ="invisible_to_print ">
+      <table class="tabelas" >
+          <tr>
+               <td>
+                <p><h2 align="center"><u>Quadro de Avisos</u></h2></p>
+                <div id="color"  align="center">
+                  <%for informativo in informativos_corrente %>
+                    <p><%= informativo.mensagem %></p>
                   <%end%>
-               <%end%>
-            <%end%>
-          <font style="color: red"><%= flash[:notice] %></font>
-        <%else%>
-           
-           <font style="color: red"><%= flash[:notice] %></font>
-        <%end%>
+                </div>
+              </td>
+            <tr>
+              <td>
+                 <h4 align="right"><b><%= link_to_remote("Ocultar esta mensagem", :url => {:controller => 'javascripts', :action => 'hide_announcement'}) %></b></h4>
+              </td>
+            </tr>
+         </tr>
+     </table>
     </div>
-      <div id="menu">
-        <div class="nav-container-outer">
-           <img src="/stylesheets/images/nav-bg-l.jpg" alt="" class="float-left" />
-           <img src="/stylesheets/images/nav-bg-r.jpg" alt="" class="float-right" />
-           <ul id="nav-container" class="nav-container">
-              <li><a class="item-primary" href="#">Arquivo</a>
-                <ul style="width:108px;">
-                  <li><%= link_to 'Inicio', root_path  %></li>
-                  <li><%= link_to 'Inscrição', new_inscricao_path %></li>
-                  <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
-                </ul>
-              </li>
+
+  </div>
+  <%end%>
+  <div id="header" class ="invisible_to_print ">
+    <br/>
+
+        <div id="topo">
+          <br/>
 
         </div>
-      </div>
-   </div>
+    <%if logged_in? then%>
+      <table width="100%">
+      <tr>
+        <td width ="10%">
+           <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %>  </font>
+        </td>
+        <% if current_user.has_role?('admin') %>
+         <td>Acesso de Administrador do Sistema|
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font><font size="1">
+         </td>
+         <td align="right"></font> <font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+        <%else%>
+           <% if current_user.has_role?('SEDUC') %>
+              <td>Acesso SEDUC |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+              <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+           <%else%>
+              <% if current_user.has_role?('supervisao') %>
+                  <td>Acesso Supervisão |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+                  <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+              <%else%>
+                 <% if current_user.has_role?('direcao_fundamental') %>
+                    <td>Acesso Direção UE |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+                    <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                <%else%>
+                   <% if current_user.has_role?('secretaria_fundamental') %>
+                       <td>Acesso Secretaria UE |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+                      <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                   <%else if current_user.has_role?('professor_fundamental') %>
+                       <td>Acesso Professor |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font>
+                      </td>
+                       <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                         <%else if current_user.has_role?('pedagogo') %>
+                             <td>Acesso Pedagogo |
+                                 <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                 <% uni = @unidade.first.nome  %>
+                                 <font size="1">  <%= uni %></font>
+                            </td>
+                             <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                               <%else if current_user.has_role?('secretaria_infantil') %>
+                                     <td>Acesso Secretaria Infantil |
+                                         <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                         <% uni = @unidade.first.nome  %>
+                                         <font size="1">  <%= uni %></font>
+                                    </td>
+                                     <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                     <%else if current_user.has_role?('direcao_infantil') %>
+                                           <td>Acesso Direção Infantil |
+                                               <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                               <% uni = @unidade.first.nome  %>
+                                               <font size="1">  <%= uni %></font>
+                                           </td>
+                                            <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                           <%else if current_user.has_role?('professor_infantil') %>
+                                                 <td>Acesso Professor Infantil |
+                                                     <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                                     <% uni = @unidade.first.nome  %>
+                                                     <font size="1">  <%= uni %></font>
+                                                 </td>
+                                                  <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                 <%else%>
+                                                   <td>Acesso Público</td>
+                                                    <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                <%end%>
+                                          <%end%>
+                                    <%end%>
+                          <%end%>
+                      <%end%>
+                   <%end%>
+                <%end%>
+              <%end%>
+           <%end%>
+       <%end%>
+      </tr>
+
+      </table>
+      <center><font style="color: red"><b><marquee behavior=alternate><%= flash[:notice1] %></marquee></b></font><%= flash[:notice] %></center>
+   <%else%>
+      <%= link_to '|Entrar|', login_path %>
+      <font style="color: red"><%= flash[:notice] %></font>
+   <%end%>
+ </div>
+
    <div id="principal">
-     <div id="tela">
+     <div id="conteudo">
         <%= yield  %>
      </div>
    </div>
 
-</div>
-</body>
+
+   <div id="rodape">
+     <font size="2"><b> © SEDUC-PMA - Secretaria de Educação da Prefeitura Municipal de Americana</b></font>
+   </div>
+ </div>
+
+ </body>
 </html>
-
-
-

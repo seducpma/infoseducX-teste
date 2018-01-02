@@ -16,6 +16,7 @@ class Curso < ActiveRecord::Base
     if self.ministrante.present?
       self.ministrante.upcase
     end
+
     if self.obs.present?
       self.obs.upcase
     end

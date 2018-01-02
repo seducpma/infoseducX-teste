@@ -21,11 +21,7 @@
          <td align="left"> <%=h @mmanutencao.unidade.nome %></td>
        </tr>
        <tr>
-         <td align="left"><b>Forma Solicitação:</b></td>
-         <td align="left"><%=h @mmanutencao.forma %></td>
-       </tr>
-       <tr>
-          <td valign="top"><b>Serviços Solicitados:</b></td>
+          <td valign="top"><b>Serviços:</b></td>
           <td>
              <% @mmanutencao.tipos_manutencaos.each do |servico| %>
               - <%=h servico.servico%><br/>
@@ -33,11 +29,11 @@
           </td>
       </tr>
        <tr>
-         <td align="left"><b>Descrição Problema:</b></td>
+           <td align="left" valign="top"><b>Problema:</b></td>
          <td align="left"><%=h @mmanutencao.descricao %></td>
        </tr>
        <tr>
-         <td align="left"><b>Quem abriu OS:</b></td>
+         <td align="left"><b>Solicitou:</b></td>
          <td align="left"><%=h @mmanutencao.user.name%></td>
        </tr>
        <tr>

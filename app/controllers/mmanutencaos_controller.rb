@@ -1,6 +1,4 @@
 class MmanutencaosController < ApplicationController
-  # GET /mmanutencaos
-  # GET /mmanutencaos.xml
  before_filter :load_tipomanutencaos
  before_filter :load_unidades
  before_filter :load_funcionarios
@@ -9,21 +7,21 @@ class MmanutencaosController < ApplicationController
 
 
  def load_funcionarios
-   if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+     session[:base]= 'sisgered_development'
+   if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
       @funcionarios = Funcionario.find(:all,:conditions => ['desligado=?',0], :order => 'nome ASC' )
    else
-      @funcionarios = Funcionario.find(:all, :joins =>:chefia, :conditions => ['funcionarios.desligado=? and chefias.user_id =?',0, current_user], :order => 'nome ASC' )
+       @funcionarios = Funcionario.find(:all, :conditions => ['desligado=?',0], :order => 'nome ASC' )
    end
+      if current_user.unidade_id == 52 or current_user.unidade_id == 53
+           @protocolos = Mmanutencao.find(:all, :conditions =>['situacao_manutencao_id != 2'], :order => 'id ASC')
+      else
+          @protocolos = Mmanutencao.find(:all, :conditions =>['unidade_id =? AND situacao_manutencao_id != 2', current_user.unidade_id], :order => 'id ASC')
+      end
  end
 
   def load_chefias
-    #if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
-    #   @chefias = Chefia.find(:all, :conditions => ['desligado=?',0], :order => 'nome ASC')
-    #  else
-    #   @chefias = Chefia.find(:all, :joins => :manutencaos, :conditions => ['desligado=? and manutencaos.user_id=?',0,current_user ])
-    #end
     @chefias1 = Chefia.find(:all,  :conditions => ['desligado=? ',0], :order => 'nome ASC')
-    @chefias = Chefia.find(:all,  :conditions => ['desligado=? and user_id = ?',0, current_user], :order => 'nome ASC')
   end
 
   def load_situacaos
@@ -36,7 +34,7 @@ class MmanutencaosController < ApplicationController
    end
 
    def load_unidades
-   if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+   if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
        @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
       else
         if (current_user.unidade_id== 53)
@@ -46,34 +44,20 @@ class MmanutencaosController < ApplicationController
         end
     end
      @unidades =  Unidade.find(:all, :order => 'nome ASC')
-      
    end
 
-
-
-
  def index
-    if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
-       @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
-       @mmanutencaos_unidade = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2"])
+    if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') 
+        @mmanutencaos_abertas = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2"])
+        @mmanutencaos_unidade = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <>2")
     else
       if current_user.has_role?('diretor_unidade')
-#        $cont1=0
-#        @contmanutencaos = Mmanutencao.all
-#        for count in @contmanutencaos
-#          if count.unidade_id != current_user.unidade_id
-#            $cont1=$cont1+1
-#          end
-#         end
-#       @contador = Mmanutencao.all.count
-#       @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and unidade_id = ?",current_user.unidade_id ])
-       @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
-       @mmanutencaos_unidade = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2 and unidade_id=?", current_user.unidade_id])
+       @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <> 2")
+        @mmanutencaos_abertas = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2"])
+       @mmanutencaos_unidade = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <> 2 and mma.unidade_id ="+(current_user.unidade_id).to_s+"")
       else
-
-        @mmanutencaos = Mmanutencao.all(:conditions =>["situacao_manutencao_id <> 2 and user_id = ?",current_user])
-        @mmanutencaos_unidade = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2 and unidade_id=?", current_user.unidade_id])
-       #$chefia1=@mmanutencaos.user_id.current_user
+       @mmanutencaos_abertas = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2"])
+       @mmanutencaos_unidade = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <> 2 and mma.unidade_id ="+(current_user.unidade_id).to_s+"")
       end
     end
     respond_to do |format|
@@ -83,8 +67,7 @@ class MmanutencaosController < ApplicationController
   end
 
  def estatistica
-    
-    if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+    if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
        @mmanutencaos = Mmanutencao.all(:conditions =>  "situacao_manutencao_id <> 2")
        @mmanutencaos_todos= Mmanutencao.all
     else
@@ -236,10 +219,8 @@ class MmanutencaosController < ApplicationController
                                                                       else if (params[:estatisticas].to_i == 14)
                                                                             @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and situacao_manutencao_id=1 and created_at > ?", $data])
                                                                             session[:nome_manutencao]= "OUTROS SERVIÇOS"
-                                                                            
                                                                             render "estatisticasM"
                                                                             else
-
                                                                             end
                                                                      end
                                                                end
@@ -313,10 +294,8 @@ class MmanutencaosController < ApplicationController
                                                                       else if (params[:estatisticas].to_i == 14)
                                                                             @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and situacao_manutencao_id=2 and created_at > ?", $data])
                                                                             session[:nome_manutencao]= "OUTROS SERVIÇOS"
-                                                                            
                                                                             render "estatisticasM"
                                                                             else
-
                                                                             end
                                                                      end
                                                                end
@@ -720,9 +699,6 @@ def estatisticasMANTAt
  end
 
 
-
-# GET /mmanutencaos/1
-  # GET /mmanutencaos/1.xml
   def show
     @mmanutencao = Mmanutencao.find(params[:id])
     session[:idprotocolo]= @mmanutencao.id
@@ -732,8 +708,6 @@ def estatisticasMANTAt
     end
   end
 
-  # GET /mmanutencaos/new
-  # GET /mmanutencaos/new.xml
   def new
     @mmanutencao = Mmanutencao.new
 
@@ -743,22 +717,17 @@ def estatisticasMANTAt
     end
   end
 
-  # GET /mmanutencaos/1/edit
   def edit
     @mmanutencao = Mmanutencao.find(params[:id])
   end
 
-  # POST /mmanutencaos
-  # POST /mmanutencaos.xml
   def create
     @mmanutencao = Mmanutencao.new(params[:mmanutencao])
     @mmanutencao.data_sol= Time.now
     @mmanutencao.user_id = current_user.id
-    
     respond_to do |format|
       if @mmanutencao.save
-        flash[:notice] = 'Manutencao solicitada.'
-        #MmanutencaoMailer.deliver_notificar_mmanutencao(@mmanutencao)
+        flash[:notice] = 'MANUTENÇÂO SOLICITADA.'
         format.html { redirect_to(@mmanutencao) }
         format.xml  { render :xml => @mmanutencao, :status => :created, :location => @mmanutencao }
       else
@@ -775,14 +744,11 @@ def estatisticasMANTAt
   end
 
 
-  # PUT /mmanutencaos/1
-  # PUT /mmanutencaos/1.xml
   def update
     @mmanutencao = Mmanutencao.find(params[:id])
-    
     respond_to do |format|
       if @mmanutencao.update_attributes(params[:mmanutencao])
-        flash[:notice] = 'Cadastrado com sucesso.'
+        flash[:notice] = 'CADASTRADO COM SUCESSO.'
         format.html { redirect_to(@mmanutencao) }
         format.xml  { head :ok }
       else
@@ -792,12 +758,9 @@ def estatisticasMANTAt
     end
   end
 
-  # DELETE /mmanutencaos/1
-  # DELETE /mmanutencaos/1.xml
   def destroy
     @mmanutencao = Mmanutencao.find(params[:id])
     @mmanutencao.destroy
-
     respond_to do |format|
       format.html { redirect_to(mmanutencaos_url) }
       format.xml  { head :ok }
@@ -805,7 +768,6 @@ def estatisticasMANTAt
   end
 
 def consulta
-
    render 'consultas'
   end
 
@@ -829,7 +791,6 @@ def lista_unidade
 
  def ordemservico
     @mmanutencao = Mmanutencao.find(params[:id])
-    #@funcionarios = Funcionario.find(:all, :joins =>:chefia, :conditions => ['desligado=? and chefia.user_id',0, current_user], :order => 'nome ASC' )
  end
 
  def selected_print
@@ -860,16 +821,14 @@ def lista_unidade
 
 
    def encerrados
-
-    if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
-      @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2" ], :order => 'data_enc DESC')
+    if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
+      #@mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2" ], :order => 'data_enc DESC')
+        @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2")
     else
-      @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2 and unidade_id = ?",current_user.unidade_id ], :order => 'data_enc DESC')
+       @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2 and unidade_id ="+current_user.unidade_id+" order by data_enc DESC ")
+      # @mmanutencaos =Mmanutencao.all(:conditions =>["situacao_manutencao_id = 2 and unidade_id = ?",current_user.unidade_id ], :order => 'data_enc DESC')
     end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @mmanutencaos }
-    end
+   
   end
 
  def showencerrado
@@ -883,7 +842,7 @@ def lista_unidade
  def busca_protocolo
 $ok=1
     if (params[:search].present?)
-      if current_user.has_role?('administrador') or current_user.has_role?('admin_manutencao')
+      if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
         @mmanutencao = Mmanutencao.find(:all, :conditions => ["id = ?",  params[:search]])
         $ok=0
      else
@@ -901,8 +860,5 @@ $ok=1
       format.xml  { render :xml => @mmanutencao }
     end
   end
-
-
-
 
 end

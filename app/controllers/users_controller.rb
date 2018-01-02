@@ -1,50 +1,30 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
+  before_filter :load_resources
   include AuthenticatedSystem
-  layout "user"
+  layout :layout?
 
   before_filter :load_users
-
   def load_users
     @users =User.find(:all, :order => 'login ASC')
   end
-
-  # render new.rhtml
-  def new
-    @user = User.new
-  end
-
-
-  def criado
-
-  end
-
-
-  def create
-      logout_keeping_session!
-    @user = User.new(params[:user])
-    
-    success = @user && @user.save
-    if success && @user.errors.empty?
-     # redirect_back_or_default('/')
-      render :action => 'criado'
-      flash[:notice] = "USUÁRIO CRIADO COM SUCESSO, ENTRE EM CONTATO COM O ADMINISTRADOR DO SISTEMA PARA LIBERAÇÃO."
-      t=0
+  
+  def layout?
+    if logged_in?
+      "application"
     else
-      flash[:error]  = "SENHA OU USUÁRIO NÃO AUTORIZADO "
-      render :action => 'new'
+      "user"
     end
   end
 
   def edit
     @user = current_user
   end
-
+  
   def update
     @user = current_user
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = 'CADASTRADO COM SUCESSO.'
+        flash[:notice] = 'SALVO COM SUCESSO!'
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
@@ -63,37 +43,56 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @users }
     end
   end
+  # render new.rhtml
+  def new
+    @user = User.new
+  end
 
-  def index
-    if (params[:search].nil? || params[:search].empty?)
-      @users = User.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 6
+  def criado
+    
+  end
+ 
+  def create
+    logout_keeping_session!
+    @user = User.new(params[:user])
+    t=@user.login
+    t1= @user.unidade_id
+    t2= @user.professor_id
 
+    success = @user && @user.save
+    if success && @user.errors.empty?
+     # redirect_back_or_default('/')
+      render :action => 'criado'
+      flash[:notice] = "USUÁRIO CRIADO COM SUCESSO, ENTRE EM CONTATO COM O ADMINISTRADOR DO SISTEMA PARA LIBERAÇÃO."
+ 
     else
-      @users = User.find(:all, :conditions => ["login like ?", "%" + params[:search].to_s + "%"], :order => 'login ASC')
-    end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      flash[:error]  = "SENHA OU USUÁRIO NÃO AUTORIZADO "
+      render :action => 'new'
     end
   end
 
-def destroy
-    @users = User.find(params[:id])
-    @users.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(homes_path) }
-      format.xml  { head :ok }
+  def activate
+    logout_keeping_session!
+    user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
+    case
+    when (!params[:activation_code].blank?) && user && !user.active?
+      user.activate!
+      flash[:notice] = "BEM VINDO AO SISCAP."
+      redirect_to '/login'
+    when params[:activation_code].blank?
+      flash[:error] = "SENHA OU USUÁRIO NÃO AUTORIZADO, FAVOR ENTRAR EM CONTATO COM A SEDUC."
+      redirect_back_or_default('/')
+    else
+      flash[:error]  = "SENHA OU USUÁRIO NÃO AUTORIZADO, VERIFIQUE A VALIDAÇÃO EM SEU E_MAIL OU ENTRE EM CONTATO COM A SEDUC."
+      redirect_back_or_default('/')
     end
   end
 
- def activate
-    self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
-    if logged_in? && !current_user.active?
-      current_user.activate
-      flash[:notice] = "ACESSO EFETUADA COM SUCESSO"
-    end
-    redirect_back_or_default('/')
+  protected
+
+  def load_resources
+    @unidades = Unidade.all
   end
-  
+
+
 end

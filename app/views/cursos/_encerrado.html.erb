@@ -1,0 +1,15 @@
+<table width="100%" align="center" >
+                  <tr style="border-color: white">
+                      <td style="border-color: white" align="left">
+                        <font  size="3" color="black"> Curso (encerrado): <%= collection_select :curso, :curso_id, @cursosE, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font>
+                        <%= observe_field 'curso_curso_id',
+                          :update => "listagem",
+                          :url    => { :action => 'lista_cursoE' },
+                          :with   => 'curso_curso_id' %>
+
+                    </td>
+                </tr>
+<tr style="border-color: white"><td style="border-color: white">  <hr/>   </td> </tr>
+               
+  </table>
+

@@ -1,88 +1,68 @@
 class TiposController < ApplicationController
-  # GET /tipos
-  # GET /tipos.xml
   
   def index
-    @tipos = Tipo.find(:all)
+    @tipos = Tipo.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tipos }
     end
   end
 
-  # GET /tipos/1
-  # GET /tipos/1.xml
   def show
-    @tipos = Tipo.find(params[:id])
+    @tipo = Tipo.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @tipos }
+      format.xml  { render :xml => @tipo }
     end
   end
 
-  # GET /tipos/new
-  # GET /tipos/new.xml
   def new
-    @tipos = Tipo.new
+    @tipo = Tipo.new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @tipos }
+      format.xml  { render :xml => @tipo }
     end
   end
 
-  # GET /tipos/1/edit
   def edit
-    @tipos = Tipo.find(params[:id])
+    @tipo = Tipo.find(params[:id])
   end
 
-  # POST /tipos
-  # POST /tipos.xml
   def create
-    @tipos = Tipo.new(params[:tipo])
-     respond_to do |format|
-      if @tipos.save
-        flash[:notice] = 'CADASTRADO COM SUCESSO.'
-        format.html { redirect_to(new_tipo_path) }
-        format.xml  { render :xml => @tipos, :status => :created, :location => @tipos }
+    @tipo = Tipo.new(params[:tipo])
+    respond_to do |format|
+      if @tipo.save
+        flash[:notice] = 'SALVO COM SUCESSO!'
+        format.html { redirect_to(@tipo) }
+        format.xml  { render :xml => @tipo, :status => :created, :location => @tipo }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @tipos.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @tipo.errors, :status => :unprocessable_entity }
       end
     end
- end
+  end
 
-  # PUT /tipos/1
-  # PUT /tipos/1.xml
   def update
-    @tipos = Tipo.find(params[:id])
-
+    @tipo = Tipo.find(params[:id])
     respond_to do |format|
-      if @tipos.update_attributes(params[:tipo])
-        flash[:notice] = 'SALVO COM SUCESSO.'
-        format.html { redirect_to(@tipos) }
+      if @tipo.update_attributes(params[:tipo])
+        flash[:notice] = 'SALVO COM SUCESSO!'
+        format.html { redirect_to(@tipo) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @tipos.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @tipo.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /tipos/1
-  # DELETE /tipos/1.xml
   def destroy
-    @tipos = Tipo.find(params[:id])
-    @tipos.destroy
+    @tipo = Tipo.find(params[:id])
+    @tipo.destroy
 
     respond_to do |format|
-      format.html { redirect_to(homes_path) }
+      format.html { redirect_to(tipos_url) }
       format.xml  { head :ok }
     end
-  end
-
-  def lista
-    @tipos = Tipo.find(:all)
-    render :partial => 'lista_tipo'
-
   end
 end

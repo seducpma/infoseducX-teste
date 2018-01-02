@@ -1,28 +1,21 @@
 <% form_for(@reservar_sala) do |f| %>
 <%= f.error_messages %>
-<font  size="2">
- <table class="tabelas" width="50%" align="center">
-  <tr>
-   <th align="left">
-     <font  size=5><b> RESERVA DE SALA PARA REUNIÃO</b></font>
-   </th>
-    <td width="10%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3">
-      <fieldset><legend><font size ="4"><b>Reserva</b></font></legend>
-        <table align="center"  width="100%">
+
+                     <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+                        <tr>
+                            <td colspan="8" align="center"><b><font size="3"> &nbsp AGENDAMENTO  &nbsp  </b></td>
+                        </tr>
+                        <tr>
+                          <td colspan="8"><hr></td>
+                        </tr>
          <tr>
-           <td colspan="2">
+             <td colspan="2" align="center">
              <font style="color: red"><b><u><%= flash[:notice] %></u></b></font>
            </td>
          </tr>
-
          <tr>
                <td align="left" width="8%"><font size=2><b>Local:</b></font></td>
-               <td align="left"><font size=2><%= f.collection_select  :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecione -- '  %></font>
+               <td align="left"><font size=2><%= f.collection_select  :sala_id, @salas, :id, :sala, :include_blank => ' -- Selecionar -- '  %></font>
                <%= observe_field 'reservar_sala_sala_id',
                      :with   => :reservar_sala_sala_id,
                      :update => "especifica",
@@ -50,38 +43,34 @@
            </tr>
            <tr>
               <td align="left"><font size=2><b>Solicitante:</b></font></td>
-              <td align="left"><%= f.text_field :solicitante%></td>
+              <td align="left"><%= f.text_field :solicitante , :size => "50"%></td>
            </tr>
            <tr>
               <td align="left"><font size=2><b>Utilização:</b></font></td>
-              <td align="left"><%= f.text_field :utilizacao%></td>
+              <td align="left"><%= f.text_field :utilizacao, :size => "50"%></td>
            </tr>
           <tr>
               <td align="left" valign="top"><font size=2><b>Participantes:</b></font></td>
-              <td align="left"><font size=2><%= f.text_field(:quantidade,:size =>"1")%></font>
+              <td align="left"><font size=2><%= f.text_field(:quantidade,:size =>"4")%></font>
                <font color="red"><b>(Informar quantidade de pessoas) </b></font>
               </td>
           </tr>
           <tr>
               <td align="left" valign="top"><font size=2><b>Observação:</b></font></td>
-              <td align="left"><font size=2><%= f.text_field(:obs,:cols =>50, :rows => "3") %></font></td>
+              <td align="left"><font size=2><%= f.text_area(:obs,:cols =>56, :rows => "3") %></font></td>
           </tr>
           <tr>
               <td align="left" colspan="2"valign="top"></td>
           </tr>
-         </table>
-         </fieldset>
-            <div class="botao">
-              <table width="100%" align="right">
-                 <tr>
-                    <td align="right"><input type="image" src="/stylesheets/images/salvar10.png" title="Gravar"></td>
-      <% end %>
-                    <td width="2%" align="right" > <%= button_to("Voltar", homes_path, :title => "Voltar") %></td>
-                  </tr>
-              </table>
-            </div>
-    </td>
-  </tr>
-  </table>
-</font>
+
+                   </table>
+
+                     <table width="100%"  align="center">
+                            <tr>
+                               <td width="5px%"align="left"><%= f.submit 'Salvar' %></td>
+              <% end %>
+                               <td align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                           </tr>
+                        </table>
+
 

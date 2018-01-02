@@ -1,22 +1,114 @@
-<br/>
-<table class="tabelas3"  align="center">
-  <tr>
-    <th  align="left">
-       <font  size=4><b> JUSTIFICATIVA PONTO ELETRÔNICO</b></font>
-     </th>
-       <th width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </th>
-   </tr>
-   <tr>
-     <td colspan="2">
-       <%= render 'form' %>
-      </td>
-   </tr>
+<div id="interno8">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>JUSTIFICATIVA PONTO ELETRÔNICO ESTAGIÁRIOS</strong></font><br/>
+ </div>
+      <div class="tabs">
 
-</table>
-   <br/>
-  
+            <% if @ponto.present? %>
+              <%if !params[:ponto_id]%>
+                <% @ponto = Ponto.find(params[:justificativa][:ponto_id])%>
+              <%end%>
+               <fieldset>
+                  <font size="2">
+                  <table bgcolor ="F5F5F5">
+                    <tr >
+                      <td align="left"><b>Estagiário</b></td>
+                      <td align="left" ><b><%= "#{@ponto.estagiario.nome}" %></b></td>        </tr>
+                    <% form_for(@justificativa) do |f| %>
+                    <%= f.error_messages %>
+                      <tr>
+                         <td><%= f.hidden_field(:estagiario_id, :value => @ponto.estagiario_id) %></td>
+                         <td><%= f.hidden_field(:ponto_id, :value =>@ponto.id) %></td>
+                      </tr>
+
+                      <tr>
+                      <td valign="top"><b>Justificativa:</b></td>
+                      <td align="left" ><%= f.text_area(:justificativa, :cols=> "40", :rows=>"4") %></td>
+                     </tr>
+                     <tr>
+                       <td align="left"><b>Referente à:</b></td>
+                       <td align="left"><%= f.label :saida %><%= f.check_box :saida, :checked => true %> do dia <%= @ponto.entrada.strftime("%d/%m/%Y") %><%= f.hidden_field(:dia, :value => (@ponto.entrada.to_date)) %></td>
+                    </tr>
+                    <tr>
+                      <td align="left"><b>Horário:</b></td>
+                      <td align="left"><%= f.text_field(:hour, :id =>"hour", :size=> 5) %> <font color ="gray"> ( Exemplo de lançamento:  15:30 ) <font></td>
+                    </tr>
+
+              </table>
+
+             </fieldset>
+               <table width="100%" >
+                 <tr>
+                    <td width="4%"align="left"><%= f.submit 'Salvar' %></td>
+        <%end%>
+                    <td width="6%"align="left" ><%= button_to 'Nova ConsultaConsultar' ,consulta_unidade_path, :title => "Nova Consulta" %></td>
+                     <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+
+
+                 </tr>
+               </table>
+              
+               </font>
+              
+            <%else%>
+              <% form_for(@justificativa) do |f| %>
+               <%= f.error_messages %>
+                <font size="2">
+                   <fieldset>
+                  <table bgcolor ="#F5F5F5" >
+                    <tr >
+                      <td valign="top"><b>Justificativa:</b></td>
+                      <td align="left" ><%= f.text_area(:justificativa, :cols=> "40", :rows=>"4") %></td>
+                    </tr>
+                    <tr>
+                      <td><b>Dia:</b></td>
+                      <%= f.hidden_field(:estagiario_id, :value => params[:estagiario_id]) %>
+                      <td align="left" ><%= f.hidden_field(:dia, :value => params[:date]) %>
+                          <%dia = params[:date].to_date%>
+                          <%= dia.strftime("%d/%m/%Y") %>
+                         <b>Cumpriu horário?</b>
+                          <%= f.check_box :cumpriu_horario %>
+                      </td>
+                    </tr>
+                    <tr>
+                       <td align="left"><b>Feriado:</b></td>
+                       <td align="left">SIM <%= f.check_box :feriado %> - NÃO necessita cumprir horário </td>
+                   </tr>
+                    <tr>
+                       <td align="left"><b>Recesso:</b></td>
+                       <td align="left">SIM <%= f.check_box :recesso %> - NÃO necessita cumprir horário</td>
+                   </tr>
+                    <tr>
+                       <td align="left"><b>Fim de Semana:</b></td>
+                       <td align="left">SIM <%= f.check_box :fimsemana %>  - NÃO necessita cumprir horário</td>
+                   </tr>
+
+              </table>
+
+         </fieldset>
+               <table width="100%" >
+                 <tr>
+                    <td width="4%"align="left"><%= f.submit 'Salvar' %></td>
+        <%end%>
+                    <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+
+
+                 </tr>
+               </table>
+              
+                </font>
+              
+            <%end%>
+
+ </div>
+</div>
+<br/>
+</div>
+
 
 
 

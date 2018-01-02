@@ -12,32 +12,32 @@ class UnidadesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create unidades" do
-    assert_difference('Unidades.count') do
-      post :create, :unidades => { }
+  test "should create unidade" do
+    assert_difference('Unidade.count') do
+      post :create, :unidade => { }
     end
 
-    assert_redirected_to unidades_path(assigns(:unidades))
+    assert_redirected_to unidade_path(assigns(:unidade))
   end
 
-  test "should show unidades" do
-    get :show, :id => unidades(:one).id
+  test "should show unidade" do
+    get :show, :id => unidades(:one).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => unidades(:one).id
+    get :edit, :id => unidades(:one).to_param
     assert_response :success
   end
 
-  test "should update unidades" do
-    put :update, :id => unidades(:one).id, :unidades => { }
-    assert_redirected_to unidades_path(assigns(:unidades))
+  test "should update unidade" do
+    put :update, :id => unidades(:one).to_param, :unidade => { }
+    assert_redirected_to unidade_path(assigns(:unidade))
   end
 
-  test "should destroy unidades" do
-    assert_difference('Unidades.count', -1) do
-      delete :destroy, :id => unidades(:one).id
+  test "should destroy unidade" do
+    assert_difference('Unidade.count', -1) do
+      delete :destroy, :id => unidades(:one).to_param
     end
 
     assert_redirected_to unidades_path

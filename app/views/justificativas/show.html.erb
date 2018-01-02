@@ -1,18 +1,13 @@
-<br/>
-<br/>
-<table class="tabelas3"align="center">
-  <tr>
-    <th align="left">
-     <font  size=4><b> JUSTIFICATIVA</b></font>
-  </th>
-   <th width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </th>
- </tr>
- <tr>
-   <td colspan="2">
+<div id="interno8">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>JUSTIFICATIVA PONTO ELETRÔNICO - ESTAGIÁRIOS</strong></font><br/>
+ </div>
+      <div class="tabs">
       <font  size="2">
-        <table width="100%">
+          <fieldset>
+        <table width="100%" bgcolor ="#F5F5F5">
           <tr>
             <td width="32%"align="left"><b>Estagiário:</b></td>
           <td align="left"><%=h @justificativa.estagiario.nome %></td>
@@ -67,19 +62,22 @@
         <%end%>
         </tr>
       </table>
-     <div class="botao">
+    </fieldset>  
+
        <table>
         <tr>
-           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-           <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-           <td align="left"> <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "40x40"), pontos_path, :title => "Ponto Eletrônico" %></td>
+             <td width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+             <td width="2%" align="left" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+             <td width="2%" align="right" ><%= button_to("Ponto", pontos_path, :method => "get", :title => "Ponto") %></td>
+             <td  align="left" ><%= button_to 'Excluir', @ponto, :confirm => 'Confirma?', :method => :delete, :title => "Excluir" %></a></td>
+
         </tr>
       </table>
 
-     </div>
+
       </font>
 
-  </td>
- </tr>
-</table>
+  </div>
+</div>
 <br/>
+</div>

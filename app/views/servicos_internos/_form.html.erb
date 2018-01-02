@@ -1,18 +1,11 @@
 <% form_for @servicos_interno do |f| %>
 <%= f.error_messages %>
 <font  size="2">
-<table class="tabelas" align="center">
- <tr>
-    <th align="left">
-       <font size=5 color="black"> <b>  CONTROLE DE EMISSÃO DE SERVIÇOS INTERNOS</b></font>
-    </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
- </tr>
+ <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
  <tr>
    <td colspan="2">
-     <table width="100%">
+    <fieldset><legend><font  size=3> Serviço Interno</font></legend>
+     <table width="100%"
         <tr>
            <td width="10%"align="left"><font size="2"><b>Emissor:</b></font></td>
            <td align="left"><font size="2"><%= f.text_field :emissor, :size =>55 %></font></td>
@@ -34,18 +27,19 @@
            <td align="left"><font size="2"><%= f.text_field :obs, :size =>55 %></font></td>
         </tr>
      </table>
+    </fieldset>
    </td>
  </tr>
   <tr>
    <td colspan="2">
-      <div class="botao">
-        <table width="40%" align="right">
+
+        <table width="40%" align="left">
            <tr>
-             <td align="right"><%= f.submit "Gravar" %> </td>
+             <td align="right"><%= f.submit "Salvar" %> </td>
 <% end %>
-              <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-              <td width="2%" align="right" ><%= button_to('Serviços Internos', servicos_internos_path, :method => "get",  :title => "Serviços Internos")%></td>
-              <td width="2%" align="right"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
+              <td width="2%" align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              <td width="2%" align="left" ><%= button_to('Serviços Internos', servicos_internos_path, :method => "get",  :title => "Serviços Internos")%></td>
+              <td width="2%" align="left"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
            </tr>
         </table>
       </div>
@@ -54,5 +48,5 @@
   </tr>
  </table>
  </font>
-<br/>
+
  

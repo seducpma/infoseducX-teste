@@ -1,179 +1,48 @@
-<br/>
- <table class="tabelas2"align="center">
-  <tr>
-      <th align="left">
-         <font  size=5 color="black"> <b> UNIDADES & ESTAGIÁRIOS </b></font>
-      </th>
-       <td width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <font  size="2">
-       <table width="100%" align="center">
-        <tr>
-          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-       </tr>
-      </table>
-      <br/>
-      </div>
-      <font  size="2">
-      <table border="2" width="100%">
-      <tr>
-       <th width="30%">Nome</th>
-       <th width="30%">Estagiários</th>
-       <th colspan="2">Atendimento</th>
-      </tr>
-     <% for unidade in @unidade_estagiario%>
-      <tr>
-       <td valign="top"><%=h unidade.nome %></td>
-        <td align="left">
-             <%if (unidade.estagiarioE == 1) then%>
-              <% unidade.estagiarios.each do |est| %>
-                 <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
-                   <%=h est.nome %> (Itinerante)<br/>
-                <%end%>
-              <%end%>
-           <%else%>
-           <%if (unidade.estagiarioM == 1) then%>
-             <% unidade.estagiarios.each do |est| %>
-                 <% if (est.desligado == 0 and est.periodo_trab == 'MATUTINO') then%>
-                   <%=h est.nome %> (Matutino)<br/>
-                <%end%>
-              <%end%>
-             <%else%>
-                  <font color="red"> Unidade sem estagiário Matutino </font><br/>
-             <%end%>
-            <%if (unidade.estagiarioV == 1) then%>
-             <% unidade.estagiarios.each do |est| %>
-                 <% if (est.desligado == 0 and est.periodo_trab == 'VESPERTINO') then%>
-                   <%=h est.nome %> (Vespertino) <br/>
-                <%end%>
-              <%end%>
-             <%else%>
-                  <font color="red"> Unidade sem estagiário Vespertino</font> <br/>
-             <%end%>
-               <%if (unidade.estagiarioN == 1) then%>
-                  <% unidade.estagiarios.each do |est| %>
-                     <% if (est.desligado == 0 and est.periodo_trab == 'NOTURNO') then%>
-                        <%=h est.nome %> (Noturno) <br/>
-                    <%end%>
-                <%end%>
-              <%else%>
-                  <font color="red"> Unidade sem estagiário Noturno</font><br/>
-             <%end%>
-           <%end%>
+<div id="interno1">
+<% title "AULASEVENTUAL".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>UNIDADE / ESTAGIÁRIO</strong></font><br/>
+ </div>
+  <div class="tabs">
+    <% form_remote_tag :url => sem_estagiario_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+      <table width="100%"  bgcolor="#DCDCDC" >
+          <tr>
+            <td>
+              <a href="#" class="filtro_unidadeEU"><%= radio_button_tag(:type_of, "1") %></a>Unidade
+              <a href="#" class="filtro_tipoEU"><%= radio_button_tag(:type_of, "2") %></a>Tipo
+              <a href="#" class="filtro_periodoEU"><%= radio_button_tag(:type_of, "3") %></a>Periodo
+              <a href="#" class="filtro_todosEU"><%= radio_button_tag(:type_of, "4") %></a>Atuantes
+               <a href="#" class="filtro_todosEU"><%= radio_button_tag(:type_of, "5") %></a>Desligados
+            </td>
+         </tr>
+         <tr>
+           <td><div class="consulta_unidadeEU" style="display:none"> <%= render "consulta_unidade" %> </div>
+               <div class="consulta_tipoEU" style="display:none"> <%= render "consulta_tipo" %> </div>
+               <div class="consulta_periodoEU" style="display:none"> <%= render "consulta_periodo" %> </div>
+               <div class="consulta_todos" style="display:none"> <%= render "consulta_todos" %> </div>
            </td>
-           <td colspan="2">
-              <% if unidade.id==1 %>
-                 EMEI Jaci - Creche CAIC
-              <%else if unidade.id==2%>
-                CC Juriti - CC Maira - CC Aracy
-                <%else if unidade.id==3%>
-                  CC Panamby - CC Pitanga - Creche Tayna
-                  <%else if unidade.id==4%>
-                    Creche Maracá - Creche Anajá - Creche Chuí <br/>
-                    EMEI Manai - EMEI Caramdá - CC Arauna - CC Grauna
-                    <%else if unidade.id==5%>
-                      CC Urupê - CC Curió - CC Taragua - EMEI Patativa
-                      <%else if unidade.id==6%>
-                        Creche Curumã - Creche Taperá - EMEI Indaiá - EMEI Potira
-                        <%else if unidade.id==7%>
-                          CC Jaguari - EMEI  Araçari - EMEI Paturi
-                          <%else if unidade.id==8%>
-                            CC Arapiranga - Creche Wanda P. Muller
-                            <%else if unidade.id==9%>
-                              EMEI Aracati - EMEI Corimbó
-                              <%else if unidade.id==10%>
-                                EMEI Sabia - CC Bitu
-                                <%else if unidade.id=53%>
-                                  EMEI Curumim - EMEI Jacina - EMEI Cunhatai - CC  Manacá - Merenda
-                                <%end%>
-                              <%end%>                              
-                            <%end%>
-                          <%end%>
-                       <%end%>
-                      <%end%>
-                    <%end%>
-                  <%end%>
-                <%end%>
-              <%end%>
-            <%end%>
-        </td>
-     </tr>
-    <%end%>
-    <% for unidadesemreg in @sem_estagiarios_reg %>
-      <%if unidadesemreg.sem_esta == true%>
-             <tr>
+         </tr>
+        </table>
 
-               <td align="left"><%=h unidadesemreg.regiao%></td>
-               <td align="left"><font color="red">Sem estagiários</font>
-                   <% if (unidadesemreg.id=1) %>
-                      <br> <font color="blue"> Atendimento CAIC </font>
-                   <%else if (unidadesemreg.id = 2)%>
-                          <br> <font color="blue"> Atendimento SEDUC </font>
-                         <%else if (unidadesemreg.id=3)%>
-                             <br> <font color="blue"> Atendimento CIEP ZANAGA </font>
-                                <%else if (unidadesemreg.id=4)%>
-                                  <br> <font color="blue"> Atendimento CIEP SÃO VITO </font>
-                                       <%else if (unidadesemreg.id= 5) %>
-                                         <br> <font color="blue"> Atendimento CIEP CIDADE JARDIM </font>
-                                              <%end%>  
-                                       <%end%> 
-                                <%end%>   
-                         <%end%> 
-                   <%end%>
-               </td>
-               <td>
-                   <% if unidadesemreg.id=2 %>
-                       <font size="2"><%= unidadesemreg.unidade%> /
-                    <%end%>
-               </td>
-            </tr>
-      <%else%>
-            <tr>
+    <% end %>
+    <br/>
+    <div id="estagiarios_unidade"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
 
-               <td align="left"><%=h unidadesemreg.regiao%></td>
-               
-                 <% unidadesemreg.estagiarios.each do |est| %>
-                  <%if est.desligado == 0 then%>
-                    <td align="left"><font size="2"><%=h est.nome %></font></td>
-                  <%end%>
-                <%end%>
-               <div class="botao">
-                  
-                  <td><% unidadesemreg.unidades.each do |unidade| %>
-                        <%if unidade.nil?%>
-                        <%else%>
-                       <font size="2"><%=h unidade.nome %> /
-                    <%end%>
-                    <%end%>
-                  </td>
-              </div>
-            </tr>
 
-     <%end%>
-     <%end%>
-     <% for unidade in @unidade_estagiario1%>
 
-    <%end%>
 
-   </table>
-   </td>
-  </tr>
-  <tr>
-    <td>
+
+
 
          <table width="100%" align="center">
-        <tr>
-          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-       </tr>
-      </table>
-    </td>
-  </tr>
-
- </table>
-<br/><br/>
+            <tr>
+              <td width="6%"align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+              <td align="left" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_estagiarios_unidade_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </td>
+           </tr>
+         </table>
+</div>
+<br/>
+</div>
+<br/>

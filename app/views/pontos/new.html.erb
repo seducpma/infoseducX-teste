@@ -1,43 +1,50 @@
-<br/>
-<table  class="tabelas3" align="center">
-  <tr>
-     <th align="left">
-        <font  size=4><b> PONTO ELETRÔNICO - Entrada</b></font>
-    </th>
-       <th width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </th>
-   </tr>
- <tr>
-   <td colspan="2">
-       <% form_for(@ponto) do |f| %>
+<div id="interno8">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>PONTO ELETRÔNICO - ESTAGIÁRIO</strong></font><br/>
+ </div>
+      <div class="tabs">
+        <br/>
+        <table align="center" width="100%">
+               <tr bgcolor ="#F5F5F5">
+                 <td >
+
+      <font size="2">
+      <fieldset>
+      <table>
+        <tr>
+        <% form_for(@ponto) do |f| %>
         <%= f.error_messages %>
-         <font  size="2">
-              <table align="center">
-                <tr>
-                   <td align="left"><b>Estagiário:</b></td>
-                   <td align="left"><%= Estagiario.find(params[:estagiario_id]).nome %>
-                                   <%= f.hidden_field(:estagiario_id, :value => params[:estagiario_id])  %></td>
-                    <br/>
-                </tr>
-                <tr>
-                  <td>
-                    <table>
-                      <tr>
-                         <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
-                          <% end %>
-                         <td align="left"><input type="image" src="/stylesheets/images/entrada.gif" title="Ponto - Entrada"></td>
-                      </tr>
-                    </table>
+        <tr bgcolor ='#F5F5F5'>
+              <td align="left"><b>Estagiário:</b><%= Estagiario.find(params[:estagiario_id]).nome %><%= f.hidden_field(:estagiario_id, :value => params[:estagiario_id])  %></td>
+        </tr>
+         <tr bgcolor ='#F5F5F5'>
+            <td align="right"> <b>Americana, <%= Time.now.strftime("%d de %B de %Y") %> - <%= Time.now.strftime("%H:%M")  %></b> </td>
+        </tr>
+     </table>
+    </fieldset>
+          <table >
+             <tr>
+                 <td Width="2%" align="left"><%= submit_tag "Salvar", :class => "btn_filtrar" %></td>
+                <% end %>
+                <td width="2%" align="left" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+                <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+            </tr>
+          </table>
+   </font>
+
+
+
                   </td>
-                  <td align="left"><font size="1">(Clique para registrar entrada) </font></td>
-              </tr>
-             </table>
-     </font>
-   </td>
-  </tr>
-</table>
+               </tr>
+            </table>
+           <br/>
+    </div>
+  </div>
 <br/>
+</div>
+
 
 
 

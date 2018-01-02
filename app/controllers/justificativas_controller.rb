@@ -1,28 +1,20 @@
 class JustificativasController < ApplicationController
-  # GET /justificativas
-  # GET /justificativas.xml
   def index
     @justificativas = Justificativa.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @justificativas }
     end
   end
 
-  # GET /justificativas/1
-  # GET /justificativas/1.xml
   def show
     @justificativa = Justificativa.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @justificativa }
     end
   end
 
-  # GET /justificativas/new
-  # GET /justificativas/new.xml
   def new
     @justificativa = Justificativa.new
     if params[:ponto_id].present?
@@ -34,13 +26,10 @@ class JustificativasController < ApplicationController
     end
   end
 
-  # GET /justificativas/1/edit
   def edit
     @justificativa = Justificativa.find(params[:id])
   end
 
-  # POST /justificativas
-  # POST /justificativas.xml
   def create
     @justificativa = Justificativa.new(params[:justificativa])
     @justificativa.hora_saida
@@ -56,11 +45,8 @@ class JustificativasController < ApplicationController
     end
   end
 
-  # PUT /justificativas/1
-  # PUT /justificativas/1.xml
   def update
     @justificativa = Justificativa.find(params[:id])
-
     respond_to do |format|
       if @justificativa.update_attributes(params[:justificativa])
         flash[:notice] = 'CADASTRADO COM SUCESSO.'
@@ -73,12 +59,9 @@ class JustificativasController < ApplicationController
     end
   end
 
-  # DELETE /justificativas/1
-  # DELETE /justificativas/1.xml
   def destroy
     @justificativa = Justificativa.find(params[:id])
     @justificativa.destroy
-
     respond_to do |format|
       format.html { redirect_to(justificativas_url) }
       format.xml  { head :ok }

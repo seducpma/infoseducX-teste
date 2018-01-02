@@ -1,6 +1,4 @@
-# Be sure to restart your server when you modify this file
-
-# Uncomment below to force Rails into production mode when
+  # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
@@ -8,7 +6,11 @@
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
+#require 'brI18n'
 require File.join(File.dirname(__FILE__), 'boot')
+#require 'spreadsheet'
+require 'csv'
+
 Rails::Initializer.run do |config|
 
   # Settings in config/environments/* take precedence over those specified here.
@@ -20,19 +22,35 @@ Rails::Initializer.run do |config|
   # you must remove the Active Record framework.
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
-  # Specify gems that this application depends on. 
+  # Specify gems that this application depends on.
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "will_paginate", :version => '2.3.15'
+  
+  #config.gem 'i18n', :version => '0.6.1'
+  config.gem 'paperclip', :version => '~>2.3'
+  config.gem 'rdoc'
+  config.gem "googlecharts", :lib => "gchart"
+  config.gem 'whenever', :lib => false
   config.gem "searchlogic", :version => "2.4.14"
   config.gem 'i18n', :version => '0.6.1'
   config.gem 'paperclip', :version => '~>2.3'
+  config.gem "will_paginate", :version => '2.3.15'
 
 
+  #config.gem 'rdoc'
+  #config.gem 'brazilian-rails', :version =>'2.1.15'
+  #config.gem 'time_diff', :version => '0.2.2'
+
+  
+  #config.gem "will_paginate", :version => '2.3.15'
+  #config.gem "searchlogic", :version => '2.4.14'
+  #config.gem 'brazilian-rails', :version =>'2.1.15'
+  #
+  # config.gem 'time_diff', :version => '0.2.2'
 # Only load the plugins named here, in .the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -57,11 +75,11 @@ Rails::Initializer.run do |config|
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
-  # Make sure the secret is at least 30 characters and all random, 
+  # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_infoseduc_session',
-    :secret      => '4b93827b0be767a6b6940a7ab780ad122c9dcbf83beb14ffe02ebe2603944ee5c5f91d0d789342a7e0f405481b754d266b39ecc6aefd0c14c63256126f278f11'
+    :secret      => '80b373ea47e294e1d1b9bc811d8749aa34d1357093c5290f2797470ea12d3ff991f4575ebd7a279b4a67a3cc06ab4dfbd464652c9c64b17429840391eefb6784'
   }
 
   # Use the database for sessions instead of the cookie-based default,
@@ -78,6 +96,7 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   config.i18n.default_locale = "pt-br"
+  
 end
 WillPaginate::ViewHelpers.pagination_options[:previous_label]=I18n.t("pagination.prev")
 WillPaginate::ViewHelpers.pagination_options[:next_label]=I18n.t("pagination.next")
@@ -88,7 +107,7 @@ ActionMailer::Base.smtp_settings = {
    :address => "smtp.gmail.com",
    :port => 587,
    :authentication => :plain,
-   :user_name => "administrador@seducpma.com", #Você pode usar o Google Apps!
+   :user_name => "administrador@seducpma.com", 
    :password => 'mus@and2'
 }
 

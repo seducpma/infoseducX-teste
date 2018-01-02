@@ -1,24 +1,29 @@
-<br/>
- <table  class="tabelas1"   align="center" width="100%">
-  <tr>
-    <th align="left" >
-       <font  size=5 color="black"> <b> ESTATÍSTICAS SERVIÇO DE MANUTENÇÃO</b></font>
-    </th>
-    <td width="3%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-  </tr>
+
+<div id="interno2">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr>
+            <td align="left">
+             <font  size=5 color="black"> <b> ORDEM DE SERVIÇO - MANUTENÇÃO GERAL</b></font>
+               <hr/>
+            </td>
+        </tr>
   <tr>
     <td colspan="3">
-      <table border="2" width="100%">
+         <table border="1" cellspacing="0" cellpadding="1" width="100%" bgcolor="#F5F5F5">
         <tr>
           <td align="left" colspan="6">
              <font color ="black" size="3" ><b><center><u><font size="4"> ESTATÍSTICA</font></u> </center></b></font>
           </td>
         </tr>
 <!-- NO MẼS   NO MẼS   NO MẼS   NO MẼS   NO MẼS   -->
-       <tr>
-         <th colspan="6" align="left"><font size="4" color="white"><b><%=(Date.today.strftime("%B"))%>/<%=(Date.today.year)%></b></font></th>
+       <tr bgcolor="#DCDCDC">
+         <th colspan="6" align="left"><font size="4" color="black"><b><%=(Date.today.strftime("%B"))%>/<%=(Date.today.year)%></b></font></th>
        </tr>
             <%  session[:ano] =(Date.today.year).to_s%>
             <%  session[:mes] =(Date.today.month).to_s%>
@@ -29,7 +34,7 @@
             <b> Total no Mês:<%= @mmanutencaos_todosM = Mmanutencao.all(:conditions => ["created_at > ?", $data] ).count %></b>
            </font>
           </td>
-          <td width="15%"><b><%=link_to'Alvenaria:', estatisticasM_mmanutencaos_path(:estatisticas => '1')%></b><%= @mmanutencaos_alvenariaM = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 1 and created_at > ?", $data]).count %></td>
+          <td width="15%">           <font color ="black "size="2"><b><%=link_to'Alvenaria:', estatisticasM_mmanutencaos_path(:estatisticas => '1')%></b><%= @mmanutencaos_alvenariaM = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 1 and created_at > ?", $data]).count %></font></td>
           <td width="15%"><b><%=link_to'Dedetização:', estatisticasM_mmanutencaos_path(:estatisticas => '2')%></b><%= @mmanutencaos_dedetizacaoM= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and created_at > ?", $data]).count %></td>
           <td width="15%"><b><%=link_to'Eletrodomésticos:', estatisticasM_mmanutencaos_path(:estatisticas => '3')%></b><%= @mmanutencaos_eletroM= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and created_at > ?", $data]).count %></td>
           <td width="15%"><b><%=link_to'Elétrica:', estatisticasM_mmanutencaos_path(:estatisticas => '4')%></b><%= @mmanutencaos_eletriM = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and created_at > ?", $data]).count %></td>
@@ -125,8 +130,8 @@
        </tr>
 
 <!-- mes anterior  mes anterior mes anterior mes anterior mes anterior-->
-       <tr>
-         <th colspan="6" align="left"><font size="4"color="white"><b><%=(Date.today<<1).strftime("%B")%>/<%=(Date.today.year)%></b></font></th>
+       <tr bgcolor="#DCDCDC">
+         <th colspan="6" align="left"><font size="4"color="black"><b><%=(Date.today<<1).strftime("%B")%>/<%=(Date.today.year)%></b></font></th>
        </tr>
             <%  session[:ano] =(Date.today.year).to_s%>
             <%  session[:mes] =((Date.today.month)-1).to_s%>
@@ -234,8 +239,8 @@
        </tr>
        
 <!-- GERAL GERAL GERAL GERAL GERAL GERAL -->
-       <tr>
-         <th colspan="6" align="left"><font size="3"color="white"><b>GERAL</b></font></th>
+       <tr bgcolor="#DCDCDC">
+         <th colspan="6" align="left"><font size="3"color="black"><b>GERAL</b></font></th>
        </tr>
         <tr>
           <td rowspan="3" align="right" valign="top">
@@ -243,24 +248,24 @@
             <b> Total Geral:<%= @mmanutencaos_todos.count %></b>
            </font>
           </td>
-          <td width="15%"><b>Alvenaria:</b><%= @mmanutencaos_alvenaria = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",1]).count %></td>
-          <td width="15%"><b>Dedetização:</b><%= @mmanutencaos_dedetizacao= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",3]).count %></td>
-          <td width="15%"><b>Eletrodomésticos:</b><%= @mmanutencaos_eletro= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",4]).count %></td>
-          <td width="15%"><b>Elétrica:</b><%= @mmanutencaos_eletrica = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",5]).count %></td>
-          <td width="15%"><b>Cozinha:</b><%= @mmanutencaos_cozinha = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",6]).count %></td>
+          <td width="15%"><b>Alvenaria: </b><%= @mmanutencaos_alvenaria = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",1]).count %></td>
+          <td width="15%"><b>Dedetização: </b><%= @mmanutencaos_dedetizacao= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",3]).count %></td>
+          <td width="15%"><b>Eletrodomésticos: </b><%= @mmanutencaos_eletro= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",4]).count %></td>
+          <td width="15%"><b>Elétrica: </b><%= @mmanutencaos_eletrica = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",5]).count %></td>
+          <td width="15%"><b>Cozinha: </b><%= @mmanutencaos_cozinha = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",6]).count %></td>
         </tr>
         <tr>
-          <td width="15%"><b>Hidráulica:</b><%= @mmanutencaos_hidraulica = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",7]).count %></td>
-          <td width="15%"><b>Marcenaria:</b><%= @mmanutencaos_marcenaria= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",9]).count %></td>
-          <td width="15%"><b>Pintura:</b><%= @mmanutencaos_pintura = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",10]).count %></td>
-          <td width="15%" colspan="2"><b>Limpeza Cx.D'Agua:</b><%= @mmanutencaos_agua = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",8]).count %></td>
+          <td width="15%"><b>Hidráulica: </b><%= @mmanutencaos_hidraulica = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",7]).count %></td>
+          <td width="15%"><b>Marcenaria: </b><%= @mmanutencaos_marcenaria= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",9]).count %></td>
+          <td width="15%"><b>Pintura: </b><%= @mmanutencaos_pintura = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",10]).count %></td>
+          <td width="15%" colspan="2"><b>Limpeza Cx.D'Agua: </b><%= @mmanutencaos_agua = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",8]).count %></td>
         </tr>
         <tr>
-          <td width="15%"><b>Playground:</b><%= @mmanutencaos_play = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",11]).count %></td>
-          <td width="15%"><b>Poda Grama:</b><%= @mmanutencaos_serralheria = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",12]).count %></td>
-          <td width="15%"><b>Serralheira:</b><%= @mmanutencaos_telhado = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",13]).count %></td>
-          <td width="15%"><b>Telhado:</b><%= @mmanutencaos_grama = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",14]).count %></td>
-          <td width="15%"><b>Outros:</b><%= @mmanutencaos_outros = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",15]).count %></td>
+          <td width="15%"><b>Playground: </b><%= @mmanutencaos_play = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",11]).count %></td>
+          <td width="15%"><b>Poda Grama: </b><%= @mmanutencaos_serralheria = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",12]).count %></td>
+          <td width="15%"><b>Serralheira: </b><%= @mmanutencaos_telhado = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",13]).count %></td>
+          <td width="15%"><b>Telhado: </b><%= @mmanutencaos_grama = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",14]).count %></td>
+          <td width="15%"><b>Outros: </b><%= @mmanutencaos_outros = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= ?",15]).count %></td>
        </tr>
         <tr>
           <td rowspan="3" align="right" valign="top">
@@ -268,24 +273,24 @@
             <b>Em Aberto: <%= @mmanutencaos_aberto = Mmanutencao.all(:conditions => ["situacao_manutencao_id= ?",1] ).count %></b>
            </font>
           </td>
-          <td width="15%"><font color ="red"><b>Alvenaria:</b><%= @mmanutencaos_alvenariaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id=1 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Dedetização:</b><%= @mmanutencaos_dedetizacaoA= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Eletrodomésticos:</b><%= @mmanutencaos_eletroA= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Elétrica:</b><%= @mmanutencaos_eletricaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Cozinha:</b><%= @mmanutencaos_cozinhaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 6 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Alvenaria: </b><%= @mmanutencaos_alvenariaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id=1 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Dedetização: </b><%= @mmanutencaos_dedetizacaoA= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Eletrodomésticos: </b><%= @mmanutencaos_eletroA= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Elétrica: </b><%= @mmanutencaos_eletricaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Cozinha: </b><%= @mmanutencaos_cozinhaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 6 and situacao_manutencao_id=1"]).count %></font></td>
         </tr>
         <tr>
-          <td width="15%"><font color ="red"><b>Hidráulica:</b><%= @mmanutencaos_hidraulicaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 7 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Marcenaria:</b><%= @mmanutencaos_marcenariaA= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 9 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Pintura:</b><%= @mmanutencaos_pinturaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 10 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%" colspan="2"><font color ="red"><b>Limpeza Cx.D'Agua:</b><%= @mmanutencaos_aguaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 8 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Hidráulica: </b><%= @mmanutencaos_hidraulicaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 7 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Marcenaria: </b><%= @mmanutencaos_marcenariaA= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 9 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Pintura: </b><%= @mmanutencaos_pinturaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 10 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%" colspan="2"><font color ="red"><b>Limpeza Cx.D'Agua: </b><%= @mmanutencaos_aguaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 8 and situacao_manutencao_id=1"]).count %></font></td>
         </tr>
         <tr>
-          <td width="15%"><font color ="red"><b>Playground:</b><%= @mmanutencaos_playA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Pode Grama:</b><%= @mmanutencaos_serralheriaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Serralheira:</b><%= @mmanutencaos_telhadoA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Telhado:</b><%= @mmanutencaos_gramaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 14 and situacao_manutencao_id=1"]).count %></font></td>
-          <td width="15%"><font color ="red"><b>Outros:</b><%= @mmanutencaos_outrosA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Playground: </b><%= @mmanutencaos_playA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Pode Grama: </b><%= @mmanutencaos_serralheriaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Serralheira: </b><%= @mmanutencaos_telhadoA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Telhado: </b><%= @mmanutencaos_gramaA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 14 and situacao_manutencao_id=1"]).count %></font></td>
+          <td width="15%"><font color ="red"><b>Outros: </b><%= @mmanutencaos_outrosA = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and situacao_manutencao_id=1"]).count %></font></td>
         </tr>
         <tr>
           <td rowspan="3" align="right" valign="top">
@@ -293,24 +298,24 @@
             <b>Em Encerrado: <%= @mmanutencaos_encerrado = Mmanutencao.all(:conditions => ["situacao_manutencao_id= 2"] ).count %></b>
            </font>
           </td>
-          <td width="15%"><font color ="blue"><b>Alvenaria:</b><%= @mmanutencaos_alvenariaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id=1 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Dedetização:</b><%= @mmanutencaos_dedetizacaoE= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Eletrodomésticos:</b><%= @mmanutencaos_eletroE= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Elétrica:</b><%= @mmanutencaos_eletricaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Cozinha:</b><%= @mmanutencaos_cozinhaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 6 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Alvenaria: </b><%= @mmanutencaos_alvenariaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id=1 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Dedetização: </b><%= @mmanutencaos_dedetizacaoE= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Eletrodomésticos: </b><%= @mmanutencaos_eletroE= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Elétrica: </b><%= @mmanutencaos_eletricaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Cozinha: </b><%= @mmanutencaos_cozinhaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 6 and situacao_manutencao_id=2"]).count %></font></td>
         </tr>
         <tr>
-          <td width="15%"><font color ="blue"><b>Hidráulica:</b><%= @mmanutencaos_hidraulicaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 7 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Marcenaria:</b><%= @mmanutencaos_marcenariaE= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 9 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Pintura:</b><%= @mmanutencaos_pinturaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 10 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%" colspan="2"><font color ="blue"><b>Limpeza Cx.D'Agua:</b><%= @mmanutencaos_aguaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 8 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Hidráulica: </b><%= @mmanutencaos_hidraulicaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 7 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Marcenaria: </b><%= @mmanutencaos_marcenariaE= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 9 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Pintura: </b><%= @mmanutencaos_pinturaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 10 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%" colspan="2"><font color ="blue"><b>Limpeza Cx.D'Agua: </b><%= @mmanutencaos_aguaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 8 and situacao_manutencao_id=2"]).count %></font></td>
         </tr>
         <tr>
-          <td width="15%"><font color ="blue"><b>Playground:</b><%= @mmanutencaos_playE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Pode grama:</b><%= @mmanutencaos_serralheriaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Serralheira:</b><%= @mmanutencaos_telhadoE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Telhado:</b><%= @mmanutencaos_gramaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 14 and situacao_manutencao_id=2"]).count %></font></td>
-          <td width="15%"><font color ="blue"><b>Outros:</b><%= @mmanutencaos_outrosE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Playground: </b><%= @mmanutencaos_playE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Pode grama: </b><%= @mmanutencaos_serralheriaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Serralheira: </b><%= @mmanutencaos_telhadoE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Telhado: </b><%= @mmanutencaos_gramaE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 14 and situacao_manutencao_id=2"]).count %></font></td>
+          <td width="15%"><font color ="blue"><b>Outros: </b><%= @mmanutencaos_outrosE = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and situacao_manutencao_id=2"]).count %></font></td>
        </tr>
         <tr>
           <td rowspan="3" align="right" valign="top">
@@ -318,34 +323,37 @@
             <b>Em Atendimento: <%= @mmanutencaos_atendimento = Mmanutencao.all(:conditions => ["situacao_manutencao_id= 3 OR situacao_manutencao_id= 4 "]).count %></b>
            </font>
           </td>
-          <td width="15%"><font color ="gren"><b>Alvenaria:</b><%= @mmanutencaos_alvenariaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id=1 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Dedetização:</b><%= @mmanutencaos_dedetizacaoAT= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Eletrodomésticos:</b><%= @mmanutencaos_eletroAT= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Elétrica:</b><%= @mmanutencaos_eletricaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Cozinha:</b><%= @mmanutencaos_cozinhaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 6 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Alvenaria: </b><%= @mmanutencaos_alvenariaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id=1 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Dedetização: </b><%= @mmanutencaos_dedetizacaoAT= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Eletrodomésticos: </b><%= @mmanutencaos_eletroAT= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Elétrica: </b><%= @mmanutencaos_eletricaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 5 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Cozinha: </b><%= @mmanutencaos_cozinhaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 6 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
         </tr>
         <tr>
-          <td width="15%"><font color ="gren"><b>Hidráulica:</b><%= @mmanutencaos_hidraulicaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 7 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Marcenaria:</b><%= @mmanutencaos_marcenariaAT= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 9 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Pintura:</b><%= @mmanutencaos_pinturaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 10 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%" colspan="2"><font color ="gren"><b>Limpeza Cx.D'Agua:</b><%= @mmanutencaos_aguaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 8 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Hidráulica: </b><%= @mmanutencaos_hidraulicaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 7 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Marcenaria: </b><%= @mmanutencaos_marcenariaAT= Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 9 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Pintura: </b><%= @mmanutencaos_pinturaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 10 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%" colspan="2"><font color ="gren"><b>Limpeza Cx.D'Agua: </b><%= @mmanutencaos_aguaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 8 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
         </tr>
         <tr>
-          <td width="15%"><font color ="gren"><b>Playground:</b><%= @mmanutencaos_playAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Poda Grama:</b><%= @mmanutencaos_serralheriaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Serralheria:</b><%= @mmanutencaos_telhadoAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Telhado:</b><%= @mmanutencaos_gramaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 14 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
-          <td width="15%"><font color ="gren"><b>Outros:</b><%= @mmanutencaos_outrosAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Playground: </b><%= @mmanutencaos_playAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 11 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Poda Grama: </b><%= @mmanutencaos_serralheriaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Serralheria: </b><%= @mmanutencaos_telhadoAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 13 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Telhado: </b><%= @mmanutencaos_gramaAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 14 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
+          <td width="15%"><font color ="gren"><b>Outros: </b><%= @mmanutencaos_outrosAT = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 15 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4)"]).count %></font></td>
        </tr>
 
       </table>
-     <div class="botao">
-     <table align="right">
+     
+     <table align="left">
       <tr>
-          <td align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+          <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
       </tr>
     </table>
-    </div>
+    
     </td>
    </tr>
 </table>
+       </div>
+</div>
+<br/>

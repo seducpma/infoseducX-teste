@@ -54,6 +54,9 @@ class Inscricao < ActiveRecord::Base
     #end
   end
 
+
+  
+
 end
 
 

@@ -1,389 +1,119 @@
 class EstagiariosController < ApplicationController
-  # GET /estagiarios
-  # GET /estagiarios.xml
-  layout "application"
-  before_filter :load_unidades
-  before_filter :load_estagiarios
-  before_filter :load_analistas
-  before_filter :load_estagiariosa
-  before_filter :load_regiaos
 
-  def lista
-    #@sem_estagiarios= Unidade.find(:all, :conditions => ["estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'nome ASC')
-    #@estagiarios = Unidade.find(:all, :joins => :estagiario,:conditions => ['flag=?',1], :order => 'unidades.nome ASC')
-    @estagiarios = Estagiario.find(:all, :joins => :unidade,:conditions => ["flag=0 and estagiarioV=0 or estagiarioM=0 or (estagiarioN=0 and id!=53 and id!=1 and id!=3 and id!=4 and id!=5 and id!=6 and id!=7 and id!=8 and id!=9 and id!=10)"], :order => 'unidades.nome ASC')
-    @estagiarios1 = Estagiario.find(:all, :joins => :regiao,  :order => 'regiaos.regiao ASC',:conditions => ['flag=?',0])
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @estagiarios }
+  before_filter :load_iniciais
+
+ def load_iniciais
+      @estagiariosa = Estagiario.find(:all, :order => 'nome ASC',:conditions => ['flag=? and desligado=?',0,0])
+      @periodos = Estagiario.find(:all,:select =>'distinct(periodo_est)', :order=> 'periodo_est DESC' )
+      @estagios =TiposEstagio.find(:all, :select => 'nome',:order => 'nome ASC')
+      #@unidades = Unidade.find(:all, :conditions => ['status = 1'], :order => 'nome ASC')
+      #@unidades1 = Unidade.find(:all, :select => 'nome, id', :conditions => ['id != 9 and id != 12 and id != 65 and id != 62 and id != 71 and id != 72 and id != 75 and id != 76 and id != 79 and id != 59', ], :order => 'nome ASC')
+      @tiposEstagio = TiposEstagio.find(:all, :order => 'nome ASC')
+      if current_user.unidade_id == 52 or current_user.unidade_id == 53
+           @estagiarios = Estagiario.find(:all, :conditions =>['desligado = 0'], :order => 'nome ASC')
+      else
+          @estagiarios = Estagiario.find(:all, :conditions =>['unidade_id =? AND desligado = 0', current_user.unidade_id], :order => 'nome ASC')
+      end
+ end
+
+
+def lista_consulta_estagiario
+      @estagiarios = Estagiario.find(:all, :conditions => ['desligado =0 and id= ?', params[:estagiario_id]])
+    render :partial => 'estagiarios'
+ end
+
+ def lista_consulta_periodo_est
+      @estagiarios = Estagiario.find(:all, :conditions => ['desligado =0 and periodo_est= ? and unidade_id=?' ,  params[:estagiario_periodo_est], current_user.unidade_id])
+    render :partial => 'estagiarios'
+ end
+
+ def lista_consulta_tipo
+      @estagiarios = Estagiario.find(:all, :conditions => ['desligado =0 and tipo= ? and unidade_id=?',  params[:estagiario_tipo], current_user.unidade_id])
+    render :partial => 'estagiarios'
+ end
+
+ def lista_consulta_unidade
+      @estagiarios = Estagiario.find(:all, :conditions => ['desligado =0 and unidade_id= ?',  params[:estagiario_unidade_id]])
+    render :partial => 'estagiarios'
+ end
+
+def consulta_estagiario
+    if params[:type_of].to_i == 5
+            @estagiarios = Estagiario.find(:all, :conditions => ['desligado =1 '])
+           render :update do |page|
+                page.replace_html 'dados', :partial => "estagiarios"
+              end
+         else if params[:type_of].to_i == 6
+            @estagiarios = Estagiario.find(:all, :conditions => ['desligado =0 '])
+               render :update do |page|
+                    page.replace_html 'dados', :partial => "estagiarios"
+                  end
+              end
     end
   end
 
   def index
-    if (params[:search].nil? || params[:search].empty?)
-      @estagiarios = Estagiario.paginate :page => params[:page], :conditions =>['desligado=?',0], :order => 'nome ASC', :per_page => 10
-      $var = 0
-    else
-      @estagiarios = Estagiario.find(:all, :conditions => (["nome like ?", "%" + params[:search].to_s + "%" ]), :order => 'nome ASC')
-      $var = 1
-    end
+    @estagiarios = Estagiario.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @estagiarios }
     end
   end
-
-
-    # GET /estagiarios/1
-    # GET /estagiarios/1.xml
 
   def show
-    @estagiarios = Estagiario.find(params[:id])
+    @estagiario = Estagiario.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @estagiarios }
+      format.xml  { render :xml => @estagiario }
     end
   end
 
-    # GET /estagiarios/new
-    # GET /estagiarios/new.xml
   def new
-      @estagiarios = Estagiario.new
-
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @estagiarios }
-      end
-  end
-
-    # GET /estagiarios/1/edit
-  def edit
-    @estagiarios = Estagiario.find(params[:id])
-  end
-
-    # POST /estagiarios
-    # POST /estagiarios.xml
-  def create
-    @estagiarios = Estagiario.new(params[:estagiario])
-
+    @estagiario = Estagiario.new
     respond_to do |format|
-      if @estagiarios.save
-        w1=@estagiarios.photo_file_name
-        t=0
-        flash[:notice] = 'ESTAGIÁRIO CADASTRADO COM SUCESSO.'
-        format.html { redirect_to(@estagiarios) }
-        format.xml  { render :xml => @estagiarios, :status => :created, :location => @estagiarios }
+      format.html # new.html.erb
+      format.xml  { render :xml => @estagiario }
+    end
+  end
+
+  def edit
+    @estagiario = Estagiario.find(params[:id])
+  end
+
+  def create
+    @estagiario = Estagiario.new(params[:estagiario])
+    respond_to do |format|
+      if @estagiario.save
+        flash[:notice] = 'SALVO COM SUCESSO.'
+        format.html { redirect_to(@estagiario) }
+        format.xml  { render :xml => @estagiario, :status => :created, :location => @estagiario }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @estagiarios.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @estagiario.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-    # PUT /estagiarios/1
-    # PUT /estagiarios/1.xml
-    def update
-      @estagiarios = Estagiario.find(params[:id])
-
-      respond_to do |format|
-        if @estagiarios.update_attributes(params[:estagiario])
-          flash[:notice] = 'ESTAGIÁRIO SALVO COM SUCESSO.'
-          format.html { redirect_to(@estagiarios) }
-          format.xml  { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @estagiarios.errors, :status => :unprocessable_entity }
-        end
-      end
-    end
-
-    # DELETE /estagiarios/1
-    # DELETE /estagiarios/1.xml
-    def destroy
-      @estagiarios = Estagiario.find(params[:id])
-      @estagiarios.destroy
-
-      respond_to do |format|
-        format.html { redirect_to(homes_path) }
+  def update
+    @estagiario = Estagiario.find(params[:id])
+    respond_to do |format|
+      if @estagiario.update_attributes(params[:estagiario])
+        flash[:notice] = 'SALVO COM SUCESSO.'
+        format.html { redirect_to(@estagiario) }
         format.xml  { head :ok }
-      end
-    end
-
-  def mesmo_nome
-    $nome = params[:estagiario_nome]
-    @verifica = Estagiario.find_by_nome($nome)
-    if @verifica then
-      render :update do |page|
-        page.replace_html 'nome_aviso', :text => 'ESTAGIÁRIO JÁ CADASTRADA NO SISTEMA'
-        page.replace_html 'Certeza', :text =>'ESTAGIÁRIO JÁ CADASTRADA NO SISTEMA'
-    end
-    else
-      render :update do |page|
-        page.replace_html 'nome_aviso', :text => ''
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @estagiario.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  def nome_unidade
-   $unidade = params[:estagiario_unidade_id]
-   @estagariounidade = Unidade.find(:all, :include => 'estagiarios', :conditions => ['id =?',$unidade])
-   $nomeunidade= Unidade.find_by_id($unidade).nome
-   render :update do |page|
-     page.replace_html 'unidade_nome', :partial => 'exibe_unidade'
-   end
-  end
-
-   def consulta
-      render 'consultas'
-   end
-
-  def lista_estagiario
-    $estagiario = params[:estagiario_estagiario_id]
-    @estagiarios = Estagiario.find(:all, :conditions => ['id=? and desligado=?',  params[:estagiario_estagiario_id],0])
-    render :partial => 'lista_estagiarios'
-  end
-
-    def lista_estagiario_estagio
-
-    @estagiarios = Estagiario.find(:all, :conditions => ['tipo =? and desligado=?',  params[:estagiario_tipo],0])
-    render :partial => 'lista_estagiarios'
-  end
-
-  def analistas
-    if (params[:search].nil? || params[:search].empty?)
-       @analistas = Estagiario.paginate :page => params[:page], :conditions =>['flag=1 and desligado=0'], :order => 'nome ASC', :per_page => 10
-      $var = 0
-    else
-      @analistas = Estagiario.find(:all, :conditions => (["nome like ? and flag=?", "%" + params[:search].to_s + "%",1 ]), :order => 'nome ASC')
-       $var = 1
-    end
+  def destroy
+    @estagiario = Estagiario.find(params[:id])
+    @estagiario.destroy
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @analistas }
+      format.html { redirect_to(estagiarios_url) }
+      format.xml  { head :ok }
     end
   end
-
-  def baixas
-    if (params[:search].nil? || params[:search].empty?)
-     @baixas = Estagiario.find(:all, :order => 'nome ASC', :conditions => ['desligado=?',1])
-      $var = 0
-    else
-      @baixas = Estagiario.find(:all, :conditions => ["nome like ? and desligado = 1","%" + params[:search].to_s + "%"], :order => 'nome ASC')
-       $var = 1
-    end
-    # @baixas = Estagiario.find(:all, :order => 'nome ASC', :conditions => ['desligado=?',1])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @analistas }
-    end
-  end
-
-  def seleciona
-    $periodo = params[:estagiario_periodo_trab]
-    if (params[:estagiario_periodo_trab] == 'ITINERANTE')then
-       render :partial => 'selecao_regiaos'
-    else
-       @unidades= Unidade.find(:all, :conditions => "regiao_id is null")
-       render :partial => 'selecao_unidades'
-    end
-  end
-
-  def regiao_unidade
-   $regiao = params[:estagiario_regiao_id]
-   if (params[:estagiario_regiao_id] == 6) then
-     @unidades = Unidade.find(:all)
-      render :update do |page|
-        page.replace_html 'selecao', :partial => 'selecao_unidades'
-    end
-
-   else
-     @unidades = Unidade.find :all, :conditions => {:regiao_id => params[:estagiario_regiao_id]}
-      render :update do |page|
-       page.replace_html 'selecao', :partial => 'selecao_unidades'
-    end
-   end
-  end
-
-  def print_all
-    if params[:tipo] == "atuais"
-        @estagiarios = Estagiario.all(:conditions =>['desligado=? and flag = 0',0], :order => 'unidade_id,nome ASC')
-    else
-      if params[:tipo] == "baixados"
-        @estagiarios = Estagiario.find(:all, :order => 'unidade_id, nome ASC', :conditions => ['desligado=? and flag = 0',1])
-      else
-        if params[:tipo] == "todos"
-          @estagiarios = Estagiario.find(:all, :conditions => 'flag = 0', :order => 'unidade_id,nome ASC')
-        end
-      end
-    end
-  end
-
-  def carga_horaria
-    @search = Ponto.search(params[:estagiario])
-    if params[:month].present?
-      if params[:year].present?
-        @date = ("#{params[:year]}-#{params[:month]}-#{Date.today.day}").to_date
-      else
-        @date =("#{Date.today.year}-#{params[:month]}-#{Date.today.day}").to_date
-      end
-    else
-      @date =("#{Date.today.year}-#{Date.today.month}-#{Date.today.day}").to_date
-    end
-    if params[:year].present?
-      unless (params[:estagiario_id_equals].blank?)
-        inicio_mes = "#{@date.year}-#{(((@date.month).to_i) -1)}-22"
-        termino_mes ="#{@date.year}-#{((@date.month).to_i)}-21"
-        @total_trabalhado = Ponto.find_all_by_estagiario_id(params[:estagiario_id_equals], :conditions => ["created_at between ? and ?", inicio_mes,termino_mes], :order => "entrada")
-      end
-    else
-      unless (params[:estagiario].blank?)
-        inicio_mes = "#{@date.year}-#{(((@date.month).to_i) -1)}-22"
-        termino_mes ="#{@date.year}-#{((@date.month).to_i)}-21"
-        @total_trabalhado = Ponto.find_all_by_estagiario_id(params[:estagiario][:estagiario_id_equals], :conditions => ["entrada between ? and ?", inicio_mes,termino_mes], :order => "entrada")
-      end
-    end
-    carga_mes = MesBase.find_by_mes(@date.month).qtde_dias
-    @carga_base_mes = 60 * (5 * carga_mes)
-  end
-
-  def efetiva_rel_ponto
-  end
-
-  def rel_ponto
-    if params[:year].present?
-      if params[:month]
-        @date = ("#{params[:year]}-#{params[:month]}-#{Date.today.day}").to_date
-      else
-        @date =("#{params[:year]}-#{Date.today.month}-#{Date.today.day}").to_date
-      end
-      carga_mes = MesBase.find_by_mes(@date.month).qtde_dias
-      @carga_base_mes = 60 * (5 * carga_mes)
-      inicio_mes = "#{@date.year}-#{(((@date.month).to_i) -1)}-22"
-      termino_mes ="#{@date.year}-#{((@date.month).to_i)}-21"
-      @buscas = Ponto.all(:joins => "inner join estagiarios on pontos.estagiario_id=estagiarios.id",:conditions => ["estagiarios.desligado = 0 and estagiarios.flag = 0 and pontos.created_at between ? and ?", inicio_mes,termino_mes],:group => 'estagiario_id', :select => 'estagiarios.id, sum(pontos.total_trabalhado) as "total_trabalhado", estagiarios.nome' )
-    else
-      @busca_ano = Ponto.ano
-      @busca_mes = Ponto.mes
-    end
-
-  end
-
-  def periodo_trabalho
-t=0
-      @search = Estagiario.search(params[:search])
-
-    if (params[:search]).present?
-      if (params[:search][:periodo_trab_equals].present?)
-        if (params[:search][:periodo_trab_equals] == "TODOS")
-          @estagiario_periodo = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
-        else
-          @estagiario_periodo = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
-        end
-      else
-        @estagiario_periodo = "Selecione o periodo"
-      end
-   else
-      @estagiario_periodo = "Selecione o periodo"
-   end
-    render :action => 'periodo_trabalho'
-
-  end
-
-def periodo_estagio
-
-      @search = Estagiario.search(params[:search])
-    if (params[:search]).present?
-     w=params[:search][:periodo_est_equals].present?
-     t=0
-      if (params[:search][:periodo_est_equals].present?)
-        if (params[:search][:periodo_est_equals] == "TODOS")
-          @estagiario_estagio = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
-          t=0
-        else
-          #@estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
-          @estagiario_estagio =  Estagiario.find(:all, :conditions => ['desligado=? and flag = 0 and tipo =?',0, params[:search][:periodo_est_equals]], :order => :unidade_id)
-        end
-      else
-        @estagiario_estagio = "Selecione o tipo de estagio"
-      end
-   else
-      @estagiario_estagio = "Selecione o tipo de estagio"
-   end
-    render :action => 'periodo_estagio'
-
-  end
-
-def periodo_estagio
-
-      @search = Estagiario.search(params[:search])
-    if (params[:search]).present?
-     w=params[:search][:periodo_est_equals].present?
-     t=0
-      if (params[:search][:periodo_est_equals].present?)
-        if (params[:search][:periodo_est_equals] == "TODOS")
-          @estagiario_estagio = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
-          t=0
-        else
-          #@estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
-          @estagiario_estagio =  Estagiario.find(:all, :conditions => ['desligado=? and flag = 0 and tipo =?',0, params[:search][:periodo_est_equals]], :order => :unidade_id)
-        end
-      else
-        @estagiario_estagio = "Selecione o tipo de estagio"
-      end
-   else
-      @estagiario_estagio = "Selecione o tipo de estagio"
-   end
-    render :action => 'periodo_estagio'
-
-  end
-
-def periodo_unidade
-
-      @search = Estagiario.search(params[:search])
-    if (params[:search]).present?
-     params[:search][:unidade_id_equals].present?
-     if (params[:search][:unidade_id_equals].present?)
-        if (params[:search][:unidade_id_equals] == "TODOS")
-          @estagiario_unidade = Estagiario.all(:conditions => ['desligado=? and flag = 0',0], :order => :unidade_id)
-        else
-          #@estagiario_estagio = @search.paginate(:all, :conditions => ['desligado=? and flag = 0',0],:page=>params[:page],:per_page =>20, :order => :unidade_id)
-          @estagiario_unidade =  Estagiario.find(:all, :conditions => ['desligado=? and flag = 0 and unidade_id =?',0, params[:search][:unidade_id_equals]], :order => :unidade_id)
-        end
-      else
-        @estagiario_unidade = "Selecione o tipo de unidade"
-      end
-   else
-      @estagiario_unidade = "Selecione o tipo de unidade"
-   end
-    render :action => 'periodo_unidade'
-
-  end
-
-
-    protected
-
-  def load_regiaos
-      @regiaos = Regiao.find(:all)
-  end
-
-  def load_estagiariosa
-      @estagiariosa = Estagiario.find(:all, :order => 'nome ASC',:conditions => ['flag=? and desligado=?',0,0])
-      @estagios =TiposEstagio.find(:all, :select => 'nome',:order => 'nome ASC')
-
-  end
-
-
-  def load_analistas
-      @analistas = Estagiario.find(:all, :order => 'nome ASC', :conditions => ['flag=?',1])
-  end
-
-  def load_estagiarios
-      @estagiarios = Estagiario.find(:all, :order => 'nome ASC',:conditions => ['flag=? and desligado=?',0,0])
-  end
-
-  def load_unidades
-      @unidades = Unidade.find(:all, :order => 'nome ASC')
-      @unidades1 = Unidade.find(:all, :select => 'nome, id', :conditions => ['id != 9 and id != 12 and id != 65 and id != 62 and id != 71 and id != 72 and id != 75 and id != 76 and id != 79 and id != 59', ], :order => 'nome ASC')
-  end
-
 end

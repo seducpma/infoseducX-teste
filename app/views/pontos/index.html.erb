@@ -1,54 +1,64 @@
+<div id="interno6">
+    <% title "SAUDES".singularize %>
 
-<br/>
-    <table class="tabelas" width="100%"  align="center">
+        <div id="caixa_titulo">
+            <font size="3"><strong>PONTO ELETRÔNICO DE ESTAGIÁRIO</strong></font><br/>
+        </div>
+    
+    <table width="100%" bgcolor ="#E6E2D" >
+        
      <tr>
-        <th  align="left">
-           <font  size=5 color="black"> <b> PONTO ELETRÔNICO - INFORMÁTICA SEDUC </b></font>
-       </th>
-       <td width="5%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-      </tr>
-       <tr>
-         <td colspan="2" width="95%">
-           <table>
-             <tr>
-               <% form_for @search do |f| %>
-               <td>
-                 <font size="3"> Estagiário:</font>
-                 <%= f.collection_select :estagiario_id_equals, @estagiarios, :id, :nome, :include_blank => true%>
-              </td>
-              <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
-              <% end %>
-             </tr>
-          </table>
+        <td>
+            <br/>
+            <fieldset>
+            <table width="100%" >
+               <tr bgcolor="#F5F5F5">
+                    <td colspan="2" width="95%">
+                        <table width="100%">
+                            <tr>
+                                <% form_for @search do |f| %>
+                                    <td align="right">
+                                        <font size="3"> Estagiário:</font>
+                                        <%= f.collection_select :estagiario_id_equals, @estagiarios, :id, :nome, :include_blank => true%>
+                                    </td>
+                                    <td align="left"><%= submit_tag "Filtrar", :class => "btn_filtrar" %></td>
+                                <% end %>
+                            </tr>
+                        </table>
 
-         </td>
-       </tr>
-       <tr>
-         <td colspan="2">
-           <table>
-            <%= render :partial => "calendar" %>
-                <%if !@ponto.present? %>
-                  <%if !(params[:search]).nil? %>
-                      <%= button_to'Criar Ponto',:action => "new", :estagiario_id => params[:search][:estagiario_id_equals] %>
-                      <br/>
-                  <%end%>
-                <%else%>
-                 <%end%>
-                <div class="botao">
-                  <table width="100%">
-                    <tr>
-                      <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-                      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-                    </tr>
-                 </table>
-                </div>
+                    </td>
+                </tr>
+                <tr  bgcolor="#F5F5F5">
+                    <td colspan="2">
+                        <table>
+                            <%= render :partial => "calendar" %>
+                            <%if !@ponto.present? %>
+                                <%if !(params[:search]).nil? %>
+                                    <%= button_to'Criar Ponto',:action => "new", :estagiario_id => params[:search][:estagiario_id_equals] %>
+                                    <br/>
+                                <%end%>
+                            <%else%>
+                            <%end%>
+                            <table width="100%" >
+                                <tr>
+                                    <td width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                    
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </table>
+
+                    </td>
+                </tr>
             </table>
-  
-          </td>
-       </tr>
-  </table>
-  <br/>
+          </fieldset>
+            <br/>
 
+        </td>
+    </tr>
 
+</table>
+        
+    <br/>
+</div>

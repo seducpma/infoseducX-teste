@@ -1,86 +1,67 @@
-<br/>
-<table class="tabelas1" align="center" width="90%">
-     <tr>
-        <th align="left">
-           <font  size=5 color="black"> <b> SOLICITAÇÃO DE ORDEM DE SERVIÇO</b></font>
-        </th>
-        <td width="3%">
-         <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-       </td>
-       </tr>
-   <tr>
-    <td colspan="2">
-     <div class="botao">
-       <table width="100%" align="center">
-         <tr>
-         <td align="left"><b>Total de Ordem de Serviços de Manutenção Encerradas:  <%= $conta %></b></td>
-       </tr>
-     </table>
-    </div>
-     <font  size="2">
-       <table align="center" border="2" width="100%">
-         <%$conta=0%>
-         <tr>
-            <th width="1%"> Nº Ordem</th>
-            <th width="15%"> Unidade</th>
-            <th width="15%"> Solicitado</th>
-            <th width="15%"> Solicitante</th>
-            <th width="10%"> Encaminhado</th>
-            <th width="15%"> Para</th>
-            <th width="20%"> Executado</th>
-            <th width="15%"> Por</th>
-            <div class="botao">
-            <th align="center">Visualizar</th>
-            </div>
-         </tr>
-         <% for chamado in @mmanutencaos %>
-         <%if (chamado.situacao_manutencao_id == 2) then %>
-         <tr>
-           <td align="center"><%=h chamado.id %></td>
-           <td><%=h chamado.unidade.nome %></td>
-           <td><%=h chamado.data_sol.strftime("%d/%m/%Y")%></td>
-           <td><%=h chamado.user.name %></td>
-           <td><%if chamado.data_ate.nil?%>
-                   ---
-               <%else%>   
-                  <%=h chamado.data_ate.strftime("%d/%m/%Y %H:%M")%>
-               <%end%>
-           </td>
-           <td> <%if chamado.chefia.nil?%>
-                    <%=h chamado.user.login%> </td>
-                <%else%>
-                    <%=h chamado.chefia.nome %></td>
-                <%end%>
-           <td><% if  chamado.data_enc.nil?%>
-                   <%=h chamado.procedimentos %></td>
-               <%else%>
-                  <%=h chamado.procedimentos %>
-                  <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%></td>
 
-               <%end%>
-           <td>
-                    <%=h chamado.ffuncionario %></td>
-                
+<div id="interno9">
+    <% title "ENCERRADOS".singularize %>
+    <div class="tabs">
+        <div id="caixa_titulo">
+            <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+        </div>
+        
+        <table width="100%" align="center"  bgcolor="#F5F5F5" >
+            <tr bgcolor ="#E6E2D">
+                <td align="left">
+                    <font  size=4 color="black"> <b> SERVIÇOS ENCERRADOS - MANUTENÇÃO GERAL</b></font>
+                    <hr/>
+                </td>
+            </tr>
+            <tr>
+               <td align="left"><b>Total de Serviços de Manutenção Encerradas:  <%= $conta %></b></td>
+            </tr>
+            <tr>
+              <td>
+                 <table border="1" cellspacing="0" cellpadding="1" width="100%" align="center"  >
+                                <%$conta=0%>
+                                <tr  bgcolor="#DCDCDC">
+                                    <td width ="1%" align="center"><b> Proto- colo</b></td>
+                                    <td width ="4%"><b>Data Solicitação</b></td>
+                                    <td width ="4%"><b>Solicitante</b></td>
+                                    <td width ="4%"><b>Unidade</b></td>
+                                    <td width="18%"><b>Serviço Executado</b></td>
+                                    <td width ="1%"><b>Visualizar</b></td>
+                                </tr>
+                                <% for chamado in @mmanutencaos %>
 
-           <div class="botao">
-             <td align="center" colspan="1"><%= button_to("Serviço", {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir") %></td>
-           </div>
-         </tr>
-    
-        <%$conta=$conta+1%>
-        <% end %>
-        <% end %>
-      </table>
-    </font>
-   <div class="botao">
-    <table align="right">
-      <tr>
-        <td align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
-        <td align="right" ><%= button_to("Imprimir",  onclick="javascript:window.print()", :title => "Imprimir") %></td>
-      </tr>
-   </table>
+                                    <tr>
+                                        <td align="center"><%=h chamado.id %></td>
+                                        <td align="center"><%=h chamado.data_sol.strftime("%d/%m/%Y %H:%M")%></td>
+                                        <td><%=h chamado.solicitante %></td>
+                                        <td> <%=h chamado.unidade.nome %></td>
+                                        <td colspan="2">
+                                            <% if  chamado.data_enc.nil?%>
+                                                <%=h chamado.procedimentos %>
+                                            <%else%>
+                                                <%=h chamado.procedimentos %> <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%>
+                                            <%end%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td bgcolor="#DCDCDC" width ="1%" align="center" valign="top"><b>Solicitação</b></td>
+                                        <td colspan="3"> <%=h chamado.descricao %></td>
+                                        <td align="left"><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
+
+                                    </tr>
+
+                                    <%$conta=$conta+1%>
+                                <% end %>
+                            </table>
+                         <table align="left" width="100%" align="center"  >
+                              <tr>
+                                <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                            </tr>
+                        </table>
+                </td>
+            </tr>
+        </table>
   </div>
- </td>
- </tr>
-</table>
+</div>
 <br/>

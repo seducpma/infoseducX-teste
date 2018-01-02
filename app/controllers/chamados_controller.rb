@@ -1,19 +1,15 @@
 class ChamadosController < ApplicationController
-  # GET /chamados
-  # GET /chamados.xml
   layout :define_layout
-  #before_filter :login_required, :except => ["busca_protocolo", ""]
-  # require_role ["seduc","admin","escola","secretaria"], :for => :update # don't allow contractors to update
   before_filter :load_unidades
   before_filter :load_estagiarios
   before_filter :load_situacaos
   before_filter :load_tipos
 
-
    def busca_protocolo
     define_layout
     if (params[:search].present?)
        @chamados = Chamado.find(:all, :conditions => ["id = ?",  params[:search]])
+       
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -24,12 +20,8 @@ class ChamadosController < ApplicationController
   def index
     define_layout
       if (params[:search].nil? || params[:search].empty?)
-
         @chamados_totais = Chamado.all
-        #Todos chamados não encerrados
         @chamados = Chamado.nao_encerrado
-
-        #nivel de chamado técnico
         @chamados_aberto = Chamado.aberto
         @chamados_encerrado = Chamado.encerrado
         @chamados_terceiros = Chamado.terceiro
@@ -37,24 +29,11 @@ class ChamadosController < ApplicationController
         @chamados_compras = Chamado.compras
         @chamados_atendimento = Chamado.atendimento
         @chamados_externo = Chamado.externo
-
-        # Tipos de problemas
-        @chamados_internet =  @chamados.problema_internet
-        @chamados_impressora = @chamados.problema_impressora
-        @chamados_hardware = @chamados.problema_hardware
-        @chamados_software = @chamados.problema_software
-        @chamados_rede = @chamados.problema_rede
-        @chamados_so = @chamados.problema_so
-        @chamados_user = @chamados.problema_user
-        @chamados_ndefinido = @chamados.problema_nao_definido
-        @chamados_outros = @chamados.outros_problema
-        @chamados_servidor = @chamados.problema_servidor
         $var = 0
       else
         @chamados = Chamado.find(:all, :joins => :unidade, :conditions => ["unidades.nome like ?", "%" + params[:search].to_s + "%"], :order => 'situacao_chamado_id,nome DESC')
         $var = 1
       end
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @chamados }
@@ -65,8 +44,6 @@ def novo
 
 end
 
-  # GET /chamados/1
-  # GET /chamados/1.xml
   def show
    define_layout
     @chamados = Chamado.find(params[:id])
@@ -76,8 +53,6 @@ end
     end
   end
 
-  # GET /chamados/new
-  # GET /chamados/new.xml
   def new
    define_layout
     @chamados = Chamado.new
@@ -87,14 +62,11 @@ end
     end
   end
 
-  # GET /chamados/1/edit
   def edit
     define_layout
     @chamados = Chamado.find(params[:id])
   end
 
-  # POST /chamados
-  # POST /chamados.xml
   def create
     define_layout
     @chamados = Chamado.new(params[:chamado])
@@ -111,8 +83,6 @@ end
     end
   end
 
-  # PUT /chamados/1
-  # PUT /chamados/1.xml
   def update
     define_layout
     @chamados = Chamado.find(params[:id])
@@ -128,8 +98,6 @@ end
     end
   end
 
-  # DELETE /chamados/1
-  # DELETE /chamados/1.xml
   def destroy
     define_layout
     @chamados = Chamado.find(params[:id])
@@ -141,32 +109,9 @@ end
   end
 
   def ordemservico
+
     define_layout
-    @chamados = Chamado.find(params[:id])
-  end
-
-  def encerrados
-    define_layout
-
-      @chamados = Chamado.find(:all, :conditions => ['situacao_chamado_id =?',2], :order => 'data_enc DESC')
-
-      @chamadose_internet = Chamado.find(:all, :conditions => ["tipos_problema_id = 8 and situacao_chamado_id = 2"])
-      @chamadose_impressora = Chamado.find(:all, :conditions => ["tipos_problema_id = 10  and situacao_chamado_id = 2"])
-      @chamadose_hardware = Chamado.find(:all, :conditions => ["tipos_problema_id = 2 and situacao_chamado_id = 2"])
-      @chamadose_software = Chamado.find(:all, :conditions => ["tipos_problema_id = 3 and situacao_chamado_id = 2"])
-      @chamadose_rede = Chamado.find(:all, :conditions => ["tipos_problema_id = 5 and situacao_chamado_id = 2"])
-      @chamadose_so = Chamado.find(:all, :conditions => ["tipos_problema_id = 4 and situacao_chamado_id = 2"])
-      @chamadose_user = Chamado.find(:all, :conditions => ["tipos_problema_id = 7 and situacao_chamado_id = 2"])
-      @chamadose_ndefinido = Chamado.find(:all, :conditions => ["tipos_problema_id = 1 and situacao_chamado_id = 2"])
-      @chamadose_outros = Chamado.find(:all, :conditions => ["tipos_problema_id = 9 and situacao_chamado_id = 2"])
-      @chamadose_servidor = Chamado.find(:all, :conditions => ["tipos_problema_id = 6 and situacao_chamado_id = 2"])
-   
-   
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @chamados }
-    end
+    @chamados = Chamado.find_by_sql("SELECT uni.nome as nome, cha.id, cha.data_sol,  cha.solicitante, cha.unidade_id, cha.forma_sol, cha.problema, cha.data_aten, cha.estagiario_id, cha.tipos_problema_id, cha.patrimonio, cha.local, cha.procedimentos, cha.situacao_chamado_id, cha.data_enc, cha.obs, cha.email FROM chamados cha LEFT JOIN "+session[:base]+".unidades uni ON uni.id = cha.unidade_id WHERE cha.id ="+ params[:id] +" order by nome ASC")
   end
 
  def showencerrado
@@ -179,7 +124,13 @@ end
  end
 
  def selected_print
- @chamados = Chamado.find(params[:chamado_ids])
+      session[:chamados]= params[:chamado_ids]
+      @chamados = Chamado.find(params[:chamado_ids], :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = chamados.unidade_id")
+ end
+
+ def impressao_atendimento
+        @chamados = Chamado.find(session[:chamados], :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = chamados.unidade_id")
+        render :layout => "impressao"
  end
 
   def define_layout
@@ -190,6 +141,15 @@ end
     end
   end
 
+   def encerrados
+    @chamados_encerrado = Chamado.encerrado
+    if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
+        @chamados = Chamado.find_by_sql("SELECT est.nome as estagiario, uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc, mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id   INNER JOIN  estagiarios est ON mma.estagiario_id = est.id WHERE situacao_chamado_id = 2")
+    else
+       @chamados = Chamado.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc,  mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_chamado_id = 2 and unidade_id ="+(current_user.unidade_id).to_s+" order by data_enc DESC ")
+    end
+
+  end
 
  protected
   def load_tipos
@@ -207,6 +167,11 @@ end
 
   def load_unidades
     @unidades = Unidade.find(:all, :order => 'nome ASC')
+      if current_user.unidade_id == 52 or current_user.unidade_id == 53
+           @protocolos = Chamado.find(:all, :conditions =>['situacao_chamado_id != 2'], :order => 'id ASC')
+      else
+          @protocolos = Chamado.find(:all, :conditions =>['unidade_id =? AND situacao_chamado_id != 2', current_user.unidade_id], :order => 'id ASC')
+      end
   end
 
 end

@@ -1,44 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-   <title>SGI - SEDUC / PMA</title>
-   
-    <%= stylesheet_link_tag 'infoseduc','calendar' %>
-    <%= stylesheet_link_tag 'menu' %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= "SISGERED" %></title>
+    <%= stylesheet_link_tag 'application','layout.css' %>
+    <%= javascript_include_tag 'jquery-1.7','jrails','verify'  %>
 
-</head>
-<body>
+<%= stylesheet_link_tag 'geral' %>
 
-<div id="contents">
-  <div id="header">
-    <br/>
-   <div id="topo">
-      <br/><br/>  <br/><br/>
-     <table width="100%">
-       <tr><td></td> <tr><tr><td></td> <tr>
-          <td width="72%"align="left"></td>
-          <td align="right"> <h4><font   size ="2"> Americana <%= Time.now.strftime("%d de %B de %Y") %></font></h4></td>
-        </tr>
-      </table>
-<!--  <table width="100%">
-        <tr>
-          <td align="right">
-            <marquee behavior="alternate"><blink>
-            <br/><b><font size="4" color ="red"> Escolha o módulo que deseja acessar</font></b>
-            </blink></marquee>
-        </tr>
+
+    <%= yield(:head) %>
+  </head>
+
+
+ <body>
+    <div id="contents">
+      <div id="header">
         <br/>
-      </table>
---> </div>
-
-  </div>
-  <p style="color: red"><%= flash[:notice] %></p>
-  <div id="principal">
-      
-        <%= yield  %>
-  </div>
-</div>
+        <div id="topo">
+          <br/><br/><br/><br/>
+          <table  width="100%">
+            <tr>
+              <td width="71%"align="left"></td>
+              <td align="right"><br/> <h4><font   size ="2"> Americana <%= Time.now.strftime("%d de %B de %Y") %>&nbsp&nbsp&nbsp&nbsp</font></h4></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <p style="color: red"><%= flash[:notice] %></p>
+      <div id="principal2">
+            <%= yield  %>
+      </div>
+      <div id="rodape">
+        <b> © SEDUC-PMA - Secretaria de Educação da Prefeitura Municipal de Americana</b>
+      </div>
+    </div>
 </body>
 </html>

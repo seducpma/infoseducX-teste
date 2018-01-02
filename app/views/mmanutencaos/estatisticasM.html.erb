@@ -1,19 +1,25 @@
-<br/>
- <table  class="tabelas1"   align="center" width="100%">
-  <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO <%= session[:nome_manutencao]%> </b></font>
-    </th>
-    <td width="3%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-  </tr>
+<div id="interno2">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr>
+            <td align="left">
+             <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO <%= session[:nome_manutencao]%> </b></font>
+               <hr/>
+            </td>
+        </tr>
+        <br/>
+ 
   <tr>
     <td colspan="2">
       <br/>
       <font  size="2">
-        <table border="2" width="100%">
-          <tr>
+        <table border="1" cellspacing="0" cellpadding="1" width="100%" bgcolor="#F5F5F5">
+          <tr  bgcolor="#DCDCDC">
             <th width ="1%" align="center">Proto- colo</th>
             <th width ="5%">Data Solicitação</th>
             <th width ="10%">Solicitante</th>
@@ -53,7 +59,7 @@
             <%end%>
               <tr>
                 <td  colspan="12">
-                  <b>Total de Serviços de <%= session[:nome_manutencao]%> <%=session[:nome_manutencao1]%>:</b> <%= $cont %>
+                  <font color ="red" size="2" ><b>Total de Serviços de <%= session[:nome_manutencao]%> <%=session[:nome_manutencao1]%>:</b> <%= $cont %></font>
                 </td>
               </tr>
 
@@ -61,19 +67,21 @@
 
   </table>
   </font>
-    <div class="botao">
-      <table align="right">
+
+      <table align="left">
        <tr>
-          <td align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+          <td align="right"><%= button_to('Voltar', home_path, :method => "get", :title => "Voltar")%></td>
           <td align="right"><%= button_to('Imprimir',  onclick="javascript:window.print()", :title => "Imprimir")%></td>
        </tr>
        </table>
-    </div>
+
  </td>
   </tr>
 </table>
-
+</div>
+</div>
 <br/>
+
 
 
 

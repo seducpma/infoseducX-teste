@@ -1,93 +1,96 @@
+    <%  if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+       <% @unidades= Unidade.find(:all, :order => 'nome ASC') %>
+     <%  else %>
+        <% @unidades= Unidade.find(:all , :conditions => ['id = ?', current_user.unidade_id]) %>
+      <% end%>
+
+
 <% form_for(@mmanutencao) do |f| %>
-<%= f.error_messages %>
-<font  size="2">
- <table class="tabelas" width="100%" align="center" >
-   <tr>
-    <th align="left">
-       <font  size=5 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font>
-    </th>
-    <td width="5%">
-     <center><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "20x20"),  homes_path, {:method => "get"}, :title => "Fechar"%></center>
-   </td>
-   </tr>
-  <tr>
-    <td colspan="3">
-      <fieldset><legend><font size ="4"><b>Solicitação</b></font></legend>
-        <table align="center"  width="100%">
-         <tr>
-           <td colspan="2" align="right"><font size="2" color ="red"><b>* Campo com preencimento obrigatório</b></font>
-           </td>
-         </tr>
+    <%= f.error_messages %>
+    <font  size="2">
+        <table width="100%" align="center"  >
             <tr>
-              <td align="left"><b><font size="3" color ="red">*</font>Unidade:</b></td>
-              <td><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %></td>
-            </tr>
-           <tr>
-             <td align="left"> <b>Soliciante:</b></td>
-              <td><%= f.text_field :solicitante, :size => 44 %></td>
-            </tr>
-<!--
-           <tr>
-             <td colspan="2" align="left"><b>Forma Solicitação:</b> <%= f.select :forma, options_for_select(Chamado::Solicitacao), :include_blank => "---Selecione---" %> <b>Data/Hora:</b><%= Time.now.strftime("%d/%m/%Y %H:%M")%> horas</td>
-           </tr>
--->
-            <tr>
-              <td colspan="2">
-                <fieldset><legend><font size ="2"><b>Serviços:</b></font></legend>
-                   <table align="center"  width="100%">
+                <td colspan="3">
+                    <fieldset><legend><font size ="4"><b>Solicitação</b></font></legend>
+                        <table align="center"  width="100%"  bgcolor="#F5F5F5">
+                            <tr>
+                                <td align="left"><b><font size="3" color ="red">*</font>Unidades:</b></td>
+                                <td><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
+                            </tr>
+                            <tr>
+                                <td align="left"> <b>Soliciante:</b></td>
+                                <td><%= f.text_field :solicitante, :size => 60 %></td>
+                            </tr>
+                            <!--
+                                       <tr>
+                                         <td colspan="2" align="left"><b>Forma Solicitação:</b> <%= f.select :forma, options_for_select(Chamado::Solicitacao), :include_blank => "---Selecionar---" %> <b>Data/Hora:</b><%= Time.now.strftime("%d/%m/%Y %H:%M")%> horas</td>
+                                       </tr>
+                            -->
+                            <tr>
+                                <td colspan="2">
+                                    <fieldset><legend><font size ="2"><b>Serviços:</b></font></legend>
+                                        <table align="left"  width="100%">
 
-                      <% @tipos_manutencaos.in_groups_of(3, false) do |row_tipos_manutencaos| %>
-                        <tr>
-                          <% row_tipos_manutencaos.each do |tipos_manutencao| %>
-                              <td align="left"><%= radio_button_tag "mmanutencao[tipos_manutencao_ids][]", tipos_manutencao.id, @mmanutencao.tipos_manutencaos.include?(tipos_manutencao), :title => "#{tipos_manutencao.servico}"%><%= "#{tipos_manutencao.servico} " %></td>
-                          <%end%>
-                        </tr>
-                       <%end%>
+                                            <% @tipos_manutencaos.in_groups_of(3, false) do |row_tipos_manutencaos| %>
+                                                <tr>
+                                                    <% row_tipos_manutencaos.each do |tipos_manutencao| %>
+                                                        <td align="left"><%= radio_button_tag "mmanutencao[tipos_manutencao_ids][]", tipos_manutencao.id, @mmanutencao.tipos_manutencaos.include?(tipos_manutencao), :title => "#{tipos_manutencao.servico}"%><%= "#{tipos_manutencao.servico} " %></td>
+                                                    <%end%>
+                                                </tr>
+                                            <%end%>
+                                            <tr>
+                                                <td colspan="3"align="right"> <font color="red"><b>  <b><u>OBS:</u> Selecionar somente uma opção</b></td>
+                                                            </tr>
+                                                            </table>
+                                                            </fieldset>
+                                                            </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top"><b>Descrição da <br/>Solicitação:</b></td>
+                                                                <td> <%= f.text_area :descricao, :cols =>"70", :rows => "3" %></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top"><font size="2" color ="red"><b>*</b></font><b>Justificativa:</b></td>
+                                                                <td> <%= f.text_area :justificativa, :cols =>"70", :rows => "3" %></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" align="left"><font size="2" color ="red"><b><u> ATENÇÃO:</u></b></font>
+                                                                </td>
+                                                            </tr>
 
-                    </table>
-                  </fieldset>
-             </td>
-          </tr>
-          <tr>
-           <td align="left" valign="top"><b>Descrição da <br/>Solicitação:</b></td>
-           <td> <%= f.text_area :descricao, :cols =>"70", :rows => "3" %></td>
-         </tr>
-          <tr>
-           <td align="left" valign="top"><font size="2" color ="red"><b>*</b></font><b>Justificativa:</b></td>
-           <td> <%= f.text_area :justificativa, :cols =>"70", :rows => "3" %></td>
-         </tr>
-          <tr>
-           <td  colspan="2" align="left" valign="top">
-             <font color="red"><b> Favor descrever, de forma específica, todos os serviços, respectivos locais e <br/>
-             apresentar JUSTIFICATIVA (este campo é obrigatório).<br/>
-                 <u>Exemplo:</u> Trocar lampadas da sala nº 5 <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                             JUSTIFICATIVA: Lampada queimadas e as salas de aula necessitam iluminação <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                            adequada para atender as atividades desenvolvidas
+                                                            <tr>
+                                                                <td  colspan="2" align="left" valign="top">
+                                                                    <font color="red"><b> 1) <b>* Campo com preencimento obrigatório</b><br/>
+                                                                            2) Favor descrever, de forma específica, todos os serviços e respectivos locais <br/>
+                                                                            3) Preencher JUSTIFICATIVA para solicitaçõa do serviço (*campo obrigatório).<br/>
+                                                                            <u>Exemplo:</u> Trocar lampadas da sala nº 5 JUSTIFICATIVA: Lampada queimadas e as <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                                                           salas de aula necessitam iluminação adequada para atender as ativida- <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                                                           des desenvolvidas.
 
 
-           </b></td>
+                                                                        </b></td>
 
-         </tr>
+                                                            </tr>
 
 
 
 
 
-         </table>
-   </fieldset>
-        <table width="100%" align="left">
-           <tr>
-             <td align="right"><%= f.submit "Salvar" %> </td>
-<% end %>
-              <td width="2%" align="right"><%= button_to('Voltar', homes_path, :method => "get", :title => "Voltar")%></td>
+                                                            </table>
+                                                            </fieldset>
+                                                            <table width="100%" align="left" >
+                                                                <tr>
+                                                                    <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+                                                                <% end %>
+                                                                <td  align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
 
-           </tr>
-       </table>
+                                                            </tr>
+                                                        </table>
 
-    </td>
-  </tr>
-  </table>
-</font>
+                                                        </td>
+                                                        </tr>
+                                                        </table>
+                                                </font>
 
 
 
