@@ -83,8 +83,8 @@
                            </tr>
                          <tr>
                            <td align="left" > <b> Horário:</b><%= f.text_field :horario, :size => 14%></td>
-                           <td colspan="4" align="left"> <b> Período:</b><%= f.select :periodo_trab, PERIODOT, :include_blank => '---Selecionar---',  :size =>10 %>
-                           &nbsp&nbsp <b>Unidade:</b><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => ' --- Selecionar opção ---'  %></td>
+                           <td colspan="4" align="left"> <b> Período:</b><%= f.select :periodo_trab, PERIODOT, :include_blank => 'Selecionar' %>
+                           &nbsp&nbsp <b>Unidade:</b><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => 'Selecionar'  %></td>
 
                          </tr>
                          <tr>
