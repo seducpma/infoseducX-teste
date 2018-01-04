@@ -301,7 +301,7 @@ display: none;
                   </ul>
                <%end%>
               </li>
-              <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')) %>
+              <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC')) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">DOCUMENTOS</a>
                       <ul>
