@@ -815,8 +815,10 @@ def lista_unidade
 
 
  def imp_manutencao
-   t= $idmanutencao
-    @mmanutencao= Mmanutencao.find(t)
+   
+   w= session[:idprotocolo]
+   t=0
+    @mmanutencao= Mmanutencao.find(session[:idprotocolo])
    render :layout => "protocolo"
   end
 
