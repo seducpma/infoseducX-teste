@@ -4,7 +4,7 @@ after_create :geracodigo
 
 def geracodigo
     #self.codigo = [self.id-612].to_s + ("/2017")
-    self.codigo = [self.id-950].to_s + ("/2018")
+    self.codigo = [self.id-970].to_s + ("/2018")
     self.save
 
 end

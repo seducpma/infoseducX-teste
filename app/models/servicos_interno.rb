@@ -4,7 +4,7 @@ class ServicosInterno < ActiveRecord::Base
 
 def geracodigo
     #self.codigo = [self.id-782].to_s + ("/2017")
-    self.codigo = [self.id-1104].to_s + ("/2017")
+    self.codigo = [self.id-1125].to_s + ("/2017")
     self.save
 
 end

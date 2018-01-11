@@ -48,6 +48,7 @@ class OficiosController < ApplicationController
 
     def index
         @oficios = Oficio.all(:order => 'id DESC')
+
         respond_to do |format|
             format.html # index.html.erb
             format.xml  { render :xml => @oficios }
@@ -55,7 +56,8 @@ class OficiosController < ApplicationController
     end
 
     def oficios
-        @oficios = Oficio.find_by_sql("SELECT * FROM oficios WHERE year( data ) = "+(Time.now.year).to_s+" GROUP BY id DESC")
+        #@oficios = Oficio.find_by_sql("SELECT * FROM oficios WHERE year( data ) = "+(Time.now.year).to_s+" GROUP BY id DESC")
+        @oficios = Oficio.all(:order => 'id DESC')
         respond_to do |format|
             format.html # index.html.erb
             format.xml  { render :xml => @oficios }
