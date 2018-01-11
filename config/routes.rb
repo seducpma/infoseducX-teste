@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session, :informatica => :get
   map.resources :graficos
   map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
+  map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.root :controller => "home"

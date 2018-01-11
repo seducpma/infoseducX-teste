@@ -4,6 +4,10 @@ class OficiosController < ApplicationController
         render 'consulta'
     end
 
+ def oficio
+    render 'oficio'
+ end
+ 
     def consultaof
         unless params[:search].present?
             if params[:type_of].to_i == 4

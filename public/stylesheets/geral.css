@@ -561,6 +561,81 @@ margin:25px;
    border-right: double;
 
  }
+#imagem_login1{
+   background-image:url(Imagens/manutencao2.JPG);
+   background-repeat: repeat-x;
+   text-align: center;
+   color:white;
+   width:99%;
+   height:150px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+   }
+
+#imagem_login2{
+   background-image:url(Imagens/banner2.jpg);
+   background-repeat: repeat-x;
+   text-align: center;
+   color:white;
+   width:99%;
+   height:150px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+   }
+
+#imagem_login3{
+   background-image:url(Imagens/oficio.jpg);
+      background-repeat: no-repeat;
+   background-position:center;
+   text-align: center;
+   color:white;
+   width:95%;
+   height:270px;
+   margin:0;
+   font-weight:bold;
+   }
+
+   #imagem_login4{
+   background-image:url(Imagens/internos1.jpg);
+   background-repeat: repeat-x;
+   text-align: center;
+   color:white;
+   width:99%;
+   height:150px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+   }
+
+#imagem_login5{
+   background-image:url(Imagens/voto2.jpg);
+   background-repeat: repeat-x;
+   text-align: center;
+   color:white;
+   width:99%;
+   height:150px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+   }
 
  #img{
    background-image:url(Imagens/infoseduc.jpg);

@@ -36349,3 +36349,987 @@ Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:08:55) [GET]
 Rendering template within layouts/login
 Rendering sessions/new
 Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:12:35) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 78ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:12:35) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+
+ActionView::TemplateError (oficio_url failed to generate from {:action=>"show", :controller=>"oficios"} - you may have ambiguous routes, or you may need to supply additional parameters for this route.  content_url has the following required parameters: ["oficios", :id] - are they all satisfied?) on line #93 of app/views/sessions/new.html.erb:
+90:       <%= link_to image_tag("/stylesheets/Imagens/bannerinfo1.jpg", :size => "200x100"), informatica_path, :title => "Manutenção Informática"%>
+91:     </td>
+92:      <td align="center" valign="top">
+93:        <%= link_to image_tag("/stylesheets/Imagens/oficio.jpg", :size => "200x100"), oficio_path, :title => "Sisdtema de Controle de Oficios"%>
+94:      </td>
+95:      <td align="center" valign="top">
+96:        <%= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100") %>
+
+    (eval):16:in `oficio_path'
+    app/views/sessions/new.html.erb:93
+
+Rendered rescues/_trace (31.0ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:16:46) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 79ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:16:46) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+
+ActionView::TemplateError (oficio_url failed to generate from {:action=>"show", :controller=>"oficios"} - you may have ambiguous routes, or you may need to supply additional parameters for this route.  content_url has the following required parameters: ["oficios", :id] - are they all satisfied?) on line #93 of app/views/sessions/new.html.erb:
+90:       <%= link_to image_tag("/stylesheets/Imagens/bannerinfo1.jpg", :size => "200x100"), informatica_path, :title => "Manutenção Informática"%>
+91:     </td>
+92:      <td align="center" valign="top">
+93:        <%= link_to image_tag("/stylesheets/Imagens/oficio.jpg", :size => "200x100"), oficio_path, :title => "Sisdtema de Controle de Oficios"%>
+94:      </td>
+95:      <td align="center" valign="top">
+96:        <%= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100") %>
+
+    (eval):16:in `oficio_path'
+    app/views/sessions/new.html.erb:93
+
+Rendered rescues/_trace (31.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:19:17) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 7ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:19:17) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 93ms (View: 77, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:19:19) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+
+ActionController::UnknownAction (No action responded to oficio. Actions: access_denied, aviso, check_roles, create, createanterior, destroy, erro, load_cursos, new, render_optional_error_file, role_requirements, role_requirements=, and set_current_user):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:21:49) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 11ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:21:49) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:21:51) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+
+ActionController::UnknownAction (No action responded to oficio. Actions: access_denied, aviso, check_roles, create, createanterior, destroy, erro, load_cursos, new, render_optional_error_file, role_requirements, role_requirements=, and set_current_user):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:23:54) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 11ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:23:54) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 108ms (View: 94, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:23:57) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+
+ActionController::UnknownAction (No action responded to oficio. Actions: access_denied, aviso, check_roles, create, createanterior, destroy, erro, load_cursos, new, render_optional_error_file, role_requirements, role_requirements=, and set_current_user):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:25:21) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:25:21) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 39ms (View: 15, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:25:23) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+
+ActionView::TemplateError (undefined local variable or method `homes_path' for #<ActionView::Base:0x7f6db64684f0>) on line #33 of app/views/sessions/oficio.html.erb:
+30:                         
+31:                       </td>
+32:                       <td>
+33:                          <%= button_to "Sair", homes_path %>
+34:                          <br/><br/>
+35:                       </td>
+36:                     </tr>
+
+    app/views/sessions/oficio.html.erb:33
+    app/views/sessions/oficio.html.erb:16
+
+Rendered rescues/_trace (25.3ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:25:43) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 86ms (View: 72, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:25:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/Imagenzs/fundo_rodape.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:34:06) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 22ms (View: 6, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:35:09) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 17ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:35:09) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/Imagens/oficios1.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:35:09) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/Imagenzs/fundo_rodape.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:36:50) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 21ms (View: 4, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:36:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/Imagenzs/fundo_rodape.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2018-01-11 14:37:14) [POST]
+  Parameters: {"authenticity_token"=>"tz9Xp5A9ZKqmjtbIsk/Mvy2C3znvuR1fj/EhEP09C7E=", "password"=>"musand12", "login"=>"ngarcia", "commit"=>"Entrar"}
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'ngarcia' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mUser Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Redirected to http://localhost:3000/
+Completed in 19ms (DB: 1) | 302 Found [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:37:14) [GET]
+  [4;35;1mUser Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-01-11 16:37:14' AND ends_at >= '2018-01-11 16:37:14') [0m
+  [4;36;1mroles_users Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.8ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.5ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 208ms (View: 191, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/colorbox.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:15) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/msg.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:15) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-ui-timepicker-addon.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:15) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/msg.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:15) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-ui-timepicker-addon.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2018-01-11 14:37:19) [GET]
+  [4;35;1mUser Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 94ms (DB: 1) | 302 Found [http://localhost/logout]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:37:19) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:37:19) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 32ms (View: 7, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:37:26) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 17ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:37:30) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 85ms (View: 4, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:37:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/Imagenzs/fundo_rodape.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:40:31) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 30ms (View: 8, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:41:00) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 78ms (View: 60, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:41:00) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/Imagens/oficios.jpg" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:41:20) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 24ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:41:38) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 23ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:41:47) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 111ms (View: 4, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:41:54) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 24ms (View: 4, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:42:00) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 23ms (View: 5, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:42:28) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 30ms (View: 4, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:43:06) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 20ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:43:11) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 92ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:44:25) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 18ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:45:01) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 17ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:45:50) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 117ms (View: 9, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:46:08) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 17ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:48:20) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 19ms (View: 5, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:48:41) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 83ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:48:49) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 18ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:48:54) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#oficio (for 127.0.0.1 at 2018-01-11 14:51:27) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/oficio
+Completed in 80ms (View: 3, DB: 0) | 200 OK [http://localhost/oficio]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:51:31) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 25ms (View: 10, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ReservarSalasController#index (for 127.0.0.1 at 2018-01-11 14:51:33) [GET]
+  [4;35;1mSala Load (0.5ms)[0m   [0mSELECT * FROM `salas` WHERE (status = 1) ORDER BY sala ASC[0m
+  [4;36;1mServicosSala Load (0.4ms)[0m   [0;1mSELECT * FROM `servicos_salas` WHERE (status = 1) [0m
+  [4;35;1mReservarSala Load (17.5ms)[0m   [0mSELECT * FROM `reservar_salas` [0m
+Rendering template within layouts/inscricao
+Rendering reservar_salas/index
+  [4;36;1mReservarSala Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `reservar_salas`[0m
+  [4;35;1mSala Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `salas`[0m
+  [4;36;1mSala Load (0.2ms)[0m   [0;1mSELECT * FROM `salas` WHERE (`salas`.`id` = 7) [0m
+  [4;35;1mSala Load (0.2ms)[0m   [0mSELECT * FROM `salas` WHERE (`salas`.`id` = 6) [0m
+Rendered reservar_salas/_calendar (106.6ms)
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-01-11 16:51:33' AND ends_at >= '2018-01-11 16:51:33') [0m
+Completed in 247ms (View: 129, DB: 20) | 200 OK [http://localhost/reservar_salas]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:33) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:34) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/colorbox.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:34) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/msg.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:34) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-ui-timepicker-addon.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:34) [GET]
+
+ActionController::RoutingError (No route matches "/css/calendar.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:51:40) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 22ms (View: 7, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ReservarSalasController#index (for 127.0.0.1 at 2018-01-11 14:51:42) [GET]
+  [4;36;1mSala Load (0.1ms)[0m   [0;1mSELECT * FROM `salas` WHERE (status = 1) ORDER BY sala ASC[0m
+  [4;35;1mServicosSala Load (0.1ms)[0m   [0mSELECT * FROM `servicos_salas` WHERE (status = 1) [0m
+  [4;36;1mReservarSala Load (0.3ms)[0m   [0;1mSELECT * FROM `reservar_salas` [0m
+Rendering template within layouts/inscricao
+Rendering reservar_salas/index
+  [4;35;1mReservarSala Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `reservar_salas`[0m
+  [4;36;1mSala Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `salas`[0m
+  [4;35;1mSala Load (0.1ms)[0m   [0mSELECT * FROM `salas` WHERE (`salas`.`id` = 7) [0m
+  [4;36;1mSala Load (0.2ms)[0m   [0;1mSELECT * FROM `salas` WHERE (`salas`.`id` = 6) [0m
+Rendered reservar_salas/_calendar (112.4ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-01-11 16:51:42' AND ends_at >= '2018-01-11 16:51:42') [0m
+Completed in 212ms (View: 120, DB: 3) | 200 OK [http://localhost/reservar_salas]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/colorbox.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:43) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/msg.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:43) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-ui-timepicker-addon.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:51:43) [GET]
+
+ActionController::RoutingError (No route matches "/css/calendar.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:51:47) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 26ms (View: 9, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:51:48) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 24ms (View: 8, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:52:03) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:52:04) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 84ms (View: 7, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:52:05) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 22ms (View: 7, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:52:09) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 16ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:55:28) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 78ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:56:10) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+
+ActionView::TemplateError (undefined local variable or method `manutencao_path' for #<ActionView::Base:0x7f6db6662bc0>) on line #70 of app/views/sessions/new.html.erb:
+67:        <%= link_to image_tag("/stylesheets/Imagens/demanda.jpg", :size => "200x100"), "http://demanda.seducpma.com", :title => "Sistema de Demanda"%>
+68:      </td>
+69:      <td width="10%" align="center">
+70:        <%= link_to image_tag("/stylesheets/Imagens/manutencao.jpg", :size => "200x100"), manutencao_path, :title => "Manutenção"%>
+71:      </td>
+72:    </tr>
+73:    <tr>
+
+    app/views/sessions/new.html.erb:70
+
+Rendered rescues/_trace (21.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:56:26) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 90ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2018-01-11 14:56:33) [POST]
+  Parameters: {"authenticity_token"=>"jbg2rY6sJrLfUEFSVLIW+X2bxtihwcYqF6Mf/S3gTMU=", "password"=>"musnad12", "login"=>"ngarcia", "commit"=>"Entrar"}
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'ngarcia' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mUser Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/login
+Rendering sessions/erro
+Completed in 22ms (View: 5, DB: 1) | 200 OK [http://localhost/session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:56:35) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+
+ActionView::TemplateError (undefined local variable or method `manutencao_path' for #<ActionView::Base:0x7f6db64739b8>) on line #70 of app/views/sessions/new.html.erb:
+67:        <%= link_to image_tag("/stylesheets/Imagens/demanda.jpg", :size => "200x100"), "http://demanda.seducpma.com", :title => "Sistema de Demanda"%>
+68:      </td>
+69:      <td width="10%" align="center">
+70:        <%= link_to image_tag("/stylesheets/Imagens/manutencao.jpg", :size => "200x100"), manutencao_path, :title => "Manutenção"%>
+71:      </td>
+72:    </tr>
+73:    <tr>
+
+    app/views/sessions/new.html.erb:70
+
+Rendered rescues/_trace (24.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:56:38) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+
+ActionView::TemplateError (undefined local variable or method `manutencao_path' for #<ActionView::Base:0x7f6db6522fa8>) on line #70 of app/views/sessions/new.html.erb:
+67:        <%= link_to image_tag("/stylesheets/Imagens/demanda.jpg", :size => "200x100"), "http://demanda.seducpma.com", :title => "Sistema de Demanda"%>
+68:      </td>
+69:      <td width="10%" align="center">
+70:        <%= link_to image_tag("/stylesheets/Imagens/manutencao.jpg", :size => "200x100"), manutencao_path, :title => "Manutenção"%>
+71:      </td>
+72:    </tr>
+73:    <tr>
+
+    app/views/sessions/new.html.erb:70
+
+Rendered rescues/_trace (89.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-01-11 14:56:45) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 31ms (View: 12, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#informatica (for 127.0.0.1 at 2018-01-11 14:56:48) [GET]
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/informatica
+Completed in 78ms (View: 3, DB: 0) | 200 OK [http://localhost/informatica]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2018-01-11 14:56:55) [POST]
+  Parameters: {"authenticity_token"=>"jbg2rY6sJrLfUEFSVLIW+X2bxtihwcYqF6Mf/S3gTMU=", "password"=>"musand12", "login"=>"ngarcia", "commit"=>"Entrar"}
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'ngarcia' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Redirected to http://localhost:3000/
+Completed in 20ms (DB: 1) | 302 Found [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-01-11 14:56:55) [GET]
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-01-11 16:56:55' AND ends_at >= '2018-01-11 16:56:55') [0m
+  [4;36;1mroles_users Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 51ms (View: 35, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:56:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:56:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/colorbox.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:56:56) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/msg.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-01-11 14:56:56) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-ui-timepicker-addon.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
