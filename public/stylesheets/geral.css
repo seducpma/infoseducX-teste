@@ -562,19 +562,16 @@ margin:25px;
 
  }
 #imagem_login1{
-   background-image:url(Imagens/manutencao2.JPG);
-   background-repeat: repeat-x;
+   background-image:url(Imagens/manutencao.jpg);
+   background-repeat: no-repeat;
+   background-position:center;
    text-align: center;
    color:white;
-   width:99%;
-   height:150px;
+   width:95%;
+   height:270px;
    margin:0;
-   font:bold;
-   border-color:black;
-   border-left: double;
-   border-bottom: double;
-   border-top: double;
-   border-right: double;
+   font-weight:bold;
+
    }
 
 #imagem_login2{
@@ -595,7 +592,7 @@ margin:25px;
 
 #imagem_login3{
    background-image:url(Imagens/oficio.jpg);
-      background-repeat: no-repeat;
+   background-repeat: no-repeat;
    background-position:center;
    text-align: center;
    color:white;
