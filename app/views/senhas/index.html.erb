@@ -20,8 +20,9 @@
                                             <table>
                                                 <tr>
                                                     <% form_tag senhas_path, :method => 'get' do %>
-                                                        <td align="right"><font size="4"> Digite local:</font>
-                                                            <%= text_field_tag :search, params[:search] %></td>
+                                                        <td align="right"><font size="4"> Unidade:</font>
+                                                          
+<%= select_tag :search, options_for_select(@unidades.collect { |ff| [ff.nome, ff.id] }.insert(0, '--Selecionar--')) %></td>
                                                         <td align="left"><%= submit_tag "Filtrar", :class => "btn_filtrar" %></td>
                                                     <% end %>
                                                 </tr>
@@ -47,7 +48,7 @@
                                 </tr>
                                 <% for senhas in @senhas %>
                                     <tr>
-                                        <td><%=h senhas.unidade.nome %></td>
+                                        <td><%=h senhas.nome %></td>
                                         <td><%=h senhas.de %></td>
                                         <td align="center"><%=h senhas.usuario %></td>
                                         <td align="center"><%=h senhas.senha %></td>

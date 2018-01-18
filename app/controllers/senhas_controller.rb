@@ -4,15 +4,17 @@ class SenhasController < ApplicationController
 
    def load_unidades
     @unidades = Unidade.find(:all, :order => 'nome ASC')
+    
   end
 
   def index
-    
      if (params[:search].nil? || params[:search].empty?)
-      @senhas = Senha.find(:all, :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = senhas.unidade_id" , :order => 'nome ASC')
+      #@senhas = Senha.find(:all, :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = senhas.unidade_id" , :order => 'nome ASC')
+      @senhas = Senha.find_by_sql("SELECT uni.nome as nome, se.id, se.de, se.usuario, se.senha, se.fone, se.obs FROM senhas se INNER JOIN "+session[:base]+".unidades uni ON uni.id = se.unidade_id ")
       $var=0
     else
-       @senhas = Senha.find(:all, :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = senhas.unidade_id", :conditions => ["uni.nome like ?", "%" + params[:search].to_s + "%"], :order => 'nome ASC')
+       #@senhas = Senha.find(:all, :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = senhas.unidade_id", :conditions => ["uni.nome like ?", "%" + params[:search].to_s + "%"], :order => 'nome ASC')
+      @senhas = Senha.find_by_sql("SELECT uni.nome as nome, se.id, se.de, se.usuario, se.senha, se.fone, se.obs FROM senhas se INNER JOIN "+session[:base]+".unidades uni ON uni.id = se.unidade_id  WHERE se.unidade_id = "+params[:search]+"  ")
        $var=1
     end
     respond_to do |format|

@@ -8,7 +8,7 @@ class MmanutencaosController < ApplicationController
 
  def load_funcionarios
     # session[:base]= 'sisgered_development'
-   session[:base]= 'sisgered_production'
+   #session[:base]= 'sisgered_production'
    if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
       @funcionarios = Funcionario.find(:all,:conditions => ['desligado=?',0], :order => 'nome ASC' )
    else
