@@ -1,5 +1,5 @@
 
-<div id="interno9">
+<div id="interno2">
 <% title "CLASSES".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -36,7 +36,7 @@
              </tr>
              <tr>
                  
-                 <td width="3%" align="center"><%=h @mmanutencao.id %></td>
+                 <td width="3%" align="center"><%=h @mmanutencao.id %>  <%session[:idmanutencao]= @mmanutencao.id %></td>
                  <td><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y")%></td>
                  <td><%= "#{Time.now.strftime("%d/%m/%Y")}" %></td>
                  <td><%=h @mmanutencao.solicitante %></td>
@@ -97,7 +97,7 @@
 
      <tr>
       <td align="left" > <%= button_to("Fechar", home_path, :method => "get", :title => "Fechar") %></td>
-      <td align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path($idmanutencao)}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>
+      <td align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>
           
       
    </tr>

@@ -808,18 +808,14 @@ def lista_unidade
  def protocolo
     @mmanutencao = Mmanutencao.find(params[:id])
     sesssion[:idprotocolo] = @mmanutencao.id
-
     @mmanutencao= Mmanutencao.find(sesssion[:idprotocolo])
    render :layout => "protocolo"
   end
 
 
  def imp_manutencao
-   
-   w= session[:idprotocolo]
-   t=0
-    @mmanutencao= Mmanutencao.find(session[:idprotocolo])
-   render :layout => "protocolo"
+    @mmanutencao= Mmanutencao.find(session[:idmanutencao])
+   render :layout => "impressao"
   end
 
 
