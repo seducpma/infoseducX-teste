@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
       User.current = current_user
-      #session[:base]= 'sisgered_development'
-      session[:base]= 'sisgered_production'
-      #session[:baseinfo]= 'infoseduc_development'
-      session[:baseinfo]= 'infoseduc_production'
+      session[:base]= 'sisgered_development'
+      #session[:base]= 'sisgered_production'
+      session[:baseinfo]= 'infoseduc_development'
+      #session[:baseinfo]= 'infoseduc_production'
     end
   private
 
@@ -135,3 +135,5 @@ DIAS ={ '01' => '01',
        '30' => '30',
        '31' => '31'
        }
+
+UNIDADE = {'KG' => 'KG',  'UNIDADE' => 'UNIDADE', 'METROS'=>'METROS', 'LITROS' => 'LITROS'}

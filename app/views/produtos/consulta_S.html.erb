@@ -1,0 +1,50 @@
+<div id="interno5">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SAIDA PRODUTOS</strong></font><br/>
+ </div>
+      <div class="tabs">
+        <br/>
+        <table  bgcolor="#F5F5F5" width="100%"  align="center">
+          <tr>
+            <td>
+
+           <fieldset><legend><font  size=4> Produto</font></legend>
+              <table width="100% " >
+                  <tr>
+                    <td width="19%" align="left"><b>Produto:</b></td>
+                    <td> <%= collection_select :produto, :id, @produtos_cadastrados, :id, :produto, :include_blank => ' -- Selecione-- '  %>
+                            <%= observe_field 'produto_id',
+                                    :update => "produtos",
+                                    :url => { :action => 'produto_saida2' },
+                                    :with => :produto_id %>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><div id="produtos"> </div>
+                       
+                    </td>
+                  </tr>
+              </table>
+           </fieldset>
+
+          <table width="100%"  align="left">
+              <tr>
+                 <td width="6%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+             </tr>
+          </table>
+            </td>
+          </tr>
+
+         </table>
+        </font>
+        <br/>
+    </div>
+  </div>
+<br/>
+</div>
+
+
+
+

@@ -1,0 +1,21 @@
+<table width="100% "bgcolor="#DCDCDC" >
+                       <tr  >
+                         <td></td>
+                          <td align="left"><b> Produtos</b></td>
+                          <td align="center"><b> Entrada</b></td>
+                          <td align="center"><b>NF/Empenho</b></td>
+                          <td align="center"><b>Data</b></td>
+                          <td></td>
+                       </tr>
+                      <% @lancamentos_entradas.each do |lancamento| %>
+                        <tr bgcolor="#F5F5F5">
+                          <td width ="1%"><%= button_to('', {:controller =>"produtos_lancamentos", :action => "show", :id =>lancamento},:method => "get", :title => "Visualizar", :disabled => "true") %></td>
+                          <td><%=h lancamento.produto.produto %></td>
+                          <td align="center"><%=h lancamento.entrada %></td>
+                          <td><%=h lancamento.produto.nf%></td>
+                          <td align="center"><%=h lancamento.data_entrada.strftime("%d/%m/%Y") %></td>
+                          <td align="6%"><%= button_to('Visualizar', {:action => "show", :id =>lancamento},:method => "get", :title => "Visualizar") %></td>
+                       </tr>
+                      <%end%>
+</table>
+

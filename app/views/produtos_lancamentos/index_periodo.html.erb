@@ -1,0 +1,116 @@
+<div id="interno5">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>LANCAMENTOS - POR PERÍODO </strong></font><br/>
+ </div>
+      <div class="tabs">
+
+
+        <br/>
+<% form_remote_tag :url => lista_produto_periodo_index_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+        <table  bgcolor="#F5F5F5" width="100%"  align="center"  >
+           <tr>
+             <td colspan="2" align= "right"><font size="2"><b class="label_busca3">Inicial:</b></font>&nbsp
+                <%= datepicker_tag(:produtos_lancamento, :dataI,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               <font size="2"><b class="label_busca3">Final:</b></font>&nbsp
+                <%= datepicker_tag(:produtos_lancamento, :dataF,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+             </td>
+           </tr>
+           <tr>
+             <td colspan="2"><hr/></td>
+           </tr>
+           <tr>
+             <td  align="right">
+                  <b>Produto:</b></font>&nbsp <%= collection_select :produtos_lancamento, :produto_id, @produtos_cadastrados, :id, :produto, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca1"  %>
+             </td>
+             <td width ="14%" align="right">
+            <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
+          </td>
+        </tr>
+   <% end %>
+           <tr>
+             <td colspan="2"><hr/></td>
+           </tr>
+
+         <tr>
+           <td colspan="2"> <div id="lancamentos_periodo">
+                    <table width="100% "bgcolor="#DCDCDC" >
+                       <tr  >
+                          <td align="left"><b> Produto</b></td>
+                          <td align="left"><b> Entrada</b></td>
+                          <td align="center"><b>Data</b></td>
+                          <td align="center"><b> Saida</b></td>
+                          <td align="center"><b>Data</b></td>
+                          <td></td>
+                       </tr>
+                      <% @produtos_lancamentos.each do |lancamento| %>
+                        <tr bgcolor="#F5F5F5">
+                         
+                          <td><%=h lancamento.produto.produto %></td>
+                          <td align="center"><%=h lancamento.entrada %></td>
+                          <td align="center"><%if !lancamento.data_entrada.nil?%>
+                                                  <%=h lancamento.data_entrada.strftime("%d/%m/%Y") %>
+                                             <%end%>
+                          </td>
+                          <td align="center"><%=h lancamento.saida %></td>
+                          <td align="center"><%if !lancamento.data_saida.nil?%>
+                                                  <%=h lancamento.data_saida.strftime("%d/%m/%Y") %>
+                          </td>              <%end%>
+                          <td width ="6%"><%= button_to('Visualizar', {:action => "show", :id =>lancamento},:method => "get", :title => "Visualizar") %></td>
+                       </tr>
+                      <%end%>
+                       <tr  >
+                          <td align="left"><b> Produto</b></td>
+                          <td align="left"><b> Entrada</b></td>
+                          <td align="center"><b>Data</b></td>
+                          <td align="center"><b> Saida</b></td>
+                          <td align="center"><b>Data</b></td>
+                          <td></td>
+                       </tr>
+
+
+                     </table>
+                    </div>
+                </td>
+               </tr>
+
+          </table>
+        <table width="100%"  align="left">
+                   <tr>
+                     <div id='Certeza'>
+                      <td width="6%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                      </div>
+
+
+                    </tr>
+                </table>
+
+        </font>
+        <br/>
+
+
+   <br/>
+
+
+    </div>
+  </div>
+<br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

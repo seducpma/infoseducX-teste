@@ -1,0 +1,24 @@
+<h1>Listing produtos_lancamentos</h1>
+
+<table>
+  <tr>
+    <th>Produto</th>
+    <th>Entada</th>
+    <th>Saida</th>
+  </tr>
+
+<% @produtos_lancamentos.each do |produtos_lancamento| %>
+  <tr>
+    <td><%=h produtos_lancamento.produto %></td>
+    <td><%=h produtos_lancamento.entada %></td>
+    <td><%=h produtos_lancamento.saida %></td>
+    <td><%= link_to 'Show', produtos_lancamento %></td>
+    <td><%= link_to 'Edit', edit_produtos_lancamento_path(produtos_lancamento) %></td>
+    <td><%= link_to 'Destroy', produtos_lancamento, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New produtos_lancamento', new_produtos_lancamento_path %>

@@ -12,6 +12,19 @@
                 <td colspan="3">
                     <fieldset><legend><font  size=4> Solicitação</font></legend>
                         <table bgcolor="#F5F5F5">
+                          <tr>
+                            <td colspan="2"> <hr/></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><font size="3" color =" red"><b><u>ATENÇÃO:</u> Esta tela é somente para aertura de chamados de INFORMÁTICA, 
+                              para outros serviços que não sejam informática favor utilizar no menu a opção MANUTENÇÃO / GERAL / ABRIR. </font>
+                              </b>
+
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"> <hr/></td>
+                          </tr>
                             <tr>
                                 <td align="left"><b>Data Solicitação:</b></td>
                                 <td align="left"><%= f.datetime_select :data_sol, :order => [:day, :month, :year], :start_year => (Date.today.year), :value => (Time.now) %>horas</td>
@@ -32,11 +45,11 @@
                             </tr>
                             <tr>
                                 <td align="left" valign="top"><b> Descrição Problema:</b></td>
-                                <td align="left"><%= f.text_area :problema, :cols =>"60", :rows => "3" %></td>
+                                <td align="left"><%= f.text_area :problema, :cols =>"55", :rows => "3" %></td>
                             </tr>
                             <tr>
                                 <td align="left" valign="top"><b>Observação:</b></td>
-                                <td align="left"><%= f.text_area :obs, :cols =>"60", :rows => "2" %></td>
+                                <td align="left"><%= f.text_area :obs, :cols =>"55", :rows => "2" %></td>
                             </tr>
                         </table>
                     </fieldset>

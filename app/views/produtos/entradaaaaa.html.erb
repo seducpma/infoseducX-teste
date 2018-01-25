@@ -1,0 +1,131 @@
+<div id="interno5">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ENTRADA PRODUTOS</strong></font><br/>
+ </div>
+      <div class="tabs">
+        <br/>
+        <% form_for(@produto) do |f| %>
+        <%= f.error_messages %>
+        <font  size="2">
+        <table  bgcolor="#F5F5F5" width="100%"  align="center">
+           <tr>
+             <td colspan="2">
+               <fieldset><legend><font  size=4> Produto:</font></legend>
+                 <table width="100% " >
+                    <tr>
+                      <td width ="10%" align="left"><b>Produto:</b></td>
+                      <td><%= f.collection_select :produto, @produtos_cadastrados, :produto, :produto, :include_blank => ' -- Selecione -- ' %>
+                               <%= observe_field 'pruduto_produto',
+                                    :with => :pruduto_produto,
+                                    :url => { :action => 'produtos_cadastradosa' },
+                                    :update => "alunos" %>
+                       </td>
+                      <td align="left"><%= f.text_field :produto, :size => 50%></td>
+                    </tr>
+                   <tr>
+                      <td align="left"><b> Fornecedor:</b></td>
+                      <td align="left"><%= f.text_field :fornecedor, :size => 50%></td>
+                   </tr>
+                   <tr>
+                      <td align="left"><b> NF/Empenho:</b></td>
+                      <td align="left"><%= f.text_field :nf, :size => 50 %></td>
+                   </tr>
+                   <tr>
+                      <td align="left"><b>Complemento:</b></td>
+                      <td align="left" ><%= f.text_field :complemento, :size =>50 %></td>
+                   </tr>
+                   <tr>
+                       <td align="left"><b>Quantidade:</b></td>
+                       <td align="left"><b>Entrada:</b> <%= f.text_field :entrada, :size =>5 %><%= f.select :unidade, UNIDADE, :include_blank => ' ',  :size =>10 %>  </td>
+                   </tr>
+                   <tr>
+                      <td align="left"><b>Observação:</b></td>
+                      <td align="left" ><%= f.text_field :obs, :size =>49 %></td>
+                   </tr>
+                 </table>
+               </fieldset>
+
+                  <table width="100%"  align="left">
+                   <tr>
+                     <div id='Certeza'>
+                      <td width="6%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                      </div>
+                      <td align="left"><%= f.submit "Salvar", :class => "btn_filtrar" %></td>
+        <% end %>
+                    </tr>
+                </table>
+
+            </td>
+           </tr>
+          </table>
+        </font>
+        <br/>
+
+
+
+
+
+    </div>
+  </div>
+<br/>
+</div>
+
+
+
+
+
+
+
+<br/>
+<table  class="tabelas" width="50%" align="center">
+  <tr>
+    <td colspan="2" align="left">
+        <font  size=5><b> ENTRADA PRODUTOS</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     <% form_for(@estoques) do |f| %>
+     <%= f.error_messages %>
+     <font  size="2">
+      <fieldset><legend><font  size=4> Produto</font></legend>
+     <table width="100%" align="center">
+        <tr>
+          <td>
+             <table>
+               <tr>
+                  <td align="left"><b>Produto:</b></td>
+                  <td align="left"><%= f.collection_select :componente_id, @componentes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+                </tr>
+                <tr>
+                   <td align="left"><b>Especificação:</b></td>
+                   <td align="left"><%= f.text_field :especifica %></td>
+                </tr>
+                <tr>
+
+                   <td valign="top"align="left"><b>Observação:</b></td>
+                  <td align="left"><%= f.text_area :obs, :cols =>39, :rows => "2" %></td>
+                </tr>
+             </table>
+         </td>
+        </tr>
+   </table>
+  </fieldset>
+  <table>
+    <tr>
+      <div id='Certeza'>
+        <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+       </div>
+       <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+          <% end %>
+   </tr>
+  </table>
+</font>
+</td>
+</tr>
+</table>
+<br/>
+
+

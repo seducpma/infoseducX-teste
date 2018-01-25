@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :produtos
+  map.resources :produtos_lancamentos
   map.resources :agendas
   map.resources :reservar_salas, :collection => {:confirma_agenda => :get}
   map.resources :reservar_salas_servicos_salas
@@ -51,6 +53,16 @@ ActionController::Routing::Routes.draw do |map|
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.aviso_password '/aviso_password', :controller => 'sessions', :action => 'aviso'
 
+
+
+  map.lista_produto_periodo_index '/lista_produto_periodo_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_periodo_index'
+  map.lista_produto_entrada_index '/lista_produto_entrada_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_entrada_index'
+  map.lista_produto_saida_index '/lista_produto_saida_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_saida_index'
+  map.index_periodo '/index_periodo', :controller => 'produtos_lancamentos', :action => 'index_periodo'
+  map.index_entrada '/index_entrada', :controller => 'produtos_lancamentos', :action => 'index_entrada'
+  map.index_saida '/index_saida', :controller => 'produtos_lancamentos', :action => 'index_saida'
+  map.new_entrada '/new_entrada', :controller => 'produtos_lancamentos', :action => 'new_entrada'
+  map.new_saida '/new_saida', :controller => 'produtos_lancamentos', :action => 'new_saida'
   map.lista_inscricaos '/lista_inscricaos', :controller => 'inscricaos', :action => 'lista_inscricaos'
   map.encerrados '/cencerrados', :controller => 'chamados', :action => 'encerrados'
   map.sem_estagiario '/sem_estagiario', :controller => 'unidades', :action => 'sem_estagiarios'
@@ -95,6 +107,8 @@ ActionController::Routing::Routes.draw do |map|
   map.editar_atribuicao_classe '/editar_atribuicao_classe', :controller => 'atribuicaos', :action => 'editar_atribuicao_classe'
   map.show_editar '/show_editar', :controller => 'atribuicaos', :action => 'show_editar'
 
+  map.consulta_E '/consulta_E', :controller => 'produtos', :action => 'consulta_E'
+  map.consulta_S '/consulta_S', :controller => 'produtos', :action => 'consulta_S'
   map.consulta_professor_eventual '/consulta_professor_eventual', :controller => 'eventuals', :action => 'consultas'
   map.consulta_unidade '/consulta_unidade', :controller => 'unidades', :action => 'consulta_unidade'
   map.consulta_estagiario '/consulta_estagiario', :controller => 'estagiarios', :action => 'consulta_estagiario'
