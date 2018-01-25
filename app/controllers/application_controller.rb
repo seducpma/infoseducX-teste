@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       #session[:base]= 'sisgered_development'
       session[:base]= 'sisgered_production'
       #session[:baseinfo]= 'infoseduc_development'
-      session[:baseinfo]= 'infoseduc_production'
+  session[:baseinfo]= 'infoseduc_production'
     end
   private
 
