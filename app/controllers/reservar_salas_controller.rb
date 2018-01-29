@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
+before_filter :login_required, :except => ["dowloads", "infantil_2018", "fudamental_2018", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -132,5 +132,18 @@ end
      session[:reservadata]= params[:reservar_sala_data_reserva]
  end
 
+
+def dowloads
+    
+end
+
+def infantil_2018
+    send_file("#{RAILS_ROOT}/public/documentos/Infantil_2018.pdf" , :type=>"pdf")
+end
+
+def fudamental_2018
+  t=0
+    send_file("#{RAILS_ROOT}/public/documentos/Fundamental_2018.pdf" , :type=>"pdf")
+end
 
 end
