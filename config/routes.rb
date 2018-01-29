@@ -145,7 +145,8 @@ ActionController::Routing::Routes.draw do |map|
 
 
 
-
+  map.banco_horas '/banco_horas', :controller => 'reservar_salas', :action => 'banco_horas'
+  map.plano_educacao '/plano_educacao', :controller => 'reservar_salas', :action => 'plano_educacao'
   map.fudamental_2018 '/fudamental_2018', :controller => 'reservar_salas', :action => 'fudamental_2018'
   map.infantil_2018 '/infantil_2018', :controller => 'reservar_salas', :action => 'infantil_2018'
   map.dowloads '/dowloads', :controller => 'reservar_salas', :action => 'dowloads'
