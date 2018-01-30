@@ -818,6 +818,10 @@ def lista_unidade
    render :layout => "impressao"
   end
 
+ def imp_show
+    @mmanutencao= Mmanutencao.find(session[:idmanutencao])
+   render :layout => "impressao"
+  end
 
    def encerrados
     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')

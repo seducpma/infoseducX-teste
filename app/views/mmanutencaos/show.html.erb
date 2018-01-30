@@ -215,13 +215,14 @@
                         
                        </table>
                         
-                         <table align="left">
+                        <table align="left" width="100%">
                           <tr>
                             <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') %>
                               <td align="left"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_mmanutencao_path(@mmanutencao), :title => "Alterar"%></td>
                             <%end%>
                               
+                              <td align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_show_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>
                           </tr>
                         </table>
                         

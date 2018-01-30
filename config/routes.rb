@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
   map.resources :aulas_faltas, :collection => { :relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
-  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
+  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:imp_show => :get ,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
   map.resources :mmanutencaos_tipos_manutencaos
   map.resources :justificativas
   map.resources :pontos
