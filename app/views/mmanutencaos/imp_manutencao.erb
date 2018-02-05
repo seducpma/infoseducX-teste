@@ -37,6 +37,21 @@
                        <td><%=h @mmanutencao.solicitante %></td>
                        <td><%=h @mmanutencao.unidade.nome %></td>
                      </tr>
+               <tr>
+                  <td> Endereço:</font></td>
+                  <td colspan="4">
+                      <%=h @mmanutencao.unidade.endereco%>,
+                      <%=h @mmanutencao.unidade.num %> -
+
+                      <%=h @mmanutencao.unidade.bairro%> -
+                      <b>Fone:</b> <%=h @mmanutencao.unidade.fone%></font></td>
+                 </tr>
+                   <tr>
+                     <td><b>Problema</b></font></td>
+                      <td colspan="4" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                              <%=h servico.servico%>:
+                             <% end %> - <%=h @mmanutencao.descricao %><br/></font><br/></td>
+                   </tr>
                      <tr>
                         <th colspan="2" ><font size="4"><b>Problema</b></font></th>
                         <td colspan="4" align="left"><font size="3"> &nbsp&nbsp <%=h @mmanutencao.descricao %> </font><br/></td>
