@@ -39,7 +39,7 @@
                      </tr>
                <tr>
                   <td> Endereço:</font></td>
-                  <td colspan="4">
+                  <td colspan="6">
                       <%=h @mmanutencao.unidade.endereco%>,
                       <%=h @mmanutencao.unidade.num %> -
 
@@ -48,7 +48,7 @@
                  </tr>
                    <tr>
                      <td><b>Problema</b></font></td>
-                      <td colspan="4" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                      <td colspan="6" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
                               <%=h servico.servico%>:
                              <% end %> - <%=h @mmanutencao.descricao %><br/></font><br/></td>
                    </tr>
