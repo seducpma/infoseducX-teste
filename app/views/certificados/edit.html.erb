@@ -1,0 +1,20 @@
+<h1>Editing certificado</h1>
+
+<% form_for(@certificado) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :inscricao %><br />
+    <%= f.text_field :inscricao %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @certificado %> |
+<%= link_to 'Back', certificados_path %>

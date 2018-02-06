@@ -76,9 +76,9 @@ class PontosController < ApplicationController
 
   def load_estagiarios
     if  current_user.unidade_id == 52
-       @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0"], :order => 'nome ASC')
+       @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0 and tipo = 'INFORMÁTICA'"], :order => 'nome ASC')
     else
-        @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0 and unidade_id = ?", current_user.unidade_id], :order => 'nome ASC')
+        @estagiarios = Estagiario.find(:all, :conditions =>  ["desligado=0 and flag = 0 and tipo = 'INFORMÁTICA' and unidade_id = ?", current_user.unidade_id], :order => 'nome ASC')
     end
 
   end

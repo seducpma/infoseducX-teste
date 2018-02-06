@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     t=@user.login
     t1= @user.unidade_id
-    t2= @user.professor_id
+    
 
     success = @user && @user.save
     if success && @user.errors.empty?

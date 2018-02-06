@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170912154213) do
+ActiveRecord::Schema.define(:version => 20180206121329) do
 
   create_table "acompanhamento_despachos", :force => true do |t|
     t.integer  "acompanhamento_id"
@@ -88,13 +88,31 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.integer  "unidade_id"
   end
 
+  create_table "aulas_eventuals", :force => true do |t|
+    t.integer  "eventual_id"
+    t.integer  "unidade_id"
+    t.integer  "aulas_falta_id"
+    t.integer  "classe_id"
+    t.string   "categoria",      :limit => 20
+    t.string   "periodo"
+    t.integer  "ano_letivo"
+    t.date     "data"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "aulas_faltas", :force => true do |t|
     t.integer  "professor_id"
     t.integer  "funcionario_id"
     t.integer  "unidade_id"
     t.string   "funcao"
-    t.string   "periodo"
+    t.string   "setor",          :limit => 20
+    t.string   "classe",         :limit => 10
+    t.string   "periodo",        :limit => 30
+    t.string   "tipo",           :limit => 20
     t.date     "data"
+    t.integer  "ano_letivo"
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -116,6 +134,13 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.string   "executado"
   end
 
+  create_table "certificados", :force => true do |t|
+    t.integer  "inscricao"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "chamados", :force => true do |t|
     t.datetime "data_sol"
     t.string   "solicitante"
@@ -134,19 +159,6 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-  end
-
-  create_table "chats", :force => true do |t|
-    t.string   "nome"
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  create_table "chats_users", :id => false, :force => true do |t|
-    t.integer "chat_id", :null => false
-    t.integer "user_id", :null => false
   end
 
   create_table "chefias", :force => true do |t|
@@ -379,6 +391,7 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
   end
 
   create_table "estagiarios", :force => true do |t|
+    t.integer  "matricula_pma"
     t.integer  "unidade_id"
     t.integer  "regiao_id"
     t.string   "nome"
@@ -543,31 +556,6 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.boolean  "fimsemana"
   end
 
-  create_table "manutencaos", :force => true do |t|
-    t.integer  "unidade_id",                            :null => false
-    t.integer  "situacao_manutencao_id", :default => 1
-    t.integer  "funcionario_id"
-    t.string   "ffuncionario"
-    t.integer  "chefia_id"
-    t.integer  "user_id"
-    t.string   "descricao"
-    t.datetime "data_sol"
-    t.datetime "data_ate"
-    t.datetime "data_enc"
-    t.string   "forma"
-    t.string   "solicitante"
-    t.string   "procedimentos"
-    t.string   "executado"
-    t.string   "obs"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "manutencaos_tipos_manutencaos", :id => false, :force => true do |t|
-    t.integer "tipos_manutencao_id", :null => false
-    t.integer "manutencao_id",       :null => false
-  end
-
   create_table "mes_bases", :force => true do |t|
     t.date     "data"
     t.integer  "mes"
@@ -661,32 +649,6 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.boolean  "desligado",         :default => true, :null => false
   end
 
-  create_table "participantessss", :force => true do |t|
-    t.string   "nome"
-    t.string   "matricula"
-    t.integer  "unidade_id"
-    t.integer  "professor_id"
-    t.integer  "funcionario_id"
-    t.string   "funcao"
-    t.string   "endereco"
-    t.string   "num"
-    t.string   "complemento"
-    t.string   "bairro"
-    t.string   "cidade"
-    t.string   "telefone"
-    t.string   "cel"
-    t.string   "email"
-    t.string   "obs"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "tipo_participante"
-    t.string   "profissao"
-    t.string   "CEP"
-    t.string   "rg"
-    t.string   "cpf"
-    t.boolean  "desligado",         :default => true, :null => false
-  end
-
   create_table "pontos", :force => true do |t|
     t.integer  "estagiario_id"
     t.datetime "entrada"
@@ -707,6 +669,37 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.string   "destino"
     t.integer  "encerrado",         :default => 0
     t.datetime "data_encerramento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "produtos", :force => true do |t|
+    t.string   "produto"
+    t.string   "fornecedor"
+    t.integer  "estoque",      :limit => 10,  :precision => 10, :scale => 0, :default => 0
+    t.string   "unidade"
+    t.datetime "data_entrada"
+    t.datetime "data_saida"
+    t.string   "nf"
+    t.string   "complemento"
+    t.string   "funcionario"
+    t.string   "destino",      :limit => 200
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "produtos_lancamentos", :force => true do |t|
+    t.integer  "produto_id",                                                                 :null => false
+    t.integer  "entrada",       :limit => 10,  :precision => 10, :scale => 0, :default => 0
+    t.integer  "saida",         :limit => 10,  :precision => 10, :scale => 0, :default => 0
+    t.date     "data_entrada"
+    t.date     "data_saida"
+    t.string   "nf"
+    t.string   "complemento"
+    t.string   "funcionario_e"
+    t.string   "destino",       :limit => 200
+    t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -902,7 +895,7 @@ ActiveRecord::Schema.define(:version => 20170912154213) do
     t.datetime "updated_at"
   end
 
-  create_table "unidadessss", :force => true do |t|
+  create_table "unidades", :force => true do |t|
     t.integer  "tipo_id",                    :null => false
     t.integer  "regiao_id"
     t.string   "nome"

@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :certificados, :collection => {:aviso => :get}
   map.resources :produtos
   map.resources :produtos_lancamentos
   map.resources :agendas
