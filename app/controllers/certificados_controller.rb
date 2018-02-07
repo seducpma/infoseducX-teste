@@ -3,6 +3,16 @@ class CertificadosController < ApplicationController
   # GET /certificados.xml
   #before_filter :login_required, :except => ["aviso", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
   layout :define
+   before_filter :load_iniciais
+
+
+  def load_iniciais
+
+            @cursos = Curso.find(:all, :order => 'nome ASC')
+
+    end
+
+
   def index
     @certificados = Certificado.all
 

@@ -54,46 +54,6 @@
                         </tr>
               </table>
 
-                 <table align="center" width="100%" >
-
-          <!--
-              <tr><td>&nbsp&nbsp<b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b></td></tr>
-          -->
-                <tr>
-                  <td colspan="3"><font size="2">
-                      <center><font size ="5"color="red"><b><u>CURSOS DISPONÍVEIS</u></b></font></center><br/>
-                  </td>
-               </tr>
-               <% for curso in @cursos %>
-                  <%if curso.vagas_disponiveis > 0 %>
-                       <tr><td width =" 10%"></td>
-                         <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font> &nbsp - &nbsp <font size ="3"color="red"><b>Vagas disponíveis:</b> <%=h curso.vagas_disponiveis%></font><br/>
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u></u> <%=h curso.ministrante %><br/>
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> <%=h curso.publico %><br/>
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias <%=h curso.datas %> &nbsp - &nbsp <u>Carga Horária: <%=h curso.carga_horaria%> </u><br/>
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> <%=h curso.horario %><br/>
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> <%=h curso.local %><br/>
-
-                   ---------------------------------------------------------------------------------------------------------------
-                         </td>
-                       </tr>
-                      <%end%>
-               <%end%>
-              <!--
-                <tr>
-                  <td colspan="2" align="center"><b><u>OBS:</u></b>  Entrada Gratuita - condicionada a apresentação de holerite recente. </td>
-               </tr>-->
-
-              <tr>
-                <td colspan="2" align="left"><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                   <font size="3"><b>Curso: <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' %> </font>    </b>
-                   <br/><br/>
-                </td>
-              </tr>
-
-
-
-             </table>
 
           </fieldset>
 
@@ -150,10 +110,7 @@
 <% form_for(@certificado) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :inscricao %><br />
-    <%= f.text_field :inscricao %>
-  </p>
+
   <p>
     <%= f.label :obs %><br />
     <%= f.text_field :obs %>
