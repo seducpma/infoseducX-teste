@@ -11,47 +11,37 @@
            <table width="100%" align="center"  bgcolor="#F5F5F5" >
              <tr   bgcolor ="#E6E2D">
                   <th align="center">
-                     <font  size=5 color="black">  <b> CADASTRO DE INSCRIÇÃO </b></font>
+                     <font  size=5 color="black">  <b> SOLICITAÇÃO DE CERTIFICADOS</b></font>
                   </th>
                 </tr>
             <tr>
             <td colspan="2">
              <fieldset><legend><font size ="4"><b></b></font></legend>
                  <table width="100%" >
-                       <tr>
+<!--                       <tr>
                            <td colspan="2" align="center"><font  size=5 color="RED"> <b><u> FAVOR LER ATENTAMENTE TODAS AS INSTRUÇÕES ANTES DE EFETUAR SUA INSCRIÇÃO</b></u></font><br/></td>
                         </tr>
+-->
                         <tr>
-                            <td colspan="2" ><br/></td>
-                        </tr>
-                        <tr>
-                          <td  colspan="2" align="center"> <font size ="3"><br/><b>Curso / Palestra:</b> </b>
-                             <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecionar seu nome -- ' %>
-                                       <%= observe_field  :cetificado_curso_id,
-                                          :with => :cetificado_curso_id,
-                                          :url => { :action => 'sel_participante' } %>
+                          <td  align="left"><br/>&nbsp <b>Curso / Palestra:</b> </td>
+                          <td>   <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecionar seu nome -- ' %>
+                                       <%= observe_field  :certificado_curso_id,
+                                          :with => :certificado_curso_id,
+                                          :url => { :action => 'curso_participantes' },
+                                                     :update => "participantes" %>
                               </font></td>
                          </tr>
-                        <tr><td colspan="2"><br/></td></tr>
-
-
-                         <tr>
-                             <td valign="middle"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><font color ="red" <u>ATENÇÃO:</u> SE SEU NOME NÃO CONSTAR NA LISTA ACIMA FAVOR CADASTRAR.</b>  ==============></td>
-                             <td valign="bottom"><%= link_to image_tag("/stylesheets/images/participante.png", :size => "180x30"), new_participante_path, :title => "Cadastrar Participante" %> </b></td>
-                         </tr>
-                        <tr><td></td>
-                          <td colspan="4">
-                           <%if @participante.present?%>
-                            Matricula: <%=h @participante.matricula %><br/>
-                            Nome:<%=h @participante.nome %><br/>
-                            Cidade:<%=h @participante.cidade %><br/>
-                            Email:<%=h @participante.email %><br/>
-                              Observações: <%=h @participante.obs %><br/>
-                          <%else%>
-                            <div id="informacoes"></div>
-                          <%end%>
+                        <tr>
+                          <td colspan="2" align="left">
+                            <table>
+                              <div id="participantes"> <font color="red">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b><u>ATENÇÃO:</u>  &nbsp&nbsp&nbsp Após selecionar o curso aguarde até o sistema retornar os participantes</b></font> </div>
+                           </table>
                           </td>
                         </tr>
+                        <tr><td  valign="top"><b>Observações:</b></td>
+                            <td><%= f.text_area(:obs, :cols =>"80", :rows => "3") %></td>
+                      </tr>
+                       <tr><td colspan="2"><div id="jaemitido"> </div><br/></td></tr>
               </table>
 
 
@@ -63,9 +53,8 @@
                          <!--
                          <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÂO <b></font></td>
                          -->
-                         <td align="right">   <%= f.submit "INSCREVER" %></td>
+                         <td align="right">   <%= f.submit "SOLICITAR CERTIFICADO" %></td>
                 <% end %>
-                         <td width="2%" align="right"><%= button_to(' CONSULTA INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
                          <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                      </tr>
                  </table>
@@ -74,50 +63,9 @@
             </tr>
             </table>
           </font>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </div>
 <br/>
 
 </font>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<h1>New certificado</h1>
-
-<% form_for(@certificado) do |f| %>
-  <%= f.error_messages %>
-
-
-  <p>
-    <%= f.label :obs %><br />
-    <%= f.text_field :obs %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', certificados_path %>

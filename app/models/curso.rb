@@ -2,6 +2,7 @@ class Curso < ActiveRecord::Base
   has_many :unidades
   has_many :participantes
   has_many :inscricaos
+  belongs_to :curso
    validates_presence_of :nome, :message => ' ==> PREENCHER DE DADOS OBRIGATÓRIO <=='
    validates_presence_of :ministrante, :message => ' ==> PREENCHER DE DADOS OBRIGATÓRIO <=='
 

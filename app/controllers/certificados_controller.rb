@@ -65,16 +65,24 @@ end
   # POST /certificados.xml
   def create
     @certificado = Certificado.new(params[:certificado])
-
-    respond_to do |format|
-      if @certificado.save
-        flash[:notice] = 'Certificado was successfully created.'
-        format.html { redirect_to(@certificado) }
-        format.xml  { render :xml => @certificado, :status => :created, :location => @certificado }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @certificado.errors, :status => :unprocessable_entity }
-      end
+    @certificado.participante_id= params[:certificado][:participante_id]
+    @inscricao = Inscricao.find(:all, :conditions =>['participante_id =? and curso_id =?', @certificado.participante_id, @certificado.curso_id ])
+    w=@inscricao[0].id
+    if  @inscricao[0].certificado == 1
+          render  'ja_emitido'
+    else
+       respond_to do |format|
+         @inscricao[0].certificado = 1
+          @inscricao[0].save
+          if @certificado.save
+            flash[:notice] = 'CERTIFICADO SOLICITADO.'
+            format.html { redirect_to(@certificado) }
+            format.xml  { render :xml => @certificado, :status => :created, :location => @certificado }
+          else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @certificado.errors, :status => :unprocessable_entity }
+          end
+        end
     end
   end
 
@@ -106,4 +114,11 @@ end
       format.xml  { head :ok }
     end
   end
+
+    def curso_participantes
+        @participantes = Inscricao.find(:all, :select => "inscricaos.certificado, inscricaos.id, inscricaos.participante_id, inscricaos.curso_id, par.unidade_id,  par.funcao, uni.nome as uni_nome, par.nome as par_nome, cur.nome , par.id as par_id", :joins => "LEFT JOIN cursos cur ON cur.id = inscricaos.curso_id LEFT JOIN participantes par ON par.id = inscricaos.participante_id   LEFT JOIN "+session[:base]+".unidades uni ON uni.id = par.unidade_id  and inscricaos.participou = 1", :conditions => ['inscricaos.curso_id=? ', params[:certificado_curso_id]], :order => "par_nome ASC")
+        render :partial => 'selecao_participante'
+    end
+
+
 end

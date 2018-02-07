@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(:version => 20180206121329) do
   end
 
   create_table "certificados", :force => true do |t|
-    t.integer  "inscricao"
+    t.integer  "inscricao_id"
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
