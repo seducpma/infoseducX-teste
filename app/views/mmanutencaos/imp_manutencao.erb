@@ -47,15 +47,15 @@
                       <b>Fone:</b> <%=h @mmanutencao.unidade.fone%></font></td>
                  </tr>
                    <tr>
-                     <td colspan="2"><b>Problema</b></font></td>
+                     <td align="center"colspan="2"><b>Problema</b></font></td>
                       <td colspan="4" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
                               <%=h servico.servico%>:
-                             <% end %> - <%=h @mmanutencao.descricao %><br/></font><br/></td>
+                             <% end %> - <%=h @mmanutencao.descricao %><br/></font>
+                      <br/>
+
+
+                      </td>
                    </tr>
-                     <tr>
-                        <th colspan="2" ><font size="4"><b>Problema</b></font></th>
-                        <td colspan="4" align="left"><font size="3"> &nbsp&nbsp <%=h @mmanutencao.descricao %> </font><br/></td>
-                     </tr>
                      <tr>
                        <th colspan="2"><font size="4"><br/><b>Procedimento à realizar</b><br/></font></th>
                        <td colspan="4" align="left"><font size="3"><%=h @mmanutencao.procedimentos %>
