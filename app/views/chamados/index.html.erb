@@ -51,8 +51,12 @@
                                         <td><font color="red"><%=h chamado.situacao_chamado.situacao %></font></td>
                                     <%else if chamado.situacao_chamado_id == 6%>
                                             <td><font color="green"><%=h chamado.situacao_chamado.situacao %></font></td>
-                                        <%else%>
-                                            <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                        <%else if chamado.situacao_chamado_id == 2%>
+                                               <td><font color="blue"><%=h chamado.situacao_chamado.situacao %></font></td>
+                                              <%else%>
+                                                  <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                            <%end%>
+
                                         <%end%>
                                     <%end%>
                                 </tr>
@@ -151,8 +155,12 @@
                                         <td><font color="red"><%=h chamado.situacao_chamado.situacao %></font></td>
                                     <%else if chamado.situacao_chamado_id == 6%>
                                             <td><font color="green"><%=h chamado.situacao_chamado.situacao %></font></td>
-                                        <%else%>
-                                            <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                        <%else if chamado.situacao_chamado_id == 2%>
+                                               <td><font color="blue"><%=h chamado.situacao_chamado.situacao %></font></td>
+                                              <%else%>
+                                                  <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                            <%end%>
+
                                         <%end%>
                                     <%end%>
                                     <% if current_user.has_role?('admin') %>

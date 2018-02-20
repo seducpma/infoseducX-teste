@@ -144,9 +144,9 @@ end
    def encerrados
     @chamados_encerrado = Chamado.encerrado
     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
-        @chamados = Chamado.find_by_sql("SELECT est.nome as estagiario, uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc, mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id   INNER JOIN  estagiarios est ON mma.estagiario_id = est.id WHERE situacao_chamado_id = 2")
+        @chamados = Chamado.find_by_sql("SELECT est.nome as estagiario, uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc, mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id   INNER JOIN  estagiarios est ON mma.estagiario_id = est.id WHERE situacao_chamado_id = 12")
     else
-       @chamados = Chamado.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc,  mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_chamado_id = 2 and unidade_id ="+(current_user.unidade_id).to_s+" order by data_enc DESC ")
+       @chamados = Chamado.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc,  mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_chamado_id = 12 and unidade_id ="+(current_user.unidade_id).to_s+" order by data_enc DESC ")
     end
 
   end
@@ -168,9 +168,9 @@ end
   def load_unidades
     @unidades = Unidade.find(:all, :order => 'nome ASC')
       if current_user.unidade_id == 52 or current_user.unidade_id == 53
-           @protocolos = Chamado.find(:all, :conditions =>['situacao_chamado_id != 2'], :order => 'id ASC')
+           @protocolos = Chamado.find(:all, :conditions =>['situacao_chamado_id != 12'], :order => 'id ASC')
       else
-          @protocolos = Chamado.find(:all, :conditions =>['unidade_id =? AND situacao_chamado_id != 2', current_user.unidade_id], :order => 'id ASC')
+          @protocolos = Chamado.find(:all, :conditions =>['unidade_id =? AND situacao_chamado_id != 12', current_user.unidade_id], :order => 'id ASC')
       end
   end
 

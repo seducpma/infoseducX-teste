@@ -7,9 +7,9 @@ class Chamado < ActiveRecord::Base
 
 
   #nivel de chamado técnico
-  named_scope :nao_encerrado, :conditions => ["situacao_chamado_id != 2"], :order => "situacao_chamado_id,data_sol DESC"
+  named_scope :nao_encerrado, :conditions => ["situacao_chamado_id != 12"], :order => "situacao_chamado_id,data_sol DESC"
   named_scope :aberto, :conditions => ["situacao_chamado_id = 1"], :order => "data_sol DESC"
-  named_scope :encerrado, :conditions => ["situacao_chamado_id = 2"]
+  named_scope :encerrado, :conditions => ["situacao_chamado_id = 12"]
   named_scope :compras, :conditions => ["situacao_chamado_id = 3"]
   named_scope :motorista, :conditions => ["situacao_chamado_id = 4"]
   named_scope :terceiro, :conditions => ["situacao_chamado_id = 5"]

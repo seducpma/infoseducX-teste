@@ -33,7 +33,7 @@
                                 <th width="1%"></th>
                             </tr>
                             <% for chamado in @chamados %>
-                                <%if (chamado.situacao_chamado_id == 2) then %>
+                                <%if (chamado.situacao_chamado_id == 12) then %>
                                     <tr>
                                         <td align="center"><%=h chamado.id %></td>
                                         <td align="center"><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
