@@ -50,14 +50,16 @@
                                     <% if chamado.situacao_chamado_id == 1  %>
                                         <td><font color="red"><%=h chamado.situacao_chamado.situacao %></font></td>
                                     <%else if chamado.situacao_chamado_id == 6%>
-                                            <td><font color="green"><%=h chamado.situacao_chamado.situacao %></font></td>
+                                        <td><b><font color="green"><%=h chamado.situacao_chamado.situacao %></font></b></td>
                                         <%else if chamado.situacao_chamado_id == 2%>
                                                <td><font color="blue"><%=h chamado.situacao_chamado.situacao %></font></td>
-                                              <%else%>
-                                                  <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                              <%else if chamado.situacao_chamado_id == 13%>
+                                                     <td><font color=#DBA901><%=h chamado.situacao_chamado.situacao %></font></td>
+                                                    <%else%>
+                                                        <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                                  <%end%>
                                             <%end%>
-
-                                        <%end%>
+                                       <%end%>
                                     <%end%>
                                 </tr>
                             <%end%>
@@ -154,13 +156,15 @@
                                     <% if chamado.situacao_chamado_id == 1  %>
                                         <td><font color="red"><%=h chamado.situacao_chamado.situacao %></font></td>
                                     <%else if chamado.situacao_chamado_id == 6%>
-                                            <td><font color="green"><%=h chamado.situacao_chamado.situacao %></font></td>
+                                        <td><b><font color="green"><%=h chamado.situacao_chamado.situacao %></font></b></td>
                                         <%else if chamado.situacao_chamado_id == 2%>
                                                <td><font color="blue"><%=h chamado.situacao_chamado.situacao %></font></td>
-                                              <%else%>
-                                                  <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                              <%else if chamado.situacao_chamado_id == 13%>
+                                                     <td><b><font color=#DBA901><%=h chamado.situacao_chamado.situacao %></font></b></td>
+                                                    <%else%>
+                                                        <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
+                                                  <%end%>
                                             <%end%>
-
                                         <%end%>
                                     <%end%>
                                     <% if current_user.has_role?('admin') %>
