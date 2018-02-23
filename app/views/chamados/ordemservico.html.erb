@@ -1,3 +1,4 @@
+<%@estagiarios = Estagiario.find(:all, :order => 'nome ASC',:conditions => ['desligado=? and tipo =?',0, 'INFORMÁTICA'])%>
 <div id="interno6">
     <% title "CLASSES".singularize %>
     <div class="tabs">
@@ -14,7 +15,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table>
+                      <table width="100%">
                             <tr>
                                 <td width="40%" valign="TOP">
                                     <%= render 'formshow1' %>
@@ -45,7 +46,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td align="left" valign="top"><b>Procedimentos executados:</b></td>
-                                                    <td align="left"><%= f.text_area :procedimentos, :cols =>"60", :rows => "5" %></td>
+                                                    <td align="left"><%= f.text_area :procedimentos, :cols =>"45", :rows => "5" %></td>
                                                 </tr>
                                                 <tr>
                                                     <td align="left"><b>Situação Chamado:</b></td>
