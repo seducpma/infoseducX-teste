@@ -131,7 +131,7 @@
                             <th width ="20%"colspan="2">Problema</th>
                             <th width ="20%"  >Procedimentos</th>
                             <th width="8%">Status</th>
-                            <% if current_user.has_role?('admin') %>
+                            <% if current_user.has_role?('admin')or  current_user.has_role?('estagiario SEDUC') %>
                                 <th align="center">OS</th>
                             <%end%>
                         </tr>
@@ -167,7 +167,7 @@
                                             <%end%>
                                         <%end%>
                                     <%end%>
-                                    <% if current_user.has_role?('admin') %>
+                                    <% if current_user.has_role?('admin') or  current_user.has_role?('estagiario SEDUC') %>
                                             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
 
                                     <%end%>
