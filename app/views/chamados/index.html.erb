@@ -160,13 +160,8 @@
                                         <%else if chamado.situacao_chamado_id == 2%>
                                                <td><font color="blue"><%=h chamado.situacao_chamado.situacao %></font></td>
                                               <%else if chamado.situacao_chamado_id == 13%>
-                                                     <td><b><font color=#DBA901><%=h chamado.situacao_chamado.situacao %> <br/>
-
-                                                         (<%=truncate(chamado.estagiario.nome,:length => 12,:omission => "...") %>)
-
-
-
-                                                         </font></b></td>
+                                                     <td><b><font color=#DBA901><%=h chamado.situacao_chamado.situacao %> </font></b><br/>
+                                                          <font color="gray">(<%=truncate(chamado.estagiario.nome,:length => 12,:omission => "...") %>) </font></td>
                                                     <%else%>
                                                         <td><b><%=h chamado.situacao_chamado.situacao %></b></td>
                                                   <%end%>
