@@ -22,6 +22,15 @@ before_filter :login_required, :except => ["dowloads", "infantil_2018", "plano_e
     end
   end
 
+def impressao_calendar
+  @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    @reservar_salas = ReservarSala.all
+
+  render :layout => "impressao_calendar"
+  end
+
+
+
   def show
     @reservar_sala = ReservarSala.find(params[:id])
     respond_to do |format|

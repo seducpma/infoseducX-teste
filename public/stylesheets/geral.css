@@ -750,6 +750,16 @@ border-right: double;
 
 }
 
+#principalimp_calendar{
+    float:left;
+    left: 20px;
+    width:940px;
+    height:auto;
+    overflow: auto;
+    
+
+}
+
 #principal{
     float: right;
     width:1300px;
