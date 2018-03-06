@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["dowloads", "infantil_2018", "plano_educacao", "fudamental_2018", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
+before_filter :login_required, :except => ["dowloads", "ata_ensino_fundamental_02_03_18", "ata_coordenadores_emei_02_03_18" ,"ata_infantil_01_03_18", "infantil_2018", "plano_educacao", "fudamental_2018", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -157,6 +157,19 @@ end
 
 def plano_educacao
     send_file("#{RAILS_ROOT}/public/documentos/plano_educacao.pdf" , :type=>"pdf")
+end
+
+def ata_infantil_01_03_18
+    send_file("#{RAILS_ROOT}/public/documentos/ata_infantil_01_03_18.pdf" , :type=>"pdf")
+end
+
+def ata_coordenadores_emei_02_03_18
+    send_file("#{RAILS_ROOT}/public/documentos/Coordenadores_EMEI_02_03_18.pdf" , :type=>"pdf")
+end
+
+
+def ata_ensino_fundamental_02_03_18
+    send_file("#{RAILS_ROOT}/public/documentos/ensino_fundamental_02_03_18.pdf" , :type=>"pdf")
 end
 
 

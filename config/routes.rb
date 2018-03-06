@@ -149,6 +149,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.banco_horas '/banco_horas', :controller => 'reservar_salas', :action => 'banco_horas'
   map.plano_educacao '/plano_educacao', :controller => 'reservar_salas', :action => 'plano_educacao'
+  map.ata_infantil_01_03_18'/ata_infantil_01_03_18', :controller => 'reservar_salas', :action => 'ata_infantil_01_03_18'
+  map.ata_coordenadores_emei_02_03_18'/ata_coordenadores_emei_02_03_18', :controller => 'reservar_salas', :action => 'ata_coordenadores_emei_02_03_18'
+  map.ata_ensino_fundamental_02_03_18'/ata_ensino_fundamental_02_03_18', :controller => 'reservar_salas', :action => 'ata_ensino_fundamental_02_03_18'
+
+
+
   map.fudamental_2018 '/fudamental_2018', :controller => 'reservar_salas', :action => 'fudamental_2018'
   map.infantil_2018 '/infantil_2018', :controller => 'reservar_salas', :action => 'infantil_2018'
   map.dowloads '/dowloads', :controller => 'reservar_salas', :action => 'dowloads'
