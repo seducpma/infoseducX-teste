@@ -147,11 +147,13 @@ def dowloads
 end
 
 def infantil_2018
-    send_file("#{RAILS_ROOT}/public/documentos/Infantil_2018.pdf" , :type=>"pdf")
+    #send_file("#{RAILS_ROOT}/public/documentos/Infantil_2018.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/Infantil2018.xls" , :type=>"xls")
 end
 
 def fudamental_2018
-    send_file("#{RAILS_ROOT}/public/documentos/Fundamental_2018.pdf" , :type=>"pdf")
+    #send_file("#{RAILS_ROOT}/public/documentos/Fundamental_2018.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/Fundamental2018.xls" , :type=>"xls")
 end
 
 
