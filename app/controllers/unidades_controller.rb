@@ -105,33 +105,33 @@ end
      if params[:type_of].to_i == 1
          session[:type_of] = 1
           session[:unidade_id] = params[:unidade][:id]
-          @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_est as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0 and unidades.id=?", params[:unidade][:id]],:order => 'unidades.nome ASC')
+          @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0 and unidades.id=?", params[:unidade][:id]],:order => 'unidades.nome ASC')
              render :update do |page|
                  page.replace_html 'estagiarios_unidade', :partial => "estagiarios_unidade"
              end
      else if params[:type_of].to_i == 2
              session[:type_of] = 2
              session[:estagiario_tipo] =  params[:estagiario][:tipo]
-             @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_est as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0  and estagiarios.tipo=?", params[:estagiario][:tipo] ],:order => 'unidades.nome ASC')
+             @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0  and estagiarios.tipo=?", params[:estagiario][:tipo] ],:order => 'unidades.nome ASC')
                  render :update do |page|
                      page.replace_html 'estagiarios_unidade', :partial => "estagiarios_unidade"
                  end
           else if params[:type_of].to_i == 3
                   session[:type_of] = 3
                   session[:periodo_est] = params[:periodo_est]
-                   @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_est as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0  and estagiarios.periodo_est=?", params[:periodo_est]],:order => 'unidades.nome ASC')
+                   @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0  and estagiarios.periodo_est=?", params[:periodo_est]],:order => 'unidades.nome ASC')
                      render :update do |page|
                          page.replace_html 'estagiarios_unidade', :partial => "estagiarios_unidade"
                      end
               else if params[:type_of].to_i == 4
                       session[:type_of] = 4
-                     @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_est as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0 and estagiarios.flag=0"],:order => 'unidades.nome ASC')
+                     @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0 and estagiarios.flag=0"],:order => 'unidades.nome ASC')
                          render :update do |page|
                              page.replace_html 'estagiarios_unidade', :partial => "estagiarios_unidade"
                          end
                      else if params[:type_of].to_i == 5
                              session[:type_of] = 5
-                         @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_est as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 1 and estagiarios.flag=0"],:order => 'unidades.nome ASC')
+                         @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 1 and estagiarios.flag=0"],:order => 'unidades.nome ASC')
                              render :update do |page|
                                  page.replace_html 'estagiarios_unidade', :partial => "estagiarios_unidade"
                              end
