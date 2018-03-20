@@ -1,4 +1,4 @@
-<div id="interno6">
+<div id="interno4">
 <% title "SAUDES".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -21,26 +21,26 @@
                      <table width="100%">
                         <tr>
                           <td align="left"><b>Nome:</b></td>
-                          <td align="left" colspan="3"><%= f.text_field :nome, :size => 76%>
-                                &nbsp <b>RG:</b><%= f.text_field :RG, :size => 15 %>
-                                &nbsp <b> CPF:</b><%= f.text_field :CPF, :size => 15 %></td>
+                          <td align="left" colspan="3"><%= f.text_field :nome, :size => 45%>
+                                &nbsp <b>RG:</b><%= f.text_field :RG, :size => 13 %>
+                                &nbsp <b> CPF:</b><%= f.text_field :CPF, :size => 13 %></td>
                         </tr>
                        <tr>
                           <td align="left"><b> Endereço:</b></td>
-                          <td align="left" colspan="3"> <%= f.text_field :endereco, :size => 64%>
+                          <td align="left" colspan="3"> <%= f.text_field :endereco, :size => 45%>
                                 <b>Nº </b><%= f.text_field :num, :size => 4 %>
-                                &nbsp <b> Complemento:</b><%= f.text_field :complemento, :size =>30%></td>
+                                &nbsp <b> Complemento:</b><%= f.text_field :complemento, :size =>25%></td>
                        </tr>
                        <tr>
                           <td align="left"><b> Bairro:</b></td>
-                          <td align="left" colspan="3"><%= f.text_field :bairro, :size =>55 %>
-                               &nbsp <b> Cidade:</b><%= f.text_field :cidade, :size =>56 %></td>
+                          <td align="left" colspan="3"><%= f.text_field :bairro, :size =>40 %>
+                               &nbsp <b> Cidade:</b><%= f.text_field :cidade, :size =>35 %></td>
                        </tr>
                        <tr>
                           <td align="left"><b>Telefone:</b></td>
                           <td align="left" colspan="3"><%= f.text_field :fone, :size =>15 %>
                               &nbsp <b> Celular:</b><%= f.text_field :cel, :size =>20%>
-                              &nbsp <b> e_mail:</b><%= f.text_field :email, :size =>63%>
+                              &nbsp <b> e_mail:</b><%= f.text_field :email, :size =>30%>
                            </td>
                        </tr>
                        <tr>
@@ -56,9 +56,9 @@
                      <table>
                         <tr>
                            <td align="left"><b>Faculdade:</b></td>
-                           <td align="left"> <%= f.text_field :faculdade, :size =>50 %></td>
+                           <td align="left"> <%= f.text_field :faculdade, :size =>39%></td>
                            <td align="left">&nbsp&nbsp<b> Matricula:</b></td>
-                           <td align="left"><%= f.text_field :matricula, :size =>15  %>
+                           <td align="left"><%= f.text_field :matricula, :size =>10  %>
                             &nbsp&nbsp <b>Periodo: </b> <%= f.select :periodo_est, PERIODOT, :include_blank => 'Selecionar',  :size =>19 %>            </td>
 
                         </tr>
@@ -73,7 +73,7 @@
                   <fieldset><legend><font  size=4> Dados Contrato</font></legend>
                       <table width="100%">
                         <tr>
-                           <td align="left" width="26%"><b>Matricula(PMA): </b><%= f.text_field :matriculaPMA, :size =>5 %></td>
+                           <td align="left" width="26%"><b>Matricula(PMA): </b><%= f.text_field :matriculaPMA, :size =>15 %></td>
                            <td colspan="2">
                               <b> Típo de Estágio:</b>&nbsp
                               <%= collection_select  :estagiario, :tipo, @estagios, :nome, :nome, :include_blank => 'Selecionar'  %>
@@ -82,14 +82,15 @@
                            </td>
                            </tr>
                          <tr>
-                           <td align="left" > <b> Horário:</b><%= f.text_field :horario, :size => 14%></td>
-                           <td colspan="4" align="left"> <b> Período:</b><%= f.select :periodo_trab, PERIODOT, :include_blank => 'Selecionar' %>
-                           &nbsp&nbsp <b>Unidade:</b><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => 'Selecionar'  %></td>
-
+                           <td align="left" > <b> Horário:</b><%= f.text_field :horario, :size => 15%></td>
+                           <td colspan="4" align="left"> <b> Período:</b><%= f.select :periodo_trab, PERIODOT, :include_blank => 'Selecionar' %></td>
+                         </tr>
+                         <tr>
+                           <td colspan="6"><b>Unidade:</b><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => 'Selecionar'  %></td>
                          </tr>
                          <tr>
                             <td align="left" colspan="4"><b>Admissão:</b>&nbsp&nbsp    <%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
-                            &nbsp&nbsp <b> Responsável:</b> <%= f.text_field :responsavel, :size => 68%>
+                            &nbsp&nbsp <b> Responsável:</b> <%= f.text_field :responsavel, :size => 44%>
 
                             </td>
                          </tr>
@@ -101,11 +102,11 @@
                          <% if current_user.has_role?('admin')  or current_user.has_role?('SEDUC') %>
                             <tr>
                                 <td colspan="4"><b>Observação:</b>
-                               <%= f.text_field :obs, :size => 120%></td>
+                               <%= f.text_field :obs, :size => 82%></td>
                             </tr>
                             <tr>
                                 <td colspan="5" ><b> Avaliação:</b>
-                                <%= f.text_field :aval, :size => 122%></td>
+                                <%= f.text_field :aval, :size => 84%></td>
                             </tr>
                          <%end%>
                     </table>
