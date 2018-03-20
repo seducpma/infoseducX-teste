@@ -247,7 +247,7 @@ def gera_pdf
  end
 
  def lista_inscricaos
-     @inscricaos = Inscricao.find(:all, :joins => :participante, :conditions => ["participantes.nome like ?", "%" + params[:search1].to_s + "%"],:order => 'participantes.nome ASC')
+     @inscricaos = Inscricao.find(:all, :joins => :participante, :conditions => ["participantes.nome like ?", "%" + params[:search1].to_s + "%"],:order => 'inscricaos.data_inscricao DESC')
                      render :update do |page|
                           page.replace_html 'listagem', :partial => "lista_inscricao"
                      end
