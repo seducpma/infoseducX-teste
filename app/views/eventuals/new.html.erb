@@ -24,8 +24,8 @@
                             <td colspan="3"  ><%= collection_select :eventual, :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
                        </tr>
                         <tr>
-                          <td align="left" width="10%">  <b>Disponibilidade: </b></td>
-                          <td align="left"><%= f.text_field :disponibilidade, :size => "56" %></td>
+                          <td align="left" width="10%">  <b>Disponi-bilidade: </b></td>
+                          <td align="left"><%= f.text_field :disponibilidade, :size => "50" %></td>
                         </tr>
                         <tr>
                           <td align="left" width="10%"><b>Categoria: </b> </td>
@@ -35,12 +35,12 @@
                         </tr>
                         <tr>
                            <td align="left" valign="top"><b>Contato:</b></td>
-                           <td align="left" colspan="5"><%= f.text_field :contato,:size => "58"  %></td>
+                           <td align="left" colspan="5"><%= f.text_field :contato,:size => "50"  %></td>
 
                        </tr>
                         <tr>
                            <td align="left" valign="top"><b>Observação:</b></td>
-                           <td align="left" colspan="5"><%= f.text_area(:obs,:cols => 58, :rows => "3") %></td>
+                           <td align="left" colspan="5"><%= f.text_area(:obs,:cols => 50, :rows => "3") %></td>
 
                        </tr>
                    </table>

@@ -847,7 +847,12 @@ border-right: double;
     font-size:12px;
 }
 
-
+#interno10{
+    width:90%;
+    margin-top: 20px;
+    margin-left: 70px;
+    font-size:12px;
+}
 #interno_novo_usuario{
     width:60%;
     margin-top: 20px;

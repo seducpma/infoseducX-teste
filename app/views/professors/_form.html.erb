@@ -5,7 +5,7 @@
       <table width="100%" align="center"  bgcolor="#F5F5F5" >
         <tr>
             <td colspan="2"><b>Matricula: </b><%= f.text_field :matricula, :size => 20 %> &nbsp&nbsp&nbsp&nbsp
-                    <b>Nome: </b><%= f.text_field :nome, :size => 100 %></td>
+                    <b>Nome: </b><%= f.text_field :nome, :size => 98 %></td>
         </tr>
         <tr>
           <td><b>Data de Nascimento: </b><%= datepicker_tag(:professor, :dt_nasc,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'" }) %></td>
@@ -18,7 +18,7 @@
         <tr>
           <td colspan="2"><b> Endereço: </b><%= f.text_field :endres,:size =>57 %>
               <b>Nº </b><%= f.text_field :num, :size => 4 %>&nbsp&nbsp&nbsp
-              <b>Complemento: </b><%= f.text_field :complemento, :size =>44%></td>
+              <b>Complemento: </b><%= f.text_field :complemento, :size =>45%></td>
         </tr>
         <tr>
           <td><b>Bairro: </b><%= f.text_field :bairro,:size =>40 %></td>
