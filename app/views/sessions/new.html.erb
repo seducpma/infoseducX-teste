@@ -37,7 +37,8 @@
                                         ---------------------------------------------------------------------------</td>
                                     <%else%>
                                       <td><b><%=$cont%>) <%= " #{curso.nome}"%></b>  <br/>
-                                        <font color="red"> &nbsp&nbsp <b>TODAS AS <%="#{curso.qtde}"%> VAGAS<br/>&nbsp&nbsp  ESTÃO COMPLETAS </b></font><br/>
+                                      <font color="blue"> &nbsp&nbsp <%="Local: #{curso.local} / "%><%="Data: #{curso.datas}"%></font><br/>
+                                        <font color="red"> &nbsp&nbsp <b>TODAS AS <%="#{curso.qtde}"%> VAGAS ESTÃO COMPLETAS </b></font><br/>
                                         ---------------------------------------------------------------------------</td>
                                     <%end%>
                                  <% $cont = $cont + 1 %>
