@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  unidade: 
+  solicitante: MyString
+  solicitacao: 2018-04-06 11:18:47
+  agendamento: 2018-04-06
+  realizacao: 2018-04-06
+  realizad: MyString
+  obs: MyString
+
+two:
+  unidade: 
+  solicitante: MyString
+  solicitacao: 2018-04-06 11:18:47
+  agendamento: 2018-04-06
+  realizacao: 2018-04-06
+  realizad: MyString
+  obs: MyString

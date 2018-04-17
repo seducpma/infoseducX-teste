@@ -10,4 +10,6 @@ class Unidade < BaseSisgered
   has_many :estagiarios
   has_many :mmanutencaos
   has_many :chamados
+  has_many :poda_gramas
+  
 end

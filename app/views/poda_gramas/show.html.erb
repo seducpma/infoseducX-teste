@@ -1,0 +1,62 @@
+<div id="interno5">
+<% title "PODAGRAMA".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>PODA DE GRAMA</strong></font><br/>
+ </div>
+ <table width="100%">
+   <tr  bgcolor ="#E6E2D" width="100%">
+     <td>
+       <fieldset><legend><font  size=3><b> AGENDAMENTO DE PODE DE GRAMA</b></font></legend>
+         <table width="100%">
+           <tr bgcolor="#F5F5F5" >
+               <td align="left" width="22%"><b> Unidade:</b></td>
+               <td align="left" ><%=h@poda_grama.unidade.nome%></td>
+           </tr>
+           <tr bgcolor="#F5F5F5"  >
+               <td align="left" ><b>Solicitante:</b></td>
+               <td align="left"> <%=h @poda_grama.solicitante %> </td>
+           </tr>
+           <tr bgcolor="#F5F5F5"  >
+               <td align="left" ><b>Agendado para:</b></td>
+               <td align="left"><%if !@poda_grama.agendamento.nil? %>
+                                   <%=h @poda_grama.agendamento.strftime("%d/%B/%Y") %>
+                                <%end%>
+               </td>
+           </tr>
+           <tr bgcolor="#F5F5F5"  >
+               <td align="left" ><b>Solicintado em:</b></td>
+               <td align="left"> <%=h @poda_grama.created_at.strftime("%d/%B/%Y") %> </td>
+           </tr>
+           <tr bgcolor="#F5F5F5"  >
+               <td align="left" ><b>Executado em:</b></td>
+               <td align="left"><%if !@poda_grama.execucao.nil? %>
+                                    <%=h @poda_grama.execucao.strftime("%d/%B/%Y") %> </td>
+                                <%end%>
+           </tr>
+           <tr bgcolor="#F5F5F5"  >
+               <td align="left" ><b>Executado por:</b></td>
+               <td align="left"><%if !@poda_grama.executado.nil? %>
+                                   <%=h @poda_grama.executado %>
+                                <%end%>
+               </td>
+           </tr>
+           <tr bgcolor="#F5F5F5" >
+               <td align="left"><b>OBS:</b></td>
+               <td colspan="3"align="left"><%=h @poda_grama.obs %></td>
+            </tr>
+      </table>
+     </fieldset>
+   </td>
+  </tr>
+ </table>
+             <table width="100%"  align="center">
+                    <tr>
+                       <td width="5px" align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                       <td width="5px" align="left"><%= button_to 'Agendamento', poda_gramas_path, {:method => "get"}  %></td>
+                       <td align="left align="left"><%= button_to 'Agenda Execução', agenda_poda_gramas_path, {:method => "get"}  %></td>
+                   </tr>
+                </table>
+</div>
+<br/>
+

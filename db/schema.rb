@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180206121329) do
+ActiveRecord::Schema.define(:version => 20180406141847) do
 
   create_table "acompanhamento_despachos", :force => true do |t|
     t.integer  "acompanhamento_id"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20180206121329) do
 
   create_table "certificados", :force => true do |t|
     t.integer  "inscricao_id"
+    t.integer  "curso_id"
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -647,6 +648,18 @@ ActiveRecord::Schema.define(:version => 20180206121329) do
     t.string   "rg"
     t.string   "cpf"
     t.boolean  "desligado",         :default => true, :null => false
+  end
+
+  create_table "poda_gramas", :force => true do |t|
+    t.integer  "unidade_id"
+    t.string   "solicitante"
+    t.datetime "solicitacao"
+    t.date     "agendamento"
+    t.date     "realizacao"
+    t.string   "realizad"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pontos", :force => true do |t|

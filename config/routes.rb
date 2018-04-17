@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :poda_gramas, :collection => {:agenda => :get, :relatorio_agendamento => :get, :executada => :get, :nao_executada => :get}
   map.resources :certificados, :collection => {:aviso => :get}
   map.resources :produtos
   map.resources :produtos_lancamentos
@@ -50,12 +51,9 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.aviso_password '/aviso_password', :controller => 'sessions', :action => 'aviso'
-
-
-
+  
   map.lista_produto_periodo_index '/lista_produto_periodo_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_periodo_index'
   map.lista_produto_entrada_index '/lista_produto_entrada_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_entrada_index'
   map.lista_produto_saida_index '/lista_produto_saida_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_saida_index'
@@ -100,6 +98,8 @@ ActionController::Routing::Routes.draw do |map|
   map.impressao_unidade '/impressao_unidade', :controller => 'aulas_eventuals', :action => 'impressao_unidade'
   map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
   map.impressao_calendar '/impressao_calendar', :controller =>'reservar_salas', :action =>'impressao_calendar'
+  map.impressao_calendar_agendamento '/impressao_calendar_agendamento', :controller =>'poda_gramas', :action =>'impressao_calendar_agendamento'
+  map.impressao_calendar_agenda '/impressao_calendar_agenda', :controller =>'poda_gramas', :action =>'impressao_calendar_agenda'
 
   map.alteracao '/altera', :controller => 'alteracaos', :action => 'altera'
   map.alteracao_matricula '/alteracao_matricula', :controller => 'matriculas', :action => 'alteracao_matricula'
@@ -139,13 +139,11 @@ ActionController::Routing::Routes.draw do |map|
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'
   map.relatorios_faltas'/relatorios_faltas', :controller => 'aulas_faltas', :action => 'relatorios_faltas'
   map.relatorios_faltas_professor'/relatorios_faltas_professor', :controller => 'aulas_faltas', :action => 'relatorios_faltas_professor'
-
-    
   map.relatorios_faltas_funcionario'/relatorios_faltas_funcionario', :controller => 'aulas_faltas', :action => 'relatorios_faltas_funcionario'
   map.relatorios_eventual_professor'/relatorios_eventual_professor', :controller => 'aulas_eventuals', :action => 'relatorios_eventual_professor'
   map.relatorios_eventuals'/relatorios_eventuals', :controller => 'aulas_eventuals', :action => 'relatorios_eventuals'
-
-
+  map.relatorios_agendamento'/relatorios_agendamento', :controller => 'poda_gramas', :action => 'relatorios_agendamento'
+  map.agenda_poda_grama'/agenda_poda_grama', :controller => 'poda_gramas', :action => 'agenda_poda_grama'
 
   map.banco_horas '/banco_horas', :controller => 'reservar_salas', :action => 'banco_horas'
   map.plano_educacao '/plano_educacao', :controller => 'reservar_salas', :action => 'plano_educacao'
