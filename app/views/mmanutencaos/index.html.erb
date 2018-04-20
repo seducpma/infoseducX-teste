@@ -114,7 +114,7 @@
                                    
                                    <td align="left" "align="left" > <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimir" %></td>
                                  <%end%>
-                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao')  %>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('diretor_unidade')  %>
                                    <td align="right" ><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
                                  <%end%>
                                </tr>
