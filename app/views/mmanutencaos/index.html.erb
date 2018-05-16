@@ -39,7 +39,7 @@
                     </table>
 
 
-                 <table border="1" cellspacing="0" cellpadding="1" width="100%">
+                 <table border="2" cellspacing="0" cellpadding="1" width="100%">
                   <tr >
                     <th width ="1%" align="center">Proto- colo</th>
                     <th width ="5%">Data Solicitação</th>
@@ -101,11 +101,13 @@
                               <%end%>
                        <% end %>
                       </tr>
+
+
                       <%end%>
 
                       <tr>
                         <td align="right" colspan="7">
-                           <table>
+                           <table >
                               <tr>
                                  <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')%>
                                   <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') %>
@@ -120,8 +122,13 @@
                                </tr>
                             </table>
                         </td>
+                            
                       </tr>
-                    <%$cont=$cont+1%>
+                      <tr>
+                        <td align="right" colspan="7">
+                        </td>
+                      </tr>
+                           <%$cont=$cont+1%>
                     <%end%>
                       <tr>
                         <td  colspan="12">
