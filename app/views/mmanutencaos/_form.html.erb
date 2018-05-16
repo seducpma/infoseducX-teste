@@ -3,7 +3,8 @@
      <%  else %>
         <% @unidades= Unidade.find(:all , :conditions => ['id = ?', current_user.unidade_id]) %>
       <% end%>
-
+ 
+<% @tipos_manutencaos =  TiposManutencao.find(:all) %>
 
 <% form_for(@mmanutencao) do |f| %>
     <%= f.error_messages %>

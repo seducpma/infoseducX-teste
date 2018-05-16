@@ -1,0 +1,49 @@
+
+<link rel="stylesheet" media="all" href="css/calendar.css" />
+
+<% if @agendamento.present? %>
+<table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+  <tr  style="border-color: white">
+    <td width="10%" style="border-color: white" rowspan="2" align="left"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+    <td style="border-color: white" ><center><font size="3"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+        <center><font size="3"><b><i> Secretaria da Educação</i></b><br/></center>
+        
+
+
+
+    </td>
+  </tr>
+ </table>
+  <div id="calendar">
+         <h2><center> <b>AGENDA DE EXECUÇÕES DE PODA DE GRAMA - SEDUC  </b></center> </h2><br/>
+         <h3><center> <b>(Quando foi realizado a solicitação)</b></center> </h3><br/>
+
+  <hr/>
+  <b><center>  <font size="5"color="red"><u><%= flash[:notice] %></u></font></center></b>
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+    </h2>
+    <% calendar_for @agendamento, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <% calendar.day(:day_method => :created_at) do |date, articles| %>
+        <%= date.day %>
+        <ul>
+          <% for data in articles %>
+            <li><%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
+                              --------------------------------
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>  </div>
+<%end%>
+<br/>
+<table align="right"  cellspacing="0" cellpadding="1" width="100%" style="border-color: white" >
+  <tr style="border-color: white">
+    <td  style="border-color: white" align="right" ><%= button_to("Fechar",  home_path, :method => "get", :title => "Voltar")%></td>
+     <td width="2%" style="border-color: white" align="right" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+   </tr>
+</table>
+

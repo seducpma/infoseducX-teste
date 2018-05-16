@@ -1,3 +1,14 @@
+<% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') %>
+  <%  @funcionarios = Funcionario.find(:all,:conditions => ['desligado=?',0], :order => 'nome ASC' ) %>
+<% else %>
+    <%  @funcionarios = Funcionario.find(:all, :conditions => ['desligado=?',0], :order => 'nome ASC' ) %>
+<% end %>
+<% if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+   <%  @protocolos = Mmanutencao.find(:all, :conditions =>['situacao_manutencao_id != 2'], :order => 'id ASC') %>
+ <% else %>
+    <% @protocolos = Mmanutencao.find(:all, :conditions =>['unidade_id =? AND situacao_manutencao_id != 2', current_user.unidade_id], :order => 'id ASC') %>
+ <% end %>
+
 <br/>
 <font  size="1"><b>
 <table  class="tabelas1" width="100%"align="center">

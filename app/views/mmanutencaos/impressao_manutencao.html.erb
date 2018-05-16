@@ -29,22 +29,27 @@
            <table border="2" width="100%">
              <tr>
                 <th> Nº Ordem</font></th>
-                <th width ="15%"><b> Solicitação</b></th>
-                <th width ="15%"><b> Encaminhamento</b></th>
+                <th width ="10%"><b> Solicitação</b></th>
                 <th width ="20%"><b> Solicitante</b></font></th>
-                <th><b>Unidade</b></font></th>
+                <th width ="30"%><b>Unidade</b></font></th>
+                <th width ="10%"><b> Encaminhamento</b></th>
+                <th width ="10%"><b> Para</b></th>
+                <th width ="10%"><b>Status</b></th>
+                
              </tr>
              <tr>
                  
                  <td width="3%" align="center"><%=h @mmanutencao.id %>  <%session[:idmanutencao]= @mmanutencao.id %></td>
-                 <td><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y")%></td>
-                 <td><%= "#{Time.now.strftime("%d/%m/%Y")}" %></td>
+                 <td align="center"><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y")%></td>
                  <td><%=h @mmanutencao.solicitante %></td>
                  <td><%=h @mmanutencao.unidade.tipo.nome %> <%=h @mmanutencao.unidade.nome %></td>
+                 <td align="center"><%= "#{Time.now.strftime("%d/%m/%Y")}" %></td>
+                 <td align="center"><%=h @mmanutencao.chefia.nome %></td>
+                 <td align="center"><%=h @mmanutencao.situacao %></td>
                </tr>
              <tr>
                 <th> Endereço:</font></th>
-                <td colspan="4">
+                <td colspan="6">
                     <%=h @mmanutencao.unidade.endereco%>,
                     <%=h @mmanutencao.unidade.num %> -
                     
@@ -53,18 +58,18 @@
              </tr>
                <tr>
                  <th><b>Problema</b></font></th>
-                  <td colspan="4" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                  <td colspan="6" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
                           <%=h servico.servico%>: 
                          <% end %> - <%=h @mmanutencao.descricao %><br/></font><br/></td>
                </tr>
                <tr>
                  <th> <b>Procedimento à realizar</b></font></th>
-                 <td colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
+                 <td colspan="6" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
               </tr>
 
                 <tr>
                   <th><b>Procedimento realizado</b></th>
-                  <td colspan="4" style="padding-bottom:5px">
+                  <td colspan="6" style="padding-bottom:5px">
                                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                                    
                                    
@@ -72,11 +77,11 @@
                 </tr>
                <tr>
                  <th> <b>Justificativa:</b></th>
-                 <td colspan="4     " align="left"><br/><%=h @mmanutencao.justificativa %><br/><br/></td>
+                 <td colspan="6     " align="left"><br/><%=h @mmanutencao.justificativa %><br/><br/></td>
               </tr>
                 <tr>
                   <th><b>Assinatura</b></th>
-                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                  <td colspan="6" style="padding-bottom:5px"><br/><br/></td>
                 </tr>
      </table>
 

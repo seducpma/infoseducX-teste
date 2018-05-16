@@ -1,4 +1,4 @@
-
+<%@situacaos = SituacaoManutencao.find(:all)%>
 <div id="interno6">
 <% title "CLASSES".singularize %>
 <div class="tabs">
@@ -17,81 +17,96 @@
       <td colspan="2">
          <table>
            <tr>
-             <td width="35%" valign="TOP">
+             <td valign="TOP" colspan="2">
                <%= render 'formshow' %>
              </td>
-             <td valign="top"width="30%">
-               <fieldset><legend><font  size=4> Encaminhamento</font></legend>
-               <% form_for(@mmanutencao) do |f| %>
-               <%= f.error_messages %>
+           </tr>
+           <tr>
+             <td valign="top" width ="50%">
+               <fieldset><legend><font  size=4> ENCAMINHAMENTO</font></legend>
+                 <% form_for(@mmanutencao) do |f| %>
+                 <%= f.error_messages %>
+                  <table>
+                       <tr>
+                          <td align="left" valign="top"><b>Despacho:</b></td>
+                          <td align="left"><%= @mmanutencao.procedimentos %></td>
+                       </tr>
+                       <tr>
+                          <td align="left"><b>Para:</b></td>
+                          <% if @mmanutencao.chefia.nil? %>
+                            <td> NÃO ENCAMINHADO</td>
+                          <%else%>
+                            <td align="left"><%= @mmanutencao.chefia.nome%></td>
+                          <%end%>
+                       </tr>
+                       <tr>
+                          <td align="left"><b>Situação:</b></td>
+                          <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
+                       </tr>
+                       <tr>
+                          <td align="left" width="20%" valign="top"><b>Data:</b></td>
+                          <%if @mmanutencao.data_ate.nil?%>
+                            <td>Serviço não realizado</td>
+                          <%else%>
+                            <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
+                          <%end%>
+                       </tr>
+                        <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                            <tr>
+                               <td><b> Serviço: </b> </td>
+                               <td> <font color="red"> PARA ORÇAMENTO <font color="red"></td>
+                           </tr>
+                        <%end%>
+                 </table>
+               </fieldset>
+            </td>
+            <td valign="top" >
+              <fieldset><legend><font  size=4> SERVIÇO</font></legend>
                <table>
-
-               <tr>
-                  <td align="left" valign="top"><b>Despacho:</b></td>
-                  <td align="left"><%= @mmanutencao.procedimentos %></td>
-               </tr>
-               <tr>
-                  <td align="left"><b>Para:</b></td>
-                  <% if @mmanutencao.chefia.nil? %>
-                    <td> NÃO ENCAMINHADO</td>
-                  <%else%>
-                    <td align="left"><%= @mmanutencao.chefia.nome%></td>
-                  <%end%>
-               </tr>
-               <tr>
-                  <td align="left"><b>Situação Chamado:</b></td>
-                  <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
-               </tr>
-               <tr>
-                  <td align="left" width="20%" valign="top"><b>Data:</b></td>
-                  <%if @mmanutencao.data_ate.nil?%>
-                    <td>Serviço não realizado</td>
-                  <%else%>
-                    <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
-                  <%end%>
-               </tr>
-
-               </table>
-            </fieldset>
-          </td>
-          <td valign="top" width="35%">
-               <fieldset><legend><font  size=4> Serviço</font></legend>
-               <table>
-
-               <tr>
-                  <td align="left" valign="top"><b>Serviços Executados:</b></td>
-                  <td align="left"><%= f.text_area :executado, :cols =>"25", :rows => "5" %></td>
-               </tr>
-               <tr>
-                  <td align="left"><b>Funcionário:</b></td>
-                   <td align="left"><%= f.text_field :ffuncionario, :size=> 16 %></td>
-               </tr>
-               <tr>
-                  <td align="left"><b>Situação Chamado:</b></td>
-                  <td align="left"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecionar -- '%></td>
-               </tr>
-               <tr>
-                  <td align="left" width="20%" valign="top"><b>Data do Serviço:</b></td>
-                  <td align="left"><%= Time.now.strftime("%d/%m/%Y %H:%M")%></td>
+                 <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                      <tr>
+                        <td><b> Situação: </b> </td>
+                        <td> <font color="red"> PARA ORÇAMENTO <font color="red"></td>
+                    </tr>
+                 <%else if @mmanutencao.situacao == 'AUTORIZADO' %>
+                         <tr>
+                             <td><b> Serviço: </b> </td>
+                             <td> <font color="blue"><b> AUTORIZADO </b></font></td>
+                        </tr>
+                      <%end%>
+                 <%end%>
+                 <tr>
+                    <td align="left" valign="top"><b>Serviço:</b></td>
+                    <td align="left"><%= f.text_area :executado, :cols =>"40", :rows => "2" %></td>
                  </tr>
-
+                 <tr>
+                    <td align="left"><b>Funcionário:</b></td>
+                     <td align="left"><%= f.text_field :ffuncionario, :size=> 40 %></td>
+                 </tr>
+                 <tr>
+                    <td align="left"><b>Chamado:</b></td>
+                    <td align="left"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecionar -- '%> </td>
+                 </tr>
+                 <tr>
+                    <td align="left" width="20%" valign="top"><b>Data:</b></td>
+                    <td align="left"><%= Time.now.strftime("%d/%m/%Y %H:%M")%></td>
+                   </tr>
                </table>
             </fieldset>
-             <table>
+
+          </td>
+          </tr>
+        </table>
+        <table >
                 <tr >
                  <div id='Certeza'>
-                   <td align="right"><%= f.submit "Salvar" %> </td>
+                   <td width ="2%" align="right"><%= f.submit "Salvar" %> </td>
                  </div>
                  <%end%>
                    <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                    <td align="left" ><%= button_to('Serviços em Aberto', mmanutencaos_path, :method => "get", :title => "Servicos em Aberto") %></td>
                  </tr>
-             </table>
-          </td>
-          </tr>
-
-
-        </table>
+         </table>
       </td>
      </tr>
     </table>

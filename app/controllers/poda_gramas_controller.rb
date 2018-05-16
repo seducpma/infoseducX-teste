@@ -110,6 +110,18 @@ class PodaGramasController < ApplicationController
   def impressao_calendar_agenda
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
       @agendamento = PodaGrama.find(:all, :conditions=> ["agendamento is not null"])
+      render :layout => "impressao_calendar"
+  end
+
+  def impressao_calendar_execucoes
+      @date = params[:month] ? Date.parse(params[:month]) : Date.today
+      @agendamento = PodaGrama.find(:all, :conditions=> ["execucao is not null"])
+      render :layout => "impressao_calendar"
+  end
+
+    def impressao_calendar_nexecutado
+      @date = params[:month] ? Date.parse(params[:month]) : Date.today
+      @agendamento = PodaGrama.find(:all, :conditions=> ["execucao is null"])
 
       render :layout => "impressao_calendar"
   end
@@ -185,7 +197,7 @@ class PodaGramasController < ApplicationController
        if params[:type_of].to_i == 1
           @date = params[:month] ? Date.parse(params[:month]) : Date.today
           @poda_grama = PodaGrama.all
-          session[:titulo_agenda]='AGENDA DE SOLICITAÇÕES DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
+          session[:titulo_agenda]='AGENDA DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
         render :update do |page|
             page.replace_html 'calendario', :partial => 'agendamento'
         end
@@ -206,7 +218,7 @@ class PodaGramasController < ApplicationController
                  else if params[:type_of].to_i == 4
                         @date = params[:month] ? Date.parse(params[:month]) : Date.today
                         @poda_grama = PodaGrama.find(:all, :conditions=> ["execucao is null"])
-                         session[:titulo_agenda]=' AGENDA DE PODAS DE GRAMA EXECUTADAS- SEDUC'
+                         session[:titulo_agenda]=' PODAS DE GRAMA AGENDAS MAS NÃO EXECUTADAS- SEDUC'
                         render :update do |page|
                            page.replace_html 'calendario', :partial => 'agenda'
                         end

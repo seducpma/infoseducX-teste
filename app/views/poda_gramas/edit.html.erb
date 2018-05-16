@@ -38,8 +38,10 @@
                  </tr>
                <%else if @poda_grama.execucao.nil?%>
                          <tr>
-                           <td  align="left">  <b>Agendado para: </b>&nbsp</td>
-                             <td > &nbsp<%= datepicker_tag(:poda_grama, :agendamento,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %></td>
+                           <td  align="left">  <b>Reagendamento: </b>&nbsp</td>
+                             <td > &nbsp<%= datepicker_tag(:poda_grama, :agendamento,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+                               <font color ="red">  (Em caso de NÃO execução, reangendar) </font>
+                             </td>
                          </tr
                          <% if !@poda_grama.agendamento.nil?%>
                              <tr>

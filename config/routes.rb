@@ -100,6 +100,8 @@ ActionController::Routing::Routes.draw do |map|
   map.impressao_calendar '/impressao_calendar', :controller =>'reservar_salas', :action =>'impressao_calendar'
   map.impressao_calendar_agendamento '/impressao_calendar_agendamento', :controller =>'poda_gramas', :action =>'impressao_calendar_agendamento'
   map.impressao_calendar_agenda '/impressao_calendar_agenda', :controller =>'poda_gramas', :action =>'impressao_calendar_agenda'
+  map.impressao_calendar_execucoes '/impressao_calendar_execucoes', :controller =>'poda_gramas', :action =>'impressao_calendar_execucoes'
+  map.impressao_calendar_nexecutado '/impressao_calendar_nexecutado', :controller =>'poda_gramas', :action =>'impressao_calendar_nexecutado'
 
   map.alteracao '/altera', :controller => 'alteracaos', :action => 'altera'
   map.alteracao_matricula '/alteracao_matricula', :controller => 'matriculas', :action => 'alteracao_matricula'

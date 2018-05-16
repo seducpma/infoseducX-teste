@@ -1,4 +1,12 @@
-
+     <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')  %>
+       <% @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')   %>
+     <%  else   %>
+     <%  if (current_user.unidade_id== 53)   %>
+          <% @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')   %>
+     <% else   %>
+          <% @unidades_manutencao =  Unidade.find(:all, :conditions => ['id = ?',current_user.unidade_id ],:order => 'nome ASC')   %>
+     <% end   %>
+    end   %>
 <div id="interno6">
 <% title "CLASSES".singularize %>
 <div class="tabs">

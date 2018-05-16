@@ -18,16 +18,16 @@
               <br/>
               <font  size="2">
 
-                  <% if current_user.unidade_id != 53 %>
-                    <% cont_outras =  0 %>
-                     <% for chamado in @mmanutencaos_abertas %>
-                        <% if current_user.unidade_id != 52 %>
-                          <% if (chamado.unidade_id != current_user.unidade_id) %>
-                             <% cont_outras =  cont_outras+1 %>
-                          <%end%>
-                       <%end%>
-                    <%end%>
-                 <%end%>
+                  <%# if current_user.unidade_id != 53 %>
+                    <%# cont_outras =  0 %>
+                     <%# for chamado in @mmanutencaos_abertas %>
+                        <%# if current_user.unidade_id != 52 %>
+                          <%# if (chamado.unidade_id != current_user.unidade_id) %>
+                             <%# cont_outras =  cont_outras+1 %>
+                          <%#end%>
+                       <%#end%>
+                    <%#end%>
+                 <%#end%>
                    <table width="100%">
                     <tr>
                         <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
@@ -45,8 +45,8 @@
                     <th width ="5%">Data Solicitação</th>
                     <th width ="10%">Solicitante</th>
                     <th width ="15%">Unidade</th>
-                    <th width ="15%">Solicitação</th>
-                    <th width="8%">Status</th>
+                    <th width ="45%">Solicitação</th>
+                    <th width="15%">Status</th>
                   </tr>
                   <%$cont=0%>
                   <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
@@ -64,9 +64,9 @@
                              <% else %>
 
                                  <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
-                                    <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                                 <td align="center"><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
                                  <% else %>
-                                    <td><%=h chamado.situacao_manutencao.situacao %> <br/>
+                                    <td><font color="blue"><b><%=h chamado.situacao_manutencao.situacao %></b></font> <br/>
                                       <%if chamado.chefia.nil? %>
                                          p/ <%=h chamado.user.login %>
                                       <%else%>
@@ -91,7 +91,7 @@
                            <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
                               <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
                            <% else %>
-                              <td><%=h chamado.situacao_manutencao.situacao %> <br/>
+                              <td align="center"><font color="blue"><b> <%=h chamado.situacao_manutencao.situacao %></b></font> <br/>
                                 <%if chamado.chefia.nil? %>
                                    p/ <%=h chamado.user.login %>
                                 <%else%>
@@ -107,14 +107,14 @@
                         <td align="right" colspan="7">
                            <table>
                               <tr>
-                                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('diretor_unidade') %>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')%>
                                   <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') %>
                                       <td width="6% align="right" ><%= link_to image_tag("/stylesheets/images/encami.png" ), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhar" %> </td>
                                   <%end%>
                                    
                                    <td align="left" "align="left" > <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimir" %></td>
                                  <%end%>
-                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('diretor_unidade')  %>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro') %>
                                    <td align="right" ><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
                                  <%end%>
                                </tr>
