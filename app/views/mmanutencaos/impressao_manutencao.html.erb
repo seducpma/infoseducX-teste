@@ -47,14 +47,10 @@
                  <td align="center"><%if !@mmanutencao.chefia_id.nil?%>
                                           <%=h @mmanutencao.chefia.nome %></td>
                                      <%else%>
-                                          <b> EM ABERTO</b>
+                                           <b> EM ABERTO</b>
                                      <%end%>
-                 <td align="center"> <%if !@mmanutencao.situacao.nil?%>
-                                           <%=h @mmanutencao.situacao %>
-                                     <%else%>
-                                          <b> EM ABERTO</b>
-                                     <%end%>
-
+                 <td align="center"> <b>  <%=h @mmanutencao.situacao_manutencao.situacao %></b>
+                                     
                  </td>
                </tr>
              <tr>
