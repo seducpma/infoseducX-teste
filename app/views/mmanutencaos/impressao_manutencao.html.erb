@@ -44,8 +44,18 @@
                  <td><%=h @mmanutencao.solicitante %></td>
                  <td><%=h @mmanutencao.unidade.tipo.nome %> <%=h @mmanutencao.unidade.nome %></td>
                  <td align="center"><%= "#{Time.now.strftime("%d/%m/%Y")}" %></td>
-                 <td align="center"><%=h @mmanutencao.chefia.nome %></td>
-                 <td align="center"><%=h @mmanutencao.situacao %></td>
+                 <td align="center"><%if !@mmanutencao.chefia_id.nil?%>
+                                          <%=h @mmanutencao.chefia.nome %></td>
+                                     <%else%>
+                                          <b> EM ABERTO</b>
+                                     <%end%>
+                 <td align="center"> <%if !@mmanutencao.situacao.nil?%>
+                                           <%=h @mmanutencao.situacao %>
+                                     <%else%>
+                                          <b> EM ABERTO</b>
+                                     <%end%>
+
+                 </td>
                </tr>
              <tr>
                 <th> Endereço:</font></th>
