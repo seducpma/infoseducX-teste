@@ -112,7 +112,7 @@ end
      else if params[:type_of].to_i == 2
              session[:type_of] = 2
              session[:estagiario_tipo] =  params[:estagiario][:tipo]
-             @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0  and estagiarios.tipo=?", params[:estagiario][:tipo] ],:order => 'unidades.nome ASC')
+             @unidade_estagiario =Unidade.find(:all, :select => 'unidades.nome as unidade, estagiarios.nome as nomeest, estagiarios.periodo_trab as periodoest, estagiarios.tipo as tipoest', :joins => "INNER JOIN "+session[:baseinfo]+".estagiarios  ON unidades.id = estagiarios.unidade_id", :conditions => ["estagiarios.desligado = 0  and estagiarios.tipo=?  and estagiarios.periodo_trab  is not null", params[:estagiario][:tipo] ],:order => 'unidades.nome ASC')
                  render :update do |page|
                      page.replace_html 'estagiarios_unidade', :partial => "estagiarios_unidade"
                  end

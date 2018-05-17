@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
       User.current = current_user
-    #  session[:base]= 'sisgered_development'
-      session[:base]= 'sisgered_production'
-   #   session[:baseinfo]= 'infoseduc_development'
-      session[:baseinfo]= 'infoseduc_production'
+      session[:base]= 'sisgered_development'
+    #  session[:base]= 'sisgered_production'
+      session[:baseinfo]= 'infoseduc_development'
+   #   session[:baseinfo]= 'infoseduc_production'
     end
   private
 
