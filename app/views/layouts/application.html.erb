@@ -150,9 +150,13 @@ display: none;
                                                                  <%else if current_user.has_role?('terceiro') %>
                                                                        <td>Acesso Diversos </td>
                                                                         <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
-                                                                       <%else%>
-                                                                         <td>Acesso Público</td>
-                                                                          <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                       <%else if current_user.has_role?('oficios') %>
+                                                                           <td>Acesso Oficio </td>
+                                                                            <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                           <%else%>
+                                                                             <td>Acesso Público</td>
+                                                                              <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                          <%end%>
                                                                       <%end%>
                                                                 <%end%>
                                                         <%end%>
