@@ -326,7 +326,8 @@ display: none;
                               <li><%= link_to "Consultar", consulta_oficios_path  %></li>
                             </ul>
                          </li>
-                     <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC')) %>
+                     <%end%>
+                     <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')) %>
                          <li><span class="divider divider-vert" ></span></li>
                          <li><a class="item-primary" href="#;">Serviços Internos</a>
                             <ul>
@@ -338,10 +339,10 @@ display: none;
                             </ul>
                           </li>
                         <%end%>
-                           <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                           <% if (current_user.has_role?('admin') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC'))%>
                                   <%= link_to "Ponto Eletrônico", pontos_path %>
                            <%end%>
-                    <%end%>
+                    
                         </ul>
                    </li>
                <%end%>
