@@ -152,7 +152,7 @@ ActionController::Routing::Routes.draw do |map|
   map.ata_infantil_01_03_18'/ata_infantil_01_03_18', :controller => 'reservar_salas', :action => 'ata_infantil_01_03_18'
   map.ata_coordenadores_emei_02_03_18'/ata_coordenadores_emei_02_03_18', :controller => 'reservar_salas', :action => 'ata_coordenadores_emei_02_03_18'
   map.ata_ensino_fundamental_02_03_18'/ata_ensino_fundamental_02_03_18', :controller => 'reservar_salas', :action => 'ata_ensino_fundamental_02_03_18'
-
+  map.uso_internet '/uso_internet', :controller => 'reservar_salas', :action => 'uso_internet'
 
 
   map.fudamental_2018 '/fudamental_2018', :controller => 'reservar_salas', :action => 'fudamental_2018'
