@@ -392,3 +392,68 @@ Processing ReservarSalasController#uso_internet (for 127.0.0.1 at 2018-05-23 13:
   [4;36;1mServicosSala Load (0.3ms)[0m   [0;1mSELECT * FROM `servicos_salas` WHERE (status = 1) [0m
 Completed in 111ms (View: 1, DB: 1) | 200 OK [http://localhost/uso_internet]
 Streaming file /home/desenvolvimento/infoseduc/public/documentos/Uso_Internet.ppsx
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-05-28 09:17:36) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 45ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-05-28 09:17:36) [GET]
+  [4;36;1mCurso Load (0.5ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 130ms (View: 112, DB: 1) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-05-28 09:22:44) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 28ms (View: 12, DB: 1) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-05-28 09:24:04) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 42ms (View: 16, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-05-28 09:25:14) [GET]
+  [4;35;1mCurso Load (0.5ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;36;1mCurso Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+Completed in 125ms (View: 107, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-05-28 09:25:46) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;36;1mCurso Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+Completed in 32ms (View: 14, DB: 1) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2018-05-28 09:26:07) [GET]
+  [4;35;1mCurso Load (0.4ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;36;1mCurso Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+Completed in 39ms (View: 17, DB: 1) | 200 OK [http://localhost/session/new]
