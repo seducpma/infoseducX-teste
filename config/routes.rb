@@ -147,6 +147,7 @@ ActionController::Routing::Routes.draw do |map|
   map.relatorios_agendamento'/relatorios_agendamento', :controller => 'poda_gramas', :action => 'relatorios_agendamento'
   map.agenda_poda_grama'/agenda_poda_grama', :controller => 'poda_gramas', :action => 'agenda_poda_grama'
 
+  map.cesta_basica '/cesta_basica', :controller => 'reservar_salas', :action => 'cesta_basica'
   map.banco_horas '/banco_horas', :controller => 'reservar_salas', :action => 'banco_horas'
   map.plano_educacao '/plano_educacao', :controller => 'reservar_salas', :action => 'plano_educacao'
   map.ata_infantil_01_03_18'/ata_infantil_01_03_18', :controller => 'reservar_salas', :action => 'ata_infantil_01_03_18'

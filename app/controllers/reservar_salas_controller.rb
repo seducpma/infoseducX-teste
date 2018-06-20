@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["uso_internet", "dowloads", "ata_ensino_fundamental_02_03_18", "ata_coordenadores_emei_02_03_18" ,"ata_infantil_01_03_18", "infantil_2018", "plano_educacao", "fudamental_2018", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
+before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads", "ata_ensino_fundamental_02_03_18", "ata_coordenadores_emei_02_03_18" ,"ata_infantil_01_03_18", "infantil_2018", "plano_educacao", "fudamental_2018", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -154,6 +154,10 @@ end
 def fudamental_2018
     #send_file("#{RAILS_ROOT}/public/documentos/Fundamental_2018.pdf" , :type=>"pdf")
     send_file("#{RAILS_ROOT}/public/documentos/Fundamental2018.xls" , :type=>"xls")
+end
+
+def cesta_basica
+    send_file("#{RAILS_ROOT}/public/documentos/Lei 6166.pdf" , :type=>"pdf")
 end
 
 
