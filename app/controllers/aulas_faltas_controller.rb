@@ -116,22 +116,29 @@ class AulasFaltasController < ApplicationController
     end
 
     def data_falta
-        session[:aulas_falta_data]=params[:aulas_falta_data][6,4]+'-'+params[:aulas_falta_data][3,2]+'-'+params[:aulas_falta_data][0,2]
+     session[:aulas_falta_data]=params[:aulas_falta_data][6,4]+'-'+params[:aulas_falta_data][3,2]+'-'+params[:aulas_falta_data][0,2]
+
     end
 
 
     def nome_falta
+
         session[:aulas_falta_unidade_id]=params[:aulas_falta_unidade_id]
         @tipo_unidade = Unidade.find(:all, :select => ['id, tipo_id'] , :conditions => ['id =?',  current_user.unidade_id]  )
         if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
            @professores = Professor.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
+
         else
            @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id = 53 or  unidade_id = 75 or diversas_unidades = 1 and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
+
         end
+
         if (@professores.present?) or (@funcionarios.present?)
+
             render :partial => 'selecao_falta'
+
         else
             render :partial => 'aviso'
         end

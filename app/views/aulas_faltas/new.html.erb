@@ -25,7 +25,7 @@
                    <td>
                                     &nbsp<%= datepicker_tag(:aulas_falta, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
                                        <%= observe_field 'aulas_falta_data',
-                                                     :with   => :aulas_aulas_data,
+                                                     :with   => :aulas_falta_data,
                                                      :url  => { :action => 'data_falta' }%>
                                      &nbsp&nbsp&nbsp
                                      <b>Tipo Falta: </b>&nbsp

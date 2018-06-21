@@ -97,7 +97,7 @@ class AulasEventualsController < ApplicationController
 
 
 def data_eventual
-    session[:aulas_eventual_data]=  params[:aulas_eventual_data][6,4]+'-'+params[:aulas_eventual_data][3,2]+'-'+params[:aulas_eventual_data][0,2]
+   session[:aulas_eventual_data]=  params[:aulas_eventual_data][6,4]+'-'+params[:aulas_eventual_data][3,2]+'-'+params[:aulas_eventual_data][0,2]
 end
 
 def periodo_prof_eventual
