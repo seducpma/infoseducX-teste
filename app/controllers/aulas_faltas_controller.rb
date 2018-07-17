@@ -402,7 +402,7 @@ class AulasFaltasController < ApplicationController
   def load_iniciais
          #session[:base]= 'sisgered_development'
          #session[:base]= 'sisgered_production'
-        if current_user.has_role?('admin') or current_user.has_role?('SEDUC')
+        if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC')
             @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8"], :order => 'nome ASC')
             @professores_faltas = Professor.find_by_sql("SELECT distinct(professors.id), professors.nome FROM "+session[:base]+".professors INNER JOIN  "+session[:baseinfo]+".aulas_faltas  ON  professors.id = aulas_faltas.professor_id  WHERE aulas_faltas.ano_letivo = "+(Time.now.year).to_s+" AND aulas_faltas.funcionario_id is null order by professors.nome ASC ")
             @funcionarios_faltas = Funcionario.find_by_sql("SELECT distinct(funcionarios.id), funcionarios.nome FROM funcionarios INNER JOIN  aulas_faltas  ON  funcionarios.id = aulas_faltas.funcionario_id  WHERE aulas_faltas.ano_letivo = "+(Time.now.year).to_s+" AND aulas_faltas.professor_id is null order by funcionarios.nome ASC ")
