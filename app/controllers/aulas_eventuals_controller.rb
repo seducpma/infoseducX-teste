@@ -116,17 +116,7 @@ def nome_prof_eventual
 
         @divisao[0].nome="----------------------------------"
         @divisao[0].id = 0
-        w1 = session[:base]
-        w2 = session[:periodo_prof_eventual]
-        w3 = session[:caregoria_prof_eventual]
-        w4 = session[:aulas_eventual_unidade_id]
-        w51 = session[:aulas_eventual_data]
-        w52 = session[:aulas_eventual_unidade_id]
-        t=0
-
-        @professores2 = Eventual.find_by_sql("SELECT eve.id, pro.nome FROM eventuals eve INNER JOIN  "+session[:base]+".professors pro  ON  pro.id = eve.professor_id INNER JOIN  "+session[:base]+".unidades  uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.categoria = '"+session[:caregoria_prof_eventual]+"'AND eve.unidade_id != "+session[:aulas_eventual_unidade_id]+" AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"'  order by uni.regiao_id ASC ) order by uni.regiao_id ASC,  pro.nome ASC")
-        
-        t=0
+        @professores2 = Eventual.find_by_sql("SELECT eve.id, pro.nome FROM eventuals eve INNER JOIN  "+session[:base]+".professors pro  ON  pro.id = eve.professor_id INNER JOIN  "+session[:base]+".unidades  uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.categoria = '"+session[:caregoria_prof_eventual]+"'AND eve.unidade_id != "+session[:aulas_eventual_unidade_id]+" AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+" order by uni.regiao_id ASC ) order by uni.regiao_id ASC,  pro.nome ASC")
         @professores = @professores1 + @divisao + @professores2
         @classes = Classe.find(:all,:select => 'id, classe_classe', :conditions =>['unidade_id =? and  classe_ano_letivo=?',  session[:aulas_eventual_unidade_id], Time.now.year], :order => 'classe_classe')
         @interno= Eventual.find_by_sql("SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+" " )
@@ -301,7 +291,7 @@ end
 def load_iniciais
     #session[:base]= 'sisgered_development'
      #session[:base]= 'sisgered_production'
-         if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC')
+         if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('estagiario SEDUC')
             @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8"], :order => 'nome ASC')
             @professores_eventual= AulasEventual.find_by_sql("SELECT DISTINCT(pro.id), pro.nome, eve.id FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+" ORDER BY pro.nome")
          else
