@@ -23,12 +23,12 @@
                       <% for data in articles %>
                         <li>
                              <% if data.professor_id.present? %>
-                                        <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade') )%>
+                                        <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC')  )%>
                                             <div  class ="invisible_to_print ">&nbsp <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy", :id =>data}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></div> <b><font color ="blue"> <%= link_to h(truncate(data.professor.nome, :length => 18,:omission => "...")), data%></font></b><br/>
                                         <%else%>
                                                <b><font color ="blue"> <%= link_to h(truncate(data.professor.nome, :length => 18,:omission => "...")), data%></font></b><br/>
                                         <%end%>
-                                        (Prof.(a) <%= data.professor.funcao %>)<br/>
+                                        (Prof. <%= data.professor.funcao %> - <%= data.periodo%>)<br/>
                                         <b>----------------------</b>
                              <%end%>
                              <% if data.funcionario.present? %>
@@ -37,7 +37,7 @@
                                         <%else%>
                                                <b><font color ="blue"> <%= link_to h(truncate(data.funcionario.nome, :length => 18,:omission => "...")), data%></font></b><br/>
                                         <%end%>
-                                        (Funcao: <%= data.funcao%>)
+                                        (Funcao: <%= data.funcao%> - <%= data.periodo%>))
 
                                         <br/>
                                         <b>----------------------</b>

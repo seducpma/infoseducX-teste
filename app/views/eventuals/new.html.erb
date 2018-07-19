@@ -8,7 +8,7 @@
              <% form_for(@eventual) do |f| %>
               <%= f.error_messages %>
                      <br/>
-                     <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+                     <table  width="100%"  align="center"  bgcolor="#F5F5F5"  >
                         <tr>
                           <td colspan="8"><b><font size="3"> &nbsp CADASTRAR PROFESSOR  &nbsp - </b></td>
                         </tr>
@@ -16,12 +16,22 @@
                           <td colspan="8"><hr></td>
                         </tr>
                        <tr>
-                         <td align="left" width="10%">  <b>Professor: </b></td>
-                         <td align="left" colspan="3"><%= collection_select :eventual, :professor_id, @professores, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
+                         <td align="left" width="10%" valign="top">  <b>Professor: </b></td>
+                         <td align="left" colspan="3"><%= collection_select :eventual, :professor_id, @professores, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+                                           <%= observe_field 'eventual_professor_id',
+                                                     :with   => :eventual_professor_id,
+                                                     :url  => { :action => 'dados_prof' },
+                                                     :update => "professor"%>
+                          <br/><div id="professor"></div> </td>
                        </tr>
                         <tr>
                             <td align="left" width="10%"><b>Unidade: </b></td>
-                            <td colspan="3"  ><%= collection_select :eventual, :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
+                            <td colspan="3"  ><%= collection_select :eventual, :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+                                              <%= observe_field 'eventual_unidade_id',
+                                                     :with   => :eventual_unidade_id,
+                                                     :url  => { :action => 'dados_unidade' },
+                                                     :update => "unidade"%>
+                          <br/><div id="unidade"></div> </td>
                        </tr>
                         <tr>
                           <td align="left" width="10%">  <b>Disponi-bilidade: </b></td>

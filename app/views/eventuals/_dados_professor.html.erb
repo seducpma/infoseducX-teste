@@ -1,0 +1,13 @@
+      <table  width="100%">
+           <% @professor.each do |professor| %>
+             <tr>
+                <td align="left" width="50%">  <b>Categoria:</b> <%=h professor.funcao%></td>
+                <td align="left">  <b>Unidade:</b> <%=h professor.unidade.nome%></td>
+             </tr>
+             <tr>
+                <td align="left">  <b>Fone:</b> <%=h professor.telefone%></td>
+                <td align="left">  <b>Celular:</b> <%=h professor.cel%></td>
+             </tr>
+
+            <% end %>
+     </table>

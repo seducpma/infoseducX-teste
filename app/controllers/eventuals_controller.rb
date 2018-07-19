@@ -20,11 +20,27 @@ class EventualsController < ApplicationController
 
   def new
     @eventual = Eventual.new
+    
+
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @eventual }
     end
   end
+
+def  dados_prof
+   @professor= Professor.find(:all, :conditions => ["id =?", params[:eventual_professor_id]])
+  render :partial => 'dados_professor'
+end
+
+def  dados_unidade
+   @unidade= Unidade.find(:all, :conditions => ["id =?", params[:eventual_unidade_id]])
+   session[:regiao_id]= @unidade[0].regiao_id
+
+  render :partial => 'dados_unidade'
+end
+
 
   def edit
     @eventual = Eventual.find(params[:id])
@@ -33,6 +49,7 @@ class EventualsController < ApplicationController
   def create
     @eventual = Eventual.new(params[:eventual])
     @eventual.ano_letivo = Time.now.year
+    @eventual.regiao_id = session[:regiao_id]
     respond_to do |format|
       if @eventual.save
         flash[:notice] = 'SALVO COM SUCESSO.'
