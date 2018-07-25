@@ -384,7 +384,7 @@ class AulasFaltasController < ApplicationController
         @professor_classe= Classe.find_by_sql("SELECT  cla.horario, dis.disciplina as disciplina, cla.classe_classe as classe, atr.ano_letivo FROM "+session[:base]+".classes cla INNER JOIN  "+session[:base]+".atribuicaos atr  ON  cla.id = atr.classe_id INNER JOIN  "+session[:base]+".disciplinas dis  ON  dis.id = atr.disciplina_id WHERE atr.ano_letivo ="+(Time.now.year).to_s+" AND atr.professor_id ="+session[:prof_id].to_s+"")
         session[:profclasse]=@professor_classe[0].classe
         session[:classeper]=@professor_classe[0].horario
-        w= session[:setor]= 'PEDAGÓGICO'
+        session[:setor]= 'PEDAGÓGICO'
         session[:funcao]= 'PROFESSOR'
          render :partial => 'classeprofessor'
     end
