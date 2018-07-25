@@ -107,7 +107,7 @@
                 <tr>
                   <td><b><u>TIPO FALTAS</u></b></td>
 
-                  <td width =" 20%" align="center"><b><u>no PERÍODO</u></b></td>
+                  <td width =" 25%" align="center"><b><u>no PERÍODO</u></b></td>
                   <td width =" 20%" align="center"><b><u>no ANO</u></b></td>
                 </tr>
                 <%t1 =1%>
@@ -149,8 +149,12 @@
             <tr>
                 <td width="6%"align="left" ><br/><%= button_to '', home_path, {:method => "get"}  %></td>
 
-                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo')or current_user.has_role?('secretaria_infantil')or current_user.has_role?('diretor_unidade'))%>
-                       <%if session[:imprimemes] == 1%>
+                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo')or current_user.has_role?('secretaria_infantil')or current_user.has_role?('diretor_unidade'))%>
+                       <%if session[:imprimedia] == 1%>
+                         <td align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_dia_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                         <%  session[:imprimedia] = 0%>
+                       <%end%>
+                        <%if session[:imprimemes] == 1%>
                          <td align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
                          <%  session[:imprimemes] = 0%>
                        <%end%>

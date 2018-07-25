@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get, :aviso => :get}, :member => [:addemail,:update_email]
   map.resources :senhas
   map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
-  map.resources :aulas_faltas, :collection => { :relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
+  map.resources :aulas_faltas, :collection => { :relatorio_falta_dia=>:get, :relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
   map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:imp_show => :get ,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
   map.resources :mmanutencaos_tipos_manutencaos
@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pontos
   map.resources :estagiarios, :collection => {:periodo_unidade => :get, :periodo_estagio => :get, :periodo_trabalho => :get, :print_all => :get, :carga_horaria => :get, :rel_ponto => :get, :consultas => :get}
   #map.resources :estagiarios, :collection => {:consultas => :get, :show =>:get}
-  map.resources :aulas_faltas, :collection => { :relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get }
+  #map.resources :aulas_faltas, :collection => {:relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get }
   map.resources :funcionarios, :collection => {:consultas => :get }
   map.resources :aulas_eventuals, :collection => { :index2=>:get,   :relatorio_eventual_mes_professor => :get,  :relatorio_eventual_mes_unidade => :get}
   map.resources :eventuals
@@ -89,6 +89,7 @@ ActionController::Routing::Routes.draw do |map|
   map.impressao_lancamentos_notas '/impressao_lancamentos_notas', :controller => 'notas', :action => 'impressao_lancamentos_notas'
   map.impressao_transferencia_aluno'impressao_transferencia_aluno', :controller => 'atribuicaos', :action => 'impressao_transferencia_aluno'
   #map.impressao_historico'impressao_historico', :controller => 'atribuicaos', :action => 'impressao_historico'
+  map.impressao_faltas_dia '/impressao_faltas_dia', :controller => 'aulas_faltas', :action => 'impressao_faltas_dia'
   map.impressao_faltas '/impressao_faltas', :controller => 'aulas_faltas', :action => 'impressao_faltas'
   map.impressao_faltas_professor '/impressao_faltas_professor', :controller => 'aulas_faltas', :action => 'impressao_faltas_professor'
   map.impressao_faltas_funcionario '/impressao_faltas_funcionario', :controller => 'aulas_faltas', :action => 'impressao_faltas_funcionario'
@@ -140,6 +141,7 @@ ActionController::Routing::Routes.draw do |map|
   map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'
   map.relatorios_faltas'/relatorios_faltas', :controller => 'aulas_faltas', :action => 'relatorios_faltas'
+  map.relatorios_dia_faltas'/relatorios_dia_faltas', :controller => 'aulas_faltas', :action => 'relatorios_dia_faltas'
   map.relatorios_faltas_professor'/relatorios_faltas_professor', :controller => 'aulas_faltas', :action => 'relatorios_faltas_professor'
   map.relatorios_faltas_funcionario'/relatorios_faltas_funcionario', :controller => 'aulas_faltas', :action => 'relatorios_faltas_funcionario'
   map.relatorios_eventual_professor'/relatorios_eventual_professor', :controller => 'aulas_eventuals', :action => 'relatorios_eventual_professor'

@@ -145,6 +145,82 @@ class AulasFaltasController < ApplicationController
     end
 
 
+    def relatorios_dia_faltas
+        session[:tiporelatorio]=1
+        session[:professor_id]=params[:aulas_falta][:professor_id]
+        session[:dia_final]=params[:diaF]
+        session[:mesF]=params[:mesF]
+        session[:dataI]=params[:aulas_falta][:dataI][6,4]+'-'+params[:aulas_falta][:dataI][3,2]+'-'+params[:aulas_falta][:dataI][0,2]
+        session[:dataF]=params[:aulas_falta][:dataF][6,4]+'-'+params[:aulas_falta][:dataF][3,2]+'-'+params[:aulas_falta][:dataF][0,2]
+        session[:mes]=params[:aulas_falta][:dataF][3,2]
+        if session[:mes] == '01'
+            session[:mes] = 'JANEIRO'
+        else if session[:mes] == '02'
+                session[:mes] = 'FEVEREIRO'
+            else if session[:mes] == '03'
+                    session[:mes] = 'MARÇO'
+                else if session[:mes] == '04'
+                        session[:mes] = 'ABRIL'
+                    else if params[:mes] == '05'
+                            session[:mes] = 'MAIO'
+                        else if session[:mes] == '06'
+                                session[:mes] = 'JUNHO'
+                            else if session[:mes] == '07'
+                                    session[:mes] = 'JULHO'
+                                else if session[:mes] == '08'
+                                        session[:mes] = 'AGOSTO'
+                                    else if session[:mes] == '09'
+                                            session[:mes] = 'SETEMBRO'
+                                        else if session[:mes] == '10'
+                                                session[:mes] = 'OUTUBRO'
+                                            else if session[:mes] == '11'
+                                                    session[:mes] = 'NOVEMBRO'
+                                                else if session[:mes] == '12'
+                                                        session[:mes] = 'DEZEMBRO'
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        session[:mostra_faltas_funcionario] = 1
+        session[:mostra_faltas_professor] = 1
+        session[:aulas_falta_unidade_id] = params[:aulas_falta][:unidade_id]
+        if (session[:verifica_unidade_id]=='52')
+            @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ?  AND ano_letivo=? ", session[:dataI].to_s, session[:dataF].to_s, Time.now.year], :order => 'data ASC')
+            @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'AND ano_letivo = "+(Time.now.year).to_s+" AND professor_id IS NOT NULL) GROUP BY professor_id")
+            @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+"  AND funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+            @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (ano_letivo = "+(Time.now.year).to_s+") GROUP BY tipo")
+            @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND ano_letivo = "+(Time.now.year).to_s+" ) GROUP BY tipo")
+            @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=? ", Time.now.year], :order => 'data ASC')
+            session[:imprimedia] = 1
+            session[:imprimemes] = 0
+            session[:imprimeprofessor]  = 0
+            session[:imprimefuncionario]= 0
+        else
+            @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ? AND ano_letivo=? ", session[:dataI].to_s, session[:dataF].to_s,  Time.now.year ], :order => 'data ASC')
+            @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND ano_letivo = "+(Time.now.year).to_s+"  AND professor_id IS NOT NULL) GROUP BY professor_id")
+            @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+" AND funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+            @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (ano_letivo = "+(Time.now.year).to_s+") GROUP BY tipo")
+            @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND ano_letivo = "+(Time.now.year).to_s+" ) GROUP BY tipo")
+            @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=? AND unidade_id=?", Time.now.year, params[:aulas_falta][:unidade_id]], :order => 'data ASC')
+            session[:imprimedia] = 1
+            session[:imprimemes] = 0
+            session[:imprimeprofessor]  = 0
+            session[:imprimefuncionario]= 0
+        end
+        render :update do |page|
+            page.replace_html 'calendario', :partial => 'faltas'
+        end
+      
+    end
+
     def relatorios_faltas
         session[:tiporelatorio]=1
         session[:verifica_unidade_id]=params[:aulas_falta][:unidade_id]
@@ -339,6 +415,27 @@ class AulasFaltasController < ApplicationController
     end
 
 
+    def impressao_faltas_dia
+        if (session[:verifica_unidade_id]=='52')
+            @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ?  AND ano_letivo=? ", session[:dataI].to_s, session[:dataF].to_s, Time.now.year], :order => 'data ASC')
+            @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'AND ano_letivo = "+(Time.now.year).to_s+" AND professor_id IS NOT NULL) GROUP BY professor_id")
+            @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+"  AND funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+            @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (ano_letivo = "+(Time.now.year).to_s+") GROUP BY tipo")
+            @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND ano_letivo = "+(Time.now.year).to_s+" ) GROUP BY tipo")
+            @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=? ", Time.now.year], :order => 'data ASC')
+        else
+            @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ?  AND ano_letivo=? ", session[:dataI].to_s, session[:dataF].to_s, Time.now.year], :order => 'data ASC')
+            @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=? AND unidade_id=?", Time.now.year, session[:aulas_falta_unidade_id]], :order => 'data ASC')
+            @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+"  AND professor_id IS NOT NULL) GROUP BY professor_id")
+            @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+" AND  funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+            @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (ano_letivo = "+(Time.now.year).to_s+" ) GROUP BY tipo")
+            @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+" ) GROUP BY tipo")
+        end
+
+        render :layout => "impressao"
+    end
+
+
     def impressao_faltas
         if (session[:verifica_unidade_id]=='52')
             @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ?  AND ano_letivo=? ", session[:dataI].to_s, session[:dataF].to_s, Time.now.year], :order => 'data ASC')
@@ -358,6 +455,7 @@ class AulasFaltasController < ApplicationController
 
         render :layout => "impressao"
     end
+
 
     def impressao_faltas_professor
         @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ?  AND ano_letivo=? AND professor_id=?",session[:dataI].to_s, session[:dataF].to_s, Time.now.year, session[:aulas_falta_professor_id]], :order => 'data ASC')
