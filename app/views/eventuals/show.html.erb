@@ -35,7 +35,15 @@
                   <td align="left" width="10%"><b>Contato: </b></td>
                   <td align="left" colspan="3"><%=h @eventual.contato %></td>
                </tr>
-
+                <tr>
+                  <td align="left" width="10%"><b>Ativo: </b></td>
+                  <td align="left" colspan="3"><% if  @eventual.nao_atua == 1%>
+                                                   Não
+                                               <%else%>
+                                                   Sim
+                                               <%end%>
+                   </td>
+                </tr>
                 <tr>
                    <td align="left" valign="top"><b>Observação:</b></td>
                    <td align="left" colspan="5"><%=h @eventual.obs %></td>

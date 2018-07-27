@@ -38,7 +38,7 @@
                 <tr>
 
                     <td align="left" width="10%">&nbsp <b>Categoria: </b> </td>
-                    <td align="left">&nbsp<%= f.select :categoria, AulasEventual::CATEGORIA, :include_blank => ' -- Selecionar -- ' %>
+                    <td align="left">&nbsp<%= f.select :categoria, AulasEventual::CATEGORIA.sort, :include_blank => ' -- Selecionar -- ' %>
                                         <%= observe_field 'aulas_eventual_categoria',
                                                      :with   => :categoria,
                                                      :url  => { :action => 'caregoria_prof_eventual' }

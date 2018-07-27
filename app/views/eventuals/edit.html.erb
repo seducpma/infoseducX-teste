@@ -36,13 +36,15 @@
                         <tr>
                            <td align="left" valign="top"><b>Contato:</b></td>
                            <td align="left" colspan="5"><%= f.text_field :contato,:size => "50"  %></td>
-
                        </tr>
                         <tr>
                            <td align="left" valign="top"><b>Observação:</b></td>
-                           <td align="left" colspan="5"><%= f.text_area(:obs,:cols => 50, :rows => "3") %></td>
-
+                           <td align="left" colspan="5"><%= f.text_area(:obs,:cols => 50, :rows => "2") %></td>
                        </tr>
+                         <tr>
+                             <td align="left" colspan="4 ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= f.check_box :nao_atua %>   <b> Professor não deseja mais atuar em substituição </b>
+                             </td>
+                         </tr>
                    </table>
 
                      <table width="100%"  align="center">

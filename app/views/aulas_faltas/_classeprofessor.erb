@@ -1,13 +1,28 @@
-<% for professor in @professor_classe %>
-<table width="100%" >
+<% if session[:professor_nao_desta_escola] == 0 %>
+   <% for professor in @professor_classe %>
+      <table width="100%" >
             <tr bgcolor="#F5F5F5" >
                <td align="left" width="12%"></td>
                <td align="left" width="20%">&nbsp&nbsp&nbsp <b>Classe:</b> <%=h professor.classe%>&nbsp</td>
                <td align="left" >&nbsp&nbsp&nbsp&nbsp <b>Disciplina:</b> <%=h professor.disciplina%>&nbsp</td>
                <td align="left" >&nbsp&nbsp&nbsp&nbsp <b>Período:</b> <%=h professor.horario%>&nbsp</td>
            </tr>
-     <%end%>
-   </table>
+      </table>
+   <%end%>
+   <%  session[:professor_nao_desta_escola] = 0 %>
+<%else%>
+  <table width="100%" >
+              <tr bgcolor="#F5F5F5" >
+                <td align="left"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <font color ="red" ><b> Professor não atua nesta unidade - NÃO CADASTRAR FALTA</b> <font></td>
+             </tr>
+   <%  session[:professor_nao_desta_escola] = 0 %>
+     </table>
+
+<%end%>
+
+
+
+
 
 
 

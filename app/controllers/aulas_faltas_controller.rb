@@ -128,13 +128,10 @@ class AulasFaltasController < ApplicationController
         if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
            @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
-
         else
            @professores = Professor.find(:all, :conditions => ['(unidade_id =? or unidade_id = 52 or  unidade_id = 75 or diversas_unidades = 1 or unidade_id = 54) and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ')
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
-
         end
-t=0
         if (@professores.present?) or (@funcionarios.present?)
 
             render :partial => 'selecao_falta'
@@ -478,13 +475,22 @@ t=0
 
 
     def classe_professor
-        session[:prof_id]=params[:aulas_falta_professor_id]
+        w=session[:prof_id]=params[:aulas_falta_professor_id]
         @professor_classe= Classe.find_by_sql("SELECT  cla.horario, dis.disciplina as disciplina, cla.classe_classe as classe, atr.ano_letivo FROM "+session[:base]+".classes cla INNER JOIN  "+session[:base]+".atribuicaos atr  ON  cla.id = atr.classe_id INNER JOIN  "+session[:base]+".disciplinas dis  ON  dis.id = atr.disciplina_id WHERE atr.ano_letivo ="+(Time.now.year).to_s+" AND atr.professor_id ="+session[:prof_id].to_s+"")
-        session[:profclasse]=@professor_classe[0].classe
-        session[:classeper]=@professor_classe[0].horario
-        session[:setor]= 'PEDAGÓGICO'
-        session[:funcao]= 'PROFESSOR'
-         render :partial => 'classeprofessor'
+t=0
+
+        if !@professor_classe.empty?
+           session[:profclasse]=@professor_classe[0].classe
+           session[:classeper]=@professor_classe[0].horario
+           session[:setor]= 'PEDAGÓGICO'
+           session[:funcao]= 'PROFESSOR'
+           session[:professor_nao_desta_escola] = 0
+        else
+           session[:professor_nao_desta_escola] = 1
+        end
+
+              render :partial => 'classeprofessor'
+
     end
 
     def setor_funcionario
