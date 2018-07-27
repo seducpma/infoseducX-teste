@@ -104,4 +104,56 @@ end
             @professores= Professor.find_by_sql("SELECT id, nome FROM professors WHERE `id` NOT IN ( SELECT professor_id FROM eventuals )ORDER BY nome ASC" )
     end
 
+ def consultaeventual
+    if params[:type_of].to_i == 3
+          @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id",:order => 'professors.nome ASC')
+      render :update do |page|
+         page.replace_html 'professores', :partial => "professores"
+      end
+    else if params[:type_of].to_i == 2
+             if current_user.unidade_id == 52 or current_user.unidade_id == 53
+                   @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id", :conditions => ["eventuals.periodo like ?", "%" + params[:search].to_s + "%"],:order => 'professors.nome ASC')
+             else
+                  @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id", :conditions => ["eventuals.periodo like ? and unidade_id=?", "%" + params[:search].to_s + "%", current_user.unidade_id],:order => 'professors.nome ASC')
+             end
+            render :update do |page|
+               page.replace_html 'professores', :partial => "professores"
+             end
+       else if params[:type_of].to_i == 4
+                 @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id", :conditions => 'eventuals.nao_atua = 0',:order => 'professors.nome ASC')
+               render :update do |page|
+                  page.replace_html 'professores', :partial => "professores"
+               end
+            else if params[:type_of].to_i == 1
+                      @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id", :conditions => ["nome like ?", "%" + params[:search1].to_s + "%"],:order => 'professors.nome ASC')
+                      render :update do |page|
+                          page.replace_html 'professores', :partial => "professores"
+                     end
+                 else if params[:type_of].to_i == 5
+                         render :update do |page|
+                           page.replace_html 'professores', :partial => "professores"
+                          end
+                      else if params[:type_of].to_i == 6
+                                 if current_user.unidade_id == 52 or current_user.unidade_id == 53
+                                    @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id", :conditions => ["eventuals.categoria like ?", "%" + params[:searchcat].to_s + "%"],:order => 'professors.nome ASC')
+                                 else
+                                   @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id", :conditions => ["eventuals.categoria like ? and unidade_id=?", "%" + params[:search].to_s + "%", current_user.unidade_id],:order => 'professors.nome ASC')
+                                 end
+                               render :update do |page|
+                                      page.replace_html 'professores', :partial => "professores"
+                               end
+                             end
+                      end
+                 end
+            end
+       end
+    end
+end
+
+  def lista_professor_unidade
+    #@professors = Professor.find(:all, :conditions => ['desligado =0 and unidade_id= ?', params[:unidade_id]])
+    @professors = Eventual.find(:all, :joins => "INNER JOIN "+session[:base]+".professors ON eventuals.professor_id = professors.id WHERE eventuals.unidade_id = "+params[:unidade_id]+"  ",:order => 'professors.nome ASC')
+    render :partial => 'professores'
+  end
+
 end

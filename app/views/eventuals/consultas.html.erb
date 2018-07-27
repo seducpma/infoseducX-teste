@@ -1,20 +1,28 @@
-<div id="interno5">
-<% title "PROFESSORES", :id =>"professors" %>
+<div id="interno3">
+<% title "PROFESSORES/RESPONSÁVEIS", :id =>"professors" %>
  <div class="tabs">
    <div id="caixa_titulo">
-    <font size="3"><strong>CONSULTA PROFESSOR / AULAS EM SUBSTITUIÇÃO</strong></font><br/>
+    <font size="3"><strong>PROFESSORES SUBSTITUÇÂO</strong></font><br/>
    </div>
   <div class="tabs">
-    <% form_remote_tag :url => consultaprofessor_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+    <% form_remote_tag :url => consultaeventual_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
          <table width="100%" align="center" bgcolor="#DCDCDC" >
           <tr>
-              <td align="right">  <b class="label_busca2">Professor:
-                  <%= collection_select :eventual,:professor_id, @professores_eventual, :id, :nome, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca2"  %></b></font>
-                 <%= observe_field 'eventual_professor_id',
-                       :update => "professores",
-                       :url    => { :action => 'lista_professor' },
-                       :with   => 'eventual_professor_id' %>
+            <td>
+              <a href="#" class="filtro"><%= radio_button_tag(:type_of, "1") %></a>Nome
+              <a href="#" class="filtro_periodo_eventual"><%= radio_button_tag(:type_of, "2") %></a>Periodo
+              <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "4") %></a>Atuantes
+              <a href="#" class="filtro_unidade"><%= radio_button_tag(:type_of, "5") %></a>Unidade
+              <a href="#" class="filtro_categoria"><%= radio_button_tag(:type_of, "6") %></a>Categoria
+              <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "3") %></a>Todos
             </td>
+         </tr>
+         <tr>
+           <td><div class="consulta" style="display:none"> <%= render "consulta" %> </div>
+               <div class="consulta_unidade" style="display:none"> <%= render "consulta_unidade" %> </div>
+               <div class="consulta_categoria" style="display:none"> <%= render "consulta_categoria" %> </div>
+               <div class="consulta_periodo_eventual" style="display:none"> <%= render "consulta_periodo" %> </div>
+           </td>
          </tr>
         </table>
     <% end %>
@@ -26,7 +34,7 @@
   <table>
     <tr>
      <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
-     <td align="left"><%= button_to 'Nova Consulta', consulta_professor_eventual_path, :title => "Nova Consulta" %></td>
+     <td align="left"><%= button_to 'Nova Consulta', consulta_professor_nome_path, :title => "Nova Consulta" %></td>
     </tr>
   </table>
  </div>

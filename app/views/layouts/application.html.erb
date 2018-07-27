@@ -354,7 +354,7 @@ display: none;
                    <li><%= link_to "Estagiário",consultas_estagiarios_path %></li>
                    <li><%= link_to "Funcionário",consultas_funcionarios_path %></li>
                    <li><%= link_to "Professor",consulta_professor_nome_path %></li>
-                   <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC'))%>
+                   <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario SEDUC'))%>
                         <li><%= link_to "Professor(Subst.)",consulta_professor_eventual_path %></li>
                   <%end%>
                    <li><%= link_to "Unidade",consultas_unidades_path %></li>

@@ -120,6 +120,7 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_funcionario '/consulta_funcionario', :controller => 'funcionarios', :action => 'consulta_funcionario'
   #map.consulta_estagiarioe '/consulta_estagiario', :controller => 'estagiarios', :action => 'consulta_estagiario'
   map.consultaprofessor '/consultaprofessor', :controller => 'professors', :action => 'consultaprofessor'
+  map.consultaeventual '/consultaeventual', :controller => 'eventuals', :action => 'consultaeventual'
   map.saida_transf '/saida_transf', :controller => 'matriculas', :action => 'saida_transf'
   map.consulta_professor_nome '/consulta_professor_nome', :controller => 'professors', :action => 'consulta_nome'
   map.consulta_classe_aluno '/consulta_classe_aluno', :controller => 'classes', :action => 'consulta_classe_aluno'

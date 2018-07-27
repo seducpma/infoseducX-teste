@@ -484,7 +484,7 @@ $(".sem_filtroE").click(function ()
 
 
   $(".filtro").click(function ()
-   {
+   { $(".consulta_categoria").hide();
      $(".consulta").show();
      $(".txt_busca").show();
      $(".label_busca").show();
@@ -496,6 +496,7 @@ $(".sem_filtroE").click(function ()
      $(".consulta2").hide();
      $(".consulta_ra").hide();
      $(".consulta_rm").hide();
+     $(".consulta_periodo_eventual").hide();
 
 
 
@@ -591,6 +592,8 @@ $(".sem_filtro").click(function ()
       $(".txt_busca2").hide();
       $(".label_busca2").hide();
       $(".label_busca1").hide();
+      $(".consulta_periodo_eventual").hide();
+      $(".consulta_categoria").hide();
    });
 
    $(".filtro_funcionario").click(function ()
@@ -614,10 +617,10 @@ $(".sem_filtro").click(function ()
   });
 
    $(".filtro_unidade").click(function ()
-   {
+   { $(".consulta_categoria").hide();
      $(".consulta_professor").hide();
      $(".consulta_nome").hide();
-         
+     $(".consulta_periodo_eventual").hide();
      $(".consulta").hide();
      $(".consulta2").show();
      $(".consulta_unidade").show();
@@ -630,12 +633,12 @@ $(".sem_filtro").click(function ()
      $(".consulta_unidade_c").hide();
      $(".txt_buscac").ride();
      $(".label_buscac").ride();
-     $(".consulta_unidade_m").ride();
+     $(".consulta_unidade_m").hide();
      $(".txt_buscam").hide();
      $(".label_buscam").hide();
-
+     $(".consulta_categoria").hide()
      $(".consulta1").hide();
-     
+
      $(".consulta_data").hide();
      $(".label_busca1").hide();
      $(".consulta_classe").hide();
@@ -695,12 +698,33 @@ $(".sem_filtro").click(function ()
      $(".consulta_unidade").hide();
      $(".consulta_data").hide();
      $(".consulta_nome").hide();
+   });
 
-
-
-
+   $(".filtro_categoria").click(function ()
+   {
+     $(".consulta_categoria").show();
+     $(".txt_busca3").show()
+     $(".label_busca3").show();
+     $(".consulta").hide();
+     $(".consulta1").hide();
+     $(".consulta_unidade").hide();
+     $(".consulta_data").hide();
+     $(".consulta_nome").hide();
+     $(".consulta_periodo_eventual").hide();
 
    });
+      $(".filtro_periodo_eventual").click(function ()
+   {
+     $(".consulta_periodo_eventual").show();
+     $(".consulta_categoria").hide();
+     $(".consulta").hide();
+     $(".consulta1").hide();
+     $(".consulta_unidade").hide();
+     $(".consulta_data").hide();
+     $(".consulta_nome").hide();
+
+   });
+
       $(".filtro_classe").click(function ()
    {
      $(".consulta_classe").show();
@@ -801,7 +825,6 @@ $(".filtro_classe1").click(function ()
      $(".consulta_classe1").hide();
      $(".txt_busca3").hide()
      $(".label_busca3").hide();
-
    });
 
    $(".filtro_professor_nome1").click(function ()
