@@ -124,8 +124,12 @@ class AulasFaltasController < ApplicationController
     def nome_falta
 
         session[:aulas_falta_unidade_id]=params[:aulas_falta_unidade_id]
-        @tipo_unidade = Unidade.find(:all, :select => ['id, tipo_id'] , :conditions => ['id =?',  current_user.unidade_id]  )
+        @tipo_unidade = Unidade.find(:all, :select => ['id, tipo_id'] , :conditions => ['id =?',  params[:aulas_falta_unidade_id]]  )
+
+        @tipo_unidade[0].tipo_id
+
         if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
+           params[:aulas_falta_unidade_id]
            @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
         else
