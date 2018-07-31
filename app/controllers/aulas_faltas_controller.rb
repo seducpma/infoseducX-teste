@@ -75,11 +75,11 @@ class AulasFaltasController < ApplicationController
 
     def create
         @aulas_falta = AulasFalta.new(params[:aulas_falta])
-        @aulas_falta.ano_letivo =  Time.now.year
-        @aulas_falta.funcao = session[:funcao]
-        @aulas_falta.setor = session[:setor]
-        @aulas_falta.classe = session[:profclasse]
-        @aulas_falta.periodo = session[:classeper]
+        w=@aulas_falta.ano_letivo =  Time.now.year
+        w1=@aulas_falta.funcao = session[:funcao]
+        w2=@aulas_falta.setor = session[:setor]
+        w3=@aulas_falta.classe = session[:profclasse]
+        w4=@aulas_falta.periodo = session[:classeper]
         respond_to do |format|
             if @aulas_falta.save
                 flash[:notice] = 'SALVO COM SUCESSO.'
@@ -126,12 +126,13 @@ class AulasFaltasController < ApplicationController
         session[:aulas_falta_unidade_id]=params[:aulas_falta_unidade_id]
         @tipo_unidade = Unidade.find(:all, :select => ['id, tipo_id'] , :conditions => ['id =?',  params[:aulas_falta_unidade_id]]  )
 
-        @tipo_unidade[0].tipo_id
+        w=@tipo_unidade[0].tipo_id
 
         if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
            params[:aulas_falta_unidade_id]
            @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
+           t=0
         else
            @professores = Professor.find(:all, :conditions => ['(unidade_id =? or unidade_id = 52 or  unidade_id = 75 or diversas_unidades = 1 or unidade_id = 54) and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ')
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
@@ -481,8 +482,7 @@ class AulasFaltasController < ApplicationController
     def classe_professor
         w=session[:prof_id]=params[:aulas_falta_professor_id]
         @professor_classe= Classe.find_by_sql("SELECT  cla.horario, dis.disciplina as disciplina, cla.classe_classe as classe, atr.ano_letivo FROM "+session[:base]+".classes cla INNER JOIN  "+session[:base]+".atribuicaos atr  ON  cla.id = atr.classe_id INNER JOIN  "+session[:base]+".disciplinas dis  ON  dis.id = atr.disciplina_id WHERE atr.ano_letivo ="+(Time.now.year).to_s+" AND atr.professor_id ="+session[:prof_id].to_s+"")
-t=0
-
+        t=0
         if !@professor_classe.empty?
            session[:profclasse]=@professor_classe[0].classe
            session[:classeper]=@professor_classe[0].horario
@@ -491,6 +491,10 @@ t=0
            session[:professor_nao_desta_escola] = 0
         else
            session[:professor_nao_desta_escola] = 1
+           session[:profclasse]="NÃO POSSUI ATRIBUIÇÃO EM 2018"
+           session[:classeper]=0
+           session[:setor]= 'PEDAGÓGICO'
+           session[:funcao]= 'PROFESSOR'
         end
 
               render :partial => 'classeprofessor'

@@ -23,7 +23,7 @@
                     
                     <ul>
                       <% for data in articles %>
-                                 <li><% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')or  current_user.has_role?('diretor_unidade') )%>
+                                 <li><% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade') )%>
                                             <div  class ="invisible_to_print ">&nbsp <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy", :id =>data}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></div> <br/>
                                         <%end%>
                                      <b><font color ="blue"> <%= data.tipo%></font></b><br/>
