@@ -16,6 +16,12 @@
            <tr>
              <td colspan="2">
                  <table width="100%" >
+                   <%   if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+                       <%  @protocolos = Mmanutencao.find(:all,  :order => 'id ASC')%>
+                   <%  else %>
+                       <%   @protocolos = Mmanutencao.find(:all, :conditions =>['unidade_id =? ', current_user.unidade_id], :order => 'id ASC')%>
+                   <%  end %>
+
                 <tr >
                    <% form_tag busca_protocolo_mmanutencaos_path, :method => 'get' do %>
                    <td align="right">
