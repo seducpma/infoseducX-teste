@@ -1,8 +1,9 @@
 #set :application, "192.168.0.12"
-set :application, "192.168.0.14"
+set :application, "177.36.159.102"  # 192.168.0.14 - Servidor oficial (hera)  # 177.36.159.102 - Servidor Teste Alvaro/Alexandre
 #set :repository, "git://github.com/seducpma/sisgered.git"
 set :repository, "git://github.com/seducpma/infoseduc.git"
-set :user, "atena"
+#set :user, "atena"
+set :user, "hera"
 set :use_sudo, false
 #set :deploy_to, "/home/#{user}/sisgered.seducpma.com"
 set :deploy_to, "/home/#{user}/infoseduc.seducpma.com"
