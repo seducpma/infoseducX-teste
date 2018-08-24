@@ -60,7 +60,7 @@
                  </tr>
                    <tr>
                      <td align="center"colspan="2"><b>Problema</b></font></td>
-                      <td colspan="6" align="left"><br/> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                      <td colspan="6" align="left"> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
                               <%=h servico.servico%>:
                              <% end %> - <%=h @mmanutencao.descricao %><br/></font>
                       <br/>
@@ -71,13 +71,13 @@
                      <tr>
                        <th colspan="2"><font size="4"><br/><b>Procedimento à realizar</b><br/></font></th>
                        <td colspan="6" align="left"><font size="3"><%=h @mmanutencao.procedimentos %>
-                           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                           <br/><br/><br/><br/><br/><br/><br/><br/>
                        </td>
                     </tr>
                       <tr>
                         <th colspan="2"><br/><font size="3"><b>Procedimento realizado</b></font></th>
                         <td colspan="6" style="padding-bottom:5px">
-                           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                           <br/><br/><br/><br/><br/><br/><br/>
                            
                         </td>
                       </tr>
@@ -87,7 +87,7 @@
                     </tr>
                       <tr>
                         <th colspan="2"><font size="3"><b>Assinatura</b></font></th>
-                        <td colspan="6" style="padding-bottom:5px"><br/><br/> </td>
+                        <td colspan="6" style="padding-bottom:5px"><br/> </td>
                       </tr>
                  </table>
                </td>
@@ -102,14 +102,10 @@
           </tr>
          <tr>
            <td colspan="2">
-             OBS:<%= text_field_tag(:obs1,nil,:size => 94 ) %>
+             OBS:<%= text_field_tag(:obs1,nil,:size => 80 ) %>
            </td>
          </tr>
-         <tr>
-           <td colspan="2" >
-             <%= text_field_tag(:obs2,nil,:size => 100) %>
-           </td>
-         </tr>
+
          <tr>
              <td align="left "colspan="2">
                <br/><b>Funcionário:</b><%= $func %>
