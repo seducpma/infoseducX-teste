@@ -1,0 +1,39 @@
+
+<table  border="1" cellspacing="0" cellpadding="1" width="100%">
+    <tr bgcolor= white >
+      <td align="center"><b>Item</b></td>
+      <td align="center" width ="10%"><b>Quant.</b></td>
+      <td align="center" width =" 50%" <b>Descrição</b></td>
+      <td align="center"><b>Unitário</b></td>
+      <td align="center" ><b>Valor</b></td>
+    </tr>
+    <%contador=1%>
+    <% session[:soma]=0 %>
+    <% total_geral = 0.00 %>
+    <% if !@orc_empenho_itens.nil? %>
+        <% @orc_empenho_itens.each do |item|%>
+          <tr>
+             <td align="center"><%= contador%> </td>
+             <td align="center"><%= item.quantidade%> </td>
+             <td> <%= item.descricao%>  </td>
+             <td align="center"> R$ <%= item.unitario%> </td>
+             <td align="center"> R$ <%= item.total%> </td>
+             
+           </tr>
+          <% contador = contador+1%>
+          <% total_geral = total_geral+ item.total%>
+        <%end%>
+   <%end%>
+           <tr>
+             <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+             <td align="center"> R$ <%= total_geral %></td>
+
+           </tr>
+  </table>
+
+
+
+
+
+
+

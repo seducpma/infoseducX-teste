@@ -1,0 +1,40 @@
+<h1>Editing orc_pedido_descricao</h1>
+
+<% form_for(@orc_pedido_descricao) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </p>
+  <p>
+    <%= f.label :item %><br />
+    <%= f.text_field :item %>
+  </p>
+  <p>
+    <%= f.label :quantidade %><br />
+    <%= f.text_field :quantidade %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :unitario %><br />
+    <%= f.text_field :unitario %>
+  </p>
+  <p>
+    <%= f.label :total %><br />
+    <%= f.text_field :total %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orc_pedido_descricao %> |
+<%= link_to 'Back', orc_pedido_descricaos_path %>

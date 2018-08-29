@@ -1,0 +1,50 @@
+<div id="interno5">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - UNIDADE ORÇAMENTARIA - </strong></font><br/>
+ </div>
+
+
+<table bgcolor="#F5F5F5"  width="100%">
+
+   <tr bgcolor="#F5F5F5"   width="100%">
+   <td colspan="2">
+    <fieldset><legend><font  size=4>Unidade Orçamentaria</font></legend>
+         <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+
+          <tr>
+            <td align="left" valign="Top"><b>Codigo:</b></td>
+            <td align="left" ><%=h@orc_uni_orcamentaria.codigo %></td>
+            <td align="left"width="10%"><b>Ano: </b></td>
+            <td align="left"><%=h @orc_uni_orcamentaria.ano %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Un.Orçamentaria:</b></td>
+            <td align="left" colspan="3"> <%=h @orc_uni_orcamentaria.descricao %></td>
+          </tr>
+          <tr>
+            <td align="left"><font size="2"><b>Tipo Despesa:</b></font></td>
+            <td align="left" colspan="3"><font size="2">  <%=h @orc_uni_orcamentaria.orc_uni_despesa.descricao %></font></td><p>
+          </tr>
+       </table>
+    </fieldset>
+
+      <table>
+           <tr>
+              <td  width="2%"align="leftt" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              <td width="2%" align="left" ><%= button_to('Unidades Orçamentarias', orc_uni_orcamentarias_path, :method => "get",  :title => "Unidades Orçamentarias")%></td>
+              <td  align="left" ><%= button_to('Cadastrar', new_orc_uni_orcamentaria_path, :method => "get",  :title => "Unidades Orçamentarias")%></td>
+
+            </tr>
+      </table>
+
+  </td>
+ </tr>
+</table>
+</font>
+<br/>
+
+</div>
+<br/>
+</div>

@@ -1,4 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :orc_pagamentos, :collection => {:consulta => :get}
+  map.resources :orc_suplementacaos, :collection => {:consulta => :get}
+  map.resources :orc_empenho_itens
+  map.resources :orc_empenhos, :collection => {:consulta => :get}
+  map.resources :orc_pedido_descricaos
+  map.resources :orc_pedido_compras, :collection => {:consulta => :get}
+  map.resources :orc_fichas, :collection => {:consulta => :get, :saldo => :get}
+  map.resources :orc_uni_orcamentarias, :collection => {:consulta => :get}
+  map.resources :orc_uni_despesas
   map.resources :poda_gramas, :collection => {:agenda => :get, :relatorio_agendamento => :get, :executada => :get, :nao_executada => :get}
   map.resources :certificados, :collection => {:aviso => :get}
   map.resources :produtos
@@ -32,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :classes,:collection => { :editar_classe=>:get, :gerar_notas=>:get, :nucleo_basico =>:get, :consulta_classe_fone =>:get}
   map.resources :professors,:collection => { :consulta_classe=>:get,  :consulta_classe_anterior=>:get }
   map.resources :tipos
-  map.resources :unidades,  :collection => {:consultas => :get} 
+  map.resources :unidades,  :collection => {:consultas => :get}
   map.resources :logs
   map.resources :roles_users
   map.resources :users
@@ -41,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :logs
   map.resource :session, :informatica => :get
   map.resources :graficos
-  map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
+
   map.oficio 'oficio', :controller => 'sessions', :action => 'oficio'
   map.manutencao 'manutencao', :controller => 'sessions', :action => 'manutencao'
   map.connect ':controller/:action/:id'
@@ -53,7 +62,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.aviso_password '/aviso_password', :controller => 'sessions', :action => 'aviso'
-  
+
   map.lista_produto_periodo_index '/lista_produto_periodo_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_periodo_index'
   map.lista_produto_entrada_index '/lista_produto_entrada_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_entrada_index'
   map.lista_produto_saida_index '/lista_produto_saida_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_saida_index'
@@ -103,6 +112,7 @@ ActionController::Routing::Routes.draw do |map|
   map.impressao_calendar_agenda '/impressao_calendar_agenda', :controller =>'poda_gramas', :action =>'impressao_calendar_agenda'
   map.impressao_calendar_execucoes '/impressao_calendar_execucoes', :controller =>'poda_gramas', :action =>'impressao_calendar_execucoes'
   map.impressao_calendar_nexecutado '/impressao_calendar_nexecutado', :controller =>'poda_gramas', :action =>'impressao_calendar_nexecutado'
+  map.impressao_pedido '/impressao_pedido', :controller => 'orc_pedido_compras', :action => 'impressao_pedido'
 
   map.alteracao '/altera', :controller => 'alteracaos', :action => 'altera'
   map.alteracao_matricula '/alteracao_matricula', :controller => 'matriculas', :action => 'alteracao_matricula'
@@ -138,6 +148,14 @@ ActionController::Routing::Routes.draw do |map|
   map.consultar_matricula '/consultar_matricula', :controller => 'matriculas', :action => 'consultar_matricula'
   map.consultar_relatorio '/consultar_relatorio', :controller => 'relatorio', :action => 'consulta_relatorio'
   map.consulta_atribuicao '/consulta_atribuicao', :controller => 'atribuicaos', :action => 'consulta_atribuicao'
+  map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get}
+  map.consulta_orcamentaria '/consulta_orcamentaria', :controller => 'orc_uni_orcamentarias', :action => 'consulta_orcamentaria'
+  map.consulta_ficha'/consulta_ficha', :controller => 'orc_fichas', :action => 'consulta_ficha'
+  map.consulta_saldo'/consulta_saldo', :controller => 'orc_fichas', :action => 'consulta_saldo'
+  map.consulta_pedido'/consulta_pedido', :controller => 'orc_pedido_compras', :action => 'consulta_pedido'
+  map.consulta_empenho'/consulta_empenho', :controller => 'orc_empenhos', :action => 'consulta_empenho'
+  map.consulta_suplementacao'/consulta_suplementacao', :controller => 'orc_suplementacaos', :action => 'consulta_suplementacao'
+  map.consulta_pagamentos'/consulta_pagamentos', :controller => 'orc_pagamentos', :action => 'consulta_pagamentos'
 
   map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'
@@ -188,5 +206,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.geo "/geos/geo/:id", :controller => "geos", :action => "geo"
-  
+
 end

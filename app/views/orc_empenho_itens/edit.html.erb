@@ -1,0 +1,40 @@
+<h1>Editing orc_empenho_iten</h1>
+
+<% form_for(@orc_empenho_iten) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :orc_empenho %><br />
+    <%= f.text_field :orc_empenho %>
+  </p>
+  <p>
+    <%= f.label :quantidade %><br />
+    <%= f.text_field :quantidade %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :unitario %><br />
+    <%= f.text_field :unitario %>
+  </p>
+  <p>
+    <%= f.label :total %><br />
+    <%= f.text_field :total %>
+  </p>
+  <p>
+    <%= f.label :total_geral %><br />
+    <%= f.text_field :total_geral %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orc_empenho_iten %> |
+<%= link_to 'Back', orc_empenho_itens_path %>

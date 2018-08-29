@@ -1,0 +1,44 @@
+<h1>Editing orc_pedido_compra</h1>
+
+<% form_for(@orc_pedido_compra) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </p>
+  <p>
+    <%= f.label :objetivo %><br />
+    <%= f.text_field :objetivo %>
+  </p>
+  <p>
+    <%= f.label :ficha %><br />
+    <%= f.text_field :ficha %>
+  </p>
+  <p>
+    <%= f.label :valor_total %><br />
+    <%= f.text_field :valor_total %>
+  </p>
+  <p>
+    <%= f.label :justicicativa %><br />
+    <%= f.text_field :justicicativa %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </p>
+  <p>
+    <%= f.label :devolucao %><br />
+    <%= f.datetime_select :devolucao %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orc_pedido_compra %> |
+<%= link_to 'Back', orc_pedido_compras_path %>

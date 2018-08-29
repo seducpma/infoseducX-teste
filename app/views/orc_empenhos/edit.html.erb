@@ -1,0 +1,68 @@
+<h1>Editing orc_empenho</h1>
+
+<% form_for(@orc_empenho) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :orc_pedido_compra %><br />
+    <%= f.text_field :orc_pedido_compra %>
+  </p>
+  <p>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </p>
+  <p>
+    <%= f.label :processo %><br />
+    <%= f.text_field :processo %>
+  </p>
+  <p>
+    <%= f.label :ficha %><br />
+    <%= f.text_field :ficha %>
+  </p>
+  <p>
+    <%= f.label :interessado %><br />
+    <%= f.text_field :interessado %>
+  </p>
+  <p>
+    <%= f.label :cnpj %><br />
+    <%= f.text_field :cnpj %>
+  </p>
+  <p>
+    <%= f.label :modalidade %><br />
+    <%= f.text_field :modalidade %>
+  </p>
+  <p>
+    <%= f.label :vencimento %><br />
+    <%= f.date_select :vencimento %>
+  </p>
+  <p>
+    <%= f.label :validade %><br />
+    <%= f.date_select :validade %>
+  </p>
+  <p>
+    <%= f.label :despesa %><br />
+    <%= f.text_field :despesa %>
+  </p>
+  <p>
+    <%= f.label :orcamentaria %><br />
+    <%= f.text_field :orcamentaria %>
+  </p>
+  <p>
+    <%= f.label :destinacao %><br />
+    <%= f.text_field :destinacao %>
+  </p>
+  <p>
+    <%= f.label :quantidade %><br />
+    <%= f.text_field :quantidade %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orc_empenho %> |
+<%= link_to 'Back', orc_empenhos_path %>
