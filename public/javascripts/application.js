@@ -1,12 +1,3 @@
-function calcular(){
-    var unitario = parseFloat(document.getElementById('unitario').value);
-    var quantidade = parseFloat(document.getElementById('quantidade').value);
-    document.getElementById('subtotal').value = (unitario * quantidade).toFixed(2);
-
-}
-
-
-
 function Imprimir(){
 window.print();
 }
@@ -374,7 +365,7 @@ $("#localizacao_data_aquisicao").datepicker({dateFormat: 'dd-mm-yy', changeYear:
      $(".consulta").show();
      $(".txt_busca").val("Digite parte da busca").css("color","gray");
      $("#search").show().addClass("autocomplete").removeClass("txt_busca");
-
+     
      $(".autocomplete").autocomplete({
         source: ["a"]
      });
@@ -540,7 +531,7 @@ $(".filtro_nome").click(function ()
      $(".label_busca1").hide();
      $(".consulta_classe").hide();
      $(".consulta_professor").hide();
-
+     
 
    });
 
@@ -603,51 +594,7 @@ $(".sem_filtro").click(function ()
       $(".label_busca1").hide();
       $(".consulta_periodo_eventual").hide();
       $(".consulta_categoria").hide();
-      $(".consulta_ano").hide();
-      $(".consulta_orc").hide();
-      $(".consulta_des").hide();
    });
-
-$(".sem_filtro_orc").click(function ()
-   {
-     $(".consulta_sem_filtro_orc").show();
-     $(".consulta_orc").hide();
-     $(".consulta_des").hide();
-     $(".consulta_ano").hide();
-
-  });
-
-
-$(".filtro_orc").click(function ()
-   {
-     $(".consulta_orc").show();
-     $(".consulta_des").hide();
-     $(".consulta_ano").hide();
-     $(".consulta").hide();
-     $(".consulta_sem_filtro_orc").hide();
-
-  });
-
-$(".filtro_ano").click(function ()
-   {
-     $(".consulta_ano").show();
-     $(".consulta_des").hide();
-     $(".consulta_orc").hide();
-     $(".consulta").hide();
-     $(".consulta_sem_filtro_orc").hide();
-
-  });
-
-$(".filtro_des").click(function ()
-   {
-     $(".consulta_des").show();
-     $(".consulta_orc").hide();
-     $(".consulta_ano").hide();
-     $(".consulta").hide();
-     $(".consulta_sem_filtro_orc").hide();
-
-  });
-
 
    $(".filtro_funcionario").click(function ()
    {
@@ -698,7 +645,7 @@ $(".filtro_des").click(function ()
      $(".label_busca").hide();
      $(".txt_busca").hide();
      $(".consulta_nome").hide();
-
+         
 
 
    });
@@ -806,10 +753,10 @@ $(".filtro_des").click(function ()
 
    $(".filtro1").click(function ()
    {
-     $(".consulta_cantor").show();
+     $(".consulta_cantor").show();   
    });
 
-
+   
    $(".sem_filtro#unidade").click(function ()
     {
       $("#unidade_corrente").show();
@@ -916,11 +863,13 @@ $(".OUTRAS1_filtro").click(function ()
 
 
 
+
+
 // Letras em maiusculo
 
-$("input").keyup(function(){
-    $(this).val($(this).val().toUpperCase());
-  })
+//$("input").keyup(function(){
+//    $(this).val($(this).val().toUpperCase());
+//  })
 
 // Fim Letra em maiusculo
 
