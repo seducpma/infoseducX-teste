@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
 
         redirect_back_or_default(home_path)
-        flash[:notice] = "BEM VINDO AO SISGERED."
+        flash[:notice] = "BEM VINDO AO INFOSEDUC."
     else
       render :action => 'erro'
   end

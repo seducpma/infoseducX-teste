@@ -46,10 +46,10 @@ class OrcEmpenhosController < ApplicationController
   # GET /orc_empenhos/new.xml
   def new
     @orc_empenho = OrcEmpenho.new
-    
     @orc_empenho.save
+    w=session[:id_empenho_new]= @orc_empenho
+    t=0
 
-    w=session[:id_empenho_new]= (@orc_empenho.id)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @orc_empenho }
@@ -153,7 +153,7 @@ class OrcEmpenhosController < ApplicationController
         @orc_empenho.valor_total = session[:valor_total].to_f
         @orc_empenho.save
              # Atualiza saldo na ficha
-
+t=0
         @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:id_empenho_new] ])
         @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra.orc_ficha_id])
         @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado + session[:valor_total]
