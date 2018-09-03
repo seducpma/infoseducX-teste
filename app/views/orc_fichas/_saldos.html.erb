@@ -1,0 +1,34 @@
+
+      <div class="tabs">
+    <br/>
+    <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+          <td align="center" width =" 10%" colspan="2"><b>Codigo</b></td>
+            <td align="center"><b>Numero</b></td>
+            <td align="center"><b>Ficha</b></td>
+            <td align="center"><b>Un.Orçamentaria</b></td>
+            <td align="center" width="8%"><b>Saldo Atual</b></td>
+            <td align="center" width="8%"><b>Empenhado</b></td>
+            <td align="center" width="8%"><b>Reservado</b></td>
+            <td align="center" width="8%"><b>Saldo</b></td>
+
+          </tr>
+          <% @orc_fichas.each  do |ficha| %>
+            <tr  bgcolor="#F5F5F5">
+              <td align="center"><%=h ficha.ano %> </td>
+              <td align="center"> <%=h ficha.codigo %></td>
+              <td align="center"><%=h ficha.ficha %></td>
+              <td><%=h ficha.descricao %></td>
+              <td><%=h ficha.orc_uni_orcamentaria.descricao %></td>
+              <td align="center">R$ <%=h ficha.saldo_atual%></td>
+              <td align="center">R$ <%=h ficha.saldo_empenhado %></td>
+              <td align="center">R$ <%=h ficha.saldo_reservado %></td>
+              <td align="center">R$ <%=h ficha.saldo %></td>
+              <td  align="right"><%= button_to 'Visualizar',{:action => "show", :id =>ficha}, :method => "get", :title => "Visualizar"%> </td>
+              <td><%= button_to 'Editar',{:action => "edit", :id =>ficha}, :method => "get", :title => "Editar"%> </td>
+            </tr>
+          <% end %>
+    </table>
+   <div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div>
+</div>
+    <br/>

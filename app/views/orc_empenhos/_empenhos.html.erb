@@ -1,0 +1,33 @@
+
+      <div class="tabs">
+    <br/>
+    <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+            <td align="center" width ="5%"><b>Código </b></td>
+            <td align="center"><b>Processo</b></td>
+            <td align="center"><b>Data</b></td>
+            <td align="center"><b>Pedido</b></td>
+            <td align="center" width ="30%"><b>Fornecedor</b></td>
+            <td align="center" colspan="2" ><b>Ficha</b></td>
+            <td align="center"><b>Valor</b></td>
+
+          </tr>
+          <% @empenhos.each  do |empenho| %>
+            <tr  bgcolor="#F5F5F5">
+
+              <td align="center"><%=h empenho.codigo %></td>
+              <td align="center"><%=h empenho.processo %></td>
+              <td align="center"><%if !empenho.data.nil? %><%=h empenho.data.strftime("%d/%m/%Y") %> <%end%> </td>
+              <td align="center"><%=h empenho.orc_pedido_compra.codigo %></td>
+              <td align="center"><%=h empenho.orc_pedido_compra.fornecedor %></td>
+              <td align="center"><%=h empenho.orc_pedido_compra.orc_ficha.ficha %> </td>
+              <td align="center"> <%=h empenho.orc_pedido_compra.orc_ficha.descricao %></td>
+              <td align="center">R$ <%=h empenho.valor_total %></td>
+              <td width ="5%"><%= button_to 'Visualizar',{:action => "show", :id =>empenho}, :method => "get", :title => "Visualizar"%> </td>
+              <td width ="5%"><%= button_to 'Excluir', empenho, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+            </tr>
+          <% end %>
+    </table>
+   <div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div>
+</div>
+    <br/>

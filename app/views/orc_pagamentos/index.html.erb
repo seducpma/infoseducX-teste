@@ -1,0 +1,28 @@
+<h1>Listing orc_pagamentos</h1>
+
+<table>
+  <tr>
+    <th>Orc empenho</th>
+    <th>Ficha pg</th>
+    <th>Valor pg</th>
+    <th>Data pg</th>
+    <th>Obs pg</th>
+  </tr>
+
+<% @orc_pagamentos.each do |orc_pagamento| %>
+  <tr>
+    <td><%=h orc_pagamento.orc_empenho_id %></td>
+    <td><%=h orc_pagamento.ficha_pg %></td>
+    <td><%=h orc_pagamento.valor_pg %></td>
+    <td><%=h orc_pagamento.data_pg %></td>
+    <td><%=h orc_pagamento.obs_pg %></td>
+    <td><%= link_to 'Show', orc_pagamento %></td>
+    <td><%= link_to 'Edit', edit_orc_pagamento_path(orc_pagamento) %></td>
+    <td><%= link_to 'Destroy', orc_pagamento, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New orc_pagamento', new_orc_pagamento_path %>

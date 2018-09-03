@@ -1,0 +1,37 @@
+
+<div style='display:none'>
+  <div id='inline_orc_empenho_item' style='padding:10px;  background:#EEE9E9;'>
+
+    <% form_remote_for(:orc_empenho_item,:url => { :action => 'create_orc_empenho_item' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
+      
+     <h2>ITENS ORDEM DE PAGAMENTOS: <%= session[:id_compra] %></h2>
+      <hr>
+             <%= error_messages_for 'contact' %>
+      <table  width="100%" bgcolor="#F5F5F5" border="1">
+         <tr>
+            
+            <td width="5%" align="center"><font size="2"><b>Qtd</b></font></td>
+            <td width="40%"><font size="2"><b>Descricão</b></font></td>
+            <td width="15%"><font size="2"><b>Unitário</b></font></td>
+            <td width="20%"><font size="2"><b>Total</b></font></td>
+         </tr>
+        <tr>
+            <td><%= f.text_field :quantidade, :size =>1, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
+            <td><%= f.text_field :descricao, :size =>30 %></td>
+            <td>R$ <%= f.text_field :unitario, :size =>5, :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>
+            <td>R$ <%= f.text_field :total, :size =>10, :id=> 'subtotal' %></td>
+        </tr>
+
+
+        <tr>
+
+           <td align="left" colspan="5"><%= f.submit "Salvar" %>&nbsp&nbsp&nbsp&nbsp
+
+             <font color =" red"> <b>UTILIZE PONTO PARA SEPRAÇÃO DOS CENTAVOS - NÃO UTULIZE VIRGULA </b></font>
+ 
+           </td>
+        </tr>
+       </table>
+      <%end%>
+  </div>
+</div>

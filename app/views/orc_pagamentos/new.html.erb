@@ -1,0 +1,73 @@
+<div id="interno4">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - ORDEM DE PAGAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+             <% form_for(@orc_pagamento) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Ordem de Pagamento</font></legend>
+                    <table width="100%">
+                      <tr>
+                         <td align="left" width =" 10%"><b>Empenho:</b></td>
+                         <td colspan="3"align="left"><%= f.collection_select :orc_empenho_id, @empenhos, :id, :codigo, :include_blank => '   '%>
+                                          <%= observe_field 'orc_pagamento_orc_empenho_id',
+                                                     :with   => :orc_pagamento_orc_empenho_id,
+                                                     :url  => { :action => 'dados_empenho' },
+                                                     :update => "empenho"%>
+                         </td>
+                       </tr>
+                        <tr>
+                          <td colspan="4"><div id="empenho"></div>
+                          </td>
+                        </tr>
+                       <tr>
+                         <td colspan="2"><b>Data: </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= datepicker_tag(:orc_pagamento, :data_pg,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'" }) %></td>
+                         <td width="10%"align="left"><b>Valor: R$</b></font></td>
+                         <td  align="left"><%=  f.text_field :valor_pg , :size =>20 %></td>
+                      </tr>
+
+                   </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_pagamentos_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -508,7 +508,86 @@ display: none;
                 </ul>
               </li>
              <%end%>
+             <% if current_user.has_role?('desenvolvimento')%>
+             <li><span class="divider divider-vert" ></span></li>
+                <li><a class="item-primary" href="#;">ORÇAMENTO</a>
+                  <ul style="width:108px;">
+                     <% if current_user.has_role?('desenvolvimento')%>
+                        <li><a>Plano de Contas</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                           <li><a>Cadastrar</a>
+                                <ul style="width:108px;">
+                                  <li><%= link_to "Ficha",new_orc_ficha_path %></li>
+                                 <li><%= link_to "Tipo Despesa",new_orc_uni_despesa_path %></li>
+                                 <li><%= link_to "Un.Orçamentaria",new_orc_uni_orcamentaria_path %></li>
+                                </ul>
+                             </li>
+                            <%end%>
+                             <% if current_user.has_role?('desenvolvimento') %>
+                             <li><a>Consultar</a>
+                                  <ul style="width:108px;">
+                                    <li><%= link_to "Ficha",consulta_orc_fichas_path %></li>
+                                   <li><%= link_to "Tipo Despesa",orc_uni_despesas_path %></li>
+                                   <li><%= link_to "Un.Orçamentaria",consulta_orc_uni_orcamentarias_path %></li>
 
+                                 </ul>
+                               </li>
+                              <%end%>
+
+                        </ul>
+                      </li>
+                      <li><a>Serviço Interno</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_pedido_compra_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_pedido_compras_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Empenhos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_empenho_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_empenhos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Saldos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
+
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Suplementacões</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_suplementacao_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_suplementacaos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Pagamentos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_suplementacaos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+
+
+                    <%end%>
+                  </ul>
+              </li>
+             <%end%>
 
 
         </ul>
