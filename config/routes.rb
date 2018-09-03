@@ -64,6 +64,10 @@ ActionController::Routing::Routes.draw do |map|
   map.informatica 'informatica', :controller => 'sessions', :action => 'informatica'
   map.aviso_password '/aviso_password', :controller => 'sessions', :action => 'aviso'
 
+
+  map.new_itens '/new_itens', :controller => 'orc_empenhos', :action => 'new_itens'
+  map.new_descricaos'/new_descricaos', :controller => 'orc_pedido_compras', :action => 'new_descricaos'
+
   map.lista_produto_periodo_index '/lista_produto_periodo_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_periodo_index'
   map.lista_produto_entrada_index '/lista_produto_entrada_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_entrada_index'
   map.lista_produto_saida_index '/lista_produto_saida_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_saida_index'

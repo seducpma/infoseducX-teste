@@ -16,24 +16,13 @@ class OrcPedidoComprasController < ApplicationController
         @orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
  end
 
- #def load_iniciais
- #       @orcamentaria = OrcUniOrcamentaria.all(:conditions => ["ano = ?", Time.now.year], :order => 'descricao ASC')
- #       @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
- #       @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
- #      @orc_ficha_ano= OrcFicha.find(:all, :select => 'distinct(ano)')
- #      @orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
- 
- #end
-def dados_ficha
-
+ def dados_ficha
     @dados_ficha=  OrcFicha.find(:all, :conditions => ['id = ?',params[:orc_pedido_compra_orc_ficha_id]])
-
      render :partial => "dados_fichas"
 end
 
   def index
     @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions=> ["id != 1"], :order => 'id DESC')
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @orc_pedido_compras }
@@ -56,23 +45,24 @@ end
   # GET /orc_pedido_compras/new.xml
   def new
     @orc_pedido_compra = OrcPedidoCompra.new
-    #@orc_pedido_compra_anterior = OrcPedidoCompra.find(:last)
-     @orc_pedido_compra.save
-     #   w=session[:id_compra_new]= @orc_pedido_compra.id
-  
-    #                   #session[:id_compra_new]= @orc_pedido_compra_anterior.id+1
-    #session[:codigo]=(@orc_pedido_compra_anterior.id+1).to_s+'/2018'
-   #@orc_pedido_descricao = OrcPedidoDescricao.find(:last, :conditions => ['orc_pedido_compra_id=?',session[:id_compra_new] ])
- 
+
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @orc_pedido_compra }
     end
   end
 
+   def new_descricaos
+
+    @orc_pedido_compra = OrcPedidoCompra.find(session[:news_decricao])
+
+  end
+
   # GET /orc_pedido_compras/1/edit
   def edit
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
+
   end
 
   # POST /orc_pedido_compras
@@ -83,6 +73,7 @@ end
 
     respond_to do |format|
       if @orc_pedido_compra.save
+        w=session[:news_decricao]= @orc_pedido_compra.id
 #         @orc_pedido_descricao = OrcPedidoDescricao.find(:last, :conditions => ['orc_pedido_compra_id=?',session[:id_compra_new]])
 
 #        @orc_pedido_compra.save
@@ -91,9 +82,8 @@ end
 #        @orc_pedido_compra[0].save
 
        flash[:notice] = 'OrcPedidoCompra was successfully created.'
-        format.html { redirect_to(@orc_pedido_compra) }
-        format.xml  { render :xml => @orc_pedido_compra, :status => :created, :location => @orc_pedido_compra }
-      else
+        format.html { redirect_to(new_descricaos_path) }
+       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @orc_pedido_compra.errors, :status => :unprocessable_entity }
       end

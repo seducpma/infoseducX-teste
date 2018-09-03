@@ -6,6 +6,7 @@
       <td align="center" width =" 50%" <b>Descrição</b></td>
       <td align="center"><b>Unitário</b></td>
       <td align="center" ><b>Valor</b></td>
+      <td></td>
     </tr>
     <%contador=1%>
     <% session[:soma]=0 %>
@@ -18,7 +19,6 @@
              <td> <%= item.descricao%>  </td>
              <td align="center"> R$ <%= item.unitario%> </td>
              <td align="center"> R$ <%= item.total%> </td>
-             
            </tr>
           <% contador = contador+1%>
           <% total_geral = total_geral+ item.total%>

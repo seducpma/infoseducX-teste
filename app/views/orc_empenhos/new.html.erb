@@ -44,11 +44,6 @@
                                  &nbsp&nbsp&nbsp&nbsp <b>Modalidade: </b>&nbsp<%= f.select:modalidade, (MODALIDADE).sort, :include_blank => ' ' %>
                          </td>
                      </tr>
-                      <tr>
-                        <td align="left" valign="top"> <b><%= link_to 'Itens da Nota', "#inline_orc_empenho_item", :class =>"inline60" %></b></td>
-                        <td colspan="7"><div id="dados"> <%= render :partial => 'orc_empenho_itens'  %></div></td>
-                      </tr>
-
                    </table>
                   </fieldset>
                  </td>

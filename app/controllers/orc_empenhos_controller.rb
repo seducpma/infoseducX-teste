@@ -46,14 +46,18 @@ class OrcEmpenhosController < ApplicationController
   # GET /orc_empenhos/new.xml
   def new
     @orc_empenho = OrcEmpenho.new
-    @orc_empenho.save
-    w=session[:id_empenho_new]= @orc_empenho
-    t=0
 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @orc_empenho }
     end
+  end
+
+
+ def new_itens
+
+    @orc_empenho = OrcEmpenho.find(session[:news_itens])
+
   end
 
   # GET /orc_empenhos/1/edit
@@ -65,9 +69,9 @@ class OrcEmpenhosController < ApplicationController
   # POST /orc_empenhos.xml
   def create
       @orc_empenho = OrcEmpenho.new(params[:orc_empenho])
-##  VEJA O MODEL    <=====
     respond_to do |format|
       if @orc_empenho.save
+        session[:news_itens]= @orc_empenho.id
             # salva valor_total no empenho
  #       @orc_empenho.valor_total = session[:valor_total].to_f
  #       @orc_empenho.save
@@ -83,8 +87,8 @@ class OrcEmpenhosController < ApplicationController
  #       @pedido[0].save
 
         flash[:notice] = 'OrcEmpenho was successfully created.'
-        format.html { redirect_to(@orc_empenho) }
-        format.xml  { render :xml => @orc_empenho, :status => :created, :location => @orc_empenho }
+        format.html { redirect_to(new_itens_path) }
+        
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @orc_empenho.errors, :status => :unprocessable_entity }
@@ -137,34 +141,22 @@ class OrcEmpenhosController < ApplicationController
 
  def create_orc_empenho_item
    @orc_empenho_item = OrcEmpenhoIten.new(params[:orc_empenho_item])
-      @orc_empenho_item.orc_empenho_id = session[:id_empenho_new]
+      @orc_empenho_item.orc_empenho_id = session[:news_itens]
             # salva items do empenho
       if @orc_empenho_item.save
-        @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:id_empenho_new] ])
+        @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:news_itens]])
+
         for item in @orc_empenho_itens
           session[:soma]=session[:soma].to_f+item.total.to_f
           item.total_geral=session[:soma].to_f
           session[:valor_total] = item.total_geral
+          item_empenho_id = item.orc_empenho_id
           item.save
         end
-            # salva valor_total no empenho
-        @orc_empenho=OrcEmpenho.find(session[:id_empenho_new])
-        @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:id_empenho_new] ])
-        @orc_empenho.valor_total = session[:valor_total].to_f
-        @orc_empenho.save
-             # Atualiza saldo na ficha
-t=0
-        @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:id_empenho_new] ])
-        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra.orc_ficha_id])
-        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado + session[:valor_total]
-        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado + session[:valor_total])- @ficha[0].saldo_reservado
-        @ficha[0].saldo = saldo
-        @ficha[0].save
-             # Atualiza pedido_compra
-        @pedido = OrcPedidoCompra.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra_id])
-        @pedido[0].empenhado = 1
-        @pedido[0].save
-
+        
+         @orc_empenho= OrcEmpenho.find(item_empenho_id)
+         @orc_empenho.valor_total= session[:valor_total]
+         @orc_empenho.save
 
         render :update do |page|
           page.replace_html 'dados', :partial => "orc_empenho_itens"
@@ -172,6 +164,29 @@ t=0
         end
        end
   end
+
+
+ def destroy_orc_empenho_item
+   @orc_empenho_item = OrcEmpenhoIten.new(params[:orc_empenho_item])
+      @orc_empenho_item.orc_empenho_id = session[:news_itens]
+            # salva items do empenho
+      if @orc_empenho_item.save
+        @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:news_itens]])
+
+        for item in @orc_empenho_itens
+          w=session[:soma]=session[:soma].to_f - item.total.to_f
+          item.total_geral=session[:soma].to_f
+          session[:valor_total] = item.total_geral
+          item.save
+        end
+t=0
+        render :update do |page|
+          page.replace_html 'dados', :partial => "orc_empenho_itens"
+          page.replace_html 'new'
+        end
+       end
+  end
+
 
   def consulta_empenho
     if params[:type_of].to_i == 1   #fornecedor
