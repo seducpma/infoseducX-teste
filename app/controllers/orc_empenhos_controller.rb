@@ -6,18 +6,12 @@ class OrcEmpenhosController < ApplicationController
 
  def load_iniciais
         @pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
-        #@pedidos_compra = OrcPedidoCompra.all(:conditions =>['empenhado = 0'],:order => 'codigo ASC')
-        #@pedidos_compra = OrcPedidoCompra.all(:include => [:orc_emoenho,:orc_pagamento],:conditions =>['orc_pedido_compra.id  NOT IN empenhado = 0'],:order => 'codigo ASC')
-        #@livros = Livro.all(:include => [[:identificacao,:localizacao]],:conditions => ["livros.id not in (select livro_id from tombos where livro_id is not null) and localizacoes.unidade_id = ?",unidade]).count
         @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
         @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
-       # @fichas = OrcEmpenho.find(:all, :select=> 'orc_pedido_compra_id	, _ficha.id, orc_ficha.ficha'  ,:joins => ['INNER JOIN orc_pedido_compras ON orc_empenho.orc_pedido_compra_id = orc_pedido_compra.id INNER JOIN orc_fichas ON orc_pedido_compra.orc_ficha_id = orc_ficha.id'], :conditions => ["orc_ficha.ano = ? and orc_empenho_id != 1", Time.now.year], :order => 'orc_ficha.ficha ASC')
         @fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
 
         @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
           @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
-       #@orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
-        #@orc_ficha_descricao= OrcFicha.find(:all, :select => 'distinct(descricao), id, CONCAT( descricao , ' - ',    ano   ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
  end
 
 
@@ -55,8 +49,8 @@ class OrcEmpenhosController < ApplicationController
 
 
  def new_itens
-
     @orc_empenho = OrcEmpenho.find(session[:news_itens])
+    
 
   end
 
@@ -72,6 +66,9 @@ class OrcEmpenhosController < ApplicationController
     respond_to do |format|
       if @orc_empenho.save
         session[:news_itens]= @orc_empenho.id
+
+   if session[:create_new_itens]== 1
+      t=0
             # salva valor_total no empenho
  #       @orc_empenho.valor_total = session[:valor_total].to_f
  #       @orc_empenho.save
@@ -85,6 +82,8 @@ class OrcEmpenhosController < ApplicationController
  #       @pedido = OrcPedidoCompra.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra_id])
  #       @pedido[0].empenhado = 1
  #       @pedido[0].save
+ session[:create_new_itens]= 0
+   end
 
         flash[:notice] = 'OrcEmpenho was successfully created.'
         format.html { redirect_to(new_itens_path) }
@@ -140,6 +139,7 @@ class OrcEmpenhosController < ApplicationController
 
 
  def create_orc_empenho_item
+   session[:create_new_itens]=1
    @orc_empenho_item = OrcEmpenhoIten.new(params[:orc_empenho_item])
       @orc_empenho_item.orc_empenho_id = session[:news_itens]
             # salva items do empenho
@@ -153,11 +153,25 @@ class OrcEmpenhosController < ApplicationController
           item_empenho_id = item.orc_empenho_id
           item.save
         end
-        
+          # salva valor_total no empenho
          @orc_empenho= OrcEmpenho.find(item_empenho_id)
          @orc_empenho.valor_total= session[:valor_total]
          @orc_empenho.save
 
+             # Atualiza saldo na ficha
+        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra.orc_ficha_id])
+        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado + session[:valor_total]
+        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado + session[:valor_total])- @ficha[0].saldo_reservado
+        @ficha[0].saldo = saldo
+        @ficha[0].save
+        
+             # Atualiza pedido_compra
+ #       @pedido = OrcPedidoCompra.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra_id])
+ #       @pedido[0].empenhado = 1
+ #       @pedido[0].save
+
+
+
         render :update do |page|
           page.replace_html 'dados', :partial => "orc_empenho_itens"
           page.replace_html 'new'
@@ -165,27 +179,6 @@ class OrcEmpenhosController < ApplicationController
        end
   end
 
-
- def destroy_orc_empenho_item
-   @orc_empenho_item = OrcEmpenhoIten.new(params[:orc_empenho_item])
-      @orc_empenho_item.orc_empenho_id = session[:news_itens]
-            # salva items do empenho
-      if @orc_empenho_item.save
-        @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:news_itens]])
-
-        for item in @orc_empenho_itens
-          w=session[:soma]=session[:soma].to_f - item.total.to_f
-          item.total_geral=session[:soma].to_f
-          session[:valor_total] = item.total_geral
-          item.save
-        end
-t=0
-        render :update do |page|
-          page.replace_html 'dados', :partial => "orc_empenho_itens"
-          page.replace_html 'new'
-        end
-       end
-  end
 
 
   def consulta_empenho

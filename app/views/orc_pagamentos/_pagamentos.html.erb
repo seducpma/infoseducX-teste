@@ -1,0 +1,65 @@
+<% if !@pagamentos.empty? %>
+     <div class="tabs">
+          <br/>
+             <table bgcolor="#DCDCDC" width="100%">
+               <% total_ficha = 0%>
+                <% @pagamentos.each do |pagamento| %>
+              <tr bgcolor="#DCDCDC" >
+                  <td  width ="1%"  align="center"><b>Nº OP/Empenho</b></td>
+                  <td align="center"><b>Objetivo </b></td>
+                  <td align="center"><b>Fornecedor</b></td>
+                  <td  width ="10%"align="center"><b>DO </b></td>
+                  <td width ="20%"  align="center"><b>Ficha</b></td>
+                  <td align="center"><b>Valor Total</b></td>
+                  <td width ="10%"  align="center"><b>Data </b></td>
+                </tr>
+                  <tr  bgcolor="#F5F5F5">
+                    <td><b><%=h pagamento.codigo %></b> </td>
+                    <td><%=h pagamento.orc_empenho.orc_pedido_compra.objetivo %></td>
+                    <td><%=h pagamento.orc_empenho.orc_pedido_compra.fornecedor %></td>
+                    <td><%=h pagamento.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h pagamento.orc_ficha.codigo%> </td>
+                    <td align="center"><%=h pagamento.orc_ficha.ficha%> - <%=h pagamento.orc_ficha.descricao%></td>
+                    <td align="center"> R$ <%=h pagamento.valor_pg %></td>
+                    <td align="center"><%=h pagamento.data_pg.strftime("%d/%b/%y") %> </td>
+
+                  </tr>
+                 <% contador = 1%>
+                 <% total_ficha = pagamento.valor_pg + total_ficha %>
+
+                 <tr>
+                   <td colspan="8">
+                     <table  width="100%">
+                         <tr>
+                             <%  if  (session[:pedido_user_id] == session[:current_user])or (current_user.has_role?('admin'))  %>
+                                 <td align="right"><%= button_to 'Visualizar',{:action => "show", :id =>pagamento}, :method => "get", :title => "Visualizar"%> </td>
+                                 <td align="right" width=" 2%"><%= button_to 'Excluir', pagamento, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                            <%else %>
+                                 <td  colspan="2"align="right"><%= button_to 'Visualizar',{:action => "show", :id =>pagamento}, :method => "get", :title => "Visualizar"%> </td>
+                           <%end%>
+                          </tr>
+
+                      </table>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="8">
+                     <hr/>
+                   </td>
+                 </tr>
+
+                <% end %>
+          </table>
+        </div>
+       <br/>
+    <%else%>
+     <div class="tabs">
+          <br/>
+             <table bgcolor="#DCDCDC" width="100%">
+              <tr bgcolor="#DCDCDC" >
+                <td colspan="6" align="center"><b> <b> NÃO HÁ LANÇAMENTOS NESTA FICHA </td>
+                </tr>
+          </table>
+        </div>
+
+ <br/>
+    <%end%>

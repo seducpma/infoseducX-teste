@@ -1,4 +1,4 @@
-<div id="interno4">
+<div id="interno2">
 <% title "PROFESSORS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -8,14 +8,16 @@
   <table  width="100%" bgcolor="#F5F5F5" >
         <tr bgcolor="#F5F5F5">
           <td align="left" colspan="5" >
-               <!--<a href="#" class="filtro_ano"><%= radio_button_tag(:type_of, "5") %></a>Ano-->
-               <a href="#" class="filtro_des"><%= radio_button_tag(:type_of, "2") %></a>Nº Ficha
+               <!--<a href="#" class="filtro_ano"><%= radio_button_tag(:type_of, "5") %></a> Ano-->
+               <a href="#" class="filtro_des"><%= radio_button_tag(:type_of, "2") %></a>Nº Ficha Crédito
+               <a href="#" class="filtro_orc"><%= radio_button_tag(:type_of, "3") %></a>Nº Ficha Dédito
                <a href="#" class="sem_filtro_orc"><%= radio_button_tag(:type_of, "4") %></a>Todos
            </td>
          </tr>
          <tr bgcolor="#F5F5F5">
            <td ><div class="consulta_ano" style="display:none"> <%= render "consulta_data" %>  </div></td>
-           <td ><div class="consulta_des" style="display:none"> <%= render "consulta_ficha" %>  </div></td>
+           <td ><div class="consulta_des" style="display:none"> <%= render "consulta_ficha_credito" %>  </div></td>
+          <td ><div class="consulta_orc" style="display:none"> <%= render "consulta_ficha_debito" %>  </div></td>
            <td ><div class="consulta_sem_filtro_orc" style="display:none"> <%= render "consulta_sem_filtro" %>  </div></td>
 
        </tr>

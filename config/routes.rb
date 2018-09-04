@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :orc_lancamentos, :collection => {:consulta => :get}
   map.resources :orc_pagamentos, :collection => {:consulta => :get}
   map.resources :orc_suplementacaos, :collection => {:consulta => :get}
   map.resources :orc_empenho_itens
@@ -160,6 +161,7 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_empenho'/consulta_empenho', :controller => 'orc_empenhos', :action => 'consulta_empenho'
   map.consulta_suplementacao'/consulta_suplementacao', :controller => 'orc_suplementacaos', :action => 'consulta_suplementacao'
   map.consulta_pagamentos'/consulta_pagamentos', :controller => 'orc_pagamentos', :action => 'consulta_pagamentos'
+  map.consulta_pagamento'/consulta_pagamento', :controller => 'orc_pagamentos', :action => 'consulta_pagamento'
 
   map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'

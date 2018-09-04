@@ -72,12 +72,11 @@ class OrcSuplementacaosController < ApplicationController
         @ficha[0].saldo_atual = saldo_atual
         @ficha[0].saldo = saldo
         w1=@ficha[0].saldo_aporte = aporte.to_f
-
-        saldo_atual= @ficha_origem[0].saldo_atual - @orc_suplementacao.valor_suplemento
-        saldo= @ficha_origem[0].saldo - @orc_suplementacao.valor_suplemento
+        saldo_atual_origem= @ficha_origem[0].saldo_atual - @orc_suplementacao.valor_suplemento
+        saldo_origem= @ficha_origem[0].saldo - @orc_suplementacao.valor_suplemento
         transferido= @ficha_origem[0].saldo_transferido + @orc_suplementacao.valor_suplemento
-        @ficha_origem[0].saldo_atual = saldo_atual
-        @ficha_origem[0].saldo = saldo
+        @ficha_origem[0].saldo_atual = saldo_atual_origem
+        @ficha_origem[0].saldo = saldo_origem
         @ficha_origem[0].saldo_transferido = transferido.to_f
 
         @ficha[0].save
@@ -119,7 +118,7 @@ class OrcSuplementacaosController < ApplicationController
 
 
    # Atualiza saldo na ficha
-        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_suplementacao.orc_ficha_id])
+         @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_suplementacao.orc_ficha_id])
         @ficha_origem = OrcFicha.find(:all, :conditions => ['id =?', @orc_suplementacao.orc_ficha_origem_id])
 
         saldo_atual= @ficha[0].saldo_atual - @orc_suplementacao.valor_suplemento
@@ -127,19 +126,16 @@ class OrcSuplementacaosController < ApplicationController
         aporte= @ficha[0].saldo_aporte - @orc_suplementacao.valor_suplemento
         @ficha[0].saldo_atual = saldo_atual
         @ficha[0].saldo = saldo
-        w1=@ficha[0].saldo_aporte = aporte.to_f
-
-        saldo_atual= @ficha_origem[0].saldo_atual + @orc_suplementacao.valor_suplemento
-        saldo= @ficha_origem[0].saldo + @orc_suplementacao.valor_suplemento
+        @ficha[0].saldo_aporte = aporte.to_f
+        saldo_atual_origem= @ficha_origem[0].saldo_atual + @orc_suplementacao.valor_suplemento
+        saldo_origem= @ficha_origem[0].saldo + @orc_suplementacao.valor_suplemento
         transferido= @ficha_origem[0].saldo_transferido - @orc_suplementacao.valor_suplemento
-        @ficha_origem[0].saldo_atual = saldo_atual
-        @ficha_origem[0].saldo = saldo
+        @ficha_origem[0].saldo_atual = saldo_atual_origem
+        @ficha_origem[0].saldo = saldo_origem
         @ficha_origem[0].saldo_transferido = transferido.to_f
+
         @ficha[0].save
         @ficha_origem[0].save
-
-
-
 
     respond_to do |format|
       format.html { redirect_to(home_path) }
@@ -163,6 +159,11 @@ end
 def ficha_suplementacao
      @suplementacaos = OrcSuplementacao.find(:all, :conditions => ['orc_ficha_id= ? ', params[:orc_suplementacao_orc_ficha_id]])
   render :partial => "suplementacaos"
+
+end
+def ficha_suplementacao_debito
+     @suplementacaos = OrcSuplementacao.find(:all, :conditions => ['orc_ficha_origem_id= ? ', params[:orc_suplementacao_orc_ficha_origem_id]])
+  render :partial => "suplementacaos_debito"
 
 end
 

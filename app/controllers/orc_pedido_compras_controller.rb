@@ -69,7 +69,7 @@ end
   # POST /orc_pedido_compras.xml
   def create
     @orc_pedido_compra = OrcPedidoCompra.new(params[:orc_pedido_compra])
-    @orc_pedido_compra.codigo=(@orc_pedido_compra.id)
+    #@orc_pedido_compra.codigo=(@orc_pedido_compra.id)
 
     respond_to do |format|
       if @orc_pedido_compra.save

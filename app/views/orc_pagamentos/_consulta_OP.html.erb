@@ -1,0 +1,13 @@
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">N% OP / Empenho:</b></font>
+       <%= collection_select :orc_pagamento,:orc_empenho_id, @orc_pagamento_op, :orc_empenho_id, :codigo, :include_blank => ' -- Selecionar -- '  %></font>
+               <%= observe_field 'orc_pagamento_orc_empenho_id',
+               :update => "consultapagamento",
+               :url    => { :action => 'pagamento_op' },
+               :with   => 'orc_pagamento_orc_empenho_id' %>
+
+
+     </td>
+   </tr>
+  </table>

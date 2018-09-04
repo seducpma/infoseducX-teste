@@ -555,6 +555,23 @@ display: none;
                             <%end%>
                         </ul>
                       </li>
+                      <li><a>Lançamentos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Consultar",consulta_orc_lanamentos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Pagamentos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
                       <li><a>Saldos</a>
                           <ul style="width:108px;">
                            <% if current_user.has_role?('desenvolvimento') %>
@@ -573,15 +590,7 @@ display: none;
                             <%end%>
                         </ul>
                       </li>
-                      <li><a>Pagamentos</a>
-                          <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
-                                  <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
-                                  <li><%= link_to "Consultar",consulta_orc_suplementacaos_path %></li>
 
-                            <%end%>
-                        </ul>
-                      </li>
 
 
                     <%end%>

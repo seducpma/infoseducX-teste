@@ -3,25 +3,33 @@
     <br/>
     <table bgcolor="#DCDCDC" width="100%">
         <tr bgcolor="#DCDCDC" >
-          <td align="center" colspan="2"><b>Ficha </b></td>
+          <td align="center"> <b>Ficha Crédito</b></td>
             <td align="center"><b>Processo</b></td>
             <td align="center"><b>Descrição</b></td>
             <td align="center"><b>Data</b></td>
+            <td align="center"><b>Ficha Débito</b></td>
             <td align="center"><b>Valor</b></td>
 
           </tr>
+          <%total = 0%>
           <% @suplementacaos.each  do |suplemento| %>
             <tr  bgcolor="#F5F5F5">
-              <td align="center"><%=h suplemento.orc_ficha.ficha %></td>
-              <td align="center"><%=h suplemento.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %></td>
+              <td align="center"><%=h suplemento.orc_ficha.ficha %> - <%=h suplemento.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %></td>
               <td align="center"><%=h suplemento.processo %></td>
               <td align="center"><%=h suplemento.destinacao %></td>
               <td align="center"><%if !suplemento.data.nil? %><%=h suplemento.data.strftime("%d/%m/%Y") %> <%end%> </td>
-               <td align="center">R$ <%=h suplemento.valor_suplemento %></td>
+              <td align="center"><% @ficha= OrcFicha.find(:all, :conditions => ['id= ?', suplemento.orc_ficha_origem_id])%>
+                                       <%=h @ficha[0].ficha %> - <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %></td>
+              <td align="center">R$ <%=h suplemento.valor_suplemento %> <% total =  total + suplemento.valor_suplemento%> </td>
               <td width ="5%"><%= button_to 'Visualizar',{:action => "show", :id =>suplemento}, :method => "get", :title => "Visualizar"%> </td>
               <td width ="5%"><%= button_to 'Excluir', suplemento, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
             </tr>
           <% end %>
+            <tr  bgcolor="#F5F5F6">
+              <td colspan="5" align="right"><b> TOTAL &nbsp&nbsp </b></td>
+              <td align="center"> R$<%= total %>  </td>
+
+            </tr>
     </table>
    
 </div>
