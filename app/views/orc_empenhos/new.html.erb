@@ -33,8 +33,41 @@
                        </tr>
 
                         <tr>
+                          <td></td>
                           <td colspan="8">
-                            <div id="pedido"></div>
+                            <div id="pedido">
+                                <table  width="100%" >
+                                      <tr>
+                                           <td align="left" width=" 5%"> <b>Interessado: </b> </td>
+                                           <td align="left" colspan="6"><%= f.text_field :interessado, :size =>30%>
+                                                  &nbsp&nbsp <b>CNPJ:</b> <%= f.text_field :cnpj, :size =>10%>
+                                            </td>
+                                       </tr>
+
+                                        <tr>
+                                          <td align="left" valign="top"><b>Ficha:</b></td>
+                                           <td align="left" valign="top"> <%= f.collection_select :ficha, @fichas_emp, :ficha, :ficha, :include_blank => ' '  %>
+                                                            <%= observe_field 'orc_empenho_ficha',
+                                                                       :with   => :orc_empenho_ficha,
+                                                                       :url  => { :action => 'dados_ficha' },
+                                                                       :update => "dadosFicha"%>
+                                           </td>
+
+                                           <td colspan="2"><div id="dadosFicha"></div> </td>
+                                        </tr>
+
+
+                                 </table>
+
+
+
+
+
+
+
+
+
+                            </div>
                           </td>
                         </tr>
                       <tr>

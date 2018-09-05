@@ -2,10 +2,14 @@
   <div class="tabs">
     <br/>
 
-    <% if  !@fichas.empty? %>
+    <% if  !@lancamentos.empty? %>
 
         <table bgcolor="#DCDCDC" width="100%">
             <tr bgcolor="#DCDCDC" >
+                <td align="center" width ="5%"><b>Ficha: </b><%=h @ficha[0].ficha %> - <%=h @ficha[0].descicao %> </td>
+            </tr>
+            <tr bgcolor="#DCDCDC" >
+                <td align="center" width ="5%"><b>Código </b></td>
                 <td align="center" width ="5%"><b>Código </b></td>
                 <td align="center"><b>Fornecedor</b></td>
                 <td align="center"><b>Data SI</b></td>
@@ -17,11 +21,11 @@
                 <td align="center"><b>Valor</b></td>
 
               </tr>
-              <% @fichas.each  do |ficha| %>
+              <% @lancamentos.each  do |lancamento| %>
                 <tr  bgcolor="#F5F5F5">
 
-                  <td align="center"><%=h ficha.ficha %> </td>
-                  <td align="center"><%=h ficha.fornecedor %></td>
+                  <td align="center"><%=h @ficha.ficha %> </td>
+                  <td align="center"><%=h lancamento.fornecedor %></td>
                   <td align="center"><%if !ficha.data_pedido.nil? %><%=h ficha.data_pedido %> <%end%> </td>
                   <td align="center">R$ <%=h ficha.valor_si %></td>
                   <td align="center"><%=h ficha.codigo_empenho %></td>

@@ -33,34 +33,36 @@
                       </tr>
                       <tr>
                         <td align="left" valign="top"><b>Serviço:</b></td>
-                         <td align="left"><%=h @orc_empenho.orc_pedido_compra.codigo%>
-                             <table  width="100%">
+                        <% if  !@orc_empenho.orc_pedido_compra_id.nil?%>
+                           <td align="left"><%=h @orc_empenho.orc_pedido_compra.codigo%>
+                               <table  width="100%">
 
-                                                   <tr>
-                                                       <td align="left"> <b>Interessado: </b> </td>
-                                                       <td align="left" colspan="6"><%=h @orc_empenho.orc_pedido_compra.fornecedor %>
-                                                             &nbsp&nbsp <b>CNPJ:</b>
-                                                       </td>
-                                                   </tr>
-                                                  <tr>
-                                                    <td align="left" ><b>Ficha: </b> </td>
-                                                    <td align="left" colspan="7"><%=h @orc_empenho.orc_pedido_compra.orc_ficha.ficha %>
-                                                           &nbsp&nbsp&nbsp <b>Unidade Orcamentária: </b>
-                                                           &nbsp Secretaria de Educação
-                                                           &nbsp&nbsp&nbsp <b>Unidade Executora: </b>
-                                                           &nbsp <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                      <td align="left" > <b>Projeto: </b></td>
-                                                      <td colspan="7"> <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.descricao %>
-                                                           &nbsp&nbsp&nbsp&nbsp <b>Destinação:</b>
-                                                           <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
-                                                    </td>
-                                                  </tr>
+                                                     <tr>
+                                                         <td align="left"> <b>Interessado: </b> </td>
+                                                         <td align="left" colspan="6"><%=h @orc_empenho.orc_pedido_compra.fornecedor %>
+                                                               &nbsp&nbsp <b>CNPJ:</b>
+                                                         </td>
+                                                     </tr>
+                                                    <tr>
+                                                      <td align="left" ><b>Ficha: </b> </td>
+                                                      <td align="left" colspan="7"><%=h @orc_empenho.orc_pedido_compra.orc_ficha.ficha %>
+                                                             &nbsp&nbsp&nbsp <b>Unidade Orcamentária: </b>
+                                                             &nbsp Secretaria de Educação
+                                                             &nbsp&nbsp&nbsp <b>Unidade Executora: </b>
+                                                             &nbsp <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                                                      </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" > <b>Projeto: </b></td>
+                                                        <td colspan="7"> <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.descricao %>
+                                                             &nbsp&nbsp&nbsp&nbsp <b>Destinação:</b>
+                                                             <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                                                      </td>
+                                                    </tr>
 
-                               </table>
-                         </td>
+                                 </table>
+                           </td>
+                       <%end%>
                        </tr>
 
                         <tr>

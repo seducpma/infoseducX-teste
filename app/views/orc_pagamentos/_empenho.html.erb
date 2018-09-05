@@ -7,11 +7,15 @@
             <tr  bgcolor="#F5F5F5">
               <td width ="25%" align="left"><b>Número: </b> &nbsp&nbsp&nbsp   <%=h empenho.codigo %></td>
               <td width ="25%" align="leftr"><b>Processo: </b> &nbsp&nbsp&nbsp <%=h empenho.processo %></td>
-              <td width ="25%" align="left"><b>S.I.: </b> &nbsp&nbsp&nbsp <%=h empenho.orc_pedido_compra.codigo %></td>
+              <td width ="25%" align="left"><b>S.I.: </b> &nbsp&nbsp&nbsp <%if !empenho.orc_pedido_compra_id.nil?%>
+                                                                             <%=h empenho.orc_pedido_compra.codigo %>
+                                                                           <%else%>
+                                                                                NÃO POSSUI SI
+                                                                            <%end%></td>
             </tr>
             <tr>
-              <td colspan="3" align="left"><b>Ficha: </b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%=h empenho.orc_pedido_compra.orc_ficha.ficha %>
-                                                         - <%=h empenho.orc_pedido_compra.orc_ficha.descricao %> </td>
+              <td colspan="3" align="left"><b>Ficha: </b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%=h @ficha[0].ficha %>
+                                                         - <%=h @ficha[0].descricao %> </td>
             </tr>
             <tr>
               <td colspan="2" align="left"><b>Fornecedor: </b> &nbsp <%=h empenho.interessado%></td>
@@ -21,13 +25,13 @@
             <tr>
               <td colspan="3"align="left" ><b>Unidade Orcamentária: </b>&nbsp Secretaria de Educação
                                    &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Unidade Executora: </b>
-                                   &nbsp <%=h empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                                   &nbsp <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
               </td>
              </tr>
              <tr>
-               <td colspan="3"align="left" > <b>Projeto: </b> <%=h empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.descricao %>
+               <td colspan="3"align="left" > <b>Projeto: </b> <%=h  @ficha[0].orc_uni_orcamentaria.descricao %>
                                    &nbsp&nbsp&nbsp&nbsp <b>Destinação:</b>
-                                   &nbsp&nbsp <%=h empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                                   &nbsp&nbsp <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
                </td>
             </tr>
 

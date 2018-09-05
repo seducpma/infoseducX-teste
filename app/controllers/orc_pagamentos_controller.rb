@@ -28,6 +28,7 @@ class OrcPagamentosController < ApplicationController
   # GET /orc_pagamentos/1.xml
   def show
     @orc_pagamento = OrcPagamento.find(params[:id])
+   @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_pagamento.orc_empenho.ficha])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,7 +63,7 @@ class OrcPagamentosController < ApplicationController
        op_id=@orc_pagamento.id
 
             # atualiza saldo na ficha
-        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_empenho.orc_pedido_compra.orc_ficha.id])
+        @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', session[:ficha]])
         saldo_atual= @ficha[0].saldo_atual - @orc_pagamento.valor_pg
         saldo= @ficha[0].saldo - @orc_pagamento.valor_pg
         empenho= @ficha[0].saldo_empenhado - @orc_pagamento.valor_pg
@@ -78,11 +79,15 @@ class OrcPagamentosController < ApplicationController
         @empenho[0].pagamento = 1
         @empenho[0].data_pg = @orc_pagamento.data_pg
         @op.codigo= @empenho[0].codigo
-        @op.orc_ficha_id = @empenho[0].orc_pedido_compra.orc_ficha.id
-        @op.ficha = @empenho[0].orc_pedido_compra.orc_ficha.ficha
-        @pedido_compra[0].empenhado =1
-        @pedido_compra[0].save
-        @empenho[0].save
+        @ficha= OrcFicha.find(:all, :conditions => ['ficha =?',@empenho[0].ficha])
+
+        @op.orc_ficha_id = @ficha[0].id
+        @op.ficha = @empenho[0].ficha
+        if !@empenho[0].orc_pedido_compra_id.nil?
+           @pedido_compra[0].empenhado =1
+           @pedido_compra[0].save
+           @empenho[0].save
+        end
         @op.save
 
 
@@ -138,6 +143,9 @@ class OrcPagamentosController < ApplicationController
 
 def dados_empenho
      @empenho = OrcEmpenho.find(:all, :conditions => ["id =?" , params[:orc_pagamento_orc_empenho_id]])
+     session[:ficha]= @empenho[0].ficha
+      @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', session[:ficha]])
+   
     render :partial => "empenho"
 
 end

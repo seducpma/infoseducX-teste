@@ -1,11 +1,11 @@
 <table width="100%" align="center" >
    <tr>
      <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Ficha Nº:</b></font>
-         <%= collection_select :orc_empenho, :orc_pedido_compra_id, @fichas_emp, :id, :ficha, :include_blank => ' -- Selecionar -- ' %></font>
-                <%= observe_field 'orc_empenho_orc_pedido_compra_id',
+         <%= collection_select :orc_empenho, :ficha, @fichas_emp, :ficha, :ficha, :include_blank => ' -- Selecionar -- ' %></font>
+                <%= observe_field 'orc_empenho_ficha',
                :update => "empenho",
                :url    => { :action => 'ficha_empenho' },
-               :with   => 'orc_empenho_orc_pedido_compra_id' %>
+               :with   => 'orc_empenho_ficha' %>
 
      </td>
    </tr>

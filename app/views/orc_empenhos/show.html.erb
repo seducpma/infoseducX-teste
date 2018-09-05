@@ -21,8 +21,10 @@
       <tr>
         <td align="left" colspan="2"><b>Data:</b>&nbsp <%if !@orc_empenho.data.nil? %><%=h @orc_empenho.data.strftime("%d de %b de %Y") %> <%end%></td>
         <td align="left" colspan="3" ><b>ORDEM DE PAGAMENTO </b> <%=h @orc_empenho.codigo %> &nbsp&nbsp&nbsp&nbsp
-               <b>Ficha:</b> <%=h @orc_empenho.orc_pedido_compra.orc_ficha.ficha %> - <%=h @orc_empenho.orc_pedido_compra.orc_ficha.descricao %> &nbsp&nbsp&nbsp&nbsp
-               <b>Serviço Interno: </b> <%=h @orc_empenho.orc_pedido_compra.codigo %>
+               <b>Ficha:</b> <%=h @ficha[0].ficha %> - <%=h @ficha[0].descricao %> &nbsp&nbsp&nbsp&nbsp
+               <% if !@orc_empenho.orc_pedido_compra_id.nil? %>
+                 <b>Serviço Interno: </b> <%=h @orc_empenho.orc_pedido_compra.codigo %>
+               <%end%>
         </td>
       </tr>
       <tr>
@@ -35,16 +37,16 @@
         <td> <%=h @orc_empenho.modalidade%></td>
         <td colspan="3"><b>VENCIMENTO: </b>: <%if !@orc_empenho.vencimento.nil?%> <%=h @orc_empenho.vencimento.strftime("%d/%m/%y") %>  <%end%> &nbsp&nbsp&nbsp&nbsp
              <b>VALIDADE: </b>: <%if !@orc_empenho.validade.nil?%> <%=h @orc_empenho.validade.strftime("%d/%m/%y") %><%end%>  &nbsp&nbsp&nbsp&nbsp
-             <b>DESTINAÇÂO RECURSO </b>: <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+             <b>DESTINAÇÂO RECURSO </b>: <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
         </td>
       </tr>
       <tr>
         <td colspan="4"><b>UNIDADE ORÇAMENTARIA</b>: &nbsp SECRETARIA DE EDUCAÇÃO &nbsp&nbsp&nbsp&nbsp
-            <b>UNIDADE EXECUTORA </b>: &nbsp <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.descricao %> &nbsp&nbsp&nbsp&nbsp
+            <b>UNIDADE EXECUTORA </b>: &nbsp <%=h  @ficha[0].orc_uni_orcamentaria.descricao %> &nbsp&nbsp&nbsp&nbsp
         </td>
       </tr>
       <tr>
-        <td colspan="4"><b>PROJETO ATIVIDADE</b>: <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %> &nbsp&nbsp&nbsp&nbsp
+        <td colspan="4"><b>PROJETO ATIVIDADE</b>: <%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %> &nbsp&nbsp&nbsp&nbsp
             <b>CATEGORIA ECONÔMICA </b>:  <%=h @orc_empenho.cat_economica%> 
         </td>
       </tr>

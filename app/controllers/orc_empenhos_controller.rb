@@ -29,6 +29,8 @@ class OrcEmpenhosController < ApplicationController
   def show
     @orc_empenho = OrcEmpenho.find(params[:id])
     @orc_empenho_itens = OrcEmpenhoIten.find(:all, :conditions => ['orc_empenho_id=? ',@orc_empenho.id ])
+    @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_empenho.ficha])
+
     session[:id_empenho_show]= params[:id]
     respond_to do |format|
       format.html # show.html.erb
@@ -117,7 +119,7 @@ class OrcEmpenhosController < ApplicationController
   def destroy
     @orc_empenho = OrcEmpenho.find(params[:id])
               # Atualiza saldo na ficha
-        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra.orc_ficha_id])
+        @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_empenho.ficha])
         @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado - session[:valor_total]
         saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado - session[:valor_total])- @ficha[0].saldo_reservado
         @ficha[0].saldo = saldo
@@ -156,10 +158,11 @@ class OrcEmpenhosController < ApplicationController
           # salva valor_total no empenho
          @orc_empenho= OrcEmpenho.find(item_empenho_id)
          @orc_empenho.valor_total= session[:valor_total]
+
          @orc_empenho.save
 
              # Atualiza saldo na ficha
-        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_empenho.orc_pedido_compra.orc_ficha_id])
+        @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_empenho.ficha])
         @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado + session[:valor_total]
         saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado + session[:valor_total])- @ficha[0].saldo_reservado
         @ficha[0].saldo = saldo
@@ -193,10 +196,10 @@ class OrcEmpenhosController < ApplicationController
                   page.replace_html 'empenho', :partial => "empenhos"
                end
          else if params[:type_of].to_i == 5   #dia
-                    session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
-                    session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
-                    session[:mes]=params[:empenho][:dataF][3,2]
-                     @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                    w=session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
+                    w1=session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
+                    e2=session[:mes]=params[:empenho][:dataF][3,2]
+                     @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
                  render :update do |page|
                     page.replace_html 'empenho', :partial => "empenhos"
                  end
@@ -206,13 +209,14 @@ class OrcEmpenhosController < ApplicationController
   end
 
 def ficha_empenho
-    #consulta feita pelo orc_pedido_compra_id  que corresmpnde a ficha selelcionada
-  params[:orc_empenho_orc_pedido_compra_id]
-
-  @empenhos = OrcEmpenho.find(:all, :joins=> "INNER JOIN orc_pedido_compras ON orc_pedido_compras.id = orc_empenhos.orc_pedido_compra_id INNER JOIN orc_fichas ON orc_fichas.id =  orc_pedido_compras.orc_ficha_id", :conditions => ['orc_fichas.id= ? ', params[:orc_empenho_orc_pedido_compra_id]])
+ @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE ficha  IN (SELECT ficha FROM orc_fichas WHERE ficha = "+params[:orc_empenho_ficha] +") ORDER BY codigo ASC")
   render :partial => "empenhos"
-
 end
 
+ def dados_ficha
+    @dados_ficha=  OrcFicha.find(:all, :conditions => ['ficha = ?',params[:orc_empenho_ficha]])
+
+     render :partial => "dados_fichas"
+end
 
 end
