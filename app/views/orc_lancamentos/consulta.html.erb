@@ -2,9 +2,9 @@
 <% title "PROFESSORS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - EMPENHOS</strong></font><br/>
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - LANÇAMENTOS</strong></font><br/>
  </div>
-       <% form_remote_tag :url => consulta_empenho_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+       <% form_remote_tag :url => consulta_lancamento_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
   <table  width="100%" bgcolor="#F5F5F5" >
         <tr bgcolor="#F5F5F5">
           <td align="left" colspan="5" >
@@ -24,7 +24,7 @@
       </table>
     <% end %>
    <hr>
-    <div id="empenho"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <div id="lancamentos"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
 
       <tr bgcolor="#F5F5F5">
        <td colspan="2">

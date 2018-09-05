@@ -53,12 +53,12 @@ class OrcLancamentosController < ApplicationController
      end
   end
 
-def ficha_empenho
-    #consulta feita pelo orc_pedido_compra_id  que corresmpnde a ficha selelcionada
-  params[:orc_empenho_orc_pedido_compra_id]
+def ficha_lancamento
+    #@fichas = OrcFicha.find(:all,:select => ['fichas.id, ficha, (orc_pedido_compras.fornecedor) as fornecedor'],:joins=> "INNER JOIN orc_pedido_compras ON orc_pedido_compras.orc_ficha_id = orc_fichas.id", :conditions => ['fichas.id =?', params[:orc_ficha_id]])
+    #@fichas = OrcEmpenho.find(:all, :joins=> "INNER JOIN orc_pedido_compras ON orc_pedido_compras.id = orc_empenhos.orc_pedido_compra_id INNER JOIN orc_fichas ON orc_fichas.id =  orc_pedido_compras.orc_ficha_id", :conditions => ['orc_fichas.id= ? ', params[:orc_empenho_orc_pedido_compra_id]])
 
-  @empenhos = OrcEmpenho.find(:all, :joins=> "INNER JOIN orc_pedido_compras ON orc_pedido_compras.id = orc_empenhos.orc_pedido_compra_id INNER JOIN orc_fichas ON orc_fichas.id =  orc_pedido_compras.orc_ficha_id", :conditions => ['orc_fichas.id= ? ', params[:orc_empenho_orc_pedido_compra_id]])
-  render :partial => "empenhos"
+    @fichas = OrcEmpenho.find_by_sql("SELECT fc.* , (pd.fornecedor) AS fornecedor, (pd.created_at) AS data_pedido, (pd.valor_total) AS valor_si ,  (pd.codigo) AS codigo_empenho, (ep.data_chegou) AS data_empenho, (pg.codigo) AS codigo_pg , (pg.valor_pg) AS valor_pg, (pg.data_pg) AS data_pg FROM orc_fichas fc INNER JOIN orc_pedido_compras pd ON pd.orc_ficha_id = fc.id INNER JOIN orc_empenhos ep ON ep.orc_pedido_compra_id = pd.id INNER JOIN orc_pagamentos pg ON pg.orc_empenho_id = ep.id WHERE fc.id =  "+(params[:orc_ficha_id]).to_s+"")
+  render :partial => "lancamentos"
 
 end
 

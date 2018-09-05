@@ -162,6 +162,7 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_suplementacao'/consulta_suplementacao', :controller => 'orc_suplementacaos', :action => 'consulta_suplementacao'
   map.consulta_pagamentos'/consulta_pagamentos', :controller => 'orc_pagamentos', :action => 'consulta_pagamentos'
   map.consulta_pagamento'/consulta_pagamento', :controller => 'orc_pagamentos', :action => 'consulta_pagamento'
+  map.consulta_lancamento'/consulta_lancamento', :controller => 'orc_lancamentos', :action => 'consulta_lancamento'
 
   map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'

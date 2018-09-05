@@ -1,0 +1,49 @@
+
+  <div class="tabs">
+    <br/>
+
+    <% if  !@fichas.empty? %>
+
+        <table bgcolor="#DCDCDC" width="100%">
+            <tr bgcolor="#DCDCDC" >
+                <td align="center" width ="5%"><b>Código </b></td>
+                <td align="center"><b>Fornecedor</b></td>
+                <td align="center"><b>Data SI</b></td>
+                <td align="center"><b>Valor SI </b></td>
+                <td align="center"><b>Empenho</b></td>
+                <td align="center"><b>Data Empenho</b></td>
+                <td align="center"><b>Pagamento</b></td>
+                <td align="center"><b>Data OP</b></td>
+                <td align="center"><b>Valor</b></td>
+
+              </tr>
+              <% @fichas.each  do |ficha| %>
+                <tr  bgcolor="#F5F5F5">
+
+                  <td align="center"><%=h ficha.ficha %> </td>
+                  <td align="center"><%=h ficha.fornecedor %></td>
+                  <td align="center"><%if !ficha.data_pedido.nil? %><%=h ficha.data_pedido %> <%end%> </td>
+                  <td align="center">R$ <%=h ficha.valor_si %></td>
+                  <td align="center"><%=h ficha.codigo_empenho %></td>
+                  <td align="center"><%if !ficha.data_empenho.nil? %><%=h ficha.data_empenho %> <%end%> </td>
+                  <td align="center"><%=h ficha.codigo_pg %> </td>
+                  <td align="center"><%if !ficha.data_pg.nil? %><%=h ficha.data_pg %> <%end%> </td>
+                  <td align="center">R$ <%=h ficha.valor_pg %></td>
+                 
+
+                </tr>
+              <% end %>
+        </table>
+   <%else%>
+        <table bgcolor="#DCDCDC" width="100%">
+            <tr bgcolor="#DCDCDC"  >
+              <td align="center" colspan="8"><b>NÃO EXISTE LANÇAMENTOS PARA ESTA FICHA </b></td>
+             </tr>
+
+        </table>
+
+
+   <%end%>
+   <div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div>
+</div>
+    <br/>
