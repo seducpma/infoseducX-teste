@@ -217,7 +217,6 @@ end
 
  def dados_ficha
     @dados_ficha=  OrcFicha.find(:all, :conditions => ['ficha = ?',params[:orc_empenho_ficha]])
-
      render :partial => "dados_fichas"
 end
 
