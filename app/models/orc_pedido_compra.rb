@@ -3,7 +3,7 @@ class OrcPedidoCompra < ActiveRecord::Base
   has_many :orc_pedido_descricaos, :dependent => :destroy
   has_many :orc_empenhos
   #validates_presence_of :orc_ficha_id
-  usar_como_dinheiro :valor_total
+  usar_como_dinheiro :valor_total, :valor_si, :rel_valor_si, :rel_valor_em
 
 
   after_create :geracodigo

@@ -1,53 +1,58 @@
 
-  <div class="tabs">
-    <br/>
+<div class="tabs">
+  <br/>
 
-    <% if  !@lancamentos.empty? %>
+  <% if  !@lancamentos.empty? %>
 
-        <table bgcolor="#DCDCDC" width="100%">
-            <tr bgcolor="#DCDCDC" >
-                <td align="center" width ="5%"><b>Ficha: </b><%=h @ficha[0].ficha %> - <%=h @ficha[0].descicao %> </td>
-            </tr>
-            <tr bgcolor="#DCDCDC" >
-                <td align="center" width ="5%"><b>Código </b></td>
-                <td align="center" width ="5%"><b>Código </b></td>
-                <td align="center"><b>Fornecedor</b></td>
-                <td align="center"><b>Data SI</b></td>
-                <td align="center"><b>Valor SI </b></td>
-                <td align="center"><b>Empenho</b></td>
-                <td align="center"><b>Data Empenho</b></td>
-                <td align="center"><b>Pagamento</b></td>
-                <td align="center"><b>Data OP</b></td>
-                <td align="center"><b>Valor</b></td>
+    <table bgcolor="#DCDCDC" width="100%">
+      <tr bgcolor="#DCDCDC" >
+        <td align="center" colspan="9"><b>Ficha: </b><%=h @ficha[0].ficha %> - <%=h @ficha[0].descricao %> </td>
+      </tr>
+      <tr bgcolor="#DCDCDC" >
 
-              </tr>
-              <% @lancamentos.each  do |lancamento| %>
-                <tr  bgcolor="#F5F5F5">
+        <td align="center" width ="5%"><b>Ficha</b></td>
+        <td align="center"><b>Tipo</b></td>
+        <td align="center"><b>Código</b></td>
+        <td align="center"><b>Data</b></td>
+        <td align="center"><b>Interessado</b></td>
+        <td align="center"><b>Valor S.I.</b></td>
+        <td align="center"><b>Valor EMP</b></td>
+        <td align="center"><b>Valor O.P.</b></td>
 
-                  <td align="center"><%=h @ficha.ficha %> </td>
-                  <td align="center"><%=h lancamento.fornecedor %></td>
-                  <td align="center"><%if !ficha.data_pedido.nil? %><%=h ficha.data_pedido %> <%end%> </td>
-                  <td align="center">R$ <%=h ficha.valor_si %></td>
-                  <td align="center"><%=h ficha.codigo_empenho %></td>
-                  <td align="center"><%if !ficha.data_empenho.nil? %><%=h ficha.data_empenho %> <%end%> </td>
-                  <td align="center"><%=h ficha.codigo_pg %> </td>
-                  <td align="center"><%if !ficha.data_pg.nil? %><%=h ficha.data_pg %> <%end%> </td>
-                  <td align="center">R$ <%=h ficha.valor_pg %></td>
-                 
+      </tr>
+      <% @lancamentos.each  do |lancamento| %>
+        <tr  bgcolor="#F5F5F5">
 
-                </tr>
-              <% end %>
-        </table>
-   <%else%>
-        <table bgcolor="#DCDCDC" width="100%">
-            <tr bgcolor="#DCDCDC"  >
-              <td align="center" colspan="8"><b>NÃO EXISTE LANÇAMENTOS PARA ESTA FICHA </b></td>
-             </tr>
+          <td align="center"><%=h lancamento.rel_ficha %> </td>
+          <td align="center"><%=h lancamento.rel_tipo %> </td>
+          <td align="center"><%=h lancamento.rel_codigo %></td>
+          <td align="center"><%if !lancamento.rel_data.nil? %><%=h lancamento.rel_data %> <%end%> </td>
+          <td align="left">&nbsp;<%=h lancamento.rel_interessado %></td>
+          <td align="right"><%=h lancamento.rel_valor_si %>&nbsp;</td>
+          <%if lancamento.rel_tipo=='S.I.' and lancamento.rel_valor_em!='-o-'%>
+            <td align="right"><font color="blue"><%=h lancamento.rel_valor_em %>&nbsp;</font></td>
+          <%else%>
+            <%if lancamento.rel_tipo=='O.P.' and lancamento.rel_valor_em!='-o-'%>
+              <td align="right"><font color="red"><%=h lancamento.rel_valor_em %>&nbsp;</font></td>
+            <%else%>
+              <td align="right"><%=h lancamento.rel_valor_em %>&nbsp;</td>
+            <%end%>
+          <%end%>
+          <td align="right"><%=h lancamento.rel_valor_op %>&nbsp;</td>
 
-        </table>
+        </tr>
+      <% end %>
+    </table>
+  <%else%>
+    <table bgcolor="#DCDCDC" width="100%">
+      <tr bgcolor="#DCDCDC"  >
+        <td align="center" colspan="8"><b>NÃO EXISTE LANÇAMENTOS PARA ESTA FICHA </b></td>
+      </tr>
+
+    </table>
 
 
-   <%end%>
-   <div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div>
+  <%end%>
+  <div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div>
 </div>
-    <br/>
+<br/>

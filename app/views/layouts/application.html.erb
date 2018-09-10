@@ -558,7 +558,10 @@ display: none;
                       <li><a>Lançamentos</a>
                           <ul style="width:108px;">
                            <% if current_user.has_role?('desenvolvimento') %>
-                                  <li><%= link_to "Consultar",consulta_orc_lancamentos_path %></li>
+                               
+                               <li><%= link_to "Consultar",consultaSI_orc_lancamentos_path %></li>
+                               <li><%= link_to "Consultar - SI ",consulta_orc_lancamentos_path %></li>
+                                  
 
                             <%end%>
                         </ul>

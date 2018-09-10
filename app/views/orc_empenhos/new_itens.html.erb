@@ -71,7 +71,7 @@
                           </td>
                         </tr>
                       <tr>
-                         <td align="left" colspan="8"><b>Categoria Economica:</b> &nbsp<%if !@orc_empenho.cat_economica.nil? or @orc_empenho.cat_economica.nil== ''%>
+                         <td align="left" colspan="8"><b>Categoria Economica:</b> &nbsp<%if !@orc_empenho.cat_economica.nil?%>
                                                                                           <%=h @orc_empenho.cat_economica %>
                                                                                       <%else%>
                                                                                          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -95,7 +95,7 @@
                          </td>
                      </tr>
                       <tr>
-                        <td align="left" valign="top"> <b><%= link_to 'Itens da Nota', "#inline_orc_empenho_item", :class =>"inline60" %></b></td>
+                        <td align="left" valign="top"> <b><u><%= link_to 'Itens da Nota', "#inline_orc_empenho_item", :class =>"inline60" %></u></b></td>
                         <td colspan="7"><div id="dados"> <%= render :partial => 'orc_empenho_itens'  %></div></td>
                       </tr>
 

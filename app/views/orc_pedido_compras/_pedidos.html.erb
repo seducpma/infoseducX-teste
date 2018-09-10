@@ -1,5 +1,17 @@
   <div class="tabs">
     <br/>
+
+     <% if @pedidos_compra.empty?%>
+        <table bgcolor="#DCDCDC" width="100%">
+          <tr bgcolor="#DCDCDC"  >
+            <td align="center" colspan="8"><b>NÃO EXISTE LANÇAMENTOS PARA ESTA FICHA </b></td>
+          </tr>
+
+        </table>
+
+
+     <%else%>
+
        <table bgcolor="#DCDCDC" width="100%">
          <% total_ficha = 0%>
           <% @pedidos_compra.each do |pedido| %>
@@ -87,9 +99,9 @@
         </tr>
       </table>
     <% end%> 
-<%  session[:ficha]=0%>
+    <%  session[:ficha]=0%>
 
-
+<%end%>
 
 <div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
     <br/>

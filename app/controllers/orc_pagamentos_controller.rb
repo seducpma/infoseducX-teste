@@ -9,7 +9,7 @@ class OrcPagamentosController < ApplicationController
    #     @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
          @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
          #@fichas = OrcFicha.find_by_sql("SELECT id, ficha FROM orc_pagamentos WHERE id NOT IN (SELECT orc_ficha_id FROM orc_pagamentos) ORDER BY codigo ASC")
-         @orc_pagamento_op= OrcPagamento.find(:all, :conditions => ["year(data_pg) = ?", Time.now.year], :order => 'data_pg ASC' )
+         @orc_pagamento_op= OrcPagamento.find(:all, :conditions => ["year(data_pg) = ? and codigo is not null", Time.now.year], :order => 'data_pg ASC' )
          @empenhos = OrcEmpenho.all(:conditions => ["year(data_chegou) = ? and pagamento=0", Time.now.year], :order => 'data_chegou ASC' )
  #      @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
   #      @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
@@ -179,7 +179,8 @@ end
 
 def pagamento_op
   @pagamentos = OrcPagamento.find(:all, :conditions => ['orc_empenho_id = ?', params[:orc_pagamento_orc_empenho_id]], :order => 'data_pg DESC')
-   render :partial => "pagamentos"
+  
+    render :partial => "pagamentos"
 
 end
 

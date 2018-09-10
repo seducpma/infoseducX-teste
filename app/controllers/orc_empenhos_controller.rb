@@ -117,11 +117,11 @@ class OrcEmpenhosController < ApplicationController
   # DELETE /orc_empenhos/1
   # DELETE /orc_empenhos/1.xml
   def destroy
-    @orc_empenho = OrcEmpenho.find(params[:id])
+       @orc_empenho = OrcEmpenho.find(params[:id])
               # Atualiza saldo na ficha
         @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_empenho.ficha])
-        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado - session[:valor_total]
-        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado - session[:valor_total])- @ficha[0].saldo_reservado
+        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado - @orc_empenho.valor_total
+        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado - @orc_empenho.valor_total)- @ficha[0].saldo_reservado
         @ficha[0].saldo = saldo
         @ficha[0].save
     
@@ -149,6 +149,7 @@ class OrcEmpenhosController < ApplicationController
         @orc_empenho_itens=OrcEmpenhoIten.find(:all, :conditions =>['orc_empenho_id =?', session[:news_itens]])
 
         for item in @orc_empenho_itens
+          session[:item]=item.total.to_f
           session[:soma]=session[:soma].to_f+item.total.to_f
           item.total_geral=session[:soma].to_f
           session[:valor_total] = item.total_geral
@@ -162,9 +163,10 @@ class OrcEmpenhosController < ApplicationController
          @orc_empenho.save
 
              # Atualiza saldo na ficha
-        @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_empenho.ficha])
-        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado + session[:valor_total]
-        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado + session[:valor_total])- @ficha[0].saldo_reservado
+
+       @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', @orc_empenho.ficha])
+        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado + session[:item]
+        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado + session[:item])- @ficha[0].saldo_reservado
         @ficha[0].saldo = saldo
         @ficha[0].save
         

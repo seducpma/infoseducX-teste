@@ -31,23 +31,36 @@ class OrcLancamentosController < ApplicationController
 
   def consulta_lancamento
     if params[:type_of].to_i == 1   #fornecedor
-         
-          @fichas = OrcEmpenho.find_by_sql("SELECT fc.* , (pd.fornecedor) AS fornecedor, (pd.created_at) AS data_pedido, (pd.valor_total) AS valor_si ,  (pd.codigo) AS codigo_empenho, (ep.data_chegou) AS data_empenho, (pg.codigo) AS codigo_pg , (pg.valor_pg) AS valor_pg, (pg.data_pg) AS data_pg FROM orc_fichas fc INNER JOIN orc_pedido_compras pd ON pd.orc_ficha_id = fc.id INNER JOIN orc_empenhos ep ON ep.orc_pedido_compra_id = pd.id INNER JOIN orc_pagamentos pg ON pg.orc_empenho_id = ep.id WHERE ep.interessado  like "+ "'%" + params[:search_fornecedor].to_s + "%'" + " ")
-          render :update do |page|
+       @ficha= OrcFicha.find(:all, :joins=> 'INNER JOIN orc_empenhos ON orc_empenhos.ficha = orc_fichas.ficha',:conditions => ['interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+       @pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',   :conditions => ['orc_pedido_compras.fornecedor like ?', "%" + params[:search_fornecedor].to_s + "%"])
+       @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['orc_empenhos.interessado like ?', "%" + params[:search_fornecedor].to_s + "%"])
+       @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' , :conditions => ['em.interessado like ?', "%" + params[:search_fornecedor].to_s + "%"])
+       @lancamentos = (@pedidos + @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+
+                  render :update do |page|
                   page.replace_html 'lancamentos', :partial => "lancamentos"
           end
     else if params[:type_of].to_i == 4   #todas
-                    @fichas = OrcEmpenho.find_by_sql("SELECT fc.* , (pd.fornecedor) AS fornecedor, (pd.created_at) AS data_pedido, (pd.valor_total) AS valor_si ,  (pd.codigo) AS codigo_empenho, (ep.data_chegou) AS data_empenho, (pg.codigo) AS codigo_pg , (pg.valor_pg) AS valor_pg, (pg.data_pg) AS data_pg FROM orc_fichas fc INNER JOIN orc_pedido_compras pd ON pd.orc_ficha_id = fc.id INNER JOIN orc_empenhos ep ON ep.orc_pedido_compra_id = pd.id INNER JOIN orc_pagamentos pg ON pg.orc_empenho_id = ep.id ")
+       @ficha= OrcFicha.find(:all, :conditions => ['ano = ?', Time.now.year] )
+       @pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['year(orc_pedido_compras.created_at) = ?', Time.now.year], :order =>'data'  )
+       @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op', :conditions => ['year(data_chegou) = ?', Time.now.year], :order =>'data'  )
+       @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' ,  :conditions => ['year(orc_pagamentos.data_pg) = ?', Time.now.year], :order =>'data'  )
+       @lancamentos = (@pedidos + @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+
+
                render :update do |page|
                   page.replace_html 'lancamentos', :partial => "lancamentos"
                end
-         else if params[:type_of].to_i == 5   #dia
-                    w=session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
-                    w1=session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
-                    w3=session[:mes]=params[:empenho][:dataF][3,2]
-                     #@empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
-                      #@fichas = OrcEmpenho.find_by_sql("SELECT fcs.* , (pd.fornecedor) AS fornecedor, (pd.created_at) AS data_pedido, (pd.valor_total) AS valor_si ,  (pd.codigo) AS codigo_empenho, (ep.data_chegou) AS data_empenho, (pg.codigo) AS codigo_pg , (pg.valor_pg) AS valor_pg, (pg.data_pg) AS data_pg FROM orc_fichas fc INNER JOIN orc_pedido_compras pd ON pd.orc_ficha_id = fc.id INNER JOIN orc_empenhos ep ON ep.orc_pedido_compra_id = pd.id INNER JOIN orc_pagamentos pg ON pg.orc_empenho_id = ep.id WHERE (ep.data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
-                      @fichas = OrcEmpenho.find_by_sql("SELECT fc.* , (pd.fornecedor) AS fornecedor, (pd.created_at) AS data_pedido, (pd.valor_total) AS valor_si ,  (pd.codigo) AS codigo_empenho, (ep.data_chegou) AS data_empenho, (pg.codigo) AS codigo_pg , (pg.valor_pg) AS valor_pg, (pg.data_pg) AS data_pg FROM orc_fichas fc INNER JOIN orc_pedido_compras pd ON pd.orc_ficha_id = fc.id INNER JOIN orc_empenhos ep ON ep.orc_pedido_compra_id = pd.id INNER JOIN orc_pagamentos pg ON pg.orc_empenho_id = ep.id WHERE (ep.data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+         else if params[:type_of].to_i == 5   #data
+                    session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
+                    session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
+                    session[:mes]=params[:empenho][:dataF][3,2]
+                     @ficha= OrcFicha.find(:all, :joins=> 'INNER JOIN orc_empenhos ON orc_empenhos.ficha = orc_fichas.ficha',:conditions => ['data_chegou BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order => 'id DESC')
+                     @pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['orc_pedido_compras.created_at BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order =>'data'  )
+                     @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op',:conditions => ['data_chegou BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order => 'data'   )
+                     @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' ,  :conditions => ['orc_pagamentos.data_pg BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order => 'data')
+                     @lancamentos = (@pedidos + @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+
                  render :update do |page|
                     page.replace_html 'lancamentos', :partial => "lancamentos"
                  end
@@ -56,15 +69,74 @@ class OrcLancamentosController < ApplicationController
      end
   end
 
+def consultaSI_lancamento
+    if params[:type_of].to_i == 1   #fornecedor
+       @ficha= OrcFicha.find(:all, :joins=> 'INNER JOIN orc_empenhos ON orc_empenhos.ficha = orc_fichas.ficha',:conditions => ['interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+       #@pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',   :conditions => ['orc_pedido_compras.fornecedor like ?', "%" + params[:search_fornecedor].to_s + "%"])
+       @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['orc_empenhos.interessado like ?', "%" + params[:search_fornecedor].to_s + "%"])
+       @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' , :conditions => ['em.interessado like ?', "%" + params[:search_fornecedor].to_s + "%"])
+       @lancamentos = (@empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+
+                  render :update do |page|
+                  page.replace_html 'lancamentos', :partial => "lancamentosSI"
+          end
+    else if params[:type_of].to_i == 4   #todas
+       @ficha= OrcFicha.find(:all, :conditions => ['ano = ?', Time.now.year] )
+       #@pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['year(orc_pedido_compras.created_at) = ?', Time.now.year], :order =>'data'  )
+       @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op', :conditions => ['year(data_chegou) = ?', Time.now.year], :order =>'data'  )
+       @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' ,  :conditions => ['year(orc_pagamentos.data_pg) = ?', Time.now.year], :order =>'data'  )
+       @lancamentos = (@empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+
+
+               render :update do |page|
+                  page.replace_html 'lancamentos', :partial => "lancamentosSI"
+               end
+         else if params[:type_of].to_i == 5   #data
+                    session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
+                    session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
+                    session[:mes]=params[:empenho][:dataF][3,2]
+                     @ficha= OrcFicha.find(:all, :joins=> 'INNER JOIN orc_empenhos ON orc_empenhos.ficha = orc_fichas.ficha',:conditions => ['data_chegou BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order => 'id DESC')
+                     #@pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['orc_pedido_compras.created_at BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order =>'data'  )
+                     @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op',:conditions => ['data_chegou BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order => 'data'   )
+                     @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' ,  :conditions => ['orc_pagamentos.data_pg BETWEEN ? AND ?',session[:dataI],session[:dataF]], :order => 'data')
+                     @lancamentos = ( @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+
+                 render :update do |page|
+                    page.replace_html 'lancamentos', :partial => "lancamentosSI"
+                 end
+              end
+         end
+     end
+  end
+
+
+
 def ficha_lancamento
-
-       @pedidos = OrcPedidoCompra.find(:all, :select => '(codigo)as codigo_si, (fornecedor)AS fornecedor_si, (created_at)AS data_si, (valor_total)AS valor_total_si', :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]]  )
        @ficha= OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]])
-       @empenhos = OrcEmpenho.find(:all, :select => '(codigo)AS codigo_emp , (interessado)AS fornecedor_emp,  (data_chegou)AS data_chegou_emp ,(valor_total)AS valor_total_emp', :conditions => ['ficha = ?', @ficha[0].ficha]   )
-       @pagamentos = OrcPagamento.find(:all, :select => '(codigo) AS codigo_pg , (valor_pg) AS valor_pg, (data_pg) AS data_pg' , :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]])
-       @lancamentos = @pedidos + @empenhos + @pagamentos
-  render :partial => "lancamentos"
+       @pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order =>'data')
+       @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op', :conditions => ['ficha = ?', @ficha[0].ficha], :order => 'data'   )
+       @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado  AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' , :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order => 'data')
+       @lancamentos = (@pedidos + @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+#       @pedidos = OrcPedidoCompra.find(:all, :select => '(created_at)AS data_lanc, (codigo)as codigo_si, (fornecedor)AS fornecedor_si, (date_format(created_at,"%d/%m/%Y"))AS data_si, (valor_total)AS valor_si, " "AS codigo_emp, " "AS interessado_emp, " "AS data_chegou_emp ," "AS valor_total_emp, " " AS codigo_pg , " " AS valor_pg, " " AS data1 ',  :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order =>'data_si'  )
+#       @ficha= OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]])
+#       @empenhos = OrcEmpenho.find(:all, :select => ' (data_chegou)AS data_lanc, " "AS codigo_si, " "AS fornecedor_si, " "AS data_si, " "AS valor_si, (codigo)AS codigo_emp , (interessado)AS interessado_emp,  (date_format(data_chegou,"%d/%m/%Y")) AS data_chegou_emp ,(valor_total)AS valor_total_emp, " "AS valor_total_emp, " " AS codigo_pg , " " AS valor_pg, " " AS data1 ', :conditions => ['ficha = ?', @ficha[0].ficha], :order => 'data_chegou_emp'   )
+#       @pagamentos = OrcPagamento.find(:all, :select => ' (data_pg)AS data_lanc," "AS codigo_si, " "AS fornecedor_si, " "AS data_si, " "AS valor_si," "AS codigo_emp, " "AS interessado_emp, " "AS data_chegou_emp ," "AS valor_total_emp, (codigo) AS codigo_pg , (valor_pg) AS valor_pg,  (date_format(data_pg,"%d/%m/%Y"))AS data1' , :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order => 'data1')
+#       @lancamentos = (@pedidos + @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+       render :partial => "lancamentos"
+end
 
+def ficha_lancamentoSI
+       @ficha= OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]])
+      # @pedidos = OrcPedidoCompra.find(:all, :joins => 'JOIN orc_fichas fichas ON orc_pedido_compras.orc_ficha_id=fichas.id JOIN orc_empenhos em ON em.orc_pedido_compra_id=orc_pedido_compras.id', :select => '(orc_pedido_compras.created_at)AS data_lanc, (fichas.ficha) AS rel_ficha,"S.I." as rel_tipo, (orc_pedido_compras.codigo)as rel_codigo, (orc_pedido_compras.fornecedor)AS rel_interessado, (date_format(orc_pedido_compras.created_at,"%d/%m/%Y"))AS rel_data, (orc_pedido_compras.valor_total)AS rel_valor_si, (em.valor_total) AS rel_valor_em, "-o-"AS rel_valor_op',  :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order =>'data')
+                                                                                        @empenhos = OrcEmpenho.find(:all, :select => '(data_chegou)AS data_lanc, ficha AS rel_ficha, "EMP." as rel_tipo, (codigo)AS rel_codigo , (interessado)AS rel_interessado,  (date_format(data_chegou,"%d/%m/%Y")) AS rel_data, "-o-"AS rel_valor_si, (valor_total)AS rel_valor_em, "-o-"AS rel_valor_op', :conditions => ['ficha = ?', @ficha[0].ficha], :order => 'data'   )
+       @pagamentos = OrcPagamento.find(:all, :joins => 'JOIN orc_empenhos em ON em.id=orc_pagamentos.orc_empenho_id', :select => ' (orc_pagamentos.data_pg)AS data_lanc, (orc_pagamentos.ficha)as rel_ficha, "O.P." as rel_tipo, (orc_pagamentos.codigo) AS rel_codigo, em.interessado  AS rel_interessado,  (date_format(orc_pagamentos.data_pg,"%d/%m/%Y"))AS rel_data,"-o-"AS rel_valor_si, (em.valor_total) AS rel_valor_em, (valor_pg) AS rel_valor_op' , :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order => 'data')
+       @lancamentos = (@empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+#       @pedidos = OrcPedidoCompra.find(:all, :select => '(created_at)AS data_lanc, (codigo)as codigo_si, (fornecedor)AS fornecedor_si, (date_format(created_at,"%d/%m/%Y"))AS data_si, (valor_total)AS valor_si, " "AS codigo_emp, " "AS interessado_emp, " "AS data_chegou_emp ," "AS valor_total_emp, " " AS codigo_pg , " " AS valor_pg, " " AS data1 ',  :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order =>'data_si'  )
+#       @ficha= OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]])
+#       @empenhos = OrcEmpenho.find(:all, :select => ' (data_chegou)AS data_lanc, " "AS codigo_si, " "AS fornecedor_si, " "AS data_si, " "AS valor_si, (codigo)AS codigo_emp , (interessado)AS interessado_emp,  (date_format(data_chegou,"%d/%m/%Y")) AS data_chegou_emp ,(valor_total)AS valor_total_emp, " "AS valor_total_emp, " " AS codigo_pg , " " AS valor_pg, " " AS data1 ', :conditions => ['ficha = ?', @ficha[0].ficha], :order => 'data_chegou_emp'   )
+#       @pagamentos = OrcPagamento.find(:all, :select => ' (data_pg)AS data_lanc," "AS codigo_si, " "AS fornecedor_si, " "AS data_si, " "AS valor_si," "AS codigo_emp, " "AS interessado_emp, " "AS data_chegou_emp ," "AS valor_total_emp, (codigo) AS codigo_pg , (valor_pg) AS valor_pg,  (date_format(data_pg,"%d/%m/%Y"))AS data1' , :conditions => ['orc_ficha_id = ?', params[:orc_ficha_id]], :order => 'data1')
+#       @lancamentos = (@pedidos + @empenhos + @pagamentos).sort_by{|e| e[:data_lanc]}
+       render :partial => "lancamentosSI"
 end
 
 

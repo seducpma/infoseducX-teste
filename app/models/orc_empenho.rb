@@ -1,11 +1,11 @@
 class OrcEmpenho < ActiveRecord::Base
   belongs_to :orc_pedido_compra
-  has_many :cart_items
-  has_many :dpus, :through => :cart_items
+  #has_many :cart_items
+  #has_many :dpus, :through => :cart_items
 
  has_many :orc_empenho_itens, :dependent => :destroy
    #validates_presence_of :orc_pedido_compra_id
-   usar_como_dinheiro :valor_total 
+   usar_como_dinheiro :valor_total, :rel_valor_em
    before_save  :salva_dados
    #after_save  :atualiza_saldo
 

@@ -17,21 +17,26 @@
                       <tr>
                          <td width ="8%" align="left"><b>Número:</b></font></td>
                          <td colspan="6"><%= f.text_field :codigo, :size =>15%>
-                                  &nbsp&nbsp <b>Processo:</b> <%= f.text_field :processo, :size =>20 %>&nbsp&nbsp
+                                  &nbsp&nbsp <b>Processo:</b>  &nbsp<%= f.text_field :processo, :size =>20 %>&nbsp&nbsp
                                   &nbsp&nbsp  <b>Data Empenho: </b> &nbsp<%= datepicker_tag(:orc_empenho, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>&nbsp&nbsp&nbsp&nbsp
                                   &nbsp&nbsp  <b>Data Chegada: </b> &nbsp<%= datepicker_tag(:orc_empenho, :data_chegou,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
                          </td>
                       </tr>
                       <tr>
                          <td align="left"><b>Serviço:</b></td>
-                         <td align="left"><%= f.collection_select :orc_pedido_compra_id, @pedidos_compra, :id, :codigo, :include_blank => '   '%>
+                         <td align="left"colspan="8"><%= f.collection_select :orc_pedido_compra_id, @pedidos_compra, :id, :codigo, :include_blank => '   '%>
                                           <%= observe_field 'orc_empenho_orc_pedido_compra_id',
                                                      :with   => :orc_empenho_orc_pedido_compra_id,
                                                      :url  => { :action => 'dados_pedido' },
                                                      :update => "pedido"%>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Vencimento:</b></font> &nbsp<%= datepicker_tag(:orc_empenho, :vencimento,{ :size => 8},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Validade: </b>&nbsp<%= datepicker_tag(:orc_empenho, :validade,{ :size => 8},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Modalidade: </b>&nbsp<%= f.select:modalidade, (MODALIDADE).sort, :include_blank => ' ' %>
                          </td>
                        </tr>
+                      <tr>
 
+                     </tr>
                         <tr>
                           <td></td>
                           <td colspan="8">
@@ -39,8 +44,8 @@
                                 <table  width="100%" >
                                       <tr>
                                            <td align="left" width=" 5%"> <b>Interessado: </b> </td>
-                                           <td align="left" colspan="6"><%= f.text_field :interessado, :size =>30%>
-                                                  &nbsp&nbsp <b>CNPJ:</b> <%= f.text_field :cnpj, :size =>10%>
+                                           <td align="left" colspan="6"><%= f.text_field :interessado, :size =>38%>
+                                                  &nbsp&nbsp&nbsp&nbsp <b>CNPJ:</b> <%= f.text_field :cnpj, :size =>10%>
                                             </td>
                                        </tr>
 
@@ -70,13 +75,7 @@
                             </div>
                           </td>
                         </tr>
-                      <tr>
-                         <td align="left" colspan="8"><b>Categoria Economica:</b> &nbsp <%= f.text_field :cat_economica, :size =>30 %>
-                                 &nbsp&nbsp&nbsp&nbsp <b>Vencimento:</b></font> &nbsp<%= datepicker_tag(:orc_empenho, :vencimento,{ :size => 8},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
-                                 &nbsp&nbsp&nbsp&nbsp <b>Validade: </b>&nbsp<%= datepicker_tag(:orc_empenho, :validade,{ :size => 8},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
-                                 &nbsp&nbsp&nbsp&nbsp <b>Modalidade: </b>&nbsp<%= f.select:modalidade, (MODALIDADE).sort, :include_blank => ' ' %>
-                         </td>
-                     </tr>
+
                    </table>
                   </fieldset>
                  </td>
