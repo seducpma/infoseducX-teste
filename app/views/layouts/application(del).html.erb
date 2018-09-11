@@ -1,0 +1,621 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+    <title><%= "INFOSEDUC - Sistema de Gerenciamento de Informação - Secretaria Educação de Americana" %></title>
+
+    
+    <%= stylesheet_link_tag 'application','calendar',"style",'menu',"colorbox", :cache => true%>
+    <%= stylesheet_link_tag 'impressao', :media => "print" %>
+    <%= stylesheet_link_tag 'calendar_impressao', :media => "print" %>
+    <%= stylesheet_link_tag 'calendar', :media => "all" %>
+    <%= stylesheet_link_tag '/javascripts/plugins/flexigrid/css/flexigrid.css' %>
+    <%= stylesheet_link_tag 'colorbox','geral',"jquery.tooltip.css","pepper-grinder/jquery-ui-1.8.16.custom","jquery.multiselect","ui.selectmenu" %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <%= javascript_include_tag 'jquery-1.7','jquery.printElement.min',"jquery.maskMoney.js",'jquery.bgiframe.js','jquery.dimensions.js','jquery.tooltip.js','jquery-ui-1.8.16.custom.min',"jquery.ui.datetimepicker.min","jquery-ui-i18n.min",'jrails',"jquery.colorbox","colorbox.js","jquery.multiselect.min","ui.selectmenu",'plugins/flexigrid/js/flexigrid.pack','application.js', "msg.js", "jquery-ui-timepicker-addon.js" %>
+    <%= yield(:head) %>
+
+  </head>
+
+<body>
+<style media="print" class ="invisible_to_print ">
+.invisible_to_print {
+display: none;
+}
+</style>
+ <div id="contents">
+  <div id="informacao">
+    <% unless informativos_corrente.empty? %>
+     <div id="announcement" class ="invisible_to_print ">
+      <table class="tabelas" >
+          <tr>
+               <td>
+                <p><h2 align="center"><u>Quadro de Avisos</u></h2></p>
+                <div id="color"  align="center">
+                  <%for informativo in informativos_corrente %>
+                    <p><%= informativo.mensagem %></p>
+                  <%end%>
+                </div>
+              </td>
+            <tr>
+              <td>
+                 <h4 align="right"><b><%= link_to_remote("Ocultar esta mensagem", :url => {:controller => 'javascripts', :action => 'hide_announcement'}) %></b></h4>
+              </td>
+            </tr>
+         </tr>
+     </table>
+    </div>
+   
+  </div>
+  <%end%>
+  <div id="header" class ="invisible_to_print ">
+    <br/>
+
+        <div id="topo">
+          <br/>
+
+        </div>
+    <%if logged_in? then%>
+      <table width="100%">
+      <tr>
+        <td width ="10%">
+           <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %>  </font>
+        </td>
+        <% if current_user.has_role?('admin') %>
+         <td>Acesso de Administrador do Sistema|
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font><font size="1">
+         </td>
+         <td align="right"></font> <font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+        <%else%>
+           <% if current_user.has_role?('SEDUC') or current_user.has_role?('admin_manutencao') %>
+              <td>Acesso SEDUC |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+              <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+           <%else%>
+              <% if current_user.has_role?('supervisao') %>
+                  <td>Acesso Supervisão |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+                  <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+              <%else%>
+                 <% if current_user.has_role?('diretor_unidade') %>
+                    <td>Acesso Unidade de Ensino |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+                    <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                <%else%>
+                   <% if current_user.has_role?('secretaria_fundamental') %>
+                       <td>Acesso Secretaria UE |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font></td>
+                      <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                   <%else if current_user.has_role?('professor_fundamental') %>
+                       <td>Acesso Professor |
+                           <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                           <% uni = @unidade.first.nome  %>
+                           <font size="1">  <%= uni %></font>
+                      </td>
+                       <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                         <%else if current_user.has_role?('pedagogo') %>
+                             <td>Acesso Pedagogo |
+                                 <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                 <% uni = @unidade.first.nome  %>
+                                 <font size="1">  <%= uni %></font>
+                            </td>
+                             <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                               <%else if current_user.has_role?('secretaria_infantil') %>
+                                     <td>Acesso Secretaria Infantil |
+                                         <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                         <% uni = @unidade.first.nome  %>
+                                         <font size="1">  <%= uni %></font>
+                                    </td>
+                                     <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                     <%else if current_user.has_role?('direcao_infantil') %>
+                                           <td>Acesso Direção Infantil |
+                                               <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                               <% uni = @unidade.first.nome  %>
+                                               <font size="1">  <%= uni %></font>
+                                           </td>
+                                            <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                           <%else if current_user.has_role?('professor_infantil') %>
+                                                 <td>Acesso Professor Infantil |
+                                                     <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                                     <% uni = @unidade.first.nome  %>
+                                                     <font size="1">  <%= uni %></font>
+                                                 </td>
+                                                  <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                 <%else  if current_user.has_role?('estagiario unidade') %>
+                                                         <td>Acesso Estagiário de Unidade |
+                                                             <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                                             <% uni = @unidade.first.nome  %>
+                                                             <font size="1">  <%= uni %></font>
+                                                         </td>
+                                                          <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                         <%else if current_user.has_role?('estagiario SEDUC') %>
+                                                                 <td>Acesso Estagiário SEDUC |
+                                                                     <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
+                                                                     <% uni = @unidade.first.nome  %>
+                                                                     <font size="1">  <%= uni %></font>
+                                                                 </td>
+                                                                  <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                 <%else if current_user.has_role?('terceiro') %>
+                                                                       <td>Acesso Diversos </td>
+                                                                        <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                       <%else if current_user.has_role?('oficios') %>
+                                                                           <td>Acesso Oficio </td>
+                                                                            <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                           <%else%>
+                                                                             <td>Acesso Público</td>
+                                                                              <td align="right"><font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
+                                                                          <%end%>
+                                                                      <%end%>
+                                                                <%end%>
+                                                        <%end%>
+                                                <%end%>
+                                          <%end%>
+                                    <%end%>
+                          <%end%>
+                      <%end%>
+                   <%end%>
+                <%end%>
+              <%end%>
+           <%end%>
+       <%end%>
+      </tr>
+
+      </table>
+      <center><font style="color: red"><b><marquee behavior=alternate><%= flash[:notice1] %></marquee></b></font><%= flash[:notice] %></center>
+   <%else%>
+      <%= link_to '|Entrar|', login_path %>
+      <font style="color: red"><%= flash[:notice] %></font>
+   <%end%>
+ </div>
+ 
+   <div class="nav" class ="invisible_to_print ">
+   <div class="nav-container-outer" class ="invisible_to_print ">
+     <img src="/stylesheets/images/nav-bg-l.jpg" alt="" class="float-left"  class ="invisible_to_print "/>
+     <img src="/stylesheets/images/nav-bg-r.jpg" alt="" class="float-right"  class ="invisible_to_print " />
+            <ul id="nav-container" class="nav-container" class ="invisible_to_print ">
+
+              <li class ="invisible_to_print" ><a class="item-primary" href="#">INFOSEDUC</a>
+                <ul style="width:108px;">
+                  <li><%= link_to 'Inicio', root_path %></li>
+                  <li><%= link_to 'Manual Estagiário', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
+                  <li><%= link_to 'Manual Infoseduc', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
+                  <li><%= link_to 'Manual Sisgered', href= "https://docs.google.com/document/d/1KORwNkxV7ogNpc7EUyMxQHA4MMSSju_eOouI5cNABFE/edit?usp=sharing", :target => '_blank' %></li>
+
+                  <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
+                </ul>
+              </li>
+            <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC') %>
+            <li><span class="divider divider-vert" ></span></li>
+              <li><a class="item-primary" href="#">AGENDAS</a>
+                 <ul style="width:108px;">
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao_infantil') or current_user.has_role?('direcao_infantil')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') )%>
+                         <li><a class="item-primary" href="#;">Ausências</a>
+                         <ul>
+                             <li><a class="item-primary" href="#;">Faltas</a>
+                                 <ul>
+                                    <li><%= link_to "Unidade",aulas_faltas_path %></li>
+                                    <li><%= link_to "Professor",aulas_faltas2_path %></li>
+                                    <li><%= link_to "Funcionário",aulas_faltas3_path %></li>
+                                    <li><a class="item-primary" href="#;"> Relatório </a>
+                                         <ul>
+                                            <li><%= link_to "Falta Dia",relatorio_falta_dia_aulas_faltas_path %></li>
+                                            <li><%= link_to "Funcionário",relatorio_falta_mes_funcionario_aulas_faltas_path %></li>
+                                            <li><%= link_to "Professor",relatorio_falta_mes_professor_aulas_faltas_path %></li>
+                                            <li><%= link_to "Unidade",relatorio_falta_mes_aulas_faltas_path %></li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                             </li>
+                            <li><a class="item-primary" href="#;">Substitições</a>
+                                 <ul>
+                                    <li><%= link_to "Unidade",aulas_eventuals_path %></li>
+                                    <li><%= link_to "Professor",aulas_eventuals2_path %></li>
+                                    <li><a class="item-primary" href="#;"> Relatório </a>
+                                         <ul>
+                                            <li><%= link_to "Professor",relatorio_eventual_mes_professor_aulas_eventuals_path %></li>
+                                            <li><%= link_to "Unidade",relatorio_eventual_mes_unidade_aulas_eventuals_path %></li>
+                                         </ul>
+                                     </li>
+
+                                 </ul>
+                            </li>
+
+                          </ul>
+                        </li>
+                    <%end%>
+
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao') %>
+                         <li><%= link_to('Laboratório',agendas_path) %></li>
+                     <%end%>
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')  or current_user.has_role?('SEDUC')%>
+                             <li><%= link_to('Sala Reunião', reservar_salas_path) %></li>
+                     <%end%>
+                 </ul>
+              </li>
+              
+            <%end%>
+                
+             
+              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+              <li  class ="invisible_to_print "><a class="item-primary" href="#;">CADASTRAR</a>
+                 <ul style="width:108px;">
+
+                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade'))%>
+                           <li><%= link_to "Estagiário",new_estagiario_path%></li>
+                      <%end%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                           <li><%= link_to "Funcionario", new_funcionario_path %></li>
+                     <%end%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                           <li><%= link_to "Faltas", new_aulas_falta_path %></li>
+                     <%end%>
+
+                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade'))%>
+                          <li><%= link_to "Professor",new_professor_path %></li>
+                      <%end%>
+                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC') )%>
+                          <li><%= link_to "Professor(Subst.)",new_eventual_path %></li>
+                     <%end%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                           <li><%= link_to "Substituições", new_aulas_eventual_path %></li>
+                     <%end%>
+
+                     <% if current_user.has_role?('admin')or current_user.has_role?('SEDUC')  %>
+                         <li><%= link_to "Unidade",new_unidade_path %></li>
+                     <%end%>
+
+                 </ul>
+              </li>
+     <%end%>
+              
+         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('professor_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil')or current_user.has_role?('professor_infantil') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade') or  current_user.has_role?('terceiro'))%>
+            <li  class ="invisible_to_print "><a class="item-primary" href="#;">CONSULTAR</a>
+                 <ul style="width:108px;">
+                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('professor_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil')or current_user.has_role?('professor_infantil') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade'))%>
+                     <li><a class="item-primary" href="#;">Classe</a>
+                         <ul>
+                              <li><%= link_to "Ano Letivo Atual",consulta_classe_path %></li>
+                              <li><%= link_to "Anos Anteriores",consulta_classe_anteriores_path %></li>
+                              <li><%= link_to "Aluno/Contato",consulta_classe_fone_classes_path %></li>
+                        </ul>
+                     </li>
+                     <li><%= link_to "Estagiários",consultas_estagiarios_path %></li>
+                      <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')  or current_user.has_role?('estagiario SEDUC')or  current_user.has_role?('diretor_unidade'))%>
+                            <li><%= link_to "Funcionários",consultas_funcionarios_path %></li>
+                      <%end%>
+                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil') or current_user.has_role?('estagiario SEDUC')or  current_user.has_role?('diretor_unidade'))%>
+                           <li><%= link_to "Professor",consulta_professor_nome_path %></li>
+                           <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('supervisao'))%>
+                                 <li><%= link_to "Professor(Subst.)",consulta_professor_eventual_path %></li>
+                          <%end%>
+                           <li><a class="item-primary" href="#;">Professor/Classe</a>
+                               <ul>
+                                  <li><%= link_to "Ano Letivo Atual",consulta_classe_professors_path %></li>
+                                  <li><%= link_to "Anos Anteriores",consulta_classe_anterior_professor_path %></li>
+                              </ul>
+                           </li>
+                      <%end%>
+                   <%end%>
+                        <li><%= link_to "Unidade",consultas_unidades_path %></li>
+                        <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') %>
+                             <li><%= link_to 'Unidade/Estagiário', sem_estagiario_path %></li>
+                       <%end%>
+                  </ul>
+               <%end%>
+              </li>
+              <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC')or current_user.has_role?('oficios')) %>
+                  <li><span class="divider divider-vert" ></span></li>
+                   <li><a class="item-primary" href="#;">DOCUMENTOS</a>
+                      <ul>
+                        <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('oficios') ) %>
+                           <li><a class="item-primary" href="#;">Ofícios</a>
+                            <ul>
+                              <li><%= link_to "Novo",new_oficio_path %></li>
+                              <li><%= link_to "Ofícios", oficios_oficios_path  %></li>
+                              <li><%= link_to "Consultar", consulta_oficios_path  %></li>
+                            </ul>
+                         </li>
+                     <%end%>
+                     <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')) %>
+                         <li><span class="divider divider-vert" ></span></li>
+                         <li><a class="item-primary" href="#;">Serviços Internos</a>
+                            <ul>
+                              <% if (current_user.has_role?('admin') or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')) %>
+                                 <li><%= link_to "Novo",new_servicos_interno_path %></li>
+                                 <li><%= link_to "Serviços", servicos_internos_path  %></li>
+                                 <li><%= link_to "Consultar", consulta_servicos_internos_path  %></li>
+                               <%end%>
+                            </ul>
+                          </li>
+                        <%end%>
+                           <% if (current_user.has_role?('admin') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                                  <%= link_to "Ponto Eletrônico", pontos_path %>
+                           <%end%>
+                    
+                        </ul>
+                   </li>
+               <%end%>
+              <li  class ="invisible_to_print "><span class="divider divider-vert" ></span></li>
+              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil') or current_user.has_role?('professor_infantil') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+               <li  class ="invisible_to_print "><a class="item-primary" href="#;">EDITAR</a>
+                <ul style="width:108px;">
+                   <li><%= link_to "Estagiário",consultas_estagiarios_path %></li>
+                   <li><%= link_to "Funcionário",consultas_funcionarios_path %></li>
+                   <li><%= link_to "Professor",consulta_professor_nome_path %></li>
+                   <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario SEDUC'))%>
+                        <li><%= link_to "Professor(Subst.)",consulta_professor_eventual_path %></li>
+                  <%end%>
+                   <li><%= link_to "Unidade",consultas_unidades_path %></li>
+                 </ul>
+              </li>
+             <%end%>
+              <% if current_user.has_role?('admin') or  current_user.has_role?('direcao_fundamental')or current_user.has_role?('direcao_infantil') %>
+              <li class ="invisible_to_print "><span class="divider divider-vert" ></span></li>
+              <li class ="invisible_to_print "><a class="item-primary" href="#;">GERENCIAR</a>
+                 <ul style="width:108px;">
+                     <li><%= link_to 'Usuários', roles_users_path %></li>
+                     <% if current_user.has_role?('admin') %>
+                           <li><a>Inscrições</a>
+                             <ul>
+                               <li><a>Cursos</a>
+                                <ul>
+                                  <li><%= link_to "Cadastrar",new_curso_path %></li>
+                                  <li><%= link_to "Consulta",consulta_cursos_path  %></li>
+                                  <li><%= link_to "Cursos",cursos_path  %></li>
+                                </ul>
+                              </li>
+                               <li><a>Inscrições</a>
+                                <ul>
+                                  <li><%= link_to "Inscrição",new_inscricao_path %></li>
+                                  <li><%= link_to "Por Curso",por_curso_inscricaos_path  %></li>
+                                  <li><%= link_to "Por Participantes",consultas_inscricaos_path  %></li>
+                                </ul>
+                              </li>
+                              <li><a>Participantes</a>
+                                <ul>
+                                  <li><%= link_to "Cadastrar",new_participante_path %></li>
+                                  <li><%= link_to "Consulta",consultas_inscricaos_path  %></li>
+                                </ul>
+                              </li>
+
+
+                            </ul>
+                          </li>
+                           <li><a>Informativo</a>
+                            <ul>
+                              <li><%= link_to "Novo",new_informativo_path %></li>
+                              <li><%= link_to "Todos",informativos_path  %></li>
+                            </ul>
+                          </li>
+
+                     <%end%>
+                     <% if current_user.has_role?('admin') %>
+                         <li><%= link_to "Senhas",senhas_path %></li>
+
+                     <%end%>
+                 </ul>
+              </li>
+              <%end%>
+
+
+
+             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('SEDUC') or  current_user.has_role?('terceiro') or  current_user.has_role?('oficios') %>
+             <li><span class="divider divider-vert" ></span></li>
+                <li><a class="item-primary" href="#;">MANUTENÇÃO</a>
+                  <ul style="width:108px;">
+                   <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('chefia_manutencao') %>
+                   <li><a>Estoque</a>
+                        <ul style="width:108px;">
+                         <li><%= link_to "Cadastrar",new_produto_path %></li>
+                         <!--<li><%= link_to "Entrada", consulta_E_path  %></li> -->
+                         <li><%= link_to "Entrada", new_entrada_path  %></li>
+                         <li><%= link_to "Saída", new_saida_path %></li>
+                         <li><%= link_to "Estoque", produtos_path  %></li>
+                         <li><a>Lançamentos</a>
+                            <ul style="width:108px;">
+                               <li><%= link_to "Entradas", index_entrada_path%></li>
+                               <li><%= link_to "Saídas",  index_saida_path  %></li>
+                               <li><%= link_to "Período",  index_periodo_path  %></li>
+                            </ul>
+                       </li>
+
+                       </ul>
+                     </li>
+                    <%end%>
+
+                <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')%>
+                   
+                   <li><a>Informática</a>
+                    <ul style="width:108px;">
+<!--
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')%>
+                     <li><a>Serviços</a>
+                       <ul>
+                     <%end%>
+-->
+                         <li><%= link_to "Cadastrar",new_chamado_path %></li>
+                         <li><%= link_to "Consultas", busca_protocolo_chamados_path  %></li>
+                         <li><%= link_to "Em Aberto", chamados_path %></li>
+                         <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('diretor_unidade') %>
+                           <li><%= link_to "Encerrados", encerrados_path  %></li>
+                         <%end%>
+<!--
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')%>
+                       </ul>
+                     </li>
+
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')%>
+                     <li><a href=>OS Externo</a>
+                       <ul>
+                         <li><%= link_to "Abrir"  %></li>
+                         <li><%= link_to "Em Aberto"  %></li>
+                         <li><%= link_to "Encerrados"   %></li>
+                       </ul>
+                     </li>
+                     <%end%>
+                    <%end%>
+-->
+                    </ul>
+                  </li>
+                 <%end%>
+                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('terceiro') or  current_user.has_role?('oficios')%>
+                   <li><a>Geral</a>
+                    <ul style="width:108px;">
+                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('terceiro') or  current_user.has_role?('oficios')%>
+                          <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or  current_user.has_role?('oficios')%>
+                              <li><%= link_to "Abrir", new_mmanutencao_path %></li>
+        <!--                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')  or current_user.has_role?('estagiario SEDUC')%>
+                                    <li><%= link_to "Estatística", estatistica_mmanutencaos_path  %></li>
+                                  <%end%>
+        -->
+                              <li><%= link_to "Consulta", busca_protocolo_mmanutencaos_path  %></li>
+                          <%end%>
+                              <li><%= link_to "Em Aberto", mmanutencaos_path%></li>
+
+                              <li><%= link_to "Encerrados", encerrados_mmanutencaos_path  %></li>
+                        <%end%>
+                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('manutencao')    or current_user.has_role?('SEDUC') %>
+                           <li><%= link_to "Por Unidade", consulta_unidade_mmanutencaos_path  %></li>
+                      <%end%>
+                     </ul>
+                   </li>
+                 <%end%>
+
+                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')%>
+                   <li><a>Poda Grama</a>
+                    <ul style="width:108px;">
+                      
+
+                      <li><%= link_to "Agenda", agenda_poda_gramas_path %></li>
+                      <li><%= link_to "Relatório", relatorio_agendamento_poda_gramas_path %></li>
+                       <li><%= link_to "Solicitação", new_poda_grama_path %></li>
+                     </ul>
+                   </li>
+                 <%end%>
+
+                </ul>
+              </li>
+             <%end%>
+             <% if current_user.has_role?('desenvolvimento')%>
+             <li><span class="divider divider-vert" ></span></li>
+                <li><a class="item-primary" href="#;">ORÇAMENTO</a>
+                  <ul style="width:108px;">
+                     <% if current_user.has_role?('desenvolvimento')%>
+                        <li><a>Plano de Contas</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                           <li><a>Cadastrar</a>
+                                <ul style="width:108px;">
+                                  <li><%= link_to "Ficha",new_orc_ficha_path %></li>
+                                 <li><%= link_to "Tipo Despesa",new_orc_uni_despesa_path %></li>
+                                 <li><%= link_to "Un.Orçamentaria",new_orc_uni_orcamentaria_path %></li>
+                                </ul>
+                             </li>
+                            <%end%>
+                             <% if current_user.has_role?('desenvolvimento') %>
+                             <li><a>Consultar</a>
+                                  <ul style="width:108px;">
+                                    <li><%= link_to "Ficha",consulta_orc_fichas_path %></li>
+                                   <li><%= link_to "Tipo Despesa",orc_uni_despesas_path %></li>
+                                   <li><%= link_to "Un.Orçamentaria",consulta_orc_uni_orcamentarias_path %></li>
+
+                                 </ul>
+                               </li>
+                              <%end%>
+
+                        </ul>
+                      </li>
+                      <li><a>Serviço Interno</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_pedido_compra_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_pedido_compras_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Empenhos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_empenho_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_empenhos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Lançamentos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                               
+                               <li><%= link_to "Consultar",consultaSI_orc_lancamentos_path %></li>
+                               <li><%= link_to "Consultar - SI ",consulta_orc_lancamentos_path %></li>
+                                  
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Pagamentos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Saldos</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
+
+
+                            <%end%>
+                        </ul>
+                      </li>
+                      <li><a>Suplementacões</a>
+                          <ul style="width:108px;">
+                           <% if current_user.has_role?('desenvolvimento') %>
+                                  <li><%= link_to "Cadastrar",new_orc_suplementacao_path %></li>
+                                  <li><%= link_to "Consultar",consulta_orc_suplementacaos_path %></li>
+
+                            <%end%>
+                        </ul>
+                      </li>
+
+
+
+                    <%end%>
+                  </ul>
+              </li>
+             <%end%>
+
+
+        </ul>
+     </div>
+   </div>
+   <div id="principal">
+     <div id="conteudo">
+        <%= yield  %>
+     </div>
+   </div>
+
+ 
+   <div id="rodape">
+     <font size="2"><b> © SEDUC-PMA - Secretaria de Educação da Prefeitura Municipal de Americana</b></font>
+   </div>
+ </div>
+
+ </body>
+</html>

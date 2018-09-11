@@ -71,7 +71,7 @@ display: none;
          </td>
          <td align="right"></font> <font size ="2"><b>Americana, <%= Time.now.strftime("%d de %B de %Y") %></b></font></td>
         <%else%>
-           <% if current_user.has_role?('SEDUC') or current_user.has_role?('admin_manutencao') %>
+           <% if current_user.has_role?('SEDUC') or current_user.has_role?('admin_manutencao')or current_user.has_role?('ORC_SI')  or current_user.has_role?('SEDUC_ORC_SI')%>
               <td>Acesso SEDUC |
                            <% @unidade = Unidade.find(:all, :conditions => ['id=?',current_user.unidade_id]) %>
                            <% uni = @unidade.first.nome  %>
@@ -196,11 +196,11 @@ display: none;
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
                 </ul>
               </li>
-            <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC') %>
+            <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI') %>
             <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">AGENDAS</a>
                  <ul style="width:108px;">
-                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao_infantil') or current_user.has_role?('direcao_infantil')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') )%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao_infantil') or current_user.has_role?('direcao_infantil')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC_ORC_SI'))%>
                          <li><a class="item-primary" href="#;">Ausências</a>
                          <ul>
                              <li><a class="item-primary" href="#;">Faltas</a>
@@ -239,7 +239,7 @@ display: none;
                      <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao') %>
                          <li><%= link_to('Laboratório',agendas_path) %></li>
                      <%end%>
-                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')  or current_user.has_role?('SEDUC')%>
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')  or current_user.has_role?('SEDUC')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI')%>
                              <li><%= link_to('Sala Reunião', reservar_salas_path) %></li>
                      <%end%>
                  </ul>
@@ -248,31 +248,31 @@ display: none;
             <%end%>
                 
              
-              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
               <li  class ="invisible_to_print "><a class="item-primary" href="#;">CADASTRAR</a>
                  <ul style="width:108px;">
 
-                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade'))%>
+                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Estagiário",new_estagiario_path%></li>
                       <%end%>
-                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Funcionario", new_funcionario_path %></li>
                      <%end%>
-                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Faltas", new_aulas_falta_path %></li>
                      <%end%>
 
-                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade'))%>
+                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC_ORC_SI'))%>
                           <li><%= link_to "Professor",new_professor_path %></li>
                       <%end%>
-                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC') )%>
+                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC_ORC_SI'))%>
                           <li><%= link_to "Professor(Subst.)",new_eventual_path %></li>
                      <%end%>
-                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Substituições", new_aulas_eventual_path %></li>
                      <%end%>
 
-                     <% if current_user.has_role?('admin')or current_user.has_role?('SEDUC')  %>
+                     <% if current_user.has_role?('admin')or current_user.has_role?('SEDUC')  or current_user.has_role?('SEDUC_ORC_SI') %>
                          <li><%= link_to "Unidade",new_unidade_path %></li>
                      <%end%>
 
@@ -280,10 +280,10 @@ display: none;
               </li>
      <%end%>
               
-         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('professor_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil')or current_user.has_role?('professor_infantil') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade') or  current_user.has_role?('terceiro'))%>
+         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('professor_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil')or current_user.has_role?('professor_infantil') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade') or  current_user.has_role?('terceiro')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI'))%>
             <li  class ="invisible_to_print "><a class="item-primary" href="#;">CONSULTAR</a>
                  <ul style="width:108px;">
-                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('professor_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil')or current_user.has_role?('professor_infantil') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade'))%>
+                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('professor_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil')or current_user.has_role?('professor_infantil') or current_user.has_role?('estagiario SEDUC') or  current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC_ORC_SI'))%>
                      <li><a class="item-primary" href="#;">Classe</a>
                          <ul>
                               <li><%= link_to "Ano Letivo Atual",consulta_classe_path %></li>
@@ -292,10 +292,10 @@ display: none;
                         </ul>
                      </li>
                      <li><%= link_to "Estagiários",consultas_estagiarios_path %></li>
-                      <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')  or current_user.has_role?('estagiario SEDUC')or  current_user.has_role?('diretor_unidade'))%>
+                      <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')  or current_user.has_role?('estagiario SEDUC')or  current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC_ORC_SI'))%>
                             <li><%= link_to "Funcionários",consultas_funcionarios_path %></li>
                       <%end%>
-                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil') or current_user.has_role?('estagiario SEDUC')or  current_user.has_role?('diretor_unidade'))%>
+                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil') or current_user.has_role?('estagiario SEDUC')or  current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Professor",consulta_professor_nome_path %></li>
                            <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('supervisao'))%>
                                  <li><%= link_to "Professor(Subst.)",consulta_professor_eventual_path %></li>
@@ -309,17 +309,17 @@ display: none;
                       <%end%>
                    <%end%>
                         <li><%= link_to "Unidade",consultas_unidades_path %></li>
-                        <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') %>
+                        <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI') %>
                              <li><%= link_to 'Unidade/Estagiário', sem_estagiario_path %></li>
                        <%end%>
                   </ul>
                <%end%>
               </li>
-              <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC')or current_user.has_role?('oficios')) %>
+              <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC')or current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')) %>
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">DOCUMENTOS</a>
                       <ul>
-                        <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('oficios') ) %>
+                        <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('oficios')  or current_user.has_role?('SEDUC_ORC_SI')) %>
                            <li><a class="item-primary" href="#;">Ofícios</a>
                             <ul>
                               <li><%= link_to "Novo",new_oficio_path %></li>
@@ -328,11 +328,11 @@ display: none;
                             </ul>
                          </li>
                      <%end%>
-                     <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC')) %>
+                     <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI')) %>
                          <li><span class="divider divider-vert" ></span></li>
                          <li><a class="item-primary" href="#;">Serviços Internos</a>
                             <ul>
-                              <% if (current_user.has_role?('admin') or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')) %>
+                              <% if (current_user.has_role?('admin') or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI')) %>
                                  <li><%= link_to "Novo",new_servicos_interno_path %></li>
                                  <li><%= link_to "Serviços", servicos_internos_path  %></li>
                                  <li><%= link_to "Consultar", consulta_servicos_internos_path  %></li>
@@ -348,13 +348,13 @@ display: none;
                    </li>
                <%end%>
               <li  class ="invisible_to_print "><span class="divider divider-vert" ></span></li>
-              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil') or current_user.has_role?('professor_infantil') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo') or current_user.has_role?('secretaria_infantil')or current_user.has_role?('direcao_infantil') or current_user.has_role?('professor_infantil') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
                <li  class ="invisible_to_print "><a class="item-primary" href="#;">EDITAR</a>
                 <ul style="width:108px;">
                    <li><%= link_to "Estagiário",consultas_estagiarios_path %></li>
                    <li><%= link_to "Funcionário",consultas_funcionarios_path %></li>
                    <li><%= link_to "Professor",consulta_professor_nome_path %></li>
-                   <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario SEDUC'))%>
+                   <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
                         <li><%= link_to "Professor(Subst.)",consulta_professor_eventual_path %></li>
                   <%end%>
                    <li><%= link_to "Unidade",consultas_unidades_path %></li>
@@ -411,11 +411,11 @@ display: none;
 
 
 
-             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('SEDUC') or  current_user.has_role?('terceiro') or  current_user.has_role?('oficios') %>
+             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('SEDUC') or  current_user.has_role?('terceiro') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI') %>
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">MANUTENÇÃO</a>
                   <ul style="width:108px;">
-                   <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('chefia_manutencao') %>
+                   <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('chefia_manutencao') or current_user.has_role?('SEDUC_ORC_SI') %>
                    <li><a>Estoque</a>
                         <ul style="width:108px;">
                          <li><%= link_to "Cadastrar",new_produto_path %></li>
@@ -435,7 +435,7 @@ display: none;
                      </li>
                     <%end%>
 
-                <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')%>
+                <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('SEDUC_ORC_SI')%>
                    
                    <li><a>Informática</a>
                     <ul style="width:108px;">
@@ -470,11 +470,11 @@ display: none;
                     </ul>
                   </li>
                  <%end%>
-                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('terceiro') or  current_user.has_role?('oficios')%>
+                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('terceiro') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')%>
                    <li><a>Geral</a>
                     <ul style="width:108px;">
-                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('terceiro') or  current_user.has_role?('oficios')%>
-                          <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or  current_user.has_role?('oficios')%>
+                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('terceiro') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')%>
+                          <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')%>
                               <li><%= link_to "Abrir", new_mmanutencao_path %></li>
         <!--                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')  or current_user.has_role?('estagiario SEDUC')%>
                                     <li><%= link_to "Estatística", estatistica_mmanutencaos_path  %></li>
@@ -486,7 +486,7 @@ display: none;
 
                               <li><%= link_to "Encerrados", encerrados_mmanutencaos_path  %></li>
                         <%end%>
-                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('manutencao')    or current_user.has_role?('SEDUC') %>
+                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('manutencao')    or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI') %>
                            <li><%= link_to "Por Unidade", consulta_unidade_mmanutencaos_path  %></li>
                       <%end%>
                      </ul>
@@ -508,11 +508,12 @@ display: none;
                 </ul>
               </li>
              <%end%>
-             <% if current_user.has_role?('desenvolvimento')%>
+             <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">ORÇAMENTO</a>
                   <ul style="width:108px;">
-                     <% if current_user.has_role?('desenvolvimento')%>
+                     <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                      <% if current_user.has_role?('desenvolvimento')%>
                         <li><a>Plano de Contas</a>
                           <ul style="width:108px;">
                            <% if current_user.has_role?('desenvolvimento') %>
@@ -524,7 +525,7 @@ display: none;
                                 </ul>
                              </li>
                             <%end%>
-                             <% if current_user.has_role?('desenvolvimento') %>
+                             <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
                              <li><a>Consultar</a>
                                   <ul style="width:108px;">
                                     <li><%= link_to "Ficha",consulta_orc_fichas_path %></li>
@@ -534,12 +535,12 @@ display: none;
                                  </ul>
                                </li>
                               <%end%>
-
-                        </ul>
-                      </li>
+                            </ul>
+                            </li>
+                        <%end%>
                       <li><a>Serviço Interno</a>
                           <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
+                           <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') %>
                                   <li><%= link_to "Cadastrar",new_orc_pedido_compra_path %></li>
                                   <li><%= link_to "Consultar",consulta_orc_pedido_compras_path %></li>
 
@@ -548,53 +549,54 @@ display: none;
                       </li>
                       <li><a>Empenhos</a>
                           <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
+                           <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') %>
                                   <li><%= link_to "Cadastrar",new_orc_empenho_path %></li>
                                   <li><%= link_to "Consultar",consulta_orc_empenhos_path %></li>
 
                             <%end%>
                         </ul>
                       </li>
-                      <li><a>Lançamentos</a>
-                          <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
-                               
-                               <li><%= link_to "Consultar",consultaSI_orc_lancamentos_path %></li>
-                               <li><%= link_to "Consultar - SI ",consulta_orc_lancamentos_path %></li>
-                                  
+                    <% if current_user.has_role?('desenvolvimento')%>
+                          <li><a>Lançamentos</a>
+                              <ul style="width:108px;">
+                               <% if current_user.has_role?('desenvolvimento') %>
 
-                            <%end%>
-                        </ul>
-                      </li>
-                      <li><a>Pagamentos</a>
-                          <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
-                                  <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
-                                  <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
-
-                            <%end%>
-                        </ul>
-                      </li>
-                      <li><a>Saldos</a>
-                          <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
-                                  <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
+                                   <li><%= link_to "Consultar",consultaSI_orc_lancamentos_path %></li>
+                                   <li><%= link_to "Consultar - SI ",consulta_orc_lancamentos_path %></li>
 
 
-                            <%end%>
-                        </ul>
-                      </li>
-                      <li><a>Suplementacões</a>
-                          <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') %>
-                                  <li><%= link_to "Cadastrar",new_orc_suplementacao_path %></li>
-                                  <li><%= link_to "Consultar",consulta_orc_suplementacaos_path %></li>
+                                <%end%>
+                            </ul>
+                          </li>
+                          <li><a>Pagamentos</a>
+                              <ul style="width:108px;">
+                               <% if current_user.has_role?('desenvolvimento') %>
+                                      <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
+                                      <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
 
-                            <%end%>
-                        </ul>
-                      </li>
+                                <%end%>
+                            </ul>
+                          </li>
+                          <li><a>Saldos</a>
+                              <ul style="width:108px;">
+                               <% if current_user.has_role?('desenvolvimento') %>
+                                      <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
 
 
+                                <%end%>
+                            </ul>
+                          </li>
+                          <li><a>Suplementacões</a>
+                              <ul style="width:108px;">
+                               <% if current_user.has_role?('desenvolvimento') %>
+                                      <li><%= link_to "Cadastrar",new_orc_suplementacao_path %></li>
+                                      <li><%= link_to "Consultar",consulta_orc_suplementacaos_path %></li>
+
+                                <%end%>
+                            </ul>
+                          </li>
+
+                       <%end%>
 
                     <%end%>
                   </ul>

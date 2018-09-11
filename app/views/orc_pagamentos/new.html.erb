@@ -29,9 +29,9 @@
                                 <table width="100%">
                                 <tr>
                                      <td align="left" width =" 10%"><b>Ficha:</b></td>
-                                     <td align="left"width ="14 %" valign="top"> <%= f.collection_select :ficha, @fichas, :ficha, :ficha, :include_blank => ' '  %>
-                                                            <%= observe_field 'orc_pagamento_ficha',
-                                                                       :with   => :orc_pagamento_ficha,
+                                     <td align="left"width ="14 %" valign="top"> <%= f.collection_select :orc_ficha_id, @fichas, :id, :ficha, :include_blank => ' '  %>
+                                                            <%= observe_field 'orc_pagamento_orc_ficha_id',
+                                                                       :with   => :orc_pagamento_orc_ficha_id,
                                                                        :url  => { :action => 'dados_ficha' },
                                                                        :update => "dadosFicha"%>
                                        </td>
