@@ -211,8 +211,9 @@ class OrcEmpenhosController < ApplicationController
   end
 
 def ficha_empenho
- @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE ficha  IN (SELECT ficha FROM orc_fichas WHERE ficha like '+"% params[:orc_empenho_ficha] %"+') ORDER BY codigo ASC")
-  render :partial => "empenhos"                                                                                              
+ #@empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE ficha  IN (SELECT ficha FROM orc_fichas WHERE ficha = "+params[:orc_empenho_ficha] +") ORDER BY codigo ASC")
+  @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE ficha  IN (SELECT ficha FROM orc_fichas WHERE ficha like '+"% params[:orc_empenho_ficha] %"+') ORDER BY codigo ASC")
+  render :partial => "empenhos"
 end
 
  def dados_ficha
