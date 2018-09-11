@@ -28,8 +28,12 @@
               <td><b><%=h pedido.codigo %></b> <%  session[:pedido_user_id] = pedido.user_id %></td>
               <td><%=h pedido.objetivo %></td>
               <td><%=h pedido.fornecedor %></td>
-              <td><%=h pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h pedido.orc_ficha.codigo%> </td>
-              <td align="center"><%=h pedido.orc_ficha.ficha%></td>
+              <% if  !pedido.orc_ficha_id.nil? %>
+                 <td><%=h pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h pedido.orc_ficha.codigo%> </td>
+                  <td align="center"><%=h pedido.orc_ficha.ficha%></td>
+              <%else%>
+                  <td colspan="2" align="center">  Não cadastrado </td>
+              <%end%>
               <td> R$ <%=h pedido.valor_total %></td>
               <td align="center"><%=h pedido.created_at.strftime("%d/%b/%y") %> </td>
              
@@ -72,10 +76,12 @@
                <table  width="100%">
                    <tr>
                        <%  if  (session[:pedido_user_id] == session[:current_user])or (current_user.has_role?('admin'))  %>
-                           <td align="right"><%= button_to 'Visualizar',{:action => "show", :id =>pedido}, :method => "get", :title => "Visualizar"%> </td>
+                           <td align="right"><%= button_to 'Editar', {:action => "edit", :id =>pedido}, :method => "get", :title => "Editar"%></td>
                            <td align="right" width=" 2%"><%= button_to 'Excluir', pedido, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                           
+                           <td align="right" width=" 2%"><%= button_to 'Visualizar',{:action => "show", :id =>pedido}, :method => "get", :title => "Visualizar"%> </td>
                       <%else %>
-                           <td  colspan="2"align="right"><%= button_to 'Visualizar',{:action => "show", :id =>pedido}, :method => "get", :title => "Visualizar"%> </td>
+                           <td  colspan="3"align="right"><%= button_to 'Visualizar',{:action => "show", :id =>pedido}, :method => "get", :title => "Visualizar"%> </td>
                      <%end%>
                     </tr>
 

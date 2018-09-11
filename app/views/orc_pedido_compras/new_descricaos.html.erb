@@ -27,21 +27,31 @@
                                                        <b>CNJPJ:</b>&nbsp&nbsp <%=h @orc_pedido_compra.cnpj %>
                          </td>
                       </tr>
-                      <tr>
-                         <td align="left"><b>Ficha:</b></td>
-                         <td align="left"><%=h @orc_pedido_compra.orc_ficha.ficha%>  </td>
-                         <td colspan="2"><table  >
-        <tr>
-          <td align="left"><b>Dotação Orçamentária: </b> <%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
-            &nbsp&nbsp <b>DR: </b> <%=h @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b>Fonte: </b> <%=h @orc_pedido_compra.orc_ficha.fonte%></td>
-         </tr>
-         <tr align="left">
-              <td align="left"><%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%></td>
-         </tr>
 
-    </table>
- </td>
-                      </tr>
+                     <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
+                              <tr>
+                                 <td align="left"><b>Ficha:</b></td>
+                                 <td align="left"><%=h @orc_pedido_compra.orc_ficha.ficha%>  </td>
+                                 <td colspan="2"><table  >
+                                                        <tr>
+                                                          <td align="left"><b>Dotação Orçamentária: </b> <%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
+                                                            &nbsp&nbsp <b>DR: </b> <%=h @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b>Fonte: </b> <%=h @orc_pedido_compra.orc_ficha.fonte%></td>
+                                                         </tr>
+                                                         <tr align="left">
+                                                              <td align="left"><%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%></td>
+                                                         </tr>
+
+                                                    </table>
+                                 </td>
+                              </tr>
+                     <%else%>
+                              <tr>
+                                 <td align="left"><b>Ficha:</b></td>
+                                 <td align="left"  colspan="2"> Ainda não indicada</td>
+
+                              </tr>
+
+                    <%end%>
                       <tr>
                         <td align="left" valign="top"> <b><u><%= link_to 'Descrição', "#inline_orc_pedido_descricao", :class =>"inline60" %></u></b></td>
                         <td colspan="3"><div id="dados"> <%= render :partial => 'orc_pedido_descricaos'  %></div></td>

@@ -13,7 +13,7 @@
         </tr>
       
  </table>
-  <table  width="100%"  bgcolor="white" >
+    <table  width="100%"  bgcolor="white" >
      <tr>
        <td colspan="4"><hr/></td>
      </tr>
@@ -33,40 +33,47 @@
       <tr>
         <td colspan="4" align="left"><b><u>FORNECEDOR</u>: </b> &nbsp <%=h @orc_pedido_compra.fornecedor %> <br/><br/></td>
       </tr>
-      <tr>
-        <td colspan="4" align="left"><b><u>DOTAÇÃO ORÇAMENTÁRIA </u></b>: &nbsp <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
-                                     &nbsp&nbsp <b><u>FICHA</u>: &nbsp </b><%=h   @orc_pedido_compra.orc_ficha.ficha%>
-            &nbsp&nbsp <b><u>DR</u>: </b> <%=h   @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b><u>Fonte</u>: </b> &nbsp&nbsp<%=h   @orc_pedido_compra.orc_ficha.fonte%></td>
-         </tr>
-         <tr align="left">
-              <td align="left"><%=h   @orc_pedido_compra.orc_ficha.descricao%>
-                   <% if @orc_pedido_compra.orc_ficha.ficha.count("SE") == 2 %>
-                      - SALARIO EDUCAÇÂO
-                   <%end%>
-                   <% if  @orc_pedido_compra.orc_ficha.ficha.include?("PNAE")%>
-                     - PNAE
-                   <%end%>
-                   <% if  @orc_pedido_compra.orc_ficha.ficha.count("FUNDEB")== 6 %>
-                     - FUNDEB
-                   <%end%>
-                   <% if  @orc_pedido_compra.orc_ficha.ficha.include?("PNATE") %>
-                     - PNATE
-                   <%end%>
-                   <% if  @orc_pedido_compra.orc_ficha.ficha.count("BC") == 2 %>
-                      - BRASIL CARINHOSO
-                   <%end%>
-                   <% if  @orc_pedido_compra.orc_ficha.ficha.count("PDDE") == 4 %>
-                      - PDDE
-                   <%end%>
-                   <% if  @orc_pedido_compra.orc_ficha.ficha.count("FNDE") == 4 %>
-                      - FNDE
-                   <%end%>
+        <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
+              <tr>
+                <td colspan="4" align="left"><b><u>DOTAÇÃO ORÇAMENTÁRIA </u></b>: &nbsp <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
+                                             &nbsp&nbsp <b><u>FICHA</u>: &nbsp </b><%=h   @orc_pedido_compra.orc_ficha.ficha%>
+                    &nbsp&nbsp <b><u>DR</u>: </b> <%=h   @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b><u>Fonte</u>: </b> &nbsp&nbsp<%=h   @orc_pedido_compra.orc_ficha.fonte%></td>
+                 </tr>
+                 <tr align="left">
+                      <td align="left"><%=h   @orc_pedido_compra.orc_ficha.descricao%>
+                           <% if @orc_pedido_compra.orc_ficha.ficha.count("SE") == 2 %>
+                              - SALARIO EDUCAÇÂO
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.include?("PNAE")%>
+                             - PNAE
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("FUNDEB")== 6 %>
+                             - FUNDEB
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.include?("PNATE") %>
+                             - PNATE
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("BC") == 2 %>
+                              - BRASIL CARINHOSO
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("PDDE") == 4 %>
+                              - PDDE
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("FNDE") == 4 %>
+                              - FNDE
+                           <%end%>
 
 
-                - <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%>
-           <br/><br/></td>
-      </tr>
-      <tr>
+                        - <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%>
+                   <br/><br/></td>
+              </tr>
+         <%else%>
+               <tr>
+                 <td align="left"  colspan="6"><b>Ficha:</b> &nbsp &nbsp Ainda não indicada</td>
+               </tr>
+        <%end%>
+
+        <tr>
         <td>
             <table  border="1" cellspacing="0" cellpadding="1" width="100%">
                 <tr bgcolor= white >

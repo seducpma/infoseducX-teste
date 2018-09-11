@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_pagamentos/_pagamentos.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_pagamentos/show.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_pagamentos/_consulta_ficha.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/layouts/application.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_lancamentos/_consulta_ficha.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_fichas/_consulta_ficha_saldo.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_pagamentos/new.html.erb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/controllers/orc_pagamentos_controller.rb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/controllers/orc_lancamentos_controller.rb</file>
+        <file>file:/home/desenvolvimento/infoseduc/app/views/orc_lancamentos/_lancamentos.html.erb</file>
+    </open-files>
 </project-private>

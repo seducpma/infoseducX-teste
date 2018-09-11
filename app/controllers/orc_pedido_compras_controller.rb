@@ -62,6 +62,7 @@ end
   # GET /orc_pedido_compras/1/edit
   def edit
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
+    @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
 
   end
 
@@ -182,8 +183,8 @@ end
           render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
           end
-    else if params[:type_of].to_i == 3   #prpduto
-                  @pedidos_compra = OrcPedidoCompra.find(:all,:conditions => ['id != 1 and objetivo like ?', "%" + params[:search_produto].to_s + "%"], :order => 'id DESC')
+    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
+                  @pedidos_compra = OrcPedidoCompra.find(:all,:conditions => ['orc_ficha_id is null'], :order => 'id DESC')
                render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
                end

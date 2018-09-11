@@ -38,11 +38,11 @@
                 <%if (lancamento.rel_tipo=='O.P.' and lancamento.rel_valor_em!='-o-')%>
                     <%=h lancamento.rel_valor_em%>
                 <%else%>
-                    <td align="right"><%=h lancamento.rel_valor_em %>&nbsp;</td>
+                    <%=h lancamento.rel_valor_em%>
                 <%end%>
             <%end%>
-          <%end%>
           &nbsp;</font></td>
+          <%end%>
           <td align="right"><%=h lancamento.rel_valor_op %>&nbsp;</td>
 
         </tr>
