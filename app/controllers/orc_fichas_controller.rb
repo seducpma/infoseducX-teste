@@ -57,7 +57,7 @@ class OrcFichasController < ApplicationController
 
     respond_to do |format|
       if @orc_ficha.save
-        flash[:notice] = 'OrcFicha was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_ficha) }
         format.xml  { render :xml => @orc_ficha, :status => :created, :location => @orc_ficha }
       else
@@ -74,7 +74,7 @@ class OrcFichasController < ApplicationController
 
     respond_to do |format|
       if @orc_ficha.update_attributes(params[:orc_ficha])
-        flash[:notice] = 'OrcFicha was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_ficha) }
         format.xml  { head :ok }
       else

@@ -64,9 +64,14 @@ class OrcPagamentosController < ApplicationController
     respond_to do |format|
       if @orc_pagamento.save
        op_id=@orc_pagamento.id
-
+w=@orc_pagamento.orc_ficha_id
+t=0
             # atualiza saldo na ficha
-        @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
+       if @orc_pagamento.orc_empenho_id.nil?
+           @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
+       else
+           @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
+       end
         @orc_pagamento.ficha = @ficha[0].ficha
         saldo_atual= @ficha[0].saldo_atual - @orc_pagamento.valor_pg
         saldo= @ficha[0].saldo - @orc_pagamento.valor_pg
@@ -99,7 +104,7 @@ class OrcPagamentosController < ApplicationController
             @op.save
         end
 
-        flash[:notice] = 'OrcPagamento was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_pagamento) }
         format.xml  { render :xml => @orc_pagamento, :status => :created, :location => @orc_pagamento }
       else
@@ -116,7 +121,7 @@ class OrcPagamentosController < ApplicationController
 
     respond_to do |format|
       if @orc_pagamento.update_attributes(params[:orc_pagamento])
-        flash[:notice] = 'OrcPagamento was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_pagamento) }
         format.xml  { head :ok }
       else
@@ -200,6 +205,7 @@ end
 
  def dados_ficha
     @dados_ficha=  OrcFicha.find(:all, :conditions => ['id = ?',params[:orc_pagamento_orc_ficha_id]])
+
      render :partial => "dados_fichas"
 end
 

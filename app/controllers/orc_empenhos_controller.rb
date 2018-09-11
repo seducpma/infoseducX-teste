@@ -87,7 +87,7 @@ class OrcEmpenhosController < ApplicationController
  session[:create_new_itens]= 0
    end
 
-        flash[:notice] = 'OrcEmpenho was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(new_itens_path) }
         
       else
@@ -104,7 +104,7 @@ class OrcEmpenhosController < ApplicationController
 
     respond_to do |format|
       if @orc_empenho.update_attributes(params[:orc_empenho])
-        flash[:notice] = 'OrcEmpenho was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_empenho) }
         format.xml  { head :ok }
       else
@@ -211,8 +211,8 @@ class OrcEmpenhosController < ApplicationController
   end
 
 def ficha_empenho
- @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE ficha  IN (SELECT ficha FROM orc_fichas WHERE ficha = "+params[:orc_empenho_ficha] +") ORDER BY codigo ASC")
-  render :partial => "empenhos"
+ @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE ficha  IN (SELECT ficha FROM orc_fichas WHERE ficha like '+"% params[:orc_empenho_ficha] %"+') ORDER BY codigo ASC")
+  render :partial => "empenhos"                                                                                              
 end
 
  def dados_ficha
