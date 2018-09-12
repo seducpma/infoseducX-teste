@@ -9,8 +9,9 @@
         <tr bgcolor="#F5F5F5">
           <td align="left" colspan="5" >
                <a href="#" class="filtro_ano"><%= radio_button_tag(:type_of, "5") %></a>Data (Chegou na SEDUC)
-               <a href="#" class="filtro_orc"><%= radio_button_tag(:type_of, "1") %></a>Fornecedor
+               <a href="#" class="filtro_prod"><%= radio_button_tag(:type_of, "3") %></a>Nº Empenho
                <a href="#" class="filtro_des"><%= radio_button_tag(:type_of, "2") %></a>Nº Ficha
+               <a href="#" class="filtro_orc"><%= radio_button_tag(:type_of, "1") %></a>Fornecedor
                <a href="#" class="sem_filtro_orc"><%= radio_button_tag(:type_of, "4") %></a>Todos
            </td>
          </tr>
@@ -18,6 +19,7 @@
            <td ><div class="consulta_ano" style="display:none"> <%= render "consulta_data" %>  </div></td>
            <td ><div class="consulta_orc" style="display:none"> <%= render "consulta_fornecedor" %>  </div></td>
            <td ><div class="consulta_des" style="display:none"> <%= render "consulta_ficha" %>  </div></td>
+           <td ><div class="consulta_prod" style="display:none"> <%= render "consulta_empenho" %>  </div></td>
            <td ><div class="consulta_sem_filtro_orc" style="display:none"> <%= render "consulta_sem_filtro" %>  </div></td>
 
        </tr>

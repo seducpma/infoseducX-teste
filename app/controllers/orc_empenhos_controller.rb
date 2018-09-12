@@ -192,21 +192,27 @@ class OrcEmpenhosController < ApplicationController
           render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
           end
-    else if params[:type_of].to_i == 4   #todas
+    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
+                  @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
+               render :update do |page|
+                  page.replace_html 'empenho', :partial => "empenhos"
+               end
+         else if params[:type_of].to_i == 4   #todas
                  @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1'], :order => 'id DESC')
                render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
                end
-         else if params[:type_of].to_i == 5   #dia
-                    w=session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
-                    w1=session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
-                    e2=session[:mes]=params[:empenho][:dataF][3,2]
-                     @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
-                 render :update do |page|
-                    page.replace_html 'empenho', :partial => "empenhos"
+                 else if params[:type_of].to_i == 5   #dia
+                            w=session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
+                            w1=session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
+                            e2=session[:mes]=params[:empenho][:dataF][3,2]
+                             @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                         render :update do |page|
+                            page.replace_html 'empenho', :partial => "empenhos"
+                         end
+                      end
                  end
-              end
-         end
+          end
      end
   end
 
