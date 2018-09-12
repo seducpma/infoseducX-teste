@@ -33,7 +33,7 @@
                                       <%=h empenho.interessado %>
                                   <%end%>
               </td>
-              <td align="center"><%=h empenho.ficha %> </td>
+              <td align="center" width ="5%"><%=h empenho.ficha %> </td>
               <td align="center"> <%=h @ficha[0].descricao %></td>
               <td align="center">R$ <%=h empenho.valor_total %></td>
               <td width ="5%"><%= button_to 'Visualizar',{:action => "show", :id =>empenho}, :method => "get", :title => "Visualizar"%> </td>

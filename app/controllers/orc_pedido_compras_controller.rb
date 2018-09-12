@@ -10,8 +10,13 @@ class OrcPedidoComprasController < ApplicationController
         @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
         if current_user.has_role?('admin') or current_user.has_role?('SEDUC')
            @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? ', Time.now.year], :order => 'id DESC')
-        else
-           @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id =?', Time.now.year, current_user.id], :order => 'id DESC')
+        else if (current_user.login = 'merenda.adriana') #excessão dos usuáriosda merenda
+              @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id = ?  ', Time.now.year, 523 ], :order => 'id DESC')
+
+           else
+                @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id = ?', Time.now.year, current_user.id], :order => 'id DESC')
+           #@orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id =?', Time.now.year, current_user.id], :order => 'id DESC')  acertar  USER-ID
+           end
         end
         @orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
  end
@@ -74,14 +79,14 @@ end
 
     respond_to do |format|
       if @orc_pedido_compra.save
-        w=session[:news_decricao]= @orc_pedido_compra.id
+        @orc_pedido_compra.user_id = current_user.id
+        session[:news_decricao]= @orc_pedido_compra.id
 #         @orc_pedido_descricao = OrcPedidoDescricao.find(:last, :conditions => ['orc_pedido_compra_id=?',session[:id_compra_new]])
-
 #        @orc_pedido_compra.save
 #        @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions =>['id=?', session[:id_compra_new]])
 #        @orc_pedido_compra[0].valor_total = session[:soma].to_f
 #        @orc_pedido_compra[0].save
-
+         @orc_pedido_compra.save
        flash[:notice] = 'OrcPedidoCompra was successfully created.'
         format.html { redirect_to(new_descricaos_path) }
        else
@@ -216,7 +221,8 @@ end
 
 
   def pedido_codigo
-   @pedidos_compra = OrcPedidoCompra.find(:all, :conditions => ['codigo= ? and id != 1', params[:orc_pedido_compra_codigo]], :order => 'id DESC')
+
+    @pedidos_compra = OrcPedidoCompra.find(:all, :conditions => ['codigo= ? and id != 1', params[:orc_pedido_compra_codigo]], :order => 'id DESC')
    render :partial => "pedidos"
   end
 
