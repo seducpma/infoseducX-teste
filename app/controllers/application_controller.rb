@@ -11,17 +11,19 @@ class ApplicationController < ActionController::Base
 def set_current_user
     User.current = current_user
 
-    if RAILS_ENV=='production'
-        session[:base]= 'sisgered_production'
-        session[:baseinfo]= 'infoseduc_production'
-    end
-    if RAILS_ENV=='development'
-        session[:base]= 'sisgered_development'
-        session[:baseinfo]= 'infoseduc_development'
-    end
+# Inicio - Alex 2018-09-12
+#   if RAILS_ENV=='production'
+#       session[:base]= 'sisgered_production'
+#       session[:baseinfo]= 'infoseduc_production'
+#   end
+#   if RAILS_ENV=='development'
+#       session[:base]= 'sisgered_development'
+#       session[:baseinfo]= 'infoseduc_development'
+#   end
+# Fim - Alex 2018-09-12
 
-#      session[:base]= 'sisgered_development'
-#      session[:baseinfo]= 'infoseduc_development'
+       session[:base]= 'sisgered_development'
+       session[:baseinfo]= 'infoseduc_development'
 
 #      session[:base]= 'sisgered_production'
 #      session[:baseinfo]= 'infoseduc_production'
