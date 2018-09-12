@@ -20,8 +20,10 @@
 
       <tr>
         <td align="left" colspan="2"><b>Data:</b>&nbsp <%if !@orc_empenho.data.nil? %><%=h @orc_empenho.data.strftime("%d de %b de %Y") %> <%end%></td>
-        <td align="left" colspan="3" ><b>ORDEM DE PAGAMENTO </b> <%=h @orc_empenho.codigo %> &nbsp&nbsp&nbsp&nbsp
-               <b>Ficha:</b> <%=h @ficha[0].ficha %> - <%=h @ficha[0].descricao %> &nbsp&nbsp&nbsp&nbsp
+        <td align="left" colspan="3" ><b>Nº Empenho </b> <%=h @orc_empenho.codigo %> &nbsp&nbsp&nbsp&nbsp <b>Nº Pedido </b> <%=h @orc_empenho.npedido %> &nbsp&nbsp&nbsp&nbsp <b>Nº Processo </b> <%=h @orc_empenho.processo %> </td>
+      </tr>
+      <tr>
+          <td colspan="4">  <b>Ficha:</b> <%=h @ficha[0].ficha %> - <%=h @ficha[0].descricao %> &nbsp&nbsp&nbsp&nbsp
                <% if !@orc_empenho.orc_pedido_compra_id.nil? %>
                  <b>Serviço Interno: </b> <%=h @orc_empenho.orc_pedido_compra.codigo %>
                <%end%>
@@ -96,8 +98,8 @@
       <table>
            <tr>
               <td  width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-              <td  width="2%"align="left"><%= button_to('Serviços', orc_pedido_compras_path, :method => "get",  :title => "Despesas")%></td>
-              <td  align="left" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pedido_path}','impressao', 'scrollbars=yes , toolbar=yes, status=yes');", :title => "Imprimir" %> </b></td>
+              <td  align="left"><%= button_to('Serviços', orc_pedido_compras_path, :method => "get",  :title => "Despesas")%></td>
+              
 
             </tr>
       </table>

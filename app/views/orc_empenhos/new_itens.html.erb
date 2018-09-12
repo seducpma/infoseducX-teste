@@ -15,9 +15,10 @@
                   <fieldset><legend><font  size=3> Empenho</font></legend>
                     <table width="100%">
                       <tr>
-                         <td width ="8%" align="left"><b>Número:</b></font></td>
+                         <td width ="8%" align="left"><b>Nº Empenho:</b></font></td>
                          <td colspan="6"><%=h @orc_empenho.codigo%>
-                                  &nbsp&nbsp <b>Processo:</b> <%=h @orc_empenho.processo %>&nbsp&nbsp
+                                  &nbsp&nbsp <b>Nº Pedido:</b>  &nbsp<%=h @orc_empenho.npedido %>&nbsp&nbsp
+                                  &nbsp&nbsp <b>Nº Processo:</b>  <%=h @orc_empenho.processo %>&nbsp&nbsp
                                   &nbsp&nbsp  <b>Data Empenho: </b> &nbsp<%if !@orc_empenho.data.nil?%>
                                                                              <%=h @orc_empenho.data.strftime("%d de %b de %Y") %>
                                                                           <%else%>
