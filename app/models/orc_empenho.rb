@@ -10,6 +10,34 @@ class OrcEmpenho < ActiveRecord::Base
    #after_save  :atualiza_saldo
 
 
+ def maiusculo
+    if  !self.projeto.nil?
+          self.projeto.upcase!
+    end
+    if  !self.interessado.nil?
+          self.interessado.upcase!
+    end
+    if  !self.despesa.nil?
+          self.despesa.upcase!
+    end
+    if  !self.cat_economica?
+          self.cat_economica!
+    end
+    if  !self.destinacao.nil?
+         self.destinacao.upcase!
+    end
+    if  !self.modalidade.nil?
+          self.modalidade.upcase!
+    end
+    if  !self.obs.nil?
+          self.obs.upcase!
+    end
+
+
+  end
+
+
+
 
     def salva_dados
         teste=self.orc_pedido_compra_id

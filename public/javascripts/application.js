@@ -934,9 +934,9 @@ $(".OUTRAS1_filtro").click(function ()
 
 // Letras em maiusculo
 
-$("input").keyup(function(){
-    $(this).val($(this).val().toUpperCase());
-  })
+// $("input").keyup(function(){
+//    $(this).val($(this).val().toUpperCase());
+//  })
 
 // Fim Letra em maiusculo
 

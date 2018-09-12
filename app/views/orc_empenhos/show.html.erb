@@ -2,7 +2,7 @@
 <% title "PROFESSORS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong> ORDEM DE PAGAMENTO - SEDUC/PMA </strong></font><br/>
+     <font size="3"><strong> EMPENHO - SEDUC/PMA </strong></font><br/>
  </div>
  <table width="100%"  bgcolor="white">
         <tr>
@@ -97,8 +97,10 @@
 
       <table>
            <tr>
-              <td  width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-              <td  align="left"><%= button_to('Serviços', orc_pedido_compras_path, :method => "get",  :title => "Despesas")%></td>
+              <td  width="2%"align="left" ><%= button_to('Cadastrar', new_orc_empenho_path, :method => "get", :title => "Cadastrar")%></td>
+              <td  width="2%"align="left" ><%= button_to('Consultar', consulta_orc_empenhos_path, :method => "get", :title => "Fechar")%></td>
+              <td  align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              
               
 
             </tr>
