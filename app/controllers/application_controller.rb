@@ -8,14 +8,27 @@ class ApplicationController < ActionController::Base
   
    before_filter :set_current_user
 
-  def set_current_user
-      User.current = current_user
-     # session[:base]= 'sisgered_development'
-      session[:base]= 'sisgered_production'
-     # session[:baseinfo]= 'infoseduc_development'
-      session[:baseinfo]= 'infoseduc_production'
+def set_current_user
+    User.current = current_user
+
+    if RAILS_ENV=='production'
+        session[:base]= 'sisgered_production'
+        session[:baseinfo]= 'infoseduc_production'
     end
-  private
+    if RAILS_ENV=='development'
+        session[:base]= 'sisgered_development'
+        session[:baseinfo]= 'infoseduc_development'
+    end
+
+#      session[:base]= 'sisgered_development'
+#      session[:baseinfo]= 'infoseduc_development'
+
+#      session[:base]= 'sisgered_production'
+#      session[:baseinfo]= 'infoseduc_production'
+
+end
+
+private
 
   def current_cart
     @current_cart ||= Cart.first(:conditions => ["user_id = ?", current_user]) || Cart.create(:user_id => current_user.id)

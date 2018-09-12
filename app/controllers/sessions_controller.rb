@@ -17,20 +17,18 @@ class SessionsController < ApplicationController
   end
 
   
-   def create
-    self.current_user = User.authenticate(params[:login], params[:password])
-    if logged_in?
-      if params[:remember_me] == "1"
-        current_user.remember_me unless current_user.remember_token?
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+  def create
+      self.current_user = User.authenticate(params[:login], params[:password])
+      if logged_in?
+          if params[:remember_me] == "1"
+              current_user.remember_me unless current_user.remember_token?
+              cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+          end
+          redirect_back_or_default(home_path)
+          flash[:notice]="BEM VINDO AO INFOSEDUC."
+      else
+          render :action => 'erro'
       end
-
-
-        redirect_back_or_default(home_path)
-        flash[:notice] = "BEM VINDO AO INFOSEDUC."
-    else
-      render :action => 'erro'
-  end
   end
   
   def createanterior

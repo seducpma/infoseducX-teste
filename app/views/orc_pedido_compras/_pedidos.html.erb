@@ -75,7 +75,11 @@
              <td colspan="8">
                <table  width="100%">
                    <tr>
-                       <%  if  (session[:pedido_user_id] == session[:current_user])or (current_user.has_role?('admin'))  %>
+                       <%t0=session[:pedido_user_id]%>
+                       <%t1=session[:current_user]%>
+                       <%t2=(current_user.has_role?('admin')%>
+                       <%t0=0%>
+                       <%  if  (session[:pedido_user_id]==session[:current_user]) or (current_user.has_role?('admin'))  %>
                            <td align="right"><%= button_to 'Editar', {:action => "edit", :id =>pedido}, :method => "get", :title => "Editar"%></td>
                            <td align="right" width=" 2%"><%= button_to 'Excluir', pedido, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
                            
