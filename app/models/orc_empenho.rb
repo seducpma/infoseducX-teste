@@ -9,6 +9,7 @@ class OrcEmpenho < ActiveRecord::Base
    before_save  :salva_dados
    #after_save  :atualiza_saldo
 
+before_save  :maiusculo
 
  def maiusculo
     if  !self.projeto.nil?
@@ -20,8 +21,8 @@ class OrcEmpenho < ActiveRecord::Base
     if  !self.despesa.nil?
           self.despesa.upcase!
     end
-    if  !self.cat_economica?
-          self.cat_economica!
+    if  !self.cat_economica.nil?
+          self.cat_economica.upcase!
     end
     if  !self.destinacao.nil?
          self.destinacao.upcase!
