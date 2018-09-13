@@ -13,10 +13,14 @@ class OrcPedidoComprasController < ApplicationController
         else if (current_user.login = 'merenda.adriana')or (current_user.login = 'merenda.fabiana') #excessão dos usuáriosda merenda
               @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and (user_id = 523  or user_id = 525) ', Time.now.year], :order => 'id DESC')
 
-           else
-                @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id = ?', Time.now.year, current_user.id], :order => 'id DESC')
-           #@orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id =?', Time.now.year, current_user.id], :order => 'id DESC')  acertar  USER-ID
-           end
+             else if (current_user.login = 'adriana_turquiai')or (current_user.login = 'seduc.celso') #excessão dos usuáriosda merenda
+              @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and (user_id = 196  or user_id = 524) ', Time.now.year], :order => 'id DESC')
+
+                  else
+                     @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id = ?', Time.now.year, current_user.id], :order => 'id DESC')
+                     #@orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id =?', Time.now.year, current_user.id], :order => 'id DESC')  acertar  USER-ID
+                   end
+             end
         end
         @orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
  end

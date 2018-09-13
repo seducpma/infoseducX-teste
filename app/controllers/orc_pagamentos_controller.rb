@@ -97,6 +97,7 @@ class OrcPagamentosController < ApplicationController
             @ficha= OrcFicha.find(:all, :conditions => ['ficha =?',@empenho[0].ficha])
 
             @op.orc_ficha_id = @ficha[0].id
+            @op.orc_ficha_id = interessado
             @op.ficha = @empenho[0].ficha
             if !@empenho[0].orc_pedido_compra_id.nil?
                @pedido_compra[0].empenhado =1
