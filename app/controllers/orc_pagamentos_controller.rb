@@ -9,7 +9,7 @@ class OrcPagamentosController < ApplicationController
    #     @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
          @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
          #@fichas = OrcFicha.find_by_sql("SELECT id, ficha FROM orc_pagamentos WHERE id NOT IN (SELECT orc_ficha_id FROM orc_pagamentos) ORDER BY codigo ASC")
-         @orc_pagamento_op= OrcPagamento.find(:all, :conditions => ["year(data_pg) = ? and codigo is not null", Time.now.year], :order => 'data_pg ASC' )
+         @orc_pagamento_op= OrcPagamento.find(:all, :conditions => ["year(data_pg) = ? and codigo is not null AND  orc_empenho_id is not null"  , Time.now.year], :order => 'data_pg ASC' )
          @empenhos = OrcEmpenho.all(:conditions => ["year(data_chegou) = ? and pagamento=0", Time.now.year], :order => 'data_chegou ASC' )
  #      @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
   #      @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
@@ -97,7 +97,8 @@ class OrcPagamentosController < ApplicationController
             @ficha= OrcFicha.find(:all, :conditions => ['ficha =?',@empenho[0].ficha])
 
             @op.orc_ficha_id = @ficha[0].id
-            @op.orc_ficha_id = interessado
+            @op.interessado = @empenho[0].interessado
+            @op.codigo = @empenho[0].codigo
             @op.ficha = @empenho[0].ficha
             if !@empenho[0].orc_pedido_compra_id.nil?
                @pedido_compra[0].empenhado =1
@@ -161,8 +162,8 @@ def dados_empenho
      @empenho = OrcEmpenho.find(:all, :conditions => ["id =?" , params[:orc_pagamento_orc_empenho_id]])
     @ficha = OrcFicha.find(:all, :conditions => ['ficha =?',@empenho[0].ficha])
     session[:ficha]= @empenho[0].ficha
-    w=session[:ficha_id]=@ficha[0].id
-    t=0
+    session[:ficha_id]=@ficha[0].id
+
       @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', session[:ficha]])
    
     render :partial => "empenho"
@@ -177,10 +178,7 @@ end
 
  def consulta_pagamento
     if params[:type_of].to_i == 1   #fornecedor
-         w=params[:search_fornecedor1]
-         t=0
-
-         @pagamentos = OrcPagamento.find(:all, :joins=> "INNER JOIN orcs_empenhos ON orc_pagamentos.orc_empenho_id = orc_empenhos.id INNER JOIN orc_pedido_compras ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ",  :conditions => ['orc_pedido_compras.fornecedor like ?', "%" + params[:search_fornecedor1].to_s + "%"], :order => 'id DESC')
+         @pagamentos = OrcPagamento.find(:all,   :conditions => ['interessado like ?', "%" + params[:search_fornecedor1].to_s + "%"], :order => 'id DESC')
           render :update do |page|
                 page.replace_html 'consultapagamento', :partial => "pagamentos"
           end

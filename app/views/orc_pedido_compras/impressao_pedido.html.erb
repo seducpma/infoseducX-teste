@@ -5,37 +5,42 @@
         <center><font size="2"><b><i> Secretaria da Educação</i></b><br/></center>
     </td>
   </tr>
+       <tr  style="border-color: white"style="height: 6px" >
+       <td style="border-color: white"><font size ="1"><center> Rua dos Professores, 40 - Americana - SP Fone: 3475-7500 - CEP 13.465-060</font>
+
+       </td>
+     </tr>
  </table>
 
- <table cellspacing="0" cellpadding="1" width="100%" style="border-color: white" >
-     <tr style="border-color: white">
+ <table cellspacing="0" cellpadding="1" width="100%" style="border-color: white"  style="height: 4px" >
+     <tr style="border-color: white"  style="height: 4px" >
        <td style="border-color: white" colspan="2"><hr/></td>
      </tr>
 
 
 
    <% @orc_pedido_compra.each do |pedido| %>
-      <tr style="border-color: white">
+      <tr style="border-color: white" style="height: 6px" >
          <td  style="border-color: white"  colspan="2" align="left" ><b> SI/COMPRAS <%=h pedido.codigo %> <br/>
                                            DE: SECRETARIA DE EDUCAÇÃO <br/>
                                            P/ SUPRIMENTOS</b><br/><br/>
       </td>
     </tr>
-      <tr style="border-color: white" >
+      <tr style="border-color: white" style="height: 6px" >
         <td colspan="4" align="center"style="border-color: white"  ><center><b><u>SOLICITAÇÃO DE COMPRA</u></b></center><br/><br/></td>
       </tr>
-      <tr>
+      <tr  style="height: 6px" >
         <td colspan="4" align="left"style="border-color: white" ><b><u>OBJETIVO</u>: </b> &nbsp <%=h pedido.objetivo %> <br/><br/></td>
       </tr>
-      <tr>
+      <tr  style="height: 6px" >
         <td colspan="4" align="left"style="border-color: white" ><b><u>FORNECEDOR</u>: </b> &nbsp  <%=h pedido.fornecedor%> <br/><br/></td>
       </tr>
-      <tr>
+      <tr  style="height: 6px" >
         <td colspan="4" align="left"style="border-color: white" ><b><u>DOTAÇÃO ORÇAMENTÁRIA </u></b>: &nbsp <%=h  pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  pedido.orc_ficha.codigo%>
                                      &nbsp&nbsp <b><u>FICHA</u>: &nbsp </b><%=h   pedido.orc_ficha.ficha%>
             &nbsp&nbsp <b><u>DR</u>: </b> <%=h  pedido.orc_ficha.dr%> &nbsp&nbsp <b><u>Fonte</u>: </b> <%=h  pedido.orc_ficha.fonte%></td>
          </tr>
-         <tr align="left">
+         <tr align="left" style="height: 6px" >
               <td align="left"style="border-color: white" ><%=h pedido.orc_ficha.descricao%>
                    <% if pedido.orc_ficha.ficha.count("SE") == 2 %>
                       - SALARIO EDUCAÇÂO
@@ -63,7 +68,41 @@
                 - <%=h pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%>
            <br/><br/></td>
       </tr>
+        <tr style="border-color: white" style="height: 7px" >
+        <td style="border-color: white">
+            <table  border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+                <tr style="border-color: white" style="height: 6px" >
+                  <td align="center"><b>Item</b></td>
+                  <td align="center" width ="10%"><b>Quant.</b></td>
+                  <td align="center" width =" 50%"><b>Descrição</b></td>
+                  <td align="center"><b>Unitário</b></td>
+                  <td align="center"><b>Valor</b></td>
+                </tr>
+                <%contador=1%>
+                <% session[:soma]=0 %>
+                <% total_geral = 0.00 %>
+                <% if !@orc_pedido_descricaos.nil? %>
+                    <% @orc_pedido_descricaos.each do |descricao|%>
+                      <tr style="height: 6px" >
+                         <td align="center"><%= contador%> </td>
+                         <td align="center"><%= descricao.quantidade%> </td>
+                         <td align="left"> <%= descricao.descricao%> </td>
+                         <td align="center"> R$ <%= descricao.unitario%> </td>
+                         <td align="center"> R$ <%= descricao.total%> </td>
+                       </tr>
+                      <% contador = contador+1%>
+                      <% total_geral = total_geral+ descricao.total%>
+                    <%end%>
+               <%end%>
+                       <tr>
+                         <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+                         <td align="center"> R$ <%= total_geral %></td>
 
+                       </tr>
+              </table>
+
+        </td>
+      </tr>
       <tr>
         <td colspan="4" align="left"style="border-color: white"><b><u>VALOR TOTAL: </u></b> <%=h pedido.valor_total %> <br/><br/></td>
       </tr>
@@ -81,7 +120,7 @@
 <table style="border-color: white">
      <tr  style="border-color: white">
     <td style="border-color: white">
-      <br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/>
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ________________________________________________<br/>
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  JUÇARA PASTORELLI NOVELI FLORIAN    <br/>
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Secretaria de Educação
@@ -95,14 +134,4 @@
   <tr>
     <td width ="2%" align="left" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
   </tr>
-</table>
-<table style="border-color: white">
-     <tr style="border-color: white">
-       <td style="border-color: white" colspan="2"><hr/></td>
-     </tr>
-     <tr  style="border-color: white">
-       <td style="border-color: white"><center> Rua dos Professores, 40 - Americana - SP Fone: 3475-7500 - CEP 13.465-060
-
-       </td>
-     </tr>
 </table>

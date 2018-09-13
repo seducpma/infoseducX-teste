@@ -6,7 +6,7 @@
                 <% @pagamentos.each do |pagamento| %>
               <tr bgcolor="#DCDCDC" >
                   <td  width ="1%"  align="center"><b>Nº OP/Empenho</b></td>
-                  <td align="center"><b>Fornecedor</b></td>
+                  <td align="center"><b>Interessado</b></td>
                   <td  width ="10%"align="center"><b>DO </b></td>
                   <td width ="20%"  align="center"><b>Ficha</b></td>
                   <td align="center"><b>Valor Total</b></td>
@@ -23,13 +23,7 @@
                              Não Possui
                          <%end%>
                     </td>
-                    <td><%if !pagamento.orc_empenho_id.nil?%>
-                             <%=h pagamento.orc_empenho.interessado%>
-                        <%else %>
-                             <%=h pagamento.interessado%>
-                        <%end%>
-
-                    </td>
+                    <td><%=h pagamento.interessado%></td>
                     <%if !pagamento.orc_empenho_id.nil?%>
                          <td><%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h @ficha[0].codigo%> </td>
                          <td align="center"><%=h @ficha[0].ficha%> - <%=h @ficha[0].descricao%></td>
