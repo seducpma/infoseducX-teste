@@ -176,7 +176,10 @@ end
 
  def consulta_pagamento
     if params[:type_of].to_i == 1   #fornecedor
-         @pagamentos = OrcPagamento.find(:all, :joins=> "INNER JOIN orc_empenhos ON orc_pagamentos.orc_empenho_id = orc_empenhos.id INNER JOIN orc_pedido_compras ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ",  :conditions => ['orc_pedido_compras.fornecedor like ?', "%" + params[:search_fornecedor1].to_s + "%"], :order => 'id DESC')
+         w=params[:search_fornecedor1]
+         t=0
+
+         @pagamentos = OrcPagamento.find(:all, :joins=> "INNER JOIN orcs_empenhos ON orc_pagamentos.orc_empenho_id = orc_empenhos.id INNER JOIN orc_pedido_compras ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ",  :conditions => ['orc_pedido_compras.fornecedor like ?', "%" + params[:search_fornecedor1].to_s + "%"], :order => 'id DESC')
           render :update do |page|
                 page.replace_html 'consultapagamento', :partial => "pagamentos"
           end
@@ -203,6 +206,7 @@ def pagamento_op
 end
 
 def ficha_pagamento
+     session[:ficha]= 1
   @pagamentos = OrcPagamento.find(:all, :conditions => ['orc_ficha_id = ?', params[:orc_pagamento_orc_ficha_id]], :order => 'data_pg DESC')
   render :partial => "pagamentos"
 

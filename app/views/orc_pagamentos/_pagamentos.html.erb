@@ -46,6 +46,7 @@
                  <% contador = 1%>
                  <% total_ficha = pagamento.valor_pg + total_ficha %>
 
+
                  <tr>
                    <td colspan="8">
                      <table  width="100%">
@@ -69,6 +70,18 @@
 
                 <% end %>
           </table>
+    <%  if session[:ficha]== 1%>
+     <table>
+        <tr>
+          <td>
+            <b> Valor Total de Empenhos na ficha  <%= @ficha[0].ficha %> -  <%= @ficha[0].descricao %> =  R$ <%=  total_ficha %> </b>
+          </td>
+        </tr>
+      </table>
+    <% end%>
+    <%  session[:ficha]=0%>
+
+
         </div>
        <br/>
     <%else%>

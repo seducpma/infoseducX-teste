@@ -17,8 +17,8 @@
                       <tr>
                          <td width ="8%" align="left"><b>Nº Empenho:</b></font></td>
                          <td colspan="6"><%= f.text_field :codigo, :size =>10%>
-                                  &nbsp&nbsp <b>Nº Pedido:</b>  &nbsp<%= f.text_field :processo, :size =>10 %>&nbsp&nbsp
-                                  &nbsp&nbsp <b>Nº Processo:</b>  &nbsp<%= f.text_field :npedido, :size =>10 %>&nbsp&nbsp
+                                  &nbsp&nbsp <b>Nº Pedido:</b>  &nbsp<%= f.text_field :npedido, :size =>10 %>&nbsp&nbsp
+                                  &nbsp&nbsp <b>Nº Processo:</b>  &nbsp<%= f.text_field :processo, :size =>10 %>&nbsp&nbsp
                                   &nbsp&nbsp  <b>Data Empenho: </b> &nbsp<%= datepicker_tag(:orc_empenho, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>&nbsp&nbsp&nbsp&nbsp
                                   &nbsp&nbsp  <b>Data Chegada: </b> &nbsp<%= datepicker_tag(:orc_empenho, :data_chegou,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
                          </td>
