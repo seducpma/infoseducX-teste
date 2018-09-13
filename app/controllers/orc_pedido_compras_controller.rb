@@ -10,8 +10,8 @@ class OrcPedidoComprasController < ApplicationController
         @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
         if current_user.has_role?('admin') or current_user.has_role?('SEDUC')
            @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? ', Time.now.year], :order => 'id DESC')
-        else if (current_user.login = 'merenda.adriana') #excessão dos usuáriosda merenda
-              @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id = ?  ', Time.now.year, 523 ], :order => 'id DESC')
+        else if (current_user.login = 'merenda.adriana')or (current_user.login = 'merenda.fabiana') #excessão dos usuáriosda merenda
+              @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and (user_id = ?  AND user_id = ?) ', Time.now.year, 523, 525 ], :order => 'id DESC')
 
            else
                 @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? and user_id = ?', Time.now.year, current_user.id], :order => 'id DESC')

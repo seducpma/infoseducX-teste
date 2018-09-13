@@ -17,7 +17,7 @@
                      <% if  !pagamento.orc_ficha_id.nil?%>
                         <%@ficha = OrcFicha.find(:all , :conditions => ['id=?', pagamento.orc_ficha_id]) %>
 
-                      <%end%>                    <% t=0 %>
+                      <%end%>                    
                     <td><b><%=h pagamento.codigo %></b> </td>
                     <td><%if !pagamento.orc_empenho_id.nil?%>
                              <%=h pagamento.orc_empenho.orc_pedido_compra.objetivo %></td>
@@ -31,7 +31,8 @@
                         <%end%>
 
                     </td>
-                    <td><%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h @ficha[0].codigo%> </td>
+                    <%if !pagamento.orc_empenho_id.nil?%>
+                        <td><%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h @ficha[0].codigo%> </td>
                     <td align="center"><%=h @ficha[0].ficha%> - <%=h @ficha[0].descricao%></td>
                     <td align="center"> R$ <%=h pagamento.valor_pg %></td>
                     <td align="center"><%=h pagamento.data_pg.strftime("%d/%b/%y") %> </td>

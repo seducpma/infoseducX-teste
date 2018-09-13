@@ -70,12 +70,10 @@ class OrcPagamentosController < ApplicationController
            @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
            t=0
        else
-            w=session[:id_ficha]
-           @ficha = OrcFicha.find(:all, :conditions => ['id =?', session[:id_ficha]])
+           @ficha = OrcFicha.find(:all, :conditions => ['id =?',session[:ficha_id]])
            t=0
        end
-       w=@ficha[0].ficha
-       t=0
+
         @orc_pagamento.ficha = @ficha[0].ficha
         saldo_atual= @ficha[0].saldo_atual - @orc_pagamento.valor_pg
         saldo= @ficha[0].saldo - @orc_pagamento.valor_pg
@@ -160,7 +158,10 @@ class OrcPagamentosController < ApplicationController
 
 def dados_empenho
      @empenho = OrcEmpenho.find(:all, :conditions => ["id =?" , params[:orc_pagamento_orc_empenho_id]])
-     session[:ficha]= @empenho[0].ficha
+    @ficha = OrcFicha.find(:all, :conditions => ['ficha =?',@empenho[0].ficha])
+    session[:ficha]= @empenho[0].ficha
+    w=session[:ficha_id]=@ficha[0].id
+    t=0
       @ficha = OrcFicha.find(:all, :conditions => ['ficha =?', session[:ficha]])
    
     render :partial => "empenho"
@@ -209,7 +210,7 @@ end
 
  def dados_ficha
     @dados_ficha=  OrcFicha.find(:all, :conditions => ['id = ?',params[:orc_pagamento_orc_ficha_id]])
-    session[:id_ficha]=params[:orc_pagamento_orc_ficha_id]
+
      render :partial => "dados_fichas"
 end
 

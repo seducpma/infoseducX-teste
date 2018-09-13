@@ -7,6 +7,10 @@ class OrcFicha < ActiveRecord::Base
 
  usar_como_dinheiro :saldo_atual, :valor_inicial, :saldo, :saldo_empenhado, :saldo_reservado, :saldo_transferido, :saldo_aporte
 
+
+
+
+
   def before_save
     if  !self.descricao.nil?
        self.descricao.upcase!
