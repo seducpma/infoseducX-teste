@@ -72,7 +72,6 @@ end
   def edit
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
     @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
-
   end
 
   # POST /orc_pedido_compras
@@ -160,9 +159,9 @@ end
   end
 
   def destroy_descricao
-    w=params[:id]
+    
     @orc_pedido_descricao = OrcPedidoDescricao.find(params[:id])
-    w=session[:id_pedido]= @orc_pedido_descricao.orc_pedido_compra_id
+    session[:id_pedido]= @orc_pedido_descricao.orc_pedido_compra_id
 
     @orc_pedido_descricao.destroy
     @orc_pedido_descricaos=OrcPedidoDescricao.find(:all, :conditions =>['orc_pedido_compra_id =?', session[:id_pedido] ])
@@ -171,11 +170,20 @@ end
           wt=descricao.total_geral=session[:soma].to_f
           descricao.save
         end
+     @pedido = OrcPedidoCompra.find(:all, :conditions => ['id = ?', session[:id_pedido]])
+     @pedido[0].valor_total= session[:soma].to_f
+     @pedido[0].save
+                    respond_to do |format|
 
-        render :update do |page|
-          page.replace_html 'dados', :partial => "orc_pedido_descricaos"
-          page.replace_html 'new'
-        end
+                       flash[:notice] = 'ALTERADO COM SUCESSO.'
+                                format.html { redirect_to( {:action => "edit", :id => @pedido[0].id} ) }
+                                format.html { redirect_to( @pedido) }
+                                format.xml  { render :xml =>  @pedido, :status => :created, :location =>  @pedido }
+                end
+   #     render :update do |page|
+   #       page.replace_html 'dados', :partial => "orc_pedido_descricaos"
+   #       page.replace_html 'new'
+   #     end
   end
 
 

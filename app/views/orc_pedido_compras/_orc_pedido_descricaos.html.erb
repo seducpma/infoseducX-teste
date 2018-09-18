@@ -19,7 +19,7 @@
              <td> <%= descricao.descricao%>  </td>
              <td align="center"> R$ <%= descricao.unitario%> </td>
              <td align="center"> R$ <%= descricao.total%> </td>
-             <!--<td align="center"> <%#= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy_descricao", :id =>descricao}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></td>-->
+             <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy_descricao", :id =>descricao}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></td>
              
            </tr>
           <% contador = contador+1%>

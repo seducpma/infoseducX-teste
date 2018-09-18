@@ -39,7 +39,11 @@
              
             </tr>
            <% contador = 1%>
-           <% total_ficha = pedido.valor_total + total_ficha %>
+           <%if !pedido.valor_total.nil? %>
+                <% total_ficha = pedido.valor_total + total_ficha %>
+           <%else%>
+                <% total_ficha = 0 + total_ficha %>
+           <%end%>
            <tr  bgcolor="#F5F5F5">
              <td> </td>
              <td colspan="6">

@@ -22,11 +22,11 @@ def set_current_user
 #   end
 # Fim - Alex 2018-09-12
 
-#       session[:base]= 'sisgered_development'
-#       session[:baseinfo]= 'infoseduc_development'
+       session[:base]= 'sisgered_development'
+       session[:baseinfo]= 'infoseduc_development'
 
-      session[:base]= 'sisgered_production'
-      session[:baseinfo]= 'infoseduc_production'
+#      session[:base]= 'sisgered_production'
+#      session[:baseinfo]= 'infoseduc_production'
 
 end
 

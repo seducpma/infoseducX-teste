@@ -2,7 +2,7 @@
 <% title "ALUNOS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - PEDIDO COMPRA</strong></font><br/>
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - PEDIDO COMPRA (EDIT)</strong></font><br/>
  </div>
       <div class="tabs">
           <br/>
@@ -37,42 +37,11 @@
                          </td>
                          <td colspan="2"><div id="dadosFicha"></div> </td>
                       </tr>
-                        <tr>
-                          <td align="left"><b>Descrição:</b></font></td>
-                          <td colspan="4">
-                            <table  border="1" cellspacing="0" cellpadding="1" width="100%">
-                                <tr bgcolor= white >
-                                  <td align="center"><b>Item</b></td>
-                                  <td align="center" width ="10%"><b>Quant.</b></td>
-                                  <td align="center" width =" 50%"><b>Descrição</b></td>
-                                  <td align="center"><b>Unitário</b></td>
-                                  <td align="center"><b>Valor</b></td>
-                                </tr>
-                                <%contador=1%>
-                                <% session[:soma]=0 %>
-                                <% total_geral = 0.00 %>
-                                <% if !@orc_pedido_descricaos.nil? %>
-                                    <% @orc_pedido_descricaos.each do |descricao|%>
-                                      <tr>
-                                         <td align="center"><%= contador%> </td>
-                                         <td align="center"><%= descricao.quantidade%> </td>
-                                         <td align="left"> <%= descricao.descricao%> </td>
-                                         <td align="center"> R$ <%= descricao.unitario%> </td>
-                                         <td align="center"> R$ <%= descricao.total%> </td>
-                                       </tr>
-                                      <% contador = contador+1%>
-                                      <% total_geral = total_geral+ descricao.total%>
-                                    <%end%>
-                               <%end%>
-                                       <tr>
-                                         <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
-                                         <td align="center"> R$ <%= total_geral %></td>
-
-                                       </tr>
-                              </table>
-
-                        </td>
+                      <tr>
+                        <td align="left" valign="top"> <b><u><%= link_to 'Descrição', "#inline_orc_pedido_descricao", :class =>"inline60" %></u></b></td>
+                        <td colspan="3"><div id="dados"> <%= render :partial => 'orc_pedido_descricaos'  %></div></td>
                       </tr>
+
                       <tr>
                          <td align="left"><b>Justificativa:</b></td>
                          <td colspan="5" align="left"><%= f.text_field :justificativa, :size =>110 %></td>
@@ -106,4 +75,4 @@
 </div>
 
 
-
+    <%= render "orc_pedido_descricao" %>

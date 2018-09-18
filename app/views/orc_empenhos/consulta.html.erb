@@ -21,7 +21,7 @@
            <td ><div class="consulta_des" style="display:none"> <%= render "consulta_ficha" %>  </div></td>
            <td ><div class="consulta_prod" style="display:none"> <%= render "consulta_empenho" %>  </div></td>
            <td ><div class="consulta_sem_filtro_orc" style="display:none"> <%= render "consulta_sem_filtro" %>  </div></td>
-
+       <%session[:atualiza_ficha] = 1%>
        </tr>
       </table>
     <% end %>

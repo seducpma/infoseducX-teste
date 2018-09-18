@@ -52,9 +52,9 @@
 
                                         <tr>
                                           <td align="left" valign="top"><b>Ficha:</b></td>
-                                           <td align="left" valign="top"> <%= f.collection_select :ficha, @fichas_emp, :ficha, :ficha, :include_blank => ' '  %>
-                                                            <%= observe_field 'orc_empenho_ficha',
-                                                                       :with   => :orc_empenho_ficha,
+                                           <td align="left" valign="top"> <%= f.collection_select :ficha_id, @fichas_emp, :id, :ficha, :include_blank => ' '  %>
+                                                            <%= observe_field 'orc_empenho_ficha_id',
+                                                                       :with   => :orc_empenho_ficha_id,
                                                                        :url  => { :action => 'dados_ficha' },
                                                                        :update => "dadosFicha"%>
                                            </td>
