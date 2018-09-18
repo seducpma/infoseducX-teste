@@ -79,11 +79,12 @@ class OrcEmpenhosController < ApplicationController
 
     respond_to do |format|
       if @orc_empenho.save
-        w= session[:news_itens]= @orc_empenho.id
-        w1 =@ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
-        t=0
-        w2= @orc_empenho.ficha_id=@ficha[0].id
-        t=0
+        session[:news_itens]= @orc_empenho.id
+        @ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
+
+        @orc_empenho.ficha_id=@ficha[0].id
+        @orc_empenho.ficha=@ficha[0].ficha
+
        @orc_empenho.save
 
 
@@ -178,13 +179,14 @@ class OrcEmpenhosController < ApplicationController
   # DELETE /orc_empenhos/1.xml
   def destroy
        @orc_empenho = OrcEmpenho.find(params[:id])
+       valor_empenho = @orc_empenho.valor_total
               # Atualiza saldo na ficha
         @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_empenho.ficha_id])
-        @ficha[0].saldo_empenhado = @ficha[0].saldo_empenhado - @orc_empenho.valor_total
-        saldo= @ficha[0].saldo_atual - (@ficha[0].saldo_empenhado - @orc_empenho.valor_total)- @ficha[0].saldo_reservado
-        @ficha[0].saldo = saldo
+        empenho =@ficha[0].saldo_empenhado 
+        saldo= @ficha[0].saldo
+        @ficha[0].saldo_empenhado = empenho  - valor_empenho
+        @ficha[0].saldo= saldo  + valor_empenho
         @ficha[0].save
-
         @orc_empenho.destroy
 
     respond_to do |format|
