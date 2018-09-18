@@ -105,6 +105,15 @@
                  </td>
                </tr>
                <tr>
+                   <td colspan="2">
+                        <%if @orc_empenho.cancelado == 1 %>
+                             <%= check_box_tag(:cancela, "1", :value => true ) %> <b> Cancelar Empenho</b>
+                        <%else%>
+                             <%= check_box_tag(:cancela, "1") %> <b> Cancelar Empenho</b>
+                         <%end%>
+                   </td>
+               </tr>
+               <tr>
                  <td colspan="2">
 
                       <table width="40%" align="left">

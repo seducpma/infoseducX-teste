@@ -144,8 +144,9 @@ class OrcEmpenhosController < ApplicationController
   # PUT /orc_empenhos/1.xml
   def update
     @orc_empenho = OrcEmpenho.find(params[:id])
-    @ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
+    
      if session[:created]== 1
+       @ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
        @itens_empenho = OrcEmpenhoIten.find(:all, :conditions => ["orc_empenho_id =?" , params[:id]])
        empenhado= @ficha[0].saldo_empenhado
        saldo = @ficha[0].saldo
@@ -162,6 +163,22 @@ class OrcEmpenhosController < ApplicationController
      
        session[:created]= 0
      end
+
+      if params[:cancela].to_i == 1
+          @ficha = OrcFicha.find(:all, :conditions => ['id =?',  @orc_empenho.ficha_id])
+               valor_empenho = @orc_empenho.valor_total
+                      # Atualiza saldo na ficha
+
+                empenho =@ficha[0].saldo_empenhado 
+                saldo= @ficha[0].saldo
+                @ficha[0].saldo_empenhado = empenho  - valor_empenho
+                @ficha[0].saldo= saldo  + valor_empenho
+                @ficha[0].save
+
+                @orc_empenho.cancelado=1
+                @orc_empenho.save
+
+      end
 
     respond_to do |format|
       if @orc_empenho.update_attributes(params[:orc_empenho])
