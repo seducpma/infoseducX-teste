@@ -81,46 +81,44 @@ class OrcEmpenhosController < ApplicationController
       if @orc_empenho.save
         session[:news_itens]= @orc_empenho.id
         @ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
-
         @orc_empenho.ficha_id=@ficha[0].id
         @orc_empenho.ficha=@ficha[0].ficha
-
-       @orc_empenho.save
-
+        @orc_empenho.save
 
 
 
-   if session[:create_new_itens]== 1
-   session[:create_new_itens]= 0
-   end
-   empenho=@orc_empenho.id
-   @empenho = OrcEmpenho.find(:all, :conditions =>['id=?',empenho])
-   if  session[:sem_si]==1
-       @itens_compra = OrcPedidoDescricao.find(:all, :conditions => ["orc_pedido_compra_id =?" , session[:compra]])
 
-          for item_compra in @itens_compra
-              valor_item=item_compra.total
-              session[:create_new_itens]=1
-              @orc_empenho_item = OrcEmpenhoIten.new(params[empenho])
-              @orc_empenho_item.orc_empenho_id = empenho
-              @orc_empenho_item.quantidade = item_compra.quantidade
-              @orc_empenho_item.descricao = item_compra.descricao
-              @orc_empenho_item.unitario = item_compra.unitario
-              @orc_empenho_item.total = item_compra.total
-              @orc_empenho_item.total_geral = item_compra.total_geral
-              session[:valor_total] = @orc_empenho_item.total_geral
-              @orc_empenho_item.save
-                       # salva items do empenho
-              @orc_empenho.valor_total= session[:valor_total]
-              @orc_empenho.save
-                      # Atualiza saldo na ficha
-             
+           if session[:create_new_itens]== 1
+           session[:create_new_itens]= 0
            end
+           empenho=@orc_empenho.id
+          @empenho = OrcEmpenho.find(:all, :conditions =>['id=?',empenho])
+           if  session[:sem_si]==1
+               @itens_compra = OrcPedidoDescricao.find(:all, :conditions => ["orc_pedido_compra_id =?" , session[:compra]])
+
+                  for item_compra in @itens_compra
+                      valor_item=item_compra.total
+                      session[:create_new_itens]=1
+                      @orc_empenho_item = OrcEmpenhoIten.new(params[empenho])
+                      @orc_empenho_item.orc_empenho_id = empenho
+                      @orc_empenho_item.quantidade = item_compra.quantidade
+                      @orc_empenho_item.descricao = item_compra.descricao
+                      @orc_empenho_item.unitario = item_compra.unitario
+                      @orc_empenho_item.total = item_compra.total
+                      @orc_empenho_item.total_geral = item_compra.total_geral
+                      session[:valor_total] = @orc_empenho_item.total_geral
+                      @orc_empenho_item.save
+                               # salva items do empenho
+                      @orc_empenho.valor_total= session[:valor_total]
+                      @orc_empenho.save
+                              # Atualiza saldo na ficha
+
+                   end
 
 
-       session[:emp_id]= @empenho[0].id
-       session[:sem_si]= 0
-     end
+               session[:emp_id]= @empenho[0].id
+               session[:sem_si]= 0
+             end
 
         flash[:notice] = 'SALVO COM SUCESSO.'
         #format.html { redirect_to(new_itens_path) }

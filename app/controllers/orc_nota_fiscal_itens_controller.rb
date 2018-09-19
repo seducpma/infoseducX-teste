@@ -1,0 +1,85 @@
+class OrcNotaFiscalItensController < ApplicationController
+  # GET /orc_nota_fiscal_itens
+  # GET /orc_nota_fiscal_itens.xml
+  def index
+    @orc_nota_fiscal_itens = OrcNotaFiscalIten.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @orc_nota_fiscal_itens }
+    end
+  end
+
+  # GET /orc_nota_fiscal_itens/1
+  # GET /orc_nota_fiscal_itens/1.xml
+  def show
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @orc_nota_fiscal_iten }
+    end
+  end
+
+  # GET /orc_nota_fiscal_itens/new
+  # GET /orc_nota_fiscal_itens/new.xml
+  def new
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @orc_nota_fiscal_iten }
+    end
+  end
+
+  # GET /orc_nota_fiscal_itens/1/edit
+  def edit
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+  end
+
+  # POST /orc_nota_fiscal_itens
+  # POST /orc_nota_fiscal_itens.xml
+  def create
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.new(params[:orc_nota_fiscal_iten])
+
+    respond_to do |format|
+      if @orc_nota_fiscal_iten.save
+        flash[:notice] = 'OrcNotaFiscalIten was successfully created.'
+        format.html { redirect_to(@orc_nota_fiscal_iten) }
+        format.xml  { render :xml => @orc_nota_fiscal_iten, :status => :created, :location => @orc_nota_fiscal_iten }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @orc_nota_fiscal_iten.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /orc_nota_fiscal_itens/1
+  # PUT /orc_nota_fiscal_itens/1.xml
+  def update
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+
+    respond_to do |format|
+      if @orc_nota_fiscal_iten.update_attributes(params[:orc_nota_fiscal_iten])
+        flash[:notice] = 'OrcNotaFiscalIten was successfully updated.'
+        format.html { redirect_to(@orc_nota_fiscal_iten) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @orc_nota_fiscal_iten.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /orc_nota_fiscal_itens/1
+  # DELETE /orc_nota_fiscal_itens/1.xml
+  def destroy
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+    @orc_nota_fiscal_iten.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(orc_nota_fiscal_itens_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

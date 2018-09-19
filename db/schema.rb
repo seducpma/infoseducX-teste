@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180919133518) do
+ActiveRecord::Schema.define(:version => 20180919135904) do
 
   create_table "acompanhamento_despachos", :force => true do |t|
     t.integer  "acompanhamento_id"
@@ -703,9 +703,21 @@ ActiveRecord::Schema.define(:version => 20180919133518) do
     t.datetime "updated_at"
   end
 
+  create_table "orc_nota_fiscal_itens", :force => true do |t|
+    t.integer  "nota_fiscal_id"
+    t.integer  "quantidade",     :limit => 10, :precision => 10, :scale => 0
+    t.string   "descricao"
+    t.integer  "unitario",       :limit => 10, :precision => 10, :scale => 0
+    t.integer  "total",          :limit => 10, :precision => 10, :scale => 0
+    t.integer  "total_geral",    :limit => 10, :precision => 10, :scale => 0
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orc_nota_fiscals", :force => true do |t|
-    t.integer  "orc_empenho_id_id"
-    t.integer  "valor",             :limit => 10, :precision => 10, :scale => 0
+    t.integer  "orc_empenho_id"
+    t.integer  "valor",          :limit => 10, :precision => 10, :scale => 0
     t.date     "data"
     t.string   "obs"
     t.datetime "created_at"

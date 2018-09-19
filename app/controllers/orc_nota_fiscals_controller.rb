@@ -1,6 +1,22 @@
 class OrcNotaFiscalsController < ApplicationController
   # GET /orc_nota_fiscals
   # GET /orc_nota_fiscals.xml
+
+
+     before_filter :load_iniciais
+
+ def load_iniciais
+        #@pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
+        @empenhos = OrcEmpenho.all(:conditions => ["date_format(data_chegou,'%Y') = ?", Time.now.year])
+        @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
+        #@fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
+
+        #@orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
+        #  @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
+ end
+
+
+
   def index
     @orc_nota_fiscals = OrcNotaFiscal.all
 
@@ -45,7 +61,7 @@ class OrcNotaFiscalsController < ApplicationController
     respond_to do |format|
       if @orc_nota_fiscal.save
         flash[:notice] = 'OrcNotaFiscal was successfully created.'
-        format.html { redirect_to(@orc_nota_fiscal) }
+        format.html { redirect_to( {:action => "edit", :id =>@empenho[0].id} ) }
         format.xml  { render :xml => @orc_nota_fiscal, :status => :created, :location => @orc_nota_fiscal }
       else
         format.html { render :action => "new" }
@@ -82,4 +98,13 @@ class OrcNotaFiscalsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+ def dados_empenho
+    session[:ficha_id] = params[:orc_nota_fiscal_orc_empenho_id]
+    @orc_empenho=  OrcEmpenho.find(:all, :conditions => ['id = ?',params[:orc_nota_fiscal_orc_empenho_id]])
+     #session[:sem_si]=0
+     render :partial => "empenho"
+end
+
+  
 end

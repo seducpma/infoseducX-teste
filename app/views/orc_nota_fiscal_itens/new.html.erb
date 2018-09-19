@@ -1,0 +1,39 @@
+<h1>New orc_nota_fiscal_iten</h1>
+
+<% form_for(@orc_nota_fiscal_iten) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nota_fiscal_i %><br />
+    <%= f.text_field :nota_fiscal_i %>
+  </p>
+  <p>
+    <%= f.label :quantidade %><br />
+    <%= f.text_field :quantidade %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :unitario %><br />
+    <%= f.text_field :unitario %>
+  </p>
+  <p>
+    <%= f.label :total %><br />
+    <%= f.text_field :total %>
+  </p>
+  <p>
+    <%= f.label :total_geral %><br />
+    <%= f.text_field :total_geral %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', orc_nota_fiscal_itens_path %>

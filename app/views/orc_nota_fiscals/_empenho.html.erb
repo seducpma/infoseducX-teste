@@ -1,0 +1,36 @@
+
+      <table  width="100%">
+                      
+                           <tr>
+                               <td align="left"> <b>Interessado: </b> </td>
+                               <td align="left" colspan="6"><%=h @orc_empenho[0].interessado %>
+                                     <%  if !@orc_empenho[0].orc_pedido_compra_id.nil? %>
+                                          &nbsp&nbsp <b>CNPJ: <% if !@orc_empenho[0].orc_pedido_compra.cnpj.nil? or !@orc_empenho[0].orc_pedido_compra.cnpj.empty? %></b>
+                                                                      <%=h @orc_empenho[0].orc_pedido_compra.cnpj %>
+                                                              <%else%>
+                                                                    Nao Cadastrado
+                                                              <%end%>
+                                                                    &nbsp&nbsp   &nbsp&nbsp - <b>SI: </b> <%=h @orc_empenho[0].orc_pedido_compra.codigo %> <b> de </b><%=h @orc_empenho[0].orc_pedido_compra.created_at.strftime("%d/%m/%Y") %>
+
+                                     <%end%>
+                               </td>
+                           </tr>
+                          <tr>
+                            <td align="left" ><b>Ficha: </b> </td>
+                            <td align="left" colspan="7"><%=h @orc_empenho[0].ficha %>
+                                   &nbsp&nbsp&nbsp <b>Unidade Orcamentária: </b>
+                                   &nbsp Secretaria de Educação
+                                   &nbsp&nbsp&nbsp <b>Unidade Executora: </b>
+                                   &nbsp <%=h @orc_empenho[0].despesa %>
+                            </td>
+                          </tr>
+                          <tr>
+                              <td align="left" > <b>Data: </b></td>
+                              <td colspan="7"> <%=h @orc_empenho[0].data_chegou %>
+                                   &nbsp&nbsp&nbsp&nbsp <b>Destinação:</b>
+                                   &nbsp&nbsp <%=h @orc_empenho[0].destinacao %>
+                            </td>
+                          </tr>
+                      
+       </table>
+
