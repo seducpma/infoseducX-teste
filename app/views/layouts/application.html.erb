@@ -557,6 +557,17 @@ display: none;
                         </ul>
                       </li>
                     <% if current_user.has_role?('desenvolvimento')%>
+                          <li><a>NF / Pedidos</a>
+                              <ul style="width:108px;">
+                               <% if current_user.has_role?('desenvolvimento') %>
+
+                                   <li><%= link_to "Cadastrar",new_orc_nota_fiscal_path %></li>
+
+
+
+                                <%end%>
+                            </ul>
+                          </li>
                           <li><a>Lançamentos</a>
                               <ul style="width:108px;">
                                <% if current_user.has_role?('desenvolvimento') %>

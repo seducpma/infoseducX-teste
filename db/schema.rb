@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180406141847) do
+ActiveRecord::Schema.define(:version => 20180919133518) do
 
   create_table "acompanhamento_despachos", :force => true do |t|
     t.integer  "acompanhamento_id"
@@ -132,14 +132,6 @@ ActiveRecord::Schema.define(:version => 20180406141847) do
     t.integer  "situacao",     :default => 0, :null => false
     t.datetime "data_encerra"
     t.string   "executado"
-  end
-
-  create_table "certificados", :force => true do |t|
-    t.integer  "inscricao_id"
-    t.integer  "curso_id"
-    t.string   "obs"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "chamados", :force => true do |t|
@@ -446,12 +438,14 @@ ActiveRecord::Schema.define(:version => 20180406141847) do
   create_table "eventuals", :force => true do |t|
     t.integer  "professor_id"
     t.integer  "unidade_id"
+    t.integer  "regiao_id"
     t.string   "categoria",       :limit => 20
     t.string   "disponibilidade"
     t.string   "periodo",         :limit => 25
     t.string   "contato",         :limit => 200
     t.integer  "ano_letivo"
     t.string   "obs"
+    t.integer  "nao_atua",                       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -576,12 +570,14 @@ ActiveRecord::Schema.define(:version => 20180406141847) do
     t.datetime "data_sol"
     t.datetime "data_ate"
     t.datetime "data_enc"
+    t.datetime "data_autoriza"
     t.string   "forma"
     t.string   "solicitante"
     t.string   "procedimentos"
     t.string   "executado"
     t.string   "justificativa"
     t.string   "obs"
+    t.string   "situacao",               :limit => 30
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -624,6 +620,174 @@ ActiveRecord::Schema.define(:version => 20180406141847) do
     t.integer  "chat_session"
   end
 
+  create_table "orc_empenho_itens", :force => true do |t|
+    t.integer  "orc_empenho_id"
+    t.decimal  "quantidade",     :precision => 14, :scale => 2
+    t.string   "descricao"
+    t.decimal  "unitario",       :precision => 14, :scale => 2
+    t.decimal  "total",          :precision => 14, :scale => 2
+    t.decimal  "total_geral",    :precision => 14, :scale => 2
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_empenhos", :force => true do |t|
+    t.integer  "orc_pedido_compra_id"
+    t.string   "codigo"
+    t.string   "processo"
+    t.string   "npedido",              :limit => 20
+    t.date     "data"
+    t.date     "data_chegou"
+    t.string   "projeto",              :limit => 50
+    t.string   "interessado"
+    t.integer  "ficha_id"
+    t.string   "ficha",                :limit => 15
+    t.string   "cnpj"
+    t.date     "vencimento"
+    t.date     "validade"
+    t.string   "despesa"
+    t.string   "cat_economica"
+    t.string   "destinacao"
+    t.string   "modalidade",           :limit => 50
+    t.decimal  "valor_total",                        :precision => 14, :scale => 2, :default => 0.0
+    t.integer  "pagamento",                                                         :default => 0
+    t.date     "data_pg"
+    t.string   "obs"
+    t.integer  "cancelado",                                                         :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_empenhos(anterior)", :force => true do |t|
+    t.integer  "orc_pedido_compra_id"
+    t.string   "codigo"
+    t.string   "processo"
+    t.string   "npedido",              :limit => 20
+    t.date     "data"
+    t.date     "data_chegou"
+    t.string   "projeto",              :limit => 50
+    t.string   "interessado"
+    t.string   "ficha",                :limit => 15
+    t.string   "cnpj"
+    t.date     "vencimento"
+    t.date     "validade"
+    t.string   "despesa"
+    t.string   "cat_economica"
+    t.string   "destinacao"
+    t.string   "modalidade",           :limit => 50
+    t.decimal  "valor_total",                        :precision => 14, :scale => 2, :default => 0.0
+    t.integer  "pagamento",                                                         :default => 0
+    t.date     "data_pg"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_fichas", :force => true do |t|
+    t.string   "codigo"
+    t.integer  "ano"
+    t.string   "descricao"
+    t.string   "ficha",                   :limit => 15
+    t.integer  "orc_uni_orcamentaria_id"
+    t.string   "dr"
+    t.integer  "fonte"
+    t.decimal  "valor_inicial",                         :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "saldo_atual",                           :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "saldo",                                 :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "saldo_aporte",                          :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "saldo_empenhado",                       :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "saldo_transferido",                     :precision => 14, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "saldo_reservado",                       :precision => 14, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_nota_fiscals", :force => true do |t|
+    t.integer  "orc_empenho_id_id"
+    t.integer  "valor",             :limit => 10, :precision => 10, :scale => 0
+    t.date     "data"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_pagamentos", :force => true do |t|
+    t.integer  "orc_empenho_id"
+    t.string   "codigo",         :limit => 10
+    t.integer  "orc_ficha_id"
+    t.string   "ficha",          :limit => 20
+    t.string   "interessado"
+    t.integer  "valor_pg",       :limit => 10,  :precision => 10, :scale => 0
+    t.date     "data_pg"
+    t.string   "nf",             :limit => 100
+    t.date     "data_nf"
+    t.string   "obs_pg"
+    t.integer  "pago",                                                         :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_pedido_compras", :force => true do |t|
+    t.string   "codigo"
+    t.string   "objetivo"
+    t.string   "fornecedor"
+    t.string   "cnpj",          :limit => 20
+    t.integer  "orc_ficha_id"
+    t.decimal  "valor_total",                 :precision => 14, :scale => 2
+    t.string   "justificativa"
+    t.integer  "ano"
+    t.datetime "devolucao"
+    t.integer  "empenhado",                                                  :default => 0, :null => false
+    t.string   "obs"
+    t.integer  "user_id"
+    t.date     "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_pedido_descricaos", :force => true do |t|
+    t.integer  "orc_pedido_compra_id"
+    t.integer  "item"
+    t.decimal  "quantidade",           :precision => 14, :scale => 2
+    t.string   "descricao"
+    t.decimal  "unitario",             :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "total",                :precision => 14, :scale => 2, :default => 0.0
+    t.decimal  "total_geral",          :precision => 14, :scale => 2, :default => 0.0
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_suplementacaos", :force => true do |t|
+    t.integer  "orc_ficha_id"
+    t.integer  "orc_ficha_origem_id",                                                 :null => false
+    t.string   "processo"
+    t.decimal  "valor_suplemento",    :precision => 14, :scale => 2, :default => 0.0
+    t.date     "data"
+    t.string   "orcamentaria"
+    t.string   "destinacao"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_uni_despesas", :force => true do |t|
+    t.string   "codigo"
+    t.string   "descricao"
+    t.integer  "ano"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_uni_orcamentarias", :force => true do |t|
+    t.string   "codigo"
+    t.string   "descricao"
+    t.integer  "ano"
+    t.integer  "orc_uni_despesa_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "participantes", :force => true do |t|
     t.string   "nome"
     t.string   "matricula"
@@ -653,12 +817,11 @@ ActiveRecord::Schema.define(:version => 20180406141847) do
   create_table "poda_gramas", :force => true do |t|
     t.integer  "unidade_id"
     t.string   "solicitante"
-    t.datetime "solicitacao"
+    t.date     "execucao"
     t.date     "agendamento"
-    t.date     "realizacao"
-    t.string   "realizad"
+    t.string   "executado",   :limit => 100
     t.string   "obs"
-    t.datetime "created_at"
+    t.date     "created_at"
     t.datetime "updated_at"
   end
 
@@ -908,7 +1071,7 @@ ActiveRecord::Schema.define(:version => 20180406141847) do
     t.datetime "updated_at"
   end
 
-  create_table "unidades", :force => true do |t|
+  create_table "unidades_OLD", :force => true do |t|
     t.integer  "tipo_id",                    :null => false
     t.integer  "regiao_id"
     t.string   "nome"

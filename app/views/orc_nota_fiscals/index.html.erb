@@ -1,0 +1,26 @@
+<h1>Listing orc_nota_fiscals</h1>
+
+<table>
+  <tr>
+    <th>Orc empenho</th>
+    <th>Valor</th>
+    <th>Data</th>
+    <th>Obs</th>
+  </tr>
+
+<% @orc_nota_fiscals.each do |orc_nota_fiscal| %>
+  <tr>
+    <td><%=h orc_nota_fiscal.orc_empenho_id %></td>
+    <td><%=h orc_nota_fiscal.valor %></td>
+    <td><%=h orc_nota_fiscal.data %></td>
+    <td><%=h orc_nota_fiscal.obs %></td>
+    <td><%= link_to 'Show', orc_nota_fiscal %></td>
+    <td><%= link_to 'Edit', edit_orc_nota_fiscal_path(orc_nota_fiscal) %></td>
+    <td><%= link_to 'Destroy', orc_nota_fiscal, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New orc_nota_fiscal', new_orc_nota_fiscal_path %>
