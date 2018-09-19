@@ -82,8 +82,10 @@ end
 
     respond_to do |format|
       if @orc_pedido_compra.save
+        
         @orc_pedido_compra.user_id = current_user.id
         session[:news_decricao]= @orc_pedido_compra.id
+        
 #         @orc_pedido_descricao = OrcPedidoDescricao.find(:last, :conditions => ['orc_pedido_compra_id=?',session[:id_compra_new]])
 #        @orc_pedido_compra.save
 #        @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions =>['id=?', session[:id_compra_new]])
@@ -132,12 +134,15 @@ end
 
   def create_orc_pedido_descricao
       @orc_pedido_descricao = OrcPedidoDescricao.new(params[:orc_pedido_descricao])
-      @orc_pedido_compra= OrcPedidoCompra.last
-      @orc_pedido_compra.id
-      @orc_pedido_descricao.orc_pedido_compra_id = @orc_pedido_compra.id
+
+
+      @orc_pedido_compra= OrcPedidoCompra.find(session[:news_decricao])
+      #@orc_pedido_compra.id
+      @orc_pedido_descricao.orc_pedido_compra_id = session[:news_decricao]
 
       if @orc_pedido_descricao.save
-        @orc_pedido_descricaos=OrcPedidoDescricao.find(:all, :conditions =>['orc_pedido_compra_id =?', @orc_pedido_compra.id ])
+        @orc_pedido_descricaos=OrcPedidoDescricao.find(:all, :conditions =>['orc_pedido_compra_id =?', session[:news_decricao] ])
+
         cont = 0
         for descricao in @orc_pedido_descricaos
           cont=cont+1

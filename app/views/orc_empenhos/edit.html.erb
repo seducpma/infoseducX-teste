@@ -29,6 +29,11 @@
                                                                           <%else%>
                                                                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                                           <%end%>&nbsp&nbsp&nbsp&nbsp
+                                                                              <%if @orc_empenho.cancelado == 1 %>
+                                                                                 &nbsp&nbsp&nbsp&nbsp <%= check_box_tag(:cancela, "1", :value => true, :confirm => 'Confirma cancelamento?') %> <u></u><b> Cancelar Empenho</b></u>
+                                                                            <%else%>
+                                                                                 &nbsp&nbsp&nbsp&nbsp <%= check_box_tag(:cancela, "1") %> <u><b> Cancelar Empenho</b></u>
+                                                                             <%end%>
 
                          </td>
                       </tr>
@@ -104,15 +109,7 @@
                   </fieldset>
                  </td>
                </tr>
-               <tr>
-                   <td colspan="2">
-                        <%if @orc_empenho.cancelado == 1 %>
-                             <%= check_box_tag(:cancela, "1", :value => true ) %> <b> Cancelar Empenho</b>
-                        <%else%>
-                             <%= check_box_tag(:cancela, "1") %> <b> Cancelar Empenho</b>
-                         <%end%>
-                   </td>
-               </tr>
+
                <tr>
                  <td colspan="2">
 
