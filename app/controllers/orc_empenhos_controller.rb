@@ -59,7 +59,6 @@ class OrcEmpenhosController < ApplicationController
   # GET /orc_empenhos/1/edit
   def edit
     @orc_empenho = OrcEmpenho.find(params[:id])
-    w=params[:id]
     @orc_empenho_itens = OrcEmpenhoIten.find(:all, :conditions => ['orc_empenho_id=? ',@orc_empenho.id ])
 
 
@@ -89,9 +88,9 @@ class OrcEmpenhosController < ApplicationController
 
 
            if session[:create_new_itens]== 1
-           session[:create_new_itens]= 0
-           end
-           empenho=@orc_empenho.id
+             session[:create_new_itens]= 0
+          end
+          empenho=@orc_empenho.id
           @empenho = OrcEmpenho.find(:all, :conditions =>['id=?',empenho])
            if  session[:sem_si]==1
                @itens_compra = OrcPedidoDescricao.find(:all, :conditions => ["orc_pedido_compra_id =?" , session[:compra]])
