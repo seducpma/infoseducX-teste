@@ -556,10 +556,10 @@ display: none;
                             <%end%>
                         </ul>
                       </li>
-                    <% if current_user.has_role?('desenvolvimento')%>
+
                           <li><a>NF / Pedidos</a>
                               <ul style="width:108px;">
-                               <% if current_user.has_role?('desenvolvimento') %>
+                               <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
 
                                    <li><%= link_to "Cadastrar",new_orc_nota_fiscal_path %></li>
                                    <li><%= link_to "Consultar",consulta_orc_nota_fiscals_path %></li>
@@ -568,6 +568,7 @@ display: none;
                                 <%end%>
                             </ul>
                           </li>
+                    <% if current_user.has_role?('desenvolvimento')%>
                           <li><a>Lançamentos</a>
                               <ul style="width:108px;">
                                <% if current_user.has_role?('desenvolvimento') %>
