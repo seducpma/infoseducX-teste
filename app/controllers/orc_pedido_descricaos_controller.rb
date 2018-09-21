@@ -44,7 +44,7 @@ class OrcPedidoDescricaosController < ApplicationController
 
     respond_to do |format|
       if @orc_pedido_descricao.save
-        flash[:notice] = 'OrcPedidoDescricao was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_pedido_descricao) }
         format.xml  { render :xml => @orc_pedido_descricao, :status => :created, :location => @orc_pedido_descricao }
       else
@@ -61,7 +61,7 @@ class OrcPedidoDescricaosController < ApplicationController
 
     respond_to do |format|
       if @orc_pedido_descricao.update_attributes(params[:orc_pedido_descricao])
-        flash[:notice] = 'OrcPedidoDescricao was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_pedido_descricao) }
         format.xml  { head :ok }
       else

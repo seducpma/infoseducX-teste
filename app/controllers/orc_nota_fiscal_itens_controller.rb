@@ -44,7 +44,7 @@ class OrcNotaFiscalItensController < ApplicationController
 
     respond_to do |format|
       if @orc_nota_fiscal_iten.save
-        flash[:notice] = 'OrcNotaFiscalIten was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO..'
         format.html { redirect_to(@orc_nota_fiscal_iten) }
         format.xml  { render :xml => @orc_nota_fiscal_iten, :status => :created, :location => @orc_nota_fiscal_iten }
       else
@@ -61,7 +61,7 @@ class OrcNotaFiscalItensController < ApplicationController
 
     respond_to do |format|
       if @orc_nota_fiscal_iten.update_attributes(params[:orc_nota_fiscal_iten])
-        flash[:notice] = 'OrcNotaFiscalIten was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO..'
         format.html { redirect_to(@orc_nota_fiscal_iten) }
         format.xml  { head :ok }
       else

@@ -95,7 +95,7 @@ class OrcNotaFiscalsController < ApplicationController
                #session[:emp_id]= @empenho[0].id
                session[:sem_emp]= 0
              end
-        flash[:notice] = 'OrcNotaFiscal was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO..'
         format.html { redirect_to( {:action => "edit", :id =>@nota_fiscal[0].id} ) }
         #format.xml  { render :xml => @nota_fiscal, :status => :created, :location => @nota_fiscal }
       else
@@ -111,7 +111,7 @@ class OrcNotaFiscalsController < ApplicationController
     @orc_nota_fiscal = OrcNotaFiscal.find(params[:id])
     respond_to do |format|
       if @orc_nota_fiscal.update_attributes(params[:orc_nota_fiscal])
-        flash[:notice] = 'OrcNotaFiscal was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO..'
         format.html { redirect_to(@orc_nota_fiscal) }
         format.xml  { head :ok }
       else

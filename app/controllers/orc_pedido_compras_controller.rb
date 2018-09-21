@@ -92,7 +92,7 @@ end
 #        @orc_pedido_compra[0].valor_total = session[:soma].to_f
 #        @orc_pedido_compra[0].save
          @orc_pedido_compra.save
-       flash[:notice] = 'OrcPedidoCompra was successfully created.'
+       flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(new_descricaos_path) }
        else
         format.html { render :action => "new" }
@@ -108,7 +108,7 @@ end
 
     respond_to do |format|
       if @orc_pedido_compra.update_attributes(params[:orc_pedido_compra])
-        flash[:notice] = 'OrcPedidoCompra was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_pedido_compra) }
         format.xml  { head :ok }
       else
