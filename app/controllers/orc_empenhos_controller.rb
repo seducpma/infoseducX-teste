@@ -235,7 +235,6 @@ class OrcEmpenhosController < ApplicationController
           item.total_geral=session[:soma].to_f
           session[:valor_total] = item.total_geral
           item_empenho_id = item.orc_empenho_id
-          
           item.save
         end
 

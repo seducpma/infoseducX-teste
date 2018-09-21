@@ -76,7 +76,11 @@ class OrcNotaFiscalItensController < ApplicationController
   def destroy
     @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
     @orc_nota_fiscal_iten.destroy
+w=0
 
+
+
+      
     respond_to do |format|
       format.html { redirect_to(orc_nota_fiscal_itens_url) }
       format.xml  { head :ok }

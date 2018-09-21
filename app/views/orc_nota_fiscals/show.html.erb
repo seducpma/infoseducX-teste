@@ -13,7 +13,7 @@
         </tr>
 
  </table>
-    <table  width="100%"  bgcolor="white" border="1" >
+    <table  width="100%"  bgcolor="white"  >
      <tr>
        <td colspan="6"><hr/></td>
      </tr>
@@ -23,14 +23,14 @@
         <td align="left">&nbsp <%=h @orc_nota_fiscal.nf %> </td>
         <td align="left"><b>Data NF:</b></td>
         <td align="left">&nbsp <%if !@orc_nota_fiscal.data_nf.nil? %><%=h @orc_nota_fiscal.data_nf.strftime("%d de %b de %Y") %> <%end%></td>
-        <td align="left"><b>Data Entrega:</b></td>
+        <td align="left"width="10%" ><b>Data Entrega:</b></td>
         <td align="left">&nbsp <%if !@orc_nota_fiscal.data_prod.nil? %><%=h @orc_nota_fiscal.data_prod.strftime("%d de %b de %Y") %> <%end%></td>
       </tr>
       <tr>
          <td align="left" ><b>Nº Empenho </b> </td>
-         <td align="left" >&nbsp <%=h @orc_nota_fiscal.orc_empenho.codigo %> &nbsp&nbsp de <%#if !@orc_nota_fiscal.orc_empenho.data_chegou.nil? %><%#=h @orc_nota_fisca.orc_empenho.data_chegou.strftime("%d de %b de %Y") %> <%#end%></td>
+         <td align="left" >&nbsp <%=h @orc_nota_fiscal.orc_empenho.codigo %> &nbsp  <%if !@orc_nota_fiscal.orc_empenho.data_chegou.nil? %> de <%=h @orc_nota_fiscal.orc_empenho.data_chegou.strftime("%d/%m/%Y") %> <%end%></td>
          <td align="left" ><b>Nº Pedido: </b> </td>
-         <td align="left" >  <%=h @orc_nota_fiscal.orc_empenho.npedido %> &nbsp <b>Nº Processo </b> <%=h @orc_nota_fiscal.orc_empenho.processo %> </td>
+         <td align="left" >  <%=h @orc_nota_fiscal.orc_empenho.npedido %> &nbsp <b>Nº Processo: &nbsp </b> <%=h @orc_nota_fiscal.orc_empenho.processo %> </td>
             <% if !@orc_nota_fiscal.orc_empenho.orc_pedido_compra_id.nil? %>
                <td align="left" ><b>Nº S.I. </b> </td>
                <td align="left" >&nbsp <%=h @orc_nota_fiscal.orc_empenho.orc_pedido_compra.codigo %> <b> de </b> <%=h @orc_nota_fiscal.orc_empenho.orc_pedido_compra.created_at.strftime("%d/%m/%Y") %></td>
@@ -108,8 +108,8 @@
 
       <table>
            <tr>
-              <td  width="2%"align="left" ><%= button_to('Cadastrar', new_orc_empenho_path, :method => "get", :title => "Cadastrar")%></td>
-              <td  width="2%"align="left" ><%= button_to('Consultar', consulta_orc_empenhos_path, :method => "get", :title => "Fechar")%></td>
+              <td  width="2%"align="left" ><%= button_to('Cadastrar', new_orc_nota_fiscal_path, :method => "get", :title => "Cadastrar")%></td>
+              <td  width="2%"align="left" ><%= button_to('Consultar', consulta_orc_nota_fiscals_path, :method => "get", :title => "Fechar")%></td>
               <td  align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                <td align="right" colspan="1"><%= button_to('Editar', {:action => "edit", :id => @orc_nota_fiscal.id},:method => "get", :title => "Editar") %></td>
 

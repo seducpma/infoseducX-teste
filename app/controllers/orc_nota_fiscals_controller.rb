@@ -56,6 +56,10 @@ class OrcNotaFiscalsController < ApplicationController
   def edit
     @orc_nota_fiscal = OrcNotaFiscal.find(params[:id])
     @orc_nota_fiscal_itens = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id =? ',@orc_nota_fiscal.id ])
+
+
+
+    session[:news_itens]= @orc_nota_fiscal.id
   end
 
   # POST /orc_nota_fiscals
@@ -67,11 +71,9 @@ class OrcNotaFiscalsController < ApplicationController
       if @orc_nota_fiscal.save
           session[:news_itens]= @orc_nota_fiscal.id
           nota_fiscal=@orc_nota_fiscal.id
-          session[:empenho_id]
-          @nota_fiscal = OrcNotaFiscal.find(:all, :conditions =>['id=?',nota_fiscal])
+           @nota_fiscal = OrcNotaFiscal.find(:all, :conditions =>['id=?',nota_fiscal])
            if  session[:sem_emp]==1
                @itens_empenho = OrcEmpenhoIten.find(:all, :conditions => ["orc_empenho_id =?" , session[:empenho_id]])
-
                   for item_nf in @itens_empenho
                       valor_item=item_nf.total
                       session[:create_new_itens]=1
@@ -81,7 +83,7 @@ class OrcNotaFiscalsController < ApplicationController
                       @orc_nota_fiscal_item.descricao = item_nf.descricao
                       @orc_nota_fiscal_item.unitario = item_nf.unitario
                       @orc_nota_fiscal_item.total = item_nf.total
-                      session[:valor_total]= @orc_nota_fiscal_item.total_geral = item_nf.total_geral
+                       session[:valor_total]= @orc_nota_fiscal_item.total_geral = item_nf.total_geral
                       
                       @orc_nota_fiscal_item.save
                                # salva items nota_fiscal
@@ -90,13 +92,12 @@ class OrcNotaFiscalsController < ApplicationController
                               # Atualiza saldo na ficha
                    end
 
-
                #session[:emp_id]= @empenho[0].id
                session[:sem_emp]= 0
              end
         flash[:notice] = 'OrcNotaFiscal was successfully created.'
         format.html { redirect_to( {:action => "edit", :id =>@nota_fiscal[0].id} ) }
-        format.xml  { render :xml => @orc_nota_fiscal, :status => :created, :location => @orc_nota_fiscal }
+        #format.xml  { render :xml => @nota_fiscal, :status => :created, :location => @nota_fiscal }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @orc_nota_fiscal.errors, :status => :unprocessable_entity }
@@ -108,7 +109,6 @@ class OrcNotaFiscalsController < ApplicationController
   # PUT /orc_nota_fiscals/1.xml
   def update
     @orc_nota_fiscal = OrcNotaFiscal.find(params[:id])
-
     respond_to do |format|
       if @orc_nota_fiscal.update_attributes(params[:orc_nota_fiscal])
         flash[:notice] = 'OrcNotaFiscal was successfully updated.'
@@ -137,7 +137,6 @@ class OrcNotaFiscalsController < ApplicationController
    session[:create_new_itens]=1
    @orc_nota_fiscal_item = OrcNotaFiscalIten.new(params[:orc_nota_fiscal_item])
       valor_item= @orc_nota_fiscal_item.total
-
        @orc_nota_fiscal_item.orc_nota_fiscal_id = session[:news_itens]
             # salva items do empenho
       if @orc_nota_fiscal_item.save
@@ -155,7 +154,6 @@ class OrcNotaFiscalsController < ApplicationController
          # salva valor_total no empenho
          @orc_nota_fiscal= OrcNotaFiscal.find(item_nota_fiscal_id)
          @orc_nota_fiscal.valor= session[:valor_total]
-
          @orc_nota_fiscal.save
 
           end
@@ -167,6 +165,71 @@ class OrcNotaFiscalsController < ApplicationController
        
   end
 
+
+  def destroy_nf_itens
+
+    @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+    session[:id_nota_fiscal]= @orc_nota_fiscal_iten.orc_nota_fiscal_id
+
+    @orc_nota_fiscal_iten.destroy
+    @orc_nota_fiscal_itens=OrcNotaFiscalIten.find(:all, :conditions =>['orc_nota_fiscal_id =?', session[:id_nota_fiscal] ])
+    for item in @orc_nota_fiscal_itens
+          session[:soma]=session[:soma].to_f+item.total.to_f
+          item.total_geral=session[:soma].to_f
+          item.save
+        end
+     @nota_fiscal = OrcNotaFiscal.find(:all, :conditions => ['id = ?', session[:id_nota_fiscal]])
+     @nota_fiscal[0].valor = session[:soma].to_f
+     @nota_fiscal[0].save
+                    respond_to do |format|
+
+                       flash[:notice] = 'ALTERADO COM SUCESSO.'
+                                format.html { redirect_to( {:action => "edit", :id => @nota_fiscal[0].id} ) }
+                                format.html { redirect_to( @nota_fiscal) }
+                                format.xml  { render :xml =>  @nota_fiscal, :status => :created, :location =>  @nota_fiscal }
+                end
+   #     render :update do |page|
+   #       page.replace_html 'dados', :partial => "orc_pedido_descricaos"
+   #       page.replace_html 'new'
+   #     end
+  end
+
+
+    def consulta_nf
+    if params[:type_of].to_i == 1   #fornecedor
+         @nota_fiscals = OrcNotaFiscal.find(:all, :joins => [:orc_empenho],:conditions => [' orc_empenhos.interessado like ?', "%" + params[:search_fornecedor_nf].to_s + "%"], :order => 'id DESC')
+          render :update do |page|
+                  page.replace_html 'notafiscal', :partial => "notas_fiscais"
+          end
+    else  if params[:type_of].to_i == 2   #nf
+              @nota_fiscals = OrcNotaFiscal.find(:all,:conditions => ['nf like ?', "%" + params[:search_nota_fiscal].to_s + "%"], :order => 'id DESC')
+              render :update do |page|
+                      page.replace_html 'notafiscal', :partial => "notas_fiscais"
+              end
+           else if params[:type_of].to_i == 3   #empenho
+                            @nota_fiscals = OrcNotaFiscal.find(:all, :joins => [:orc_empenho],:conditions => [' orc_empenhos.interessado like ?', "%" + params[:search_empenho_nf].to_s + "%"], :order => 'id DESC')
+                           render :update do |page|
+                              page.replace_html 'notafiscal', :partial => "notas_fiscais"
+                           end
+                     else if params[:type_of].to_i == 4   #todas
+                             @nota_fiscals = OrcNotaFiscal.find(:all,:conditions =>["date_format(created_at,'%Y') = ?", Time.now.year])
+                           render :update do |page|
+                              page.replace_html 'notafiscal', :partial => "notas_fiscais"
+                           end
+                             else if params[:type_of].to_i == 5   #dia
+                                        session[:dataI]=params[:nota_fiscal][:dataI][6,4]+'-'+params[:nota_fiscal][:dataI][3,2]+'-'+params[:nota_fiscal][:dataI][0,2]
+                                        session[:dataF]=params[:nota_fiscal][:dataF][6,4]+'-'+params[:nota_fiscal][:dataF][3,2]+'-'+params[:nota_fiscal][:dataF][0,2]
+                                        session[:mes]=params[:nota_fiscal][:dataF][3,2]
+                                         @nota_fiscals = OrcNotaFiscal.find_by_sql("SELECT * FROM orc_nota_fiscals WHERE (data_nf BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data_nf DESC")
+                                     render :update do |page|
+                                        page.replace_html 'notafiscal', :partial => "notas_fiscais"
+                                     end
+                                  end
+                             end
+                      end
+            end
+     end
+  end
 
 
 

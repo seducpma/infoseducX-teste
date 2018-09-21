@@ -1,5 +1,6 @@
 class OrcEmpenho < ActiveRecord::Base
   belongs_to :orc_pedido_compra
+  has_many :orc_nota_fiscal
   #has_many :cart_items
   #has_many :dpus, :through => :cart_items
 

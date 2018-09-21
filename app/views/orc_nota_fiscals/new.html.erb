@@ -24,7 +24,7 @@
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Nº NF:</b></font> &nbsp<%= f.text_field :nf, :size =>10%>
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (Entrega) </b>&nbsp<%= datepicker_tag(:orc_nota_fiscal, :data_prod,{ :size => 8},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (NF) </b>&nbsp<%= datepicker_tag(:orc_nota_fiscal, :data_nf,{ :size => 8},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
-                                 <b>Valor: &nbsp R$ </b><%= f.text_field :valor, :size =>20%>
+                                 
                          </td>
                        </tr>
                       <tr>
