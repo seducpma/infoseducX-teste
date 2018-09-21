@@ -128,7 +128,7 @@ class OrcNotaFiscalsController < ApplicationController
     @orc_nota_fiscal.destroy
 
     respond_to do |format|
-      format.html { redirect_to(orc_nota_fiscals_url) }
+      format.html { redirect_to(home_path) }
       format.xml  { head :ok }
     end
   end
