@@ -1,13 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :orc_nota_fiscals, :collection => {:consulta => :get}
-
   map.resources :orc_nota_fiscal_itens
-
   map.resources :orc_lancamentos, :collection => {:consulta => :get, :consultaSI => :get}
   map.resources :orc_pagamentos, :collection => {:consulta => :get}
   map.resources :orc_suplementacaos, :collection => {:consulta => :get}
   map.resources :orc_empenho_itens
-  map.resources :orc_empenhos, :collection => {:consulta => :get}
+  map.resources :orc_empenhos, :collection => {:consulta => :get, :consulta_produto => :get    }
   map.resources :orc_pedido_descricaos
   map.resources :orc_pedido_compras, :collection => {:consulta => :get}
   map.resources :orc_fichas, :collection => {:consulta => :get, :saldo => :get}
@@ -163,6 +161,7 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_saldo'/consulta_saldo', :controller => 'orc_fichas', :action => 'consulta_saldo'
   map.consulta_pedido'/consulta_pedido', :controller => 'orc_pedido_compras', :action => 'consulta_pedido'
   map.consulta_empenho'/consulta_empenho', :controller => 'orc_empenhos', :action => 'consulta_empenho'
+  map.consulta_empenho_produto'/consulta_empenho_produto', :controller => 'orc_empenhos', :action => 'consulta_empenho_produto'
   map.consulta_nf'/consulta_nf', :controller => 'orc_nota_fiscals', :action => 'consulta_nf'
   map.consulta_suplementacao'/consulta_suplementacao', :controller => 'orc_suplementacaos', :action => 'consulta_suplementacao'
   map.consulta_pagamentos'/consulta_pagamentos', :controller => 'orc_pagamentos', :action => 'consulta_pagamentos'

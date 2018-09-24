@@ -359,4 +359,13 @@ end
      render :partial => "dados_fichas"
 end
 
+ def consulta_empenho_produto
+
+
+
+
+     
+
+ end
+
 end
