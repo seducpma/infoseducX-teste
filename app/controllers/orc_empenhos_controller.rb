@@ -361,6 +361,38 @@ end
 
  def consulta_empenho_produto
 
+    if params[:type_of].to_i == 1   #fornecedor
+         @produtos = OrcEmpenhoIten.find(:all,:conditions => ['id != 1 and interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+          render :update do |page|
+                  page.replace_html 'empenho', :partial => "empenhos"
+          end
+    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
+                  @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
+               render :update do |page|
+                  page.replace_html 'empenho', :partial => "empenhos"
+               end
+        else if params[:type_of].to_i == 2   #todas
+
+             else if params[:type_of].to_i == 4   #todas
+                      @produtos = OrcEmpenhoIten.find(:all,:conditions => ['id != 1 and descricao like ?', "%" + params[:search_produto].to_s + "%"], :order => 'id DESC')
+                      t=0
+                      render :update do |page|
+                              page.replace_html 'produto', :partial => "produtos"
+                       end
+                 else if params[:type_of].to_i == 5   #dia
+                             session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
+                             session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
+                             session[:mes]=params[:empenho][:dataF][3,2]
+                                 @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                                render :update do |page|
+                                     page.replace_html 'empenho', :partial => "empenhos"
+                                 end
+                      end
+                  end
+             end
+        end
+     end
+
 
 
 
