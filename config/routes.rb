@@ -129,6 +129,9 @@ ActionController::Routing::Routes.draw do |map|
   map.editar_classe_aluno '/editar_classe_aluno', :controller => 'classes', :action => 'editar_classe_aluno'
   map.editar_atribuicao_classe '/editar_atribuicao_classe', :controller => 'atribuicaos', :action => 'editar_atribuicao_classe'
   map.show_editar '/show_editar', :controller => 'atribuicaos', :action => 'show_editar'
+  map.edit_orc_nota_fiscal_item '/edit_orc_nota_fiscal_item', :controller => 'orc_nota_fiscals', :action => 'edit_orc_nota_fiscal_item'
+
+    
 
   map.consulta_E '/consulta_E', :controller => 'produtos', :action => 'consulta_E'
   map.consulta_S '/consulta_S', :controller => 'produtos', :action => 'consulta_S'

@@ -35,6 +35,8 @@ class OrcNotaFiscalItensController < ApplicationController
   # GET /orc_nota_fiscal_itens/1/edit
   def edit
     @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+    @orc_nota_fiscal = OrcNotaFiscal.find(:all, :conditions=> ['id=?', @orc_nota_fiscal_iten.orc_nota_fiscal_id])
+
   end
 
   # POST /orc_nota_fiscal_itens
@@ -58,11 +60,28 @@ class OrcNotaFiscalItensController < ApplicationController
   # PUT /orc_nota_fiscal_itens/1.xml
   def update
     @orc_nota_fiscal_iten = OrcNotaFiscalIten.find(params[:id])
+    @orc_nota_fiscal = OrcNotaFiscal.find(:all, :conditions=> ['id=?', @orc_nota_fiscal_iten.orc_nota_fiscal_id])
+    quantidade = @orc_nota_fiscal_iten.quantidade.to_f
+      
+    
+t=0
+
 
     respond_to do |format|
       if @orc_nota_fiscal_iten.update_attributes(params[:orc_nota_fiscal_iten])
+         quantidade_iten = @orc_nota_fiscal_iten.quantidade.to_f
+     
+         @empenho = OrcEmpenho.find(:all, :joins => "INNER JOIN orc_nota_fiscals ON orc_empenhos.id = orc_nota_fiscals.orc_empenho_id INNER JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id ", :conditions => ["orc_nota_fiscal_itens.id =?", @orc_nota_fiscal_iten.id])
+         empenho = empenho_id= @empenho[0].id
+         @empenho_iten= OrcEmpenhoIten.find(:all, :conditions => ['descricao=? and orc_empenho_id=?',@orc_nota_fiscal_iten.descricao , empenho])
+         #empenho_id= @empenho_iten[0].id
+         #saldo_atual= @empenho_iten[0].saldo.to_f
+         ww= @empenho_iten[0].saldo = quantidade.to_f - quantidade_iten.to_f
+         @empenho_iten[0].save
+
+
         flash[:notice] = 'SALVO COM SUCESSO..'
-        format.html { redirect_to(@orc_nota_fiscal_iten) }
+        format.html { redirect_to( {:controller =>'orc_nota_fiscals' ,:action => "edit", :id => @orc_nota_fiscal[0].id} ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

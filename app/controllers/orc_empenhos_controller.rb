@@ -101,6 +101,7 @@ class OrcEmpenhosController < ApplicationController
                       @orc_empenho_item = OrcEmpenhoIten.new(params[empenho])
                       @orc_empenho_item.orc_empenho_id = empenho
                       @orc_empenho_item.quantidade = item_compra.quantidade
+                      @orc_empenho_item.saldo = item_compra.quantidade
                       @orc_empenho_item.descricao = item_compra.descricao
                       @orc_empenho_item.unitario = item_compra.unitario
                       @orc_empenho_item.total = item_compra.total
@@ -375,7 +376,6 @@ end
 
              else if params[:type_of].to_i == 4   #todas
                       @produtos = OrcEmpenhoIten.find(:all,:conditions => ['id != 1 and descricao like ?', "%" + params[:search_produto].to_s + "%"], :order => 'id DESC')
-                      t=0
                       render :update do |page|
                               page.replace_html 'produto', :partial => "produtos"
                        end
