@@ -3,6 +3,8 @@
 <div class="tabs">
  <div id="caixa_titulo">
      <font size="3"><strong>ORÇAMENTO SEDUC/PMA - NF PEDIDOS</strong></font><br/>
+
+     <%  session[:edita_item]=1 %>
  </div>
        <% form_remote_tag :url => consulta_nf_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
   <table  width="100%" bgcolor="#F5F5F5" >
