@@ -6,28 +6,57 @@
 
     <table bgcolor="#DCDCDC" width="100%">
         <tr bgcolor="#DCDCDC" >
-            <td align="center"><b>Produto</b></td>
-            <td align="center" width ="30%"><b>Fornecedor</b></td>
             <td align="center" width ="5%"><b>NºEmpenho</b></td>
+            <td align="center" width ="30%"><b>Fornecedor</b></td>
+            <td align="center"><b>Produto</b></td>
 
             <td align="center"><b>Data Emp.</b></td>
-            <td align="center"><b>Data Chegou.</b></td>
-            <td align="center"><b>Saldo</b></td>
-            <td align="center" width ="5%"><b>Status</b></td>
+            <td align="center"><b>Data Chegou</b></td>
+            <td align="center" width ="5%"><b>Nº NF</b></td>
+            <td align="center"><b>Quant.NF</b></td>
+            <td align="center"><b>Saldo Empenho</b></td>
+            <td align="center"><b>Saldo Atual</b></td>
+
+            
 
           </tr>
+          <% nrnf = @produtos[0].nnf%>
+          <% fornecedor = ' '%>
           <% @produtos.each  do |produto| %>
- 
-               <tr  bgcolor="#F5F5F5">
 
-              <td align="center"><%=h produto.produto %></td>
-              <td align="center"><%=h produto.fornecedor %></td>
+              <%if nrnf!=produto.nnf%>
+                <tr>
+                    <td>&nbsp</td>
+                </tr>
+                 <%nrnf=produto.nnf%>
+                 <% fornecedor = ' '%>
+              <%end%>
+              <tr  bgcolor="#F5F5F5">
               <td align="center"><%=h produto.nempenho %></td>
-              <td align="center"><%if !produto.datae.nil? %><%=h produto.datae %> <%end%> </td>
-              <td align="center"><%if !produto.datac.nil? %><%=h produto.datac%> <%end%> </td>
-              <td align="center"><%=h produto.nempenho %></td>
+              <td align="center"><%if fornecedor!= produto.fornecedor%>
+                                      <%=h produto.fornecedor %>
+                                     <% fornecedor = produto.fornecedor%>
+                                  <%else%>
+                                      &nbsp
+                                  <%end%>
+
+               </td>
+              <td align="left"><%=h produto.produto %></td>
+              <td align="center"><%=h produto.datae %> </td>
+              <td align="center"><%=h produto.datac%> </td>
+              <td align="center"><%=h produto.nnf %></td>
+              <td align="center"><%=h produto.quantidade_nf %></td>
+                <td align="center"><%=h produto.quantidade %></td>
+              <td align="center"><%=h produto.saldo %></td>
+            
             </tr>
           <% end %>
+      <tr>
+          <td colspan="10">
+              <hr/>
+          </td>
+      </tr>
+
     </table>
    <%else%>
      <table bgcolor="#DCDCDC" width="100%">

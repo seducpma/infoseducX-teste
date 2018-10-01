@@ -589,15 +589,19 @@ display: none;
                                 <%end%>
                             </ul>
                           </li>
+                    <%end%>
                           <li><a>Saldos</a>
-                              <ul style="width:108px;">
-                               <% if current_user.has_role?('desenvolvimento') %>
-                                      <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
-                                      <li><%= link_to "Produtos",consulta_produto_orc_empenhos_path %></li>
+                                 <ul style="width:108px;">
+                                       <% if current_user.has_role?('desenvolvimento') %>
+                                         <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
+                                       <%end%>
+                                       <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                                             <li><%= link_to "Empenho",consulta_produto_orc_empenhos_path %></li>
+                                       <%end%>
 
-                                <%end%>
-                            </ul>
+                                 </ul>
                           </li>
+                     <% if current_user.has_role?('desenvolvimento')%>
                           <li><a>Suplementacões</a>
                               <ul style="width:108px;">
                                <% if current_user.has_role?('desenvolvimento') %>
