@@ -326,9 +326,6 @@ t=0
             else if params[:type_of].to_i == 3   #empenho
 
                     @nota_fiscals = OrcNotaFiscal.find(:all, :joins => 'INNER JOIN orc_empenhos ON orc_empenhos.id = orc_nota_fiscals.orc_empenho_id' ,:conditions => [' orc_empenhos.codigo like ?', "%" + params[:search_empenho_nf].to_s + "%"], :order => 'id DESC')
-
-                       
-
                     render :update do |page|
                         page.replace_html 'notafiscal', :partial => "notas_fiscais"
                     end

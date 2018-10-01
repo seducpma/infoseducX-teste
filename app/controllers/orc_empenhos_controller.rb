@@ -367,14 +367,15 @@ end
           render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
           end
-    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
-                  @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
+    else if params[:type_of].to_i == 3   #empenho
+                  #@produtos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
+                  @produtos= OrcEmpenho.find(:all, :joins=> 'INNER JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id INNER JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id',  :select => 'orc_empenho_itens.descricao AS produto, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo, orc_empenhos.data AS datae, orc_empenhos.data_chegou AS datac',  :conditions => ['orc_empenhos.codigo like ?', "%" +  params[:search_empenho].to_s + "%"])
                render :update do |page|
-                  page.replace_html 'empenho', :partial => "empenhos"
+                  page.replace_html 'produto', :partial => "produtos"
                end
-        else if params[:type_of].to_i == 2   #todas
+        else if params[:type_of].to_i == 2   #nota fiscal
 
-             else if params[:type_of].to_i == 4   #todas
+             else if params[:type_of].to_i == 4   #produto
                       @produtos = OrcEmpenhoIten.find(:all,:conditions => ['id != 1 and descricao like ?', "%" + params[:search_produto].to_s + "%"], :order => 'id DESC')
                       render :update do |page|
                               page.replace_html 'produto', :partial => "produtos"
