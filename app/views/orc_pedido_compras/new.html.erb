@@ -23,7 +23,7 @@
                               :url => { :action => 'ja_existe' },
                               :update => "ja_existe"%>
 
-                         &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>55 %></td>
+                         &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>57 %></td>
                       </tr>
 
                         <div id="ja_existe">
@@ -46,6 +46,10 @@
                               <tr>
                                  <td align="left"><b>Justificativa:</b></td>
                                  <td colspan="5" align="left"><%= f.text_field :justificativa, :size =>110 %></td>
+                              </tr>
+                              <tr>
+                                  <td align="left" valign="top"><b>Observação:</b></td>
+                                 <td colspan="5" align="left"><%= f.text_area(:obs, :cols =>109, :rows => "2") %></td>
                               </tr>
                         </div>
                    </table>

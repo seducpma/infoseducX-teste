@@ -1,0 +1,71 @@
+
+ <div class="tabs">
+ <br/>
+ 
+ <%if !@atas.empty?%>
+
+    <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+            <td align="center" width ="5%"><b>NºAta </b></td>
+            <td align="center"><b>Processo</b></td>
+            <td align="center"><b>Data</b></td>
+            <td align="center"><b>Pedido</b></td>
+            <td align="center" width ="30%"><b>Fornecedor</b></td>
+            <td align="center" colspan="2" ><b>Ficha</b></td>
+            <td align="center" width ="8%"><b>Valor</b></td>
+            <td align="center" width ="5%"><b>Status</b></td>
+
+          </tr>
+          <% @empenhos.each  do |empenho| %>
+ 
+             <%@ficha = OrcFicha.find (:all, :conditions => ['id = ?', empenho.ficha_id ])%>
+            <tr  bgcolor="#F5F5F5">
+
+              <td align="center"><%=h empenho.codigo %></td>
+              <td align="center"><%=h empenho.processo %></td>
+              <td align="center"><%if !empenho.data.nil? %><%=h empenho.data.strftime("%d/%m/%Y") %> <%end%> </td>
+              <td align="center"><%if !empenho.orc_pedido_compra_id.nil?%>
+                                     <%if !empenho.orc_pedido_compra.nil?%>
+                                         <%=h empenho.orc_pedido_compra.codigo %>
+                                     <%else%>
+                                           Empenho Não Existe
+                                     <%end%>
+
+                                  <%else%>
+                                      Não possui S.I.
+                                  <%end%>
+              </td>
+              <td align="center"><%if !empenho.orc_pedido_compra_id.nil?%>
+                                      <%if !empenho.orc_pedido_compra.nil?%>
+                                        <%=h empenho.orc_pedido_compra.fornecedor %>
+                                     <%else%>
+                                           Empenho Não Existe
+                                     <%end%>
+                                 <%else%>
+                                      <%=h empenho.interessado %>
+                                  <%end%>
+              </td>
+              <td align="center" width ="10%"><%=h empenho.ficha %> </td>
+              <td align="center"> <%=h @ficha[0].descricao %></td>
+              <td align="center">R$ <%=h empenho.valor_total %></td>
+              <td align="center"><%if empenho.cancelado ==  1 %> <font color =" red"> Cancelado <%end%> </td>
+            </tr>
+            <tr>
+                <td colspan="6"></td>
+              <td align="right"><%= button_to 'Editar', {:action => "edit", :id =>empenho}, :method => "get", :title => "Editar"%></td>
+              <td align="center"><%= button_to 'Visualizar',{:action => "show", :id =>empenho}, :method => "get", :title => "Visualizar"%> </td>
+              <td width ="5%"><%= button_to 'Excluir', empenho, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+            </tr>
+          <% end %>
+    </table>
+   <%else%>
+     <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+          <td align="center" colspan="6"><b>NÃO EXISTE LANÇAMENTOS</b></td>
+
+            </tr>
+
+    </table>
+   <%end%>
+</div>
+    <br/>

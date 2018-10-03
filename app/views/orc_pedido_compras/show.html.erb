@@ -116,6 +116,14 @@
       <tr>
         <td colspan="4" align="left"><b><u>JUSTIFICATIVA</u>: </b> &nbsp <%=h @orc_pedido_compra.justificativa %> <br/><br/></td>
       </tr>
+      <% if  !@orc_pedido_compra.obs.nil?%>
+          <tr>
+            <td colspan="4" align="left"><b><u>OBSERVAÇÃO</u>: </b> &nbsp <%=h @orc_pedido_compra.obs %> <br/><br/></td>
+          </tr>
+      <%end%>
+
+
+
       <tr>
         <td colspan="4" align="left"><b><u>Data: </u></b> &nbsp <%=h @orc_pedido_compra.created_at.strftime("%d de %B de %Y") %> <br/><br/></td>
       </tr>

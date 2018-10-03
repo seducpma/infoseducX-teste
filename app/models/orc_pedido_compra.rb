@@ -19,6 +19,11 @@ class OrcPedidoCompra < ActiveRecord::Base
     if  !self.justificativa.nil?
           self.justificativa.upcase!
     end
+    if  !self.obs.nil?
+          self.obs.upcase!
+    end
+
+
   end
 def geracodigo
     #self.codigo = [self.id-612].to_s + ("/2017")

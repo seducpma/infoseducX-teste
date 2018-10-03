@@ -104,6 +104,11 @@
       <tr>
         <td colspan="4" align="left"style="border-color: white"><b><u>JUSTIFICATIVA: </u></b> <%=h pedido.justificativa %> <br/></td>
       </tr>
+      <% if  !pedido.obs.nil?%>
+          <tr>
+            <td colspan="4" align="left"><b><u>OBSERVAÇÃO</u>: </b> &nbsp <%=h pedido.obs %> <br/><br/></td>
+          </tr>
+      <%end%>
       <tr>
         <td colspan="4" align="left"style="border-color: white"><b><u>Data: </u></b> <%=h pedido.created_at.strftime("%d de %B de %Y") %><br/></td>
       </tr>

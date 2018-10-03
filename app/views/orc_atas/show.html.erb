@@ -26,7 +26,7 @@
           </td>
       </tr>
       <tr>
-        <td align="left"> <b>Data:</b> </td> <td> <%if !@orc_ata.data.nil? %><%=h @orc_data.data.strftime("%d de %b de %Y") %> <%end%></td>
+        <td align="left"> <b>Data:</b> </td> <td> <%if !@orc_ata.data.nil? %><%=h @orc_ata.data.strftime("%d de %b de %Y") %> <%end%></td>
       </tr>
       <tr>
         <td align="left" ><b>Objetivo: </b></td> <td> <%=h @orc_ata.objetivo %> </td>
@@ -55,6 +55,41 @@
         <td> <b>Telefone: </b></td>
         <td> <%= @orc_ata.fone%> &nbsp&nbsp <b>E-mail:</b> <%= @orc_ata.email%></td>
     </tr>
+      <tr>
+        <td colspan="4">
+            <table  border="1" cellspacing="0" cellpadding="1" width="100%">
+                <tr bgcolor= white >
+                  <td align="center"><b>Item</b></td>
+                  <td align="center" width ="10%"><b>Quant.</b></td>
+                  <td align="center" width =" 50%"><b>Descrição</b></td>
+                  <td align="center"><b>Unitário</b></td>
+                  <td align="center"><b>Valor</b></td>
+                </tr>
+                <%contador=1%>
+                <% session[:soma]=0 %>
+                <% total_geral = 0.00 %>
+                <% if !@orc_ata_itens.nil? %>
+                    <% @orc_ata_itens.each do |item|%>
+                      <tr>
+                         <td align="center"><%= contador%> </td>
+                         <td align="center"><%= item.quantidade%> </td>
+                         <td align="left"> <%= item.descricao%> </td>
+                         <td align="center"> R$ <%= item.unitario%> </td>
+                         <td align="center"> R$ <%= item.total%> </td>
+                       </tr>
+                      <% contador = contador+1%>
+                      <% total_geral = total_geral+ item.total%>
+                    <%end%>
+               <%end%>
+                       <tr>
+                         <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+                         <td align="center"> R$ <%= total_geral %></td>
+
+                       </tr>
+              </table>
+
+        </td>
+      </tr>
     <tr>
         <td ><b>OBS:</b></font></td>
         <td colspan="6"><%= @orc_ata.obs%></td>

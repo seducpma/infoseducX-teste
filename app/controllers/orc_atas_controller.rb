@@ -1,6 +1,24 @@
 class OrcAtasController < ApplicationController
   # GET /orc_atas
   # GET /orc_atas.xml
+
+
+    before_filter :load_iniciais
+
+ def load_iniciais
+        @pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
+        @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
+        @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
+        @fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
+        @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
+          @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
+ end
+
+
+
+
+
+
   def index
     @orc_atas = OrcAta.all
 
@@ -14,7 +32,7 @@ class OrcAtasController < ApplicationController
   # GET /orc_atas/1.xml
   def show
     @orc_ata = OrcAta.find(params[:id])
-
+     @orc_ata_itens = OrcAtaIten.find(:all, :conditions => ['orc_ata_id=? ',@orc_ata.id ])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @orc_ata }
@@ -35,16 +53,21 @@ class OrcAtasController < ApplicationController
   # GET /orc_atas/1/edit
   def edit
     @orc_ata = OrcAta.find(params[:id])
+    @orc_ata_itens = OrcAtaIten.find(:all, :conditions => ['orc_ata_id=? ',@orc_ata.id ])
+     session[:news_itens]= @orc_ata.id
+
   end
 
   # POST /orc_atas
   # POST /orc_atas.xml
   def create
     @orc_ata = OrcAta.new(params[:orc_ata])
-    @orc_ata.id
-    @ata = OrcAta.find(:all, :conditions =>['id=?',@orc_ata.id])
+    
     respond_to do |format|
       if @orc_ata.save
+        
+        @ata = OrcAta.find(:all, :conditions =>['id=?',@orc_ata.id])
+
         flash[:notice] = 'OrcAta was successfully created.'
         format.html { redirect_to( {:action => "edit", :id =>@ata[0].id} ) }
         format.xml  { render :xml => @orc_ata, :status => :created, :location => @orc_ata }
@@ -82,5 +105,97 @@ class OrcAtasController < ApplicationController
       format.html { redirect_to(orc_atas_url) }
       format.xml  { head :ok }
     end
+  end
+
+
+  def create_orc_ata_item
+   #session[:create_new_itens]=1
+   @orc_ata_item = OrcAtaIten.new(params[:orc_ata_item])
+      valor_item= @orc_ata_item.total
+
+      @orc_ata_item.orc_ata_id = session[:news_itens]
+            # salva items da ata
+      if @orc_ata_item.save
+         @orc_ata_itens=OrcAtaIten.find(:all, :conditions =>['orc_ata_id =?', session[:news_itens]])
+
+        for item in @orc_ata_itens
+
+          session[:soma]=session[:soma].to_f+item.total.to_f
+          item.total_geral=session[:soma].to_f
+          session[:valor_total] = item.total_geral
+          item_ata_id = item.orc_ata_id
+          item.save
+        end
+
+
+          # salva valor_total no empenho
+         @orc_ata= OrcAta.find(item_ata_id)
+         @orc_ata.valor_total= session[:valor_total]
+
+         @orc_ata.save
+
+
+
+
+        render :update do |page|
+          page.replace_html 'dados', :partial => "orc_ata_itens"
+          page.replace_html 'new'
+        end
+       end
+  end
+
+
+
+ def destroy_itens
+    @orc_ata_iten = OrcAtaIten.find(params[:id])
+    session[:id_ata]= @orc_ata_iten.orc_ata_id
+    valor_item = @orc_ata_iten.total
+    @ata = OrcAta.find(:all, :conditions => ['id = ?', session[:id_ata]])
+    @orc_ata_iten.destroy
+    # salva valor_total no empenho
+    @orc_ata_itens=OrcAtaIten.find(:all, :conditions =>['orc_ata_id =?', session[:id_ata] ])
+    for item in @orc_ata_itens
+          session[:soma]=session[:soma].to_f + item.total.to_f
+          item.total_geral=session[:soma].to_f
+          item.save
+        end
+     @ata[0].valor_total= session[:soma].to_f
+     @ata[0].save
+        respond_to do |format|
+           flash[:notice] = 'ALTERADO COM SUCESSO.'
+              format.html { redirect_to( {:action => "edit", :id => @ata[0].id} ) }
+              format.html { redirect_to( @ata) }
+              format.xml  { render :xml =>  @ata, :status => :created, :location =>  @ata }
+          end
+    end
+
+def consulta_ata
+    if params[:type_of].to_i == 1   #fornecedor
+         @atas = OrcAta.find(:all,:conditions => ['id != 1 and interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+          render :update do |page|
+                  page.replace_html 'empenho', :partial => "empenhos"
+          end
+    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
+                  @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
+               render :update do |page|
+                  page.replace_html 'empenho', :partial => "empenhos"
+               end
+         else if params[:type_of].to_i == 4   #todas
+                 @atas = OrcAta.find(:all, :order => 'id DESC')
+               render :update do |page|
+                  page.replace_html 'ata', :partial => "atas"
+               end
+                 else if params[:type_of].to_i == 5   #dia
+                            w=session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
+                            w1=session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
+                            e2=session[:mes]=params[:empenho][:dataF][3,2]
+                             @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                         render :update do |page|
+                            page.replace_html 'empenho', :partial => "empenhos"
+                         end
+                      end
+                 end
+          end
+     end
   end
 end

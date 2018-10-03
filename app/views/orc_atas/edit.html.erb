@@ -1,80 +1,84 @@
-<h1>Editing orc_ata</h1>
+<div id="interno1">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - ATA DE REGISTRO DE PREÇO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+             <% form_for(@orc_ata) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Ata</font></legend>
+                    <table width="100%">
+                      <tr>
+                         <td width ="8%" align="left"><b>Ata Nº :</b></td>
+                         <td colspan="6"><%= @orc_ata.codigo%>
+                                 &nbsp&nbsp <b>Modalidade: </b>&nbsp<%= f.select:modalidade, (MODALIDADE).sort, :include_blank => ' ' %> &nbsp <b>Nº:</b>  &nbsp<%= f.text_field :numero, :size =>10 %> 
+                                 &nbsp&nbsp <b>NºProcesso:</b>&nbsp<%= f.text_field :administrativo, :size =>10 %>
+                                 &nbsp&nbsp  <b>Data  </b> &nbsp<%if !@orc_ata.data.nil? %><%=h @orc_ata.data.strftime("%d de %b de %Y") %> <%end%>
+                         </td>
+                      </tr>
+                      <tr>
+                         <td align="left"><b>Objetivo:</b></td>
+                         <td align="left"colspan="8"><%= f.text_field :objetivo, :size =>47%>
+                               &nbsp&nbsp  <b>Interessado: </b> &nbsp<%= f.text_field :interessado, :size =>48%></td>
+                      </tr>
+                      <tr>
+                          <td><b>CNPJ/CPF:</b> </td>
+                          <td><%= f.text_field :cnpj, :size =>15%>
+                             &nbsp&nbsp <b>IE:</b> <%= f.text_field :ie, :size =>8%>
+                             &nbsp&nbsp <b>Contato:  </b> <%= f.text_field :contato, :size =>15%>
+                             &nbsp&nbsp <b>Telefone: </b> <%= f.text_field :fone, :size =>15%>
+                             &nbsp&nbsp <b>E-mail:</b> <%= f.text_field :email, :size =>15 %>
 
-<% form_for(@orc_ata) do |f| %>
-  <%= f.error_messages %>
+                         </td>
+                     </tr>
+                      <tr>
+                          <td align="left" width=" 5%"> <b>Endereço: </b> </td>
+                          <td align="left" colspan="6"><%= f.text_field :endereco, :size =>40%>
+                                &nbsp&nbsp <b>Cidade:</b> <%= f.text_field :cidade, :size =>25%>
+                                &nbsp&nbsp <b>Estado:</b> <%= f.text_field :estado, :size =>2%>
+                                &nbsp&nbsp <b>CEP:</b> <%= f.text_field :cep,:size =>11%>
 
-  <p>
-    <%= f.label :codigo %><br />
-    <%= f.text_field :codigo %>
-  </p>
-  <p>
-    <%= f.label :modalidade %><br />
-    <%= f.text_field :modalidade %>
-  </p>
-  <p>
-    <%= f.label :administrativo %><br />
-    <%= f.text_field :administrativo %>
-  </p>
-  <p>
-    <%= f.label :objetivo %><br />
-    <%= f.text_field :objetivo %>
-  </p>
-  <p>
-    <%= f.label :interessado %><br />
-    <%= f.text_field :interessado %>
-  </p>
-  <p>
-    <%= f.label :cnpj %><br />
-    <%= f.text_field :cnpj %>
-  </p>
-  <p>
-    <%= f.label :ie %><br />
-    <%= f.text_field :ie %>
-  </p>
-  <p>
-    <%= f.label :endereco %><br />
-    <%= f.text_field :endereco %>
-  </p>
-  <p>
-    <%= f.label :cidade %><br />
-    <%= f.text_field :cidade %>
-  </p>
-  <p>
-    <%= f.label :estado %><br />
-    <%= f.text_field :estado %>
-  </p>
-  <p>
-    <%= f.label :cep %><br />
-    <%= f.text_field :cep %>
-  </p>
-  <p>
-    <%= f.label :fone %><br />
-    <%= f.text_field :fone %>
-  </p>
-  <p>
-    <%= f.label :e_mail %><br />
-    <%= f.text_field :e_mail %>
-  </p>
-  <p>
-    <%= f.label :contato %><br />
-    <%= f.text_field :contato %>
-  </p>
-  <p>
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
-  </p>
-  <p>
-    <%= f.label :total_total %><br />
-    <%= f.text_field :total_total %>
-  </p>
-  <p>
-    <%= f.label :obs %><br />
-    <%= f.text_field :obs %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+                         </td>
+                     </tr>
+                      <tr>
+                        <td align="left" valign="top"> <b><u><%= link_to 'Itens Ata', "#inline_orc_ata_item", :class =>"inline60" %></u></b></td>
+                        <td colspan="7"><div id="dados"> <%= render :partial => 'orc_ata_itens'  %></div></td>
+                      </tr>
+                     </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
 
-<%= link_to 'Show', @orc_ata %> |
-<%= link_to 'Back', orc_atas_path %>
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_pedido_compras_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+    <%= render "orc_ata_item" %>
+
+
+
