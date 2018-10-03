@@ -1,0 +1,103 @@
+<div id="interno3">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - ATA DE REGISTRO DE PREÇO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+             <% form_for(@orc_ata) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Ata</font></legend>
+                    <table width="100%">
+                      <tr>
+                         <td width ="8%" align="left"><b>Ata Nº :</b></td>
+                         <td colspan="6"><%= f.text_field :codigo, :size =>10%>
+                                 &nbsp&nbsp <b>Modalidade: </b>&nbsp<%= f.select:modalidade, (MODALIDADE).sort, :include_blank => ' ' %> &nbsp <b>Nº:</b>  &nbsp<%= f.text_field :numero, :size =>10 %> </td>
+                      </tr>
+                      <tr>
+                          <td><b>NºProcesso:</b></td>
+                          <td> <%= f.text_field :administrativo, :size =>10 %>
+                                  &nbsp&nbsp  <b>Data  </b> &nbsp<%= datepicker_tag(:orc_empenho, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+                         </td>
+                      </tr>
+                      <tr>
+                         <td align="left"><b>Objetivo:</b></td>
+                         <td align="left"colspan="8"><%= f.text_field :objetivo, :size =>70%></td>
+                      </tr>
+                      <tr>
+                          <td align="left" > <b>Interessado: </b> </td>
+                          <td align="left" colspan="6"><%= f.text_field :interessado, :size =>70%></td>
+                      </tr>
+                      <tr>
+                          <td><b>CNPJ/CPF:</b> </td>
+                          <td><%= f.text_field :cnpj, :size =>15%>
+                             &nbsp&nbsp <b>IE:</b> <%= f.text_field :ie, :size =>15%>
+                             &nbsp&nbsp  <b>Contato:  </b> <%= f.text_field :contato, :size =>21%>
+                         </td>
+                     </tr>
+                      <tr>
+                          <td align="left" width=" 5%"> <b>Endereço: </b> </td>
+                          <td align="left" colspan="6"><%= f.text_field :endereco, :size =>70%></td>
+                      </tr>
+                      <tr>
+                          <td> <b>Cidade:</b></td>
+                          <td><%= f.text_field :cidade, :size =>37%>
+                                &nbsp&nbsp <b>Estado:</b> <%= f.text_field :estado, :size =>2%>
+                                &nbsp&nbsp <b>CEP:</b> <%= f.text_field :cep,:size =>11%>
+
+                         </td>
+                     </tr>
+                      <tr>
+                          <td> <b>Telefone: </b></td>
+                          <td> <%= f.text_field :fone, :size =>20%> &nbsp&nbsp <b>E-mail:</b> <%= f.text_field :email, :size =>39 %>
+                          
+                         </td>
+                      </tr>
+                      <tr>
+                         <td ><b>OBS:</b></font></td>
+                         <td colspan="6"><%= f.text_field :obs,:size =>70%></td>
+                      </tr>
+
+                     </table>
+
+
+
+
+
+
+
+
+
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_pedido_compras_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+    <%= render "orc_ata_item" %>

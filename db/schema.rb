@@ -9,7 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180919135904) do
+ActiveRecord::Schema.define(:version => 20181001191318) do
+
+  create_table "#cursos_inscricaos", :id => false, :force => true do |t|
+    t.integer "curso_id",     :null => false
+    t.integer "inscricao_id", :null => false
+  end
 
   create_table "acompanhamento_despachos", :force => true do |t|
     t.integer  "acompanhamento_id"
@@ -261,11 +266,6 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
     t.string   "local",             :limit => 250
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "cursos_inscricaos", :id => false, :force => true do |t|
-    t.integer "curso_id",     :null => false
-    t.integer "inscricao_id", :null => false
   end
 
   create_table "data_files", :force => true do |t|
@@ -620,6 +620,40 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
     t.integer  "chat_session"
   end
 
+  create_table "orc_ata_itens", :force => true do |t|
+    t.integer  "ata_id"
+    t.integer  "quantidade",  :limit => 10, :precision => 10, :scale => 0
+    t.string   "descricao"
+    t.integer  "unitario",    :limit => 10, :precision => 10, :scale => 0
+    t.integer  "total",       :limit => 10, :precision => 10, :scale => 0
+    t.integer  "total_geral", :limit => 10, :precision => 10, :scale => 0
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_atas", :force => true do |t|
+    t.string   "codigo"
+    t.string   "modalidade"
+    t.string   "administrativo"
+    t.string   "objetivo"
+    t.string   "interessado"
+    t.string   "cnpj"
+    t.string   "ie"
+    t.string   "endereco"
+    t.string   "cidade"
+    t.string   "estado"
+    t.string   "cep"
+    t.string   "fone"
+    t.string   "e_mail"
+    t.string   "contato"
+    t.date     "data"
+    t.integer  "total_total",    :limit => 10, :precision => 10, :scale => 0
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orc_empenho_itens", :force => true do |t|
     t.integer  "orc_empenho_id"
     t.decimal  "quantidade",     :precision => 14, :scale => 2
@@ -627,6 +661,7 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
     t.decimal  "unitario",       :precision => 14, :scale => 2
     t.decimal  "total",          :precision => 14, :scale => 2
     t.decimal  "total_geral",    :precision => 14, :scale => 2
+    t.decimal  "saldo",          :precision => 14, :scale => 2, :default => 0.0
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -654,12 +689,37 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
     t.integer  "pagamento",                                                         :default => 0
     t.date     "data_pg"
     t.string   "obs"
-    t.integer  "cancelado",                                                         :default => 0
+    t.integer  "cancelado",                                                         :default => 0,   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "orc_empenhos(anterior)", :force => true do |t|
+    t.integer  "orc_pedido_compra_id"
+    t.string   "codigo"
+    t.string   "processo"
+    t.string   "npedido",              :limit => 20
+    t.date     "data"
+    t.date     "data_chegou"
+    t.string   "projeto",              :limit => 50
+    t.string   "interessado"
+    t.string   "ficha",                :limit => 15
+    t.string   "cnpj"
+    t.date     "vencimento"
+    t.date     "validade"
+    t.string   "despesa"
+    t.string   "cat_economica"
+    t.string   "destinacao"
+    t.string   "modalidade",           :limit => 50
+    t.decimal  "valor_total",                        :precision => 14, :scale => 2, :default => 0.0
+    t.integer  "pagamento",                                                         :default => 0
+    t.date     "data_pg"
+    t.string   "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orc_empenhos(anterior1)", :force => true do |t|
     t.integer  "orc_pedido_compra_id"
     t.string   "codigo"
     t.string   "processo"
@@ -704,12 +764,12 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
   end
 
   create_table "orc_nota_fiscal_itens", :force => true do |t|
-    t.integer  "nota_fiscal_id"
-    t.integer  "quantidade",     :limit => 10, :precision => 10, :scale => 0
+    t.integer  "orc_nota_fiscal_id"
+    t.decimal  "quantidade",         :precision => 14, :scale => 2
     t.string   "descricao"
-    t.integer  "unitario",       :limit => 10, :precision => 10, :scale => 0
-    t.integer  "total",          :limit => 10, :precision => 10, :scale => 0
-    t.integer  "total_geral",    :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "unitario",           :precision => 14, :scale => 2
+    t.decimal  "total",              :precision => 14, :scale => 2
+    t.decimal  "total_geral",        :precision => 14, :scale => 2
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -717,8 +777,10 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
 
   create_table "orc_nota_fiscals", :force => true do |t|
     t.integer  "orc_empenho_id"
-    t.integer  "valor",          :limit => 10, :precision => 10, :scale => 0
-    t.date     "data"
+    t.string   "nf",             :limit => 100
+    t.decimal  "valor",                         :precision => 14, :scale => 2
+    t.date     "data_nf"
+    t.date     "data_prod"
     t.string   "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -730,12 +792,10 @@ ActiveRecord::Schema.define(:version => 20180919135904) do
     t.integer  "orc_ficha_id"
     t.string   "ficha",          :limit => 20
     t.string   "interessado"
-    t.integer  "valor_pg",       :limit => 10,  :precision => 10, :scale => 0
+    t.integer  "valor_pg",       :limit => 10, :precision => 10, :scale => 0
     t.date     "data_pg"
-    t.string   "nf",             :limit => 100
-    t.date     "data_nf"
     t.string   "obs_pg"
-    t.integer  "pago",                                                         :default => 0
+    t.integer  "pago",                                                        :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

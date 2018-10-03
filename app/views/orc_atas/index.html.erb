@@ -1,0 +1,52 @@
+<h1>Listing orc_atas</h1>
+
+<table>
+  <tr>
+    <th>Codigo</th>
+    <th>Modalidade</th>
+    <th>Administrativo</th>
+    <th>Objetivo</th>
+    <th>Interessado</th>
+    <th>Cnpj</th>
+    <th>Ie</th>
+    <th>Endereco</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Cep</th>
+    <th>Fone</th>
+    <th>E mail</th>
+    <th>Contato</th>
+    <th>Data</th>
+    <th>Total total</th>
+    <th>Obs</th>
+  </tr>
+
+<% @orc_atas.each do |orc_ata| %>
+  <tr>
+    <td><%=h orc_ata.codigo %></td>
+    <td><%=h orc_ata.modalidade %></td>
+    <td><%=h orc_ata.administrativo %></td>
+    <td><%=h orc_ata.objetivo %></td>
+    <td><%=h orc_ata.interessado %></td>
+    <td><%=h orc_ata.cnpj %></td>
+    <td><%=h orc_ata.ie %></td>
+    <td><%=h orc_ata.endereco %></td>
+    <td><%=h orc_ata.cidade %></td>
+    <td><%=h orc_ata.estado %></td>
+    <td><%=h orc_ata.cep %></td>
+    <td><%=h orc_ata.fone %></td>
+    <td><%=h orc_ata.e_mail %></td>
+    <td><%=h orc_ata.contato %></td>
+    <td><%=h orc_ata.data %></td>
+    <td><%=h orc_ata.total_total %></td>
+    <td><%=h orc_ata.obs %></td>
+    <td><%= link_to 'Show', orc_ata %></td>
+    <td><%= link_to 'Edit', edit_orc_ata_path(orc_ata) %></td>
+    <td><%= link_to 'Destroy', orc_ata, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New orc_ata', new_orc_ata_path %>

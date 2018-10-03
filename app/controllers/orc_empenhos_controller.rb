@@ -397,12 +397,15 @@ end
              end
         end
      end
-
-
-
-
-     
-
  end
+
+  def ja_existe
+       if OrcEmpenho.find_by_codigo(params[:orc_empenho_codigo]) then
+        render :partial => "ja_existe"
+
+        else
+         render :nothing => true
+       end
+  end
 
 end

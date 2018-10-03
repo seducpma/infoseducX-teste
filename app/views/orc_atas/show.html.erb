@@ -1,0 +1,86 @@
+<div id="interno3">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong> ORÇAMENTO SEDUC/PMA - ATA DE REGISTRO DE PREÇO </strong></font><br/>
+ </div>
+ <table width="100%"  bgcolor="white">
+        <tr>
+            <td rowspan="1"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+            <td><center><font size="4"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+                <center><font size="2"><b><i> Secretaria da Educação</i></b><br/></center>
+            </td>
+        </tr>
+    <tr>
+       <td colspan="4"><hr/></td>
+     </tr>
+
+
+
+ </table>
+  <table  width="100%"  bgcolor="white" >
+       <tr>
+           <td colspan="4" align="left"><b> ATA DE RESITRO DE PREÇO Nº <%=h @orc_ata.codigo %> <br/>
+                                       <%=h @orc_ata.modalidade %> Nº  <%=h @orc_ata.numero %> <br/>
+                                       PROCESSO ADMINISTRATIVO Nº  <%=h @orc_ata.administrativo %> </b><br/><br/>
+          </td>
+      </tr>
+      <tr>
+        <td align="left"> <b>Data:</b> </td> <td> <%if !@orc_ata.data.nil? %><%=h @orc_data.data.strftime("%d de %b de %Y") %> <%end%></td>
+      </tr>
+      <tr>
+        <td align="left" ><b>Objetivo: </b></td> <td> <%=h @orc_ata.objetivo %> </td>
+      </tr>
+      <tr>
+        <td align="left" ><b>Interessado: </b></td> <td> <%=h @orc_ata.interessado %> </td>
+      </tr>
+      <tr>
+         <td><b>CNPJ/CPF:</b> </td> <td><%= @orc_ata.cnpj%>
+                          &nbsp&nbsp <b>IE:</b> <%= @orc_ata.ie%>
+                          &nbsp&nbsp  <b>Contato:  </b> <%=  @orc_ata.contato%>
+         </td>
+     </tr>
+     <tr>
+         <td align="left" width=" 5%"> <b>Endereço: </b> </td>
+         <td align="left" colspan="6"><%= @orc_ata.endereco %></td>
+     </tr>
+     <tr>
+         <td> <b>Cidade:</b></td>
+         <td><%= @orc_ata.cidade%>
+         &nbsp&nbsp <b>Estado:</b> <%= @orc_ata.estado%>
+         &nbsp&nbsp <b>CEP:</b> <%= @orc_ata.cep%>
+       </td>
+    </tr>
+    <tr>
+        <td> <b>Telefone: </b></td>
+        <td> <%= @orc_ata.fone%> &nbsp&nbsp <b>E-mail:</b> <%= @orc_ata.email%></td>
+    </tr>
+    <tr>
+        <td ><b>OBS:</b></font></td>
+        <td colspan="6"><%= @orc_ata.obs%></td>
+    </tr>
+  </table>
+
+
+      <table>
+           <tr>
+              <td  width="2%"align="left" ><%= button_to('Cadastrar', new_orc_empenho_path, :method => "get", :title => "Cadastrar")%></td>
+              <td  width="2%"align="left" ><%= button_to('Consultar', consulta_orc_empenhos_path, :method => "get", :title => "Fechar")%></td>
+              <td  align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+               <td align="right" colspan="1"><%= button_to('Editar', {:action => "edit", :id => @orc_ata.id},:method => "get", :title => "Editar") %></td>
+
+
+            </tr>
+      </table>
+
+</font>
+<br/>
+
+</div>
+<br/>
+</div>
+
+
+
+
+

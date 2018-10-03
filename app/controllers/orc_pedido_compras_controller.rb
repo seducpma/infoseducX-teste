@@ -41,6 +41,7 @@ end
   # GET /orc_pedido_compras/1
   # GET /orc_pedido_compras/1.xml
   def show
+
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
     @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
     session[:id_pedido_show]= params[:id]
@@ -65,7 +66,7 @@ end
    def new_descricaos
 
     @orc_pedido_compra = OrcPedidoCompra.find(session[:news_decricao])
-
+    #session[:show_destino]=1
   end
 
   # GET /orc_pedido_compras/1/edit
@@ -73,6 +74,21 @@ end
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
     @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
   end
+
+  def destino
+     t=0
+
+    @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
+    @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
+
+    t=0
+    w= parms[:destino]
+    t=0
+
+
+
+  end
+
 
   # POST /orc_pedido_compras
   # POST /orc_pedido_compras.xml
@@ -82,7 +98,8 @@ end
 
     respond_to do |format|
       if @orc_pedido_compra.save
-        
+        w= params[:detino]
+        t=0
         @orc_pedido_compra.user_id = current_user.id
         session[:news_decricao]= @orc_pedido_compra.id
         
@@ -105,16 +122,32 @@ end
   # PUT /orc_pedido_compras/1.xml
   def update
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
+    session[:destino]= params[:destino]
 
-    respond_to do |format|
-      if @orc_pedido_compra.update_attributes(params[:orc_pedido_compra])
-        flash[:notice] = 'SALVO COM SUCESSO.'
-        format.html { redirect_to(@orc_pedido_compra) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @orc_pedido_compra.errors, :status => :unprocessable_entity }
-      end
+    if session[:show_destino]==1
+        respond_to do |format|
+          if @orc_pedido_compra.update_attributes(params[:orc_pedido_compra])
+            flash[:notice] = 'SALVO COM SUCESSO.'
+            format.html { redirect_to( {:action => "destino", :id =>@orc_pedido_compra.id} ) }
+            format.xml  { head :ok }
+          else
+            format.html { render :action => "edit" }
+            format.xml  { render :xml => @orc_pedido_compra.errors, :status => :unprocessable_entity }
+          end
+        end
+       session[:show_destino]=0
+    else
+        respond_to do |format|
+          if @orc_pedido_compra.update_attributes(params[:orc_pedido_compra])
+            flash[:notice] = 'SALVO COM SUCESSO.'
+            format.html { redirect_to(@orc_pedido_compra) }
+            format.xml  { head :ok }
+          else
+            format.html { render :action => "edit" }
+            format.xml  { render :xml => @orc_pedido_compra.errors, :status => :unprocessable_entity }
+          end
+        end
+       session[:show_destino]=0
     end
   end
 
@@ -241,6 +274,15 @@ end
 
     @pedidos_compra = OrcPedidoCompra.find(:all, :conditions => ['codigo= ? and id != 1', params[:orc_pedido_compra_codigo]], :order => 'id DESC')
    render :partial => "pedidos"
+  end
+
+  def ja_existe
+       if OrcPedidoCompra.find_by_codigo(params[:orc_pedido_compra_codigo]) then
+        render :partial => "ja_existe"
+        
+        else
+         render :nothing => true
+       end
   end
 
 end

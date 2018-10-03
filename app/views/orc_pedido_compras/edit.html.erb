@@ -16,10 +16,9 @@
                   <fieldset><legend><font  size=3> Serviço Interno</font></legend>
                     <table width="100%" >
                       <tr>
-                         <td width ="9%" align="left"><b>Número:</b></font></td>
-                         <td width ="8%" align="left"><%= f.text_field :codigo, :size =>10%></td>
-                         <td align="left"><b>Objetivo:</b></td>
-                         <td align="left"><%= f.text_field :objetivo, :size =>88 %></td>
+                         <td colspan="6"align="left"><b>Destino S.I.: </b>&nbsp  <%= select_tag :destino, options_for_select([ "SUPRIMENTOS", "CONTABILIDADE" ]) %>
+                         &nbsp&nbsp&nbsp <b>Número:</b> &nbsp <%= f.text_field :codigo, :size =>10%>
+                         &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>55 %></td>
                       </tr>
                       <tr>
                          <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
@@ -45,7 +44,8 @@
                       <tr>
                          <td align="left"><b>Justificativa:</b></td>
                          <td colspan="5" align="left"><%= f.text_field :justificativa, :size =>110 %></td>
-                      </tr>
+                       </tr>
+
 
                    </table>
                   </fieldset>

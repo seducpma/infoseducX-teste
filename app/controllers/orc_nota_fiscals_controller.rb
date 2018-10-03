@@ -349,9 +349,6 @@ class OrcNotaFiscalsController < ApplicationController
         end
     end
 
-
-
-
     def dados_empenho
         session[:empenho_id] = params[:orc_nota_fiscal_orc_empenho_id]
         @orc_empenho=  OrcEmpenho.find(:all, :conditions => ['id = ?',params[:orc_nota_fiscal_orc_empenho_id]])
@@ -359,5 +356,13 @@ class OrcNotaFiscalsController < ApplicationController
         render :partial => "empenho"
     end
 
-  
+  def ja_existe
+         if OrcNotaFiscal.find_by_nf(params[:orc_nota_fiscal_nf]) then
+        render :partial => "ja_existe"
+
+        else
+         render :nothing => true
+       end
+  end
+
 end

@@ -1,0 +1,80 @@
+<h1>Editing orc_ata</h1>
+
+<% form_for(@orc_ata) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </p>
+  <p>
+    <%= f.label :modalidade %><br />
+    <%= f.text_field :modalidade %>
+  </p>
+  <p>
+    <%= f.label :administrativo %><br />
+    <%= f.text_field :administrativo %>
+  </p>
+  <p>
+    <%= f.label :objetivo %><br />
+    <%= f.text_field :objetivo %>
+  </p>
+  <p>
+    <%= f.label :interessado %><br />
+    <%= f.text_field :interessado %>
+  </p>
+  <p>
+    <%= f.label :cnpj %><br />
+    <%= f.text_field :cnpj %>
+  </p>
+  <p>
+    <%= f.label :ie %><br />
+    <%= f.text_field :ie %>
+  </p>
+  <p>
+    <%= f.label :endereco %><br />
+    <%= f.text_field :endereco %>
+  </p>
+  <p>
+    <%= f.label :cidade %><br />
+    <%= f.text_field :cidade %>
+  </p>
+  <p>
+    <%= f.label :estado %><br />
+    <%= f.text_field :estado %>
+  </p>
+  <p>
+    <%= f.label :cep %><br />
+    <%= f.text_field :cep %>
+  </p>
+  <p>
+    <%= f.label :fone %><br />
+    <%= f.text_field :fone %>
+  </p>
+  <p>
+    <%= f.label :e_mail %><br />
+    <%= f.text_field :e_mail %>
+  </p>
+  <p>
+    <%= f.label :contato %><br />
+    <%= f.text_field :contato %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.label :total_total %><br />
+    <%= f.text_field :total_total %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orc_ata %> |
+<%= link_to 'Back', orc_atas_path %>
