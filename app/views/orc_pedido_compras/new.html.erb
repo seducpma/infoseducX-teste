@@ -16,16 +16,16 @@
                   <fieldset><legend><font  size=3> Serviço Interno</font></legend>
                     <table width="100%" >
                       <tr>
-                         <td width ="9%" align="left"><b>Número:</b></font></td>
-                         <td width ="8%" align="left"><%= f.text_field :codigo, :size =>10%>
-                         <%= observe_field :orc_pedido_compra_codigo,
+                         <td colspan="6"align="left"><b>Destino S.I.: </b>&nbsp  <%= select_tag :destino, options_for_select([ "SUPRIMENTOS", "CONTABILIDADE" ]) %>
+                         &nbsp&nbsp&nbsp <b>Número:</b> &nbsp <%= f.text_field :codigo, :size =>10%>
+                              <%= observe_field :orc_pedido_compra_codigo,
                               :with => :orc_pedido_compra_codigo,
                               :url => { :action => 'ja_existe' },
                               :update => "ja_existe"%>
-                         </td>
-                         <td align="left"><b>Objetivo:</b></td>
-                         <td align="left"><%= f.text_field :objetivo, :size =>88 %></td>
+
+                         &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>55 %></td>
                       </tr>
+
                         <div id="ja_existe">
                               <tr>
                                  <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
