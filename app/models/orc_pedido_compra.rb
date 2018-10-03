@@ -7,7 +7,7 @@ class OrcPedidoCompra < ActiveRecord::Base
 
 
   after_create :geracodigo
-efore_save  :maiusculo
+ before_save  :maiusculo
 
  def maiusculo
     if  !self.objetivo.nil?
