@@ -7,7 +7,19 @@ class OrcPedidoCompra < ActiveRecord::Base
 
 
   after_create :geracodigo
+efore_save  :maiusculo
 
+ def maiusculo
+    if  !self.objetivo.nil?
+          self.objetivo.upcase!
+    end
+    if  !self.fornecedor.nil?
+          self.fornecedor.upcase!
+    end
+    if  !self.justificativa.nil?
+          self.justificativa.upcase!
+    end
+  end
 def geracodigo
     #self.codigo = [self.id-612].to_s + ("/2017")
     #self.codigo = [self.id].to_s + ("/2018")
