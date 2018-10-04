@@ -6,12 +6,13 @@ class OrcAtasController < ApplicationController
     before_filter :load_iniciais
 
  def load_iniciais
-        @pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
-        @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
+        #@pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
+          #@despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
+        @atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) > NOW()" ])
         @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
-        @fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
-        @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
-          @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
+        #@fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
+        #@orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
+        #@orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
  end
 
 
@@ -65,7 +66,7 @@ class OrcAtasController < ApplicationController
     
     respond_to do |format|
       if @orc_ata.save
-        
+        ession[:news_itens]= @orc_ata.id
         @ata = OrcAta.find(:all, :conditions =>['id=?',@orc_ata.id])
 
         flash[:notice] = 'OrcAta was successfully created.'
@@ -116,6 +117,9 @@ class OrcAtasController < ApplicationController
       @orc_ata_item.orc_ata_id = session[:news_itens]
             # salva items da ata
       if @orc_ata_item.save
+         @orc_ata_item.saldo=@orc_ata_item.quantidade
+
+
          @orc_ata_itens=OrcAtaIten.find(:all, :conditions =>['orc_ata_id =?', session[:news_itens]])
 
         for item in @orc_ata_itens
@@ -133,7 +137,7 @@ class OrcAtasController < ApplicationController
          @orc_ata.valor_total= session[:valor_total]
 
          @orc_ata.save
-
+         @orc_ata_item.save
 
 
 
@@ -175,13 +179,14 @@ def consulta_ata
           render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
           end
-    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
+    else if params[:type_of].to_i == 3   # ata         NÂO FUNCIONA
+
                   @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
                render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
                end
          else if params[:type_of].to_i == 4   #todas
-                 @atas = OrcAta.find(:all, :order => 'id DESC')
+                 @atas = OrcAta.find(:all, :order => 'codigo DESC')
                render :update do |page|
                   page.replace_html 'ata', :partial => "atas"
                end
@@ -198,4 +203,13 @@ def consulta_ata
           end
      end
   end
+
+def ata_consulta
+   w= params[:orc_ata_id]
+    @atas = OrcAta.find(:all, :order => 'codigo DESC')
+     @atas=  OrcAta.find(:all, :conditions => ['id = ?',params[:orc_ata_id]])
+      render :partial => "atas"
+
+
+end
 end

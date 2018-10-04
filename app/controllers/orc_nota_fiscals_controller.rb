@@ -62,7 +62,7 @@ class OrcNotaFiscalsController < ApplicationController
 
         session[:edita_item]=1
 
-        #session[:news_itens]= @orc_nota_fiscal.id
+        session[:news_itens]= @orc_nota_fiscal.id
         #session[:edita_item]=0
     end
 

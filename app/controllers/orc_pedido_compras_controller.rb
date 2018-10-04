@@ -73,17 +73,14 @@ end
   def edit
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
     @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
+    session[:news_decricao]= @orc_pedido_compra.id
   end
 
   def destino
-     t=0
-
+t=0
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
     @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
 
-    t=0
-    w= parms[:destino]
-    t=0
 
 
 
