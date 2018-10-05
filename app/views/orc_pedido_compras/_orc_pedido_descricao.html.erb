@@ -3,7 +3,7 @@
   <div id='inline_orc_pedido_descricao' style='padding:10px;  background:#EEE9E9;'>
 
     <% form_remote_for(:orc_pedido_descricao,:url => { :action => 'create_orc_pedido_descricao' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
-      
+      <% @ata_itens = OrcAtaIten.find(:all, :conditions => ['orc_ata_id = ?', session[:ata_id]]) %>
      <h2>DESCRIÇÃO PEDIDO DE COMPRA: <%= session[:id_compra] %></h2>
       <hr>
              <%= error_messages_for 'contact' %>
@@ -17,7 +17,11 @@
          </tr>
         <tr>
             <td><%= f.text_field :quantidade, :size =>1, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
-            <td><%= f.text_field :descricao, :size =>30 %></td>
+            <td>
+
+                    <%= f.text_field :descricao, :size =>30 %>
+
+            </td>
             <td>R$ <%= f.text_field :unitario, :size =>5, :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>
             <td>R$ <%= f.text_field :total, :size =>10, :id=> 'subtotal' %></td>
         </tr>

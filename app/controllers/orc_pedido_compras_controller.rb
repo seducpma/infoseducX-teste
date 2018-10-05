@@ -67,6 +67,9 @@ end
    def new_descricaos
 
     @orc_pedido_compra = OrcPedidoCompra.find(session[:news_decricao])
+    w=session[:ata]=@orc_pedido_compra.ata
+    w1=session[:ata_id]==@orc_pedido_compra.id
+    t=0
     #session[:show_destino]=1
   end
 
@@ -170,7 +173,7 @@ end
 
       if @orc_pedido_descricao.save
         @orc_pedido_descricaos=OrcPedidoDescricao.find(:all, :conditions =>['orc_pedido_compra_id =?', session[:news_decricao] ])
-        w3=session[:quant_item]= @orc_pedido_descricao.quantidade
+        #w3=session[:quant_item]= @orc_pedido_descricao.quantidade
         cont = 0
         for descricao in @orc_pedido_descricaos
           cont=cont+1
@@ -182,21 +185,21 @@ end
         end
 
          @orc_pedido_compra.valor_total = total_geral
-         w=session[:ata]= @orc_pedido_compra.ata
+         #w=session[:ata]= @orc_pedido_compra.ata
          @orc_pedido_compra.save
 
           # atualização saldo ata
-          if !session[:ata].empty?
-            @ata = OrcAta.find(:all, :conditions=>['codigo =?',session[:ata]])
-            @ata_itens= OrcAtaIten.find(:all, :conditions=>['orc_ata_id=?', @ata[0].id])
-            for item in @ata_itens
-                w1=session[:saldo_anterior]= item.saldo
-                w2=item.saldo = session[:saldo_anterior] - session[:quant_item]
+          #if !session[:ata].empty?
+          #  @ata = OrcAta.find(:all, :conditions=>['codigo =?',session[:ata]])
+          #  @ata_itens= OrcAtaIten.find(:all, :conditions=>['orc_ata_id=?', @ata[0].id])
+          #  for item in @ata_itens
+          #      w1=session[:saldo_anterior]= item.saldo
+          #      w2=item.saldo = session[:saldo_anterior] - session[:quant_item]
 t=0
-                item.save
-            end
+  #              item.save
+  #          end
 
-          end
+  #        end
 
 
         render :update do |page|
