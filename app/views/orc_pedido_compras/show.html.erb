@@ -31,7 +31,7 @@
         <td colspan="4" align="left"><b><u>OBJETIVO</u>: </b> &nbsp <%=h @orc_pedido_compra.objetivo %> <br/><br/></td>
       </tr>
       <tr>
-        <td colspan="4" align="left"><b><u>FORNECEDOR</u>: </b> &nbsp <%=h @orc_pedido_compra.fornecedor %> <br/><br/></td>
+        <td colspan="4" align="left"><b><u>FORNECEDOR</u>: </b> &nbsp <%=h @orc_pedido_compra.fornecedor %>  - <b><u>CPF/CNPJ</u>: </b> <%=h @orc_pedido_compra.cnpj%> <br/><br/></td>
       </tr>
         <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
               <tr>

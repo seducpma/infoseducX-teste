@@ -25,14 +25,15 @@
                       <tr>
                          <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
                          <td colspan="3" align="left"><%=h @orc_pedido_compra.fornecedor %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                       <b>CNJPJ:</b>&nbsp&nbsp <%=h @orc_pedido_compra.cnpj %>
+                                                       <b>CNJPJ:</b>&nbsp&nbsp <%=h @orc_pedido_compra.cnpj %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                       <b>ATA:</b>&nbsp&nbsp <%= f.collection_select :ata, @atas, :codigo, :codigo, :include_blank => ' '  %>
                          </td>
                       </tr>
 
                      <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
                               <tr>
-                                 <td align="left"><b>Ficha:</b></td>
-                                 <td align="left"><%=h @orc_pedido_compra.orc_ficha.ficha%>  </td>
+                                 <td align="left"  valign="top"><b>Ficha:</b></td>
+                                 <td align="left"  valign="top"><%=h @orc_pedido_compra.orc_ficha.ficha%>  </td>
                                  <td colspan="2"><table  >
                                                         <tr>
                                                           <td align="left"><b>Dotação Orçamentária: </b> <%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>

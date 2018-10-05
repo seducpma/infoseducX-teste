@@ -9,7 +9,7 @@ class OrcEmpenhosController < ApplicationController
         @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
         @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
         @fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
-
+        #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) > NOW()" ])
         @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
           @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
  end
@@ -87,7 +87,7 @@ class OrcEmpenhosController < ApplicationController
 
 
 
-           if session[:create_new_itens]== 1
+          if session[:create_new_itens]== 1
              session[:create_new_itens]= 0
           end
           empenho=@orc_empenho.id
@@ -238,12 +238,10 @@ class OrcEmpenhosController < ApplicationController
           item_empenho_id = item.orc_empenho_id
           item.save
         end
-
-
           # salva valor_total no empenho
          @orc_empenho= OrcEmpenho.find(item_empenho_id)
          @orc_empenho.valor_total= session[:valor_total]
-
+         #session[:ata] = @orc_empenho.ata
          @orc_empenho.save
 
           if session[:atualiza_ficha] == 1
@@ -264,8 +262,13 @@ class OrcEmpenhosController < ApplicationController
  #       @pedido[0].empenhado = 1
  #       @pedido[0].save
 
+             # Atualiza saldo_ata
+          #if !session[:ata].empty?
+          #    t=0
+          #    @ata = OrcAta.find(:all, :conditions =>["codigo =?",     ])
 
-
+        #  end
+ #    t=0
         render :update do |page|
           page.replace_html 'dados', :partial => "orc_empenho_itens"
           page.replace_html 'new'

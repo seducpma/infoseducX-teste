@@ -175,9 +175,9 @@ class OrcAtasController < ApplicationController
 
 def consulta_ata
     if params[:type_of].to_i == 1   #fornecedor
-         @atas = OrcAta.find(:all,:conditions => ['id != 1 and interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+         @atas = OrcAta.find(:all,:conditions => ['interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
           render :update do |page|
-                  page.replace_html 'empenho', :partial => "empenhos"
+                  page.replace_html 'ata', :partial => "atas"
           end
     else if params[:type_of].to_i == 3   # ata         NÂO FUNCIONA
 
@@ -191,12 +191,12 @@ def consulta_ata
                   page.replace_html 'ata', :partial => "atas"
                end
                  else if params[:type_of].to_i == 5   #dia
-                            w=session[:dataI]=params[:empenho][:dataI][6,4]+'-'+params[:empenho][:dataI][3,2]+'-'+params[:empenho][:dataI][0,2]
-                            w1=session[:dataF]=params[:empenho][:dataF][6,4]+'-'+params[:empenho][:dataF][3,2]+'-'+params[:empenho][:dataF][0,2]
-                            e2=session[:mes]=params[:empenho][:dataF][3,2]
-                             @empenhos = OrcEmpenho.find_by_sql("SELECT * FROM orc_empenhos WHERE (data_chegou BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                            session[:dataI]=params[:ata][:dataI][6,4]+'-'+params[:ata][:dataI][3,2]+'-'+params[:ata][:dataI][0,2]
+                            session[:dataF]=params[:ata][:dataF][6,4]+'-'+params[:ata][:dataF][3,2]+'-'+params[:ata][:dataF][0,2]
+                            session[:mes]=params[:ata][:dataF][3,2]
+                             @atas = OrcAta.find_by_sql("SELECT * FROM orc_atas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
                          render :update do |page|
-                            page.replace_html 'empenho', :partial => "empenhos"
+                            page.replace_html 'ata', :partial => "atas"
                          end
                       end
                  end

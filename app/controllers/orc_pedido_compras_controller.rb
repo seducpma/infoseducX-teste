@@ -7,6 +7,7 @@ class OrcPedidoComprasController < ApplicationController
  def load_iniciais
         session[:current_user] = current_user.id
         @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
+        @atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) > NOW()" ])
         @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
         if current_user.has_role?('admin') or current_user.has_role?('SEDUC')
            @orc_pedido_si= OrcPedidoCompra.find(:all, :select => 'codigo', :conditions => ['ano= ? ', Time.now.year], :order => 'codigo DESC')
@@ -77,12 +78,9 @@ end
   end
 
   def destino
-t=0
+
     @orc_pedido_compra = OrcPedidoCompra.find(params[:id])
     @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ['orc_pedido_compra_id=? ',@orc_pedido_compra.id ])
-
-
-
 
   end
 
@@ -172,7 +170,7 @@ t=0
 
       if @orc_pedido_descricao.save
         @orc_pedido_descricaos=OrcPedidoDescricao.find(:all, :conditions =>['orc_pedido_compra_id =?', session[:news_decricao] ])
-
+        w3=session[:quant_item]= @orc_pedido_descricao.quantidade
         cont = 0
         for descricao in @orc_pedido_descricaos
           cont=cont+1
@@ -184,7 +182,22 @@ t=0
         end
 
          @orc_pedido_compra.valor_total = total_geral
+         w=session[:ata]= @orc_pedido_compra.ata
          @orc_pedido_compra.save
+
+          # atualização saldo ata
+          if !session[:ata].empty?
+            @ata = OrcAta.find(:all, :conditions=>['codigo =?',session[:ata]])
+            @ata_itens= OrcAtaIten.find(:all, :conditions=>['orc_ata_id=?', @ata[0].id])
+            for item in @ata_itens
+                w1=session[:saldo_anterior]= item.saldo
+                w2=item.saldo = session[:saldo_anterior] - session[:quant_item]
+t=0
+                item.save
+            end
+
+          end
+
 
         render :update do |page|
           page.replace_html 'dados', :partial => "orc_pedido_descricaos"

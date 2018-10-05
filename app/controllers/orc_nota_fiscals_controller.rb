@@ -7,7 +7,7 @@ class OrcNotaFiscalsController < ApplicationController
 
     def load_iniciais
         #@pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
-        @empenhos = OrcEmpenho.all(:conditions => ["date_format(data_chegou,'%Y') = ?", Time.now.year])
+        @empenhos = OrcEmpenho.all(:conditions => ["date_format(data_chegou,'%Y') = ?", Time.now.year],:order => 'codigo DESC')
         @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
         #@fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
 
