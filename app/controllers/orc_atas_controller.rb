@@ -264,17 +264,17 @@ def consulta_ata_produto
 
     if params[:type_of].to_i == 1   #fornecedor
          #@atas = OrcAta.find(:all,:conditions => ['interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
-         @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_atas.interessado like ?', "%" + params[:search_fornecedor_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC' )
+         @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_atas.interessado like ?', "%" + params[:search_fornecedor_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC, orc_ata_itens.descricao ASC' )
                render :update do |page|
                   page.replace_html 'ata', :partial => "ata_saldo"
                end
     else if params[:type_of].to_i == 2   
-           @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.saldo > 0'], :order => 'orc_atas.codigo DESC' )
+           @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.saldo > 0'], :order => 'orc_atas.codigo DESC,orc_ata_itens.descricao ASC' )
                render :update do |page|
                   page.replace_html 'ata', :partial => "ata_saldo"
                end
          else if params[:type_of].to_i == 4   #produto
-                 @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.descricao like ?', "%" + params[:search_produto_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC' )
+                 @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.descricao like ?', "%" + params[:search_produto_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC orc_ata_itens.descricao ASC' )
                    render :update do |page|
                       page.replace_html 'ata', :partial => "ata_saldo"
                    end
@@ -310,7 +310,7 @@ def ata_consulta
 end
 
 def ata_consulta_saldo
-     @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo',  :conditions => ['orc_atas.id = ?', params[:orc_ata_id] ], :order => 'orc_atas.codigo DESC' )
+     @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo',  :conditions => ['orc_atas.id = ?', params[:orc_ata_id] ], :order => 'orc_atas.codigo DESC, orc_ata_itens.descricao ASC' )
       render :partial => "ata_saldo"
 end
 end

@@ -47,12 +47,9 @@
               <td align="left"><%=h ata.produto %></td>
               <td align="center"><%=h ata.quantidade %> </td>
               <td align="center"><%=h ata.saldo%> </td>
-              <%  if  (session[:pedido_user_id] == session[:current_user])or (current_user.has_role?('admin'))  %>
+              
                       <td align="center"><%= button_to 'Editar', {:controller=>'orc_ata_itens',:action => "edit", :id =>ata.item_id}, :method => "get", :title => "Editar"%></td>
 
-              <%else %>
-                      <td align="center">-- </td>
-              <%end%>
 
 
 
