@@ -56,13 +56,13 @@ class OrcNotaFiscalsController < ApplicationController
     def edit
         @orc_nota_fiscal = OrcNotaFiscal.find(params[:id])
     
-        w=session[:empenho_id]=@orc_nota_fiscal.orc_empenho_id
-         @orc_nota_fiscal_itens = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id =? ',@orc_nota_fiscal.id ])
-        w1=session[:orc_nota_fiscal_itens] = OrcNotaFiscalIten.find_by_sql("SELECT *,quantidade as qtde_ant, 0 as alterado FROM orc_nota_fiscal_itens WHERE orc_nota_fiscal_id="+(@orc_nota_fiscal.id).to_s)
+        session[:empenho_id]=@orc_nota_fiscal.orc_empenho_id
+        @orc_nota_fiscal_itens = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id =? ',@orc_nota_fiscal.id ])
+        session[:orc_nota_fiscal_itens] = OrcNotaFiscalIten.find_by_sql("SELECT *,quantidade as qtde_ant, 0 as alterado FROM orc_nota_fiscal_itens WHERE orc_nota_fiscal_id="+(@orc_nota_fiscal.id).to_s)
 
-        w2=session[:edita_item]=1
+        session[:edita_item]=1
 
-        w3=session[:news_itens]= @orc_nota_fiscal.id
+        session[:news_itens]= @orc_nota_fiscal.id
         #session[:edita_item]=0
     end
 
@@ -222,7 +222,6 @@ class OrcNotaFiscalsController < ApplicationController
             @empenho = OrcEmpenho.find(:all, :joins => "INNER JOIN orc_nota_fiscals ON orc_empenhos.id = orc_nota_fiscals.orc_empenho_id INNER JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id ", :conditions => ["orc_nota_fiscal_itens.id =?", @orc_nota_fiscal_item.id])
             empenho = empenho_id= @empenho[0].id
             @empenho_iten= OrcEmpenhoIten.find(:all, :conditions => ['descricao=? and orc_empenho_id=?',@orc_nota_fiscal_item.descricao , empenho])
-            t=0
             empenho_id= @empenho_iten[0].id
             saldo_atual= @empenho_iten[0].saldo.to_f
             @empenho_iten[0].saldo = saldo_atual.to_f - quantidade_acrescentar.to_f

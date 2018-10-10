@@ -2,6 +2,7 @@ class OrcPedidoCompra < ActiveRecord::Base
   belongs_to :orc_ficha
   has_many :orc_pedido_descricaos, :dependent => :destroy
   has_many :orc_empenhos
+  belongs_to :orc_ata
   #validates_presence_of :orc_ficha_id
   usar_como_dinheiro :valor_total, :valor_si, :rel_valor_si, :rel_valor_em
 

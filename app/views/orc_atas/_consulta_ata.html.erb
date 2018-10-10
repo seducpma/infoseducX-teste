@@ -1,6 +1,6 @@
 <table width="100%" align="center" >
    <tr>
-     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Nº Ata:</b></font>
+     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Ata:</b></font>
          <%= collection_select :orc_ata, :id, @atas, :id, :objetivo, :include_blank => ' -- Selecionar -- ' %></font>
               <%= observe_field 'orc_ata_id',
                :update => "ata",

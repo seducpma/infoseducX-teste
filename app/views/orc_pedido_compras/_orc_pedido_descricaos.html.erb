@@ -2,10 +2,14 @@
 <table  border="1" cellspacing="0" cellpadding="1" width="100%">
     <tr bgcolor= white >
       <td align="center"><b>Item</b></td>
-      <td align="center" width ="10%"><b>Quant.</b></td>
+      <td align="center" ><b>Quant.</b></td>
+      <td align="center" ><b>Medida</b></td>
+      
       <td align="center" width =" 50%" <b>Descrição</b></td>
       <td align="center"><b>Unitário</b></td>
       <td align="center" ><b>Valor</b></td>
+      <td align="center" colspan="2"  ></td>
+
       
     </tr>
     <%contador=1%>
@@ -16,10 +20,13 @@
           <tr>
              <td align="center"><%= contador%> </td>
              <td align="center"><%= descricao.quantidade%> </td>
+             <td align="center"><%= descricao.medida %> </td>
+             
              <td> <%= descricao.descricao%>  </td>
              <td align="center"> R$ <%= descricao.unitario%> </td>
              <td align="center"> R$ <%= descricao.total%> </td>
              <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy_descricao", :id =>descricao}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></td>
+             <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto1.png", :size => "7x7"), {:controller => 'orc_pedido_descricaos',:action => "edit", :id =>descricao}, :method => "get", :title => "Editar"%></td>
              
            </tr>
           <% contador = contador+1%>
@@ -27,7 +34,7 @@
         <%end%>
    <%end%>
            <tr>
-             <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+             <td colspan="5" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
              <td align="center"> R$ <%= total_geral %></td>
 
            </tr>

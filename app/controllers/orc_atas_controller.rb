@@ -66,7 +66,7 @@ class OrcAtasController < ApplicationController
     
     respond_to do |format|
       if @orc_ata.save
-        ession[:news_itens]= @orc_ata.id
+        session[:news_itens]= @orc_ata.id
         @ata = OrcAta.find(:all, :conditions =>['id=?',@orc_ata.id])
 
         flash[:notice] = 'OrcAta was successfully created.'
@@ -101,9 +101,10 @@ class OrcAtasController < ApplicationController
   def destroy
     @orc_ata = OrcAta.find(params[:id])
     @orc_ata.destroy
-
+    @ata =
     respond_to do |format|
-      format.html { redirect_to(orc_atas_url) }
+      format.html { redirect_to( home_path ) }
+
       format.xml  { head :ok }
     end
   end
@@ -124,18 +125,16 @@ class OrcAtasController < ApplicationController
 
         for item in @orc_ata_itens
 
-          session[:soma]=session[:soma].to_f+item.total.to_f
+          w2=session[:soma]=session[:soma].to_f+item.total.to_f
           item.total_geral=session[:soma].to_f
-          session[:valor_total] = item.total_geral
+          w1=session[:valor_total] = item.total_geral
           item_ata_id = item.orc_ata_id
           item.save
         end
 
-
-          # salva valor_total no empenho
+         # salva valor_total no empenho
          @orc_ata= OrcAta.find(item_ata_id)
          @orc_ata.valor_total= session[:valor_total]
-
          @orc_ata.save
          @orc_ata_item.save
 
@@ -179,37 +178,139 @@ def consulta_ata
           render :update do |page|
                   page.replace_html 'ata', :partial => "atas"
           end
-    else if params[:type_of].to_i == 3   # ata         NÂO FUNCIONA
+    else if params[:type_of].to_i == 2   # encerrando 30 dias
 
-                  @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
-               render :update do |page|
-                  page.replace_html 'empenho', :partial => "empenhos"
-               end
-         else if params[:type_of].to_i == 4   #todas
-                 @atas = OrcAta.find(:all, :order => 'codigo DESC')
+                  #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()" ])
+                   @atas = OrcAta.find(:all, :conditions => ["(DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()) AND (DATE_ADD(data, INTERVAL 1 YEAR) <= DATE_ADD(NOW(), INTERVAL 1 MONTH))" ], :order => 'data ASC')
+
                render :update do |page|
                   page.replace_html 'ata', :partial => "atas"
                end
-                 else if params[:type_of].to_i == 5   #dia
-                            session[:dataI]=params[:ata][:dataI][6,4]+'-'+params[:ata][:dataI][3,2]+'-'+params[:ata][:dataI][0,2]
+         else if params[:type_of].to_i == 4   #todas
+                 @atas = OrcAta.find(:all, :order => 'data ASC')
+                   render :update do |page|
+                      page.replace_html 'ata', :partial => "atas"
+                   end
+              else if params[:type_of].to_i == 5   #dia
+                           session[:dataI]=params[:ata][:dataI][6,4]+'-'+params[:ata][:dataI][3,2]+'-'+params[:ata][:dataI][0,2]
                             session[:dataF]=params[:ata][:dataF][6,4]+'-'+params[:ata][:dataF][3,2]+'-'+params[:ata][:dataF][0,2]
                             session[:mes]=params[:ata][:dataF][3,2]
                              @atas = OrcAta.find_by_sql("SELECT * FROM orc_atas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
                          render :update do |page|
                             page.replace_html 'ata', :partial => "atas"
                          end
-                      end
-                 end
+                   else  if params[:type_of].to_i == 6   # encerrando 60 dias
+
+                           #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()" ])
+                           @atas = OrcAta.find(:all, :conditions => ["(DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()) AND (DATE_ADD(data, INTERVAL 1 YEAR) <= DATE_ADD(NOW(), INTERVAL 2 MONTH))" ], :order => 'data ASC')
+
+                               render :update do |page|
+                                  page.replace_html 'ata', :partial => "atas"
+                               end
+                        end
+
+                   end
+              end
           end
      end
   end
 
+
+def consulta_ata
+    if params[:type_of].to_i == 1   #fornecedor
+         @atas = OrcAta.find(:all,:conditions => ['interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+          render :update do |page|
+                  page.replace_html 'ata', :partial => "atas"
+          end
+    else if params[:type_of].to_i == 2   # encerrando 30 dias
+
+                  #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()" ])
+                   @atas = OrcAta.find(:all, :conditions => ["(DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()) AND (DATE_ADD(data, INTERVAL 1 YEAR) <= DATE_ADD(NOW(), INTERVAL 1 MONTH))" ], :order => 'data ASC')
+
+               render :update do |page|
+                  page.replace_html 'ata', :partial => "atas"
+               end
+         else if params[:type_of].to_i == 4   #todas
+                 @atas = OrcAta.find(:all, :order => 'data ASC')
+                   render :update do |page|
+                      page.replace_html 'ata', :partial => "atas"
+                   end
+              else if params[:type_of].to_i == 5   #dia
+                           session[:dataI]=params[:ata][:dataI][6,4]+'-'+params[:ata][:dataI][3,2]+'-'+params[:ata][:dataI][0,2]
+                            session[:dataF]=params[:ata][:dataF][6,4]+'-'+params[:ata][:dataF][3,2]+'-'+params[:ata][:dataF][0,2]
+                            session[:mes]=params[:ata][:dataF][3,2]
+                             @atas = OrcAta.find_by_sql("SELECT * FROM orc_atas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                         render :update do |page|
+                            page.replace_html 'ata', :partial => "atas"
+                         end
+                   else  if params[:type_of].to_i == 6   # encerrando 60 dias
+
+                           #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()" ])
+                           @atas = OrcAta.find(:all, :conditions => ["(DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()) AND (DATE_ADD(data, INTERVAL 1 YEAR) <= DATE_ADD(NOW(), INTERVAL 2 MONTH))" ], :order => 'data ASC')
+
+                               render :update do |page|
+                                  page.replace_html 'ata', :partial => "atas"
+                               end
+                        end
+
+                   end
+              end
+          end
+     end
+  end
+
+
+def consulta_ata_produto
+
+    if params[:type_of].to_i == 1   #fornecedor
+         #@atas = OrcAta.find(:all,:conditions => ['interessado like ?', "%" + params[:search_fornecedor].to_s + "%"], :order => 'id DESC')
+         @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_atas.interessado like ?', "%" + params[:search_fornecedor_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC' )
+               render :update do |page|
+                  page.replace_html 'ata', :partial => "ata_saldo"
+               end
+    else if params[:type_of].to_i == 2   
+           @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.saldo > 0'], :order => 'orc_atas.codigo DESC' )
+               render :update do |page|
+                  page.replace_html 'ata', :partial => "ata_saldo"
+               end
+         else if params[:type_of].to_i == 4   #produto
+                 @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.descricao like ?', "%" + params[:search_produto_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC' )
+                   render :update do |page|
+                      page.replace_html 'ata', :partial => "ata_saldo"
+                   end
+              else if params[:type_of].to_i == 5   #dia NÂO FUNCIONA
+                           #session[:dataI]=params[:ata][:dataI][6,4]+'-'+params[:ata][:dataI][3,2]+'-'+params[:ata][:dataI][0,2]
+                           # session[:dataF]=params[:ata][:dataF][6,4]+'-'+params[:ata][:dataF][3,2]+'-'+params[:ata][:dataF][0,2]
+                           # session[:mes]=params[:ata][:dataF][3,2]
+                           #  @atas = OrcAta.find_by_sql("SELECT * FROM orc_atas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"') GROUP BY id ORDER BY data DESC")
+                         render :update do |page|
+                            page.replace_html 'ata', :partial => "atas"
+                         end
+                   else  if params[:type_of].to_i == 6   # encerrando 60 dias NÂO FUNCIONA
+
+                           #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()" ])
+                           #@atas = OrcAta.find(:all, :conditions => ["(DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()) AND (DATE_ADD(data, INTERVAL 1 YEAR) <= DATE_ADD(NOW(), INTERVAL 2 MONTH))" ], :order => 'data ASC')
+
+                               render :update do |page|
+                                  page.replace_html 'ata', :partial => "atas"
+                               end
+                        end
+
+                   end
+              end
+          end
+     end
+end
+
+
+
 def ata_consulta
-   w= params[:orc_ata_id]
-    @atas = OrcAta.find(:all, :order => 'codigo DESC')
-     @atas=  OrcAta.find(:all, :conditions => ['id = ?',params[:orc_ata_id]])
+     @atas=  OrcAta.find(:all, :conditions => ['id = ?',params[:orc_ata_id]], :order => 'codigo DESC')
       render :partial => "atas"
+end
 
-
+def ata_consulta_saldo
+     @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo',  :conditions => ['orc_atas.id = ?', params[:orc_ata_id] ], :order => 'orc_atas.codigo DESC' )
+      render :partial => "ata_saldo"
 end
 end

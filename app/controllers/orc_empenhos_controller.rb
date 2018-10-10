@@ -83,10 +83,6 @@ class OrcEmpenhosController < ApplicationController
         @orc_empenho.ficha_id=@ficha[0].id
         @orc_empenho.ficha=@ficha[0].ficha
         @orc_empenho.save
-
-
-
-
           if session[:create_new_itens]== 1
              session[:create_new_itens]= 0
           end

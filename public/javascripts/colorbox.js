@@ -4,7 +4,7 @@
                         $(".line").colorbox({inline:true, overlayClose: false});
                         $(".inline#pessoa").colorbox({inline:true ,height:"40%"});$(".inline").colorbox({inline:true ,width:"4 0%", overlayClose: false});
                         $(".inline").colorbox({inline:true ,width:"40%", overlayClose: false, onClosed:function(){$('#surge').show()}});
-                         $(".inline60").colorbox({inline:true ,width:"50%", overlayClose: false, onClosed:function(){$('#surge').show()}});
+                         $(".inline60").colorbox({inline:true ,width:"60%", overlayClose: false, onClosed:function(){$('#surge').show()}});
 			$(".callbacks").colorbox({
 				onOpen:function(){alert('onOpen: colorbox is about to open');},
 				onLoad:function(){alert('onLoad: colorbox has started to load the targeted content');},

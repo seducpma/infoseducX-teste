@@ -6,9 +6,9 @@
 
     <table bgcolor="#DCDCDC" width="100%">
         <tr bgcolor="#DCDCDC" >
-            <td align="center" width ="5%"><b>NºEmepnho </b></td>
-            <td align="center"><b>Processo</b></td>
-            <td align="center"><b>Data</b></td>
+            <td align="center" width ="5%"><b>NºEmpenho </b></td>
+            <td align="center"><b>Data Emp.</b></td>
+            <td align="center"><b>Data Chegou</b></td>
             <td align="center"><b>Pedido</b></td>
             <td align="center" width ="30%"><b>Fornecedor</b></td>
             <td align="center" colspan="2" ><b>Ficha</b></td>
@@ -22,8 +22,8 @@
             <tr  bgcolor="#F5F5F5">
 
               <td align="center"><%=h empenho.codigo %></td>
-              <td align="center"><%=h empenho.processo %></td>
               <td align="center"><%if !empenho.data.nil? %><%=h empenho.data.strftime("%d/%m/%Y") %> <%end%> </td>
+              <td align="center"><%if !empenho.data_chegou.nil? %><%=h empenho.data_chegou.strftime("%d/%m/%Y") %> <%end%> </td>
               <td align="center"><%if !empenho.orc_pedido_compra_id.nil?%>
                                      <%if !empenho.orc_pedido_compra.nil?%>
                                          <%=h empenho.orc_pedido_compra.codigo %>

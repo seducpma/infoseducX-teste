@@ -7,33 +7,40 @@
      <h2>DESCRIÇÃO PEDIDO DE COMPRA: <%= session[:id_compra] %></h2>
       <hr>
              <%= error_messages_for 'contact' %>
+      <%@ata = OrcAta.find(:all, :conditions=>['codigo =?',session[:ata]])%>
       <table  width="100%" bgcolor="#F5F5F5" border="1">
          <tr>
             
             <td width="5%" align="center"><font size="2"><b>Qtd</b></font></td>
-            <td width="40%"><font size="2"><b>Descricão</b></font></td>
-            <td width="15%"><font size="2"><b>Unitário</b></font></td>
+            <td width="5%" align="center"><font size="2"><b>Medida</b></font></td>
+            
+            <td width="35%"><font size="2"><b>Descricão</b></font></td>
+            <td width="12%"><font size="2"><b>Unitário</b></font></td>
             <td width="20%"><font size="2"><b>Total</b></font></td>
          </tr>
         <tr>
-            <td><%= f.text_field :quantidade, :size =>1, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
-            <td>
-
-                    <%= f.text_field :descricao, :size =>30 %>
+            <td><%= f.text_field :quantidade, :size =>1, :id => 'unitario', :type => 'text',:onblur => "calcular()" %> </td>
+            <td><%= f.text_field :medida, :size =>4 %></td>
+            
+            <td><% if  @ata_itens.empty?  %>
+                       <%= f.text_field :descricao, :size =>38 %>
+                <%else%>
+                       <%= f.collection_select :descricao, @ata_itens, :descricao, :descricao, :include_blank => ' '  %>
+                <%end%>
 
             </td>
-            <td>R$ <%= f.text_field :unitario, :size =>5, :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>
-            <td>R$ <%= f.text_field :total, :size =>10, :id=> 'subtotal' %></td>
+            <td>R$ <%= f.text_field :unitario, :size =>4, :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>
+            <td>R$ <%= f.text_field :total, :size =>18, :id=> 'subtotal' %></td>
         </tr>
 
-
+ 
         <tr>
 
            <td align="left" colspan="5"><%= f.submit "Salvar" %>&nbsp&nbsp
 
              <font color =" red"> <b>UTILIZE PONTO PARA SEPRAÇÃO DOS CENTAVOS - NÃO UTULIZE VÍRGULA </b></font><br/>
              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-             Para fechar esta janela sem salvar no <b>BOTÃO X </b>- Clique aqui  ==========>
+             Para fechar esta janela sem salvar no <b>BOTÃO X </b>&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp Clique aqui  ====================>
  
            </td>
         </tr>

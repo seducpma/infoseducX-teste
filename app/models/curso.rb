@@ -25,7 +25,7 @@ class Curso < ActiveRecord::Base
 
   def existe_vaga
 
-    if self.vagas_disponiveis == 0
+    if self.vagas_disponiveis <= 0
       false
     else
       true

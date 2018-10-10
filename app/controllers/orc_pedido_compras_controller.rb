@@ -67,11 +67,20 @@ end
    def new_descricaos
 
     @orc_pedido_compra = OrcPedidoCompra.find(session[:news_decricao])
-    w=session[:ata]=@orc_pedido_compra.ata
-    w1=session[:ata_id]==@orc_pedido_compra.id
-    t=0
+    session[:ata_id]=@orc_pedido_compra.ata_id
+    session[:compra_id]=@orc_pedido_compra.id
+       @ata_itens = OrcAtaIten.find(:all, :conditions => ['orc_ata_id =?',session[:ata_id]])
+
     #session[:show_destino]=1
   end
+
+   def verifica_ata_si
+
+       session[:ata]=params[:orc_pedido_compra_ata_id]
+       session[:sem_ata]=1
+
+   end
+
 
   # GET /orc_pedido_compras/1/edit
   def edit
@@ -93,27 +102,69 @@ end
   def create
     @orc_pedido_compra = OrcPedidoCompra.new(params[:orc_pedido_compra])
     #@orc_pedido_compra.codigo=(@orc_pedido_compra.id)
-
     respond_to do |format|
       if @orc_pedido_compra.save
-        w= params[:detino]
-        t=0
-        @orc_pedido_compra.user_id = current_user.id
-        session[:news_decricao]= @orc_pedido_compra.id
-        
-#         @orc_pedido_descricao = OrcPedidoDescricao.find(:last, :conditions => ['orc_pedido_compra_id=?',session[:id_compra_new]])
-#        @orc_pedido_compra.save
-#        @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions =>['id=?', session[:id_compra_new]])
-#        @orc_pedido_compra[0].valor_total = session[:soma].to_f
-#        @orc_pedido_compra[0].save
-         @orc_pedido_compra.save
-       flash[:notice] = 'SALVO COM SUCESSO.'
-        format.html { redirect_to(new_descricaos_path) }
-       else
+        session[:news_itens]= @orc_pedido_compra.id
+       #? @ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
+       # @orc_empenho.ficha_id=@ficha[0].id
+       # @orc_empenho.ficha=@ficha[0].ficha
+       # @orc_empenho.save
+          if session[:create_new_itens]== 1
+             session[:create_new_itens]= 0
+          end
+          pedido=@orc_pedido_compra.id
+          @pedido = OrcPedidoCompra.find(:all, :conditions =>['id=?',pedido])
+           if  session[:sem_ata]==1
+               @itens_pedido = OrcAtaIten.find(:all, :conditions => ["orc_ata_id =?" , session[:ata]])
+                  item=0
+                  for descricao_compra in @itens_pedido
+                      valor_item=descricao_compra.total
+                      item = item+1
+                      session[:create_new_itens]=1
+                      @orc_pedido_descricao = OrcPedidoDescricao.new(params[pedido])
+                      @orc_pedido_descricao.item = item
+                      @orc_pedido_descricao.orc_pedido_compra_id = pedido
+                      @orc_pedido_descricao.orc_ata_item_id= descricao_compra.id
+                      @orc_pedido_descricao.quantidade = descricao_compra.saldo
+                      @orc_pedido_descricao.medida = descricao_compra.medida
+                      @orc_pedido_descricao.saldo = descricao_compra.saldo
+                      @orc_pedido_descricao.descricao = descricao_compra.descricao
+                      @orc_pedido_descricao.unitario = descricao_compra.unitario
+                      @orc_pedido_descricao.total = descricao_compra.total
+                      @orc_pedido_descricao.total_geral = descricao_compra.total_geral
+                      session[:valor_total] = @orc_pedido_descricao.total_geral
+                      @orc_pedido_descricao.save
+                               # salva valor total no pedido_compra
+                      @orc_pedido_compra.valor_total= session[:valor_total]
+                      @orc_pedido_compra.save
+                              # Atualiza saldo na ata
+
+
+                   end
+
+
+               session[:emp_id]= @pedido[0].id
+               session[:sem_ata]= 0
+             end
+
+        flash[:notice] = 'SALVO COM SUCESSO.'
+        #format.html { redirect_to(new_itens_path) }
+         format.html { redirect_to( {:action => "edit", :id =>@pedido[0].id} ) }
+         format.html { redirect_to( @pedido) }
+         format.xml  { render :xml =>  @pedido, :status => :created, :location =>  @pedido }
+
+      else
         format.html { render :action => "new" }
         format.xml  { render :xml => @orc_pedido_compra.errors, :status => :unprocessable_entity }
       end
+
+
+
     end
+
+
+
+
   end
 
   # PUT /orc_pedido_compras/1
@@ -137,6 +188,21 @@ end
     else
         respond_to do |format|
           if @orc_pedido_compra.update_attributes(params[:orc_pedido_compra])
+
+              @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_pedido_compra.ata_id])
+              @itens_pedido = OrcPedidoDescricao.find(:all, :conditions=>['orc_pedido_compra_id=?',@orc_pedido_compra.id ])
+              if !@orc_pedido_compra.ata_id.nil?
+                      for descricao_compra in @itens_pedido
+                         @oc_ata_item = OrcAtaIten.find(descricao_compra.orc_ata_item_id)
+                         saldo_anterior= @oc_ata_item.saldo
+                         quantidade= descricao_compra.quantidade
+                         saldo_atualizado= saldo_anterior- quantidade
+                         @oc_ata_item.saldo =  saldo_atualizado
+                         descricao_compra.saldo = saldo_atualizado
+                         @oc_ata_item.save
+                         descricao_compra.save
+                      end
+              end
             flash[:notice] = 'SALVO COM SUCESSO.'
             format.html { redirect_to(@orc_pedido_compra) }
             format.xml  { head :ok }
@@ -173,7 +239,7 @@ end
 
       if @orc_pedido_descricao.save
         @orc_pedido_descricaos=OrcPedidoDescricao.find(:all, :conditions =>['orc_pedido_compra_id =?', session[:news_decricao] ])
-        #w3=session[:quant_item]= @orc_pedido_descricao.quantidade
+        session[:quant_item]= @orc_pedido_descricao.quantidade
         cont = 0
         for descricao in @orc_pedido_descricaos
           cont=cont+1
@@ -187,19 +253,18 @@ end
          @orc_pedido_compra.valor_total = total_geral
          #w=session[:ata]= @orc_pedido_compra.ata
          @orc_pedido_compra.save
-
-          # atualização saldo ata
+           #atualização saldo ata
           #if !session[:ata].empty?
           #  @ata = OrcAta.find(:all, :conditions=>['codigo =?',session[:ata]])
           #  @ata_itens= OrcAtaIten.find(:all, :conditions=>['orc_ata_id=?', @ata[0].id])
           #  for item in @ata_itens
           #      w1=session[:saldo_anterior]= item.saldo
           #      w2=item.saldo = session[:saldo_anterior] - session[:quant_item]
-t=0
-  #              item.save
-  #          end
+#t=#0
+         #       item.save
+         #   end
 
-  #        end
+         # end
 
 
         render :update do |page|

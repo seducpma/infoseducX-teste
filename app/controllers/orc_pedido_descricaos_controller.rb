@@ -25,7 +25,9 @@ class OrcPedidoDescricaosController < ApplicationController
   # GET /orc_pedido_descricaos/new.xml
   def new
     @orc_pedido_descricao = OrcPedidoDescricao.new
-
+    w= session[:ata_id]
+    @ata_itens = OrcAtaIten.find(:all, :conditions => ['orc_ata_id = ?',session[:ata_id]])
+    t=0
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @orc_pedido_descricao }
@@ -35,6 +37,8 @@ class OrcPedidoDescricaosController < ApplicationController
   # GET /orc_pedido_descricaos/1/edit
   def edit
     @orc_pedido_descricao = OrcPedidoDescricao.find(params[:id])
+    @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions=> ['id=?', @orc_pedido_descricao.orc_pedido_compra_id])
+    
   end
 
   # POST /orc_pedido_descricaos
@@ -58,11 +62,13 @@ class OrcPedidoDescricaosController < ApplicationController
   # PUT /orc_pedido_descricaos/1.xml
   def update
     @orc_pedido_descricao = OrcPedidoDescricao.find(params[:id])
+    @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions=> ['id=?', @orc_pedido_descricao.orc_pedido_compra_id])
 
     respond_to do |format|
       if @orc_pedido_descricao.update_attributes(params[:orc_pedido_descricao])
+
         flash[:notice] = 'SALVO COM SUCESSO.'
-        format.html { redirect_to(@orc_pedido_descricao) }
+        format.html { redirect_to( {:controller =>'orc_pedido_compras' ,:action => "edit", :id => @orc_pedido_compra[0].id} ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

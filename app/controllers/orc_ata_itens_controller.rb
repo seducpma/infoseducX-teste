@@ -35,6 +35,8 @@ class OrcAtaItensController < ApplicationController
   # GET /orc_ata_itens/1/edit
   def edit
     @orc_ata_iten = OrcAtaIten.find(params[:id])
+    @orc_ata= OrcAta.find(:all, :conditions=>['id=?',@orc_ata_iten.orc_ata_id ])
+   
   end
 
   # POST /orc_ata_itens
@@ -62,7 +64,7 @@ class OrcAtaItensController < ApplicationController
     respond_to do |format|
       if @orc_ata_iten.update_attributes(params[:orc_ata_iten])
         flash[:notice] = 'OrcAtaIten was successfully updated.'
-        format.html { redirect_to(@orc_ata_iten) }
+        format.html { redirect_to(home_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
