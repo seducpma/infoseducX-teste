@@ -26,12 +26,11 @@
                          <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
                          <td colspan="3" align="left"><%=h @orc_pedido_compra.fornecedor %>&nbsp&nbsp&nbsp
                                                        <b>CNJPJ:</b>&nbsp&nbsp <%=h @orc_pedido_compra.cnpj %>&nbsp&nbsp&nbsp
- <!--                                                      <b>ATA:</b>&nbsp&nbsp <%#= f.collection_select :ata_id, @atas, :id, :codigo, :include_blank => ' '  %>
+                                                       <b>ATA:</b>&nbsp&nbsp <%= f.collection_select :ata_id, @atas, :id, :codigo, :include_blank => ' '  %>
 
-                                                                      <%#= observe_field 'orc_pedido_compra_ata',
+                                                                      <%= observe_field 'orc_pedido_compra_ata',
                                                                            :with   => 'orc_pedido_compra_ata',
                                                                          :url    => { :action => 'verifica_ata_si' } %>
- -->
                          </td>
                       </tr>
                                                   

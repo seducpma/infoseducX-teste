@@ -31,11 +31,10 @@
                                  <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
                                  <td colspan="3" align="left"><%= f.text_field :fornecedor, :size =>60%> &nbsp&nbsp&nbsp
                                                                <b>CPF/CNPJ:</b>&nbsp&nbsp <%= f.text_field :cnpj, :size =>12 %> &nbsp&nbsp&nbsp
- <!--                                                              <b>ATA:</b>&nbsp&nbsp <%= f.collection_select :ata_id, @atas, :id, :codigo, :include_blank => ' '  %>
-                                                               <%#= observe_field 'orc_pedido_compra_ata_id',
+                                                               <b>ATA:</b>&nbsp&nbsp <%= f.collection_select :ata_id, @atas, :id, :codigo, :include_blank => ' '  %>
+                                                               <%= observe_field 'orc_pedido_compra_ata_id',
                                                                            :with   => 'orc_pedido_compra_ata_id',
                                                                          :url    => { :action => 'verifica_ata_si' } %>
- -->
                                  </td>
                               </tr>
                               <tr>

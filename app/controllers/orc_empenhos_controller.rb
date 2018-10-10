@@ -327,7 +327,9 @@ class OrcEmpenhosController < ApplicationController
                   page.replace_html 'empenho', :partial => "empenhos"
                end
          else if params[:type_of].to_i == 4   #todas
-                 @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1'], :order => 'id DESC')
+                 
+                 @empenhos = OrcEmpenho.find(:all, :joins=>['LEFT JOIN orc_pedido_compras ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id'], :conditions => ['orc_pedido_compras.codigo like ?', "%" + params[:search_si].to_s + "%"], :order => 'id DESC')
+                 
                render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
                end
