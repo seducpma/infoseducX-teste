@@ -10,6 +10,9 @@ class OrcEmpenhoIten < ActiveRecord::Base
     if  !self.descricao.nil?
           self.descricao.upcase!
     end
+    if  !self.medida.nil?
+          self.medida.upcase!
+    end
 
 
   end

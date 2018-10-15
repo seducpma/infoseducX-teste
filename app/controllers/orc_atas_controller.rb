@@ -9,6 +9,7 @@ class OrcAtasController < ApplicationController
         #@pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
           #@despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
         @atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) > NOW()" ])
+        @atas_saldo = OrcAta.find(:all, :select => 'id, concat( codigo, " - ", objetivo) as codigo_objetivo', :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) > NOW()" ])
         @fichas_emp = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
         #@fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
         #@orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
@@ -274,7 +275,7 @@ def consulta_ata_produto
                   page.replace_html 'ata', :partial => "ata_saldo"
                end
          else if params[:type_of].to_i == 4   #produto
-                 @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.descricao like ?', "%" + params[:search_produto_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC orc_ata_itens.descricao ASC' )
+                 @atas= OrcAta.find(:all, :joins=> 'LEFT JOIN orc_ata_itens ON orc_ata_itens.orc_ata_id = orc_atas.id ',  :select => 'orc_ata_itens.id AS item_id, orc_ata_itens.descricao AS produto, orc_ata_itens.quantidade AS quantidade, orc_ata_itens.saldo AS saldo,  orc_atas.interessado AS fornecedor,  orc_atas.codigo AS codigo_ata, orc_atas.modalidade AS modalidade, orc_atas.administrativo AS processo', :conditions => ['orc_ata_itens.descricao like ?', "%" + params[:search_produto_saldo].to_s + "%"], :order => 'orc_atas.codigo DESC, orc_ata_itens.descricao ASC' )
                    render :update do |page|
                       page.replace_html 'ata', :partial => "ata_saldo"
                    end

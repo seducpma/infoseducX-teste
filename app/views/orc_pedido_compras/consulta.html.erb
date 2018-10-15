@@ -2,7 +2,7 @@
 <% title "PROFESSORS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>SEDUC/PMA - PEDIDO COMPRA</strong></font><br/>
+     <font size="3"><strong>SEDUC/PMA - SERVIÇO INTERNO</strong></font><br/>
  </div>
        <% form_remote_tag :url => consulta_pedido_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
   <table  width="100%" bgcolor="#F5F5F5" >
@@ -11,7 +11,7 @@
                <a href="#" class="filtro_ano"><%= radio_button_tag(:type_of, "5") %></a>Nº SI
                <a href="#" class="filtro_des"><%= radio_button_tag(:type_of, "2") %></a>Nº Ficha
                <a href="#" class="filtro_orc"><%= radio_button_tag(:type_of, "1") %></a>Fornecedor
-               <a href="#" class="filtro_prod"><%= radio_button_tag(:type_of, "3") %></a>Sem Nº Ficha
+               <a href="#" class="filtro_prod"><%= radio_button_tag(:type_of, "3") %></a>Sem Empenho
                <a href="#" class="sem_filtro_orc"><%= radio_button_tag(:type_of, "4") %></a>Todos
            </td>
          </tr>

@@ -16,7 +16,7 @@
             <td align="center"><b>Quant.NF</b></td>
             <td align="center"><b>Saldo Empenho</b></td>
             <td align="center"><b>Saldo Atual</b></td>
-
+            <td align="center"><b></b></td>
             
 
           </tr>
@@ -48,7 +48,7 @@
               <td align="center"><%=h produto.quantidade_nf %></td>
                 <td align="center"><%=h produto.quantidade %></td>
               <td align="center"><%=h produto.saldo %></td>
-            
+               <td align="center"><%= button_to 'Editar', {:controller=>'orc_empenho_itens',:action => "edit", :id =>produto.item_id}, :method => "get", :title => "Editar"%></td>
             </tr>
           <% end %>
       <tr>

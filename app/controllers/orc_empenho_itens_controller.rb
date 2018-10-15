@@ -34,7 +34,9 @@ class OrcEmpenhoItensController < ApplicationController
 
   # GET /orc_empenho_itens/1/edit
   def edit
-    @orc_empenho_iten = OrcEmpenhoIten.find(params[:id])
+      @orc_empenho_iten = OrcEmpenhoIten.find(params[:id])
+      @orc_empenho =OrcEmpenho.find(:all, :conditions=>['id=?',@orc_empenho_iten.orc_empenho_id ])
+
   end
 
   # POST /orc_empenho_itens

@@ -46,8 +46,8 @@
                         <td width="20%"><font size="2"><b>Saldo Atual</b></font></td>
                      </tr>
                     <tr>
-                        <td  align="center"  bgcolor="#F5F5F5"><%= @orc_ata_iten.medida %></td>
-                        <td align="center"  bgcolor="#F5F5F5"><%= @orc_ata_iten.descricao %></td>
+                        <td ><%= f.text_field :medida, :size =>5 %></td>
+                        <td> <%= f.text_field :descricao, :size =>30 %></td>
                         <td align="center"  bgcolor="#F5F5F5"><%= @orc_ata_iten.quantidade%></td>
                         <td><%= f.text_field :saldo, :size =>5 %></td>
                     </tr>

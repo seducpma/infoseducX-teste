@@ -124,7 +124,8 @@ end
  end
 
  def selected_print
-      session[:chamados]= params[:chamado_ids]
+      w=session[:chamados]= params[:chamado_ids]
+      
       @chamados = Chamado.find(params[:chamado_ids], :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = chamados.unidade_id")
  end
 

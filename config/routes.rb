@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orc_empenho_itens
   map.resources :orc_empenhos, :collection => {:consulta => :get, :consulta_produto => :get    }
   map.resources :orc_pedido_descricaos
-  map.resources :orc_pedido_compras, :collection => {:consulta => :get}
+  map.resources :orc_pedido_compras, :collection => {:consulta => :get, :si_selecionados => :get}
   map.resources :orc_fichas, :collection => {:consulta => :get, :saldo => :get}
   map.resources :orc_uni_orcamentarias, :collection => {:consulta => :get}
   map.resources :orc_uni_despesas
@@ -91,6 +91,7 @@ ActionController::Routing::Routes.draw do |map|
   map.new_disciplinanota '/new_disciplinanota', :controller => 'disciplinas', :action => 'new_disciplinanota'
   map.create_discipina_nota '/create_discipina_nota', :controller => 'disciplinas', :action => 'create_discipina_nota'
 
+  map.impressao_sem_empenho'/impressao_sem_empenho', :controller => 'orc_pedido_compras', :action => 'impressao_sem_empenho'
   map.impressao_atendimento '/impressao_atendimento', :controller => 'chamados', :action => 'impressao_atendimento'
   map.impressao_geral '/grafico/impressao_geral', :controller => 'grafico', :action => 'impressao_geral'
   map.impressao_estagiarios_unidade '/impressao_estagiarios_unidade', :controller => 'unidades', :action => 'impressao_estagiarios_unidade'
@@ -187,6 +188,7 @@ ActionController::Routing::Routes.draw do |map|
   map.relatorios_agendamento'/relatorios_agendamento', :controller => 'poda_gramas', :action => 'relatorios_agendamento'
   map.agenda_poda_grama'/agenda_poda_grama', :controller => 'poda_gramas', :action => 'agenda_poda_grama'
 
+  #map.si_selecionados'/si_selecionados', :controller => 'orc_pedido_compras', :action => 'si_selecionados'
   map.cesta_basica '/cesta_basica', :controller => 'reservar_salas', :action => 'cesta_basica'
   map.banco_horas '/banco_horas', :controller => 'reservar_salas', :action => 'banco_horas'
   map.plano_educacao '/plano_educacao', :controller => 'reservar_salas', :action => 'plano_educacao'

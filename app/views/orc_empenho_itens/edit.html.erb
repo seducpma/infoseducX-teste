@@ -1,40 +1,84 @@
-<h1>Editing orc_empenho_iten</h1>
+<div id="interno3">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ITEM DE EMPENHO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
 
-<% form_for(@orc_empenho_iten) do |f| %>
-  <%= f.error_messages %>
+              <% form_for(@orc_empenho_iten) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
 
-  <p>
-    <%= f.label :orc_empenho %><br />
-    <%= f.text_field :orc_empenho %>
-  </p>
-  <p>
-    <%= f.label :quantidade %><br />
-    <%= f.text_field :quantidade %>
-  </p>
-  <p>
-    <%= f.label :descricao %><br />
-    <%= f.text_field :descricao %>
-  </p>
-  <p>
-    <%= f.label :unitario %><br />
-    <%= f.text_field :unitario %>
-  </p>
-  <p>
-    <%= f.label :total %><br />
-    <%= f.text_field :total %>
-  </p>
-  <p>
-    <%= f.label :total_geral %><br />
-    <%= f.text_field :total_geral %>
-  </p>
-  <p>
-    <%= f.label :obs %><br />
-    <%= f.text_field :obs %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+      <table  width="100%" bgcolor="#F5F5F5" >
+       <tr>
+           <td colspan="4" align="left"><b>EMPENHO Nº  </b>&nbsp&nbsp&nbsp&nbsp<%=h @orc_empenho[0].codigo %> <br/>
+          <hr/>
 
-<%= link_to 'Show', @orc_empenho_iten %> |
-<%= link_to 'Back', orc_empenho_itens_path %>
+          </td>
+      </tr>
+      <tr>
+        <td align="left" width="15%"> <b>Data Empenho:</b> </td> <td> <%if !@orc_empenho[0].data.nil? %><%=h @orc_empenho[0].data.strftime("%d de %B de %Y") %> <%end%></td>
+      </tr>
+      <tr>
+        <td align="left"> <b>Data Chegou:</b> </td> <td> <%if !@orc_empenho[0].data_chegou.nil? %><%=h @orc_empenho[0].data_chegou.strftime("%d de %B de %Y") %> <%end%></td>
+      </tr>
+
+      <tr>
+        <td align="left" ><b>Projeto: </b></td> <td> <%=h @orc_empenho[0].projeto %> </td>
+      </tr>
+      <tr>
+        <td align="left" ><b>Interessado: </b></td> <td> <%=h @orc_empenho[0].interessado %> </td>
+      </tr>
+      <tr>
+         <td><b>Modalidade:</b> </td> <td><%= @orc_empenho[0].cnpj%>
+                          &nbsp&nbsp <b>Ficha:</b> <%= @orc_empenho[0].ficha%>
+                          <%@ficha = OrcFicha.find(:all, :conditions=> ['id =?', @orc_empenho[0].ficha_id])%>
+                          &nbsp - &nbsp   <%=  @ficha[0].descricao%>
+                           
+         </td>
+     </tr>
+     <tr>
+         <td valign="top"><b>Item: </b></td>
+         <td>
+             <table width="100%" bgcolor="#DCDCDC"   >
+                     <tr bgcolor="#DCDCDC" >
+                        <td width="5%" align="center"><font size="2"><b>Medida</b></font></td>
+                        <td width="35%"><font size="2"><b>Descricão</b></font></td>
+                        <td align="center"width="20%"><font size="2"><b>Qtd Inicial</b></font></td>
+                        <td width="20%"><font size="2"><b>Saldo Atual</b></font></td>
+                     </tr>
+                    <tr>
+                        <td ><%= f.text_field :medida, :size =>5 %></td>
+                        <td> <%= f.text_field :descricao, :size =>30 %></td>
+                        <td align="center"  bgcolor="#F5F5F5"><%= @orc_empenho_iten.quantidade%></td>
+                        <td><%= f.text_field :saldo, :size =>5 %></td>
+                    </tr>
+             </table>
+         </td>
+     </tr>
+
+
+       </table>
+
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+
+
+                         </tr>
+                      </table>
+
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/><br/><br/>
+</div>
+
+

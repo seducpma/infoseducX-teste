@@ -32,7 +32,8 @@ class OrcPedidoComprasController < ApplicationController
 end
 
   def index
-    @orc_pedido_compra = OrcPedidoCompra.find(:all, :conditions=> ["id != 1"], :order => 'id DESC')
+    #@orc_pedido_compra = OrcPedidoCompra.find(:all, :order => 'id DESC')
+    @orc_pedido_compra= OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL ")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @orc_pedido_compras }
@@ -316,8 +317,9 @@ end
           render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
           end
-    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
-                  @pedidos_compra = OrcPedidoCompra.find(:all,:conditions => ['orc_ficha_id is null'], :order => 'id DESC')
+    else if params[:type_of].to_i == 3   #sem empenho            produto(antigo)
+                  #@pedidos_compra = OrcPedidoCompra.find(:all, :joins=> 'JOIN orc_empenhos ON orc_pedido_compras.id  = orc_empenhos.orc_pedido_compra_id', :conditions => ['orc_pedido_compra_id NOT IN ( SELECT orc_pedido_compra_id FROM orc_empenhos )'], :order => 'id DESC')
+                  @pedidos_compra = OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL ")
                render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
                end
@@ -362,5 +364,20 @@ end
          render :nothing => true
        end
   end
+
+
+   def si_selecionados
+      w=session[:pedido_ids]=params[:pedido_ids]
+      t=0
+      #@chamados = Chamado.find(params[:chamado_ids], :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = chamados.unidade_id")
+      #@orc_pedido_compra= OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL)
+      @orc_pedido_compra = OrcPedidoCompra.find(session[:pedido_ids], :joins => "LEFT JOIN orc_empenhos ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ")
+      
+   end
+def impressao_sem_empenho
+    @orc_pedido_compra = OrcPedidoCompra.find(session[:pedido_ids], :joins => "LEFT JOIN orc_empenhos ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ")
+        render :layout => "impressao"
+
+end
 
 end
