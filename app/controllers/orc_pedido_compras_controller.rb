@@ -372,7 +372,7 @@ end
       #@chamados = Chamado.find(params[:chamado_ids], :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = chamados.unidade_id")
       #@orc_pedido_compra= OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL)
       @orc_pedido_compra = OrcPedidoCompra.find(session[:pedido_ids], :joins => "LEFT JOIN orc_empenhos ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ")
-      
+      t=0
    end
 def impressao_sem_empenho
     @orc_pedido_compra = OrcPedidoCompra.find(session[:pedido_ids], :joins => "LEFT JOIN orc_empenhos ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ")

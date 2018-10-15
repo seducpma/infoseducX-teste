@@ -31,6 +31,7 @@
                           <td><%=h pedido.codigo %></td>
                           <td><%=h pedido.objetivo %></td>
                           <td><%=h pedido.fornecedor %></td>
+                          
                           <td><%=h pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h pedido.orc_ficha.codigo%> </td>
                           <td align="center"><%=h pedido.orc_ficha.ficha%></td>
 
@@ -74,10 +75,10 @@
                             <tr>
                                 <td align="left" colspan="11">
                                     <table>
-                                        <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') %>
+
                                             <td align="left"><%= submit_tag "Visualizar", :class => "btn_filtrar" %></td>
                                             <td align="left" ><font color="Blue"> VISUALIAR CHAMADOS SELECIONADOS PARA ATENDIMENTO</font></td>
-                                        <%end%>
+
                                     </table>
                                 </td>
                             </tr>
