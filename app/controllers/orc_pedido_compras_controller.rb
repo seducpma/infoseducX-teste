@@ -105,6 +105,9 @@ end
     #@orc_pedido_compra.codigo=(@orc_pedido_compra.id)
     respond_to do |format|
       if @orc_pedido_compra.save
+         @orc_pedido_compra.user_id = current_user.id
+
+       @orc_pedido_compra.save
         session[:news_itens]= @orc_pedido_compra.id
        #? @ficha = OrcFicha.find(:all, :conditions => ['id =?',  session[:ficha_id]])
        # @orc_empenho.ficha_id=@ficha[0].id

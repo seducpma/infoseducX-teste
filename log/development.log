@@ -1,0 +1,1462 @@
+# Logfile created on Tue Oct 16 14:58:20 -0300 2018  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-10-16 14:58:23) [GET]
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.8ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-16 17:58:23' AND ends_at >= '2018-10-16 17:58:23') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 363ms (View: 304, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-16 14:58:24) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_load'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_program'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/bin/rdebug-ide:121
+  /usr/bin/rdebug-ide:19:in `load'
+  /usr/bin/rdebug-ide:19
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#new (for 127.0.0.1 at 2018-10-16 14:58:30) [GET]
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcAta Load (0.6ms)[0m   [0mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;35;1mOrcFicha Load (0.1ms)[0m   [0mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+  [4;36;1mOrcPedidoCompra Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_compras`[0m
+Rendering template within layouts/application
+Rendering orc_pedido_compras/new
+  [4;35;1mOrcAta Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_atas`[0m
+  [4;36;1mOrcFicha Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;35;1mOrcAtaIten Load (0.2ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (orc_ata_id = NULL) [0m
+  [4;36;1mOrcAta Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_atas` WHERE (codigo ='1') [0m
+Rendered orc_pedido_compras/_orc_pedido_descricao (24.1ms)
+  [4;35;1mInformativo Load (0.9ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-16 17:58:30' AND ends_at >= '2018-10-16 17:58:30') [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 453ms (View: 267, DB: 7) | 200 OK [http://localhost/orc_pedido_compras/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-16 14:58:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_load'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_program'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/bin/rdebug-ide:121
+  /usr/bin/rdebug-ide:19:in `load'
+  /usr/bin/rdebug-ide:19
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#dados_ficha (for 127.0.0.1 at 2018-10-16 14:58:35) [POST]
+  Parameters: {"orc_pedido_compra_orc_ficha_id"=>"3", "authenticity_token"=>"WVto9BromE9TKjGZBQOqu/AbGCjLD+mRglQmyHqfoWA="}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcAta Load (0.4ms)[0m   [0mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;35;1mOrcFicha Load (0.1ms)[0m   [0mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+  [4;36;1mOrcFicha Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (id = '3') [0m
+  [4;35;1mOrcFicha Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;36;1mOrcUniOrcamentaria Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;36;1mOrcUniDespesa Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;35;1mOrcUniDespesa Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+Rendered orc_pedido_compras/_dados_fichas (25.5ms)
+Completed in 197ms (View: 29, DB: 6) | 200 OK [http://localhost/orc_pedido_compras/dados_ficha]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#verifica_ata_si (for 127.0.0.1 at 2018-10-16 14:58:37) [POST]
+  Parameters: {"orc_pedido_compra_ata_id"=>"1", "authenticity_token"=>"WVto9BromE9TKjGZBQOqu/AbGCjLD+mRglQmyHqfoWA="}
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcAta Load (0.6ms)[0m   [0mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mroles_users Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+
+ActionView::MissingTemplate (Missing template orc_pedido_compras/verifica_ata_si.erb in view path app/views):
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_load'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_program'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/bin/rdebug-ide:121
+  /usr/bin/rdebug-ide:19:in `load'
+  /usr/bin/rdebug-ide:19
+
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#create (for 127.0.0.1 at 2018-10-16 14:58:38) [POST]
+  Parameters: {"commit"=>"Salvar", "orc_pedido_compra"=>{"cnpj"=>"", "fornecedor"=>"", "codigo"=>"", "ata_id"=>"1", "objetivo"=>"", "obs"=>"", "orc_ficha_id"=>"3", "justificativa"=>""}, "destino"=>"SUPRIMENTOS", "authenticity_token"=>"WVto9BromE9TKjGZBQOqu/AbGCjLD+mRglQmyHqfoWA="}
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcAta Load (0.6ms)[0m   [0mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mroles_users Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;35;1mOrcFicha Load (0.1ms)[0m   [0mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+  [4;36;1mOrcPedidoCompra Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Create (0.5ms)[0m   [0;1mINSERT INTO `orc_pedido_compras` (`cnpj`, `devolucao`, `codigo`, `fornecedor`, `valor_total`, `empenhado`, `ata_id`, `objetivo`, `user_id`, `ano`, `obs`, `orc_ficha_id`, `updated_at`, `justificativa`, `created_at`) VALUES('', NULL, '', '', NULL, 0, 1, '', NULL, NULL, '', 3, '2018-10-16 17:58:38', '', '2018-10-16 17:58:38')[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `ano` = 2018, `obs` = '', `orc_ficha_id` = 3, `fornecedor` = '', `objetivo` = '', `codigo` = '', `justificativa` = '', `ata_id` = 1, `created_at` = '2018-10-16 17:58:38', `cnpj` = '', `updated_at` = '2018-10-16 17:58:38' WHERE `id` = 537[0m
+  [4;36;1mSQL (61.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcPedidoCompra Load (0.4ms)[0m   [0mSELECT * FROM `orc_pedido_compras` WHERE (id=537) [0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (orc_ata_id ='1') [0m
+  [4;35;1mOrcAtaIten Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `orc_ata_itens`[0m
+  [4;36;1mOrcPedidoDescricao Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_descricaos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 1, 537, 20.0, 14.0, NULL, 1, 'UNID.', 0.7, 14.0, 'ADAPTADOR SOLDÁVEL CURTO DE 25MM X 3/4', '2018-10-16 17:59:02', '2018-10-16 17:59:02')[0m
+  [4;35;1mSQL (28.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 14.0, `user_id` = 2, `updated_at` = '2018-10-16 17:59:02' WHERE `id` = 537[0m
+  [4;36;1mSQL (36.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(6, 2, 537, 6.0, 22.4, NULL, 2, 'UNID.', 1.4, 8.4, 'ADAPTADOR SOLDÁVEL CURTO DE 32MM X 1\'\'', '2018-10-16 17:59:02', '2018-10-16 17:59:02')[0m
+  [4;35;1mSQL (28.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 22.4, `updated_at` = '2018-10-16 17:59:02' WHERE `id` = 537[0m
+  [4;36;1mSQL (41.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 3, 537, 0.0, 22.4, NULL, 3, 'UNID.', 4.0, 0.0, 'ADAPTADOR SOLDÁVEL CURTO DE 40 MM X 1 1/4', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;35;1mSQL (40.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 4, 537, 10.0, 55.4, NULL, 4, 'UNID.', 3.3, 33.0, 'ADAPTADOR SOLDÁVEL CURTO DE 50MM X 1 1/2', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (33.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 55.4, `updated_at` = '2018-10-16 17:59:03' WHERE `id` = 537[0m
+  [4;35;1mSQL (33.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.6ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(6, 5, 537, 6.0, 105.8, NULL, 5, 'UNID.', 8.4, 50.4, 'ADAPTADOR SOLDÁVEL CURTO DE 60MM X 2\'\'', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (35.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 105.8, `updated_at` = '2018-10-16 17:59:03' WHERE `id` = 537[0m
+  [4;35;1mSQL (34.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.6ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 6, 537, 4.0, 165.0, NULL, 6, 'UNID.', 14.8, 59.2, 'ADAPTADOR SOLDÁVEL CURTO DE 75 MM X 2 1/2', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (30.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 165.0, `updated_at` = '2018-10-16 17:59:03' WHERE `id` = 537[0m
+  [4;35;1mSQL (31.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(2, 7, 537, 2.0, 213.0, NULL, 7, 'UNID.', 24.0, 48.0, 'ADAPTADOR SOLDÁVEL CURTO 85MM X 3', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (32.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 213.0, `updated_at` = '2018-10-16 17:59:03' WHERE `id` = 537[0m
+  [4;35;1mSQL (34.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 8, 537, 0.0, 213.0, NULL, 8, 'UNID.', 29.0, 0.0, 'ADAPTADOR SOLDÁVEL CURTO DE 110MM X 4\'\'', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (31.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 9, 537, 10.0, 9.5, NULL, 9, 'UNID.', 0.95, 9.5, 'CAP SOLDÁVEL MARRON 25MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.7ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 9.5, `updated_at` = '2018-10-16 17:59:03' WHERE `id` = 537[0m
+  [4;36;1mSQL (31.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 10, 537, 0.0, 9.5, NULL, 10, 'UNID.', 1.5, 0.0, 'CAP SOLDÁVEL MARRON DE 32MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;35;1mSQL (30.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 11, 537, 0.0, 9.5, NULL, 11, 'UNID.', 2.8, 0.0, 'CAP SOLDÁVEL MARRON DE 40MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (33.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 12, 537, 0.0, 9.5, NULL, 12, 'UNID.', 5.4, 0.0, 'CAP SOLDÁVEL MARRON DE 50 MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;35;1mSQL (33.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 13, 537, 0.0, 9.5, NULL, 13, 'UNID.', 16.0, 0.0, 'CAP SOLDÁVEL MARRON DE 75MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (30.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.7ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 14, 537, 0.0, 9.5, NULL, 14, 'UNID.', 33.0, 0.0, 'CAP SOLDÁVEL MARRON DE 85MM ', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;35;1mSQL (33.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.7ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 15, 537, 0.0, 9.5, NULL, 15, 'UNID.', 60.0, 0.0, 'CAP SOLDÁVEL NARRON DE 110MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 16, 537, 0.0, 9.5, NULL, 16, 'UNID.', 1.9, 0.0, 'CAP SOLDÁVEL DE ESGÔTO 40MM', '2018-10-16 17:59:03', '2018-10-16 17:59:03')[0m
+  [4;35;1mSQL (32.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 17, 537, 0.0, 9.5, NULL, 17, 'UNID.', 3.0, 0.0, 'CAP SOLLDÁVEL DE ESGÔTO 50MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 18, 537, 0.0, 9.5, NULL, 18, 'UNID.', 4.8, 0.0, 'CAP SOLDÁVEL DE ESGÔTO 75MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (27.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 19, 537, 0.0, 9.5, NULL, 19, 'UNID.', 6.3, 0.0, 'CAP SOLDÁVEL DE ESGÔTO 100MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (32.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 20, 537, 0.0, 9.5, NULL, 20, 'UNID.', 45.0, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC MARROM 110 X 85 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (34.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.2ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 21, 537, 0.0, 9.5, NULL, 21, 'UNID.', 9.5, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC 85 X 75 MM MARROM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (33.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 22, 537, 0.0, 9.5, NULL, 22, 'UNID.', 11.0, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC 75 X 60 MM MARROM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (31.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 23, 537, 0.0, 9.5, NULL, 23, 'UNID.', 4.8, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC MARROM 60 X 50 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (30.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 24, 537, 0.0, 9.5, NULL, 24, 'UNID.', 2.6, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC MARROM 50 X 40 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (34.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 25, 537, 0.0, 9.5, NULL, 25, 'UNID', 1.4, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC MARROM 40 X 32 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (33.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 26, 537, 0.0, 9.5, NULL, 26, 'UNID.', 0.8, 0.0, 'BUCHA DE REDUÇÃO SOLDÁVEL CURTA DE PVC MARROM DE 32 X 25 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 27, 537, 0.0, 0.0, NULL, 27, 'UNID.', 3.0, 0.0, 'JOELHO45 SOLDÁVEL 32 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (35.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.7ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 0.0, `updated_at` = '2018-10-16 17:59:04' WHERE `id` = 537[0m
+  [4;35;1mSQL (59.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 28, 537, 0.0, 0.0, NULL, 28, 'UNID.', 4.5, 0.0, 'JOELHO 45 SOLDÁVEL 40 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;36;1mSQL (31.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 29, 537, 4.0, 20.0, NULL, 29, 'UNID.', 5.0, 20.0, 'JOELHO 45 SOLDÁVEL 50 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (28.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 20.0, `updated_at` = '2018-10-16 17:59:04' WHERE `id` = 537[0m
+  [4;36;1mSQL (30.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.2ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(2, 30, 537, 2.0, 108.0, NULL, 30, 'UNID.', 44.0, 88.0, 'JOELHO 45 SOLDÁVEL 75 MM', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (34.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 108.0, `updated_at` = '2018-10-16 17:59:04' WHERE `id` = 537[0m
+  [4;36;1mSQL (34.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(2, 31, 537, 2.0, 208.0, NULL, 31, 'UNID.', 50.0, 100.0, 'JOELHO 45 SOLDÁVEL 85MM ', '2018-10-16 17:59:04', '2018-10-16 17:59:04')[0m
+  [4;35;1mSQL (32.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 208.0, `updated_at` = '2018-10-16 17:59:04' WHERE `id` = 537[0m
+  [4;36;1mSQL (30.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 32, 537, 0.0, 208.0, NULL, 32, 'UNID.', 150.0, 0.0, 'JOELHO 45 SOLDAVEL 110 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;35;1mSQL (32.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 33, 537, 20.0, 74.8, NULL, 33, 'UNID.', 3.74, 74.8, 'JOELHO 90 SOLDÁVEL E COM BUCHA DE LATÃO 25MM X 1/2\'\'', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (33.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 74.8, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;35;1mSQL (56.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 34, 537, 20.0, 153.6, NULL, 34, ' UNID.', 3.94, 78.8, 'JOELHO 90 SOLDÁVEL E COM BUCHA DE LATÃO 25MM X 3/4\'\'', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 153.6, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;35;1mSQL (27.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 35, 537, 0.0, 153.6, NULL, 35, 'UNID.', 8.0, 0.0, 'JOELHO 90 SOLDÁVEL E COM BUCHA DE LATÃO 32MM X 3/4\'\'', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (29.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 36, 537, 0.0, 0.0, NULL, 36, 'UNID.', 1.2, 0.0, 'LUVA DE REDUÇÃO SOLDÁVEL 25 X 20 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;35;1mSQL (29.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 0.0, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.2ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 37, 537, 0.0, 0.0, NULL, 37, 'UNID.', 2.5, 0.0, 'LUVA DE REDUÇÃO SOLDÁVEL 32 X 25 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;35;1mSQL (29.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 38, 537, 4.0, 13.2, NULL, 38, 'UNID.', 3.3, 13.2, 'LUVA DE REDUÇÃO SOLDÁVEL 40 X 32 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (35.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.7ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 13.2, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;35;1mSQL (32.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 39, 537, 4.0, 46.8, NULL, 39, 'UNID.', 8.4, 33.6, 'LUVA DE REDUÇÃO SOLDÁVEL 60 X 50 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (27.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 46.8, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;35;1mSQL (31.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.6ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 40, 537, 4.0, 122.8, NULL, 40, 'UNID.', 19.0, 76.0, 'LUVA DE REDUÇÃO SOLDÁVEL 75 X 60 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (31.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 122.8, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;35;1mSQL (34.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 41, 537, 0.0, 122.8, NULL, 41, 'UNID.', 30.0, 0.0, 'LUVA DE REDUÇÃO SOLDÁVEL 110 X 75 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (30.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 42, 537, 10.0, 6.0, NULL, 42, 'UNID.', 0.6, 6.0, 'LUVA SOLDÁVEL 25 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;35;1mSQL (32.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 6.0, `updated_at` = '2018-10-16 17:59:05' WHERE `id` = 537[0m
+  [4;36;1mSQL (27.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 43, 537, 0.0, 6.0, NULL, 43, 'UNID.', 1.4, 0.0, 'LUVA SOLDÁVEL 32 MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;35;1mSQL (28.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 44, 537, 0.0, 6.0, NULL, 44, 'UNID.', 3.0, 0.0, 'LUVA SOLDÁVEL 40MM', '2018-10-16 17:59:05', '2018-10-16 17:59:05')[0m
+  [4;36;1mSQL (35.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(6, 45, 537, 6.0, 24.0, NULL, 45, 'UNID.', 3.0, 18.0, 'LUVA SOLDÁVEL 50 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;35;1mSQL (28.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 24.0, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;36;1mSQL (28.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 46, 537, 0.0, 24.0, NULL, 46, 'UNID.', 10.0, 0.0, 'LUVA SOLDÁVEL 60 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;35;1mSQL (35.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 47, 537, 0.0, 24.0, NULL, 47, 'UNID.', 15.0, 0.0, 'LUVA SOLDÁVEL 75 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (32.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.7ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 48, 537, 0.0, 24.0, NULL, 48, 'UNID.', 33.0, 0.0, 'LUVA SOLDÁVEL 85 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;35;1mSQL (35.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 49, 537, 0.0, 24.0, NULL, 49, 'UNID.', 54.3, 0.0, 'LUVA SOLDÁVEL 110 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (30.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 50, 537, 10.0, 70.0, NULL, 50, 'UNID.', 7.0, 70.0, 'TE SOLDÁVEL E COM BUCHA DE LATÃO NA BOLSA CENTRAL DE 25 MM X 1/2\'\'', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;35;1mSQL (34.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 70.0, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 51, 537, 10.0, 143.0, NULL, 51, 'UNID.', 7.3, 73.0, 'TE SOLDÁVEL E COM BUCHA DE LATÃONA BOLSA CENTRAL DE 25 MM X 3/4\'\'', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;35;1mSQL (35.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.3ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 143.0, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;36;1mSQL (29.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 52, 537, 0.0, 143.0, NULL, 52, 'UNID.', 6.9, 0.0, 'TE SOLDÁVEL E COM BUCHA DE LATÃO NA BOLSA CENTRAL DE 20 MM X 1/2\'\'', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;35;1mSQL (35.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(6, 53, 537, 6.0, 36.0, NULL, 53, 'UNID.', 6.0, 36.0, 'LUVA DE CORRER ESGÔTO 40 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (32.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 36.0, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;35;1mSQL (39.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 54, 537, 4.0, 64.2, NULL, 54, 'UNID.', 7.05, 28.2, 'LUVA DE CORRER ESGÔTO 50 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (30.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 64.2, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;35;1mSQL (27.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 55, 537, 4.0, 96.0, NULL, 55, 'UNID.', 7.95, 31.8, 'LUVA DE CORRER ESGÔTO 75 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (32.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 96.0, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;35;1mSQL (32.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.5ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 56, 537, 4.0, 144.0, NULL, 56, 'UNID.', 12.0, 48.0, 'LUVA DE CORRER ESGÔTO 100 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (30.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 144.0, `updated_at` = '2018-10-16 17:59:06' WHERE `id` = 537[0m
+  [4;35;1mSQL (33.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 57, 537, 4.0, 148.0, NULL, 57, 'UNID.', 1.0, 4.0, 'LUVA SIMPLES ESGÔTO 40 MM', '2018-10-16 17:59:06', '2018-10-16 17:59:06')[0m
+  [4;36;1mSQL (32.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.7ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 148.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;35;1mSQL (31.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(400, 58, 537, 400.0, 156.4, NULL, 58, 'UNID.', 2.1, 8.4, ' LUVA SIMPLES ESGÔTO 50 MM', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 156.4, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;35;1mSQL (32.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 59, 537, 4.0, 170.8, NULL, 59, 'UNID.', 3.6, 14.4, 'LUVA SIMPLES ESGÔTO 75 MM', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;36;1mSQL (30.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 170.8, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;35;1mSQL (33.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(4, 60, 537, 4.0, 188.0, NULL, 60, 'UNID.', 4.3, 17.2, 'LUVA SIMPLES ESGÔTO 100 MM', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;36;1mSQL (28.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 188.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;35;1mSQL (33.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 61, 537, 20.0, 188.0, NULL, 61, 'UNID.', 9.4, 188.0, 'SEDE PARA VÁLVULA DE DESCARGA DECA', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;36;1mSQL (30.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 62, 537, 10.0, 303.0, NULL, 62, 'UNID.', 11.5, 115.0, 'SEDE PARA VÁLVULA DE DESCARGA DOCOL', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (32.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 303.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (35.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 63, 537, 20.0, 543.0, NULL, 63, 'UNID.', 12.0, 240.0, 'CONTRA SEDE P/ VÁLVULA DE DESCARGA DECA', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (35.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 543.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 64, 537, 10.0, 693.0, NULL, 64, 'UNID.', 15.0, 150.0, 'CONTRA SEDE P/ VÁLVULA DE DESCARGA DOCOL', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (35.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 693.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (27.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(50, 65, 537, 50.0, 1793.0, NULL, 65, 'UNID.', 22.0, 1100.0, 'CONJUNTO DE PARAFUSO ESPECIAL PARA VÁLVULA DE DESCARGA DOCOL', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (33.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 1793.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (31.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.5ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(50, 66, 537, 50.0, 2593.0, NULL, 66, 'UNID.', 16.0, 800.0, 'CONJUNTO DE PARAFUSO ESPECIALPARA VÁLVULA DE DESCARGA DECA', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (32.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 2593.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (43.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.9ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 67, 537, 20.0, 2801.0, NULL, 67, 'UNID.', 10.4, 208.0, 'MOLA DE ACIONAMENTO DOCOL', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (28.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 2801.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (33.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 68, 537, 30.0, 3671.0, NULL, 68, 'UNID.', 29.0, 870.0, 'BOTÃO DE ACIONAMENTO DE VÁLVULA DE DESCARGA DECA', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (52.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.7ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 3671.0, `updated_at` = '2018-10-16 17:59:07' WHERE `id` = 537[0m
+  [4;36;1mSQL (49.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 69, 537, 30.0, 4742.0, NULL, 69, 'UNID.', 35.7, 1071.0, 'BOTÃO DE ACIONAMENTO DE VÁLVULA DE DESCAR-GA DOCOL', '2018-10-16 17:59:07', '2018-10-16 17:59:07')[0m
+  [4;35;1mSQL (46.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 4742.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (34.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 70, 537, 10.0, 5132.0, NULL, 70, 'UNID.', 39.0, 390.0, 'EMBOLO DE VÁLVULA DE DE DESCARGA', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (28.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 5132.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (29.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(70, 71, 537, 70.0, 5363.0, NULL, 71, 'UNID.', 3.3, 231.0, 'ESPUDE PLÁSTICO SANFONADO', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (31.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 5363.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (27.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 72, 537, 30.0, 6050.0, NULL, 72, 'UNID.', 22.9, 687.0, 'REPARO P/ VÁVULA DE DESCARGA HIDRA MÁSTER DECA', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (23.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 6050.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (34.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(100, 73, 537, 100.0, 8920.0, NULL, 73, 'UNID.', 28.7, 2870.0, 'REPARO P/ VÁLVULA DE DESCARGA HIDRA MAX DECA', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (32.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 8920.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (31.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 74, 537, 30.0, 9820.0, NULL, 74, 'UNID.', 30.0, 900.0, 'REPARO P/ VÁLVULA DE DESCARGA MODELO 2515', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (28.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 9820.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (28.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.5ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 75, 537, 30.0, 10780.0, NULL, 75, 'UNID.', 32.0, 960.0, 'REPARO P/ VÁLVULA DE DESCARGA MODELO 2515 LIZA II', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (35.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 10780.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (35.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(40, 76, 537, 40.0, 12140.0, NULL, 76, 'UNID.', 34.0, 1360.0, 'REPARO P/ VÁLVULA DE DESCARGA DOCOL 1 1/2\'\'', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (33.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 12140.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(60, 77, 537, 60.0, 12680.0, NULL, 77, 'UNID.', 9.0, 540.0, 'CRUZETA DE REGISTRO DE VÁLVULA DE DESCARGA ', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (33.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 12680.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(60, 78, 537, 60.0, 13370.0, NULL, 78, 'UNID.', 11.5, 690.0, 'CRUZETA DE REGISTRO DE VÁLVULA DE DESCARGA DOCOL', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (32.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 13370.0, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 79, 537, 30.0, 13.5, NULL, 79, 'UNID.', 0.45, 13.5, 'PLUG PVC 1/2\'\'', '2018-10-16 17:59:08', '2018-10-16 17:59:08')[0m
+  [4;35;1mSQL (37.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.7ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 13.5, `updated_at` = '2018-10-16 17:59:08' WHERE `id` = 537[0m
+  [4;36;1mSQL (50.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 80, 537, 20.0, 27.5, NULL, 80, 'UNID.', 0.7, 14.0, 'PLUG PVC 3/4', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;35;1mSQL (52.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 27.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;36;1mSQL (34.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 81, 537, 0.0, 27.5, NULL, 81, 'UNID.', 21.0, 0.0, 'TORNEIRAS P/ TANQUE 1123C DE 1/2\'\'', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;35;1mSQL (28.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.5ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 82, 537, 10.0, 497.5, NULL, 82, 'UNID.', 47.0, 470.0, 'TORNEIRA RETA P/ PIA DE CIZINHA REF. 1163 C DE 3/4\'\'', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;36;1mSQL (28.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 497.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;35;1mSQL (31.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(50, 83, 537, 50.0, 2997.5, NULL, 83, 'UNID.', 50.0, 2500.0, 'TORNEIRA BICA MÓVEL PAREDE P/ COZINHA', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;36;1mSQL (31.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 2997.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;35;1mSQL (34.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.7ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 84, 537, 0.0, 2997.5, NULL, 84, 'UNID.', 34.0, 0.0, 'TORNEIRA PARA LAVATÓRIO', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;36;1mSQL (29.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.5ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 85, 537, 0.0, 2997.5, NULL, 85, 'UNID.', 18.0, 0.0, 'TORNEIRA ESFÉRICA P/ TANQUE 3/4\'\'', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;35;1mSQL (44.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.4ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 86, 537, 30.0, 3567.5, NULL, 86, 'UNID.', 19.0, 570.0, 'TORNEIRA AMARELA 3/4\'\' PARA JARDIM', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 3567.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;35;1mSQL (35.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.3ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(20, 87, 537, 20.0, 3707.5, NULL, 87, 'UNID.', 7.0, 140.0, 'PROLONGAMENTO DE METAL CROMADO 1/2\'\' X 7CMTS ', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_compras` SET `valor_total` = 3707.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;35;1mSQL (30.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Create (0.6ms)[0m   [0mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(0, 88, 537, 0.0, 3707.5, NULL, 88, 'UNID.', 7.47, 0.0, 'PROLONGAMENTO DE METAL CROMADO DE 3/4\'\' X 7 CMTS', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;36;1mSQL (27.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.6ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(1000, 89, 537, 1000.0, 4107.5, NULL, 89, 'UNID.', 0.4, 400.0, 'VEDANTES DE 1/2\'\'', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;35;1mSQL (31.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 4107.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;36;1mSQL (28.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.5ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(1000, 90, 537, 1000.0, 4507.5, NULL, 90, 'UNID.', 0.4, 400.0, 'VEDANTES DE 3/4\'\'', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;35;1mSQL (34.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 4507.5, `updated_at` = '2018-10-16 17:59:09' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 91, 537, 30.0, 4567.5, NULL, 91, 'UNID.', 2.0, 60.0, 'BICOS DE METAL 3/4 X 1/2\'\'', '2018-10-16 17:59:09', '2018-10-16 17:59:09')[0m
+  [4;35;1mSQL (30.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.3ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 4567.5, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (31.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(30, 92, 537, 30.0, 4729.5, NULL, 92, 'ROLO', 5.4, 162.0, 'FITA VEDA ROSCA DE 18 X 50 MTSM ', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (27.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 4729.5, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 93, 537, 10.0, 50.0, NULL, 93, 'UNID.', 5.0, 50.0, 'SUPORTE PARA GRELHA QUADRADA DE 6\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (35.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 50.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (31.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 94, 537, 10.0, 100.0, NULL, 94, 'UNID.', 5.0, 50.0, 'SUPORTE PARA GRELHA REDONDA DE 6\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (32.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.3ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 100.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (37.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 95, 537, 10.0, 140.0, NULL, 95, 'UNID.', 4.0, 40.0, 'SUPORTE PARA GRELHA QUADRADA DE 4\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (30.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.6ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 140.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (39.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 96, 537, 10.0, 175.0, NULL, 96, 'UNID.', 3.5, 35.0, 'SUPORTE PARA GRELHA REDONDA DE 4\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (35.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 175.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (35.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.4ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 97, 537, 10.0, 365.0, NULL, 97, 'UNID.', 19.0, 190.0, 'GRELHA CROMADA ROTATÓRIA QUADRADA DE 6\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (32.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 365.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (33.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.2ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 98, 537, 10.0, 555.0, NULL, 98, 'UNID.', 19.0, 190.0, 'GRELHA CROMADA ROTATÓRIA REDONDA DE 6\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 555.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (43.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.2ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 99, 537, 10.0, 665.0, NULL, 99, 'UNID.', 11.0, 110.0, 'GRELHA CROMADA ROTATÓRIA QUADRADA DE 4\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (28.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.4ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 665.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (32.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Create (0.3ms)[0m   [0;1mINSERT INTO `orc_pedido_descricaos` (`saldo`, `orc_ata_item_id`, `orc_pedido_compra_id`, `quantidade`, `total_geral`, `obs`, `item`, `medida`, `unitario`, `total`, `descricao`, `updated_at`, `created_at`) VALUES(10, 100, 537, 10.0, 775.0, NULL, 100, 'UNID.', 11.0, 110.0, 'GRELHA CROMADA ROTATÓRIA REDONDA DE 4\'\'', '2018-10-16 17:59:10', '2018-10-16 17:59:10')[0m
+  [4;35;1mSQL (33.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoCompra Update (0.5ms)[0m   [0mUPDATE `orc_pedido_compras` SET `valor_total` = 775.0, `updated_at` = '2018-10-16 17:59:10' WHERE `id` = 537[0m
+  [4;36;1mSQL (28.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/orc_pedido_compras/537/edit
+Completed in 32102ms (DB: 5639) | 302 Found [http://localhost/orc_pedido_compras]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#edit (for 127.0.0.1 at 2018-10-16 14:59:11) [GET]
+  Parameters: {"id"=>"537"}
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcAta Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;35;1mOrcPedidoCompra Load (0.8ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mOrcPedidoCompra Load (0.9ms)[0m   [0mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+  [4;35;1mOrcPedidoCompra Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;36;1mOrcPedidoCompra Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 537) [0m
+  [4;35;1mOrcPedidoDescricao Load (1.2ms)[0m   [0mSELECT * FROM `orc_pedido_descricaos` WHERE (orc_pedido_compra_id=537 ) [0m
+Rendering template within layouts/application
+Rendering orc_pedido_compras/edit
+  [4;36;1mOrcFicha Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;35;1mOrcPedidoDescricao Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_descricaos`[0m
+Rendered orc_pedido_compras/_orc_pedido_descricaos (1006.3ms)
+  [4;36;1mOrcAtaIten Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (orc_ata_id = NULL) [0m
+  [4;35;1mOrcAta Load (0.1ms)[0m   [0mSELECT * FROM `orc_atas` WHERE (codigo ='1') [0m
+Rendered orc_pedido_compras/_orc_pedido_descricao (15.5ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-16 17:59:12' AND ends_at >= '2018-10-16 17:59:12') [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 1348ms (View: 1243, DB: 11) | 200 OK [http://localhost/orc_pedido_compras/537/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-16 14:59:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_load'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_program'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/bin/rdebug-ide:121
+  /usr/bin/rdebug-ide:19:in `load'
+  /usr/bin/rdebug-ide:19
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#update (for 127.0.0.1 at 2018-10-16 14:59:24) [PUT]
+  Parameters: {"id"=>"537", "commit"=>"Salvar", "orc_pedido_compra"=>{"cnpj"=>"", "fornecedor"=>"", "codigo"=>"", "objetivo"=>"", "obs"=>"", "orc_ficha_id"=>"3", "justificativa"=>""}, "destino"=>"SUPRIMENTOS", "authenticity_token"=>"WVto9BromE9TKjGZBQOqu/AbGCjLD+mRglQmyHqfoWA="}
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcAta Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mroles_users Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;36;1mOrcFicha Load (0.1ms)[0m   [0;1mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+  [4;35;1mOrcPedidoCompra Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 537) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAta Load (0.6ms)[0m   [0mSELECT * FROM `orc_atas` WHERE (id =1) [0m
+  [4;36;1mOrcPedidoDescricao Load (3.3ms)[0m   [0;1mSELECT * FROM `orc_pedido_descricaos` WHERE (orc_pedido_compra_id=537) [0m
+  [4;35;1mOrcPedidoDescricao Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_descricaos`[0m
+  [4;36;1mOrcAtaIten Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `orc_ata_itens`[0m
+  [4;35;1mOrcAtaIten Load (0.7ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.6ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:24' WHERE `id` = 1[0m
+  [4;36;1mSQL (40.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:24' WHERE `id` = 1038[0m
+  [4;35;1mSQL (29.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 2) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.7ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:24' WHERE `id` = 2[0m
+  [4;35;1mSQL (31.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:24' WHERE `id` = 1039[0m
+  [4;36;1mSQL (29.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 3) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 4) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:24' WHERE `id` = 4[0m
+  [4;35;1mSQL (27.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:24' WHERE `id` = 1041[0m
+  [4;36;1mSQL (34.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.7ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 5) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 5[0m
+  [4;36;1mSQL (31.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1042[0m
+  [4;35;1mSQL (27.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (1.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 6) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 6[0m
+  [4;35;1mSQL (31.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1043[0m
+  [4;36;1mSQL (36.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 7) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.6ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 7[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1044[0m
+  [4;35;1mSQL (28.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 8) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.7ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 9) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 9[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1046[0m
+  [4;35;1mSQL (32.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 10) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 11) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 12) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 13) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 14) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 15) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 16) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 17) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 18) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 19) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 20) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 21) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 22) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 23) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 24) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 25) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 26) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 27) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 28) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 29) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.3ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 29[0m
+  [4;36;1mSQL (30.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1066[0m
+  [4;35;1mSQL (30.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 30) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 30[0m
+  [4;35;1mSQL (32.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1067[0m
+  [4;36;1mSQL (35.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.5ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 31) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 31[0m
+  [4;36;1mSQL (32.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1068[0m
+  [4;35;1mSQL (30.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 32) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 33) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 33[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:25' WHERE `id` = 1070[0m
+  [4;35;1mSQL (34.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 34) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 34[0m
+  [4;35;1mSQL (29.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.3ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1071[0m
+  [4;36;1mSQL (29.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 35) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 36) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 37) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 38) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.3ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 38[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1075[0m
+  [4;36;1mSQL (33.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.7ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 39) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 39[0m
+  [4;36;1mSQL (31.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1076[0m
+  [4;35;1mSQL (27.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 40) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 40[0m
+  [4;35;1mSQL (30.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1077[0m
+  [4;36;1mSQL (28.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.5ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 41) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 42) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 42[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.7ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1079[0m
+  [4;36;1mSQL (29.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 43) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 44) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.7ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 45) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.6ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 45[0m
+  [4;36;1mSQL (34.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1082[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 46) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 47) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 48) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 49) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 50) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.3ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 50[0m
+  [4;35;1mSQL (30.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1087[0m
+  [4;36;1mSQL (29.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 51) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.6ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 51[0m
+  [4;36;1mSQL (32.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.3ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1088[0m
+  [4;35;1mSQL (29.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 52) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 53) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 53[0m
+  [4;36;1mSQL (35.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 1090[0m
+  [4;35;1mSQL (33.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.8ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 54) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:26' WHERE `id` = 54[0m
+  [4;35;1mSQL (34.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1091[0m
+  [4;36;1mSQL (33.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.5ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 55) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.3ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 55[0m
+  [4;36;1mSQL (34.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1092[0m
+  [4;35;1mSQL (33.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 56) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 56[0m
+  [4;35;1mSQL (30.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1093[0m
+  [4;36;1mSQL (33.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 57) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 57[0m
+  [4;36;1mSQL (30.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1094[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 58) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 58[0m
+  [4;35;1mSQL (33.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1095[0m
+  [4;36;1mSQL (33.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 59) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.3ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 59[0m
+  [4;36;1mSQL (31.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1096[0m
+  [4;35;1mSQL (33.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 60) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 60[0m
+  [4;35;1mSQL (30.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1097[0m
+  [4;36;1mSQL (33.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 61) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 61[0m
+  [4;36;1mSQL (32.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1098[0m
+  [4;35;1mSQL (33.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 62) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.6ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 62[0m
+  [4;35;1mSQL (30.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1099[0m
+  [4;36;1mSQL (33.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 63) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 63[0m
+  [4;36;1mSQL (29.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1100[0m
+  [4;35;1mSQL (27.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 64) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 64[0m
+  [4;35;1mSQL (33.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1101[0m
+  [4;36;1mSQL (28.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 65) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 65[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1102[0m
+  [4;35;1mSQL (33.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 66) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 66[0m
+  [4;35;1mSQL (28.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.3ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:27' WHERE `id` = 1103[0m
+  [4;36;1mSQL (34.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 67) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 67[0m
+  [4;36;1mSQL (31.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1104[0m
+  [4;35;1mSQL (34.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 68) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.3ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 68[0m
+  [4;35;1mSQL (32.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1105[0m
+  [4;36;1mSQL (35.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 69) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 69[0m
+  [4;36;1mSQL (34.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1106[0m
+  [4;35;1mSQL (28.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 70) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 70[0m
+  [4;35;1mSQL (33.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1107[0m
+  [4;36;1mSQL (35.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 71) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 71[0m
+  [4;36;1mSQL (29.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1108[0m
+  [4;35;1mSQL (34.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 72) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 72[0m
+  [4;35;1mSQL (34.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1109[0m
+  [4;36;1mSQL (34.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 73) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.6ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 73[0m
+  [4;36;1mSQL (28.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1110[0m
+  [4;35;1mSQL (28.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 74) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 74[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1111[0m
+  [4;36;1mSQL (33.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 75) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 75[0m
+  [4;36;1mSQL (28.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1112[0m
+  [4;35;1mSQL (32.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 76) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.6ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 76[0m
+  [4;35;1mSQL (28.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 1113[0m
+  [4;36;1mSQL (31.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.5ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 77) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.8ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:28' WHERE `id` = 77[0m
+  [4;36;1mSQL (33.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1114[0m
+  [4;35;1mSQL (34.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 78) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 78[0m
+  [4;35;1mSQL (32.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1115[0m
+  [4;36;1mSQL (32.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 79) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.3ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 79[0m
+  [4;36;1mSQL (27.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1116[0m
+  [4;35;1mSQL (37.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 80) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.6ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 80[0m
+  [4;35;1mSQL (36.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1117[0m
+  [4;36;1mSQL (41.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 81) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 82) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 82[0m
+  [4;35;1mSQL (34.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1119[0m
+  [4;36;1mSQL (33.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.7ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 83) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 83[0m
+  [4;36;1mSQL (30.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1120[0m
+  [4;35;1mSQL (62.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 84) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 85) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 86) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 86[0m
+  [4;35;1mSQL (34.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1123[0m
+  [4;36;1mSQL (34.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.5ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 87) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 87[0m
+  [4;36;1mSQL (29.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1124[0m
+  [4;35;1mSQL (35.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 88) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 89) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.3ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 89[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1126[0m
+  [4;35;1mSQL (34.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 90) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 90[0m
+  [4;35;1mSQL (32.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1127[0m
+  [4;36;1mSQL (33.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 91) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 91[0m
+  [4;36;1mSQL (31.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:29' WHERE `id` = 1128[0m
+  [4;35;1mSQL (33.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 92) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 92[0m
+  [4;35;1mSQL (23.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.4ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1129[0m
+  [4;36;1mSQL (28.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 93) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 93[0m
+  [4;36;1mSQL (27.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.4ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1130[0m
+  [4;35;1mSQL (37.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 94) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.5ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 94[0m
+  [4;35;1mSQL (30.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1131[0m
+  [4;36;1mSQL (33.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.4ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 95) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.7ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 95[0m
+  [4;36;1mSQL (31.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1132[0m
+  [4;35;1mSQL (34.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.8ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 96) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.6ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 96[0m
+  [4;35;1mSQL (42.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.3ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1133[0m
+  [4;36;1mSQL (61.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.5ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 97) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.4ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 97[0m
+  [4;36;1mSQL (49.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.5ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1134[0m
+  [4;35;1mSQL (36.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.6ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 98) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.4ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 98[0m
+  [4;35;1mSQL (33.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.6ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1135[0m
+  [4;36;1mSQL (33.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOrcAtaIten Load (0.6ms)[0m   [0mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 99) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 99[0m
+  [4;36;1mSQL (28.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoDescricao Update (0.6ms)[0m   [0;1mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1136[0m
+  [4;35;1mSQL (34.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (`orc_ata_itens`.`id` = 100) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.6ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 0.0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 100[0m
+  [4;35;1mSQL (27.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcPedidoDescricao Update (0.5ms)[0m   [0mUPDATE `orc_pedido_descricaos` SET `saldo` = 0, `updated_at` = '2018-10-16 17:59:30' WHERE `id` = 1137[0m
+  [4;36;1mSQL (36.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/orc_pedido_compras/537
+Completed in 6360ms (DB: 4298) | 302 Found [http://localhost/orc_pedido_compras/537]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcPedidoComprasController#show (for 127.0.0.1 at 2018-10-16 14:59:31) [GET]
+  Parameters: {"id"=>"537"}
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcFicha Load (0.2ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcAta Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_atas` WHERE (DATE_ADD(data, INTERVAL 1 YEAR) > NOW()) [0m
+  [4;35;1mOrcPedidoCompra Load (0.2ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mroles_users Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT codigo FROM `orc_pedido_compras` WHERE (ano= 2018 and user_id = 2) ORDER BY codigo DESC[0m
+  [4;36;1mOrcFicha Load (0.1ms)[0m   [0;1mSELECT distinct(descricao), CONCAT( ano , ' - ',descricao ) AS descricao_ano FROM `orc_fichas` ORDER BY descricao ASC , ano ASC[0m
+  [4;35;1mOrcPedidoCompra Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 537) [0m
+  [4;35;1mOrcPedidoDescricao Load (1.4ms)[0m   [0mSELECT * FROM `orc_pedido_descricaos` WHERE (orc_pedido_compra_id=537 ) [0m
+Rendering template within layouts/application
+Rendering orc_pedido_compras/show
+  [4;36;1mOrcFicha Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;35;1mOrcFicha Load (0.2ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (`orc_fichas`.`id` = 3) [0m
+  [4;36;1mOrcUniOrcamentaria Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;36;1mOrcUniDespesa Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;35;1mOrcUniDespesa Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;36;1mOrcPedidoDescricao Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_descricaos`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-16 17:59:31' AND ends_at >= '2018-10-16 17:59:31') [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 518ms (View: 319, DB: 10) | 200 OK [http://localhost/orc_pedido_compras/537]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-16 14:59:32) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_load'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/lib/ruby-debug-ide.rb:86:in `debug_program'
+  /usr/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.33/bin/rdebug-ide:121
+  /usr/bin/rdebug-ide:19:in `load'
+  /usr/bin/rdebug-ide:19
+
+Rendering rescues/layout (not_found)
