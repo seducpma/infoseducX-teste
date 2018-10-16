@@ -321,7 +321,7 @@ class OrcEmpenhosController < ApplicationController
           render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"
           end
-    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
+    else if params[:type_of].to_i == 3   #emepnho            produto(antigo)
                   @empenhos = OrcEmpenho.find(:all,:conditions => ['id != 1 and codigo like ?', "%" + params[:search_empenho].to_s + "%"], :order => 'id DESC')
                render :update do |page|
                   page.replace_html 'empenho', :partial => "empenhos"

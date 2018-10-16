@@ -19,7 +19,7 @@
            <%# form_remote_tag :url => si_selecionados_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
                       <% @pedidos_compra.each do |pedido| %>
                         <tr bgcolor="#DCDCDC" >
-                            <td></td>
+                          
                             <td  align="center"><b>SI</b></td>
                             <td align="center"><b>Objetivo </b></td>
                             <td align="center"><b>Fornecedor</b></td>
@@ -29,7 +29,7 @@
                             <td width ="10%"  align="center"><b>Data </b></td>
                           </tr>
                         <tr  bgcolor="#F5F5F5">
-                          <td align="center"><%= check_box_tag "orc_pedido_compra_ids[]",pedido.id %></td>
+                          
                           <td><b><%=h pedido.codigo %></b> <%  session[:pedido_user_id] = pedido.user_id %></td>
                           <td><%=h pedido.objetivo %></td>
                           <td><%=h pedido.fornecedor %></td>
@@ -50,7 +50,7 @@
                             <% total_ficha = 0 + total_ficha %>
                        <%end%>
                        <tr  bgcolor="#F5F5F5">
-                         <td bgcolor="#DCDCDC"> </td><td bgcolor="#DCDCDC"> </td>
+                         <td bgcolor="#DCDCDC"> </td>
                          <td colspan="6">
                            <table bgcolor="#DCDCDC" width="100%" >
                                  <tr  bgcolor="#DCDCDC">

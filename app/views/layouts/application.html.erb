@@ -540,7 +540,8 @@ display: none;
                         <%end%>
                       <li><a>Atas de Preço</a>
                           <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento')  %>
+                           <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+
                                   <li><%= link_to "Cadastrar",new_orc_ata_path %></li>
                                   <li><%= link_to "Consultar",consulta_orc_atas_path %></li>
 

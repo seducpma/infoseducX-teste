@@ -323,8 +323,9 @@ end
                render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
                end
-         else if params[:type_of].to_i == 4   #todas
-                      @pedidos_compra = OrcPedidoCompra.find(:all,:conditions => ['id != 1'], :order => 'id DESC')
+         else if params[:type_of].to_i == 4   #objetivo
+                      #@pedidos_compra = OrcPedidoCompra.find(:all,:conditions => ['id != 1'], :order => 'id DESC')
+                      @pedidos_compra = OrcPedidoCompra.find(:all,:conditions => ['id != 1 and objetivo like ?', "%" + params[:search_objetivo].to_s + "%"], :order => 'id DESC')
                    render :update do |page|
                       page.replace_html 'consultapedido', :partial => "pedidos"
                    end
