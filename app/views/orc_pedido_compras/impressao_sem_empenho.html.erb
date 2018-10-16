@@ -28,7 +28,7 @@
                                <td width ="5%"  align="center"><font size =1"><b>Data </b></td>
                          </tr>
                         <tr style="height: 1px" >
-                          <td rowspan="3" valign="top"><font size =1"><%=h pedido.codigo %></font></td>
+                          <td valign="top"><font size =1"><%=h pedido.codigo %></font></td>
                           <td colspan="3"><font size =1"><%=h pedido.objetivo %></font></td>
                           <td colspan="1"><font size =1"><%=h pedido.fornecedor %></font></td>
                           <td align="center"><font size =1"><%=h pedido.created_at.strftime("%d/%m/%y") %></font> </td>
@@ -36,7 +36,7 @@
                          <% contador = 1%>
                                
                                      <tr style="height: 1px"  bgcolor="#DCDCDC">
-
+                                         <td></td>
                                          <td  width ="1%" align="center"><font size =1"><b>Item</b></font> </td>
                                          <td width ="1%" align="center"><font size =1"><b>Quant.</b></font> </td>
                                          <td width ="10%" align="left"><b> <font size =1">Descrição</b></font> </td>
@@ -47,6 +47,7 @@
                                 <% @orc_pedido_descricaos.each do |descricao|%>
 
                                      <tr  style="height: 1px" bgcolor="#F5F5F5" >
+                                         <td></td>   
                                          <td  align="center"><font size =1"><%= contador%></font> </td>
                                          <td  align="center"><font size =1"><%= descricao.quantidade%></font> </td>
                                          <td  align="left"> <font size =1"><%= descricao.descricao%></font> </td>
