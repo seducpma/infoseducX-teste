@@ -70,7 +70,7 @@ class OrcAtasController < ApplicationController
         session[:news_itens]= @orc_ata.id
         @ata = OrcAta.find(:all, :conditions =>['id=?',@orc_ata.id])
 
-        flash[:notice] = 'OrcAta was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO'
         format.html { redirect_to( {:action => "edit", :id =>@ata[0].id} ) }
         format.xml  { render :xml => @orc_ata, :status => :created, :location => @orc_ata }
       else
@@ -87,7 +87,7 @@ class OrcAtasController < ApplicationController
 
     respond_to do |format|
       if @orc_ata.update_attributes(params[:orc_ata])
-        flash[:notice] = 'OrcAta was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO'
         format.html { redirect_to(@orc_ata) }
         format.xml  { head :ok }
       else

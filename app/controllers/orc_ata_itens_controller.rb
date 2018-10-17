@@ -46,7 +46,7 @@ class OrcAtaItensController < ApplicationController
 
     respond_to do |format|
       if @orc_ata_iten.save
-        flash[:notice] = 'OrcAtaIten was successfully created.'
+        flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_ata_iten) }
         format.xml  { render :xml => @orc_ata_iten, :status => :created, :location => @orc_ata_iten }
       else
@@ -63,7 +63,7 @@ class OrcAtaItensController < ApplicationController
 
     respond_to do |format|
       if @orc_ata_iten.update_attributes(params[:orc_ata_iten])
-        flash[:notice] = 'OrcAtaIten was successfully updated.'
+        flash[:notice] = 'SALVO COM SUCESSO'
         format.html { redirect_to(home_path) }
         format.xml  { head :ok }
       else

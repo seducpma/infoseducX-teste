@@ -579,7 +579,7 @@ display: none;
                                 <%end%>
                             </ul>
                           </li>
-                    <% if current_user.has_role?('desenvolvimento')%>
+                    <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
                           <li><a>Lançamentos</a>
                               <ul style="width:108px;">
                                <% if current_user.has_role?('desenvolvimento') %>
@@ -591,15 +591,17 @@ display: none;
                                 <%end%>
                             </ul>
                           </li>
-                          <li><a>Pagamentos</a>
-                              <ul style="width:108px;">
-                               <% if current_user.has_role?('desenvolvimento') %>
-                                      <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
-                                      <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
+                          <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                              <li><a>Orem Pagamento</a>
+                                  <ul style="width:108px;">
+                                   <% if current_user.has_role?('desenvolvimento') %>
+                                          <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
+                                          <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
 
-                                <%end%>
-                            </ul>
-                          </li>
+                                    <%end%>
+                                </ul>
+                              </li>
+                         <%end%>
                     <%end%>
                           <li><a>Saldos</a>
                                  <ul style="width:108px;">
