@@ -592,7 +592,7 @@ display: none;
                             </ul>
                           </li>
                           <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
-                              <li><a>Orem Pagamento</a>
+                              <li><a>Ordem Pagamento</a>
                                   <ul style="width:108px;">
                                    <% if current_user.has_role?('desenvolvimento') %>
                                           <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>

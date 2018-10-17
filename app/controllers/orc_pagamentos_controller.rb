@@ -68,10 +68,11 @@ class OrcPagamentosController < ApplicationController
             # atualiza saldo na ficha
        if @orc_pagamento.orc_empenho_id.nil?
            @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
-           t=0
        else
            @ficha = OrcFicha.find(:all, :conditions => ['id =?',session[:ficha_id]])
-           t=0
+           @empenho = OrcEmpenho.find(:all, :conditions => ['id=?', @orc_pagamento.orc_empenho_id])
+           @orc_pagamento.interessado=@empenho[0].interessado
+           @orc_pagamento.save
        end
 
         @orc_pagamento.ficha = @ficha[0].ficha
