@@ -59,20 +59,25 @@ class OrcPagamentosController < ApplicationController
   # POST /orc_pagamentos.xml
   def create
     @orc_pagamento = OrcPagamento.new(params[:orc_pagamento])
-    @orc_pagamento.pago = 1
+    
 
     respond_to do |format|
+        @orc_pagamento.pago = 1
       if @orc_pagamento.save
        op_id=@orc_pagamento.id
-
+       @empenho = OrcEmpenho.find(:all, :conditions => ['id=?', @orc_pagamento.orc_empenho_id])
             # atualiza saldo na ficha
        if @orc_pagamento.orc_empenho_id.nil?
            @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
+           @empenho[0].pago=1
+           @empenho[0].save
        else
            @ficha = OrcFicha.find(:all, :conditions => ['id =?',session[:ficha_id]])
-           @empenho = OrcEmpenho.find(:all, :conditions => ['id=?', @orc_pagamento.orc_empenho_id])
+           
            @orc_pagamento.interessado=@empenho[0].interessado
+           @empenho[0].pago=1
            @orc_pagamento.save
+           @empenho[0].save
        end
 
         @orc_pagamento.ficha = @ficha[0].ficha

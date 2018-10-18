@@ -192,21 +192,22 @@ end
     else
         respond_to do |format|
           if @orc_pedido_compra.update_attributes(params[:orc_pedido_compra])
-
-              @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_pedido_compra.ata_id])
-              @itens_pedido = OrcPedidoDescricao.find(:all, :conditions=>['orc_pedido_compra_id=?',@orc_pedido_compra.id ])
-              if !@orc_pedido_compra.ata_id.nil?
-                      for descricao_compra in @itens_pedido
-                         @oc_ata_item = OrcAtaIten.find(descricao_compra.orc_ata_item_id)
-                         saldo_anterior= @oc_ata_item.saldo
-                         quantidade= descricao_compra.quantidade
-                         saldo_atualizado= saldo_anterior- quantidade
-                         @oc_ata_item.saldo =  saldo_atualizado
-                         descricao_compra.saldo = saldo_atualizado
-                         @oc_ata_item.save
-                         descricao_compra.save
-                      end
-              end
+#>>>>>>>>
+ #             @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_pedido_compra.ata_id])
+ #             @itens_pedido = OrcPedidoDescricao.find(:all, :conditions=>['orc_pedido_compra_id=?',@orc_pedido_compra.id ])
+ #             if !@orc_pedido_compra.ata_id.nil?
+  #                    for descricao_compra in @itens_pedido
+ #                        @oc_ata_item = OrcAtaIten.find(descricao_compra.orc_ata_item_id)
+ #                        saldo_anterior= @oc_ata_item.saldo
+ #                        quantidade= descricao_compra.quantidade
+ #                        saldo_atualizado= saldo_anterior- quantidade
+ #                        @oc_ata_item.saldo =  saldo_atualizado
+ #                        descricao_compra.saldo = saldo_atualizado
+ #                        @oc_ata_item.save
+ ##                        descricao_compra.save
+ ##                     end
+ #             end
+#<<<<<<<
             flash[:notice] = 'SALVO COM SUCESSO.'
             format.html { redirect_to(@orc_pedido_compra) }
             format.xml  { head :ok }
@@ -371,8 +372,7 @@ end
 
 
    def si_selecionados
-      w=session[:pedido_ids]=params[:pedido_ids]
-      t=0
+      session[:pedido_ids]=params[:pedido_ids]
       #@chamados = Chamado.find(params[:chamado_ids], :joins => "LEFT JOIN "+session[:base]+".unidades uni ON uni.id = chamados.unidade_id")
       #@orc_pedido_compra= OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL)
       @orc_pedido_compra = OrcPedidoCompra.find(session[:pedido_ids], :joins => "LEFT JOIN orc_empenhos ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ")

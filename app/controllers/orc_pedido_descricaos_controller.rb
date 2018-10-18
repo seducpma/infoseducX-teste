@@ -67,6 +67,7 @@ class OrcPedidoDescricaosController < ApplicationController
     respond_to do |format|
       if @orc_pedido_descricao.update_attributes(params[:orc_pedido_descricao])
 
+
         flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to( {:controller =>'orc_pedido_compras' ,:action => "edit", :id => @orc_pedido_compra[0].id} ) }
         format.xml  { head :ok }

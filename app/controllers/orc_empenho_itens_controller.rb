@@ -60,11 +60,12 @@ class OrcEmpenhoItensController < ApplicationController
   # PUT /orc_empenho_itens/1.xml
   def update
     @orc_empenho_iten = OrcEmpenhoIten.find(params[:id])
-
+    @orc_empenho = OrcEmpenho.find(:all, :conditions=> ['id=?', @orc_empenho_iten.orc_empenho_id])
     respond_to do |format|
       if @orc_empenho_iten.update_attributes(params[:orc_empenho_iten])
         flash[:notice] = 'SALVO COM SUCESSO'
-        format.html { redirect_to(@orc_empenho_iten) }
+        format.html { redirect_to( {:controller =>'orc_empenhos' ,:action => "edit", :id => @orc_empenho[0].id} ) }
+        format.html { redirect_to( {:controller =>'orc_pedido_compras' ,:action => "edit", :id => @orc_pedido_compra[0].id} ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
