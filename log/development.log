@@ -33555,3 +33555,571 @@ Processing OrcAtasController#ata_consulta_saldo (for 127.0.0.1 at 2018-10-19 13:
   [4;35;1mOrcAta Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_atas`[0m
 Rendered orc_atas/_ata_saldo (10.5ms)
 Completed in 159ms (View: 12, DB: 3) | 200 OK [http://localhost/orc_atas/ata_consulta_saldo]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2018-10-19 14:16:34) [GET]
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:16:34' AND ends_at >= '2018-10-19 17:16:34') [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 353ms (View: 212, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:16:34) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#consulta (for 127.0.0.1 at 2018-10-19 14:16:41) [GET]
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (0.3ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/consulta
+Rendered orc_empenhos/_consulta_data (1.4ms)
+Rendered orc_empenhos/_consulta_fornecedor (1.0ms)
+  [4;36;1mOrcFicha Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_empenhos/_consulta_ficha (100.1ms)
+Rendered orc_empenhos/_consulta_empenho (1.1ms)
+Rendered orc_empenhos/_consulta_si (0.8ms)
+  [4;35;1mInformativo Load (0.9ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:16:41' AND ends_at >= '2018-10-19 17:16:41') [0m
+  [4;36;1mroles_users Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 234ms (View: 178, DB: 7) | 200 OK [http://localhost/orc_empenhos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:16:41) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcLancamentosController#consultaSI (for 127.0.0.1 at 2018-10-19 14:18:07) [GET]
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcPedidoCompra Load (0.3ms)[0m   [0mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;36;1mOrcUniDespesa Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcEmpenho Load (0.2ms)[0m   [0;1mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+Rendering template within layouts/application
+Rendering orc_lancamentos/consultaSI
+Rendered orc_lancamentos/_consulta_data_si (10.0ms)
+Rendered orc_lancamentos/_consulta_fornecedor_si (2.4ms)
+  [4;35;1mOrcFicha Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_lancamentos/_consulta_ficha_si (12.0ms)
+Rendered orc_lancamentos/_consulta_sem_filtro (1.2ms)
+  [4;36;1mInformativo Load (0.8ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:18:07' AND ends_at >= '2018-10-19 17:18:07') [0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 355ms (View: 220, DB: 6) | 200 OK [http://localhost/orc_lancamentos/consultaSI]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:18:08) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#consulta_produto (for 127.0.0.1 at 2018-10-19 14:18:15) [GET]
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (0.1ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/consulta_produto
+Rendered orc_empenhos/_consulta_data (0.8ms)
+Rendered orc_empenhos/_consulta_fornecedor (0.5ms)
+Rendered orc_empenhos/_consulta_sem_filtro (14.0ms)
+Rendered orc_empenhos/_consulta_empenho (0.5ms)
+Rendered orc_empenhos/_consulta_produto (13.4ms)
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:18:15' AND ends_at >= '2018-10-19 17:18:15') [0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 262ms (View: 206, DB: 4) | 200 OK [http://localhost/orc_empenhos/consulta_produto]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:18:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#consulta (for 127.0.0.1 at 2018-10-19 14:25:44) [GET]
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.5ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcEmpenho Load (3.2ms)[0m   [0mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;36;1mOrcUniDespesa Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;35;1mOrcFicha Load (0.5ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcEmpenho Load (0.2ms)[0m   [0;1mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/consulta
+Rendered orc_empenhos/_consulta_data (1.2ms)
+Rendered orc_empenhos/_consulta_fornecedor (0.8ms)
+  [4;35;1mOrcFicha Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_empenhos/_consulta_ficha (7.7ms)
+  [4;36;1mOrcEmpenho Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenhos`[0m
+Rendered orc_empenhos/_consulta_empenho (10.7ms)
+Rendered orc_empenhos/_consulta_si (0.4ms)
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:25:44' AND ends_at >= '2018-10-19 17:25:44') [0m
+  [4;36;1mroles_users Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 221ms (View: 75, DB: 11) | 200 OK [http://localhost/orc_empenhos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:25:44) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#consulta (for 127.0.0.1 at 2018-10-19 14:26:31) [GET]
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcPedidoCompra Load (0.3ms)[0m   [0mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;36;1mOrcEmpenho Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (0.2ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.0ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/consulta
+Rendered orc_empenhos/_consulta_data (0.6ms)
+Rendered orc_empenhos/_consulta_fornecedor (0.4ms)
+  [4;36;1mOrcFicha Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_empenhos/_consulta_ficha (5.2ms)
+  [4;35;1mOrcEmpenho Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `orc_empenhos`[0m
+Rendered orc_empenhos/_consulta_empenho (8.5ms)
+Rendered orc_empenhos/_consulta_si (0.4ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:26:31' AND ends_at >= '2018-10-19 17:26:31') [0m
+  [4;35;1mroles_users Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 289ms (View: 149, DB: 6) | 200 OK [http://localhost/orc_empenhos/consulta]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:26:32) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#consulta (for 127.0.0.1 at 2018-10-19 14:27:26) [GET]
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcEmpenho Load (0.4ms)[0m   [0mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;36;1mOrcUniDespesa Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;35;1mOrcFicha Load (0.2ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcEmpenho Load (0.4ms)[0m   [0;1mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/consulta
+Rendered orc_empenhos/_consulta_data (0.8ms)
+Rendered orc_empenhos/_consulta_fornecedor (0.4ms)
+  [4;35;1mOrcFicha Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_empenhos/_consulta_ficha (5.4ms)
+  [4;36;1mOrcEmpenho Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenhos`[0m
+Rendered orc_empenhos/_consulta_empenho (6.5ms)
+Rendered orc_empenhos/_consulta_si (0.4ms)
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:27:26' AND ends_at >= '2018-10-19 17:27:26') [0m
+  [4;36;1mroles_users Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 199ms (View: 58, DB: 7) | 200 OK [http://localhost/orc_empenhos/consulta]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:27:27) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#empenho_consulta (for 127.0.0.1 at 2018-10-19 14:27:35) [POST]
+  Parameters: {"orc_empenho_id"=>"149", "authenticity_token"=>"0OUfUWE107c6cNye4uJR/s8N7HrYBQoTt7bfs3buZZY="}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcPedidoCompra Load (0.4ms)[0m   [0mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;36;1mOrcEmpenho Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (0.1ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mOrcEmpenho Load (0.7ms)[0m   [0;1mSELECT * FROM `orc_empenhos` WHERE (id ='149' ) [0m
+  [4;35;1mOrcEmpenho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;36;1mOrcFicha Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (id = 145) [0m
+  [4;35;1mOrcPedidoCompra Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;35;1mOrcFicha Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_empenhos/_empenhos (22.7ms)
+Completed in 70ms (View: 22, DB: 9) | 200 OK [http://localhost/orc_empenhos/empenho_consulta]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#empenho_consulta (for 127.0.0.1 at 2018-10-19 14:27:43) [POST]
+  Parameters: {"orc_empenho_id"=>"150", "authenticity_token"=>"0OUfUWE107c6cNye4uJR/s8N7HrYBQoTt7bfs3buZZY="}
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcEmpenho Load (0.3ms)[0m   [0mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;36;1mOrcUniDespesa Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;35;1mOrcFicha Load (0.2ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcEmpenho Load (0.1ms)[0m   [0;1mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mOrcEmpenho Load (0.4ms)[0m   [0mSELECT * FROM `orc_empenhos` WHERE (id ='150' ) [0m
+  [4;36;1mOrcEmpenho Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;35;1mOrcFicha Load (0.2ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (id = 145) [0m
+  [4;36;1mOrcPedidoCompra Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;36;1mOrcFicha Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+Rendered orc_empenhos/_empenhos (14.2ms)
+Completed in 132ms (View: 13, DB: 5) | 200 OK [http://localhost/orc_empenhos/empenho_consulta]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#show (for 127.0.0.1 at 2018-10-19 14:27:47) [GET]
+  Parameters: {"id"=>"150"}
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcPedidoCompra Load (0.3ms)[0m   [0mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;36;1mOrcEmpenho Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (0.2ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mOrcEmpenho Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;35;1mOrcEmpenho Load (0.3ms)[0m   [0mSELECT * FROM `orc_empenhos` WHERE (`orc_empenhos`.`id` = 150) [0m
+  [4;36;1mOrcEmpenhoIten Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_empenho_itens` WHERE (orc_empenho_id=150 ) [0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (id =145) [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/show
+  [4;36;1mOrcFicha Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;35;1mOrcPedidoCompra Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;35;1mOrcUniOrcamentaria Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;35;1mOrcUniDespesa Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;36;1mOrcUniDespesa Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;35;1mOrcEmpenhoIten Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_empenho_itens`[0m
+  [4;36;1mroles_users Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mInformativo Load (0.8ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:27:47' AND ends_at >= '2018-10-19 17:27:47') [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 324ms (View: 171, DB: 15) | 200 OK [http://localhost/orc_empenhos/150]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:27:47) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#edit (for 127.0.0.1 at 2018-10-19 14:38:04) [GET]
+  Parameters: {"id"=>"150"}
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcEmpenho Load (0.4ms)[0m   [0mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;36;1mOrcUniDespesa Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcEmpenho Load (0.2ms)[0m   [0;1mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mOrcEmpenho Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;36;1mOrcEmpenho Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_empenhos` WHERE (`orc_empenhos`.`id` = 150) [0m
+  [4;35;1mOrcEmpenhoIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_empenho_itens` WHERE (orc_empenho_id=150 ) [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/edit
+  [4;36;1mOrcPedidoCompra Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;35;1mOrcPedidoCompra Load (0.2ms)[0m   [0mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;36;1mOrcFicha Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (`orc_fichas`.`id` = 145) [0m
+  [4;36;1mOrcUniOrcamentaria Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;36;1mOrcUniDespesa Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;35;1mOrcUniDespesa Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;36;1mOrcEmpenhoIten Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenho_itens`[0m
+Rendered orc_empenhos/_orc_empenho_itens (28.9ms)
+Rendered orc_empenhos/_orc_empenho_item (7.0ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:38:05' AND ends_at >= '2018-10-19 17:38:05') [0m
+  [4;36;1mroles_users Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 349ms (View: 196, DB: 16) | 200 OK [http://localhost/orc_empenhos/150/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:38:05) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#update (for 127.0.0.1 at 2018-10-19 14:38:09) [PUT]
+  Parameters: {"commit"=>"Salvar", "orc_empenho"=>{"obs"=>"XXX111XXX111XXX111XXX111XXX111"}, "cancela"=>"1", "id"=>"150", "authenticity_token"=>"0OUfUWE107c6cNye4uJR/s8N7HrYBQoTt7bfs3buZZY="}
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcPedidoCompra Load (0.5ms)[0m   [0mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;36;1mOrcEmpenho Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.2ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (0.2ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mOrcEmpenho Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;35;1mOrcEmpenho Load (0.1ms)[0m   [0mSELECT * FROM `orc_empenhos` WHERE (`orc_empenhos`.`id` = 150) [0m
+  [4;36;1mOrcPedidoCompra Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;35;1mOrcPedidoCompra Load (0.2ms)[0m   [0mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;36;1mOrcAta Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_atas` WHERE (id =6) [0m
+  [4;35;1mOrcEmpenhoIten Load (0.8ms)[0m   [0mSELECT * FROM `orc_empenho_itens` WHERE (orc_empenho_id=150) [0m
+  [4;36;1mOrcAta Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `orc_atas`[0m
+  [4;35;1mOrcEmpenhoIten Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `orc_empenho_itens`[0m
+  [4;36;1mOrcAtaIten Load (0.9ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (orc_ata_id=6 AND descricao='GOIABA VERMELHA') [0m
+  [4;35;1mOrcAtaIten Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `orc_ata_itens`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcAtaIten Update (0.5ms)[0m   [0mUPDATE `orc_ata_itens` SET `saldo` = 7100.0, `updated_at` = '2018-10-19 17:38:10' WHERE `id` = 333[0m
+  [4;36;1mSQL (144.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcEmpenhoIten Update (0.6ms)[0m   [0;1mUPDATE `orc_empenho_itens` SET `saldo` = 7100.0, `updated_at` = '2018-10-19 17:38:10' WHERE `id` = 473[0m
+  [4;35;1mSQL (28.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOrcAtaIten Load (1.3ms)[0m   [0;1mSELECT * FROM `orc_ata_itens` WHERE (orc_ata_id=6 AND descricao='MAÇA') [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcAtaIten Update (0.6ms)[0m   [0;1mUPDATE `orc_ata_itens` SET `saldo` = 7100.0, `updated_at` = '2018-10-19 17:38:10' WHERE `id` = 334[0m
+  [4;35;1mSQL (34.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOrcEmpenhoIten Update (0.4ms)[0m   [0mUPDATE `orc_empenho_itens` SET `saldo` = 7100.0, `updated_at` = '2018-10-19 17:38:10' WHERE `id` = 474[0m
+  [4;36;1mSQL (30.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (id =548) [0m
+  [4;35;1mOrcFicha Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;36;1mOrcFicha Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (`orc_fichas`.`id` = 145) [0m
+  [4;35;1mOrcUniOrcamentaria Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;35;1mOrcUniDespesa Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;36;1mOrcUniDespesa Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;35;1mOrcEmpenho Update (0.7ms)[0m   [0mUPDATE `orc_empenhos` SET `cancelado` = 1, `updated_at` = '2018-10-19 17:38:10' WHERE `id` = 150[0m
+  [4;36;1mSQL (36.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOrcPedidoCompra Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (id =548) [0m
+  [4;35;1mOrcFicha Load (0.1ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (`orc_fichas`.`id` = 145) [0m
+  [4;36;1mOrcUniOrcamentaria Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;35;1mOrcUniDespesa Load (0.1ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/orc_empenhos/150
+Completed in 489ms (DB: 295) | 302 Found [http://localhost/orc_empenhos/150]
+  [4;35;1mSQL (2.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#show (for 127.0.0.1 at 2018-10-19 14:38:10) [GET]
+  Parameters: {"id"=>"150"}
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mOrcPedidoCompra Load (0.3ms)[0m   [0mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;36;1mOrcEmpenho Load (1.6ms)[0m   [0;1mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;35;1mOrcUniDespesa Load (0.2ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;36;1mOrcFicha Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;35;1mOrcEmpenho Load (1.4ms)[0m   [0mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.3ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;35;1mOrcPedidoCompra Load (0.1ms)[0m   [0mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;36;1mOrcEmpenho Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;35;1mOrcEmpenho Load (0.6ms)[0m   [0mSELECT * FROM `orc_empenhos` WHERE (`orc_empenhos`.`id` = 150) [0m
+  [4;36;1mOrcEmpenhoIten Load (0.8ms)[0m   [0;1mSELECT * FROM `orc_empenho_itens` WHERE (orc_empenho_id=150 ) [0m
+  [4;35;1mOrcFicha Load (0.2ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (id =145) [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/show
+  [4;36;1mOrcFicha Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;35;1mOrcPedidoCompra Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;36;1mOrcPedidoCompra Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;35;1mOrcUniOrcamentaria Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;36;1mOrcUniOrcamentaria Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;35;1mOrcUniDespesa Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;36;1mOrcUniDespesa Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;35;1mOrcEmpenhoIten Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `orc_empenho_itens`[0m
+  [4;36;1mroles_users Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mInformativo Load (0.9ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:38:10' AND ends_at >= '2018-10-19 17:38:10') [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;35;1mUnidade Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Completed in 227ms (View: 154, DB: 18) | 200 OK [http://localhost/orc_empenhos/150]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:38:11) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OrcEmpenhosController#show (for 127.0.0.1 at 2018-10-19 14:38:48) [GET]
+  Parameters: {"id"=>"150"}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mOrcPedidoCompra Load (0.4ms)[0m   [0;1mSELECT * FROM `orc_pedido_compras` ORDER BY codigo ASC[0m
+  [4;35;1mOrcEmpenho Load (0.3ms)[0m   [0mSELECT * FROM `orc_empenhos` ORDER BY codigo ASC[0m
+  [4;36;1mOrcUniDespesa Load (0.1ms)[0m   [0;1mSELECT * FROM `orc_uni_despesas` WHERE (ano = 2018) [0m
+  [4;35;1mOrcFicha Load (0.3ms)[0m   [0mSELECT * FROM `orc_fichas` WHERE (ano = 2018) ORDER BY ficha ASC[0m
+  [4;36;1mOrcEmpenho Load (0.1ms)[0m   [0;1mSELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = 2018 AND emp.id !=1 ) ORDER BY fc.ficha ASC[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.3ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (ano = 2018) [0m
+  [4;36;1mOrcPedidoCompra Load (0.3ms)[0m   [0;1mSELECT distinct(ano) FROM `orc_pedido_compras` [0m
+  [4;35;1mOrcEmpenho Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `orc_empenhos`[0m
+  [4;36;1mOrcEmpenho Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_empenhos` WHERE (`orc_empenhos`.`id` = 150) [0m
+  [4;35;1mOrcEmpenhoIten Load (0.3ms)[0m   [0mSELECT * FROM `orc_empenho_itens` WHERE (orc_empenho_id=150 ) [0m
+  [4;36;1mOrcFicha Load (0.2ms)[0m   [0;1mSELECT * FROM `orc_fichas` WHERE (id =145) [0m
+Rendering template within layouts/application
+Rendering orc_empenhos/show
+  [4;35;1mOrcFicha Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `orc_fichas`[0m
+  [4;36;1mOrcPedidoCompra Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `orc_pedido_compras`[0m
+  [4;35;1mOrcPedidoCompra Load (0.2ms)[0m   [0mSELECT * FROM `orc_pedido_compras` WHERE (`orc_pedido_compras`.`id` = 548) [0m
+  [4;36;1mOrcUniOrcamentaria Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_orcamentarias`[0m
+  [4;35;1mOrcUniOrcamentaria Load (0.0ms)[0m   [0mSELECT * FROM `orc_uni_orcamentarias` WHERE (`orc_uni_orcamentarias`.`id` = 26) [0m
+  [4;36;1mOrcUniDespesa Columns (0.3ms)[0m   [0;1mSHOW FIELDS FROM `orc_uni_despesas`[0m
+  [4;35;1mOrcUniDespesa Load (0.0ms)[0m   [0mSELECT * FROM `orc_uni_despesas` WHERE (`orc_uni_despesas`.`id` = 1) [0m
+  [4;36;1mOrcEmpenhoIten Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `orc_empenho_itens`[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2018-10-19 17:38:48' AND ends_at >= '2018-10-19 17:38:48') [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (id=52) [0m
+  [4;36;1mUnidade Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Completed in 213ms (View: 65, DB: 11) | 200 OK [http://localhost/orc_empenhos/150]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2018-10-19 14:38:48) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
