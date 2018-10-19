@@ -30,7 +30,7 @@
                           </tr>
                         <tr  bgcolor="#F5F5F5">
                           
-                          <td><b><%=h pedido.codigo %></b> <%  session[:pedido_user_id] = pedido.user_id %></td>
+                            <td rowspan="2" valign="top"><b><%=h pedido.codigo %></b> <%  session[:pedido_user_id] = pedido.user_id %></td>
                           <td><%=h pedido.objetivo %></td>
                           <td><%=h pedido.fornecedor %></td>
                           <% if  !pedido.orc_ficha_id.nil? %>
@@ -43,6 +43,16 @@
                           <td align="center"><%=h pedido.created_at.strftime("%d/%b/%y") %> </td>
 
                         </tr>
+
+                        <tr  bgcolor="#F5F5F5">
+                          
+                          <td  colspan="6" align="left"><b>Observações:</b> &nbsp&nbsp <%=h pedido.obs %>   &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
+                               <% if pedido.cancelado == 1%>
+                              <font color="red"> <b>>>>  S.I. Cancelado </font></b>
+                                <%end%>
+                          </td>
+                        </tr>
+
                        <% contador = 1%>
                        <%if !pedido.valor_total.nil? %>
                             <% total_ficha = pedido.valor_total + total_ficha %>

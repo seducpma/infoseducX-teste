@@ -169,15 +169,25 @@ class OrcEmpenhosController < ApplicationController
                              @oc_ata_item[0].save
                              item.save
                           end
-                  
-
-
          end
-
-
-
        session[:created]= 0
      end
+              if params[:cancela].to_i == 1
+                @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
+                   @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
+                          for item in @itens_empenho
+                             #id=@orc_empenho.orc_empenho_iten.id
+                             @oc_ata_item = OrcAtaIten.find(:all, :conditions=>['orc_ata_id=? AND descricao=?', @ata[0].id, item.descricao])
+                             saldo_anterior= @oc_ata_item[0].saldo
+                             teste=@oc_ata_item[0].id
+                             quantidade=item.quantidade
+                             saldo_atualizado= saldo_anterior + quantidade
+                             @oc_ata_item[0].saldo =  saldo_atualizado
+                             item.saldo = saldo_atualizado
+                             @oc_ata_item[0].save
+                             item.save
+                          end
+              end
 
 
 
@@ -195,24 +205,6 @@ class OrcEmpenhosController < ApplicationController
 
 
 
-
-
-
-      if params[:cancela].to_i == 1
-          @ficha = OrcFicha.find(:all, :conditions => ['id =?',  @orc_empenho.ficha_id])
-               valor_empenho = @orc_empenho.valor_total
-                      # Atualiza saldo na ficha
-
-                empenho =@ficha[0].saldo_empenhado 
-                saldo= @ficha[0].saldo
-                @ficha[0].saldo_empenhado = empenho  - valor_empenho
-                @ficha[0].saldo= saldo  + valor_empenho
-                @ficha[0].save
-
-                @orc_empenho.cancelado=1
-                @orc_empenho.save
-
-      end
 
     respond_to do |format|
       if @orc_empenho.update_attributes(params[:orc_empenho])

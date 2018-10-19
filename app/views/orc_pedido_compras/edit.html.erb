@@ -15,6 +15,17 @@
                  <td colspan="2">
                   <fieldset><legend><font  size=3> Serviço Interno</font></legend>
                     <table width="100%" >
+                        <tr>
+                         <td colspan="5" align="right">
+                             <%if @orc_pedido_compra.cancelado == 1 %>
+                                 <%= check_box_tag(:cancela, "1", :value => true, :confirm => 'Confirma cancelamento?') %> <u></u><b> Cancelar S.I.</b></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             <%else%>
+                                 <%= check_box_tag(:cancela, "1") %> <u><b> Cancelar S.I.</b></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <%end%>
+
+                         </td>
+
+                       </tr>
                       <tr>
                          <td colspan="6"align="left"><b>Destino S.I.: </b>&nbsp  <%= select_tag :destino, options_for_select([ "SUPRIMENTOS", "CONTABILIDADE" ]) %>
                          &nbsp&nbsp&nbsp <b>Número:</b> &nbsp <%= f.text_field :codigo, :size =>10%>
@@ -54,8 +65,6 @@
                             <td align="left" valign="top"><b>Observação:</b></td>
                            <td colspan="5" align="left"><%= f.text_area(:obs, :cols =>109, :rows => "2") %></td>
                        </tr>
-
-
                    </table>
                   </fieldset>
                  </td>

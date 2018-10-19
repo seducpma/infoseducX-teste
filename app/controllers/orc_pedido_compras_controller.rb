@@ -208,6 +208,11 @@ end
  ##                     end
  #             end
 #<<<<<<<
+
+      if params[:cancela].to_i == 1
+                @orc_pedido_compra.cancelado=1
+                @orc_pedido_compra.save
+      end
             flash[:notice] = 'SALVO COM SUCESSO.'
             format.html { redirect_to(@orc_pedido_compra) }
             format.xml  { head :ok }
