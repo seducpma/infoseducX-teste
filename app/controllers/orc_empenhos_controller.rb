@@ -156,7 +156,8 @@ class OrcEmpenhosController < ApplicationController
          @ficha[0].save
          if !@orc_empenho.orc_pedido_compra_id.nil?
                @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
-                 if !@ata[0].id.nil?
+               t=0
+                 if !@ata.empty?
                    @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
                           for item in @itens_empenho
                              #id=@orc_empenho.orc_empenho_iten.id
@@ -178,7 +179,7 @@ class OrcEmpenhosController < ApplicationController
                @orc_empenho.cancelado=1
 
                 @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
-                 if !@ata[0].id.nil?
+                if !@ata.empty?
                    @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
                           for item in @itens_empenho
                              #id=@orc_empenho.orc_empenho_iten.id
