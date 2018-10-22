@@ -155,9 +155,9 @@ class OrcEmpenhosController < ApplicationController
          @ficha[0].saldo_empenhado = empenhado
          @ficha[0].save
          if !@orc_empenho.orc_pedido_compra_id.nil?
-              @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
-               @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
-                  
+               @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
+                 if !@ata[0].id.nil?
+                   @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
                           for item in @itens_empenho
                              #id=@orc_empenho.orc_empenho_iten.id
                              @oc_ata_item = OrcAtaIten.find(:all, :conditions=>['orc_ata_id=? AND descricao=?', @ata[0].id, item.descricao])
@@ -170,6 +170,7 @@ class OrcEmpenhosController < ApplicationController
                              @oc_ata_item[0].save
                              item.save
                           end
+                 end
          end
        session[:created]= 0
      end
@@ -177,6 +178,7 @@ class OrcEmpenhosController < ApplicationController
                @orc_empenho.cancelado=1
 
                 @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
+                 if !@ata[0].id.nil?
                    @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
                           for item in @itens_empenho
                              #id=@orc_empenho.orc_empenho_iten.id
@@ -190,6 +192,7 @@ class OrcEmpenhosController < ApplicationController
                              @oc_ata_item[0].save
                              item.save
                           end
+                 end
                   @orc_empenho.save
               end
     respond_to do |format|
@@ -217,6 +220,24 @@ class OrcEmpenhosController < ApplicationController
         @ficha[0].saldo= saldo  + valor_empenho
         @ficha[0].save
         @orc_empenho.destroy
+
+        @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
+        @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
+
+                          for item in @itens_empenho
+                             @oc_ata_item = OrcAtaIten.find(:all, :conditions=>['orc_ata_id=? AND descricao=?', @ata[0].id, item.descricao])
+                             saldo_anterior= @oc_ata_item[0].saldo
+                             teste=@oc_ata_item[0].id
+                             quantidade=item.quantidade
+                             saldo_atualizado= saldo_anterior + quantidade
+                             @oc_ata_item[0].saldo =  saldo_atualizado
+                             item.saldo = saldo_atualizado
+                             @oc_ata_item[0].save
+                             item.save
+                          end
+
+
+
 
     respond_to do |format|
       format.html { redirect_to(consulta_orc_empenhos_path) }
