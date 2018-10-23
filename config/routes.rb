@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :orc_reservas
+
   map.resources :orc_ata_itens
   map.resources :orc_atas,:collection => {:consulta => :get,:consulta_ata => :get}
   map.resources :orc_nota_fiscals, :collection => {:consulta => :get}

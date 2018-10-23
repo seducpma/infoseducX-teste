@@ -88,6 +88,8 @@ class OrcEmpenhosController < ApplicationController
              session[:create_new_itens]= 0
           end
           empenho=@orc_empenho.id
+          
+
           @empenho = OrcEmpenho.find(:all, :conditions =>['id=?',empenho])
            if  session[:sem_si]==1
                @itens_compra = OrcPedidoDescricao.find(:all, :conditions => ["orc_pedido_compra_id =?" , session[:compra]])
@@ -156,19 +158,18 @@ class OrcEmpenhosController < ApplicationController
          @ficha[0].save
          if !@orc_empenho.orc_pedido_compra_id.nil?
                @ata = OrcAta.find(:all, :conditions=>['id =?', @orc_empenho.orc_pedido_compra.ata_id])
-               t=0
-                 if !@ata.empty?
+                                if !@ata.empty?
                    @itens_empenho = OrcEmpenhoIten.find(:all, :conditions=>['orc_empenho_id=?',@orc_empenho.id ])
                           for item in @itens_empenho
                              #id=@orc_empenho.orc_empenho_iten.id
-                             @oc_ata_item = OrcAtaIten.find(:all, :conditions=>['orc_ata_id=? AND descricao=?', @ata[0].id, item.descricao])
-                             saldo_anterior= @oc_ata_item[0].saldo
-                             teste=@oc_ata_item[0].id
+                             @orc_ata_item = OrcAtaIten.find(:all, :conditions=>['orc_ata_id=? AND descricao=?', @ata[0].id, item.descricao])
+                             saldo_anterior= @orc_ata_item[0].saldo
+                             teste=@orc_ata_item[0].id
                              quantidade=item.quantidade
                              saldo_atualizado= saldo_anterior- quantidade
-                             @oc_ata_item[0].saldo =  saldo_atualizado
-                             item.saldo = saldo_atualizado
-                             @oc_ata_item[0].save
+                             @orc_ata_item[0].saldo =  saldo_atualizado
+                             item.saldo = item.quantidade
+                             @orc_ata_item[0].save
                              item.save
                           end
                  end
@@ -394,14 +395,17 @@ end
 
 def empenho_consulta
  @empenhos= OrcEmpenho.find(:all, :conditions => ['id =? ', params[:orc_empenho_id]])
- t=0
+
  render :partial => "empenhos"
 end
 
 def empenho_consulta_produto
+ w=params[:orc_empenho_id]
+ 
+
 
  @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.id = ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao ' ,   params[:orc_empenho_id]], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
-
+t=0
  render :partial => "produtos"
 end
 

@@ -99,7 +99,7 @@ class OrcNotaFiscalsController < ApplicationController
                         session[:create_new_itens]=1
                         @orc_nota_fiscal_item = OrcNotaFiscalIten.new(params[nota_fiscal])
                         @orc_nota_fiscal_item.orc_nota_fiscal_id = nota_fiscal
-                        @orc_nota_fiscal_item.quantidade = item_nf.saldo
+                        @orc_nota_fiscal_item.quantidade = item_nf.quantidade
                         @orc_nota_fiscal_item.descricao = item_nf.descricao
                         @orc_nota_fiscal_item.unitario = item_nf.unitario
                         @orc_nota_fiscal_item.total = item_nf.total
@@ -137,27 +137,30 @@ class OrcNotaFiscalsController < ApplicationController
                 id_empenho=@orc_nota_fiscal.orc_empenho_id
                 if  session[:sem_emp]==1
   # ALTERAR EMPENHO
-
+                    valor_total=0
                     @orc_nota_fiscal_item = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id = ?',@orc_nota_fiscal.id])
                     for item_nf in @orc_nota_fiscal_item
                         @itens_empenho = OrcEmpenhoIten.find(:all, :conditions => ["orc_empenho_id =? " , session[:empenho_id],])
                         valor_item=item_nf.total
-                        session[:valor_total]= item_nf.total_geral = item_nf.total_geral
+                        valor_total= item_nf.total + valor_total
 
                         for item_em in @itens_empenho
                             if item_em.descricao == item_nf.descricao
-                                    item_em.saldo = item_em.saldo - item_nf.quantidade # + session[:quantidade]
+                                    #item_em.saldo = item_em.saldo - item_nf.quantidade # + session[:quantidade]
+                                    item_em.saldo = item_em.saldo - item_nf.quantidade 
                                     session[:quantidade]=0
                             end
                             item_em.save
                         end
-                        @orc_nota_fiscal_item[0].save
+                        item_nf.total_geral=valor_total
+                        #@orc_nota_fiscal_item[0].save
                         #end
                         # salva items nota_fiscal
-                        @orc_nota_fiscal.valor= session[:valor_total]
-                        @orc_nota_fiscal.save
                         item_nf.save
                     end
+                    @orc_nota_fiscal.valor= valor_total
+                    @orc_nota_fiscal.save
+
                     session[:sem_emp] =0
                     #session[:emp_id]= @empenho[0].id
 

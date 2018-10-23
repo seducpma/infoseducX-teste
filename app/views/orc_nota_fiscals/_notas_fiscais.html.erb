@@ -17,7 +17,7 @@
           </tr>
           <% @nota_fiscals.each  do |nota| %>
  
-             <%@ficha = OrcFicha.find (:all, :conditions => ['id = ?', nota.orc_empenho.ficha_id ])%>
+             <%#@ficha = OrcFicha.find (:all, :conditions => ['id = ?', nota.orc_empenho.ficha_id ])%>
             <tr  bgcolor="#F5F5F5">
 
               <td align="center"><%=h nota.nf %></td>
@@ -43,7 +43,7 @@
                                       <%=h nota.orc_empenho.interessado %>
                                   <%end%>
               </td>
-              <td align="center" width ="10%"><%=h nota.orc_empenho.ficha %> - <%=h @ficha[0].descricao %></td>
+              <td align="center" width ="10%"><%#=h nota.orc_empenho.ficha %> - <%#=h @ficha[0].descricao %></td>
               <td align="center">R$ <%=h nota.valor %></td>
               <td align="center"><%if nota.orc_empenho.cancelado ==  1 %> <font color =" red"> Cancelado <%end%> </td>
             </tr>

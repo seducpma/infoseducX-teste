@@ -4,6 +4,7 @@ class OrcFicha < ActiveRecord::Base
   has_many :orc_pedido_compra
   has_many :orc_suplementacao
   has_many :orc_pagamento
+  has_many :orc_reserva
 
  usar_como_dinheiro :saldo_atual, :valor_inicial, :saldo, :saldo_empenhado, :saldo_reservado, :saldo_transferido, :saldo_aporte
 

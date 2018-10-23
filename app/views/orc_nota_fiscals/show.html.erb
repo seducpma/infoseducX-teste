@@ -69,7 +69,7 @@
                 <tr bgcolor= white >
                   <td align="center"><b>Item</b></td>
                   <td align="center" width ="5%"><b>Quant.</b></td>
-                   <td align="center" width ="5%"><b>Saldo.</b></td>
+                   <!--<td align="center" width ="5%"><b>Saldo.</b></td>-->
                   <td align="center" width =" 50%"><b>Descrição</b></td>
                   <td align="center"><b>Unitário</b></td>
                   <td align="center"><b>Valor</b></td>
@@ -82,8 +82,8 @@
                       <tr>
                          <td align="center"><%= contador%> </td>
                          <td align="center"><%= item.quantidade%> </td>
-                        <td align="center" ><% @empenho_iten = OrcEmpenhoIten.find_by_sql(" SELECT nfi.*,  nf.*, empi.saldo as emp_saldo FROM orc_nota_fiscal_itens nfi JOIN orc_nota_fiscals nf ON nf.id=nfi.orc_nota_fiscal_id JOIN orc_empenho_itens empi ON empi.orc_empenho_id=nf.orc_empenho_id WHERE (nfi.descricao='"+item.descricao+"') AND (empi.descricao='"+item.descricao+"') AND (empi.orc_empenho_id=(SELECT orc_empenho_id FROM orc_nota_fiscals nf WHERE nf.id= "+(item.orc_nota_fiscal_id).to_s+"))")  %>
-                           <%= @empenho_iten[0].emp_saldo %>
+                        <<!--td align="center" ><% @empenho_iten = OrcEmpenhoIten.find_by_sql(" SELECT nfi.*,  nf.*, empi.saldo as emp_saldo FROM orc_nota_fiscal_itens nfi JOIN orc_nota_fiscals nf ON nf.id=nfi.orc_nota_fiscal_id JOIN orc_empenho_itens empi ON empi.orc_empenho_id=nf.orc_empenho_id WHERE (nfi.descricao='"+item.descricao+"') AND (empi.descricao='"+item.descricao+"') AND (empi.orc_empenho_id=(SELECT orc_empenho_id FROM orc_nota_fiscals nf WHERE nf.id= "+(item.orc_nota_fiscal_id).to_s+"))")  %>
+                           <%#= @empenho_iten[0].emp_saldo %>-->
                        </td>
                          <td align="left"> <%= item.descricao%> </td>
                          <td align="center"> R$ <%= item.unitario%> </td>
@@ -94,7 +94,7 @@
                     <%end%>
                <%end%>
                        <tr>
-                         <td colspan="5" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+                         <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
                          <td align="center"> R$ <%= total_geral %></td>
 
                        </tr>

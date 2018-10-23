@@ -79,7 +79,7 @@ class OrcNotaFiscalItensController < ApplicationController
          @empenho_iten= OrcEmpenhoIten.find(:all, :conditions => ['descricao=? and orc_empenho_id=?',@orc_nota_fiscal_iten.descricao , empenho])
          #empenho_id= @empenho_iten[0].id
          #saldo_atual= @empenho_iten[0].saldo.to_f
-              #  @empenho_iten[0].saldo = quantidade.to_f - quantidade_iten.to_f
+         #  @empenho_iten[0].saldo = quantidade.to_f - quantidade_iten.to_f
          @empenho_iten[0].save
 
 

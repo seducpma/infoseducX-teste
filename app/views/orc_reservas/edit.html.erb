@@ -1,0 +1,48 @@
+<h1>Editing orc_reserva</h1>
+
+<% form_for(@orc_reserva) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :orc_ficha %><br />
+    <%= f.text_field :orc_ficha %>
+  </p>
+  <p>
+    <%= f.label :valor %><br />
+    <%= f.text_field :valor %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.label :motivo %><br />
+    <%= f.text_field :motivo %>
+  </p>
+  <p>
+    <%= f.label :cancela %><br />
+    <%= f.text_field :cancela %>
+  </p>
+  <p>
+    <%= f.label :justificativa %><br />
+    <%= f.text_field :justificativa %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.label :data_cancelamento %><br />
+    <%= f.date_select :data_cancelamento %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orc_reserva %> |
+<%= link_to 'Back', orc_reservas_path %>

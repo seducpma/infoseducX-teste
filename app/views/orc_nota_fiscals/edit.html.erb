@@ -22,7 +22,7 @@
                                                      :url  => { :action => 'dados_empenho' },
                                                      :update => "empenho"%>
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Nº NF:</b></font> &nbsp<%= f.text_field :nf, :size =>10%>
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (Entrega) </b>&nbsp<%if !@orc_nota_fiscal.data_nf.nil? %><%=h @orc_nota_fiscal.data_nf.strftime("%d de %b de %Y") %> <%end%> %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (Entrega) </b> &nbsp<%if !@orc_nota_fiscal.data_nf.nil? %><%=h @orc_nota_fiscal.data_nf.strftime("%d de %b de %Y") %> <%end%> 
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (NF) </b>&nbsp<%if !@orc_nota_fiscal.data_prod.nil? %><%=h @orc_nota_fiscal.data_prod.strftime("%d de %b de %Y") %> <%end%>
                                
                          </td>
