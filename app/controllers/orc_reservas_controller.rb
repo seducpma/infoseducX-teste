@@ -1,6 +1,22 @@
 class OrcReservasController < ApplicationController
   # GET /orc_reservas
   # GET /orc_reservas.xml
+
+     before_filter :load_iniciais
+
+ def load_iniciais
+        #@pedidos_compra = OrcPedidoCompra.all(:order => 'codigo ASC')
+        #@empenhos= OrcEmpenho.all(:order => 'codigo ASC')
+        #@despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
+        @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
+        #@fichas = OrcEmpenho.find_by_sql("SELECT DISTINCT (fc.ficha) as ficha, emp.orc_pedido_compra_id, fc.id FROM orc_empenhos emp INNER JOIN orc_pedido_compras pc ON emp.orc_pedido_compra_id = pc.id INNER JOIN orc_fichas fc ON pc.orc_ficha_id = fc.id WHERE (fc.ano = "+(Time.now.year).to_s+" AND emp.id !=1 ) ORDER BY fc.ficha ASC")
+        #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) > NOW()" ])
+        #@orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
+        #@orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
+ end
+
+
+
   def index
     @orc_reservas = OrcReserva.all
 
