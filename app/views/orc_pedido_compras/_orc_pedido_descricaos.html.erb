@@ -3,6 +3,7 @@
     <tr bgcolor= white >
       <td align="center"><b>Item</b></td>
       <td align="center" ><b>Quant.</b></td>
+      <td align="center" width =" 5%"> <b>Saldo Ata </b></td>
       <td align="center" ><b>Medida</b></td>
       
       <td align="center" width =" 50%" <b>Descrição</b></td>
@@ -20,6 +21,11 @@
           <tr>
              <td align="center"><%= contador%> </td>
              <td align="center"><%= descricao.quantidade%> </td>
+             
+              <td align="center" ><% @ata_iten = OrcAtaIten.find_by_sql(" SELECT atai.saldo FROM orc_ata_itens atai WHERE atai.id="+(descricao.orc_ata_item_id).to_s)  %>
+                 <%if @ata_iten[0].saldo.empty?%>
+                   <%= @ata_iten[0].saldo  %>
+             </td>
              <td align="center"><%= descricao.medida %> </td>
              
              <td> <%= descricao.descricao%>  </td>
@@ -34,7 +40,7 @@
         <%end%>
    <%end%>
            <tr>
-             <td colspan="5" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+             <td colspan="6" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
              <td align="center"> R$ <%= total_geral %></td>
 
            </tr>

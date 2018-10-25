@@ -98,4 +98,10 @@ class OrcReservasController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+ def dados_ficha
+       @dados_ficha=  OrcFicha.find(:all, :conditions => ['ficha_id = ?',params[:orc_empenho_ficha_id]])
+     render :partial => "dados_fichas"
+end
+
 end

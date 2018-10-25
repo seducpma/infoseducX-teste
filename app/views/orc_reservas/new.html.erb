@@ -17,8 +17,8 @@
                           <tr>
                               <td width ="5"align="left" valign="top"><b>Ficha:</b></td>
                               <td align="left" valign="top"> <%= f.collection_select :orc_ficha_id, @fichas, :id, :ficha, :include_blank => ' '  %>
-                                  <%= observe_field 'orc_empenho_ficha_id',
-                                       :with   => :orc_empenho_ficha_id,
+                                  <%= observe_field 'orc_reserva_ficha_id',
+                                       :with   => :orc_reserva_ficha_id,
                                        :url  => { :action => 'dados_ficha' },
                                        :update => "dadosFicha"%>
                              </td>
@@ -27,8 +27,8 @@
                        <tr>
                          <td><b>Data: </b></td>
                          <td align="left"><%= datepicker_tag(:orc_reserva, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'" }) %>
-                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Valor: &nbsp&nbsp&nbsp      R$</b> </font></td>
-                         <td  align="left"><%=  f.text_field :valor , :size =>22 %></td>
+                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Valor: &nbsp&nbsp&nbsp
+                             R$</b> <%=  f.text_field :valor , :size =>22 %></td>
                       </tr>
 
                        <tr>
