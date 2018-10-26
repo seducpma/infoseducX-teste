@@ -8,9 +8,11 @@
   <hr/>
   <b><center>  <font size="5"color="red"><u><%= flash[:notice] %></u></font></center></b>
     <h2 id="month">
+
       <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
       <%=h @date.strftime("%B %Y") %>
-      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%= link_to ">", {:action=> 'index1'}, :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+                     
     </h2>
     <% calendar_for @poda_grama, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
       <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>

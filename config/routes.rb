@@ -15,8 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orc_fichas, :collection => {:consulta => :get, :saldo => :get}
   map.resources :orc_uni_orcamentarias, :collection => {:consulta => :get}
   map.resources :orc_uni_despesas
-  map.resources :poda_gramas, :collection => {:agenda => :get, :relatorio_agendamento => :get, :executada => :get, :nao_executada => :get}
+  map.resources :poda_gramas, :collection => {:agenda => :get, :relatorio_agendamento => :get, :executada => :get, :nao_executada => :get,  :index1 => :get}
   map.resources :certificados, :collection => {:aviso => :get}
+
   map.resources :produtos
   map.resources :produtos_lancamentos
   map.resources :agendas

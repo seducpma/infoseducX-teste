@@ -2,16 +2,16 @@ class PodaGramasController < ApplicationController
 
     before_filter :load_iniciais
 
-  
-
-  def show
-    @poda_grama = PodaGrama.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @poda_grama }
-    end
+ def index1
+          @date = params[:month] ? Date.parse(params[:month]) : Date.today
+          @poda_grama = PodaGrama.find(:all, :conditions=> ["agendamento is not null"])
+          session[:titulo_agenda]='AGENDA SOLICITAÇÂO DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
+        render :update do |page|
+            page.replace_html 'calendario', :partial => 'agendamento'
+        end
   end
+
+
 
   # GET /poda_gramas/new
   # GET /poda_gramas/new.xml
@@ -20,6 +20,15 @@ class PodaGramasController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.xml  { render :xml => @poda_grama }
+    end
+  end
+
+  def show
+    @poda_grama = PodaGrama.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
       format.xml  { render :xml => @poda_grama }
     end
   end
@@ -87,7 +96,7 @@ class PodaGramasController < ApplicationController
   end
 
   def load_iniciais
-        if current_user.has_role?('admin') or current_user.has_role?('SEDUC')
+        if current_user.has_role?('admin') or current_user.has_role?('SEDUC')or current_user.has_role?('terceiro')
             @unidades = Unidade.find(:all,  :select => 'nome, id', :order => 'nome ASC')
         else
             @unidades= Unidade.find(:all,  :select => 'nome, id', :conditions =>  ["id=?", current_user.unidade_id], :order => 'nome ASC')
@@ -197,7 +206,7 @@ class PodaGramasController < ApplicationController
        if params[:type_of].to_i == 1
           @date = params[:month] ? Date.parse(params[:month]) : Date.today
           @poda_grama = PodaGrama.all
-          session[:titulo_agenda]='AGENDA DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
+          session[:titulo_agenda]='AGENDA SOLICITAÇÂO DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
         render :update do |page|
             page.replace_html 'calendario', :partial => 'agendamento'
         end
@@ -205,6 +214,7 @@ class PodaGramasController < ApplicationController
        else if params[:type_of].to_i == 2
               @date = params[:month] ? Date.parse(params[:month]) : Date.today
               @poda_grama = PodaGrama.find(:all, :conditions=> ["agendamento is not null"])
+              session[:titulo_agenda]='AGENDA DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
               render :update do |page|
                  page.replace_html 'calendario', :partial => 'agenda'
               end
