@@ -16,16 +16,16 @@
                      
     </h2>
     <% calendar_for @poda_grama, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
-      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
-      <% calendar.day(:day_method => :agendamento) do |date, articles| %>
-        <%= date.day %>
-        <ul>
-          <% for data in articles %>
-            <li><%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
-                              --------------------------------
-            </li>
-          <% end %>
-        </ul>
+        <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+              <% calendar.day(:day_method => :created_at) do |date, articles| %>
+                <%= date.day %>
+                <ul>
+                  <% for data in articles %>
+                    <li><%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
+                                      --------------------------------
+                    </li>
+                  <% end %>
+                </ul>
       <% end %>
     <% end %>
   </div>
