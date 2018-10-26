@@ -2,7 +2,8 @@
 
 <% if @poda_grama.present? %>
   <div id="calendar">
-         <h2><center> <b><%= session[:titulo_agenda] %> </b></center> </h2>
+       <h2><center> <b><%= session[:titulo_agenda] %> </b></center> </h2>
+         
         
 
   <hr/>
@@ -11,7 +12,7 @@
 
       <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
       <%=h @date.strftime("%B %Y") %>
-      <%= link_to ">", {:action=> 'index1'}, :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
                      
     </h2>
     <% calendar_for @poda_grama, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>

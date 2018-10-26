@@ -2,15 +2,45 @@ class PodaGramasController < ApplicationController
 
     before_filter :load_iniciais
 
- def index1
+
+ def agendamento
           @date = params[:month] ? Date.parse(params[:month]) : Date.today
-          @poda_grama = PodaGrama.find(:all, :conditions=> ["agendamento is not null"])
-          session[:titulo_agenda]='AGENDA SOLICITAÇÂO DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
-        render :update do |page|
-            page.replace_html 'calendario', :partial => 'agendamento'
-        end
+          @poda_grama = PodaGrama.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @poda_grama }
+    end
   end
 
+
+ def agenda_execucao
+          @date = params[:month] ? Date.parse(params[:month]) : Date.today
+          @poda_grama = PodaGrama.find(:all, :conditions=> ["agendamento is not null"])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @poda_grama }
+    end
+  end
+
+  def agenda_executada
+          @date = params[:month] ? Date.parse(params[:month]) : Date.today
+          @poda_grama = PodaGrama.find(:all, :conditions=> ["execucao is not null"])
+           session[:titulo_agenda]=' AGENDA DE PODAS DE GRAMA EXECUTADAS- SEDUC'
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @poda_grama }
+    end
+  end
+
+    def agenda_nexecutada
+          @date = params[:month] ? Date.parse(params[:month]) : Date.today
+          @poda_grama = PodaGrama.find(:all, :conditions=> ["execucao is null"])
+           session[:titulo_agenda]=' AGENDA DE PODAS DE GRAMA NÃO EXECUTADAS- SEDUC'
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @poda_grama }
+    end
+  end
 
 
   # GET /poda_gramas/new
@@ -203,6 +233,7 @@ class PodaGramasController < ApplicationController
 
 
  def agenda_poda_grama
+     t=0
        if params[:type_of].to_i == 1
           @date = params[:month] ? Date.parse(params[:month]) : Date.today
           @poda_grama = PodaGrama.all
