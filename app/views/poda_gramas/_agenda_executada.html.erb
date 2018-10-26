@@ -21,8 +21,13 @@
                 <%= date.day %>
                 <ul>
                   <% for data in articles %>
-                    <li><%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
+                    <li><% if current_user.has_role?('admin')  or current_user.has_role?('terceiro')   %>
+                            <%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
                                       --------------------------------
+                        <%else%>
+                            <%= data.unidade.nome%><br/>
+                                      --------------------------------
+                        <%end%>
                     </li>
                   <% end %>
                 </ul>
