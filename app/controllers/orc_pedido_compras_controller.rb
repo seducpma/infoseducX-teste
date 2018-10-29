@@ -257,6 +257,7 @@ end
           descricao.total_geral=session[:soma].to_f
           total_geral=descricao.total_geral
           descricao.item = cont
+          descricao.orc_ata_item_id=@orc_pedido_descricaos[0].orc_ata_item_id
           descricao.save
         end
 

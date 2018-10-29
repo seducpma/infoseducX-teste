@@ -24,7 +24,9 @@
 
                 <td align="center" >
                     <%if !@orc_pedido_compra.ata_id.nil?%>
-                        <%@ata_iten = OrcAtaIten.find_by_sql("SELECT atai.saldo FROM orc_ata_itens atai WHERE atai.id="+(descricao.orc_ata_item_id).to_s)%>
+                        <%@ata_iten = OrcAtaIten.find_by_sql("SELECT atai.saldo FROM orc_ata_itens atai WHERE atai.id="+(descricao.orc_ata_item_id).to_s+"")%>
+
+
                         <%= @ata_iten[0].saldo  %>
                     <%end%>
                 </td>

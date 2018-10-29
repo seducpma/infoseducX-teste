@@ -58,6 +58,11 @@ class OrcReservasController < ApplicationController
   def create
     @orc_reserva = OrcReserva.new(params[:orc_reserva])
 
+
+
+
+
+
     respond_to do |format|
       if @orc_reserva.save
         flash[:notice] = 'OrcReserva was successfully created.'
@@ -100,8 +105,8 @@ class OrcReservasController < ApplicationController
   end
 
  def dados_ficha
-       @dados_ficha=  OrcFicha.find(:all, :conditions => ['ficha_id = ?',params[:orc_empenho_ficha_id]])
-     render :partial => "dados_fichas"
+       @dados_ficha=  OrcFicha.find(:all, :conditions => ['id = ?',params[:orc_reserva_orc_ficha_id]])
+       render :partial => "dados_fichas"
 end
 
 end
