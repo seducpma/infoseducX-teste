@@ -27,7 +27,7 @@
 
                        </tr>
                       <tr>
-                         <td colspan="6"align="left"><b>Destino S.I.: </b>&nbsp  <%= select_tag :destino, options_for_select([ "SUPRIMENTOS", "CONTABILIDADE" ]) %>
+                         <td colspan="6"align="left"><b>Destino S.I.: &nbsp  <%= session[:destino] %>&nbsp&nbsp&nbsp</b>
                          &nbsp&nbsp&nbsp <b>Número:</b> &nbsp <%= f.text_field :codigo, :size =>10%>
                          &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>55 %></td>
                       </tr>
@@ -76,7 +76,7 @@
                          <tr>
                            <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
               <% end %>
-                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td width="2%" align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                             <td  align="left" ><%= button_to('Consultar', consulta_orc_pedido_compras_path, :method => "get",  :title => "Pedidos Compras")%></td>
 
                          </tr>

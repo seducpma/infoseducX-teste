@@ -99,8 +99,9 @@ class OrcEmpenhosController < ApplicationController
                       session[:create_new_itens]=1
                       @orc_empenho_item = OrcEmpenhoIten.new(params[empenho])
                       @orc_empenho_item.orc_empenho_id = empenho
-                      @orc_empenho_item.quantidade = item_compra.quantidade
+                      @orc_empenho_item.quantidade = 0.00
                       @orc_empenho_item.saldo = item_compra.quantidade
+                      @orc_empenho_item.medida = item_compra.medida
                       @orc_empenho_item.descricao = item_compra.descricao
                       @orc_empenho_item.unitario = item_compra.unitario
                       @orc_empenho_item.total = item_compra.total
@@ -199,13 +200,29 @@ class OrcEmpenhosController < ApplicationController
               end
     respond_to do |format|
       if @orc_empenho.update_attributes(params[:orc_empenho])
+            @itens_empenho = OrcEmpenhoIten.find(:all, :conditions => ['orc_empenho_id =?',@orc_empenho.id])
+          end
+          total_geral= 0
+              for item in @itens_empenho
+                  if item.quantidade == 0
+                        item.destroy
+                  else
+                      total_geral= total_geral + item.total
+                      item.total_geral = total_geral
+                      @orc_empenho.valor_total=total_geral
+                      item.save
+                  end
+
+              end
+              if params[:cancela].to_i == 1
+                    @orc_empenho.cancelado=1
+              end
+              @orc_empenho.save
+
         flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@orc_empenho) }
         format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @orc_empenho.errors, :status => :unprocessable_entity }
-      end
+
     end
   end
 
@@ -404,8 +421,8 @@ def empenho_consulta_produto
  
 
 
- @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.id = ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao ' ,   params[:orc_empenho_id]], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
-t=0
+ #@produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.id = ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao ' ,   params[:orc_empenho_id]], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
+ @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.id = ? ' ,   params[:orc_empenho_id]], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
  render :partial => "produtos"
 end
 
@@ -419,12 +436,14 @@ end
  def consulta_empenho_produto
 
     if params[:type_of].to_i == 1   #fornecedor
-         @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.interessado like ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao' , "%" +  params[:search_fornecedor].to_s + "%" ], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
+         #@produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.interessado like ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao' , "%" +  params[:search_fornecedor].to_s + "%" ], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
+          @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.interessado like ? ' , "%" +  params[:search_fornecedor].to_s + "%" ], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
           render :update do |page|
                   page.replace_html 'produto', :partial => "produtos"
           end
     else if params[:type_of].to_i == 3   #empenho
-                  @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.codigo like ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao' , "%" +  params[:search_empenho].to_s + "%" ], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
+                  #@produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.codigo like ? and orc_nota_fiscal_itens.descricao = orc_empenho_itens.descricao' , "%" +  params[:search_empenho].to_s + "%" ], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
+                  @produtos= OrcEmpenho.find(:all, :joins=> 'LEFT JOIN orc_empenho_itens ON orc_empenho_itens.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscals ON orc_nota_fiscals.orc_empenho_id = orc_empenhos.id LEFT JOIN orc_nota_fiscal_itens ON orc_nota_fiscals.id = orc_nota_fiscal_itens.orc_nota_fiscal_id',  :select => 'orc_empenho_itens.id AS item_id, orc_empenho_itens.descricao AS produto, orc_empenho_itens.quantidade AS quantidade, orc_empenhos.interessado AS fornecedor,  orc_empenhos.codigo AS nempenho, orc_empenho_itens.saldo AS saldo,   (date_format(orc_empenhos.data,"%d/%m/%Y")) AS datae , (date_format(orc_empenhos.data_chegou,"%d/%m/%Y")) AS datac, orc_empenhos.cancelado AS cancelado, orc_nota_fiscals.nf AS nnf , orc_nota_fiscal_itens.quantidade as quantidade_nf',  :conditions => ['orc_empenhos.codigo like ? ' , "%" +  params[:search_empenho].to_s + "%" ], :order => 'orc_nota_fiscals.nf DESC, orc_nota_fiscal_itens.id ASC' )
                render :update do |page|
                   page.replace_html 'produto', :partial => "produtos"
                end
@@ -462,6 +481,10 @@ end
         else
          render :nothing => true
        end
+  end
+
+  def erro
+      
   end
 
 end
