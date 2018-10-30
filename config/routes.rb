@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :orc_reservas
-
+  map.resources :orc_reservas,:collection => {:consulta => :get}
   map.resources :orc_ata_itens
   map.resources :orc_atas,:collection => {:consulta => :get,:consulta_ata => :get}
   map.resources :orc_nota_fiscals, :collection => {:consulta => :get}
@@ -170,6 +169,7 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_saldo'/consulta_saldo', :controller => 'orc_fichas', :action => 'consulta_saldo'
   map.consulta_pedido'/consulta_pedido', :controller => 'orc_pedido_compras', :action => 'consulta_pedido'
   map.consulta_empenho'/consulta_empenho', :controller => 'orc_empenhos', :action => 'consulta_empenho'
+  map.consulta_reserva'/consulta_reserva', :controller => 'orc_reservas', :action => 'consulta_reserva'
   map.consulta_ata'/consulta_ata', :controller => 'orc_atas', :action => 'consulta_ata'
   map.consulta_empenho_produto'/consulta_empenho_produto', :controller => 'orc_empenhos', :action => 'consulta_empenho_produto'
   map.consulta_ata_produto'/consulta_ata_produto', :controller => 'orc_atas', :action => 'consulta_ata_produto'

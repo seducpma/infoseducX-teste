@@ -1,48 +1,91 @@
-<h1>Editing orc_reserva</h1>
+<div id="interno4">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - RESERVA DE ORÇAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+             <% form_for(@orc_reserva) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Reserva</font></legend>
+                      <table width="100%" >
+                          <tr>
+                              <td colspan="3" align="right">
+                                    <%if @orc_reserva.cancela == 1 %>
+                                            <%= check_box_tag(:cancela, "1", :value => true, :confirm => 'Confirma cancelamento?') %> <u></u><b> Cancelar Reserva</b></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <%else%>
+                                          &nbsp&nbsp&nbsp&nbsp <%= check_box_tag(:cancela, "1") %> <u><b> Cancelar Reserva</b></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <%end%>
 
-<% form_for(@orc_reserva) do |f| %>
-  <%= f.error_messages %>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width ="5"align="left" valign="top"><b>Ficha:</b></td>
+                              <td width ="10" align="left" valign="top"><%= f.collection_select :orc_ficha_id, @fichas, :id, :ficha, :include_blank => ' '  %>
+                                                  <%= observe_field 'orc_reserva_orc_ficha_id',
+                                                             :with   => :orc_reserva_orc_ficha_id,
+                                                             :url  => { :action => 'dados_ficha' },
+                                                             :update => "dadosFicha"%>
+                                 </td>
+                             <td><div id="dadosFicha"></div> </td>
+                         </tr>
+                       <tr>
+                           <td><b>Data Reserva: </b></td> <td><%if !@orc_reserva.data.nil?%> <%=h @orc_reserva.data.strftime("%d/%m/%y") %>  <%end%></td>
+                         <td align="left" colspan="2">
+                             <b>Valor: &nbsp
+                             R$</b> <%=  f.text_field :valor , :size =>18, :value =>  @orc_reserva.valor %>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data Cancelamento: </b> &nbsp
+                            <%= datepicker_tag(:orc_reserva, :data_cancelamento,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'" }) %>
+                         </td>
+                      </tr>
 
-  <p>
-    <%= f.label :orc_ficha %><br />
-    <%= f.text_field :orc_ficha %>
-  </p>
-  <p>
-    <%= f.label :valor %><br />
-    <%= f.text_field :valor %>
-  </p>
-  <p>
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
-  </p>
-  <p>
-    <%= f.label :motivo %><br />
-    <%= f.text_field :motivo %>
-  </p>
-  <p>
-    <%= f.label :cancela %><br />
-    <%= f.text_field :cancela %>
-  </p>
-  <p>
-    <%= f.label :justificativa %><br />
-    <%= f.text_field :justificativa %>
-  </p>
-  <p>
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
-  </p>
-  <p>
-    <%= f.label :data_cancelamento %><br />
-    <%= f.date_select :data_cancelamento %>
-  </p>
-  <p>
-    <%= f.label :obs %><br />
-    <%= f.text_field :obs %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+                       <tr>
+                         <td><b>Justificativa Reserva:: </b></td>
+                         <td  align="left" colspan="2"><%=  f.text_field :motivo , :size =>85, :value =>  @orc_reserva.motivo %></td>
+                      </tr>
+                       <tr>
+                         <td><b>Justificativa Cancelamento:: </b></td>
+                         <td  align="left" colspan="2"><%=  f.text_field :justificativa , :size =>85 %></td>
+                      </tr>
 
-<%= link_to 'Show', @orc_reserva %> |
-<%= link_to 'Back', orc_reservas_path %>
+                       <tr>
+                         <td><b>Observação: </b></td>
+                         <td  align="left" colspan="2"><%=  f.text_field :obs, :size =>85, :value =>  @orc_reserva.obs  %></td>
+                      </tr>
+                   </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_reservas_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+
+
+
