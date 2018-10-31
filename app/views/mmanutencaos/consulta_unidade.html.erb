@@ -6,7 +6,7 @@
      <% else   %>
           <% @unidades_manutencao =  Unidade.find(:all, :conditions => ['id = ?',current_user.unidade_id ],:order => 'nome ASC')   %>
      <% end   %>
-    end   %>
+   <% end   %>
 <div id="interno6">
 <% title "CLASSES".singularize %>
 <div class="tabs">
