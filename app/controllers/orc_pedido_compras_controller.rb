@@ -153,11 +153,7 @@ end
                       @orc_pedido_compra.valor_total= session[:valor_total]
                       @orc_pedido_compra.save
                               # Atualiza saldo na ata
-
-
                    end
-
-
                session[:emp_id]= @pedido[0].id
                session[:sem_ata]= 0
              end
@@ -173,12 +169,7 @@ end
         format.xml  { render :xml => @orc_pedido_compra.errors, :status => :unprocessable_entity }
       end
 
-
-
     end
-
-
-
 
   end
 
@@ -215,10 +206,7 @@ end
                       @orc_pedido_compra.valor_total=total_geral
                       descricao.save
                   end
-
               end
-
-
               if params[:cancela].to_i == 1
                     @orc_pedido_compra.cancelado=1
               end

@@ -99,7 +99,7 @@ class OrcNotaFiscalsController < ApplicationController
                         session[:create_new_itens]=1
                         @orc_nota_fiscal_item = OrcNotaFiscalIten.new(params[nota_fiscal])
                         @orc_nota_fiscal_item.orc_nota_fiscal_id = nota_fiscal
-                        @orc_nota_fiscal_item.quantidade = item_nf.quantidade
+                        @orc_nota_fiscal_item.quantidade = 0.00
                         @orc_nota_fiscal_item.descricao = item_nf.descricao
                         @orc_nota_fiscal_item.unitario = item_nf.unitario
                         @orc_nota_fiscal_item.total = item_nf.total
@@ -134,11 +134,13 @@ class OrcNotaFiscalsController < ApplicationController
 
         respond_to do |format|
             if @orc_nota_fiscal.update_attributes(params[:orc_nota_fiscal])
+               @orc_nota_fiscal_item = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id =?',@orc_nota_fiscal.id])
+            end
                 id_empenho=@orc_nota_fiscal.orc_empenho_id
                 if  session[:sem_emp]==1
   # ALTERAR EMPENHO
                     valor_total=0
-                    @orc_nota_fiscal_item = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id = ?',@orc_nota_fiscal.id])
+  #                  @orc_nota_fiscal_item = OrcNotaFiscalIten.find(:all, :conditions => ['orc_nota_fiscal_id = ?',@orc_nota_fiscal.id])
                     for item_nf in @orc_nota_fiscal_item
                         @itens_empenho = OrcEmpenhoIten.find(:all, :conditions => ["orc_empenho_id =? " , session[:empenho_id],])
                         valor_item=item_nf.total
@@ -163,6 +165,26 @@ class OrcNotaFiscalsController < ApplicationController
 
                     session[:sem_emp] =0
                     #session[:emp_id]= @empenho[0].id
+
+#>>>>>>
+              total_geral= 0
+              for item in  @orc_nota_fiscal_item
+                  if item.quantidade == 0
+                        item.destroy
+                  else
+                      total_geral= total_geral + item.total
+                      item.total_geral = total_geral
+                      @orc_nota_fiscal.valor=total_geral
+                      item.save
+                  end
+              end
+#              if params[:cancela].to_i == 1
+#                    @orc_pedido_compra.cancelado=1
+#              end
+
+
+
+#      <<<<<<<<<<<<<<<<<<<
 
 
               @empenho = OrcEmpenho.find(:all, :conditions=>['id =?',  @orc_nota_fiscal.orc_empenho_id])
@@ -192,10 +214,7 @@ class OrcNotaFiscalsController < ApplicationController
                 flash[:notice] = 'SALVO COM SUCESSO..'
                 format.html { redirect_to(@orc_nota_fiscal) }
                 format.xml  { head :ok }
-            else
-                format.html { render :action => "edit" }
-                format.xml  { render :xml => @orc_nota_fiscal.errors, :status => :unprocessable_entity }
-            end
+
         end
     end
 
