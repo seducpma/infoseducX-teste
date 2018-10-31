@@ -79,6 +79,8 @@ end
 
        session[:ata]=params[:orc_pedido_compra_ata_id]
        @itens_pedido = OrcAtaIten.find(:all, :conditions => ["orc_ata_id =?" , session[:ata]])
+#       @itens_pedido = OrcAtaIten.find_by_sql("SELECT id, orc_ata_id, quantidade, medida, descricao, unitario, total, total_geral, saldo FROM orc_ata_itens WHERE orc_ata_id="+session[:ata])
+       t=0
        if @itens_pedido.empty?
            #respond_to do |format|
              #format.html { render :action => "erro" }
@@ -146,7 +148,7 @@ end
                       @orc_pedido_descricao.descricao = descricao_compra.descricao
                       @orc_pedido_descricao.unitario = descricao_compra.unitario
                       @orc_pedido_descricao.total = descricao_compra.total
-                      @orc_pedido_descricao.total_geral = descricao_compra.total_geral
+                      @orc_pedido_descricao.total_geral = 0.00
                       session[:valor_total] = @orc_pedido_descricao.total_geral
                       @orc_pedido_descricao.save
                                # salva valor total no pedido_compra

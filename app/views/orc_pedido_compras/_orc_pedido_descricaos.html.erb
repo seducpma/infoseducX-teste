@@ -5,7 +5,7 @@
         <td align="center" ><b>Quant.</b></td>
         <td align="center" width =" 5%"> <b>Saldo Ata</b></td>
         <td align="center" ><b>Medida</b></td>
-
+        <td align="center" ><b></b></td>
         <td align="center" width =" 50%" <b>Descrição</b></td>
         <td align="center"><b>Unitário</b></td>
         <td align="center" ><b>Valor</b></td>
@@ -31,20 +31,22 @@
                     <%end%>
                 </td>
                 <td align="center"><%= descricao.medida %> </td>
+                <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto1.png", :size => "7x7"), {:controller => 'orc_pedido_descricaos',:action => "edit", :id =>descricao}, :method => "get", :title => "Editar"%></td>
 
                 <td> <%= descricao.descricao%>  </td>
                 <td align="center"> R$ <%= descricao.unitario%> </td>
-                <td align="center"> R$ <%= descricao.total%> </td>
+                <td align="center"> R$ <%= (descricao.unitario)*(descricao.quantidade)%> </td>
+                <!--<td align="center"> R$ <%#= descricao.total%> </td>-->
                 <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy_descricao", :id =>descricao}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></td>
-                <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto1.png", :size => "7x7"), {:controller => 'orc_pedido_descricaos',:action => "edit", :id =>descricao}, :method => "get", :title => "Editar"%></td>
+                
 
             </tr>
             <% contador = contador+1%>
-            <% total_geral = total_geral+ descricao.total%>
+            <% total_geral = total_geral+(descricao.unitario)*(descricao.quantidade)%>
         <%end%>
     <%end%>
     <tr>
-        <td colspan="6" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+        <td colspan="7" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
         <td align="center"> R$ <%= total_geral %></td>
 
     </tr>

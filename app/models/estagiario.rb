@@ -4,9 +4,31 @@ class Estagiario < ActiveRecord::Base
   has_many :chamados
 
   before_update :sem_est, :if => :verify?
-  before_save :com_est, :if => :verify?
+  before_save  :maiusculo, :com_est, :if => :verify?
   before_update :sai, :if => :verify?
   has_attached_file :photo, :styles => {:thumb=> "100x100#", :small  => "150x150>" }
+
+
+def maiusculo
+    self.nome.upcase!
+
+
+    if  !self.endereco.nil?
+          self.endereco.upcase!
+    end
+    if  !self.complemento.nil?
+          self.complemento.upcase!
+    end
+    if  !self.cidade.nil?
+          self.cidade.upcase!
+    end
+    if  !self.bairro.nil?
+          self.bairro.upcase!
+    end
+    if  !self.faculdade.nil?
+         self.faculdade.upcase!
+    end
+end
 
   def verify?
     self.unidade_id.present?

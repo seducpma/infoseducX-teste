@@ -525,7 +525,7 @@ display: none;
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">ORÇAMENTO</a>
                   <ul style="width:108px;">
-                     <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                     <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') or current_user.has_role?('ORC_OP')   %>
                       <% if current_user.has_role?('desenvolvimento')%>
                         <li><a>Plano de Contas</a>
                           <ul style="width:108px;">
@@ -538,7 +538,7 @@ display: none;
                                 </ul>
                              </li>
                             <%end%>
-                             <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                             <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') or current_user.has_role?('ORC_OP')  %>
                              <li><a>Consultar</a>
                                   <ul style="width:108px;">
                                     <li><%= link_to "Ficha",consulta_orc_fichas_path %></li>
@@ -553,7 +553,7 @@ display: none;
                         <%end%>
                       <li><a>Atas de Preço</a>
                           <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                           <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')or current_user.has_role?('ORC_OP')  %>
 
                                   <li><%= link_to "Cadastrar",new_orc_ata_path %></li>
                                   <li><%= link_to "Consultar",consulta_orc_atas_path %></li>
@@ -563,7 +563,7 @@ display: none;
                       </li>
                       <li><a>Serviço Interno</a>
                           <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') %>
+                           <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')or current_user.has_role?('ORC_OP')   %>
                                   <li><%= link_to "Cadastrar",new_orc_pedido_compra_path %></li>
                                   <li><%= link_to "Consultar",consulta_orc_pedido_compras_path %></li>
                                   <li><%= link_to "Sem Empenhos",orc_pedido_compras_path %></li>
@@ -573,7 +573,7 @@ display: none;
                       </li>
                       <li><a>Empenhos</a>
                           <ul style="width:108px;">
-                           <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') %>
+                           <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') or current_user.has_role?('ORC_OP')  %>
                                   <li><%= link_to "Cadastrar",new_orc_empenho_path %></li>
                                   <li><%= link_to "Consultar",consulta_orc_empenhos_path %></li>
 
@@ -583,7 +583,7 @@ display: none;
 
                           <li><a>NF / Pedidos</a>
                               <ul style="width:108px;">
-                               <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                               <% if current_user.has_role?('desenvolvimento')  or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')or current_user.has_role?('ORC_OP')  %>
 
                                    <li><%= link_to "Cadastrar",new_orc_nota_fiscal_path %></li>
                                    <li><%= link_to "Consultar",consulta_orc_nota_fiscals_path %></li>
@@ -592,7 +592,7 @@ display: none;
                                 <%end%>
                             </ul>
                           </li>
-                    <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                    <% if current_user.has_role?('desenvolvimento')   %>
                           <li><a>Lançamentos</a>
                               <ul style="width:108px;">
                                <% if current_user.has_role?('desenvolvimento') %>
@@ -604,10 +604,10 @@ display: none;
                                 <%end%>
                             </ul>
                           </li>
-                          <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                          <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('ORC_OP')  %>
                               <li><a>Ordem Pagamento</a>
                                   <ul style="width:108px;">
-                                   <% if current_user.has_role?('desenvolvimento') %>
+                                   <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('ORC_OP')   %>
                                           <li><%= link_to "Cadastrar",new_orc_pagamento_path %></li>
                                           <li><%= link_to "Consultar",consulta_orc_pagamentos_path %></li>
 
@@ -635,10 +635,10 @@ display: none;
                                        <% if current_user.has_role?('desenvolvimento') %>
                                          <li><%= link_to "Ficha",saldo_orc_fichas_path %></li>
                                        <%end%>
-                                       <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                                       <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')or current_user.has_role?('ORC_OP')  %>
                                              <li><%= link_to "Empenho",consulta_produto_orc_empenhos_path %></li>
                                        <%end%>
-                                       <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')%>
+                                       <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI')or current_user.has_role?('ORC_OP')  %>
                                              <li><%= link_to "Ata",consulta_ata_orc_atas_path %></li>
                                        <%end%>
 

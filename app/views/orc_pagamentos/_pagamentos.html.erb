@@ -34,7 +34,7 @@
 
                     <%end%>
                     <td align="center"> R$ <%=h pagamento.valor_pg %></td>
-                    <td align="center"><%=h pagamento.data_pg.strftime("%d/%b/%y") %> </td>
+                    <td align="center"><%if !pagamento.data_pg.nil? %><%=h pagamento.data_pg.strftime("%d/%m/%Y") %> <%end%> </td>
 
                   </tr>
                  <% contador = 1%>

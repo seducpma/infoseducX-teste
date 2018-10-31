@@ -99,7 +99,7 @@ class OrcEmpenhosController < ApplicationController
                       session[:create_new_itens]=1
                       @orc_empenho_item = OrcEmpenhoIten.new(params[empenho])
                       @orc_empenho_item.orc_empenho_id = empenho
-                      @orc_empenho_item.quantidade = 0.00
+                      @orc_empenho_item.quantidade = item_compra.quantidade
                       @orc_empenho_item.saldo = item_compra.quantidade
                       @orc_empenho_item.medida = item_compra.medida
                       @orc_empenho_item.descricao = item_compra.descricao
