@@ -188,7 +188,7 @@ ActionController::Routing::Routes.draw do |map|
   map.relatorios_faltas_funcionario'/relatorios_faltas_funcionario', :controller => 'aulas_faltas', :action => 'relatorios_faltas_funcionario'
   map.relatorios_eventual_professor'/relatorios_eventual_professor', :controller => 'aulas_eventuals', :action => 'relatorios_eventual_professor'
   map.relatorios_eventuals'/relatorios_eventuals', :controller => 'aulas_eventuals', :action => 'relatorios_eventuals'
-  #map.relatorios_agendamento'/relatorios_agendamento', :controller => 'poda_gramas', :action => 'relatorios_agendamento'
+  map.relatorios_agendamento'/relatorios_agendamento', :controller => 'poda_gramas', :action => 'relatorios_agendamento'
   map.agenda_poda_grama'/agenda_poda_grama', :controller => 'poda_gramas', :action => 'agenda_poda_grama'
 
   #map.si_selecionados'/si_selecionados', :controller => 'orc_pedido_compras', :action => 'si_selecionados'
