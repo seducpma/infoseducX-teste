@@ -66,7 +66,7 @@
        <% if !pedido.ata_id.nil? %>
            <% @ata= OrcAta.find(:all, :conditions => ['id=?',pedido.ata_id]) %>
            <tr>
-               <td colspan="4" align="left" style="border-color: white""><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> <b><%=h @ata[0].modalidade %>:</b> <%=h @ata[0].numero %> - <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
+               <td colspan="4" align="left" style="border-color: white""><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> <b><u<%=h @ata[0].modalidade %>:</u</b> <%=h @ata[0].numero %> - <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
            </tr>
        <%end%>
       <tr>
@@ -112,7 +112,7 @@
       </tr>
       <% if  !pedido.obs.nil?%>
           <tr>
-            <td colspan="4" align="left"><b><u>OBSERVAÇÃO</u>: </b> &nbsp <%=h pedido.obs %> <br/><br/></td>
+            <td colspan="4" align="left"style="border-color: white"><b><u>OBSERVAÇÃO</u>: </b> &nbsp <%=h pedido.obs %> <br/><br/></td>
           </tr>
       <%end%>
       <tr>
