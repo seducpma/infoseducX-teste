@@ -75,6 +75,14 @@
                  <td align="left"  colspan="6"><b>Ficha:</b> &nbsp &nbsp Ainda não indicada</td>
                </tr>
         <%end%>
+       <% if !@orc_pedido_compra.ata_id.nil? %>
+           <% @ata= OrcAta.find(:all, :conditions => ['id=?',@orc_pedido_compra.ata_id]) %>
+           <tr>
+               <td colspan="4" align="left"><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> &nbsp -&nbsp <b><%=h @ata[0].modalidade %>:</b> <%=h @ata[0].numero %> &nbsp -&nbsp <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
+           </tr>
+       <%end%>
+
+
 
         <tr>
         <td>
