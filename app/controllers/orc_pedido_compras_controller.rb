@@ -204,6 +204,7 @@ session[:descricao] = 0
                   if descricao.quantidade == 0
                         descricao.destroy
                   else
+                      descricao.total=descricao.quantidade*descricao.unitario
                       total_geral= total_geral + descricao.total
                       descricao.total_geral = total_geral
                       @orc_pedido_compra.valor_total=total_geral

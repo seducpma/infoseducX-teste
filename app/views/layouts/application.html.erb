@@ -606,7 +606,7 @@ display: none;
                             </ul>
                           </li>
                     <%end%>
-                          <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('ORC_OP')  %>
+                          <% if current_user.has_role?('desenvolvimento') or current_user.has_role?('ORC_OP') or current_user.has_role?('SEDUC_ORC_SI')or current_user.has_role?('ORC_SI') %>
                               <li><a>Ordem Pagamento</a>
                                   <ul style="width:108px;">
                                    <% if current_user.has_role?('desenvolvimento')or current_user.has_role?('ORC_OP')   %>
