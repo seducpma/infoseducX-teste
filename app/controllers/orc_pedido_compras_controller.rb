@@ -57,7 +57,7 @@ end
   # GET /orc_pedido_compras/new.xml
   def new
     @orc_pedido_compra = OrcPedidoCompra.new
-
+session[:descricao] = 0
 
     respond_to do |format|
       format.html # new.html.erb
@@ -90,6 +90,7 @@ end
                    end
        end
        session[:sem_ata]=1
+       session[:descricao] = 1
 
    end
 
@@ -323,9 +324,11 @@ end
           render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
           end
-    else if params[:type_of].to_i == 3   #sem empenho            produto(antigo)
+    else if params[:type_of].to_i == 3   #sem ficha            produto(antigo)
                   #@pedidos_compra = OrcPedidoCompra.find(:all, :joins=> 'JOIN orc_empenhos ON orc_pedido_compras.id  = orc_empenhos.orc_pedido_compra_id', :conditions => ['orc_pedido_compra_id NOT IN ( SELECT orc_pedido_compra_id FROM orc_empenhos )'], :order => 'id DESC')
-                  @pedidos_compra = OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL ")
+                  ## @pedidos_compra = OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE oe.id IS NULL ")
+                   @pedidos_compra = OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE opc.orc_ficha_id IS NULL ")
+
                render :update do |page|
                   page.replace_html 'consultapedido', :partial => "pedidos"
                end
@@ -384,6 +387,12 @@ def impressao_sem_empenho
     @orc_pedido_compra = OrcPedidoCompra.find(session[:pedido_ids], :joins => "LEFT JOIN orc_empenhos ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id ")
         render :layout => "impressao"
 
+end
+
+
+def sem_ficha
+    @pedidos_compra = OrcPedidoCompra.find_by_sql("SELECT opc . * FROM `orc_pedido_compras` opc LEFT JOIN orc_empenhos oe ON oe.orc_pedido_compra_id = opc.id WHERE opc.orc_ficha_id IS NULL ")
+t=0
 end
 
 end

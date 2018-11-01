@@ -35,12 +35,9 @@
                          <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
                          <td colspan="3" align="left"><%= f.text_field :fornecedor, :size =>60%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                        <b>CNJPJ:</b>&nbsp&nbsp <%= f.text_field :cnpj, :size =>12 %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                       <!--<b>ATA:</b>&nbsp&nbsp <%#=h @orc_pedido_compra.orc_ata.numero %>-->
-                                                         <b>ATA:</b>&nbsp&nbsp <%= f.collection_select :ata_id, @atas, :id, :codigo, :include_blank => ' '  %>
-                                                               <%= observe_field 'orc_pedido_compra_ata_id',
-                                                                           :with   => 'orc_pedido_compra_ata_id',
-                                                                         :url    => { :action => 'verifica_ata_si' } %>
-                         </td>
+                                                       <% if !@orc_pedido_compra.ata_id.nil?%>
+                                                            <b>ATA:</b>&nbsp&nbsp<% @ata = OrcAta.find(:all, :conditions=> ['id=15',@orc_pedido_compra.ata_id ])%> <%=@ata[0].codigo   %>
+                         </td>                        <%end%>
                       </tr>
                       <tr>
                           <td align="left" valign="top"><b>Ficha:</b></td>
@@ -53,7 +50,16 @@
                          <td colspan="2"><div id="dadosFicha"></div> </td>
                       </tr>
                       <tr>
-                        <td align="left" valign="top"> <b><u><%= link_to 'Descrição', "#inline_orc_pedido_descricao", :class =>"inline60" %></u></b></td>
+                        <td align="left" valign="top">
+                              <%if  session[:descricao] == 0%>
+                            <%t=0%>
+                                   <b><u><%= link_to 'Descrição', "#inline_orc_pedido_descricao", :class =>"inline60" %></u></b>
+                              <%else%>
+                                   <b>Descrição</b> 
+                              <%end%>
+
+
+                        </td>
                         <td colspan="3"><div id="dados"> <%= render :partial => 'orc_pedido_descricaos'  %></div></td>
                       </tr>
 

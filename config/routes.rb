@@ -180,6 +180,8 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_lancamento'/consulta_lancamento', :controller => 'orc_lancamentos', :action => 'consulta_lancamento'
   map.consultaSI_lancamento'/consultaSI_lancamento', :controller => 'orc_lancamentos', :action => 'consultaSI_lancamento'
 
+  map.sem_ficha'/sem_ficha', :controller => 'orc_pedido_compras', :action => 'sem_ficha'
+
   map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'
   map.relatorios_faltas'/relatorios_faltas', :controller => 'aulas_faltas', :action => 'relatorios_faltas'

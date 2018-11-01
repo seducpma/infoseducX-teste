@@ -1,0 +1,159 @@
+<div id="interno2">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - SOLICITAÇÕES DE COMPRA</strong></font><br/>
+ </div>
+<div class="tabs">
+    <br/>
+     <%t=@pedidos_compra%>
+     <% if @pedidos_compra.empty?%>
+        <table bgcolor="#DCDCDC" width="100%">
+          <tr bgcolor="#DCDCDC"  >
+            <td align="center" colspan="8"><b>NÃO EXISTE LANÇAMENTOS PARA ESTA FICHA </b></td>
+          </tr>
+
+        </table>
+
+
+     <%else%>
+
+  
+         <% total_ficha = 0%>
+
+          <%#form_tag si_selecionados_path, :method => :get do %>
+           <%# form_remote_tag :url => si_selecionados_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+                      <% @pedidos_compra.each do |pedido| %>
+     <table bgcolor="#F5F5F    " width="100%">
+                        <tr bgcolor="#DCDCDC" >
+
+                            <td  align="center"><b>SI</b></td>
+                            <td align="center"><b>Objetivo </b></td>
+                            <td align="center"><b>Fornecedor</b></td>
+                            <td  width ="10%"align="center"><b>DO </b></td>
+                            <td width ="5%"  align="center"><b>Ficha</b></td>
+                            <td align="center"><b>Valor Total</b></td>
+                            <td width ="10%"  align="center"><b>Data </b></td>
+                          </tr>
+                        <tr  bgcolor="#F5F5F5">
+
+                            <td rowspan="2" valign="top"><b><%=h pedido.codigo %></b> <%  session[:pedido_user_id] = pedido.user_id %></td>
+                          <td><%=h pedido.objetivo %></td>
+                          <td><%=h pedido.fornecedor %></td>
+                          <% if  !pedido.orc_ficha_id.nil? %>
+                             <td><%=h pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h pedido.orc_ficha.codigo%> </td>
+                              <td align="center"><%=h pedido.orc_ficha.ficha%></td>
+                          <%else%>
+                              <td colspan="2" align="center">  Não cadastrado </td>
+                          <%end%>
+                          <td> R$ <%=h pedido.valor_total %></td>
+                          <td align="center"><%=h pedido.created_at.strftime("%d/%b/%y") %> </td>
+
+                        </tr>
+
+                        <tr  bgcolor="#F5F5F5">
+
+                          <td  colspan="6" align="left"><b>Observações:</b> &nbsp&nbsp <%=h pedido.obs %>   &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
+                               <% if pedido.cancelado == 1%>
+                              <font color="red"> <b>>>>  S.I. Cancelado </font></b>
+                                <%end%>
+                          </td>
+                        </tr>
+
+                       <% contador = 1%>
+                       <%if !pedido.valor_total.nil? %>
+                            <% total_ficha = pedido.valor_total + total_ficha %>
+                       <%else%>
+                            <% total_ficha = 0 + total_ficha %>
+                       <%end%>
+                       <tr  bgcolor="#F5F5F5">
+                         <td bgcolor="#DCDCDC"> </td>
+                         <td colspan="6">
+                           <table bgcolor="#DCDCDC" width="100%" >
+                                 <tr  bgcolor="#DCDCDC">
+                                     <td width ="1%" align="center"><b>Item</b> </td>
+                                     <td width ="1%" align="center"><b>Quant.</b> </td>
+                                     <td width ="1%" align="center"><b>Medida</b> </td>
+                                     <td align="left"><b> Descrição</b> </td>
+                                     <td width ="15%"align="center"><b> R$ Unitario</b> </td>
+                                     <td align="center"><b> R$ Total</b> </td>
+
+                                </tr>
+
+
+                           <% @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ["orc_pedido_compra_id =?" , pedido.id]) %>
+
+                            <% @orc_pedido_descricaos.each do |descricao|%>
+
+                                 <tr  bgcolor="#F5F5F5" >
+                                     <td  align="center"><%= contador%> </td>
+                                     <td  align="center"><%= descricao.quantidade%> </td>
+                                     <td  align="left"> <%= descricao.medida%> </td>
+                                     <td  align="left"> <%= descricao.descricao%> </td>
+                                     <td > R$ <%= descricao.unitario%> </td>
+                                     <td  align="center"> R$ <%= descricao.total%> </td>
+                                      <% contador = contador+1%>
+                                </tr>
+
+                             <%end%>
+                           </table>
+                         </td>
+                       </tr>
+                       <tr      bgcolor="#DCDCDC" width="100%">
+                         <td colspan="8">
+                           <table  width="100%">
+                               <tr>
+                                   <%  if  (session[:pedido_user_id] == session[:current_user])or (current_user.has_role?('admin'))  %>
+                                       <td align="right"><%= button_to 'Editar', {:action => "edit", :id =>pedido}, :method => "get", :title => "Editar"%></td>
+                                       <td align="right" width=" 2%"><%= button_to 'Excluir', pedido, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+
+                                       <td align="right" width=" 2%"><%= button_to 'Visualizar',{:action => "show", :id =>pedido}, :method => "get", :title => "Visualizar"%> </td>
+                                  <%else %>
+                                       <td  colspan="3"align="right"><%= button_to 'Visualizar',{:action => "show", :id =>pedido}, :method => "get", :title => "Visualizar"%> </td>
+                                 <%end%>
+                                </tr>
+
+                            </table>
+                         </td>
+                       </tr>
+                       <tr>
+                         <td colspan="8">
+                           <hr/>
+                         </td>
+                       </tr>
+
+                      <% end %>
+                <table>
+                   <tr>
+                       <td align="right" ><font color="Blue"> VISUALIZAR S.I. SELECIONADOS</font></td>
+                       <td  width =" 5%"align="right"><%= button_to 'Visualizar',si_selecionados_orc_pedido_compras_path, :method => "get", :title => "Visualizar"%></td>
+
+                  </tr>
+               </table>
+       <%#end%>
+
+
+
+    </table>
+    <%  if session[:ficha]== 1%>
+     <table>
+        <tr>
+          <td>
+            <b> Valor Total de Empenhos na ficha  <%= @ficha[0].ficha %> -  <%= @ficha[0].descricao %> =  R$ <%=  total_ficha %> </b>
+          </td>
+        </tr>
+      </table>
+    <% end%>
+    <%  session[:ficha]=0%>
+
+<%end%>
+
+<div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+</div>
+<br/>
+</div>
+
+
+
+
