@@ -33,12 +33,18 @@
                                        <font color="red"> S.I. Cancelado </font>
                                 <%end%><br/><br/></td>
       </tr>
+       <% if !@orc_pedido_compra.ata_id.nil? %>
+           <% @ata= OrcAta.find(:all, :conditions => ['id=?',@orc_pedido_compra.ata_id]) %>
+           <tr>
+               <td colspan="4" align="left"><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> &nbsp -&nbsp <b><%=h @ata[0].modalidade %>:</b> <%=h @ata[0].numero %> &nbsp -&nbsp <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
+           </tr>
+       <%end%>
       <tr>
         <td colspan="4" align="left"><b><u>FORNECEDOR</u>: </b> &nbsp <%=h @orc_pedido_compra.fornecedor %>  - <b><u>CPF/CNPJ</u>: </b> <%=h @orc_pedido_compra.cnpj%> <br/><br/></td>
       </tr>
         <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
               <tr>
-                <td colspan="4" align="left"><b><u>DOTAÇÃO ORÇAMENTÁRIA </u></b>: &nbsp <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
+                <td colspan="4" align="left"><b><u>DOTAÇÃO ORÇAMENTÁRIA</u></b>: &nbsp <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
                                              &nbsp&nbsp <b><u>FICHA</u>: &nbsp </b><%=h   @orc_pedido_compra.orc_ficha.ficha%>
                     &nbsp&nbsp <b><u>DR</u>: </b> <%=h   @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b><u>Fonte</u>: </b> &nbsp&nbsp<%=h   @orc_pedido_compra.orc_ficha.fonte%></td>
                  </tr>
@@ -75,14 +81,6 @@
                  <td align="left"  colspan="6"><b>Ficha:</b> &nbsp &nbsp Ainda não indicada</td>
                </tr>
         <%end%>
-       <% if !@orc_pedido_compra.ata_id.nil? %>
-           <% @ata= OrcAta.find(:all, :conditions => ['id=?',@orc_pedido_compra.ata_id]) %>
-           <tr>
-               <td colspan="4" align="left"><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> &nbsp -&nbsp <b><%=h @ata[0].modalidade %>:</b> <%=h @ata[0].numero %> &nbsp -&nbsp <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
-           </tr>
-       <%end%>
-
-
 
         <tr>
         <td>
@@ -138,7 +136,7 @@
 
 
       <tr>
-        <td colspan="4" align="left"><b><u>Data: </u></b> &nbsp <%=h @orc_pedido_compra.created_at.strftime("%d de %B de %Y") %> <br/><br/></td>
+        <td colspan="4" align="left"><b><u>Data</u>: </b> &nbsp <%=h @orc_pedido_compra.created_at.strftime("%d de %B de %Y") %> <br/><br/></td>
       </tr>
 
        </table>

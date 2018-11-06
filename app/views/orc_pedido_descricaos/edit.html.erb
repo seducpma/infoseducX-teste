@@ -37,7 +37,7 @@
             <td width="20%" align="center"><font size="2"><b>Total</b></font></td>
          </tr>
         <tr bgcolor="#F5F5F5" >
-            <td align="center"><%= f.text_field :quantidade, :size =>5, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
+            <td align="center"><%= f.text_field :quantidade, :autofocus=>true, :size =>5, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
             <td align="center"><%= f.text_field :medida, :size =>3, :disabled=>true%></td>
             <td><%= f.text_field :descricao, :size =>30, :disabled=>true %></td>
             <td align="center">R$ <%= f.text_field :unitario, :size =>5,:disabled=>true, :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>

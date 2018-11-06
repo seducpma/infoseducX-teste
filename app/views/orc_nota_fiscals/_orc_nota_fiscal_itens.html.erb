@@ -25,15 +25,21 @@
              <td> <%= item.descricao%>  </td>
              <td align="center"> R$ <%= item.unitario%> </td>
              <td align="center"> R$ <%#= item.total%>
-                                    <%= (item.unitario*item.quantidade)%>
+                <%if item.quantidade.nil?%>
+                    <%= (0*item.unitario)%>
+                <%else%>
+                    <%= (item.quantidade*item.unitario)%>
+                <%end%>
              </td>
 
              <td align="center"> <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy_nf_itens" , :id =>item}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %></td>
-            
-
            </tr>
           <% contador = contador+1%>
-          <% total_geral = total_geral+ (item.unitario*item.quantidade)%>
+          <%if item.quantidade.nil?%>
+            <%total_geral = total_geral+(0*item.unitario)%>
+          <%else%>
+            <%total_geral = total_geral+(item.quantidade*item.unitario)%>
+          <%end%>
         <%end%>
    <%end%>
            <tr>

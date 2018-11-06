@@ -27,16 +27,22 @@
       <tr >
         <td colspan="4" align="left"style="border-color: white" ><b><u>OBJETIVO</u>: </b> &nbsp <%=h pedido.objetivo %> </td>
       </tr>
+       <% if !pedido.ata_id.nil? %>
+           <% @ata= OrcAta.find(:all, :conditions => ['id=?',pedido.ata_id]) %>
+           <tr>
+               <td colspan="4" align="left" style="border-color: white""><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> <b><u<%=h @ata[0].modalidade %>:</u</b> <%=h @ata[0].numero %> - <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
+           </tr>
+       <%end%>
       <tr >
         <td colspan="4" align="left"style="border-color: white" ><b><u>FORNECEDOR</u>: </b> &nbsp  <%=h pedido.fornecedor%> - <b><u>CPF/CNPJ</u>: </b> <%=h pedido.cnpj%> </td>
       </tr>
       <tr >
-        <td colspan="4" align="left"style="border-color: white" ><b><u>DOTAÇÃO ORÇAMENTÁRIA </u></b>: &nbsp <%=h  pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  pedido.orc_ficha.codigo%>
+        <td colspan="4" align="left"style="border-color: white" ><b><u>DOTAÇÃO ORÇAMENTÁRIA</u></b>: &nbsp <%=h  pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  pedido.orc_ficha.codigo%>
                                      &nbsp <b><u>FICHA</u>: &nbsp </b><%=h   pedido.orc_ficha.ficha%></td>
       </tr>
       <tr >
           <td colspan="4" align="left"style="border-color: white" ><b><u>DR</u>: </b> <%=h  pedido.orc_ficha.dr%>  &nbsp <b><u>Fonte</u>: </b> <%=h  pedido.orc_ficha.fonte%>
-            &nbsp <%=h pedido.orc_ficha.descricao%> 
+            &nbsp <%=h pedido.orc_ficha.descricao%>
                    <% if pedido.orc_ficha.ficha.count("SE") == 2 %>
                       - SALARIO EDUCAÇÂO
                    <%end%>
@@ -63,12 +69,7 @@
                 - <%=h pedido.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%>
            <br/></td>
       </tr>
-       <% if !pedido.ata_id.nil? %>
-           <% @ata= OrcAta.find(:all, :conditions => ['id=?',pedido.ata_id]) %>
-           <tr>
-               <td colspan="4" align="left" style="border-color: white""><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> <b><u<%=h @ata[0].modalidade %>:</u</b> <%=h @ata[0].numero %> - <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
-           </tr>
-       <%end%>
+
       <tr>
         <td style="border-color: white">
             <table  border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
@@ -105,10 +106,10 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" align="left"style="border-color: white"><b><u>VALOR TOTAL: </u></b> R$ <%= total_geral %> <br/></td>
+        <td colspan="4" align="left"style="border-color: white"><b><u>VALOR TOTAL</u>: </b> R$ <%= total_geral %> <br/></td>
       </tr>
       <tr>
-        <td colspan="4" align="left"style="border-color: white"><b><u>JUSTIFICATIVA: </u></b> <%=h pedido.justificativa %> <br/></td>
+        <td colspan="4" align="left"style="border-color: white"><b><u>JUSTIFICATIVA</u>: </b> <%=h pedido.justificativa %> <br/></td>
       </tr>
       <% if  !pedido.obs.nil?%>
           <tr>
@@ -116,7 +117,7 @@
           </tr>
       <%end%>
       <tr>
-        <td colspan="4" align="left"style="border-color: white"><b><u>Data: </u></b> <%=h pedido.created_at.strftime("%d de %B de %Y") %><br/></td>
+        <td colspan="4" align="left"style="border-color: white"><b><u>Data</u>: </b> <%=h pedido.created_at.strftime("%d de %B de %Y") %><br/></td>
       </tr>
 
 
