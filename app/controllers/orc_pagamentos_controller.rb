@@ -62,7 +62,7 @@ class OrcPagamentosController < ApplicationController
     
 
     respond_to do |format|
-        @orc_pagamento.pago = 1
+      @orc_pagamento.pago = 1
       if @orc_pagamento.save
        op_id=@orc_pagamento.id
        @empenho = OrcEmpenho.find(:all, :conditions => ['id=?', @orc_pagamento.orc_empenho_id])
@@ -97,7 +97,9 @@ class OrcPagamentosController < ApplicationController
             @empenho = OrcEmpenho.find(:all, :conditions => ['id =?', @orc_pagamento.orc_empenho_id])
             empenho_id=@empenho[0].orc_pedido_compra_id
             @pedido_compra = OrcPedidoCompra.find(:all , :conditions=> ['id= ?', empenho_id])
-            @empenho[0].pagamento = 1
+            if (@orc_pagamento.valor_pg>=@empenho[0].valor_total) ###ALEX 2018-11-13 - ADICIONEI PARA APARECER O EMPENHO NA COMBO DE EMPENHO QUANDO O VR. DO PAGAMENTO FOR INFERIOR AO EMPENHO
+                @empenho[0].pagamento=1
+            end
             @empenho[0].data_pg = @orc_pagamento.data_pg
             @op.codigo= @empenho[0].codigo
             @ficha= OrcFicha.find(:all, :conditions => ['ficha =?',@empenho[0].ficha])
