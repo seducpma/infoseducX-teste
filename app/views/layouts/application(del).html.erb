@@ -262,7 +262,7 @@ display: none;
                            <li><%= link_to "Faltas", new_aulas_falta_path %></li>
                      <%end%>
 
-                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade'))%>
+                      <% if (current_user.has_role?('admin'))%> <!-- or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade'))%>-->
                           <li><%= link_to "Professor",new_professor_path %></li>
                       <%end%>
                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC') )%>

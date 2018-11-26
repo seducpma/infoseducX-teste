@@ -10,7 +10,7 @@ class OrcPagamentosController < ApplicationController
          @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
          #@fichas = OrcFicha.find_by_sql("SELECT id, ficha FROM orc_pagamentos WHERE id NOT IN (SELECT orc_ficha_id FROM orc_pagamentos) ORDER BY codigo ASC")
          @orc_pagamento_op= OrcPagamento.find(:all, :conditions => ["year(data_pg) = ? and codigo is not null AND  orc_empenho_id is not null"  , Time.now.year], :order => 'data_pg ASC' )
-         @empenhos = OrcEmpenho.all(:conditions => ["year(data_chegou) = ? and pagamento=0", Time.now.year], :order => 'data_chegou ASC' )
+         @empenhos = OrcEmpenho.all(:conditions => ["year(data_chegou) = ? and pagamento=0", Time.now.year], :order => 'codigo ASC' )
  #      @orcamentarias= OrcUniOrcamentaria.find(:all, :conditions => ["ano = ?", Time.now.year])
   #      @orc_pedido_ano= OrcPedidoCompra.find(:all, :select => 'distinct(ano)')
  end
@@ -69,6 +69,7 @@ class OrcPagamentosController < ApplicationController
             # atualiza saldo na ficha
        if @orc_pagamento.orc_empenho_id.nil?
            @ficha = OrcFicha.find(:all, :conditions => ['id =?', @orc_pagamento.orc_ficha_id])
+
            @empenho[0].pago=1
            @empenho[0].save
        else
@@ -96,6 +97,11 @@ class OrcPagamentosController < ApplicationController
             @op =OrcPagamento.find(op_id)
             @empenho = OrcEmpenho.find(:all, :conditions => ['id =?', @orc_pagamento.orc_empenho_id])
             empenho_id=@empenho[0].orc_pedido_compra_id
+            w=saldo_anterior= @empenho[0].valor_saldo
+            w1=pagamento = @orc_pagamento.valor_pg
+            w2=saldo_atualizado = saldo_anterior-pagamento
+            t=0
+           @empenho[0].valor_saldo = saldo_atualizado
             @pedido_compra = OrcPedidoCompra.find(:all , :conditions=> ['id= ?', empenho_id])
             if (@orc_pagamento.valor_pg>=@empenho[0].valor_total) ###ALEX 2018-11-13 - ADICIONEI PARA APARECER O EMPENHO NA COMBO DE EMPENHO QUANDO O VR. DO PAGAMENTO FOR INFERIOR AO EMPENHO
                 @empenho[0].pagamento=1

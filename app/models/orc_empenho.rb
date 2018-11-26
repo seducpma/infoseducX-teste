@@ -6,7 +6,7 @@ class OrcEmpenho < ActiveRecord::Base
 
  has_many :orc_empenho_itens, :dependent => :destroy
    #validates_presence_of :orc_pedido_compra_id
-   usar_como_dinheiro :valor_total, :rel_valor_em
+   usar_como_dinheiro :valor_total, :rel_valor_em, :valor_saldo
    before_save  :salva_dados
    #after_save  :atualiza_saldo
 
