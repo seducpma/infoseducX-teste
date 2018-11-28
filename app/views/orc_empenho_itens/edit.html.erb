@@ -26,25 +26,25 @@
                         <tr>
                           <td></td>
                           <td colspan="8">
-       <table  width="100%"bgcolor="#DCDCDC">
+                               <table  width="100%"bgcolor="#DCDCDC">
 
-         <tr bgcolor="#DCDCDC" >
+                                 <tr bgcolor="#DCDCDC" >
 
-            <td width="10%" align="center"><font size="2"><b>Qtd</b></font></td>
-            <td width="40%"><font size="2"><b>Descricão</b></font></td>
-            <td width="15%" align="center"><font size="2"><b>Unitário</b></font></td>
-            <td width="20%" align="center"><font size="2"><b>Total</b></font></td>
-         </tr>
-        <tr bgcolor="#F5F5F5" >
-            <td align="center"><%= f.text_field :quantidade, :autofocus=>true, :size =>5, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
-            <td><%= f.text_field :descricao, :size =>30, :readonly=>"readonly" %></td>
-            <td align="center">R$ <%= f.text_field :unitario, :size =>5, :readonly=>"readonly", :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>
-            <td align="center">R$ <%= f.text_field :total, :size =>10, :readonly=>"readonly", :id=> 'subtotal' %></td>
-        </tr>
+                                    <td width="10%" align="center"><font size="2"><b>Qtd</b></font></td>
+                                    <td width="40%"><font size="2"><b>Descricão</b></font></td>
+                                    <td width="15%" align="center"><font size="2"><b>Unitário</b></font></td>
+                                    <td width="20%" align="center"><font size="2"><b>Total</b></font></td>
+                                 </tr>
+                                <tr bgcolor="#F5F5F5" >
+                                    <td align="center"><%= f.text_field :quantidade, :autofocus=>true, :size =>5, :id => 'unitario', :type => 'text',:onblur => "calcular()" %></td>
+                                    <td><%= f.text_field :descricao, :size =>30, :readonly=>"readonly" %></td>
+                                    <td align="center">R$ <%= f.text_field :unitario, :size =>5, :readonly=>"readonly", :id => 'quantidade', :type => 'text',:onblur => "calcular()"  %></td>
+                                    <td align="center">R$ <%= f.text_field :total, :size =>10, :readonly=>"readonly", :id=> 'subtotal' %></td>
+                                </tr>
 
 
 
-       </table>
+                               </table>
                           </td>
                         </tr>
 

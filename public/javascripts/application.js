@@ -4,6 +4,14 @@ function calcular(){
     document.getElementById('subtotal').value = (unitario * quantidade).toFixed(2);
 
 }
+function calcular2(){
+    var unitario = parseFloat(document.getElementById('unitario').value);
+    var quantidade = parseFloat(document.getElementById('quantidade').value);
+    var nf = parseFloat(document.getElementById('nf').value);
+    document.getElementById('saldo').value = ( nf - unitario).toFixed(2);
+    document.getElementById('subtotal').value = (unitario * quantidade).toFixed(2);
+
+}
 
 
 
