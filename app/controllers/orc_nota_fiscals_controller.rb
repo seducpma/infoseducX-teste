@@ -229,11 +229,17 @@ class OrcNotaFiscalsController < ApplicationController
             valor_item=item_nf.total
             session[:valor_total]= item_nf.total_geral = item_nf.total_geral
 
+
+
             for item_em in @itens_empenho
                 if item_em.descricao == item_nf.descricao
-                    w=item_nf.quantidade
-                    w1=item_em.saldo
-                    w3=item_em.saldo = item_em.saldo + item_nf.quantidade
+                    if !item_nf.quantidade.nil?
+                        nf_item=item_nf.quantidade
+                    else
+                        nf_item=0
+                    end
+                    item_em.saldo
+                    item_em.saldo = item_em.saldo + nf_item
 
                 end
                 item_em.save
