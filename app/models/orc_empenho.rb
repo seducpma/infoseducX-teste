@@ -9,7 +9,7 @@ class OrcEmpenho < ActiveRecord::Base
    usar_como_dinheiro :valor_total, :rel_valor_em, :valor_saldo
    before_save  :salva_dados
    #after_save  :atualiza_saldo
-
+   validates_presence_of :data_chegou
 before_save  :maiusculo
 
  def maiusculo
