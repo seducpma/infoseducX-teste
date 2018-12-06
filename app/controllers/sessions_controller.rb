@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
   def create
       self.current_user = User.authenticate(params[:login], params[:password])
       if logged_in?
-            session[:nao_cadastra_agenda] = 0
           if params[:remember_me] == "1"
               current_user.remember_me unless current_user.remember_token?
               cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
@@ -52,7 +51,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    session[:nao_cadastra_agenda] = 0
     flash[:notice] = "VOCẼ ACABOU DE SAIR DO SISGERED"
     redirect_back_or_default('/')
   end

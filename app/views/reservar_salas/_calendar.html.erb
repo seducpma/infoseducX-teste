@@ -37,9 +37,13 @@
 <table align="right">
   <tr>
     <td align="right" ><%= button_to("Fechar",  home_path, :method => "get", :title => "Voltar")%></td>
-    <% if session[:nao_cadastra_agenda] ==0 %>
+    <% if logged_in? %>
         <td width="2%" align="right"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
         <td width="2%" ><%= button_to("Impressao",  impressao_calendar_path, :method => "get", :title => "Imprimir")%></td>
+        <%else%>
+        <td width="2%" align="right"><%= button_to("Agendar", informatica_path,  :title => "Agendar") %></td>
+        <td width="2%" ><%= button_to("Impressao",  impressao_calendar_path, :method => "get", :title => "Imprimir")%></td>
+
     <%end%>
 
    </tr>
