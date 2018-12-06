@@ -9,28 +9,22 @@
            <table width="100%" align="center"  bgcolor="#F5F5F5" >
              <tr   bgcolor ="#E6E2D">
                   <th align="center">
-                     <font  size=3 color="black"> <br/> <b> SEDUC-PMA  Secretaria de Edcuação da Prefeitura Municipal de Americana</b></font><br/>
+                     <font  size=3 color="black"> <br/> <b> SEDUC-PMA  Secretaria de Educação da Prefeitura Municipal de Americana</b></font><br/><br/>
                   </th>
+
                 </tr>
             <tr>
             <td colspan="2">
              <fieldset><legend><font size ="4"><b></b></font></legend>
                  <br/><br/><br/>
-                 <table width="100%" border="1">
+                 <table width="100%">
                         <tr>
-                          <td  align="left">&nbsp&nbsp&nbsp&nbsp <b>UNIDADES DE ENSINO INFANTIL</b> </td>
-                          <td  align="left">&nbsp&nbsp&nbsp&nbsp <b>UNIDADES DE ENSINO FUNDAMENTAL</b> </td>
-                          <td  align="left">&nbsp&nbsp&nbsp&nbsp <b>UNIDADES DE APOIO </b> </td>
+                          <td  align="left">&nbsp&nbsp&nbsp&nbsp <b> <%= link_to 'UNIDADES DE ENSINO INFANTIL', infantil_certificados_path %> </b> </td>
+                          <td  align="left">&nbsp&nbsp&nbsp&nbsp <b><%= link_to 'UNIDADES DE ENSINO FUNDAMENTAL', fundamental_certificados_path %> </b> </td>
+                          <td  align="left">&nbsp&nbsp&nbsp&nbsp <b><%= link_to 'UNIDADES DE APOIO ', apoio_certificados_path %> </b> </td>
                          </tr>
-                        <tr>
-                          <td colspan="2" align="left">
-                          </td>
-                        </tr>
-
-                       <tr><td colspan="2"><br/></td></tr>
-              </table>
-
-<br/><br/><br/>
+                 </table>
+              <br/><br/>
           </fieldset>
 
                    <table width="100%" align="left">
