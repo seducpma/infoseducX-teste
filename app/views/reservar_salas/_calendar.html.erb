@@ -36,10 +36,11 @@
 <br/>
 <table align="right">
   <tr>
-    <td align="right" ><%= button_to("Voltar",  home_path, :method => "get", :title => "Voltar")%></td>
-    <td width="2%" align="right"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
-    <td width="2%" ><%= button_to("Impressao",  impressao_calendar_path, :method => "get", :title => "Imprimir")%></td>
-    
+    <td align="right" ><%= button_to("Fechar",  home_path, :method => "get", :title => "Voltar")%></td>
+    <% if session[:nao_cadastra_agenda] ==0 %>
+        <td width="2%" align="right"><%= button_to("Agendar", new_reservar_sala_path,  :title => "Agendar") %></td>
+        <td width="2%" ><%= button_to("Impressao",  impressao_calendar_path, :method => "get", :title => "Imprimir")%></td>
+    <%end%>
 
    </tr>
 </table>
