@@ -145,7 +145,15 @@ def ficha_saldo
    render :partial => "saldos"
  end
 
+def saldo_dotacao
+    @un_despesa = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
+end
 
+
+def impressao_dotacao
+     @un_despesa = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
+     render :layout => "impressao"
+end
 
 
 end

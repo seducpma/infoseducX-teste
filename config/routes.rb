@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orc_uni_orcamentarias, :collection => {:consulta => :get}
   map.resources :orc_uni_despesas
   map.resources :poda_gramas, :collection => {:agenda => :get,:agendamento => :get, :agenda_execucao => :get,:agenda_executada => :get, :agenda_nexecutada => :get, :relatorio_agendamento => :get}
-  map.resources :certificados, :collection => {:aviso => :get}
+  map.resources :certificados, :collection => {:aviso => :get, :unidades => :get}
 
   map.resources :produtos
   map.resources :produtos_lancamentos
@@ -75,6 +75,9 @@ ActionController::Routing::Routes.draw do |map|
   map.new_itens '/new_itens', :controller => 'orc_empenhos', :action => 'new_itens'
   map.new_descricaos'/new_descricaos', :controller => 'orc_pedido_compras', :action => 'new_descricaos'
 
+
+
+  map.saldo_dotacao'/saldo_dotacao', :controller => 'orc_fichas', :action => 'saldo_dotacao'
   map.lista_produto_periodo_index '/lista_produto_periodo_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_periodo_index'
   map.lista_produto_entrada_index '/lista_produto_entrada_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_entrada_index'
   map.lista_produto_saida_index '/lista_produto_saida_index', :controller => 'produtos_lancamentos', :action => 'lista_produto_saida_index'
@@ -93,6 +96,7 @@ ActionController::Routing::Routes.draw do |map|
   map.new_disciplinanota '/new_disciplinanota', :controller => 'disciplinas', :action => 'new_disciplinanota'
   map.create_discipina_nota '/create_discipina_nota', :controller => 'disciplinas', :action => 'create_discipina_nota'
 
+  map.impressao_dotacao'/impressao_dotacao', :controller => 'orc_fichas', :action => 'impressao_dotacao'
   map.impressao_sem_empenho'/impressao_sem_empenho', :controller => 'orc_pedido_compras', :action => 'impressao_sem_empenho'
   map.impressao_atendimento '/impressao_atendimento', :controller => 'chamados', :action => 'impressao_atendimento'
   map.impressao_geral '/grafico/impressao_geral', :controller => 'grafico', :action => 'impressao_geral'
