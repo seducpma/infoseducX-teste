@@ -65,7 +65,8 @@ def create
        format.xml  { head :ok }
      end
    else
-    if   (@reservar_sala.data_reserva >= (DateTime.now.to_date + 1))
+    #if   (@reservar_sala.data_reserva >= (DateTime.now.to_date + 1))
+    if   (@reservar_sala.data_reserva >= (DateTime.now.to_date ))
      if ((@reservado.present? ))
      respond_to do |format|
        flash[:notice] = 'JÁ EXISTE RESERVA PARA ESTE DIA E HORA.'
