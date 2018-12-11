@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orc_reservas,:collection => {:consulta => :get}
   map.resources :orc_ata_itens
   map.resources :orc_atas,:collection => {:consulta => :get,:consulta_ata => :get}
-  map.resources :orc_nota_fiscals, :collection => {:consulta => :get}
+  map.resources :orc_nota_fiscals, :collection => {:consulta => :get,  :nf_selecionados => :get}
   map.resources :orc_nota_fiscal_itens
   map.resources :orc_lancamentos, :collection => {:consulta => :get, :consultaSI => :get}
   map.resources :orc_pagamentos, :collection => {:consulta => :get}
@@ -16,6 +16,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orc_uni_despesas
   map.resources :poda_gramas, :collection => {:agenda => :get,:agendamento => :get, :agenda_execucao => :get,:agenda_executada => :get, :agenda_nexecutada => :get, :relatorio_agendamento => :get}
   map.resources :certificados, :collection => {:aviso => :get, :unidades => :get, :infantil => :get, :fundamental => :get, :apoio => :get}
+
+  map.resources :acompanhamento_despachos
+
+  map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get, :editar => :get}
+
+  map.resources :despachos
+
+
+
 
   map.resources :produtos
   map.resources :produtos_lancamentos
@@ -96,6 +105,7 @@ ActionController::Routing::Routes.draw do |map|
   map.new_disciplinanota '/new_disciplinanota', :controller => 'disciplinas', :action => 'new_disciplinanota'
   map.create_discipina_nota '/create_discipina_nota', :controller => 'disciplinas', :action => 'create_discipina_nota'
 
+    map.impressao_nf'/impressao_nf', :controller => 'orc_nota_fiscals', :action => 'impressao_nf'
   map.impressao_dotacao'/impressao_dotacao', :controller => 'orc_fichas', :action => 'impressao_dotacao'
   map.impressao_sem_empenho'/impressao_sem_empenho', :controller => 'orc_pedido_compras', :action => 'impressao_sem_empenho'
   map.impressao_atendimento '/impressao_atendimento', :controller => 'chamados', :action => 'impressao_atendimento'

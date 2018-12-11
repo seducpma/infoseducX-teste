@@ -18,7 +18,7 @@ class OrcNotaFiscalsController < ApplicationController
 
 
     def index
-        @orc_nota_fiscals = OrcNotaFiscal.all
+        @orc_nota_fiscals = OrcNotaFiscal.find(:all, :order => 'id DESC')
 
         respond_to do |format|
             format.html # index.html.erb
@@ -394,5 +394,17 @@ class OrcNotaFiscalsController < ApplicationController
             render :nothing => true
         end
     end
+
+   def nf_selecionados
+      session[:nota_ids]=params[:nota_ids]
+      @orc_nota_fiscal = OrcNotaFiscal.find(session[:nota_ids])
+
+   end
+
+
+   def impressao_nf
+      @orc_nota_fiscal = OrcNotaFiscal.find(session[:nota_ids])
+       render :layout => "impressao"
+   end
 
 end

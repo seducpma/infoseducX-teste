@@ -339,6 +339,26 @@ display: none;
                                <%end%>
                             </ul>
                           </li>
+
+
+
+
+                     <li><a class="item-primary" href="#;">Solicitações</a>
+                        <ul>
+                          <li><%= link_to "Novo",new_acompanhamento_path %></li>
+                          <li><%= link_to "Solicitações", acompanhamentos_path  %></li>
+                          <li><%= link_to "Consultar", consulta_acompanhamentos_path  %></li>
+                        </ul>
+                      </li>
+
+
+
+
+
+                         
+
+
+
                         <%end%>
                            <% if (current_user.has_role?('admin') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario SEDUC'))%>
                                   <%= link_to "Ponto Eletrônico", pontos_path %>
@@ -588,7 +608,7 @@ display: none;
 
                                    <li><%= link_to "Cadastrar",new_orc_nota_fiscal_path %></li>
                                    <li><%= link_to "Consultar",consulta_orc_nota_fiscals_path %></li>
-
+                                   <li><%= link_to "Impressão",orc_nota_fiscals_path %></li>
 
                                 <%end%>
                             </ul>

@@ -47,8 +47,8 @@
                                 <% @orc_pedido_descricaos.each do |descricao|%>
 
                                      <tr  style="height: 1px" bgcolor="#F5F5F5" >
-                                         <td></td>   
-                                         <td  align="center"><font size =1"><%= contador%></font> </td>
+                                         
+                                         <td   rowspan="2"align="center"><font size =1" ><%= contador%></font> </td>
                                          <td  align="center"><font size =1"><%= descricao.quantidade%></font> </td>
                                          <td  align="left"> <font size =1"><%= descricao.descricao%></font> </td>
                                          <td><font size =1"> R$ <%= descricao.unitario%></font> </td>
