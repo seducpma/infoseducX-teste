@@ -17,7 +17,7 @@
 
                 <%form_tag nf_selecionados_orc_nota_fiscals_path, :method => :get do %>
                    <% @orc_nota_fiscals.each  do |nota| %>
-                     <tr >
+                     <tr bgcolor="#DCDCDC">
                         <th></th>
                         <td width=" 1%" align="center" width ="5%"><b>Nº NF </b></td>
                         <td align="center" width ="5%"><b>Data</b></td>
@@ -56,7 +56,7 @@
                             <td align="center">R$ <%=h nota.valor %></td>
                             <td align="center"><%if nota.orc_empenho.cancelado ==  1 %> <font color =" red"> Cancelado <%end%> </td>
                         </tr>
-
+<!--
                          <% contador = 1%>
                         <tr  bgcolor="#F5F5F5">
                             <td> </td>
@@ -82,7 +82,7 @@
                                                 <td  align="left"> <%= item.descricao%> </td>
                                                 <td > R$ <%= item.unitario%> </td>
                                                 <td  align="center"> R$ <%= item.total%> </td>
-                                                <!--<td  align="center"> <%#= button_to('Editar', {:controller=> 'Orc_nota_fiscal_itens',   :action => "edit", :id => item},:method => "get", :title => "Editar") %></td>-->
+                                               
                                                 <% contador = contador+1%>
                                             </tr>
                                         <%end%>
@@ -90,7 +90,7 @@
                                 </table>
                             </td>
                         </tr>
-
+-->
                          <tr bgcolor="#DCDCDC" >
                              <td colspan="8">
 
