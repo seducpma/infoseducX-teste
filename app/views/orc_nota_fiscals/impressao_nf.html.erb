@@ -12,8 +12,9 @@
        <td style="border-color: white" colspan="2"><hr/></td>
      </tr>
  </table>
-
-<center><b><u>NOTAS FISCAIS ENTEGUES PARA SUPRIMENTOS </u></b><br/></center>
+<br/>
+<center><b><u>NOTAS FISCAIS ENVIADAS PARA SUPRIMENTOS </u></b><br/></center>
+<br/>
 
            <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
                    <% @orc_nota_fiscal.each  do |nota| %>
@@ -55,7 +56,7 @@
                                 
                             </tr>
                          <% contador = 1%>
-
+<!--
                                     <tr style="height: 1px"  bgcolor="#DCDCDC">
                                             <td ></td>
                                             <td  width ="1%" align="center"  ><b>Item</b> </td>
@@ -75,11 +76,12 @@
                                                 <td  align="left"> <%= item.descricao%> </td>
                                                 <td > R$ <%= item.unitario%> </td>
                                                 <td  colspan="2" align="center"> R$ <%= item.total%> </td>
-                                                <!--<td  align="center"> <%#= button_to('Editar', {:controller=> 'Orc_nota_fiscal_itens',   :action => "edit", :id => item},:method => "get", :title => "Editar") %></td>-->
+    
                                                 <% contador = contador+1%>
                                             </tr>
                                         <%end%>
                                     <%end%>
+-->
               <tr style="border-color: white" style="height: 1px" >
                   <td style="border-color: white"colspan="8"></td>
               </tr>
@@ -93,7 +95,7 @@
          &nbsp&nbsp<font size =1"> Digitado em <%= Time.now.strftime("%d de%B de %Y") %></font><br/><br/>
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/>
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/>
-         &nbsp&nbsp&nbsp&nbsp&nbsp Recbedio em _______/______________/_____  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   por &nbsp&nbsp ____________________________________________<br/>
+         &nbsp&nbsp&nbsp&nbsp&nbsp Recebedio em _______/______________/_____  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   por &nbsp&nbsp ____________________________________________<br/>
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Nome: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/>
          <br/><br/><br/><br/><br/><br/>
