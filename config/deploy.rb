@@ -1,5 +1,12 @@
 #set :application, "192.168.0.12"
-set :application, "192.168.0.14"  # 192.168.0.14 - Servidor oficial (hera)  # 177.36.159.102 - Servidor Teste Alvaro/Alexandre
+
+
+#set :application, "192.168.0.14"  # 192.168.0.14 - Servidor oficial (hera)  # 177.36.159.102 - Servidor Teste Alvaro/Alexandre
+
+set :application, "177.36.136.46"  # 192.168.0.14 - Servidor oficial (hera)  # 177.36.159.102 - Servidor Teste Alvaro/Alexandre
+
+
+
 #set :repository, "git://github.com/seducpma/sisgered.git"
 set :repository, "git://github.com/seducpma/infoseduc.git"
 set :user, "atena"
