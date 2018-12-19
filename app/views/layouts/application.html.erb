@@ -196,7 +196,7 @@ display: none;
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
                 </ul>
               </li>
-            <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP')%>
+            <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('oficios')%>
             <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#">AGENDAS</a>
                  <ul style="width:108px;">
@@ -239,7 +239,7 @@ display: none;
                      <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao') %>
                          <li><%= link_to('Laboratório',agendas_path) %></li>
                      <%end%>
-                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')  or current_user.has_role?('SEDUC')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP')%>
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')  or current_user.has_role?('SEDUC')or current_user.has_role?('ORC_SI') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('oficios')%>
                              <li><%= link_to('Sala Reunião', reservar_salas_path) %></li>
                      <%end%>
                  </ul>
