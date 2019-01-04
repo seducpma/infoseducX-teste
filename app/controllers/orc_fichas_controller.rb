@@ -6,10 +6,11 @@ class OrcFichasController < ApplicationController
  def load_iniciais
         @orcamentaria = OrcUniOrcamentaria.all(:conditions => ["ano = ?", Time.now.year], :order => 'descricao ASC')
         @despesas = OrcUniDespesa.all(:conditions => ["ano = ?", Time.now.year])
-        @fichas = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
-       @orc_ficha_ano= OrcFicha.find(:all, :select => 'distinct(ano)')
-       @orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
-        #@orc_ficha_descricao= OrcFicha.find(:all, :select => 'distinct(descricao), id, CONCAT( descricao , ' - ',    ano   ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
+        @fichas_atual = OrcFicha.all(:conditions => ["ano = ?", Time.now.year], :order => 'ficha ASC')
+        @fichas = OrcFicha.all(:conditions => ["ano = 2018"], :order => 'ficha ASC')
+        @orc_ficha_ano= OrcFicha.find(:all, :select => 'distinct(ano)')
+        @orc_ficha_descricao= OrcFicha.find(:all, :select => "distinct(descricao), CONCAT( ano , ' - ',descricao       ) AS descricao_ano", :conditions => ["ano = ?", Time.now.year],:order => ' descricao ASC , ano ASC' )
+       #@orc_ficha_descricao= OrcFicha.find(:all, :select => 'distinct(descricao), id, CONCAT( descricao , ' - ',    ano   ) AS descricao_ano", :order => ' descricao ASC , ano ASC' )
  end
 
   def index
@@ -106,8 +107,17 @@ def lista_orcamentaria
 
  def consulta_ficha
      if params[:type_of].to_i == 4   #todas
-                   @orc_fichas = OrcFicha.find(:all, :order => 'ano ASC, ficha ASC')
+                   @orc_fichas = OrcFicha.find(:all, :conditions => ["ano = ?", Time.now.year],:order => 'ano ASC, ficha ASC')
 
+               render :update do |page|
+                  page.replace_html 'consultaficha', :partial => "fichas"
+               end
+    end
+end
+
+ def consulta_ficha_ant
+     if params[:type_of].to_i == 4   #todas
+               @orc_fichas = OrcFicha.find(:all, :order => 'ano ASC, ficha ASC')
                render :update do |page|
                   page.replace_html 'consultaficha', :partial => "fichas"
                end
@@ -120,18 +130,37 @@ end
  end
 
  def ficha_descricao
+   @orc_fichas = OrcFicha.find(:all, :conditions => ['descricao = ? AND ano = Time.now.year', params[:orc_ficha_descricao]], :order => 'ano ASC, descricao ASC')
+   render :partial => "fichas"
+ end
+
+  def ficha_descricao_ant
    @orc_fichas = OrcFicha.find(:all, :conditions => ['descricao = ?', params[:orc_ficha_descricao]], :order => 'ano ASC, descricao ASC')
    render :partial => "fichas"
  end
 
   def ficha_numero
-   @orc_fichas = OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]], :order => 'ano ASC, descricao ASC')
+   @orc_fichas = OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]], :order => 'ano DESC, descricao ASC')
+   render :partial => "fichas"
+ end
+
+ def ficha_numero_ant
+   @orc_fichas = OrcFicha.find(:all, :conditions => ['id = ?', params[:orc_ficha_id]], :order => 'ano DESC, descricao ASC')
    render :partial => "fichas"
  end
 
  def consulta_saldo
      if params[:type_of].to_i == 4   #todas
-           @orc_fichas = OrcFicha.find(:all, :order => 'ano ASC, ficha ASC')
+           @orc_fichas = OrcFicha.find(:all, :conditions=>["ano = ?", Time.now.year], :order => 'ano ASC, ficha ASC')
+          render :update do |page|
+               page.replace_html 'consultaficha', :partial => "saldos"
+          end
+    end
+end
+
+def consulta_saldo_ant
+     if params[:type_of].to_i == 4   #todas
+           @orc_fichas = OrcFicha.find(:all, :order => 'ano DESC, ficha ASC')
           render :update do |page|
                page.replace_html 'consultaficha', :partial => "saldos"
           end

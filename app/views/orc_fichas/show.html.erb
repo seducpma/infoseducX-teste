@@ -72,7 +72,9 @@
            <tr>
               <td  width="2%"align="leftt" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
               <td width="2%" align="left" ><%= button_to('Fichas', orc_fichas_path, :method => "get",  :title => "Unidades Orçamentarias")%></td>
-              <td width="2%" align="left" ><%= button_to('Cadastrar', new_orc_ficha_path, :method => "get",  :title => "Unidades Orçamentarias")%></td>
+              <%if @orc_ficha.ano= Time.now.year%>
+                  <td width="2%" align="left" ><%= button_to('Cadastrar', new_orc_ficha_path, :method => "get",  :title => "Unidades Orçamentarias")%></td>
+              <%end%>
               <td  align="left" ><%= button_to('Saldo', saldo_orc_fichas_path, :method => "get",  :title => "Consulta Saldos")%></td>
 
             </tr>
