@@ -1,0 +1,100 @@
+<div id="interno6">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - ATENDIMENTO / PLANEJAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+
+                <% form_for @acompanhamento do |f| %>
+                <%= f.error_messages %>
+                <font  size="2">
+                <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+
+                 <tr>
+                   <td colspan="2">
+                     <fieldset><legend><font  size=3> Atendimento</font></legend>
+                         <table width="100%" >
+                        <tr>
+                           <td width="10%"align="left"><font size="2"><b>Criança:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :crianca, :size =>36 %></font></td>
+                           <td align="left"><font size="2"><b>Nascimento:</b></font></td>
+                           <td align="left"><font size="2"><%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 15)) %></font></td>
+                        </tr>
+                        <tr>
+                           <td width="10%"align="left"><font size="2"><b>Inscrição/RA:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :inscricao, :size =>36 %></font></td>
+                           <td align="left"><font size="2"><b>Atendido  por:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :funcionario, :size =>37 %></font></td>
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"><b>Mãe/Pai:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :mae, :size =>36 %></font></td>
+                           <td align="left"><font size="2"><b>Responsável:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :responsavel, :size =>37 %></font></td>
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"><b>Endereço:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :endereco, :size =>36 %></font></td>
+                           <td align="left" colspan="2"><font size="2"><b>Bairro:</b></font>
+                           <font size="2"><%= f.text_field :bairro, :size =>26%></font>
+                              &nbsp&nbsp <b>CEP:</b> <%= f.text_field :cep, :size =>8 %></td>
+
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"><b>Cidade:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :cidade, :size =>36 %></font></td>
+                           <td align="left" colspan="2"><font size="2"> <b>Complemento:</b><%= f.text_field :complemento, :size =>37%> </font></td>
+
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"></font></td>
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"><b>Fone1:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :fone, :size =>13 %>
+                              &nbsp&nbsp&nbsp<b>Fone2:</b><%= f.text_field :fone1, :size =>13 %> </font></td>
+                           <td align="left"><font size="2"><b>E_mail:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :email, :size =>37 %> </font></td>
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"><b>Celular:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :cel, :size =>36 %></font></td>
+                           <td align="left"><font size="2"><b>Solicitante:</b></font></td>
+                           <td align="left"><font size="2"><%= f.text_field :solicitante, :size =>37 %> </font></td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"><font size="2"><b>Assunto:</b></font></td>
+                           <td align="left" colspan="3"><font size="2"><%= f.text_area :assunto, :cols=>'88', :rows=> '3' %></font></td>
+                        </tr>
+
+                     </table>
+                    </fieldset>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                      <table width="40%" align="left">
+                         <tr>
+                           <td  align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td width="2%" align="left" ><%= button_to('Despachos', acompanhamentos_path, :method => "get",  :title => "Protocolos")%></td>
+
+                            <td  align="left" ><%= button_to "Consultar", acompanhamentos_path, :title => "Consultar" %></td>
+
+                         </tr>
+                      </table>
+
+                   </td>
+                  </tr>
+
+                 </table>
+                 </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>

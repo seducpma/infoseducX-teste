@@ -1,0 +1,99 @@
+<div id="interno2">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ATENDIMENTOS</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr  bgcolor ="#E6E2D">
+            <td align="left">
+             <font  size=5 color="black"> <b> ATENDIMENTOS EM ABERTO</b></font>
+               <hr/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                  <table>
+                      <tr>
+                         <td align="right" ><%= button_to('Fechar', home_path, :method => "get", :title => "Voltar")%></td>
+                         <td width="2%"align="right" ><%= button_to('Atendimentos',acompanhamentos_path, :method => "get", :title => "Protocolos") %></td>
+                         <td width="2%"align="right" ><%= button_to('Novo', new_acompanhamento_path, :title => "Novo Protocolo")%></td>
+                         <td  width="2%" align="right"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
+                      </tr>
+                 </table>
+            </td>
+        </tr>
+          <tr>
+              <td colspan="3">
+               <div id="protocolo">
+                 <table border="1" cellspacing="0" cellpadding="1" width="100%">
+                     <tr  bgcolor="#DCDCDC">
+                        <th width ="1%" align="center">Nº</th>
+                        <th width ="10%">Criança</th>
+                        <th width ="10%">Nascimento</th>
+                        <th width ="90%">Assunto</th>
+                        <th width ="50%">Data</th>
+                        <th> Status</th>
+                      </tr>
+
+                        <% for protocolo in @acompanhamentos %>
+                       <tr>
+                           <td><b><font color="red" size="3"><center><%=h protocolo.codigo %></center></font></b></td>
+                           <td><%=h protocolo.crianca %></td>
+                           <td><%=h protocolo.nascimento.strftime("%d/%m/%y")%></td>
+                           <td><%=h protocolo.assunto %></td>
+                           <td><%=h protocolo.created_at.strftime("%d/%m/%y") %></td>
+                           <% if  protocolo.encerrado == 0 %>
+                             <td align="center"> EM ABERTO </td>
+                           <%  else  %>
+                             <td align="center">ENCERRADO <br/> <font color="red" > <%=h protocolo.data_encerrado.strftime("%d/%m/%y") %></font> </td>
+                           <% end %>
+                        </tr>
+                       <tr>
+                         <td colspan="7">
+                            <% if protocolo.encerrado == 1 %>
+                              <table align="right">
+                                <tr>
+                                  <td width="1%"  align="left"><%= button_to('Atendimento',{:action => "show", :id =>protocolo}, :method => "get", :title => "Solicitação") %></td>
+                                  <td colspan="2" align="left"> <%= button_to('Reabrir',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                                </tr>
+                              </table>
+                           <% else %>
+                              <table align="right">
+                                <tr>
+                                   <td width="1%" align="left"><%= button_to('Atendimento',{:action => "show", :id =>protocolo}, :method => "get", :title => "Solicitação") %></td>
+                                   <td colspan="2" align="left"> <%= button_to('Despachar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                                </tr>
+                              </table>
+                           <%end%>
+                         </td>
+                       </tr>
+                        <tr  bgcolor="#DCDCDC">
+                            <td colspan="6"></td>
+                        </tr>
+                   <%end%>
+                 </table>
+               </div>
+              </td>
+           </tr>
+              <tr>
+               <td colspan="3">
+                 <table>
+                  <tr>
+                     <td align="right" ><%= button_to('Voltar', home_path, :method => "get", :title => "Voltar")%></td>
+                     <td width="2%"align="right" ><%= button_to('Atendimento',acompanhamentos_path, :method => "get", :title => "Protocolos") %></td>
+                     <td width="2%"align="right" ><%= button_to('Novo', new_acompanhamento_path, :title => "Novo Protocolo")%></td>
+                     <td  width="2%" align="right"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
+                  </tr>
+                </table>
+               </td>
+              </tr>
+
+    </table>
+
+  </div>
+</div>
+<br/>
+</div>
+

@@ -1,0 +1,85 @@
+<div id="interno3">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - ATENDIMENTO / PLANEJAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+
+                <% form_for @acompanhamento_despacho do |f| %>
+                <%= f.error_messages %>
+                <font  size="2">
+                <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+
+                 <tr>
+                   <td colspan="2">
+                     <fieldset><legend><font  size=3> Atendimento</font></legend>
+                         <table width="100%"  >
+                        <tr>
+                           <td width="10%"align="left"><font size="2"><b>Criança:</b></font></td>
+                           <td width="50% align="left"><font size="2"><%=h @acompanhamento.crianca %></font></td>
+                           <td width="15% align="left"><font size="2"><b>Nascimento:</b></font></td>
+                           <td align="left"><font size="2"><%= @acompanhamento.nascimento.strftime("%d de %B de %Y") %></font></td>
+                        </tr>
+                        <tr>
+                           <td width="10%"align="left"><font size="2"><b>Inscrição/RA:</b></font></td>
+                           <td align="left"><font size="2"><%= @acompanhamento.inscricao %></font></td>
+                           <td align="left"><font size="2"><b>Atendido  por:</b></font></td>
+                           <td align="left"><font size="2"><%= @acompanhamento.funcionario %></font></td>
+                        </tr>
+                        <tr>
+                           <td align="left"><font size="2"><b>Mãe/Pai:</b></font></td>
+                           <td align="left" colspan="3"><font size="2"><%= @acompanhamento.mae %></font></td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"><font size="2"><b>Assunto:</b></font></td>
+                           <td align="left" colspan="3"><font size="2"><%= @acompanhamento.assunto %></font></td>
+                        </tr>
+
+                        <tr>
+                            <td width="10%" valign="top"><b><font size="2"><%= f.label :despacho, 'Despacho:' %></font></b></td>
+                            <td colspan="3"><%= f.text_area :despacho, :cols=>'65', :rows=> '3' %></td>
+                        </tr>
+                        <tr>
+                            <td width="10%" valign="top"><b><font size="2"><%= f.label :obs, 'Observação:' %></font></b></td>
+                            <td colspan="3"><%= f.text_area :obs, :cols=>'65', :rows=> '2' %></td>
+                        </tr>
+                        <tr>
+                            <td align="left" colspan="4" ><font size="2"></font><br/>
+                                           <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "1", :checked => "true") %></a> <font size="2">Em Aberto</font>
+                                           <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a><font size="2">Encerrado</font>
+                                            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                           <b><font size="2"><%= f.label :funcionario, 'Funcionário:' %></font></b> <%= f.text_field :funcionario, :size=>'35' %>
+                            </td>
+                        </tr>
+
+                     </table>
+                    </fieldset>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                      <table width="40%" align="left">
+                         <tr>
+                           <td  width="2%"  align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
+                         </tr>
+                      </table>
+
+                   </td>
+                  </tr>
+
+                 </table>
+                 </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+

@@ -319,6 +319,15 @@ display: none;
                   <li><span class="divider divider-vert" ></span></li>
                    <li><a class="item-primary" href="#;">DOCUMENTOS</a>
                       <ul>
+                        <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI')) %>
+                            <li><a class="item-primary" href="#;">Atendimentos</a>
+                            <ul>
+                              <li><%= link_to "Novo",new_acompanhamento_path %></li>
+                              <li><%= link_to "Atendimentos", acompanhamentos_path  %></li>
+                              <li><%= link_to "Consultar", consulta_acompanhamentos_path  %></li>
+                            </ul>
+                           </li>
+                        <%end%>
                         <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')  or current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC')or current_user.has_role?('oficios')  or current_user.has_role?('SEDUC_ORC_SI')) %>
                            <li><a class="item-primary" href="#;">Ofícios</a>
                             <ul>
@@ -328,6 +337,8 @@ display: none;
                             </ul>
                          </li>
                      <%end%>
+
+
                      <% if (current_user.has_role?('admin')or current_user.has_role?('admin_protocolo')   or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI')) %>
                          <li><span class="divider divider-vert" ></span></li>
                          <li><a class="item-primary" href="#;">Serviços Internos</a>
@@ -343,13 +354,7 @@ display: none;
 
 
 
-                     <li><a class="item-primary" href="#;">Solicitações</a>
-                        <ul>
-                          <li><%= link_to "Novo",new_acompanhamento_path %></li>
-                          <li><%= link_to "Solicitações", acompanhamentos_path  %></li>
-                          <li><%= link_to "Consultar", consulta_acompanhamentos_path  %></li>
-                        </ul>
-                      </li>
+
 
 
 

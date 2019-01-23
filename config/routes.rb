@@ -217,8 +217,10 @@ ActionController::Routing::Routes.draw do |map|
   map.uso_internet '/uso_internet', :controller => 'reservar_salas', :action => 'uso_internet'
 
 
-  map.fudamental_2018 '/fudamental_2018', :controller => 'reservar_salas', :action => 'fudamental_2018'
+  map.fundamental_2018 '/fundamental_2018', :controller => 'reservar_salas', :action => 'fundamental_2018'
   map.infantil_2018 '/infantil_2018', :controller => 'reservar_salas', :action => 'infantil_2018'
+  map.fundamental_2019 '/fundamental_2019', :controller => 'reservar_salas', :action => 'fundamental_2019'
+  map.infantil_2019 '/infantil_2019', :controller => 'reservar_salas', :action => 'infantil_2019'
   map.dowloads '/dowloads', :controller => 'reservar_salas', :action => 'dowloads'
   map.substituicaos '/substituicaos', :controller => 'aulas_eventuals', :action => 'index'
   map.edit_status '/edit_status', :controller => 'matriculas', :action => 'edit_status'

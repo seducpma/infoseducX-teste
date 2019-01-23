@@ -1,0 +1,124 @@
+<div id="interno3">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMAxxxx - ATENDIMENTO / PLANEJAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+            <font  size="2">
+                <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+                    <tr>
+                        <td>
+                           <fieldset><legend><b>ATENDIMENTO</legend>
+                               <table width="100%"  >
+
+
+                                          <tr>
+
+                                            <td  width="2%" ><b>Código:</b></td>
+                                            <td  colspan="3"><%=h @acompanhamento.codigo %> <%session[:acompanhamento_id]= @acompanhamento.id%></td>
+                                          </tr>
+                                          <tr>
+
+                                            <td ><b>Criança:</b></td>
+                                            <td colspan="3"><%=h @acompanhamento.crianca %></td>
+                                          </tr>
+                                          <tr>
+
+                                            <td align="left"><b>Nascimento: </b></td>
+                                            <td align="left"><%=h @acompanhamento.nascimento.strftime("%d/%m/%Y") %> </td>
+                                            <td width ="15%" ><b>Inscrição/RA:</b></td>
+                                            <td ><%=h @acompanhamento.inscricao %></td>
+
+                                          </tr>
+                                          <tr>
+
+                                            <td ><b>Mãe/Pai:</b></td>
+                                            <td width ="35%" ><%=h @acompanhamento.mae %></td>
+                                            <td align="left"><b>Responsável: </b></td>
+                                            <td align="left"><%=h @acompanhamento.responsavel  %></td>
+                                          </tr>
+                                          <tr>
+                                            <td ><b>Endereço:</b></td>
+                                            <td colspan="3"><%=h @acompanhamento.endereco %></td>
+                                          </tr>
+                                          <tr>
+
+                                            <td ><b>Cidade:</b></td>
+                                            <td ><%=h @acompanhamento.cidade %></td>
+                                            <td align="left"><b>Bairro: </b></td>
+                                            <td align="left"><%=h @acompanhamento.bairro %> 
+                                            &nbsp&nbsp&nbsp&nbsp<b>CEP: </b>
+                                            &nbsp <%=h @acompanhamento.cep %></td>
+                                          </tr>
+                                          <tr>
+
+                                            <td ><b>Fone1:</b></td>
+                                            <td ><%=h @acompanhamento.fone %></td>
+                                            <td align="left"><b>Fone2: </b></td>
+                                            <td align="left"><%=h @acompanhamento.fone1 %></td>
+                                          </tr>
+
+                                          <tr>
+                                            <td ><b>E_mail:</b></td>
+                                            <td ><%=h @acompanhamento.email %></td>
+                                            <td align="left"><b>Celular: </b></td>
+                                            <td align="left"><%=h @acompanhamento.cel %></td>
+                                          </tr>
+                                          <tr>
+                                            <td ><b>Solicitante: </b></td>
+                                            <td  align="left"><%=h @acompanhamento.solicitante%></td>
+                                            <td  align="left"><b>Atendido por: </b></td>
+                                            <td align="left"><%=h @acompanhamento.funcionario%></td>
+                                          </tr>
+
+                                          <tr>
+                                            <td align="left" valign="top"><b>Assunto: </b></td>
+                                            <td colspan="3"align="left"><%=h @acompanhamento.assunto%></td>
+                                          </tr>
+                                          <tr>
+                                            <td align="left" valign="top"><b>Despachos: </b></td>
+                                            <td align="left" colspan="3"> <%= render :partial => 'acompanhamento_despachos'  %></td>
+                                          </tr>
+                                           <% if @acompanhamento.encerrado == 1 %>
+                                              <tr>
+                                                <td><b>Status</b></td>
+                                                <td colspan="4"><b>Encerrado em</b>  <%=h @acompanhamento.data_encerrado.strftime("%d de %B de %Y") %></td>
+                                              </tr>
+                                             <%else%>
+                                             <tr>
+                                                <td><b>Status</b></td>
+                                                <td colspan="4"><b>NÃO Encerrado</b></td>
+                                              </tr>
+                                            <% end %>
+                                     </table>
+                           </fieldset>
+                      <table>
+                               <tr align="left">
+                                  <td width="2%" align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Voltar")%></td>
+                                  <td width="2%" align="left"> <%= button_to('Editar',{:action => "edit", :id =>@acompanhamento}, :method => "get", :title => "Editar",  $despachar =>1) %></td>
+                                  <td width="2%" align="left" ><%= button_to('Atendimentos',acompanhamentos_path, :method => "get", :title => "Solicitações") %></td>
+                                  <% if @acompanhamento.encerrado == 0 %>
+                                     <td width="2%" align="left"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
+                                     <td align="left"><%= button_to('Despachar', new_acompanhamento_despacho_path, :title => "Despachar") %></td>
+                                                
+                                  <%else%>
+                                      <td width="2%" align="left"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
+                                      <td align="left"> <%= button_to('Reabrir',{:action => "edit", :id =>@acompanhamento}, :method => "get", :title => "Reabrir") %></td>
+                                  <%end%>
+                                </tr>
+                          </table>
+                        </td>
+                    </tr>
+               </font>
+          </table>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+<br/>
+<font size="2">
+</font>
+<br/>
