@@ -64,7 +64,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :classes
   map.resources :informativos
   map.resources :logs
-  map.resource :session, :informatica => :get
+  map.resource :session, :informatica => :get,  :collection => {:aviso_1 => :get}
   map.resources :graficos
   map.resources :oficios, :collection => {:consulta => :get, :consultaof=>:get, :oficios => :get,}
 
