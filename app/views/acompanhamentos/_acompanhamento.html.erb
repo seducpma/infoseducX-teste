@@ -18,9 +18,9 @@
                        <tr>
                            <td><b><font color="red" size="3"><center><%=h protocolo.codigo %></center></font></b></td>
                            <td><%=h protocolo.crianca %></td>
-                           <td><%=h protocolo.nascimento.strftime("%d/%m/%y")%></td>
+                           <td><%if !protocolo.nascimento.nil?%> <%=h protocolo.nascimento.strftime("%d/%m/%y")%><%end%></td>
                            <td><%=h protocolo.assunto %></td>
-                           <td><%=h protocolo.created_at.strftime("%d/%m/%y") %></td>
+                           <td><%if !protocolo.created_at.nil?%><%=h protocolo.created_at.strftime("%d/%m/%y") %><%end%></td>
                            <% if  protocolo.encerrado == 0 %>
                              <td align="center"> EM ABERTO </td>
                            <%  else  %>
@@ -33,14 +33,14 @@
                               <table align="right">
                                 <tr>
                                   <td width="1%"  align="left"><%= button_to('Atendimento',{:action => "show", :id =>protocolo}, :method => "get", :title => "Solicitação") %></td>
-                                  <td colspan="2" align="left"> <%= button_to('Reabrir',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                                  <td colspan="2" align="left"> <%= button_to('Editar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
                                 </tr>
                               </table>
                            <% else %>
                               <table align="right">
                                 <tr>
                                    <td width="1%" align="left"><%= button_to('Atendimento',{:action => "show", :id =>protocolo}, :method => "get", :title => "Solicitação") %></td>
-                                   <td colspan="2" align="left"> <%= button_to('Despachar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
+                                   <td colspan="2" align="left"> <%= button_to('Editar',{:action => "edit", :id =>protocolo}, :method => "get", :title => "Despachar") %></td>
                                 </tr>
                               </table>
                            <%end%>

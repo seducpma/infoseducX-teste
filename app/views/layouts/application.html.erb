@@ -522,7 +522,8 @@ display: none;
                    <li><a>Poda Grama</a>
                     <ul style="width:108px;">
                       <!--<li><%#= link_to "Agenda <<<<<", agenda_poda_gramas_path %></li>-->
-                       <li><a>Agenda</a>
+                       <li><%= link_to "Solicitação", new_poda_grama_path %></li>
+                        <li><a>Agenda</a>
                         <ul style="width:108px;">
                           <li><%= link_to "Agendamento", agendamento_poda_gramas_path %></li>
                           <li><%= link_to "Execução", agenda_execucao_poda_gramas_path %></li>
@@ -538,7 +539,7 @@ display: none;
 
 
                       <li><%= link_to "Relatório", relatorio_agendamento_poda_gramas_path %></li>
-                       <li><%= link_to "Solicitação", new_poda_grama_path %></li>
+                       
                      </ul>
                    </li>
                  <%end%>

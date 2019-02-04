@@ -56,12 +56,14 @@ class AcompanhamentoDespachosController < ApplicationController
          if params[:type_of].to_i == 1
             @acompanhamento.encerrado = 0
             @acompanhamento_despacho.aceite ="EM ABERTO"
+            @acompanhamento.data_encerrado = nil
             @acompanhamento.save
 
           end
           if params[:type_of].to_i == 2
             @acompanhamento.encerrado = 1
             @acompanhamento_despacho.aceite ="ENCERRADO"
+            @acompanhamento.data_encerrado = Time.now
             @acompanhamento.save
           end
         @acompanhamento_despacho.save

@@ -2,7 +2,7 @@
 <% title "ALUNOS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>SEDUC/PMAxxxx - ATENDIMENTO / PLANEJAMENTO</strong></font><br/>
+     <font size="3"><strong>SEDUC/PMA - ATENDIMENTO / PLANEJAMENTO</strong></font><br/>
  </div>
       <div class="tabs">
             <font  size="2">
@@ -83,7 +83,7 @@
                                            <% if @acompanhamento.encerrado == 1 %>
                                               <tr>
                                                 <td><b>Status</b></td>
-                                                <td colspan="4"><b>Encerrado em</b>  <%=h @acompanhamento.data_encerrado.strftime("%d de %B de %Y") %></td>
+                                                <td colspan="4"><b>Encerrado em</b> <%if !@acompanhamento.data_encerrado.nil?%> <%=h @acompanhamento.data_encerrado.strftime("%d de %B de %Y") %><%end%></td>
                                               </tr>
                                              <%else%>
                                              <tr>
@@ -104,7 +104,9 @@
                                                 
                                   <%else%>
                                       <td width="2%" align="left"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
-                                      <td align="left"> <%= button_to('Reabrir',{:action => "edit", :id =>@acompanhamento}, :method => "get", :title => "Reabrir") %></td>
+                                      <td align="left"> <%#= button_to('Reabrir',{:action => "edit", :id =>@acompanhamento}, :method => "get", :title => "Reabrir") %>
+                                                        <%= button_to('Despachar', new_acompanhamento_despacho_path, :title => "Despachar") %>
+                                      </td>
                                   <%end%>
                                 </tr>
                           </table>

@@ -97,7 +97,12 @@ def create_acompanhamento_despacho
       @acompanhamento = Acompanhamento.find(session[:id])
       @acompanhamento_despacho.acompanhamento_id = @acompanhamento.id
       @acompanhamento_despacho.data = Time.now
-      @acompanhamento.data_encerrado = Time.now
+      if params[:type_of].to_i == 2
+         @acompanhamento.data_encerrado = Time.now
+      else
+          @acompanhamentonull.data_encerrado = NULL
+
+      end
       if params[:type_of].to_i == 1
         @acompanhamento.encerrado = 0
         @acompanhamento_despacho.aceite ="RECUSADO"
