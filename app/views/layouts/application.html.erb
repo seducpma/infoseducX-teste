@@ -440,7 +440,7 @@ display: none;
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">MANUTENÇÃO</a>
                   <ul style="width:108px;">
-                   <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('chefia_manutencao') or current_user.has_role?('SEDUC_ORC_SI') %>
+                   <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or current_user.has_role?('SEDUC_ORC_SI') %>
                    <li><a>Estoque</a>
                         <ul style="width:108px;">
                          <li><%= link_to "Cadastrar",new_produto_path %></li>
