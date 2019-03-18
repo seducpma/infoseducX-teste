@@ -86,26 +86,26 @@
                      </td>
                   </tr>
                   <tr>
-                     <td valign="top" width ="50%" >
+                     <td >
                          <fieldset><legend><font  size=4> ENCAMINHAMENTO</font></legend>
                             <table>
                                  <tr>
                                    <td align="left" valign="top"><b>Despacho:</b></td>
                                    <%if @mmanutencao.procedimentos.nil?%>
-                                      <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
+                                      <td align="left" width ="50%"> <font color ="red">Serviço sem encaminhamento</font></td>
                                    <%else%>
-                                       <td align="left"><%=h @mmanutencao.procedimentos%></td>
+                                       <td align="left" width ="50%"><%=h @mmanutencao.procedimentos%></td>
                                    <%end%>
-                                 </tr>
-                                 <tr>
-                                  <td align="left"><b>Para:</b></td>
+                                  <td align="left"  width ="5%"><b>Para:</b></td>
                                       <%if @mmanutencao.chefia_id.nil?%>
-                                         <td align="left"> <font color="red">Serviço sem encaminhamento</font></td>
+                                         <td align="left" > <font color="red">Serviço sem encaminhamento</font></td>
                                       <%else%>
                                         <td align="left"><%=h @mmanutencao.chefia.nome  %></td>
                                      <%end%>
                                  </tr>
                                  <tr>
+                          <td align="left"><b>Situação:</b></td>
+                          <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
                                    <td align="left" valign="top"><b>Data:</b></td>
                                    <%if @mmanutencao.data_ate.nil?%>
                                    <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>
@@ -116,11 +116,21 @@
                            </table>
                         </fieldset>
                      </td>
-                     <td valign="top" width ="50%">
+                  </tr>
+                  <tr>
+                     <td >
                          <fieldset><legend><font  size=4> SERVIÇO</font></legend>
                              <table>
                                 <tr>
-                                   <td  valign="top"align="left"><b>Serviço:</b></td>
+                                  <td valign="top"><b>Serviço:</b></td>
+                                  <td>
+                                     <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                                      - <%=h servico.servico%><br/>
+                                     <% end %>
+                                  </td>
+                                </tr>
+                                <tr>
+                                   <td  valign="top"align="left"><b>Descrição:</b></td>
                                    <%if @mmanutencao.executado.nil?%>
                                    <td align="left"> <font color="red">Serviço não executado</font></td>
                                    <%else%>
