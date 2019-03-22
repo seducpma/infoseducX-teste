@@ -3,12 +3,12 @@
 
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>RELATÓRIO AGENDAMENTO DE PODA DE GRAMA</strong></font><br/>
+     <font size="3"><strong>RELATÓRIO DE PODA DE GRAMA</strong></font><br/>
  </div>
     <div class="tabs">
    <% form_remote_tag :url => relatorios_agendamento_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
       <fieldset>
-          <table width="100%" align="center" bgcolor="#DCDCDC">
+          <table width="100%" align="center" bgcolor="#DCDCDC"  >
           <tr>
             <td>
                <a href="#" class="filtro_agendamento"><%= radio_button_tag(:type_of, "1") %></a>Solicitações Poda de Grama
@@ -18,14 +18,21 @@
             </td>
          </tr>
           <tr>
-            <td align= "right"><font size="2"><b class="label_busca3">Inicial:</b></font>&nbsp
+            <td align= "right">
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <font size="2"><b class="label_busca3">Unidade:</b></font>&nbsp
+                  <%= select_tag:unidade_id, options_for_select(@unidades.collect { |ff| [ff.nome, ff.id] }.insert(0, '--Selecionar--')) %>
+
+                   
+
+                <font size="2"><b class="label_busca3">Inicial:</b></font>&nbsp
                 <%= datepicker_tag(:poda_grama, :dataI,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
 
                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                <font size="2"><b class="label_busca3">Final:</b></font>&nbsp
                 <%= datepicker_tag(:poda_grama, :dataF,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
          
-         </td>
+            </td>
           <td width ="14%" align="right">
             <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
           </td>

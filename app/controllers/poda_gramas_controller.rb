@@ -169,12 +169,14 @@ class PodaGramasController < ApplicationController
 
  def  relatorios_agendamento
 
+        session[:unidade_id]= params[:unidade_id]
         session[:dia_final]=params[:diaF]
         session[:mesF]=params[:mesF]
         session[:dataI]=params[:poda_grama][:dataI][6,4]+'-'+params[:poda_grama][:dataI][3,2]+'-'+params[:poda_grama][:dataI][0,2]
         session[:dataF]=params[:poda_grama][:dataF][6,4]+'-'+params[:poda_grama][:dataF][3,2]+'-'+params[:poda_grama][:dataF][0,2]
         session[:mes]=params[:poda_grama][:dataF][3,2]
-
+       session[:verifica_unidade_id]= params[:unidade_id]
+       
         if session[:mes] == '01'
             session[:mes] = 'JANEIRO'
         else if session[:mes] == '02'
@@ -212,14 +214,36 @@ class PodaGramasController < ApplicationController
             end
         end
 
+
+     
        if params[:type_of].to_i == 1
-            @agendamento = PodaGrama.find(:all, :conditions =>  ["created_at between ? and ? ", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+            if session[:unidade_id].to_i != 52
+                 @agendamento = PodaGrama.find(:all, :conditions =>  ["((created_at between ? and ?) and execucao is null ) and unidade_id = ?", session[:dataI].to_s, session[:dataF].to_s , session[:unidade_id]], :order => 'agendamento ASC')
+            else
+                 @agendamento = PodaGrama.find(:all, :conditions =>  ["created_at between ? and ? ", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+            end
+
        else if params[:type_of].to_i == 2
+            if session[:unidade_id].to_i != 52
+                 @agendamento = PodaGrama.find(:all, :conditions =>  ["(agendamento between ? and ? ) and unidade_id =?", session[:dataI].to_s, session[:dataF].to_s, session[:unidade_id] ], :order => 'agendamento ASC')
+            else
                  @agendamento = PodaGrama.find(:all, :conditions =>  ["agendamento between ? and ? ", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+             end
             else if params[:type_of].to_i == 3
-                     @agendamento = PodaGrama.find(:all, :conditions =>  ["execucao between ? and ? ", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+                    t=0
+                        if session[:unidade_id].to_i != 52
+                           @agendamento = PodaGrama.find(:all, :conditions =>  ["(execucao between ? and ?) and unidade_id =? ", session[:dataI].to_s, session[:dataF].to_s, session[:unidade_id] ], :order => 'agendamento ASC')
+                        else
+                           @agendamento = PodaGrama.find(:all, :conditions =>  ["execucao between ? and ? ", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+                        end
+
                  else if params[:type_of].to_i == 4
-                           @agendamento = PodaGrama.find(:all, :conditions =>  ["(agendamento between ? and ?) and execucao is null", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+                        if session[:unidade_id].to_i != 52
+                           @agendamento = PodaGrama.find(:all, :conditions =>  ["((agendamento between ? and ?) and execucao is null ) and unidade_id = ?", session[:dataI].to_s, session[:dataF].to_s , session[:unidade_id]], :order => 'agendamento ASC')
+                        else
+                           @agendamento = PodaGrama.find(:all, :conditions =>  ["((agendamento between ? and ?) and execucao is null )", session[:dataI].to_s, session[:dataF].to_s ], :order => 'agendamento ASC')
+
+                        end
                        end
                  end
            end

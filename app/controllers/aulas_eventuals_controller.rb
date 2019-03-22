@@ -218,7 +218,8 @@ end
     session[:dataI]=params[:aulas_falta][:dataI][6,4]+'-'+params[:aulas_falta][:dataI][3,2]+'-'+params[:aulas_falta][:dataI][0,2]
     session[:dataF]=params[:aulas_falta][:dataF][6,4]+'-'+params[:aulas_falta][:dataF][3,2]+'-'+params[:aulas_falta][:dataF][0,2]
     session[:mes]=params[:aulas_falta][:dataF][3,2]
-    session[:verifica_unidade_id]=params[:aulas_eventual][:unidade_id]
+    w=session[:verifica_unidade_id]=params[:aulas_eventual][:unidade_id]
+    t=0
         if session[:mes] == '01'
             session[:mes] = 'JANEIRO'
         else if session[:mes] == '02'
