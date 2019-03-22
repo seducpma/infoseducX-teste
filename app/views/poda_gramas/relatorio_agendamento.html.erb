@@ -23,7 +23,7 @@
                   <font size="2"><b class="label_busca3">Unidade:</b></font>&nbsp
                   <%= select_tag:unidade_id, options_for_select(@unidades.collect { |ff| [ff.nome, ff.id] }.insert(0, '--Selecionar--')) %>
 
-                   
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                 <font size="2"><b class="label_busca3">Inicial:</b></font>&nbsp
                 <%= datepicker_tag(:poda_grama, :dataI,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
@@ -36,6 +36,12 @@
           <td width ="14%" align="right">
             <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
           </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               <i><b>* Para consultar relatorio completo com todas as unidades selecione a opção SEDUC</b></i>
+            </td>
         </tr>
 
 
