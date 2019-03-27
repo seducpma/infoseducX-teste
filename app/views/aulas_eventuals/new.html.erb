@@ -25,7 +25,7 @@
                                    <%= observe_field 'aulas_eventual_data',
                                                  :with   => :aulas_eventual_data,
                                                  :url  => { :action => 'data_eventual' }%>
-                <%  if current_user.unidade.tipo_id == 2   or current_user.unidade.tipo_id == 5 or  current_user.unidade.tipo_id == 8 %>
+                <%  if current_user.unidade.tipo_id == 2   or current_user.unidade.tipo_id == 5 or  current_user.unidade.tipo_id == 8 or current_user.unidade.tipo_id == 9 %>
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Período: </b>
                                  <%= f.select :periodo, (AulasEventual::PERIODO).sort, :include_blank => ' -- Selecionar -- ' %>
                                         <%= observe_field 'aulas_eventual_periodo',
