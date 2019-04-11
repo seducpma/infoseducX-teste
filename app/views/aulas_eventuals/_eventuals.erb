@@ -39,10 +39,13 @@
      <% t=0 %>
         <table border="1" cellspacing="0" cellpadding="1" width="100%">
             <tr cellspacing="2" cellpadding="2" >
-                <td width=" 10%" align="center"><b>Data</b></td>
-                <td width=" 15%" align="center"><b>Unidade</b></td>
-                <td width=" 55%" align="center"><b>Funcionario(a)</b></td>
-                <td width=" 15%" align="center"><b>Categoria</b></td>
+                <td width=" 6%" align="center"><b>Data</b></td>
+                <td width=" 10%" align="center"><b>Unidade</b></td>
+                <td width=" 32%" align="center"><b>Falta</b></td>
+                <td width=" 8%" align="center"><b>Categoria</b></td>
+                <td width=" 32%" align="center"><b>Substituição</b></td>
+                <td width=" 8%" align="center"><b>Categoria</b></td>
+                <td width=" 10%" align="center"><b>Classe</b></td>
                 <td width=" 20%" align="center"><b>Periodo</b></td>
             </tr>
     <% @aulas_eventuals.each do |falta| %>
@@ -50,8 +53,11 @@
             <tr>
                  <td><%= falta.data.strftime("%d/%m/%Y") %></td>
                  <td><%= falta.unidade.tipo.nome %> <%= falta.unidade.nome %></td>
-                 <td><%= falta.eventual.professor.nome  %></td>
-                 <td><%= falta.categoria %></td>
+                 <td><%= falta.aulas_falta.professor.nome%> </td>
+                 <td align="center">  <%= falta.aulas_falta.professor.funcao%></td>
+                 <td><%= falta.eventual.professor.nome  %> </td>
+                 <td align="center"> <%= falta.eventual.professor.funcao%> </td>
+                 <td align="center"><%= falta.aulas_falta.classe%> </td>
                  <td><%= falta.periodo %></td>
             </tr>
 

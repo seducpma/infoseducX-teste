@@ -131,16 +131,16 @@ class AulasFaltasController < ApplicationController
         if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
            params[:aulas_falta_unidade_id]
            @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
+           @professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND disciplinas.curriculo= "I" ', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
-           t=0
         else
            @professores = Professor.find(:all, :conditions => ['(unidade_id =? or unidade_id = 52 or  unidade_id = 75 or diversas_unidades = 1 or unidade_id = 54) and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ')
+           @professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND (disciplinas.curriculo= "B" OR disciplinas.curriculo= "D")', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
+
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
         end
         if (@professores.present?) or (@funcionarios.present?)
-
             render :partial => 'selecao_falta'
-
         else
             render :partial => 'aviso'
         end
@@ -491,7 +491,7 @@ class AulasFaltasController < ApplicationController
            session[:professor_nao_desta_escola] = 0
         else
            session[:professor_nao_desta_escola] = 1
-           session[:profclasse]="NÃO POSSUI ATRIBUIÇÃO EM 2018"
+           session[:profclasse]="NÃO POSSUI ATRIBUIÇÃO"
            session[:classeper]=0
            session[:setor]= 'PEDAGÓGICO'
            session[:funcao]= 'PROFESSOR'

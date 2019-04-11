@@ -2,7 +2,10 @@
            <tr>
 
                <td align="left" width ="10%"><b>Professor (Falta): </b></td>
-               <td align="left">     <%= collection_select :aulas_eventual, :eventual_id, @prof_falta, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
+               <td align="left">     <%= collection_select :aulas_eventual, :eventual_id, @prof_falta, :id, :nome_categoria, :include_blank => ' -- Selecionar -- ' %></td>
+                
+
+
                   <%= observe_field 'aulas_eventual_eventual_id',
                      :with   => :aulas_eventual_professor_id,
                       :url  => { :action => 'aulas_faltas_prof_classe' },
@@ -14,9 +17,7 @@
 
                   
              <td align="left"><b> Professor(Subst.): </b></td>
-             <td align="left"><%= collection_select :aulas_eventual, :eventual_id, @professores_total, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
-             <td><b>Classe: </b></td>
-                   <td><%= collection_select :aulas_eventual, :classe_id, @classes, :id, :classe_classe, :include_blank => ' -- Selecionar -- ' %> </td>
+             <td align="left"><%= collection_select :aulas_eventual, :eventual_id, @professores_total, :id, :nome_categoria, :include_blank => ' -- Selecionar -- ' %></td>
 
           </tr>
 

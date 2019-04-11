@@ -1,4 +1,4 @@
-<div id="interno4">
+<div id="interno6">
 <% title "AULASEVENTUAL".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -35,21 +35,38 @@
                 <%end%>
                  </td>
                 </tr>
-                <tr>
 
+                <tr>
+<!--
                     <td align="left" width="10%">&nbsp <b>Categoria: </b> </td>
                     <td align="left">&nbsp<%= f.select :categoria, AulasEventual::CATEGORIA.sort, :include_blank => ' -- Selecionar -- ' %>
                                         <%= observe_field 'aulas_eventual_categoria',
                                                      :with   => :categoria,
                                                      :url  => { :action => 'caregoria_prof_eventual' }
                                                       %>
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Unidade: </b>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <b>Unidade: </b>
                                  <%= collection_select :aulas_eventual, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
                                        <%= observe_field 'aulas_eventual_unidade_id',
                                                      :with   => :aulas_eventual_unidade_id,
                                                      :url  => { :action => 'nome_prof_eventual' },
                                                      :update => "professor"%>
                      </td>
+-->
+                    <td align="right" width="10%">&nbsp <b>Unidade: </b> </td>
+                    <td align="left">
+                                 <%= collection_select :aulas_eventual, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+                                       <%= observe_field 'aulas_eventual_unidade_id',
+                                                     :with   => :aulas_eventual_unidade_id,
+                                                     :url  => { :action => 'nome_prof_eventual' },
+                                                     :update => "professor"%>
+                     </td>
+
+
+
+
+
+
                 </tr>
                 <tr>
                       <td colspan="8"> <div id="professor"><br/></div>
