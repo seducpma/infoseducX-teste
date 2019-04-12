@@ -48,7 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.resources :aulas_faltas, :collection => {:relatorio_falta_mes=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get }
   map.resources :funcionarios, :collection => {:consultas => :get }
   map.resources :aulas_eventuals, :collection => { :index2=>:get,   :relatorio_eventual_mes_professor => :get,  :relatorio_eventual_mes_unidade => :get}
-  map.resources :eventuals
+  map.resources :eventuals , :collection => { :aviso => :get}
   map.resources :ufaltas
   map.resources :matriculas,:collection => { :transferencia=>:get, :alterar=>:get, :saidas=>:get, :consultar => :get, :new1 => :get, :remanejamento=>:get, :aviso=>:get, :aviso1=>:get, :aviso2=>:get}
   map.resources :disciplinas

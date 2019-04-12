@@ -103,7 +103,38 @@ end
 
 def periodo_prof_eventual
     w1=session[:periodo_prof_eventual]=  params[:periodo]
+    #Alex 2019-04-02 - Mudança para em caso de infantil fazer a pesquisa de (PC+ADI+PEB I Inf.) só retirei o critério        @professores1= Eventual.find_by_sql("SELECT DISTINCT pro.id, pro.nome, eve.id, eve.regiao_id FROM eventuals eve INNER JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id INNER JOIN  "+session[:base]+".unidades uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.categoria = '"+session[:caregoria_prof_eventual]+"' AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id  FROM aulas_eventuals  WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+") AND eve.nao_atua = 0  AND eve.regiao_id = '"+session[:regiao].to_s+"' GROUP BY pro.id ORDER BY  pro.nome ASC")
+        #@professores1= Eventual.find_by_sql("SELECT DISTINCT pro.id, pro.nome, eve.id, eve.regiao_id FROM eventuals eve INNER JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id INNER JOIN  "+session[:base]+".unidades uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id  FROM aulas_eventuals  WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+") AND eve.nao_atua = 0  AND eve.regiao_id = '"+session[:regiao].to_s+"' GROUP BY pro.id ORDER BY  pro.nome ASC")
+        @professores1= Eventual.find_by_sql("SELECT DISTINCT pro.id, CONCAT(pro.nome, ' - ',pro.funcao) AS nome_categoria, eve.id, eve.regiao_id FROM eventuals eve INNER JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id INNER JOIN  "+session[:base]+".unidades uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id  FROM aulas_eventuals  WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+") AND eve.nao_atua = 0  AND eve.regiao_id = '"+session[:regiao].to_s+"' GROUP BY pro.id ORDER BY  pro.nome ASC")
+#        @prof_falta = Professor.find_by_sql("SELECT pro.id, CONCAT(pro.nome, ' - ',pro.funcao) AS nome_categoria FROM professors pro INNER JOIN  "+session[:baseinfo]+".aulas_faltas fal  ON  pro.id = fal.professor_id WHERE  fal.unidade_id = "+session[:aulas_eventual_unidade_id]+" AND fal.data = "+'"'+ session[:aulas_eventual_data]+'"' +" AND fal.ano_letivo ="+(Time.now.year).to_s+" order by pro.nome DESC")
+
+        @divisao=Eventual.find_by_sql("SELECT eve.id, CONCAT(pro.nome, ' - ',pro.funcao)AS nome_categoria FROM eventuals eve INNER JOIN "+session[:base]+".professors pro ON pro.id = eve.professor_id WHERE eve.id = (SELECT max( id )FROM eventuals ) ")
+        @divisao[0].nome_categoria="----------------------------------"
+        @divisao[0].id = 0
+#Alex 2019-04-02 - Mudança para em caso de infantil fazer a pesquisa de (PC+ADI+PEB I Inf.) só retirei o critério        @professores2 =  Eventual.find_by_sql("SELECT pro.id, pro.nome, eve.id FROM eventuals eve INNER JOIN  "+session[:base]+".professors pro  ON eve.professor_id = pro.id  INNER JOIN  "+session[:base]+".unidades  uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.categoria = '"+session[:caregoria_prof_eventual]+"'AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = '"+session[:aulas_eventual_unidade_id].to_s+"') AND eve.nao_atua = 0  AND eve.regiao_id != '"+session[:regiao].to_s+"' GROUP BY pro.id ORDER BY  pro.nome ASC ")
+        #@professores2 =  Eventual.find_by_sql("SELECT pro.id, pro.nome, eve.id FROM eventuals eve INNER JOIN  "+session[:base]+".professors pro  ON eve.professor_id = pro.id  INNER JOIN  "+session[:base]+".unidades  uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = '"+session[:aulas_eventual_unidade_id].to_s+"') AND eve.nao_atua = 0  AND eve.regiao_id != '"+session[:regiao].to_s+"' GROUP BY pro.id ORDER BY  pro.nome ASC ")
+        @professores2 =  Eventual.find_by_sql("SELECT pro.id,CONCAT(pro.nome, ' - ',pro.funcao) AS nome_categoria, eve.id FROM eventuals eve INNER JOIN  "+session[:base]+".professors pro  ON eve.professor_id = pro.id  INNER JOIN  "+session[:base]+".unidades  uni ON  uni.id = pro.unidade_id WHERE eve.periodo = '"+session[:periodo_prof_eventual]+"' AND eve.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = '"+session[:aulas_eventual_unidade_id].to_s+"') AND eve.nao_atua = 0  AND eve.regiao_id != '"+session[:regiao].to_s+"' GROUP BY pro.id ORDER BY  pro.nome ASC ")
+        @professores_total = @professores1 + @divisao + @professores2
+    render :partial => 'selecao_professor_sub'
 end
+
+
+def observacao_prof_eventual
+
+    t=0
+    
+     w= params[:aulas_eventual_eventual_id]
+
+         t=0
+    
+          @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["evendual_id = ?", params[:aulas_eventual_eventual_id]])
+          t=0
+
+
+end
+
+
+
 
 #def caregoria_prof_eventual
    # w2=session[:caregoria_prof_eventual]=  params[:categoria]
@@ -142,12 +173,21 @@ def nome_prof_eventual
 
 
 def aulas_faltas_prof_classe
-  session[:professor_id] = params[:aulas_eventual_professor_id]
-   @aula_falta= AulasFalta.find(:all, :conditions => ['professor_id=? AND data =?', params[:aulas_eventual_professor_id], session[:aulas_eventual_data]] )
-   @classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos ON atribuicaos.classe_id = classes.id INNER JOIN professors ON atribuicaos.professor_id = professors.id ", :conditions=>[ "atribuicaos.professor_id = ? AND atribuicaos.ano_letivo = ?" , session[:professor_id], Time.now.year]  )
-   session[:classe_id]=@classe[0].id
-   session[:falta_id]= @aula_falta[0].id
-       render :partial => 'proffalta'
+  if session[:prof_falt]==1
+      session[:professor_id] = params[:aulas_eventual_professor_id]
+       @aula_falta= AulasFalta.find(:all, :conditions => ['professor_id=? AND data =?', params[:aulas_eventual_professor_id], session[:aulas_eventual_data]] )
+       @classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos ON atribuicaos.classe_id = classes.id INNER JOIN professors ON atribuicaos.professor_id = professors.id ", :conditions=>[ "atribuicaos.professor_id = ? AND atribuicaos.ano_letivo = ?" , session[:professor_id], Time.now.year]  )
+       session[:classe_id]=@classe[0].id
+       session[:falta_id]= @aula_falta[0].id
+       session[:prof_falt] = 0
+           render :partial => 'proffalta'
+  else
+      w= params[:aulas_eventual_eventual_id]
+           @professors = Eventual.find(:all, :conditions =>  ["id = ?", params[:aulas_eventual_eventual_id]])
+
+        render :partial => 'observacaos'
+       
+  end
 end
 
 

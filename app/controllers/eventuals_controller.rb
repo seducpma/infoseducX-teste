@@ -50,15 +50,26 @@ end
     @eventual = Eventual.new(params[:eventual])
     @eventual.ano_letivo = Time.now.year
     @eventual.regiao_id = session[:regiao_id]
-    respond_to do |format|
-      if @eventual.save
-        flash[:notice] = 'SALVO COM SUCESSO.'
-        format.html { redirect_to(@eventual) }
-        format.xml  { render :xml => @eventual, :status => :created, :location => @eventual }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @eventual.errors, :status => :unprocessable_entity }
-      end
+ 
+
+    @duplicidade= Eventual.find(:all, :conditions => ['professor_id =?' , @eventual.professor_id])
+    if   @duplicidade.empty?
+        respond_to do |format|
+          if @eventual.save
+            flash[:notice] = 'SALVO COM SUCESSO.'
+            format.html { redirect_to(@eventual) }
+            format.xml  { render :xml => @eventual, :status => :created, :location => @eventual }
+          else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @eventual.errors, :status => :unprocessable_entity }
+          end
+        end
+    else
+         respond_to do |format|
+                #flash[:notice] = 'CADASTRADO COM SUCESSO.'
+                format.html { redirect_to(aviso_eventuals_path) }
+                format.xml  { head :ok }
+            end
     end
   end
 
@@ -101,7 +112,7 @@ end
          #session[:base]= 'sisgered_production'
             @unidades = Unidade.find(:all, :order => 'nome ASC')
             @eventuals = Eventual.find(:all,:select => "id", :conditions => ['ano_letivo=?', Time.now.year])
-            @professores= Professor.find_by_sql("SELECT id, nome FROM professors WHERE `id` NOT IN ( SELECT professor_id FROM eventuals )ORDER BY nome ASC" )
+            @professores= Professor.find_by_sql("SELECT id, nome FROM professors WHERE `id` NOT IN ( SELECT professor_id FROM "+session[:baseinfo]+".eventuals )ORDER BY nome ASC" )
     end
 
  def consultaeventual
