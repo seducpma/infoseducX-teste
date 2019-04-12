@@ -189,10 +189,11 @@ display: none;
               <li class ="invisible_to_print" ><a class="item-primary" href="#">INFOSEDUC</a>
                 <ul style="width:108px;">
                   <li><%= link_to 'Inicio', root_path %></li>
-                  <li><%= link_to 'Manual Estagiário', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
-                  <li><%= link_to 'Manual Infoseduc', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
-                  <li><%= link_to 'Manual Sisgered', href= "https://docs.google.com/document/d/1KORwNkxV7ogNpc7EUyMxQHA4MMSSju_eOouI5cNABFE/edit?usp=sharing", :target => '_blank' %></li>
-
+                   <% if (!current_user.has_role?('publico'))%>
+                      <li><%= link_to 'Manual Estagiário', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
+                      <li><%= link_to 'Manual Infoseduc', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
+                      <li><%= link_to 'Manual Sisgered', href= "https://docs.google.com/document/d/1KORwNkxV7ogNpc7EUyMxQHA4MMSSju_eOouI5cNABFE/edit?usp=sharing", :target => '_blank' %></li>
+                    <%end%>
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
                 </ul>
               </li>
