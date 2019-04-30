@@ -79,7 +79,9 @@ class AulasFaltasController < ApplicationController
         w1=@aulas_falta.funcao = session[:funcao]
         w2=@aulas_falta.setor = session[:setor]
         w3=@aulas_falta.classe = session[:profclasse]
-        w4=@aulas_falta.periodo = session[:classeper]
+        #w4=@aulas_falta.periodo = session[:classeper]
+
+        @aulas_falta.periodo = params[:periodop]
         respond_to do |format|
             if @aulas_falta.save
                 flash[:notice] = 'SALVO COM SUCESSO.'
@@ -481,7 +483,8 @@ class AulasFaltasController < ApplicationController
 
     def classe_professor
         w=session[:prof_id]=params[:aulas_falta_professor_id]
-        @professor_classe= Classe.find_by_sql("SELECT  cla.horario, dis.disciplina as disciplina, cla.classe_classe as classe, atr.ano_letivo FROM "+session[:base]+".classes cla INNER JOIN  "+session[:base]+".atribuicaos atr  ON  cla.id = atr.classe_id INNER JOIN  "+session[:base]+".disciplinas dis  ON  dis.id = atr.disciplina_id WHERE atr.ano_letivo ="+(Time.now.year).to_s+" AND atr.professor_id ="+session[:prof_id].to_s+"")
+        @professor_classe= Classe.find_by_sql("SELECT  cla.horario , dis.disciplina as disciplina, cla.classe_classe as classe, atr.ano_letivo FROM "+session[:base]+".classes cla INNER JOIN  "+session[:base]+".atribuicaos atr  ON  cla.id = atr.classe_id INNER JOIN  "+session[:base]+".disciplinas dis  ON  dis.id = atr.disciplina_id WHERE atr.ano_letivo ="+(Time.now.year).to_s+" AND atr.professor_id ="+session[:prof_id].to_s+"")
+
         t=0
         if !@professor_classe.empty?
            session[:profclasse]=@professor_classe[0].classe

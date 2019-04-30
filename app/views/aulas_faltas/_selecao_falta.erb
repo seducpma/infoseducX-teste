@@ -1,13 +1,15 @@
-<table width="100%">
+<table width="100%" >
   
       <%if  @professores.present?%>
          <tr>
-             <td align="left" width ="60%" valign="top"><b> Professor: </b>&nbsp&nbsp <%= collection_select :aulas_falta, :professor_id, @professores_cat, :id, :prof_funcao, :include_blank => ' -- Selecionar caso seja professor -- ' %>
+             <td align="left" width ="70%" valign="top"><b> Professor: </b>&nbsp&nbsp <%= collection_select :aulas_falta, :professor_id, @professores_cat, :id, :prof_funcao, :include_blank => ' -- Selecionar caso seja professor -- ' %>
                                                     <%= observe_field 'aulas_falta_professor_id',
                                                      :with   => :aulas_falta_professor_id,
                                                      :url  => { :action => 'classe_professor' },
                                                      :update => "classe_professor"%>
              </td>
+             <td ><b> Periodo: </b>&nbsp&nbsp <%= select_tag :periodop, options_for_select(PERIODO).sort, :include_blank => '-- Selecionar --' %> </td>
+
          </tr>
          <tr>
              <td><div id="classe_professor"></div></td>
