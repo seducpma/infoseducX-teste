@@ -41,6 +41,25 @@
                        <td align="left"><b>Período:</b></td>
                        <td align="left"> <%=h @aulas_falta.periodo %></td>
                      </tr>
+                    <tr bgcolor="#F5F5F5" >
+                        <td align="left" ><b>Falta:</b></td>
+                        <td align="left" colspan="3">  <%=h @aulas_falta.tipo %>
+                       
+                       <%if session[:flag]==1 %> &nbsp - &nbsp
+                                    <%= session[:data]+1%> dias &nbsp&nbsp
+                                       <b>de</b> &nbsp<%=h @aulas_falta.dataI.strftime("%d/%b/%Y") %> &nbsp
+                                          <b>à</b> &nbsp<%=h @aulas_falta.dataF.strftime("%d/%b/%Y") %> &nbsp</td>
+                         <%session[:flag]=0%>
+                       <%else%>
+                             &nbsp&nbsp 1 dia &nbsp - &nbsp
+                               <%=h @aulas_falta.data.strftime("%d/%b/%Y") %> &nbsp
+
+                       <%end%>
+                     </tr>
+
+
+
+
                    <%else%>
                      <tr bgcolor="#F5F5F5" >
                         <td align="left"><b>Funcionario:</b></td>

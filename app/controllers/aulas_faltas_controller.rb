@@ -73,8 +73,14 @@ class AulasFaltasController < ApplicationController
         @aulas_falta = AulasFalta.find(params[:id])
     end
 
-    def create
+ def create
+    if params[:aulas_falta][:dataF].nil?
+        session[:flag]=0
+        
         @aulas_falta = AulasFalta.new(params[:aulas_falta])
+        @aulas_falta.data=params[:aulas_falta][:dataI]
+         @aulas_falta.dataF=params[:aulas_falta][:dataI]
+        @aulas_falta.dataI=params[:aulas_falta][:dataI]
         w=@aulas_falta.ano_letivo =  Time.now.year
         w1=@aulas_falta.funcao = session[:funcao]
         w2=@aulas_falta.setor = session[:setor]
@@ -92,7 +98,50 @@ class AulasFaltasController < ApplicationController
                 format.xml  { render :xml => @aulas_falta.errors, :status => :unprocessable_entity }
             end
         end
+    else
+       session[:flag]=1
+       session[:dataI]=params[:aulas_falta][:dataI].to_date
+      w1= session[:dataF]=params[:aulas_falta][:dataF].to_date
+       w=session[:data]= session[:dataF]-session[:dataI]
+       i=0
+       while i <= session[:data] do
+
+            @aulas_falta = AulasFalta.new(params[:aulas_falta])
+            @aulas_falta.data=session[:dataI].to_date+i
+#            @aulas_falta.dataF=params[:aulas_falta][:dataF]
+#            @aulas_falta.dataI=params[:aulas_falta][:dataI]
+            @aulas_falta.ano_letivo =  Time.now.year
+            @aulas_falta.funcao = session[:funcao]
+            @aulas_falta.setor = session[:setor]
+            @aulas_falta.classe = session[:profclasse]
+            #w4=@aulas_falta.periodo = session[:classeper]
+            @aulas_falta.periodo = params[:periodop]
+            @aulas_falta.save
+            i=i+1
+
+        end
+
+
+        respond_to do |format|
+            if @aulas_falta.save
+                flash[:notice] = 'SALVO COM SUCESSO.'
+                format.html { redirect_to(@aulas_falta) }
+                format.xml  { render :xml => @aulas_falta, :status => :created, :location => @aulas_falta }
+            else
+                format.html { render :action => "new" }
+                format.xml  { render :xml => @aulas_falta.errors, :status => :unprocessable_entity }
+            end
+        end
+
+
+
+
+
+
+
     end
+
+ end
 
     def update
         @aulas_falta = AulasFalta.find(params[:id])
@@ -529,5 +578,17 @@ class AulasFaltasController < ApplicationController
     session[:mostra_faltas_professor] = 0
     session[:mostra_faltas_funcionario] = 0
     end
+
+def data_falta_tipo
+
+        session[:tipo]=params[:aulas_falta_tipo]
+       if (session[:tipo]== 'LICENÇA MÉDICA') or  (session[:tipo]== 'OUTRAS') or  (session[:tipo]== 'LICENÇA GESTANTE')
+            render :partial => 'selecao_data_diversas'
+       else
+           render :partial => 'selecao_data'
+        end
+
+
+ end
 
 end

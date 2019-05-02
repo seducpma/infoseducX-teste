@@ -21,19 +21,19 @@
                    <td colspan="8"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro a DATA, TIPO DE FALTA e UNIDADE.</b></font><br/><br/></td>
                </tr>
                <tr>
-               <td align="right" width="10%">  <b>Data: </b>&nbsp</td>
-                   <td>
-                                    &nbsp<%= datepicker_tag(:aulas_falta, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
-                                       <%= observe_field 'aulas_falta_data',
-                                                     :with   => :aulas_falta_data,
-                                                     :url  => { :action => 'data_falta' }%>
-                                     &nbsp&nbsp&nbsp
-                                     <b>Tipo Falta: </b>&nbsp
-                                     <%= f.select :tipo, (AulasFalta::FALTA).sort, :include_blank => ' -- Selecionar -- ' %>
-                  </td>
-                </tr>
+                   <td colspan="4%">  <b>Tipo Falta: </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :tipo, (AulasFalta::FALTA).sort %>
+                                         <%= observe_field 'aulas_falta_tipo',
+                                            :with   => :aulas_falta_tipo,
+                                            :url  => { :action => 'data_falta_tipo' },
+                                            :update => "data_falta"%>
+
+                   </td>
+               </tr>
+                <tr>
+                    <td colspan="2"> <div id="data_falta"><br/></div> </td>
+              </tr>               
                 <tr> 
-                    <td>&nbsp <b>Unidade: </b>&nbsp</td>
+                    <td width =" 10%"> <b>Unidade: </b>&nbsp</td>
                     <td>                <%= collection_select :aulas_falta, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
                                        <%= observe_field 'aulas_falta_unidade_id',
                                                      :with   => :aulas_falta_unidade_id,
@@ -41,6 +41,7 @@
                                                      :update => "professor"%>
                     </td>
                 </tr>
+
                 <tr>
                     <td colspan="2"> <div id="professor"><br/></div> </td>
               </tr>

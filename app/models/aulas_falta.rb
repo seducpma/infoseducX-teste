@@ -7,7 +7,7 @@ class AulasFalta < ActiveRecord::Base
   before_save  :maiusculo
 
   validates_presence_of :professor_id
-  validates_presence_of :data
+  #validates_presence_of :data
   validates_presence_of :tipo
   validates_presence_of :unidade_id
   validates_presence_of :funcao

@@ -29,18 +29,33 @@
                  </tr>
                  <tr bgcolor="#F5F5F5" >
                    <td align="left"><b>Professor:</b></td>
-                   <td colspan="3"align="left"> <%=h @aulas_eventual.eventual.professor.nome %> (<%=h @aulas_eventual.eventual.categoria %>)</td>
+                   <td align="left"> <%=h @aulas_eventual.eventual.professor.nome %> (<%=h @aulas_eventual.eventual.categoria %>)</td>
+                   <td align="left" colspan="3" ><b>Contato:</b> <%=h @aulas_eventual.eventual.contato %></td>
                  </tr>
                  <tr bgcolor="#F5F5F5" >
-                   <td align="left"><b>Contato:</b></td>
-                   <td colspan="3"align="left"> <%=h @aulas_eventual.eventual.contato %></td>
+                   <td align="left" colspan="4"><b> Substituição:</b> &nbsp&nbsp
+                      <%if @aulas_eventual.dataI.nil? %>
+                        <%=h @aulas_eventual.data.strftime("%d/%b/%Y") %> &nbsp&nbsp 1 / 1 dia
+                      <%else%>
+                       <b>Inicio:</b> <%=h @aulas_eventual.dataI.strftime("%d/%b/%Y") %> &nbsp&nbsp
+                       <b>Término:</b><%=h @aulas_eventual.dataF.strftime("%d/%b/%Y") %> &nbsp&nbsp
+                        - &nbsp&nbsp <%= session[:data]+1 %> / <%= session[:num_faltas] %> dias.
+                        <%end%>
+                   </td>
                  </tr>
                  <tr bgcolor="#F5F5F5" >
                    <td align="left" colspan="4"><b>Em Substituição:</b>&nbsp&nbsp
                       <%=h @aulas_eventual.aulas_falta.professor.nome%>
                     - <%=h @aulas_eventual.aulas_falta.classe%> - <%=h @aulas_eventual.aulas_falta.periodo%>
+                 
                    </td>
                  </tr>
+                 <tr bgcolor="#F5F5F5" >
+                   <td align="left" colspan="4">&nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
+                       <%=  session[:tipo_falta]%> de <%= session[:num_faltas]%> dias
+                   </td>
+                 </tr>
+
                  <tr bgcolor="#F5F5F5" >
                    <td align="left"><b>OBS:</b></td>
                    <td colspan="3"align="left"><%=h @aulas_eventual.obs %></td>
