@@ -188,7 +188,7 @@ def nome_prof_eventual
         #@prof_falta = Professor.find_by_sql("SELECT pro.id, CONCAT(pro.nome, ' - ',pro.funcao) AS nome_categoria FROM professors pro INNER JOIN  "+session[:baseinfo]+".aulas_faltas fal  ON  pro.id = fal.professor_id WHERE  fal.unidade_id = "+session[:aulas_eventual_unidade_id]+" AND fal.data = "+'"'+ session[:aulas_eventual_data]+'"' +" AND fal.ano_letivo ="+(Time.now.year).to_s+ " order by pro.nome DESC")
 #        @prof_falta = Professor.find_by_sql("SELECT pro.id, CONCAT(pro.nome, ' - ',pro.funcao) AS nome_categoria FROM professors pro INNER JOIN  "+session[:baseinfo]+".aulas_faltas fal  ON  pro.id = fal.professor_id WHERE  fal.unidade_id = "+session[:aulas_eventual_unidade_id]+" AND fal.data = "+'"'+ session[:aulas_eventual_data]+'"' +" AND fal.ano_letivo ="+(Time.now.year).to_s+ " AND fal.professor_id NOT IN ( SELECT  aul.professor_idx FROM eventuals eve INNER JOIN  "+session[:baseinfo]+'.aulas_eventuals aul  ON  eve.id = aul.eventual_id   WHERE aul.data =  "' + session[:aulas_eventual_data] + '") order by pro.nome DESC")')
         @prof_falta = Professor.find_by_sql("SELECT pro.id, CONCAT( pro.nome, ' - ', pro.funcao ) AS nome_categoria  FROM professors pro INNER JOIN "+session[:baseinfo]+".aulas_faltas fal ON pro.id = fal.professor_id  WHERE fal.unidade_id = "+session[:aulas_eventual_unidade_id]+" AND fal.data = "+'"'+ session[:aulas_eventual_data]+'"' +"AND fal.ano_letivo = "+(Time.now.year).to_s+ " AND fal.professor_id NOT IN (SELECT fal.professor_id FROM  "+session[:baseinfo]+".aulas_eventuals eaul JOIN  "+session[:baseinfo]+".aulas_faltas fal ON eaul.aulas_falta_id = fal.id  WHERE fal.data = "+'"'+ session[:aulas_eventual_data]+'"' +") ORDER BY pro.nome DESC")
-
+t=0
         if @professores_total.present?
            render :partial => 'selecao_professor'
         else
@@ -207,12 +207,19 @@ def aulas_faltas_prof_classe
        w3=session[:prof_falt] = 0
        w4=session[:aulas_eventual_data]
       @aulas_falta_dia = AulasFalta.find(:all, :conditions => ['data =?', session[:aulas_eventual_data] ])
-      #we=@aulas_falta_dia[0].dataI
       @aulas_falta = AulasFalta.find(:all, :conditions => ['id =? AND professor_id =?', session[:falta_id],  session[:professor_id]])
-      session[:num_faltas]= @aulas_falta.count
+
+
+
+     @falta = AulasFalta.find(:all, :conditions => ['dataI =? AND professor_id =?', @aulas_falta[0].dataI, session[:professor_id]])
+
+
+     
+      session[:num_faltas]= @falta.count
       session[:tipo_falta]=@aulas_falta[0].tipo
-t=0
+      t=0
            render :partial => 'proffalta'
+           t
   else
       w= params[:aulas_eventual_eventual_id]
            #@professors = Eventual.find(:all, :conditions =>  ["id = ?", params[:aulas_eventual_eventual_id]])

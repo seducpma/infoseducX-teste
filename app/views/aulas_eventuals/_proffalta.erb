@@ -1,15 +1,15 @@
 <link rel="stylesheet" media="all" href="css/calendar.css" />
 
-<%  for aula in @aula_falta%>
+<%  for aula in @aulas_falta%>
 <table width="100% ">
            <tr>
               <td align="right" width ="20%"><b>Classe: &nbsp&nbsp&nbsp </b></td>
                <td align="left" width ="8%"> <%=h aula.classe%></td>
                <td align="left" width ="8%"><b>Periodo: </b></td>
                <td align="left"  width ="15%"> <%=h aula.periodo%></td>
-               <td> <b><%=@aulas_falta.count %> </b> falta(s) - <%=@aulas_falta[0].tipo %> </td>
+               <td> <b><%=@falta.count %> </b> falta(s) - <%=@falta[0].tipo %> </td>
            </tr>
-        <% if @aulas_falta.count > 1 %>
+        <% if @falta.count > 1 %>
            <tr>
                  <td align="right" > <b>Data Inicial: </b></td>
                  <td colspan="4"> <%= datepicker_tag(:aulas_eventual,:dataI,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
