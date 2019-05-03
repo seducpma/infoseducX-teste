@@ -77,7 +77,7 @@ class AulasEventualsController < ApplicationController
        while i < session[:data]+1 do
         @aulas_eventual = AulasEventual.new(params[:aulas_eventual])
             if !session[:aulas_eventual_data].nil?
-                @aulas_eventual.data=session[:aulas_eventual_data].to_date
+                @aulas_eventual.data=session[:aulas_eventual_data].to_date+i
                 @aulas_eventual.dataI=session[:aulas_eventual_data].to_date
                 @aulas_eventual.dataF=session[:aulas_eventual_data].to_date
             end
