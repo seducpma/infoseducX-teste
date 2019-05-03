@@ -76,10 +76,10 @@ class AulasEventualsController < ApplicationController
        end
        while i < session[:data]+1 do
         @aulas_eventual = AulasEventual.new(params[:aulas_eventual])
-            if !@aulas_eventual.dataI.nil?
-                @aulas_eventual.data=@aulas_eventual.dataI.to_date+i
-                @aulas_eventual.dataI=@aulas_eventual.dataI.to_date+i
-                @aulas_eventual.dataF=@aulas_eventual.dataF.to_date+i
+            if !session[:aulas_eventual_data].nil?
+                @aulas_eventual.data=session[:aulas_eventual_data].to_date
+                @aulas_eventual.dataI=session[:aulas_eventual_data].to_date
+                @aulas_eventual.dataF=session[:aulas_eventual_data].to_date
             end
 
         @aulas_eventual.ano_letivo = Time.now.year
@@ -199,7 +199,7 @@ def nome_prof_eventual
 
 def aulas_faltas_prof_classe
   if session[:prof_falt]==1
-      session[:professor_id] = params[:aulas_eventual_professor_id]
+      w1=session[:professor_id] = params[:aulas_eventual_professor_id]
        @aula_falta= AulasFalta.find(:all, :conditions => ['professor_id=? AND data =?', params[:aulas_eventual_professor_id], session[:aulas_eventual_data]] )
        @classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos ON atribuicaos.classe_id = classes.id INNER JOIN professors ON atribuicaos.professor_id = professors.id ", :conditions=>[ "atribuicaos.professor_id = ? AND atribuicaos.ano_letivo = ?" , session[:professor_id], Time.now.year]  )
        w1=session[:classe_id]=@classe[0].id
@@ -207,10 +207,11 @@ def aulas_faltas_prof_classe
        w3=session[:prof_falt] = 0
        w4=session[:aulas_eventual_data]
       @aulas_falta_dia = AulasFalta.find(:all, :conditions => ['data =?', session[:aulas_eventual_data] ])
-      @aulas_falta = AulasFalta.find(:all, :conditions => ['dataI =? AND professor_id =?', @aulas_falta_dia[0].dataI,  session[:professor_id]])
-      w=session[:num_faltas]= @aulas_falta.count
+      #we=@aulas_falta_dia[0].dataI
+      @aulas_falta = AulasFalta.find(:all, :conditions => ['id =? AND professor_id =?', session[:falta_id],  session[:professor_id]])
+      session[:num_faltas]= @aulas_falta.count
       session[:tipo_falta]=@aulas_falta[0].tipo
-
+t=0
            render :partial => 'proffalta'
   else
       w= params[:aulas_eventual_eventual_id]
