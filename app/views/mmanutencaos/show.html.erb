@@ -76,6 +76,7 @@
                                  <td align="left"><b>Observação:</b></td>
                                  <td align="left"><%=h @mmanutencao.obs%></td>
                                </tr>
+  
                                 <tr>
                                   <td colspan="2"align="right">
                                           <%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %>

@@ -17,7 +17,7 @@
                         </tr>
                        <tr>
                          <td align="left" width="10%">  <b>Professor: </b></td>
-                         <td align="left" colspan="3"><%= collection_select :eventual, :professor_id, @professores, :id, :nome, :include_blank => ' -- Selecionar -- ' %></td>
+                         <td align="left" colspan="3"><%=h @eventual.professor.nome %></td>
                        </tr>
                         <tr>
                             <td align="left" width="10%"><b>Unidade: </b></td>

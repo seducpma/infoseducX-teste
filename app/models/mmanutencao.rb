@@ -7,6 +7,12 @@ class Mmanutencao < ActiveRecord::Base
   belongs_to :funcionario
   belongs_to :chefia
   has_and_belongs_to_many :tipos_manutencaos
+  has_attached_file :photo1, :styles => {:thumb=> "100x100#", :small  => "150x150>" }
+
+
+
+
+
   accepts_nested_attributes_for :unidade
   attr_accessor :tipos_manutencao
   Solicitacao = %w(Internet E-mail Telefone Pessoalmente Outros)
