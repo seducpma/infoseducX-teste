@@ -62,18 +62,17 @@
                      <td align="center"colspan="2"><b>Problema</b></font></td>
                       <td colspan="6" align="left"> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
                               <%=h servico.servico%>:
-                             <% end %> - <%=h @mmanutencao.descricao %><br/></font>
-                      <br/>
-
-
+                             <% end %> - <%=h @mmanutencao.descricao %><br/></font> <br/>
                       </td>
                    </tr>
-                     <tr>
-                       <th colspan="2"><font size="4"><br/><b>Procedimento à realizar</b><br/></font></th>
-                       <td colspan="6" align="left"><font size="3"><%=h @mmanutencao.procedimentos %>
-                           <br/><br/><br/><br/><br/><br/><br/><br/>
-                       </td>
-                    </tr>
+               <tr >
+                 <th colspan="2"> <b>Procedimento à realizar</b></font></th>
+                 <td  colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
+                 <td  colspan="2" align="left" valign="top"> <b>Foto: <br/></b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= image_tag @mmanutencao.photo.url(:original) %></td>
+
+
+              </tr>
+
                       <tr>
                         <th colspan="2"><br/><font size="3"><b>Procedimento realizado</b></font></th>
                         <td colspan="6" style="padding-bottom:5px">

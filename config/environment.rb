@@ -31,7 +31,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   
   #config.gem 'i18n', :version => '0.6.1'
-  config.gem 'paperclip', :version => '~>2.3'
+  config.gem 'paperclip', :version => '~>2.3' 
   config.gem 'rdoc'
   config.gem "googlecharts", :lib => "gchart"
   config.gem 'whenever', :lib => false

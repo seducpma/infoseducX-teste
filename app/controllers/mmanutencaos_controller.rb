@@ -733,6 +733,8 @@ def estatisticasMANTAt
 
   def create
     @mmanutencao = Mmanutencao.new(params[:mmanutencao])
+
+
     @mmanutencao.data_sol= Time.now
     @mmanutencao.user_id = current_user.id
     respond_to do |format|

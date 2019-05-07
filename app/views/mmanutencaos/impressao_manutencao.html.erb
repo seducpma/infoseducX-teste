@@ -70,7 +70,10 @@
                </tr>
                <tr>
                  <th> <b>Procedimento à realizar</b></font></th>
-                 <td colspan="6" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
+                 <td colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
+                 <th colspan="2"> <b>Foto:</b></font><%= image_tag @mmanutencao.photo.url(:original) %></th>
+                 
+
               </tr>
 
                 <tr>

@@ -82,8 +82,12 @@ def consulta_estagiario
 
   def create
     @estagiario = Estagiario.new(params[:estagiario])
+
+    w= @estagiario.photo_file_name
+    t=0
     respond_to do |format|
       if @estagiario.save
+
         flash[:notice] = 'SALVO COM SUCESSO.'
         format.html { redirect_to(@estagiario) }
         format.xml  { render :xml => @estagiario, :status => :created, :location => @estagiario }
