@@ -9,8 +9,8 @@ class Mmanutencao < ActiveRecord::Base
   has_and_belongs_to_many :tipos_manutencaos
     #has_attached_file :photo, :styles => {:thumb=> "100x100#", :small  => "150x150>" }
       has_attached_file :photo, :styles => {:original=> "300x300>"},
-                    :url => "/photos/:id.:extension",
-                    :path => ":rails_root/public/photos/:id.:extension"
+                    :url => "/photos/mmanutencaos/:id.:extension",
+                    :path => ":rails_root/public/photos/mmanutencaos/:id.:extension"
 
 
      
