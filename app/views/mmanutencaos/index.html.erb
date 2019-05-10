@@ -44,8 +44,9 @@
                     <th width ="1%" align="center">Proto- colo</th>
                     <th width ="5%">Data Solicitação</th>
                     <th width ="10%">Solicitante</th>
-                    <th width ="15%">Unidade</th>
-                    <th width ="45%">Solicitação</th>
+                    <th width ="10%">Unidade</th>
+                    <th width ="35%">Solicitação</th>
+                    <th width ="15%">Encaminhanto</th>
                     <th width="15%">Status</th>
                   </tr>
                   <%$cont=0%>
@@ -59,11 +60,12 @@
                              <td><%=h chamado.solicitante %></td>
                              <td><%=h chamado.nome%> </td>
                              <td><%=h chamado.descricao %></td>
+                             <td><%=h chamado.procedimentos %></td>
                              <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
                                  <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
                              <% else %>
 
-                                 <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                                 <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS')or (chamado.situacao_manutencao.situacao == 'DEVOLUÇÃO PARA UNIDADE') %>
                                  <td align="center"><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
                                  <% else %>
                                     <td><font color="blue"><b><%=h chamado.situacao_manutencao.situacao %></b></font> <br/>

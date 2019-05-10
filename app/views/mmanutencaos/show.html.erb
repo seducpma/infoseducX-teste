@@ -116,12 +116,22 @@
                                       <%if @mmanutencao.chefia_id.nil?%>
                                          <td align="left" > <font color="red">Serviço sem encaminhamento</font></td>
                                       <%else%>
-                                        <td align="left"><%=h @mmanutencao.chefia.nome  %></td>
+                                        <td align="left"><%if @mmanutencao.chefia.nome == 'DEVOLUÇÂO PARA UNIDADE'%>
+                                                             <font color=" red"> <b>DEVOLUÇÃO PARA UNIDADE</b></font>
+                                                       <%else%>
+                                                            <%=h @mmanutencao.chefia.nome  %>                                                     
+                                                       <%end%>
+                                        </td>
                                      <%end%>
                                  </tr>
                                  <tr>
                           <td align="left"><b>Situação:</b></td>
-                          <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
+                          <td align="left"> <%if @mmanutencao.situacao_manutencao.situacao == 'DEVOLUÇÃO PARA UNIDADE'%>
+                                                 <font color=" red"> <b>DEVOLUÇÃO PARA UNIDADE</b></font>
+                                            <%else%>
+                                                 <%= @mmanutencao.situacao_manutencao.situacao %></td>
+
+                                            <%end%>
                                    <td align="left" valign="top"><b>Data:</b></td>
                                    <%if @mmanutencao.data_ate.nil?%>
                                    <td align="left"> <font color ="red">Serviço sem encaminhamento</font></td>

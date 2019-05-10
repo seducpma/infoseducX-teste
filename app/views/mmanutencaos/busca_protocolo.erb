@@ -42,7 +42,7 @@
                             <th> Unidade</th>
                             <th> Solicitado</th>
                             <th> Solicitante</th>
-                            <th> Encaminhado</th>
+                            <th> Encaminhamento</th>
                             <th> Para</th>
                             <th> Executado</th>
                             <th> Por</th>
@@ -56,13 +56,17 @@
                             <td><%=h chamado.user.name %></td>
                             <%if chamado.data_ate.nil?%>
                                <td></td>
-                               <td><b><font color="red"> Não encaminhado</font></b></td>
+                               <td><%if chamado.situacao_manutencao.situacao == 'DEVOLUÇÃO PARA UNIDADE'%>
+                                   <font color="red"><b> DEVOLUÇÃO PARA UNIDADE</b> </font>
+                                    <%else%>
+                                           <b><font color="red"> Não encaminhado</font></b></td>
+                                    <%end%>
                              <%else%>
                               <td><%=h chamado.data_ate.strftime("%d/%m/%Y")%></td>
                               <td><%=h chamado.chefia.nome %></td>
                             <%end%>
                             <%if chamado.data_enc.nil?%>
-                               <td></td>
+                               <td><%=h chamado.procedimentos %></td>
                                <td><b><font color="red">  Não executado</b></font></td>
                              <%else%>
                               <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>

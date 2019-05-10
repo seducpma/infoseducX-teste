@@ -192,6 +192,7 @@ display: none;
                    <% if (!current_user.has_role?('publico'))%>
                       <li><%= link_to 'Manual Estagiário', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
                       <li><%= link_to 'Manual Infoseduc', href= "https://docs.google.com/document/d/1cSjyTnbHJq33hynV3T_xo8_77_ShyAbhaipdM_11KVo/edit", :target => '_blank' %></li>
+                      <li><%= link_to 'Manual Faltas e Substituições', href= "https://docs.google.com/document/d/1w429V0HjtA-fmOA8Axu8adWTBuo5_6cD1tJRK8vVpYU/edit?ts=5cd58feb", :target => '_blank' %></li>
                       <li><%= link_to 'Manual Sisgered', href= "https://docs.google.com/document/d/1KORwNkxV7ogNpc7EUyMxQHA4MMSSju_eOouI5cNABFE/edit?usp=sharing", :target => '_blank' %></li>
                     <%end%>
                   <li><%= link_to 'Sair', logout_path,:confirm => "Tem certeza que deseja fazer logout?" %></li>
@@ -212,7 +213,7 @@ display: none;
                                     <li><a class="item-primary" href="#;"> Relatório </a>
                                          <ul>
                                             <li><%= link_to "Falta Dia",relatorio_falta_dia_aulas_faltas_path %></li>
-                                            <li><%= link_to "Funcionário",relatorio_falta_mes_funcionario_aulas_faltas_path %></li>
+                                            <!--<li><%#= link_to "Funcionário",relatorio_falta_mes_funcionario_aulas_faltas_path %></li>-->
                                             <li><%= link_to "Professor",relatorio_falta_mes_professor_aulas_faltas_path %></li>
                                             <li><%= link_to "Unidade",relatorio_falta_mes_aulas_faltas_path %></li>
                                          </ul>
