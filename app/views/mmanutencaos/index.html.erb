@@ -111,14 +111,14 @@
                         <td align="right" colspan="7">
                            <table >
                               <tr>
-                                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')or current_user.has_role?('SEDUC') %>
-                                  <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')or current_user.has_role?('SEDUC') %>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') %>
+                                  <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') %>
                                       <td width="6% align="right" ><%= link_to image_tag("/stylesheets/images/encami.png" ), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhar" %> </td>
                                   <%end%>
                                    
                                       <td align="left"> <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimir" %></td>
                                  <%end%>
-                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro') %>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')or current_user.has_role?('estagiario SEDUC') %>
                                    <td align="right" ><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
                                  <%end%>
                                </tr>

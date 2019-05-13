@@ -126,7 +126,7 @@ class PodaGramasController < ApplicationController
   end
 
   def load_iniciais
-        if current_user.has_role?('admin') or current_user.has_role?('SEDUC')or current_user.has_role?('terceiro')
+        if current_user.has_role?('admin') or current_user.has_role?('SEDUC')or current_user.has_role?('terceiro')or current_user.has_role?('estagiario SEDUC')
             @unidades = Unidade.find(:all,  :select => 'nome, id', :order => 'nome ASC')
         else
             @unidades= Unidade.find(:all,  :select => 'nome, id', :conditions =>  ["id=?", current_user.unidade_id], :order => 'nome ASC')
