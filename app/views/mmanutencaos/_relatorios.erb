@@ -1,19 +1,36 @@
 <link rel="stylesheet" media="all" href="css/calendar.css" />
 
-<%  if @manutencaos[0].present?%>
+<%  if @aulas_faltas[0].present?%>
     <table width="100%" >
         <tr>
             <td style="border-color: white" align="left"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
             <td><center><font size="2"><i><b>Prefeitura Municipal de  Americana </b></i></center>
                 <center><font size="1"><b><i> Secretaria da Educação</i></b><br/></center>
+                 <% if session[:tiporelatorio]==1 %>
+                    <%  if (session[:verifica_unidade_id]=='52') %>
+                        <center><font size="1">Unidade Escolar:  SECRETARIA DE EDUCAÇÃO  </font></center>
                         <center><font size="1">Rua dos Professores, 40 - Americana - SP  </font>
                         <font size="1">13.465.060 - (19) 3475-9700  </font></center>
+                    <%else%>
+                        <center><font size="1">Unidade Escolar:  <%=h @aulas_faltas[0].unidade.nome %>  </font></center>
+                        <center><font size="1"><%=h @aulas_faltas[0].unidade.endereco%><%=h @aulas_faltas[0].unidade.num%> - Americana - SP  </font>
+                        <font size="1"><%=h @aulas_faltas[0].unidade.CEP%> - <%=h @aulas_faltas[0].unidade.fone%>  </font></center>
+
+                    <%end%>
+                 <%else if session[:tiporelatorio]==2 %>
+                          <center><font size="1">Professor:  <%=h @aulas_faltas[0].professor.nome %>  </font></center>
+                          <center><font size="1">Função:<%=h @aulas_faltas[0].professor.funcao%> </font>
+                       <%end%>
+                 <%end%>
             </td>
         </tr>
         <tr>
             <td></td>
         </tr>
- 
+        <tr>
+            <td colspan="22" align="center"><font size="3"><b>FALTAS REFERENTES AO MÊS DE <%= session[:mes] %> DE <%=  Time.now.year%> &nbsp&nbsp&nbsp&nbsp</b></font>
+            </td>
+        </tr>
     </table>
 <%  mes=0 %>
         <table border="1" cellspacing="0" cellpadding="1" width="100%">
