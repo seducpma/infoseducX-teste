@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
   map.resources :aulas_faltas, :collection => { :relatorio_falta_dia=>:get, :relatorio_falta_mes=>:get, :show=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
-  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:imp_show => :get ,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get}
+  map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:imp_show => :get ,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get , :relatorios => :get}
   map.resources :mmanutencaos_tipos_manutencaos
   map.resources :justificativas
   map.resources :pontos
@@ -205,6 +205,8 @@ ActionController::Routing::Routes.draw do |map|
   map.relatorios_eventual_professor'/relatorios_eventual_professor', :controller => 'aulas_eventuals', :action => 'relatorios_eventual_professor'
   map.relatorios_eventuals'/relatorios_eventuals', :controller => 'aulas_eventuals', :action => 'relatorios_eventuals'
   map.relatorios_agendamento'/relatorios_agendamento', :controller => 'poda_gramas', :action => 'relatorios_agendamento'
+  map.relatorios_manutencaos'/relatorios_manutencaos', :controller => 'mmanutencaos', :action => 'relatorios_manutencaos'
+
   map.agenda_poda_grama'/agenda_poda_grama', :controller => 'poda_gramas', :action => 'agenda_poda_grama'
 
   #map.si_selecionados'/si_selecionados', :controller => 'orc_pedido_compras', :action => 'si_selecionados'

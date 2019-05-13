@@ -438,7 +438,7 @@ display: none;
 
 
 
-             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('SEDUC') or  current_user.has_role?('terceiro') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') %>
+             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade') or current_user.has_role?('manutencao')  or current_user.has_role?('SEDUC') or  current_user.has_role?('terceiro') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('estagiario SEDUC')  %>
              <li><span class="divider divider-vert" ></span></li>
                 <li><a class="item-primary" href="#;">MANUTENÇÃO</a>
                   <ul style="width:108px;">
@@ -462,7 +462,7 @@ display: none;
                      </li>
                     <%end%>
 
-                <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('SEDUC_ORC_SI')%>
+                <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('SEDUC_ORC_SI') or current_user.has_role?('estagiario SEDUC') %>
                    
                    <li><a>Informática</a>
                     <ul style="width:108px;">
@@ -479,7 +479,7 @@ display: none;
                            <li><%= link_to "Encerrados", encerrados_path  %></li>
                          <%end%>
 <!--
-                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')%>
+                     <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('estagiario itinerante')or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('estagiario SEDUC') %>
                        </ul>
                      </li>
 
@@ -497,23 +497,23 @@ display: none;
                     </ul>
                   </li>
                  <%end%>
-                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('terceirozz') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP')%>
+                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or current_user.has_role?('terceirozz') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('estagiario SEDUC') %>
                    <li><a>Geral</a>
                     <ul style="width:108px;">
-                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('terceirozz') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP')%>
-                          <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP')%>
+                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade')or current_user.has_role?('terceirozz') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('estagiario SEDUC') %>
+                          <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('fun_manutencao')or current_user.has_role?('diretor_unidade')or current_user.has_role?('manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario unidade') or  current_user.has_role?('oficios') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('estagiario SEDUC') %>
                               <li><%= link_to "Abrir", new_mmanutencao_path %></li>
-        <!--                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('ORC_OP')%>
-                                    <li><%= link_to "Estatística", estatistica_mmanutencaos_path  %></li>
+                              <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')  or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('ORC_OP') or current_user.has_role?('estagiario SEDUC') %>
+                                    <%#= link_to "Estatística", relatorios_mmanutencaos_path  %>
                                   <%end%>
-        -->
+        
                               <li><%= link_to "Consulta", busca_protocolo_mmanutencaos_path  %></li>
                           <%end%>
                               <li><%= link_to "Em Aberto", mmanutencaos_path%></li>
 
                               <li><%= link_to "Encerrados", encerrados_mmanutencaos_path  %></li>
                         <%end%>
-                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('manutencao')    or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') %>
+                      <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('chefia_manutencao')or current_user.has_role?('manutencao')    or current_user.has_role?('SEDUC') or current_user.has_role?('SEDUC_ORC_SI')  or current_user.has_role?('ORC_OP') or current_user.has_role?('estagiario SEDUC')  %>
                            <li><%= link_to "Por Unidade", consulta_unidade_mmanutencaos_path  %></li>
                       <%end%>
                      </ul>
