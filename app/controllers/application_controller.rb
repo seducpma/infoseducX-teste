@@ -68,7 +68,8 @@ CATEGORIA={ 'ADI'=> 'ADI',
           }
           
  
-PERIODO={ 'MATUTINO '=>'MATUTINO',
+PERIODO={ ' -- Selecionar --'=>' -- Selecionar --',
+          'MATUTINO '=>'MATUTINO',
           'VESPERTINO'=> 'VESPERTINO',
           'INTEGRAL'=> 'INTEGRAL' 
           }

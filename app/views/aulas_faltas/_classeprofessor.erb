@@ -1,13 +1,23 @@
+
+
+
+
+
 <% if session[:professor_nao_desta_escola] == 0 %>
+      <%cont=1%>
    <% for professor in @professor_classe %>
-      <table width="100%" >
+
+      <table width="100%"  >
             <tr bgcolor="#F5F5F5" >
-               <td align="left" width="12%"></td>
-               <td align="left" width="20%">&nbsp&nbsp&nbsp <b>Classe:</b> <%=h professor.classe%>&nbsp</td>
-               <td align="left" >&nbsp&nbsp&nbsp&nbsp <b>Disciplina:</b> <%=h professor.disciplina%>&nbsp</td>
-               <td align="left" >&nbsp&nbsp&nbsp&nbsp <b>Período:</b> <%=h professor.horario%>&nbsp</td>
+               <td align="left" width="10%"></td>
+               <td align="left" width="25%">&nbsp<b><%=cont%>) Classe:</b> <%=h professor.classe%></td>
+               <td align="left"  width="30%" >&nbsp <b>Disciplina:</b> <%=h professor.disciplina%></td>
+               <td align="left"  width="35%" >&nbsp <b>Período da classe:</b> <%=h professor.horario%></td>
+               <%cont= cont+1%>
+               <% session[:cont]= cont-1%>
            </tr>
       </table>
+
    <%end%>
    <%  session[:professor_nao_desta_escola] = 0 %>
 <%else%>
@@ -24,7 +34,7 @@
                 <td align="left"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <font color ="red" ><b> A sede deste Professor não é esta unidade unidade <br/>
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  NÃO HÁ ATRUIÇÂO DE AULAS NO CORENTE ANO <br/>
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CONFIRMA SITUAÇÃO ANTES DE CADASTRAR FALTA</b>
-                      
+
                     <font></td>
              </tr>
            </table>
@@ -35,6 +45,12 @@
 
 <%end%>
 
+   <table width="100%"  >
+        <tr>
+             <td align="left" width ="70%" valign="top"><b> Selecionar a Classe do professor(a): </b>&nbsp&nbsp <%= collection_select :aulas_falta, :classe, @professor_classe, :classe, :classe %></td>
+
+        </tr>
+    </table>
 
 
 

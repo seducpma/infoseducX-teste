@@ -271,7 +271,7 @@ display: none;
                           <li><%= link_to "Professor(Subst.)",new_eventual_path %></li>
                      <%end%>
                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
-                           <li><%= link_to "Substituições", new_aulas_eventual_path %></li>
+                           <li><%= link_to "Substituições", new_aulas_eventual_path%></li>
                      <%end%>
 
                      <% if current_user.has_role?('admin')or current_user.has_role?('SEDUC')  or current_user.has_role?('SEDUC_ORC_SI') %>

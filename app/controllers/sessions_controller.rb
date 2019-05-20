@@ -18,6 +18,8 @@ class SessionsController < ApplicationController
 
   
   def create
+
+      session[:continua_atribuicao]=0
       self.current_user = User.authenticate(params[:login], params[:password])
       if logged_in?
           if params[:remember_me] == "1"

@@ -17,7 +17,7 @@
                <table  bgcolor="#DCDCDC" width="100%">
                  <tr bgcolor="#F5F5F5">
                   <td align="left" width="10%"><b> Unidade:</b></td>
-                  <td align="left" width="40%"><%=h@aulas_eventual.unidade.tipo.nome%> <%=h@aulas_eventual.unidade.nome%></td>
+                  <td align="left" width="40%"><%#=h@aulas_eventual.unidade.tipo.nome%> <%#=h@aulas_eventual.unidade.nome%></td>
                    <td align="left" width="16%"><b>Ano Letivo:</b></td>
                    <td align="left"> <%=h @aulas_eventual.ano_letivo %> </td>
                 </tr>
@@ -35,11 +35,11 @@
                  <tr bgcolor="#F5F5F5" >
                    <td align="left" colspan="4"><b> Substituição:</b> &nbsp&nbsp
                       <%if @aulas_eventual.dataI.nil? %>
-                        <%=h @aulas_eventual.data.strftime("%d/%b/%Y") %> &nbsp&nbsp 1 / 1 dia
+                        <%#=h @aulas_eventual.data.strftime("%d/%b/%Y") %> &nbsp&nbsp 1 / 1 dia
                       <%else%>
                        <b>Inicio:</b> <%=h @aulas_eventual.dataI.strftime("%d/%b/%Y") %> &nbsp&nbsp
                        <b>Término:</b><%=h @aulas_eventual.dataF.strftime("%d/%b/%Y") %> &nbsp&nbsp
-                        - &nbsp&nbsp <%= session[:data]+1 %> / <%= session[:num_faltas] %> dias.
+                        - &nbsp&nbsp <%= session[:data]+1 %> / <%= session[:num_faltas] %> dia(s).
                         <%end%>
                    </td>
                  </tr>
@@ -52,7 +52,7 @@
                  </tr>
                  <tr bgcolor="#F5F5F5" >
                    <td align="left" colspan="4">&nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
-                       <%=  session[:tipo_falta]%> de <%= session[:num_faltas]%> dias
+                       <%=  session[:tipo_falta]%> de <%= session[:num_faltas]%> dia(s)
                    </td>
                  </tr>
 

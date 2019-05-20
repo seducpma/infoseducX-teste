@@ -7,6 +7,7 @@ class Professor < BaseSisgered
   has_many :relatorios
   has_many :eventuals
   has_many :aulas_faltas
+  has_many :aulas_eventuals
   
   #has_one :tempo_servico, :dependent => :delete
   #has_one :titulo_professor, :dependent => :delete

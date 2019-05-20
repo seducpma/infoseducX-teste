@@ -55,6 +55,8 @@ class AulasFaltasController < ApplicationController
 
     def show
         @aulas_falta = AulasFalta.find(params[:id])
+        session[:continua_atribuicao] = params[:id]
+
         respond_to do |format|
             format.html # show.html.erb
             format.xml  { render :xml => @aulas_falta }
@@ -76,7 +78,6 @@ class AulasFaltasController < ApplicationController
  def create
     if params[:aulas_falta][:dataF].nil?
         session[:flag]=0
-        
         @aulas_falta = AulasFalta.new(params[:aulas_falta])
         @aulas_falta.data=params[:aulas_falta][:dataI]
          @aulas_falta.dataF=params[:aulas_falta][:dataI]
@@ -84,7 +85,7 @@ class AulasFaltasController < ApplicationController
         w=@aulas_falta.ano_letivo =  Time.now.year
         w1=@aulas_falta.funcao = session[:funcao]
         w2=@aulas_falta.setor = session[:setor]
-        w3=@aulas_falta.classe = session[:profclasse]
+        #w3=@aulas_falta.classe = session[:profclasse]
         #w4=@aulas_falta.periodo = session[:classeper]
 
         @aulas_falta.periodo = params[:periodop]
@@ -113,15 +114,13 @@ class AulasFaltasController < ApplicationController
             @aulas_falta.ano_letivo =  Time.now.year
             @aulas_falta.funcao = session[:funcao]
             @aulas_falta.setor = session[:setor]
-            @aulas_falta.classe = session[:profclasse]
+            #@aulas_falta.classe = session[:profclasse]
             #w4=@aulas_falta.periodo = session[:classeper]
             @aulas_falta.periodo = params[:periodop]
             @aulas_falta.save
             i=i+1
 
         end
-
-
         respond_to do |format|
             if @aulas_falta.save
                 flash[:notice] = 'SALVO COM SUCESSO.'
@@ -567,7 +566,7 @@ class AulasFaltasController < ApplicationController
          #session[:base]= 'sisgered_development'
          #session[:base]= 'sisgered_production'
         if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC')
-            @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8"], :order => 'nome ASC')
+            @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["(tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8) OR id = 52"], :order => 'nome ASC')
             @professores_faltas = Professor.find_by_sql("SELECT distinct(professors.id), professors.nome FROM "+session[:base]+".professors INNER JOIN  "+session[:baseinfo]+".aulas_faltas  ON  professors.id = aulas_faltas.professor_id  WHERE aulas_faltas.ano_letivo = "+(Time.now.year).to_s+" AND aulas_faltas.funcionario_id is null order by professors.nome ASC ")
             @funcionarios_faltas = Funcionario.find_by_sql("SELECT distinct(funcionarios.id), funcionarios.nome FROM funcionarios INNER JOIN  aulas_faltas  ON  funcionarios.id = aulas_faltas.funcionario_id  WHERE aulas_faltas.ano_letivo = "+(Time.now.year).to_s+" AND aulas_faltas.professor_id is null order by funcionarios.nome ASC ")
         else

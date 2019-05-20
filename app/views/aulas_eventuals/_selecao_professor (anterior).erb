@@ -1,0 +1,22 @@
+<table width="100% ">
+           <tr>
+                <% session[:prof_falt]=1%>
+               <td align="left" width ="10%"><b>Professor&nbsp(Falta): </b></td>
+               <td align="left">     <%= collection_select :aulas_eventual, :professor_id, @prof_falta, :id, :classe_falta, :include_blank => ' -- Selecionar -- ' %></td>
+                      <%= observe_field 'aulas_eventual_professor_id',
+                     :with   => :aulas_eventual_professor_id,
+                      :url  => { :action => 'aulas_faltas_prof_classe' },
+                      :update => "xclasse" %>
+               
+          </tr>
+          <tr>
+              <td align="left" colspan="3"> <div id ="xclasse"> </div></td>
+          </tr>
+
+
+
+</table>
+
+
+
+
