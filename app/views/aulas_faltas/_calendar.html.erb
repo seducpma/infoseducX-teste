@@ -25,7 +25,7 @@
                              <% if data.professor_id.present? %>
                                         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')  or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC')  )%>
                                              <%if data.substituicao == 0 %>
-                                                <b><font color ="black "> <%= link_to h(truncate(data.professor.nome, :length => 18,:omission => "...")), data%></b><%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy", :id =>data}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %><br/>
+                                                <b><font color ="red"> <%= link_to h(truncate(data.professor.nome, :length => 18,:omission => "...")), data%></b><%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy", :id =>data}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %><br/>
                                                    Classe:<%= data.classe%> / <%= data.periodo%><br/><%= data.tipo %> </font>
                                                  <%else%>
                                                <b><%= link_to h(truncate(data.professor.nome, :length => 18,:omission => "...")), data%></b><%= link_to image_tag("/stylesheets/images/ponto.png", :size => "7x7"), {:action => "destroy", :id =>data}, :confirm => 'Confirma exclusão?', :method => "delete",:title => "Excluir" %><br/>
