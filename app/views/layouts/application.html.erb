@@ -209,7 +209,7 @@ display: none;
                                  <ul>
                                     <li><%= link_to "Unidade",aulas_faltas_path %></li>
                                     <li><%= link_to "Professor",aulas_faltas2_path %></li>
-                                    <li><%= link_to "Funcionário",aulas_faltas3_path %></li>
+                                    <!--<li><%#= link_to "Funcionário",aulas_faltas3_path %></li>-->
                                     <li><a class="item-primary" href="#;"> Relatório </a>
                                          <ul>
                                             <li><%= link_to "Falta Dia",relatorio_falta_dia_aulas_faltas_path %></li>
@@ -257,7 +257,7 @@ display: none;
                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Estagiário",new_estagiario_path%></li>
                       <%end%>
-                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
                            <li><%= link_to "Funcionario", new_funcionario_path %></li>
                      <%end%>
                      <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC_ORC_SI'))%>
