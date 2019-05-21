@@ -7,7 +7,6 @@
                         <h2><center> <b>AGENDA DE SUBSTITUIÇÕES - <%=  @aulas_eventual[0].unidade.tipo.nome%> <%=  @aulas_eventual[0].unidade.nome%> </b></center> </h2>
                         <%# categoria= @aulas_faltas[0].categoria  %>
                   <%end%>
-                        <hr/>
                 <h2 id="month">
                     <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
                     <%=h @date.strftime("%B %Y") %>

@@ -20,6 +20,10 @@
                <tr>
                    <td colspan="8"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro a DATA, TIPO DE FALTA e UNIDADE.</b></font><br/><br/></td>
                </tr>
+ <tr>
+     <td colspan="8"><b> Periodo da falta do professor(a): </b>&nbsp&nbsp&nbsp&nbsp <%= select_tag :periodop, options_for_select(PERIODO).sort%> <font color="red"><== <b>ATENÇÃO - OBRIGATÓRIO !!</b></td>
+
+ </tr>
                <tr>
                    <td colspan="4">&nbsp&nbsp&nbsp&nbsp  <b>Tipo Falta: </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :tipo, (AulasFalta::FALTA).sort %>
                                          <%= observe_field 'aulas_falta_tipo',

@@ -1,4 +1,4 @@
-<div id="interno4">
+<div id="interno1">
 <% title "AULASEVENTUAL".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -22,15 +22,15 @@
                    <td colspan="5"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro a DATA, UNIDADE, CATEGORIA e depois a  UNIDADE.</b></font><br/><br/></td>
                </tr>
                <tr>
-                   <td width="8%"    align="right" > <b>Data: </b></td>
+                   <td width="8%"    align="left" > <b>Data: </b></td>
                     <td width="20%" align="left"><%= datepicker_tag(:aulas_eventual, :data,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
                                        <%= observe_field 'aulas_eventual_data',
                                                      :with   => :aulas_eventual_data,
                                                      :url  => { :action => 'data_eventual' }%>
 
                      </td>
-                     <td align="right" width="10%">  <b>Unidade: </b></td>
-                     <td align="right"width="10%" ><%= collection_select :aulas_eventual, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+                     <td align="left" width="10%">  <b>Unidade: </b></td>
+                     <td align="left"width="10%" ><%= collection_select :aulas_eventual, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
                                        <%= observe_field 'aulas_eventual_unidade_id',
                                                      :with   => :aulas_eventual_unidade_id,
                                                      :url  => { :action => 'nome_prof_eventual' },
@@ -49,7 +49,7 @@
                <%  if current_user.unidade.tipo_id == 2   or current_user.unidade.tipo_id == 5 or  current_user.unidade.tipo_id == 8 or current_user.unidade.tipo_id == 9 %>
                     <tr> 
                         <td colspan="5"> <b>Período da Substituição: </b>&nbsp&nbsp
-                                      <%= f.select :periodo, (AulasEventual::PERIODO).sort, :include_blank => ' -- Selecionar -- ' %>
+                                      <%= f.select :periodo, (AulasEventual::PERIODO).sort %>
                                         <%= observe_field 'aulas_eventual_periodo',
                                                      :with   => :periodo,
                                                      :url  => { :action => 'periodo_prof_eventual' },
