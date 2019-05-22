@@ -56,7 +56,8 @@ class AulasFaltasController < ApplicationController
     def show
         @aulas_falta = AulasFalta.find(params[:id])
         session[:continua_atribuicao] = params[:id]
-
+        w=session[:falta_id0]= params[:id]
+        t=0
         respond_to do |format|
             format.html # show.html.erb
             format.xml  { render :xml => @aulas_falta }
