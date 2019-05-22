@@ -146,7 +146,7 @@
                                                   <td align="left" width ="8%">&nbsp <%=h aula.classe%></td>
                                                   <td align="left" width ="18%"><b>Periodo da Classe: </b></td>
                                                   <td align="left"  width ="12%"> <%=h aula.periodo%></td>
-                                                  <td > <b><%=@falta.count %> </b> falta(s) - <%=@falta[0].tipo %>
+                                                  <td > <b><%#=@falta.count %> </b> falta(s) - <%=@falta[0].tipo %>
                                                       <% if @falta.count > 1 %>
                                                              <b> de </b><%= aula.dataI.strftime("%d/%m/%Y")  %>   <b> à </b> <%= aula.dataF.strftime("%d/%m/%Y")  %>
                                                       <%else%>

@@ -42,7 +42,7 @@ class AulasEventualsController < ApplicationController
         #@aulas_falta= AulasFalta.find(:all, :conditions => ['substituicao=?',params[:id] ])
         #@aulas_falta[0].substituicao=0
         #@aulas_falta[0].save
-        #@aulas_eventual.destroy
+        @aulas_eventual.destroy
 
 
 
@@ -100,17 +100,20 @@ class AulasEventualsController < ApplicationController
                 @aulas_eventual.dataF=session[:dataF].to_date
                 ideventual= @aulas_eventual.id
                 idfalta = session[:falta_id] +i
-                @falta= AulasFalta.find(idfalta )
+                @falta= AulasFalta.find(idfalta)
                 @falta.substituicao = ideventual
                 @falta.save
 
             end
+        @falta=AulasFalta.find(session[:falta_id]+i)
+
         #@aulas_eventual = AulasEventual.find(eventual_id)
         @aulas_eventual.ano_letivo = Time.now.year
         @aulas_eventual.aulas_falta_id= session[:falta_id]
         #@aulas_eventual.classe = session[:classe_classe]
         @aulas_eventual.classe_id = session[:classe_id]
-        @aulas_eventual.professor_id=session[:professor_id]
+#        @aulas_eventual.professor_id=session[:professor_id]
+        @aulas_eventual.professor_id=@falta.professor_id
 
         @aulas_eventual.save
         i=i+1

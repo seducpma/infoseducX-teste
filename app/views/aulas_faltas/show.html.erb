@@ -89,10 +89,16 @@
                        <td width="5px" align="left"><%= button_to 'Agenda Faltas', aulas_faltas_path, {:method => "get"}  %></td>
                        <td align="left" ><%= button_to "Relatório / Mês", relatorio_falta_mes_aulas_faltas_path %></td>
                        <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
-                              <td align="right"><%= button_to "Substituição", new_aulas_eventual_path %></td>
+                              <td align="right"><%= button_to "Substituição 1 Falta", new_aulas_eventual_path %></td>
                        <%end%>
 
                    </tr>
+                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                       <tr>
+                           <td colspan="4" align="right"><font color="red"><b><u>ATENÇÃO:</u> Quando tratar-se de mais de 1 dia de Substituição utilizar opção CADASTRAR/SUBSTITUIÇÃO.</b></font>
+                           </td>
+                       </tr>
+                   <%end%>
                 </table>
 </div>
 <br/>
