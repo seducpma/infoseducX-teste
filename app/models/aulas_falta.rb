@@ -2,8 +2,7 @@ class AulasFalta < ActiveRecord::Base
   belongs_to :professor 
   belongs_to :funcionario
   belongs_to :unidade
-  has_one :aulas_eventual, :dependent => :delete
-
+  has_one :aulas_eventual, :dependent => :destroy
   before_save  :maiusculo
 
   validates_presence_of :professor_id
