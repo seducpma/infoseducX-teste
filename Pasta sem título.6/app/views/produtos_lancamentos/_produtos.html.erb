@@ -1,0 +1,14 @@
+<table>
+            <% for produto in @produto %>
+               <tr> 
+                    <th  align="left" width ="15%">Fornecedor:</th>
+                    <th align="left"> &nbsp&nbsp&nbsp <%=h produto.fornecedor %></th>
+              </tr>
+              <tr>
+                <th colspan="2"align="left"  >Estoque Atual:
+                   <%=h produto.estoque %> <%=h produto.unidade %></th>
+              </tr>
+            <%end%>
+
+</table>
+

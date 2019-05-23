@@ -46,7 +46,7 @@
                         <td align="left" colspan="3">  <%=h @aulas_falta.tipo %>
                        
                        <%if session[:flag]==1 %> &nbsp - &nbsp
-                                    <%= session[:data]+1%> dias &nbsp&nbsp
+                                    <%= session[:quant_falta]%> dias &nbsp&nbsp
                                        <b>de</b> &nbsp<%=h @aulas_falta.dataI.strftime("%d/%b/%Y") %> &nbsp
                                           <b>à</b> &nbsp<%=h @aulas_falta.dataF.strftime("%d/%b/%Y") %> &nbsp</td>
                          <%session[:flag]=0%>
@@ -88,7 +88,7 @@
                        <td width="5px" align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
                        <td width="5px" align="left"><%= button_to 'Agenda Faltas', aulas_faltas_path, {:method => "get"}  %></td>
                        <td align="left" ><%= button_to "Relatório / Mês", relatorio_falta_mes_aulas_faltas_path %></td>
-                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                       <% if (current_user.has_role?('admin') )%>
                               <td align="right"><%= button_to "Substituição 1 falta", new_aulas_eventual_path %></td>
                        <%end%>
                    </tr>

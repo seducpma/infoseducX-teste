@@ -1,0 +1,55 @@
+
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SISTEMA DE INSCRIÇÃO ON LINE</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table  border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: black"  bgcolor="#F5F5F5">
+         <tr  bgcolor ="#E6E2D" style="border-color: white">
+             <td align="left" colspan="12" style="border-color: white">
+             <font  size=5 color="black"> <b> CURSOS EM ANDAMENTO</b></font>
+               <hr/>
+            </td>
+        </tr>
+          <tr>
+            <th bgcolor="DCDCDC">Curso</th>
+
+            <th bgcolor="DCDCDC">Ministrante</th>
+             <th bgcolor="DCDCDC">Data</th>
+            <th bgcolor="DCDCDC">Horário</th>
+            <th bgcolor="DCDCDC">Inscritos</th>
+            <th bgcolor="DCDCDC">Vagas</th>
+            <th bgcolor="DCDCDC"></th>
+          </tr>
+
+        <% @cursos.each do |curso| %>
+          <tr>
+            <td><%=h curso.nome %></td>
+            <td><%=h curso.ministrante %></td>
+            <td align="center"><%=h curso.datas %></td>
+            <td align="center"><%=h curso.horario %></td>
+            <td align="center"><%=h curso.vagas_disponiveis %></td>
+            <td align="center"><%=h curso.qtde %></td>
+               <% if ((current_user.has_role?('admin') or current_user.has_role?('SEDUC')) )%>
+                    <td align="center"><%= button_to 'Editar', edit_curso_path(curso), :method => "get", :title => "Editar"%></td>
+                <%else%>
+                    <td align="center"> --- </td>
+                <%end%>
+          </tr>
+       <%end %>
+                                   <tr>
+                                        <td colspan="5" align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                     </tr>
+
+
+
+  </table>
+
+  </div>
+        <br/>
+
+    </div>
+        <br/>
+

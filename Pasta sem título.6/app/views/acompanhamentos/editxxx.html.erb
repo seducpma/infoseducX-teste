@@ -1,0 +1,110 @@
+<div id="interno6">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - ATENDIMENTO / PLANEJAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+
+                <% form_for @acompanhamento do |f| %>
+                <%= f.error_messages %>
+                <font  size="2">
+                <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+
+                     <tr>
+                        <th align="left">
+                           <font size=3 color="black"> <b>  CONTROLE DE ACOMPANHAMENTOS- SEDUC/PMA</b></font>
+                        </th>
+                     </tr>
+                     <tr>
+                       <td colspan="2">
+                        <table width="100%">
+                            <tr>
+                               <td width="2%"align="left"><font size="2"><b>Código:</b></font></td>
+                               <td width="50%"align="left" colspan="3"><font size="2"><%=h @acompanhamento.codigo%></font></td>
+                            </tr>
+                            <tr>
+                               <td width="2%"align="left"><font size="2"><b>Criança:</b></font></td>
+                               <td width="30%"align="left"><font size="2"><%=h @acompanhamento.crianca%></font></td>
+                               <td width="10%"align="right"><font size="2"><b>Nascimento:</b></font></td>
+                               <td align="left"><font size="2"><%=h @acompanhamento.nascimento.strftime("%d/%m/%Y") %></font></td>
+                            </tr>
+                            <tr>
+                               <td width="2%"align="left"><font size="2"><b>Inscrição/RA:</b></font></td>
+                               <td width="30%"align="left"><font size="2"><%=h @acompanhamento.inscricao %></font></td>
+                               <td width="10%"align="right"><b>Atendimento: </b></td>
+                               <td width="10%"align="left">por <%=h @acompanhamento.por%></td>
+
+                            </tr>
+
+                            <tr>
+                               <td align="left"><font size="2"><b>Mãe:</b></font></td>
+                               <td align="left"><font size="2"><%=h @acompanhamento.mae %></font></td>
+                               <td align="right"><font size="2"><b>Responsável:</b></font></td>
+                               <td align="left"><font size="2"><%=h @acompanhamento.responsavel %></font></td>
+                            </tr>
+                              <tr>
+                                <td align="left"><b>Solicitante: </b></td>
+                                <td align="left"><%=h @acompanhamento.solicitante%></td>
+                               <td align="right"><font size="2"><b>Atendido por:</b></font></td>
+                               <td align="left"><font size="2"><%=h @acompanhamento.funcionario %></font></td>
+
+                              </tr>
+
+                            <tr>
+                               <td align="left"><font size="2"><b>Assunto:</b></font></td>
+                               <td align="left" colspan="3"><font size="2"><%=h @acompanhamento.assunto %></font></td>
+                            </tr>
+                            <tr>
+                              <td align="left" valign="top"><font size="2"><b>Despachos:</b></font></td>
+                              <td colspan="3"><div id="dados"> <%= render :partial => 'acompanhamento_despachos'  %></div></td>
+                            </tr>
+                            <% if @acompanhamento.encerrado == 1 %>
+                                  <tr>
+                                    <td></td>
+                                    <td colspan="4"><b>Encerrado em</b>  <%=h @acompanhamento.data_encerrado.strftime("%d de %B de %Y") %></td>
+                                  </tr>
+                                 <%else%>
+                                 <tr>
+                                    <td></td>
+                                    <td colspan="4"><b>NÃO Encerrado</b></td>
+                                  </tr>
+                                <% end %>
+                         </table>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td colspan="2">
+                          <div class="botao">
+                            <table width="40%" align="right">
+                               <tr>
+                                  <td align="right"><%= f.submit "Gravar" %> </td>
+                    <% end %>
+                                  <td width="2%" align="right"><%= button_to('Voltar', home_path, :method => "get", :title => "Voltar")%></td>
+                                  <td width="2%" align="right" ><%= button_to('Solicitações', acompanhamentos_path, :method => "get",  :title => "Solicitações")%></td>
+                                  <td width="2%" align="right"><%= button_to "Consultar", consulta_acompanhamentos_path, :title => "Consultar" %></td>
+                                  <td width="2%" align="right"><%= link_to image_tag("/stylesheets/images/despachar.jpeg", :size => "100x26"), "#inline_acompanhamento_despacho", :class =>"inline", :title => "Despachar" %></td>
+                                <tr>
+                            </table>
+                          </div>
+
+                       </td>
+                      </tr>
+                     </table>
+                 </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+
+
+
+ </font>
+<br/>
+<%= render "acompanhamento_despacho" %>

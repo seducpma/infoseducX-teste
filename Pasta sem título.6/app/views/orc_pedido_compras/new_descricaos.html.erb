@@ -1,0 +1,109 @@
+<div id="interno1">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - SERVIÇO INTERNO </strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+
+              <% form_for(@orc_pedido_compra) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Serviço Interno</font></legend>
+                    <table width="100%" >
+                      
+                      <tr>
+                         <td colspan="6"align="left"><b>Destino S.I.: </b>&nbsp  <%= select_tag :destino, options_for_select([ "SUPRIMENTOS", "CONTABILIDADE" ]) %>
+                         &nbsp&nbsp&nbsp <b>Número:</b> &nbsp <%= f.text_field :codigo, :size =>10%>
+                         &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>55 %></td>
+                      </tr>
+                      
+                      <tr>
+                         <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
+                         <td colspan="3" align="left"><%=h @orc_pedido_compra.fornecedor %>&nbsp&nbsp&nbsp
+                                                       <b>CNJPJ:</b>&nbsp&nbsp <%=h @orc_pedido_compra.cnpj %>&nbsp&nbsp&nbsp
+                                                       <b>ATA:</b>&nbsp&nbsp <%= f.collection_select :ata_id, @atas, :id, :codigo, :include_blank => ' '  %>
+
+                                                                      <%= observe_field 'orc_pedido_compra_ata',
+                                                                           :with   => 'orc_pedido_compra_ata',
+                                                                         :url    => { :action => 'verifica_ata_si' } %>
+                         </td>
+                      </tr>
+                                                  
+
+                     <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
+                              <tr>
+                                 <td align="left"  valign="top"><b>Ficha:</b></td>
+                                 <td align="left"  valign="top"><%=h @orc_pedido_compra.orc_ficha.ficha%>  </td>
+                                 <td colspan="2"><table  >
+                                                        <tr>
+                                                          <td align="left"><b>Dotação Orçamentária: </b> <%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
+                                                            &nbsp&nbsp <b>DR: </b> <%=h @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b>Fonte: </b> <%=h @orc_pedido_compra.orc_ficha.fonte%></td>
+                                                         </tr>
+                                                         <tr align="left">
+                                                              <td align="left"><%=h @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%></td>
+                                                         </tr>
+
+                                                    </table>
+                                 </td>
+                              </tr>
+                     <%else%>
+                              <tr>
+                                 <td align="left"><b>Ficha:</b></td>
+                                 <td align="left"  colspan="2"> Ainda não indicada</td>
+
+                              </tr>
+
+                    <%end%>
+                      <tr>
+                        <td align="left" valign="top"> <b><u><%= link_to 'Descrição', "#inline_orc_pedido_descricao", :class =>"inline60" %>
+                                <%#= link_to 'Descrição',  new_orc_pedido_descricao_path, :title => "Itens SI" %>
+
+
+                                </u></b></td>
+                        <td colspan="3"><div id="dados"> <%= render :partial => 'orc_pedido_descricaos'  %></div></td>
+                      </tr>
+                      <tr>
+                         <td align="left"><b>Justificativa:</b></td>
+                         <td colspan="5" align="left"><%= f.text_field :justificativa, :size =>110 %></td>
+                      </tr>
+                       <tr>
+                           <td align="left" valign="top"><b>Observação:</b></td>
+                           <td colspan="5" align="left"><%= f.text_area(:obs, :cols =>109, :rows => "2") %></td>
+                      </tr>
+
+                   </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_pedido_compras_path, :method => "get",  :title => "Pedidos Compras")%></td>
+                            
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+    <%= render "orc_pedido_descricao" %>
+

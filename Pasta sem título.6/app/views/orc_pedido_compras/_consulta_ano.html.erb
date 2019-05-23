@@ -1,0 +1,14 @@
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Número do Serviço Interno:</b></font>
+       <%t=0%>
+       <%= collection_select :orc_pedido_compra,:codigo, @orc_pedido_si, :codigo, :codigo, :include_blank => ' -- Selecionar -- '  %></font>
+               <%= observe_field 'orc_pedido_compra_codigo',
+               :update => "consultapedido",
+               :url    => { :action => 'pedido_codigo' },
+               :with   => 'orc_pedido_compra_codigo' %>
+
+
+     </td>
+   </tr>
+  </table>

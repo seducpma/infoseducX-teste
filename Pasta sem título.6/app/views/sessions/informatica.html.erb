@@ -1,0 +1,64 @@
+<br/><br/>
+<div id="conteudo">
+<table width="60%" border="1" align="center" class="login">
+  <tr>
+    <td colspan="2" align="center">
+        <font size="4"><b>SISTEMA DE INFORMAÇÃO DA SECRETARIA DE EDUCAÇÃO DE AMERICANA </b></font>
+    </td>
+  </tr>
+  <tr>
+     <td rowspan="2"><br/>
+       <center><div id="img" ></div></center>
+       <br/>
+     </td>
+     <td width="40%">
+       <p align="center"><font color="blue" size="3">INFOSEDUC</font></p>
+
+<!--
+
+       <font size="3" color =" red"><center><b>
+            SISTEMA EM MANUTENÇÂO <br/>
+            PARA ADEQUAÇÃO DO<br/>
+           NOVO ANO LETIVO<br/><br/>
+           
+
+
+           </b></center></font>
+
+-->
+
+
+         <% form_tag session_path do -%>
+            <p align="center"><b><label for="login">Login</label></b>
+           &nbsp<%= text_field_tag 'login','',:size => 10 %><br/>
+          <b><label for="password">Senha</label></b>
+          <%= password_field_tag 'password','',:size => 10 %><br/><br/>
+          <%= submit_tag 'Entrar' %></p>
+         <% end -%>
+
+  <br/>
+  <br/>
+      <!-- < %= link_to 'Esqueci a Senha', new_password_path%>-->
+     </td>
+  </tr>
+  <tr>
+   <td colspan="2" align="center">
+        <font size="2"><b>Problemas com a senha?</b></font><br/>
+        <%= link_to 'Não possui senha', signup_path %>  <br/>
+       <!-- <%= link_to 'Esqueci a senha', new_password_path%>-->
+       <%= link_to 'Esqueci a senha', aviso_password_path%>
+   </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <!-- Inicio do botao do Firefox -->
+
+      Utilize obrigatoriamente o navegador
+      <a href="http://br.mozdev.org/" target="_blank">Firefox</a>
+      <!-- Fim do botao do Firefox -->
+    </td>
+  </tr>
+
+ </table>
+</div>
+<br/>

@@ -1,0 +1,83 @@
+<div id="interno3">
+<% title "AULASEVENTUAL".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>FALTAS</strong></font><br/>
+ </div>
+
+  <div class="tabs">
+     <% form_for(@aulas_falta) do |f| %>
+      <%= f.error_messages %>
+             <br/>
+             <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+                <tr   bgcolor ="#E6E2D">
+                  <td colspan="8"><b><font size="3"> &nbsp CADASTRAR FALTA &nbsp  </b></td>
+                </tr>
+                <tr>
+                  <td colspan="8"><hr></td>
+                </tr>
+
+               <tr>
+                   <td colspan="8"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro a DATA, TIPO DE FALTA e UNIDADE.</b></font><br/><br/></td>
+               </tr>
+ <tr>
+     <td colspan="8"><b> Periodo da falta do professor(a): </b>&nbsp&nbsp&nbsp&nbsp <%= select_tag :periodop, options_for_select(PERIODO).sort%> <font color="red"><== <b>ATENÇÃO - OBRIGATÓRIO !!</b></td>
+
+ </tr>
+               <tr>
+                   <td colspan="4">&nbsp&nbsp&nbsp&nbsp  <b>Tipo Falta: </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :tipo, (AulasFalta::FALTA).sort %>
+                                         <%= observe_field 'aulas_falta_tipo',
+                                            :with   => :aulas_falta_tipo,
+                                            :url  => { :action => 'data_falta_tipo' },
+                                            :update => "data_falta"%>
+
+                   </td>
+               </tr>
+                <tr>
+                    <td colspan="2">  <div id="data_falta"><br/></div> </td>
+              </tr>
+                <tr>
+                    <td width =" 10%">&nbsp&nbsp&nbsp&nbsp <b>Unidade: </b>&nbsp</td>
+                    <td>              &nbsp&nbsp&nbsp&nbsp &nbsp <%= collection_select :aulas_falta, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+                                       <%= observe_field 'aulas_falta_unidade_id',
+                                                     :with   => :aulas_falta_unidade_id,
+                                                     :url  => { :action => 'nome_falta' },
+                                                     :update => "professor"%>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"> <div id="professor"><br/></div> </td>
+              </tr>
+
+                <tr>
+                    <td colspan="2"><div id="observacao"></div> </td>
+              </tr>
+
+                <tr>
+                   <td align="left" valign="top"><b>Observação:</b></td>
+                   <td align="left" colspan="5">&nbsp&nbsp&nbsp <%= f.text_area(:obs,:cols => "70", :rows => "3") %></td>
+
+               </tr>
+           </table>
+
+             <table width="100%"  align="center">
+                    <tr>
+                       <td width="5px"align="left"><%= f.submit 'Salvar' %></td>
+      <% end %>
+                       <td align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+
+                   </tr>
+                </table>
+
+
+
+
+
+     </div>
+   </div>
+</div>
+<br/>
+
+

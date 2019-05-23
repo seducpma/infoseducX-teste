@@ -1,0 +1,73 @@
+<div id="interno2">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - NOTAS FISCAIS / PEDIDOS</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+             <% form_for(@orc_nota_fiscal) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Empenho</font></legend>
+                    <table width="100%">
+                      <tr>
+                         <td align="left"><b>Empenho:</b></td>
+                         <td align="left"colspan="8"><%= f.collection_select :orc_empenho_id,@empenhos, :id, :codigo, :include_blank => '   '%>
+                                          <%= observe_field 'orc_nota_fiscal_orc_empenho_id',
+                                                     :with   => :orc_nota_fiscal_orc_empenho_id,
+                                                     :url  => { :action => 'dados_empenho' },
+                                                     :update => "empenho"%>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Nº NF:</b></font> &nbsp<%= f.text_field :nf, :size =>10%>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (Entrega) </b> &nbsp<%if !@orc_nota_fiscal.data_nf.nil? %><%=h @orc_nota_fiscal.data_nf.strftime("%d de %b de %Y") %> <%end%> 
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Data (NF) </b>&nbsp<%if !@orc_nota_fiscal.data_prod.nil? %><%=h @orc_nota_fiscal.data_prod.strftime("%d de %b de %Y") %> <%end%>
+                               
+                         </td>
+                       </tr>
+                      <tr>
+                      <tr>
+                        <td align="left" valign="top"> <b><u><%= link_to 'Itens da Nota', "#inline_orc_nota_fiscal_item", :class =>"inline60" %></u></b></td>
+                        <td colspan="7"><div id="dados"> <%= render :partial => 'orc_nota_fiscal_itens'  %></div></td>
+                      </tr>
+                     </tr>
+                        <tr>
+                          <td></td>
+                          <td colspan="8">
+                            <div id="empenho"> </div>
+                          </td>
+                        </tr>
+
+                   </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_pedido_compras_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+
+    <%= render "orc_nota_fiscal_item" %>

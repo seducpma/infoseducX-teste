@@ -1,0 +1,34 @@
+      <font  size="2">
+      <table border="2" width="100%" bgcolor="#F5F5F5">
+         <tr>
+          <td align="left" colspan="9"><b>TOTAL DE OFICIOS: </b>
+              <font color ="red "size="2"><b><%= @contador %></b></font>
+          </td>
+        </tr>
+            <tr>
+            <th width ="1%" align="center"> Nº</th>
+            <th width ="10%">Emissor</th>
+            <th width ="60%">Assunto</th>
+            <th width ="20%">Destinatário</th>
+            <th width ="10%">Data</th>
+            <th width ="10%"  >Obs</th>
+
+          </tr>
+
+            <% for oficio in @oficios %>
+           <tr>
+               <td><b><font color="red" size="3"><center><%=h oficio.codigo %></center></font></b></td>
+               <td><%=h oficio.emissor %></td>
+               <td><%=h oficio.assunto %></td>
+               <td><%=h oficio.destinatario %></td>
+               <td><%=h oficio.data.strftime("%d/%m/%y")%></td>
+               <td><%=h oficio.obs%>  </td>
+
+          </tr>
+            <%end%>
+
+     </table>
+
+
+   </font>
+

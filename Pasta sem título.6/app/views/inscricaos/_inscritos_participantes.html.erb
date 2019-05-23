@@ -1,0 +1,40 @@
+       <h2 align="center">Inscritos por unidade / curso /  período </h2>
+  <%if @search.present?%>
+    <table width="100%" align="center" class="tabelas"  border="1">
+      <tr><th colspan="4">Inscrição</th></tr>
+      <tr><td colspan="4"><font size ="2"> <b>Unidade:</b>
+          <% unidade = session[:unidade].present? ? Unidade.find(session[:unidade]).nome : "Geral" %> <%= " #{unidade}" %>
+            <b>- Período:</b> <%= "#{session[:opcao]}" %>
+     </font></td></tr>
+      <tr><td colspan="4"><font size ="2"> <b>Total de inscritos neste curso nesta unidade neste período:</b> <%= " #{@contador.count}" %></font></td></tr>
+      <tr><td colspan="4"><font size ="2"><b>Total geral de inscritos neste curso:</b><%=" #{@search.inscricaos.count} inscritos em todas unidades" %></font></td></tr>
+    <tr>
+      <th>Matrícula</th>
+      <th>Nome</th>
+      <th>Opção 1</th>
+      <th>Opção 2</th>
+    </tr>
+
+    <% @cursos_inscricaos.each do |inscrito| %>
+      <tr>
+        <td><%= inscrito.participante.matricula%></td>
+        <td><%= inscrito.participante.nome%></td>
+        <% if (inscrito.periodoop1.nil?) %>
+           <td> Não selecionada </td>
+         <%else%>
+            <td><%= "#{Unidade.find(inscrito.opcao1).nome} - #{inscrito.periodoop1}"%></td>
+        <%end%>
+        <% if (inscrito.periodoop2.nil?) %>
+           <td> Não selecionada </td>
+         <%else%>
+            <td><%= "#{Unidade.find(inscrito.opcao2).nome} - #{inscrito.periodoop2}"%></td>
+        <%end%>
+      </tr>
+    <%end%>
+
+      
+
+  </table>
+<%else%>
+  Não há inscrição
+  <%end%>

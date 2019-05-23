@@ -55,7 +55,16 @@ class AulasFaltasController < ApplicationController
 
     def show
         @aulas_falta = AulasFalta.find(params[:id])
-        session[:continua_atribuicao] = params[:id]
+        @conta_falta= AulasFalta.find(:all, :conditions => ['dataI=? AND professor_id =?  ',@aulas_falta.dataI, @aulas_falta.professor_id])
+        if @conta_falta.count >1
+            w1=session[:quant_falta]=@conta_falta.count
+            w=session[:flag]=1
+        else
+            w1=session[:quant_falta]=1
+            w=session[:flag]=0
+        end
+
+ ######       session[:continua_atribuicao] = params[:id]
         w=session[:falta_id0]= params[:id]
         t=0
         respond_to do |format|

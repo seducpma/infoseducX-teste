@@ -1,0 +1,11 @@
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Un.Orçamentaria:</b></font>
+          <%= collection_select :orc_uni_orcamentaria,:descricao, @orc_uni_orcamentaria_descricao, :descricao, :descricao_ano, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca2"  %></b></font>
+               <%= observe_field 'orc_uni_orcamentaria_descricao',
+               :update => "consultaorcamentaria",
+               :url    => { :action => 'orcamentaria_descricao' },
+               :with   => 'orc_uni_orcamentaria_descricao' %>
+     </td>
+   </tr>
+  </table>

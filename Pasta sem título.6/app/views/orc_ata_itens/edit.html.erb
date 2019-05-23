@@ -1,0 +1,81 @@
+<div id="interno3">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ITEM DE ATA</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+
+              <% form_for(@orc_ata_iten) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+
+      <table  width="100%" bgcolor="#F5F5F5" >
+       <tr>
+           <td colspan="4" align="left"><b> ATA DE RESITRO DE PREÇO Nº <%=h @orc_ata[0].codigo %> <br/>
+                                       <%=h @orc_ata[0].modalidade %> Nº  <%=h @orc_ata[0].numero %> <br/>
+                                       PROCESSO ADMINISTRATIVO Nº  <%=h @orc_ata[0].administrativo %> </b><br/>
+          <hr/>
+
+          </td>
+      </tr>
+      <tr>
+        <td align="left"> <b>Data:</b> </td> <td> <%if !@orc_ata[0].data.nil? %><%=h @orc_ata[0].data.strftime("%d de %b de %Y") %> <%end%></td>
+      </tr>
+      <tr>
+        <td align="left" ><b>Objetivo: </b></td> <td> <%=h @orc_ata[0].objetivo %> </td>
+      </tr>
+      <tr>
+        <td align="left" ><b>Interessado: </b></td> <td> <%=h @orc_ata[0].interessado %> </td>
+      </tr>
+      <tr>
+         <td><b>CNPJ/CPF:</b> </td> <td><%= @orc_ata[0].cnpj%>
+                          &nbsp&nbsp <b>IE:</b> <%= @orc_ata[0].ie%>
+                          &nbsp&nbsp  <b>Contato:  </b> <%=  @orc_ata[0].contato%>
+         </td>
+     </tr>
+     <tr>
+         <td valign="top"><b>Item: </b></td>
+         <td>
+             <table width="100%" bgcolor="#DCDCDC"   >
+                     <tr bgcolor="#DCDCDC" >
+                        <td width="5%" align="center"><font size="2"><b>Medida</b></font></td>
+                        <td width="35%"><font size="2"><b>Descricão</b></font></td>
+                        <td align="center"width="20%"><font size="2"><b>Qtd Inicial</b></font></td>
+                        <td width="20%"><font size="2"><b>Saldo Atual</b></font></td>
+                     </tr>
+                    <tr>
+                        <td ><%= f.text_field :medida, :size =>5 %></td>
+                        <td> <%= f.text_field :descricao, :size =>30 %></td>
+                        <td align="center"  bgcolor="#F5F5F5"><%= @orc_ata_iten.quantidade%></td>
+                        <td><%= f.text_field :saldo, :size =>5 %></td>
+                    </tr>
+             </table>
+         </td>
+     </tr>
+
+
+       </table>
+
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+
+
+                         </tr>
+                      </table>
+
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/><br/><br/>
+</div>
+
+
+

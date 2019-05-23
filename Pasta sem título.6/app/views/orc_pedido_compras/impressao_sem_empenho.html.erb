@@ -1,0 +1,84 @@
+<table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+  <tr style="border-color: white">
+    <td style="border-color: white" rowspan="2" align="left"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+    <td style="border-color: white" ><center><font size="4"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+        <center><font size="2"><b><i> Secretaria da Educação</i></b><br/></center>
+    </td>
+  </tr>
+       <tr  style="border-color: white"style="height: 6px" >
+       <td style="border-color: white"><font size ="1"><center> Rua dos Professores, 40 - Americana - SP Fone: 3475-7500 - CEP 13.465-060</font> </td>
+     </tr>
+     <tr style="border-color: white"  style="height: 4px" >
+       <td style="border-color: white" colspan="2"><hr/></td>
+     </tr>
+ </table>
+
+<center><b><u>SERVIÇOS INTERNOS ENTEGUES PARA SUPRIMENTOS </u></b><br/></center>
+
+           <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+
+
+
+
+                   <% @orc_pedido_compra.each do |pedido| %>
+                       <tr style="border-color: white" style="height: 1px" >
+                               <td  width ="1%" align="left"><font size =1"><b>S.I.</b></td>
+                               <td colspan="3"align="center"><font size =1"><b>Objetivo </b></td>
+                               <td colspan="1" align="center"><font size =1"><b>Fornecedor</b></td>
+                               <td width ="5%"  align="center"><font size =1"><b>Data </b></td>
+                         </tr>
+                        <tr style="height: 1px" >
+                          <td valign="top"><font size =1"><%=h pedido.codigo %></font></td>
+                          <td colspan="3"><font size =1"><%=h pedido.objetivo %></font></td>
+                          <td colspan="1"><font size =1"><%=h pedido.fornecedor %></font></td>
+                          <td align="center"><font size =1"><%=h pedido.created_at.strftime("%d/%m/%y") %></font> </td>
+                        </tr>
+                         <% contador = 1%>
+                               
+                                     <tr style="height: 1px"  bgcolor="#DCDCDC">
+                                         <td></td>
+                                         <td  width ="1%" align="center"><font size =1"><b>Item</b></font> </td>
+                                         <td width ="1%" align="center"><font size =1"><b>Quant.</b></font> </td>
+                                         <td width ="10%" align="left"><b> <font size =1">Descrição</b></font> </td>
+                                         <td width ="15%"align="center"><font size =1"><b> R$ Unitario</b></font> </td>
+                                         <td align="center"><b><font size =1"> R$ Total</b></font> </td>
+                                    </tr>
+                               <% @orc_pedido_descricaos = OrcPedidoDescricao.find(:all, :conditions => ["orc_pedido_compra_id =?" , pedido.id]) %>
+                                <% @orc_pedido_descricaos.each do |descricao|%>
+
+                                     <tr  style="height: 1px" bgcolor="#F5F5F5" >
+                                         
+                                         <td   rowspan="2"align="center"><font size =1" ><%= contador%></font> </td>
+                                         <td  align="center"><font size =1"><%= descricao.quantidade%></font> </td>
+                                         <td  align="left"> <font size =1"><%= descricao.descricao%></font> </td>
+                                         <td><font size =1"> R$ <%= descricao.unitario%></font> </td>
+                                         <td align="center"><font size =1"> R$ <%= descricao.total%></font> </td>
+                                          <% contador = contador+1%>
+                                    </tr>
+
+                                 <%end%>
+              <tr style="border-color: white" style="height: 1px" >
+                  <td style="border-color: white"colspan="8"></td>
+              </tr>
+
+            <%end%>
+
+        </table>
+<table style="border-color: white">
+    <tr  style="height: 1px">
+    <td style="border-color: white">
+         &nbsp&nbsp<font size =1"> Digitado em <%= Time.now.strftime("%d de%B de %Y") %></font><br/><br/>
+         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/>
+         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/>
+         &nbsp&nbsp&nbsp&nbsp&nbsp Recebedio em _______/______________/_____  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   por &nbsp&nbsp ____________________________________________<br/>
+         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Nome: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/>
+         <br/><br/><br/><br/><br/><br/>
+    </td>
+  </tr>
+</table>
+<table class ="invisible_to_print ">
+  <tr>
+    <td width ="2%" align="left" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+  </tr>
+</table>

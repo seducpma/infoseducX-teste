@@ -1,0 +1,71 @@
+<table width="92%" align="center" >
+    <% if @inscricao.present?  %>
+        <tr>
+           <td colspan="2">
+               <table>
+                 <tr>
+                   <td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <b><font color="red"><u>ATENÇÃO:</u> PARTICIPANTE JÁ POSSUI INSCRIÇÃO. <br/>
+                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        </font>Clique aqui para verificar</b> ===========></td>
+                   <td><%= button_to('Consutar Inscrições', {:controller =>"inscricaos" ,:action => "consultas1", :id =>@dadosparticipa}, :method => "get",:title => "Consutar Inscrições")%></td>
+                  </tr>
+               </table>
+          </td>
+       </tr>
+    <%end%>
+    <%if @dadosparticipa.email == 'email_nao_cadastrado@favor_cadastar.com.br'%>
+      <tr>
+          <td colspan="2">
+               <table>
+                 <tr>
+                   <td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <font color="blue"><b><u>ATENÇÃO:</u> CADASTRO ESTÁ INCOMPLETO <br/>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       Favor atualizar cadastro</b></font> ===========></td>
+                   <td><%= button_to('Atualizar Cadastro',{:controller =>"participantes" ,:action => "edit", :id =>@dadosparticipa}, :method => "get", :title => "Atualizar Cadastro Participante")%></td>
+
+
+                 </tr>
+               </table>
+       </tr>
+    <%end%>
+    <tr>
+      <td>
+               <% $idparticipante = @dadosparticipa.id %>
+                <b>Nome:</b><%=h @dadosparticipa.nome %>
+              <%if @dadosparticipa.unidade_id.nil?%>
+                 <br/>
+              <%else%>
+                 -  <b>Matricula:</b> <%=h @dadosparticipa.matricula %><br/>
+             <%end%>
+            <b>Unidade:</b><%if @dadosparticipa.unidade_id.nil?%>
+                   Não é funcionário da SEDUC
+                <%else%>
+                 <%=h @dadosparticipa.unidade.nome %>
+             <%end%>
+            <br/>
+            <b>Email:</b>
+              <%if @dadosparticipa.email== 'email_nao_cadastrado@favor_cadastar.com.br'%>
+                 <font color="red"><b> NÃO CONSTA E-MAIL NO CADASTRO -</font> </b>
+                 ===============================>
+                 <u><%= link_to 'FAVOR ATUALIZAR CADASTRO', edit_participante_path(@dadosparticipa) %></u> <br/>
+             <%else%>
+                 <%=h @dadosparticipa.email %><br/>
+             <%end%>
+              <%if @dadosparticipa.obs.nil?%>
+                 <br/>
+              <%else%>
+                <b>Obs:</b> <%if @dadosparticipa.email == 'email_nao_cadastrado@favor_cadastar.com.br'%>
+                          <font color="red" size="3"><b>PARA FAZER INSCRIÇÃO É OBRIGATÓRIO CONSTAR SEU E_MAIL NO CADASTRO <br/>
+                              &nbsp&nbsp&nbsp&nbsp<u>FAVOR ATUALIZAR SEU CADASTRO ANTES DE PROSSEGUIR.</u></b></font>
+                              ====>
+                              <u><%= link_to 'CLIQUE AQUI', edit_participante_path(@dadosparticipa) %></u> </b>
+                      <%else%>
+                         <%=h @dadosparticipa.obs %><br/>
+                      <%end%>
+               <%end%>
+
+        </td>
+    </tr>
+  </table>

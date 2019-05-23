@@ -1,0 +1,23 @@
+<p>
+  <b>Sala:</b>
+  <%=h @sala.sala %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%=h @sala.descricao %>
+</p>
+
+<p>
+  <b>Localizacao:</b>
+  <%=h @sala.localizacao %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%=h @sala.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_sala_path(@sala) %> |
+<%= link_to 'Back', salas_path %>

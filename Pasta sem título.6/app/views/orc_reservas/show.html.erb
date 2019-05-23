@@ -1,0 +1,93 @@
+<div id="interno3">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - RESERVA DE ORÇAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Reserva</font></legend>
+                      <table width="100%" >
+                       <tr>
+                              <td width ="5" align="left"><b>Reserva nº:</b></td>
+                              <td><%=  @orc_reserva.id%> </td>
+                      </tr>
+
+                       <tr>
+                              <td width ="5" align="left"><b>Ficha:</b></td>
+                              <td><%=  @orc_reserva.orc_ficha.ficha %> -<%=  @orc_reserva.orc_ficha.descricao %> </td>
+                      </tr>
+
+                    <tr>
+                        <td align="left" colspan="2"><b>Dotação Orçamentária: </b> <%=h @orc_reserva.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_reserva.orc_ficha.codigo%>
+                        &nbsp&nbsp <b>DR: </b> <%=h  @orc_reserva.orc_ficha.dr%> &nbsp&nbsp <b>Fonte: </b> <%=h   @orc_reserva.orc_ficha.fonte%></td>
+                    </tr>
+                    <tr>
+                        <td><b>Data: </b></td><td> <%if !@orc_reserva.data.nil?%> <%=h @orc_reserva.data.strftime("%d/%m/%y") %>  <%end%></td>
+                    </tr>
+                    <tr>
+                        <td> <b>Valor:</b></td>
+                        <td>
+                             <b>R$</b> <%= @orc_reserva.valor %>
+                      </td>
+                      </tr>
+
+                       <tr>
+                         <td><b>Jutificativa: </b></td>
+                         <td  align="left" colspan="2"><%=  @orc_reserva.motivo%></td>
+                      </tr>
+
+                       <tr>
+                         <td><b>Observação: </b></td>
+                         <td  align="left" colspan="2"><%=  @orc_reserva.obs %></td>
+                      </tr>
+                   </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                            <td width="2%" align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_reservas_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

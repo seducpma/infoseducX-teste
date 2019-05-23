@@ -1,0 +1,67 @@
+
+<div id="interno9">
+    <% title "ENCERRADOS".singularize %>
+    <div class="tabs">
+        <div id="caixa_titulo">
+            <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+        </div>
+        
+        <table width="100%" align="center"  bgcolor="#F5F5F5" >
+            <tr bgcolor ="#E6E2D">
+                <td align="left">
+                    <font  size=4 color="black"> <b> SERVIÇOS ENCERRADOS - MANUTENÇÃO GERAL</b></font>
+                    <hr/>
+                </td>
+            </tr>
+            <tr>
+               <td align="left"><b>Total de Serviços de Manutenção Encerradas:  <%= $conta %></b></td>
+            </tr>
+            <tr>
+              <td>
+                 <table border="1" cellspacing="0" cellpadding="1" width="100%" align="center"  >
+                                <%$conta=0%>
+                                <tr  bgcolor="#DCDCDC">
+                                    <td width ="1%" align="center"><b> Proto- colo</b></td>
+                                    <td width ="4%"><b>Data Solicitação</b></td>
+                                    <td width ="4%"><b>Solicitante</b></td>
+                                    <td width ="4%"><b>Unidade</b></td>
+                                    <td width="18%"><b>Serviço Executado</b></td>
+                                    <td width ="1%"><b>Visualizar</b></td>
+                                </tr>
+                                <% for chamado in @mmanutencaos %>
+
+                                    <tr>
+                                        <td align="center"><%=h chamado.id %></td>
+                                        <td align="center"><%=h chamado.data_sol.strftime("%d/%m/%Y %H:%M")%></td>
+                                        <td><%=h chamado.solicitante %></td>
+                                        <td> <%=h chamado.unidade.nome %></td>
+                                        <td colspan="2">
+                                            <% if  chamado.data_enc.nil?%>
+                                                <%=h chamado.procedimentos %>
+                                            <%else%>
+                                                <%=h chamado.procedimentos %> <%=h chamado.data_enc.strftime("%d/%m/%Y  %H:%M" )%>
+                                            <%end%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td bgcolor="#DCDCDC" width ="1%" align="center" valign="top"><b>Solicitação</b></td>
+                                        <td colspan="3"> <%=h chamado.descricao %></td>
+                                        <td align="left"><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
+
+                                    </tr>
+
+                                    <%$conta=$conta+1%>
+                                <% end %>
+                            </table>
+                         <table align="left" width="100%" align="center"  >
+                              <tr>
+                                <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                            </tr>
+                        </table>
+                </td>
+            </tr>
+        </table>
+  </div>
+</div>
+<br/>

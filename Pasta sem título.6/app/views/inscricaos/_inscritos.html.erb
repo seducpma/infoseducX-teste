@@ -1,0 +1,16 @@
+
+  <table class="tabelas">
+    <tr>
+      <th>Matricula</th>
+      <th>Nome</th>
+      <th>Função</th>
+    </tr>
+
+    <% f.inscricaos.each do |inscrito| %>
+      <tr>
+        <td><%= inscrito.participante.matricula%></td>
+        <td><%= inscrito.participante.nome%></td>
+        <td><%= inscrito.participante.funcao%></td>
+      </tr>
+    <%end%>
+  </table>

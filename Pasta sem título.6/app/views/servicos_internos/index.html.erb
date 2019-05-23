@@ -1,0 +1,76 @@
+<div id="interno6">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CONTROLE DE EMISSÃO DE SERVIÇOS INTERNOS - SEDUC/PMA</strong></font><br/>
+ </div>
+      <div class="tabs">
+
+     <table bgcolor="#F5F5F5"  width="100%">
+
+             <tr bgcolor="#F5F5F5"   width="100%">
+
+                   <td colspan="2">
+                     <table>
+                      <tr>
+                         <td align="right" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                         <td width="2%"align="right" ><%= button_to('Serviços Internos',servicos_internos_path, :method => "get", :title => "Serviços Internos") %></td>
+                         <td width="2%"align="right" ><%= button_to('Novo', new_servicos_interno_path, :title => "Novo")%></td>
+                         <td  width="2%" align="right"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
+                      </tr>
+                    </table>
+                   </td>
+                  </tr>
+
+                <tr>
+                  <td colspan="2">
+                  <font  size="2">
+                <table border="2" width="100%">
+                  <tr>
+                    <th width ="1%" align="center"> Nº</th>
+                    <th width ="10%">Emissor</th>
+                    <th width ="60%">Assunto</th>
+                    <th width ="35%">Destinatário</th>
+                    <th width ="10%">Data</th>
+                    <th width ="15%"  >Obs</th>
+
+                  </tr>
+
+                    <% for servico_interno in @servicos_internos %>
+                   <tr>
+                       <td><b><font color="red" size="3"><center><%=h servico_interno.codigo %></center></font></b></td>
+                       <td><%=h servico_interno.emissor %></td>
+                       <td><%=h servico_interno.assunto %></td>
+                       <td><%=h servico_interno.destinatario %></td>
+                       <td><%=h servico_interno.data.strftime("%d/%m/%y")%></td>
+                       <td><%=h servico_interno.obs%>  </td>
+
+                  </tr>
+                    <%end%>
+                </table>
+              </font>
+
+                  <tr>
+                   <td colspan="2">
+                     <table>
+                      <tr>
+                         <td align="right" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                         <td width="2%"align="right" ><%= button_to('Serviços Internos',servicos_internos_path, :method => "get", :title => "Serviços Internos") %></td>
+                         <td width="2%"align="right" ><%= button_to('Novo', new_servicos_interno_path, :title => "Novo")%></td>
+                         <td  width="2%" align="right"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
+                      </tr>
+                    </table>
+                   </td>
+                  </tr>
+
+              </td>
+             </tr>
+            </table>
+
+<br/>
+   </div>
+</div>
+<br/>
+</div>
+
+

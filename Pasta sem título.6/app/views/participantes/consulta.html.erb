@@ -1,0 +1,53 @@
+ <br/><br/>
+<table class="tabelas1" align="center" width="80%">
+ <tr>
+   <th colspan="2" align="left">
+      <font  size=5 color="black"> <b> INSCRIÇÕES POR PARTICIPANTE </b></font>
+   </th>
+  </tr>
+  <tr>
+    <td>
+      <br/>
+      <div class="botao">
+        <table>
+          <tr>
+            <td>
+              <font size="3"> Participante: <%= collection_select :participante, :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font>
+             </td>
+          </tr>
+        </table>
+     </div>
+    </td>
+   </tr>
+   <tr>
+        <td>
+         <%= observe_field 'participante_participante_id',
+               :update => "listagem",
+               :url    => { :action => 'lista_participante1' },
+               :with   => 'participante_participante_id' %>
+             <div id="listagem"> </div>
+      </td>
+   </tr>
+   <tr>
+     <td>
+
+       <div class="botao">
+        <table width="100%" align="left">
+          <tr>
+            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+       </table>
+      </div>
+
+     </td>
+   </tr>
+
+</table>
+<br>
+
+
+
+
+
+

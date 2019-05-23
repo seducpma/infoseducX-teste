@@ -1,0 +1,20 @@
+<h1>Editing reservar_salas_servicos_sala</h1>
+
+<% form_for(@reservar_salas_servicos_sala) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :servicos_sala %><br />
+    <%= f.text_field :servicos_sala %>
+  </p>
+  <p>
+    <%= f.label :reservar_sala %><br />
+    <%= f.text_field :reservar_sala %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @reservar_salas_servicos_sala %> |
+<%= link_to 'Back', reservar_salas_servicos_salas_path %>

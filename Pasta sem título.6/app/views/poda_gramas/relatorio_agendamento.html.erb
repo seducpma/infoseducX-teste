@@ -1,0 +1,92 @@
+<div id="interno2">
+<% title "CONSULTA_FICHA".singularize %>
+
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>RELATÓRIO DE PODA DE GRAMA</strong></font><br/>
+ </div>
+    <div class="tabs">
+   <% form_remote_tag :url => relatorios_agendamento_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+      <fieldset>
+          <table width="100%" align="center" bgcolor="#DCDCDC"  >
+          <tr>
+            <td>
+               <a href="#" class="filtro_agendamento"><%= radio_button_tag(:type_of, "1") %></a>Solicitações Poda de Grama
+               <a href="#" class="filtro_agenda"><%= radio_button_tag(:type_of, "2") %></a>Agendamento Execuções
+               <a href="#" class="filtro_executado"><%= radio_button_tag(:type_of, "3") %></a>Podas de Grama Executadas
+               <a href="#" class="filtro_executado"><%= radio_button_tag(:type_of, "4") %></a>Podas de Grama Agendadas mas NÃO Executados
+            </td>
+         </tr>
+          <tr>
+            <td align= "right">
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <font size="2"><b class="label_busca3">Unidade:</b></font>&nbsp
+                  <%= select_tag:unidade_id, options_for_select(@unidades.collect { |ff| [ff.nome, ff.id] }.insert(0, '--Selecionar--')) %>
+
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                <font size="2"><b class="label_busca3">Inicial:</b></font>&nbsp
+                <%= datepicker_tag(:poda_grama, :dataI,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               <font size="2"><b class="label_busca3">Final:</b></font>&nbsp
+                <%= datepicker_tag(:poda_grama, :dataF,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+         
+            </td>
+          <td width ="14%" align="right">
+            <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
+          </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               <i><b>* Para consultar relatorio completo com todas as unidades selecione a opção SEDUC</b></i>
+            </td>
+        </tr>
+
+
+       </table>
+
+
+
+   <% end %>
+
+      </fieldset>
+      <fieldset>
+        <table border="1" cellspacing="0" cellpadding="1" width="100%" bgcolor="#F5F5F5">
+          <tr>
+            <td with ="100%">
+                <div id="calendario"></div>
+            </td>
+
+          </tr>
+       </table>
+
+
+      </fieldset>
+
+       <br/>
+       <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <td align="left"><%= button_to 'Nova Consulta', relatorio_falta_mes_aulas_faltas_path, :title => "Nova Consulta" %></td>
+
+    </tr>
+  </table>
+ </div>
+
+
+
+</div>
+
+<br/>
+</div>
+
+
+
+
+
+
+
+
+

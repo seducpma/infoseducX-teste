@@ -1,0 +1,111 @@
+<div id="interno1">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong> ORDEM DE PAGAMENTO - SEDUC/PMA </strong></font><br/>
+ </div>
+ <table width="100%"  bgcolor="white">
+        <tr>
+            <td rowspan="2"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+            <td><center><font size="4"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+                <center><font size="2"><b><i> Secretaria da Educação</i></b><br/></center>
+            </td>
+        </tr>
+
+ </table>
+  <table  width="100%"  bgcolor="white" >
+     <tr>
+       <td colspan="4"><hr/></td>
+     </tr>
+
+      <tr>
+        <td align="left" colspan="2"><b>Data:</b>&nbsp <%if !@orc_empenho.data.nil? %><%=h @orc_empenho.data.strftime("%d de %b de %Y") %> <%end%></td>
+        <td align="left" colspan="3" ><b>ORDEM DE PAGAMENTO </b> <%=h @orc_empenho.codigo %> &nbsp&nbsp&nbsp&nbsp
+               <b>Ficha:</b> <%=h @orc_empenho.orc_pedido_compra.orc_ficha.ficha %> - <%=h @orc_empenho.orc_pedido_compra.orc_ficha.descricao %> &nbsp&nbsp&nbsp&nbsp
+               <b>Serviço Interno: </b> <%=h @orc_empenho.orc_pedido_compra.codigo %>
+        </td>
+      </tr>
+      <tr>
+        <td><b>INTERESSADO</b>: </td>
+        <td colspan="3"> <%=h @orc_empenho.interessado%> &nbsp&nbsp&nbsp&nbsp
+                         <b>CNPJ: </b>: &nbsp <%=h @orc_empenho.cnpj%></td>
+      </tr>
+      <tr>
+        <td><b>MODALIDADE</b>: </td>
+        <td> <%=h @orc_empenho.modalidade%></td>
+        <td colspan="3"><b>VENCIMENTO: </b>: <%if !@orc_empenho.vencimento.nil?%> <%=h @orc_empenho.vencimento.strftime("%d/%m/%y") %>  <%end%> &nbsp&nbsp&nbsp&nbsp
+             <b>VALIDADE: </b>: <%if !@orc_empenho.validade.nil?%> <%=h @orc_empenho.validade.strftime("%d/%m/%y") %><%end%>  &nbsp&nbsp&nbsp&nbsp
+             <b>DESTINAÇÂO RECURSO </b>: <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"><b>UNIDADE ORÇAMENTARIA</b>: &nbsp SECRETARIA DE EDUCAÇÃO &nbsp&nbsp&nbsp&nbsp
+            <b>UNIDADE EXECUTORA </b>: &nbsp <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.descricao %> &nbsp&nbsp&nbsp&nbsp
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"><b>PROJETO ATIVIDADE</b>: <%=h @orc_empenho.orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao %> &nbsp&nbsp&nbsp&nbsp
+            <b>CATEGORIA ECONÔMICA </b>:  <%=h @orc_empenho.cat_economica%> 
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+            <table  border="1" cellspacing="0" cellpadding="1" width="100%">
+                <tr bgcolor= white >
+                  <td align="center"><b>Item</b></td>
+                  <td align="center" width ="10%"><b>Quant.</b></td>
+                  <td align="center" width =" 50%"><b>Descrição</b></td>
+                  <td align="center"><b>Unitário</b></td>
+                  <td align="center"><b>Valor</b></td>
+                </tr>
+                <%contador=1%>
+                <% session[:soma]=0 %>
+                <% total_geral = 0.00 %>
+                <% if !@orc_empenho_itens.nil? %>
+                    <% @orc_empenho_itens.each do |item|%>
+                      <tr>
+                         <td align="center"><%= contador%> </td>
+                         <td align="center"><%= item.quantidade%> </td>
+                         <td align="left"> <%= item.descricao%> </td>
+                         <td align="center"> R$ <%= item.unitario%> </td>
+                         <td align="center"> R$ <%= item.total%> </td>
+                       </tr>
+                      <% contador = contador+1%>
+                      <% total_geral = total_geral+ item.total%>
+                    <%end%>
+               <%end%>
+                       <tr>
+                         <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+                         <td align="center"> R$ <%= total_geral %></td>
+
+                       </tr>
+              </table>
+
+        </td>
+      </tr>
+
+
+
+      
+
+       </table>
+
+
+      <table>
+           <tr>
+              <td  width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              <td  width="2%"align="left"><%= button_to('Serviços', orc_pedido_compras_path, :method => "get",  :title => "Despesas")%></td>
+              <td  align="left" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pedido_path}','impressao', 'scrollbars=yes , toolbar=yes, status=yes');", :title => "Imprimir" %> </b></td>
+
+            </tr>
+      </table>
+
+</font>
+<br/>
+
+</div>
+<br/>
+</div>
+
+
+

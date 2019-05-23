@@ -1,0 +1,118 @@
+
+
+
+
+<br/><br/>
+<div id="conteudo">
+    <table width="90%" align="center"  class="login" >
+        <tr valign="bottom">
+         <td width="10%" align="center" style="height: 100%">
+           <%= link_to image_tag("/stylesheets/Imagens/infoseduc.jpg", :size => "200x100"), informatica_path, :title => "Informática"%>
+         </td>
+         <td width="10%" align="center" style="height: 100%" >
+           <%= link_to image_tag("/stylesheets/Imagens/sisgered.jpg", :size => "200x100"),  "http://sisgered.seducpma.com", :title => "Sistema de Gerenciamento Escolar"%>
+         </td>
+         <td width="10%" align="center" style="height: 100%">
+           <%= link_to image_tag("/stylesheets/Imagens/palestras.jpg", :size => "200x100"), new_inscricao_path, :title => "Inscrições"%>
+         </td>
+         <td rowspan="4" valign="top" align="left">
+             <table width="100%">
+                      <tr>
+                        <td width="10%"></td>
+                        <td width ="80%">
+                            <table >
+             <td colspan="2" align="center" style=" font-size: large"> &nbsp&nbsp <b><u>Cursos Disponíveis</b></u></font><br/>
+                       <font size="0" > &nbsp&nbsp Para inscrever-se acesse o módulo Inscrições On-Line</font><br/>
+             </td>
+    
+                          <% $cont = 1%>
+                            <% @cursos.in_groups_of(1, false) do |row_cursos| %>
+
+                              <tr>
+
+                                <% row_cursos.each do |curso| %>
+                                    <%if curso.existe_vaga %>
+                                  <td id="demo" align="left"><b><%=$cont%>) <%= "#{curso.nome_curto}"%></b> <br/> <font color="blue"> &nbsp&nbsp <%="Total de vagas: #{curso.qtde}"%> <br/> &nbsp&nbsp <%="Vagas disponíveis: #{curso.vagas_disponiveis}"%> <br/> &nbsp&nbsp <%="Data: #{curso.datas}"%></font>
+                                      <br/>
+                                        ---------------------------------------------------------------------------</td>
+                                    <%else%>
+                                      <td><b><%=$cont%>) <%= " #{curso.nome}"%></b>  <br/>
+                                      <font color="blue"> &nbsp&nbsp <%="Local: #{curso.local}"%></font><br/>
+                                      <font color="blue"> &nbsp&nbsp <%="Data: #{curso.datas}"%></font><br/>
+                                      <%if curso.vagas_disponiveis==0%>
+                                        <font color="red"> &nbsp&nbsp <b>TODAS AS <%="#{curso.qtde}"%> VAGAS ESTÃO COMPLETAS.</b></font><br/>
+                                      <%else%>
+                                        <font color="red"> &nbsp&nbsp <b>INSCRIÇÕES ENCERRADAS! </b></font><br/>
+                                      <%end%>
+                                        ---------------------------------------------------------------------------</td>
+                                    <%end%>
+                                 <% $cont = $cont + 1 %>
+                                <%end%>
+                              </tr>
+
+                           <%end%>
+    
+    <!--
+                           <tr>
+                             <td>
+                               <br/><br/>
+
+                               NO MOMENTO NÃO HÁ NENHUM CURSO DISPONÍVEL.
+
+                               <br/><br/><br/><br/>
+                             </td>
+                           </tr>
+    -->
+                          </table>
+                         </td>
+                        </tr>
+            </table>
+
+        </td>
+       </tr>
+   <tr>
+     <td width="10%" align="center"  style="height: 100%">
+       <%= link_to image_tag("/stylesheets/Imagens/professores1.jpg", :size => "200x100"), "http://pontua.seducpma.com", :title => "Pontuação"%>
+     </td>
+     <td align="center">
+       <%= link_to image_tag("/stylesheets/Imagens/demanda.jpg", :size => "200x100"), "http://demanda.seducpma.com", :title => "Sistema de Demanda"%>
+     </td>
+     <td width="10%" align="center">
+       <%= link_to image_tag("/stylesheets/Imagens/manutencao.jpg", :size => "200x100"),  manutencao_path, :title => "Manutenção"%>
+     </td>
+   </tr>
+   <tr>
+     <td align="center"   style="height: 100%">
+       <%#= link_to image_tag("/stylesheets/Imagens/certificados.png", :size => "200x100"), aviso_certificados_path, :title => "Solicitação de Certificados"%>
+        <%= link_to image_tag("/stylesheets/Imagens/unidades.png", :size => "200x100"), unidades_certificados_path, :title => "Solicitação de Certificados"%>
+    </td>
+     <td align="center" >
+       <%= link_to image_tag("/stylesheets/Imagens/downloads.jpg", :size => "200x100"), dowloads_path, :title => "Downloads"%>
+     </td>
+     <td align="center" >
+       <!-- <%= link_to image_tag("/stylesheets/Imagens/seduc.png", :size => "200x100"), "http://americana.gestaopublicadigital.com.br/americana/portal", :title => "Portal SEDUC"%>-->
+       <!-- <%= link_to image_tag("/stylesheets/Imagens/voto1.jpg", :size => "200x100")%>-->
+       <%= link_to image_tag("/stylesheets/Imagens/lista.jpg", :size => "200x100"),"http://www.abreai.com/listao2018"  , :title => "Atribuição"%>
+     </td>
+
+   </tr>
+
+   <tr>
+     <td align="center" valign="top">
+<%= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), "https://processoseletivo.seducpma.com", :title => "Processo Seletivo"%>
+       <%#= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), aviso_1_session_path, :title => "Manutenção Informática"%>
+       <%#= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), informatica_path, :title => "Manutenção Informática"%>
+    </td>
+     <td align="center" valign="top">
+       <%= link_to image_tag("/stylesheets/Imagens/oficio.jpg", :size => "200x100"), oficio_path, :title => "Sistema de Controle de Oficios"%>
+     </td>
+     <td align="center" valign="top">
+
+       <%= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100"),reservar_salas_path, :title => "Reservas de Sala"%>
+
+       <%#= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100"),informatica_path, :title => "Reservas de Sala"%>
+    </td>
+   </tr>
+ </table>
+</div>
+<br/>

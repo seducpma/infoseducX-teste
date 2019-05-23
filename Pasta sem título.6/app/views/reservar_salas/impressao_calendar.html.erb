@@ -1,0 +1,55 @@
+
+<link rel="stylesheet" media="all" href="css/calendar.css" />
+
+<% if @reservar_salas.present? %>
+<table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+  <tr  style="border-color: white">
+    <td width="10%" style="border-color: white" rowspan="2" align="left"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+    <td style="border-color: white" ><center><font size="3"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+        <center><font size="3"><b><i> Secretaria da Educação</i></b><br/></center>
+        
+
+
+
+    </td>
+  </tr>
+ </table>
+  <div id="calendar">
+         <h2><center> <b>AGENDA DE RESERVA DE SALA -  SEDUC </b></center> </h2>
+
+  <hr/>
+  <b><center>  <font size="5"color="red"><u><%= flash[:notice] %></u></font></center></b>
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+    </h2>
+    <% calendar_for @reservar_salas, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <% calendar.day(:day_method => :data_reserva) do |date, articles| %>
+        <%= date.day %>
+        <ul>
+          <% for data in articles %>
+            <li><%= link_to h(data.sala.sala), data%><br/>
+               <% if (data.horario_reservai.nil? or data.horario_reservaf.nil?) %>
+               <%else%>
+              <b><font color ="red">das <%= data.horario_reservai.strftime("%H:%M")%> às <%= data.horario_reservaf.strftime("%H:%M")%> horas</font></b><br/>
+              <b><font color ="black">Solicitante: <%= truncate(data.solicitante, :length => 22,:omission => "...") %> </font></b><br/>
+                --------------------------------
+               <%end%>
+            </li>
+
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<%end%>
+<br/>
+<table align="right"  cellspacing="0" cellpadding="1" width="100%" style="border-color: white" >
+  <tr style="border-color: white">
+    <td  style="border-color: white" align="right" ><%= button_to("Fechar",  home_path, :method => "get", :title => "Voltar")%></td>
+     <td width="2%" style="border-color: white" align="right" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+   </tr>
+</table>
+

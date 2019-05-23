@@ -1,0 +1,64 @@
+<div id="interno8">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>RESERVA DE SALA - SEDUC</strong></font><br/>
+ </div>
+ <table bgcolor="#F5F5F5" width="100%">
+   <tr  bgcolor="#F5F5F5" width="100%">
+     <td>
+       <fieldset><legend><font  size=3><b> AGENDAMENTO</b></font></legend>
+             <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+                <tr>
+                   <td align="left" width =" 10%"><font size=2><b>Local:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.sala.sala%> <%=h $idreserva %> </font></td>
+                </tr>
+                <tr>
+                   <td align="left"><font size=2><b>Data Reserva:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.data_reserva.strftime("%d/%m/%Y")%></font></td>
+                </tr>
+                <tr>
+                   <td align="left"><font size=2><b>Inicio:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.horario_reservai.strftime("%H:%M")%> horas</font></td>
+                </tr>
+                <tr>
+                   <td align="left"><font size=2><b>Final:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.horario_reservaf.strftime("%H:%M")%> horas</font></td>
+                </tr>
+                <tr>
+                   <td align="left"><font size=2><b>Solicitante:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.solicitante%></font></td>
+                </tr>
+                <tr>
+                   <td align="left"><font size=2><b>Utilização:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.utilizacao%></font></td>
+                </tr>
+                <tr>
+                   <td align="left"><font size=2><b>Observação:</b></font></td>
+                   <td align="left"><font size=2><%=h @reservar_sala.obs%></font></td>
+                </tr>
+
+             </table>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+          <td>
+        <table width="100%" align="right">
+           <tr>
+
+              <td  width=" 10%"><%= button_to 'Agenda', reservar_salas_path, {:method => "get"}  %></td>
+              <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+           </tr>
+        </table>
+
+          </td>
+      </tr>
+     </table>
+
+
+</div>
+<br/>
+</div>
+
+

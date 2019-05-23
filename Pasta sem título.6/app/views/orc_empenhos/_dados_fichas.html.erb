@@ -1,0 +1,18 @@
+<%if !@dados_ficha[0].nil?%>
+     <table >
+                                         <tr>
+                                            <td align="left" colspan="7">
+                                                   <b>Unidade Orcamentária: </b>
+                                                  &nbsp Secretaria de Educação
+                                                  &nbsp&nbsp&nbsp <b>Unidade Executora: </b> <%  @orc_uni_orcamentaria = OrcUniOrcamentaria.find(:all, :conditions => ['id =?', @dados_ficha[0].orc_uni_orcamentaria_id]  )   %>
+                                                  &nbsp <%=h  @orc_uni_orcamentaria[0].orc_uni_despesa.descricao %>
+                                            </td>
+                                       </tr>
+
+        <tr>
+          <td align="left"><b>Dotação Orçamentária: </b> <%=h @dados_ficha[0].orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @dados_ficha[0].codigo%>
+            &nbsp&nbsp <b>DR: </b> <%=h  @dados_ficha[0].dr%> &nbsp&nbsp <b>Fonte: </b> <%=h  @dados_ficha[0].fonte%></td>
+         </tr>
+
+    </table>
+<%end%>

@@ -1,0 +1,50 @@
+<link rel="stylesheet" media="all" href="css/calendar.css" />
+
+<% if @poda_grama.present? %>
+  <div id="calendar">
+         <h2><center> <b>AGENDA DE SOLICITAÇÕES DE PODA DE GRAMA - SEDUC  </b></center> </h2>
+         <h3><center> <b>(Quando foi realizado a solicitação)</b></center> </h3><br/>
+
+  <hr/>
+  <b><center>  <font size="5"color="red"><u><%= flash[:notice] %></u></font></center></b>
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+    </h2>
+    <% calendar_for @poda_grama, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <% calendar.day(:day_method => :created_at) do |date, articles| %>
+        <%= date.day %>
+        <ul>
+          <% for data in articles %>
+            <li><% if current_user.has_role?('admin')  or current_user.has_role?('terceiro')   %>
+                    <%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
+                              --------------------------------
+                <%else%>
+                    <%= data.unidade.nome%><br/>
+                              --------------------------------
+
+                <%end%>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<%end%>
+<br/>
+<table align="right">
+  <tr>
+    <td align="right" ><%= button_to("Voltar",  home_path, :method => "get", :title => "Voltar")%></td>
+    <td width="2%" align="right"><%= button_to("Relatório", relatorio_agendamento_poda_gramas_path,  :title => "Relatório") %></td>
+    <td width="2%" ><%= button_to("Impressão",  impressao_calendar_agendamento_path, :target => '_blank', :title => "Imprimir")%></td>
+
+
+   </tr>
+</table>
+
+
+
+
+

@@ -1,0 +1,106 @@
+<div id="interno3">
+<% title "AULASEVENTUAL".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>FALTAS</strong></font><br/>
+ </div>
+
+
+
+
+ <table width="100%">
+   <tr  bgcolor ="#E6E2D""  width="100%">
+     <td>
+       <fieldset><legend><font  size=3><b> FALTA</b></font></legend>
+         <table width="100%">
+           <tr bgcolor="#F5F5F5"  width="100%">
+
+             <td valign="top">
+               <table  bgcolor="#DCDCDC" width="100%">
+                 <tr bgcolor="#F5F5F5">
+                  <td align="left" width="10%"><b> Unidade:</b></td>
+                  <td align="left" width="40%"><%=h@aulas_falta.unidade.tipo.nome%> <%=h@aulas_falta.unidade.nome%></td>
+                   <td align="left" width="16%"><b>Ano Letivo:</b></td>
+                   <td align="left"> <%=h @aulas_falta.ano_letivo %> </td>
+                </tr>
+
+                <%  if @aulas_falta.funcionario_id.nil? %>
+                   <tr bgcolor="#F5F5F5" >
+                       <td align="left"><b>Professor:</b></td>
+                       <td colspan="3"align="left"> <%=h @aulas_falta.professor.nome %> </td>
+                   </tr>
+                    <tr bgcolor="#F5F5F5" >
+                         <td align="left"><b>Setor:</b></td>
+                        <td align="left">  <%=h @aulas_falta.setor %></td>
+                        <td align="left"><b>Função:</b></td>
+                        <td align="left"> <%=h @aulas_falta.funcao %></td>
+                     </tr>
+                    <tr bgcolor="#F5F5F5" >
+                       <td align="left"><b>Classe:</b></td>
+                       <td align="left">  <%=h @aulas_falta.classe %></td>
+                       <td align="left"><b>Período:</b></td>
+                       <td align="left"> <%=h @aulas_falta.periodo %></td>
+                     </tr>
+                    <tr bgcolor="#F5F5F5" >
+                        <td align="left" ><b>Falta:</b></td>
+                        <td align="left" colspan="3">  <%=h @aulas_falta.tipo %>
+                       
+                       <%if session[:flag]==1 %> &nbsp - &nbsp
+                                    <%= session[:quant_falta]%> dias &nbsp&nbsp
+                                       <b>de</b> &nbsp<%=h @aulas_falta.dataI.strftime("%d/%b/%Y") %> &nbsp
+                                          <b>à</b> &nbsp<%=h @aulas_falta.dataF.strftime("%d/%b/%Y") %> &nbsp</td>
+                         <%session[:flag]=0%>
+                       <%else%>
+                             &nbsp&nbsp 1 dia &nbsp - &nbsp
+                               <%=h @aulas_falta.data.strftime("%d/%b/%Y") %> &nbsp
+
+                       <%end%>
+                     </tr>
+                   <%else%>
+                     <tr bgcolor="#F5F5F5" >
+                        <td align="left"><b>Funcionario:</b></td>
+                        <td colspan="3"align="left"> <%=h @aulas_falta.funcionario.nome %> </td>
+                     </tr>
+                        <tr bgcolor="#F5F5F5" >
+                             <td align="left"><b>Setor:</b></td>
+                            <td align="left">  <%=h @aulas_falta.setor %></td>
+                            <td align="left"><b>Função:</b></td>
+                            <td align="left"> <%=h @aulas_falta.funcao %></td>
+                         </tr>
+
+                   <%end%>
+
+
+                 <tr bgcolor="#F5F5F5" >
+                   <td align="left"><b>OBS:</b></td>
+                   <td colspan="3"align="left"><%=h @aulas_falta.obs %></td>
+                 </tr>
+               </table>
+           </td>
+        </tr>
+      </table>
+     </fieldset>
+   </td>
+  </tr>
+ </table>
+             <table width="100%"  align="center">
+                    <tr>
+                       <td width="5px" align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+                       <td width="5px" align="left"><%= button_to 'Agenda Faltas', aulas_faltas_path, {:method => "get"}  %></td>
+                       <td align="left" ><%= button_to "Relatório / Mês", relatorio_falta_mes_aulas_faltas_path %></td>
+                       <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('diretor_unidade')or current_user.has_role?('estagiario SEDUC'))%>
+                              <td align="right"><%= button_to "Substituição 1 falta", new_aulas_eventual_path %></td>
+                       <%end%>
+                   </tr>
+                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC'))%>
+                       <tr>
+                           <td colspan="4" align="right"><font color="red"><b><u>ATENÇÃO:</u> Quando tratar-se de mais de 1 dia de Substituição utilizar opção CADASTRAR/SUBSTITUIÇÃO.</b></font>
+                           </td>
+                       </tr>
+                   <%end%>
+                </table>
+</div>
+<br/>
+
+
+

@@ -1,0 +1,22 @@
+
+    <%  if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+       <% @unidades= Unidade.find(:all, :order => 'nome ASC') %>
+     <%  else %>
+        <% @unidades= Unidade.find(:all , :conditions => ['id = ?', current_user.unidade_id]) %>
+      <% end%>
+
+
+
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"><font size="2"> <b class="label_busca2">Unidade:
+        <%= collection_select :unidade,:id, @unidades, :id, :nome, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca2"  %></b></font>
+          <%= observe_field 'unidade_id',
+               :update => "professores",
+               :url    => { :action => 'lista_professor_unidade' },
+               :with   => 'unidade_id' %>
+         
+     </td>
+   </tr>
+  </table>
+

@@ -1,0 +1,11 @@
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"><font size="2"> <b class="label_busca">Período:</b></font>
+        <%= collection_select :estagiario, :periodo_est, @periodos, :periodo_est, :periodo_est , :include_blank => ' -- Selecionar -- ',:class=> "txt_busca1"  %>
+          <%= observe_field 'estagiario_periodo_est',
+               :update => "dados",
+               :url    => { :action => 'lista_consulta_periodo_est' },
+               :with   => 'estagiario_periodo_est' %>
+     </td>
+   </tr>
+  </table>

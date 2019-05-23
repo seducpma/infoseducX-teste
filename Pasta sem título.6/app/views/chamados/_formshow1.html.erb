@@ -1,0 +1,37 @@
+   <fieldset><legend><font  size=4> Solicitação</font></legend>
+     <table>
+       <tr>
+             <td align="left"><b>Nº Ordem:</b></td>
+             <td align="left"><%=h @chamados[0].id %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Data Solicitação:</b></td>
+         <td align="left"><%=h @chamados[0].data_sol.strftime("%d de %B de %Y") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Horas Solicitação:</b></td>
+         <td align="left"><%=h @chamados[0].data_sol.strftime("%H:%M horas") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Solicitante</b></td>
+         <td align="left"><%=h @chamados[0].solicitante %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Unidade:</b></td>
+         <td align="left"> <%=h @chamados[0].nome %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Forma Solicitação:</b></td>
+         <td align="left"><%=h @chamados[0].forma_sol %></td>
+       </tr>
+       <tr>
+         <td align="left" valign="top"><b>Descrição Problema:</b></td>
+         <td align="left"><%=h @chamados[0].problema %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Observação:</b></td>
+         <td align="left"><%=h @chamados[0].obs%></td>
+       </tr>
+     </table>
+      <% session[:formshow] =0 %>
+    </fieldset>

@@ -1,0 +1,53 @@
+
+ <div class="tabs">
+ <br/>
+ 
+ <%if !@atas.empty?%>
+
+    <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+            <td align="center" width ="5%"><b>NºAta </b></td>
+            <td align="center"><b>Modalidade</b></td>
+            <td align="center"><b>Processo</b></td>
+            <td align="center"><b>Data</b></td>
+            <td align="center"><b>Objetivo</b></td>
+            <td align="center" width ="30%"><b>Interessado</b></td>
+            <td align="center" width ="8%"><b>Valor</b></td>
+
+          </tr>
+          <% @atas.each  do |ata| %>
+             <tr  bgcolor="#F5F5F5">
+              <td align="center"><%=h ata.codigo %></td>
+              <td align="center"><%=h ata.modalidade %> Nº <%=h ata.numero %></td>
+              <td align="center"><%=h ata.administrativo %> </td>
+              <td align="center"><%if !ata.data.nil? %><%=h ata.data.strftime("%d/%m/%Y") %> <%end%> </td>
+              <td align="center"><%=h ata.objetivo %> </td>
+              <td align="center"><%=h ata.interessado %> </td>
+              <td align="center">R$ <%=h ata.valor_total %></td>
+              
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <table>
+                        <tr>
+                              <td align="right"><%= button_to 'Editar', {:action => "edit", :id =>ata}, :method => "get", :title => "Editar"%></td>
+                              <td  width ="5%" align="center"><%= button_to 'Visualizar',{:action => "show", :id =>ata}, :method => "get", :title => "Visualizar"%> </td>
+                              <td width ="5%"><%= button_to 'Excluir', ata, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>                            
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+          <% end %>
+    </table>
+   <%else%>
+     <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+          <td align="center" colspan="6"><b>NÃO EXISTE LANÇAMENTOS</b></td>
+
+            </tr>
+
+    </table>
+   <%end%>
+</div>
+    <br/>

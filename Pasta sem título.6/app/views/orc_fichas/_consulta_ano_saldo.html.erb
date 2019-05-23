@@ -1,0 +1,13 @@
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Ano:</b></font>
+       <%= collection_select :orc_ficha,:ano, @orc_ficha_ano, :ano, :ano, :include_blank => ' -- Selecionar -- '  %></font>
+               <%= observe_field 'orc_ficha_ano',
+               :update => "consultaficha",
+               :url    => { :action => 'ficha_ano' },
+               :with   => 'orc_ficha_ano' %>
+
+
+     </td>
+   </tr>
+  </table>

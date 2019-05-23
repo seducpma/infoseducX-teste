@@ -1,0 +1,61 @@
+
+development:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: infoseduc_development
+  pool: 5
+  username: root
+  password: 1234
+  socket: /var/run/mysqld/mysqld.sock
+
+test:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: infoseduc_test
+  pool: 5
+  username: root
+  password: 1234
+  socket: /var/run/mysqld/mysqld.sock
+
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: infoseduc_production
+  pool: 5
+  username: root
+  password: 16#gjl@
+  socket: /var/run/mysqld/mysqld.sock
+
+### ACESSO BASE SISGERED basesisgered_  ###
+
+basesisgered_development:
+  adapter: mysql
+  encoding: utf8
+  database: sisgered_development
+  pool: 5
+  username: root
+  password: 1234
+  socket: /var/run/mysqld/mysqld.sock
+
+basesisgered_test:
+  adapter: mysql
+  encoding: utf8
+  database: sisgered_test
+  pool: 5
+  username: root
+  password: 1234
+  socket: /var/run/mysqld/mysqld.sock
+
+basesisgered_production:
+  adapter: mysql
+  encoding: utf8
+  database: sisgered_production
+  pool: 5
+  username: root
+  password: 16#gjl@
+  socket: /var/run/mysqld/mysqld.sock
+

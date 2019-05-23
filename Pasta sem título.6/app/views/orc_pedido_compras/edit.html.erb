@@ -1,0 +1,102 @@
+<div id="interno1">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ORÇAMENTO SEDUC/PMA - PEDIDO COMPRA</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+
+              <% form_for(@orc_pedido_compra) do |f| %>
+              <%= f.error_messages %>
+              <font  size="2">
+               <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="2">
+                  <fieldset><legend><font  size=3> Serviço Interno</font></legend>
+                    <table width="100%" >
+                        <tr>
+                         <td colspan="5" align="right">
+                             <%if @orc_pedido_compra.cancelado == 1 %>
+                                 <%= check_box_tag(:cancela, "1", :value => true, :confirm => 'Confirma cancelamento?') %> <u></u><b> Cancelar S.I.</b></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             <%else%>
+                                 <%= check_box_tag(:cancela, "1") %> <u><b> Cancelar S.I.</b></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <%end%>
+
+                         </td>
+
+                       </tr>
+                      <tr>
+                         <td colspan="6"align="left"><b>Destino S.I.: &nbsp  <%= session[:destino] %>&nbsp&nbsp&nbsp</b>
+                         &nbsp&nbsp&nbsp <b>Número:</b> &nbsp <%= f.text_field :codigo, :size =>10%>
+                         &nbsp&nbsp&nbsp <b>Objetivo:</b> &nbsp <%= f.text_field :objetivo, :size =>55 %></td>
+                      </tr>
+                      <tr>
+                         <td width ="9%" align="left"><b>Fornecedor:</b></font></td>
+                         <td colspan="3" align="left"><%= f.text_field :fornecedor, :size =>60%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                       <b>CNJPJ:</b>&nbsp&nbsp <%= f.text_field :cnpj, :size =>12 %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                       <% if !@orc_pedido_compra.ata_id.nil?%>
+                                                            <b>ATA:</b>&nbsp&nbsp<% @ata = OrcAta.find(:all, :conditions=> ['id=15',@orc_pedido_compra.ata_id ])%> <%=@ata[0].codigo   %>
+                         </td>                        <%end%>
+                      </tr>
+                      <tr>
+                          <td align="left" valign="top"><b>Ficha:</b></td>
+                         <td align="left" valign="top"><%= f.collection_select :orc_ficha_id, @fichas, :id, :ficha, :include_blank => ' '  %>
+                                          <%= observe_field 'orc_pedido_compra_orc_ficha_id',
+                                                     :with   => :orc_pedido_compra_orc_ficha_id,
+                                                     :url  => { :action => 'dados_ficha' },
+                                                     :update => "dadosFicha"%>
+                         </td>
+                         <td colspan="2"><div id="dadosFicha"></div> </td>
+                      </tr>
+                      <tr>
+                        <td align="left" valign="top">
+                              <%if  session[:descricao] == 0%>
+                            <%t=0%>
+                                   <b><u><%= link_to 'Descrição', "#inline_orc_pedido_descricao", :class =>"inline60" %></u></b>
+                              <%else%>
+                                   <b>Descrição</b> 
+                              <%end%>
+
+
+                        </td>
+                        <td colspan="3"><div id="dados"> <%= render :partial => 'orc_pedido_descricaos'  %></div></td>
+                      </tr>
+
+                      <tr>
+                         <td align="left"><b>Justificativa:</b></td>
+                         <td colspan="5" align="left"><%= f.text_field :justificativa, :size =>110 %></td>
+                       </tr>
+                       <tr>
+                            <td align="left" valign="top"><b>Observação:</b></td>
+                           <td colspan="5" align="left"><%= f.text_area(:obs, :cols =>109, :rows => "2") %></td>
+                       </tr>
+                   </table>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                           <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+              <% end %>
+                            <td width="2%" align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td  align="left" ><%= button_to('Consultar', consulta_orc_pedido_compras_path, :method => "get",  :title => "Pedidos Compras")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+    <%= render "orc_pedido_descricao" %>

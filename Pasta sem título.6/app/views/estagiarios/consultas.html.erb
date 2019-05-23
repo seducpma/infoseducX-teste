@@ -1,0 +1,49 @@
+<div id="interno6">
+<% title "UNIDADES", :id =>"unidades" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>CONSULTA ESTAGIÁRIO</strong></font><br/>
+   </div>
+  <div class="tabs">
+    <% form_remote_tag :url => consulta_estagiario_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
+    <table width="100%" align="center" bgcolor="#DCDCDC" >
+          <tr>
+            <td>
+              <a href="#" class="filtro_nomeE"><%= radio_button_tag(:type_of, "1") %></a>Nome
+              <a href="#" class="filtro_periodoE"><%= radio_button_tag(:type_of, "2") %></a>Período
+              <a href="#" class="filtro_tipoE"><%= radio_button_tag(:type_of, "3") %></a>Tipo
+              <a href="#" class="filtro_unidadeE"><%= radio_button_tag(:type_of, "4") %></a>Unidade
+             <% if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+                 <a href="#" class="sem_filtroE"><%= radio_button_tag(:type_of, "5") %></a>Desligados
+                 <a href="#" class="sem_filtroE"><%= radio_button_tag(:type_of, "6") %></a>Ativos
+             <%end%>
+            </td>
+         </tr>
+         <tr>
+           <td><div class="consultaN" style="display:none"> <%= render "consultaN" %> </div>
+              <div class="consultaP" style="display:none"> <%= render "consultaP" %> </div>
+              <div class="consultaT" style="display:none"> <%= render "consultaT" %> </div>
+              <div class="consultaU" style="display:none"> <%= render "consultaU" %> </div>
+              <div class="consultaS" style="display:none"> <%= render "consultaS" %> </div>
+
+           </td>
+               
+        </tr>
+        </table>
+    <% end %>
+    <br/>
+    <hr/>
+    <div id="dados"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+
+  <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <td align="left"><%= button_to 'Nova Consulta', consultas_estagiarios_path, :title => "Nova Consulta" %></td>
+    </tr>
+  </table>
+ </div>
+ </div>
+  <br/>
+</div>
+

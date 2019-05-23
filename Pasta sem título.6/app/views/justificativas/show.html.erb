@@ -1,0 +1,83 @@
+<div id="interno8">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>JUSTIFICATIVA PONTO ELETRÔNICO - ESTAGIÁRIOS</strong></font><br/>
+ </div>
+      <div class="tabs">
+      <font  size="2">
+          <fieldset>
+        <table width="100%" bgcolor ="#F5F5F5">
+          <tr>
+            <td width="32%"align="left"><b>Estagiário:</b></td>
+          <td align="left"><%=h @justificativa.estagiario.nome %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Referente ao dia:</b></td>
+            <td align="left"><%=h @justificativa.dia.strftime("%d/%m/%Y") %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Justificativa:</b></td>
+            <td align="left"><%=h @justificativa.justificativa %></td>
+          </tr>
+          <tr>
+             <%if @justificativa.saida.present? && @justificativa.entrada.present?%>
+            <td align="left"><b>Dia letivo:</b></td><td align="left"> <%=h@justificativa.dia.strftime("%d/%m/%Y")%></td>
+                <%else%>
+                  <%if @justificativa.saida.present? && !@justificativa.entrada.present?%>
+                    <td align="left"><b>Saída:</b></td><td align="left"> às <%=h@justificativa.hora_saida.strftime("%H:%M")%> horas</td>
+                  <%else%>
+                    <%if @justificativa.saida.present? && !@justificativa.entrada.present?%>
+                      <td align="left"><b>Saída:</b></td><td align="left"> às  <%=h@justificativa.hora_saida.strftime("%H:%M")%> horas</td>
+                    <%else%>
+                      <%if !@justificativa.saida.present? && @justificativa.entrada.present?%>
+                        <td align="left"><b>Entrada:</b></td><td align="left"> às <%=h@justificativa.hora_entrada.strftime("%H:%M/")%> horas</td>
+                      <%end%>
+                    <%end%>
+                  <%end%>
+                <%end%>
+            </tr>
+        <tr>
+          <td align="left"> <b>Feriado:</b></td>
+        <%if @justificativa.feriado.present?%>
+          <td align="left"><b>SIM</b></td>
+        <%else%>
+          <td align="left"><b>NÃO</b>
+        <%end%>
+        </tr>
+        <tr>
+          <td align="left"> <b>Recesso:</b></td>
+        <%if @justificativa.recesso.present?%>
+          <td align="left"><b>SIM</b></td>
+        <%else%>
+          <td align="left"><b>NÃO</b>
+        <%end%>
+        </tr>
+        <tr>
+          <td align="left"> <b>Fim de Semana:</b></td>
+        <%if @justificativa.fimsemana.present?%>
+          <td align="left"><b>SIM</b></td>
+        <%else%>
+          <td align="left"><b>NÃO</b>
+        <%end%>
+        </tr>
+      </table>
+    </fieldset>  
+
+       <table>
+        <tr>
+             <td width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+             <td width="2%" align="left" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+             <td width="2%" align="right" ><%= button_to("Ponto", pontos_path, :method => "get", :title => "Ponto") %></td>
+             <td  align="left" ><%= button_to 'Excluir', @ponto, :confirm => 'Confirma?', :method => :delete, :title => "Excluir" %></a></td>
+
+        </tr>
+      </table>
+
+
+      </font>
+
+  </div>
+</div>
+<br/>
+</div>

@@ -1,0 +1,147 @@
+<div id="interno4">
+<% title "ALUNOS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SEDUC/PMA - ORDEM DE PAGAMENTO</strong></font><br/>
+ </div>
+      <div class="tabs">
+          <br/>
+              <font  size="2">
+                <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+               <tr>
+                 <td colspan="4">
+                  <fieldset><legend><font  size=4>Ordem de Pagamento</font></legend>
+                    <%if !@orc_pagamento. orc_empenho_id.nil?%>
+                     <table width="100%"  >
+                        <tr  bgcolor="#F5F5F5">
+                          <td width ="25%" align="left"><b>Número: </b> &nbsp&nbsp&nbsp   <%=h @orc_pagamento.orc_empenho.codigo %></td>
+                          <td width ="25%" align="leftr"><b>Processo: </b> &nbsp&nbsp&nbsp <%=h @orc_pagamento.orc_empenho.processo %></td>
+                          <td width ="25%" align="left"><b>S.I.: </b> &nbsp&nbsp&nbsp  <%if !@orc_pagamento.orc_empenho.orc_pedido_compra_id.nil?%>
+                                                                             <%=h @orc_pagamento.orc_empenho.orc_pedido_compra.codigo %>
+                                                                           <%else%>
+                                                                                NÃO POSSUI SI
+                                                                            <%end%></td>
+
+                        </tr>
+                        <tr>
+                          <td colspan="3" align="left"><b>Ficha: </b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%=h @orc_pagamento.orc_empenho.ficha %>
+                                                                     - <%=h @ficha[0].descricao %> </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="left"><b>Fornecedor: </b> &nbsp <%=h @orc_pagamento.orc_empenho.interessado%></td>
+                          <td align="left"><b>Vencimento: </b> &nbsp  <%if !@orc_pagamento.orc_empenho.vencimento.nil?%> <%=h @orc_pagamento.orc_empenho.vencimento.strftime("%d/%m/%y") %>  <%end%></td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="3"align="left" ><b>Unidade Orcamentária: </b>&nbsp Secretaria de Educação
+                                               &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Unidade Executora: </b>
+                                               &nbsp <%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                          </td>
+                         </tr>
+                         <tr>
+                           <td colspan="3"align="left" > <b>Projeto: </b> <%=h @ficha[0].orc_uni_orcamentaria.descricao %>
+                                               &nbsp&nbsp&nbsp&nbsp <b>Destinação:</b>
+                                               &nbsp&nbsp <%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                           </td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td  colspan="2">
+                            <table   width="100%">
+                                 <tr>
+                                   <td width="5%"><b>Data: </b> </td> <td  width="43%"> <%if !@orc_pagamento.data_pg.nil?%> <%=h @orc_pagamento.data_pg.strftime("%d/%m/%y") %>  <%end%></td>
+                                   <td width="5%"> <b>Valor: </b></td> <td>  <b> R$ </b><%=h @orc_pagamento.valor_pg %></td>
+                                </tr>
+
+                            </table>
+
+                          </td>
+                        </tr>
+
+                     </table>
+                   <%else%>
+                     <table width="100%"  >
+                        <tr  bgcolor="#F5F5F5">
+                          <td width ="25%" align="left"><b>Número: </b> &nbsp&nbsp&nbsp Não possui EMPENHO </td>
+                          <td width ="25%" align="leftr"><b>Processo: </b> &nbsp&nbsp&nbsp Não possui EMPENHO </td>
+                          <td width ="25%" align="left"><b>S.I.: </b> &nbsp&nbsp&nbsp  Não possui EMPENHO </td>
+
+                        </tr>
+                        <tr>
+                          <td colspan="3" align="left"><b>Ficha: </b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%=h @orc_pagamento.ficha %>
+                                                                     - <%=h @ficha[0].descricao %> </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="left"><b>Fornecedor: </b> &nbsp <%=h @orc_pagamento.interessado%></td>
+
+                        </tr>
+
+                        <tr>
+                          <td colspan="3"align="left" ><b>Unidade Orcamentária: </b>&nbsp Secretaria de Educação
+                                               &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Unidade Executora: </b>
+                                               &nbsp <%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                          </td>
+                         </tr>
+                         <tr>
+                           <td colspan="3"align="left" > <b>Projeto: </b> <%=h @ficha[0].orc_uni_orcamentaria.descricao %>
+                                               &nbsp&nbsp&nbsp&nbsp <b>Destinação:</b>
+                                               &nbsp&nbsp <%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+                           </td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td  colspan="2">
+                            <table   width="100%">
+                                 <tr>
+                                   <td width="5%"><b>Data: </b> </td> <td  width="43%"> <%if !@orc_pagamento.data_pg.nil?%> <%=h @orc_pagamento.data_pg.strftime("%d/%m/%y") %>  <%end%></td>
+                                   <td width="5%"> <b>Valor: </b></td> <td>  <b> R$ </b><%=h @orc_pagamento.valor_pg %></td>
+                                </tr>
+
+                            </table>
+
+                          </td>
+                        </tr>
+
+                     </table>
+                   <%end%>
+                  </fieldset>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+
+                      <table width="40%" align="left">
+                         <tr>
+                            <td width="2%" align="left"><%= button_to('Voltar', home_path, :method => "get", :title => "Fechar")%></td>
+                            <td width="2%" align="left" ><%= button_to('Consultar', consulta_orc_pagamentos_path, :method => "get",  :title => "Pedidos Compras")%></td>
+                            <td  align="left" ><%= button_to('Cadastrar', new_orc_pagamento_path, :method => "get",  :title => "Ordem Pagamento")%></td>
+
+                         </tr>
+                      </table>
+                 </td>
+                </tr>
+               </table>
+               </font>
+           <br/>
+      </div>
+     <br/>
+</div>
+<br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -73,7 +73,43 @@ class AulasEventualsController < ApplicationController
     end
 
     def create
-        if session[:create]==1
+        if session[:create]==0
+           i=0
+           w= session[:quant_falta]
+           t=0
+           while i < session[:quant_falta] do
+
+                     @aulas_eventual = AulasEventual.new(params[:aulas_eventual])
+                     @aulas_eventual.save
+                     eventual_id=@aulas_eventual.id
+                  unidade=@aulas_eventual.unidade_id=session[:unidade_id]
+
+                     @aulas_eventual.data=session[:aulas_eventual_data].to_date
+                     @aulas_eventual.dataI=@aulas_eventual.data
+                     @aulas_eventual.dataF=@aulas_eventual.data
+                     ideventual= @aulas_eventual.id
+                     idfalta = session[:falta_id0]
+                     t=0
+                     @falta= AulasFalta.find(idfalta )
+                     @falta.substituicao = ideventual
+                     @falta.save
+t=0
+                     session[:data]=0
+                    @aulas_eventual.ano_letivo = Time.now.year
+                    @aulas_eventual.aulas_falta_id= session[:falta_id]
+                    #@aulas_eventual.classe = session[:classe_classe]
+                    @aulas_eventual.classe_id = session[:classe_id]
+                    @aulas_eventual.professor_id=@falta.professor_id
+                    @aulas_eventual.save
+             session[:create]=0
+i=i+1
+           end
+
+
+
+        else
+
+
                    i=0
                    if !params[:aulas_eventual][:dataI].nil?
                        a1=session[:dataI]=params[:aulas_eventual][:dataI].to_date
@@ -111,30 +147,7 @@ class AulasEventualsController < ApplicationController
                     i=i+1
                     end
               session[:create]=0
-        else
-              @aulas_eventual = AulasEventual.new(params[:aulas_eventual])
-              @aulas_eventual.save
-              eventual_id=@aulas_eventual.id
-              unidade=@aulas_eventual.unidade_id=session[:unidade_id]
 
-                     @aulas_eventual.data=session[:aulas_eventual_data].to_date
-                     @aulas_eventual.dataI=@aulas_eventua.data
-                     @aulas_eventual.dataF=@aulas_eventua.data
-                     ideventual= @aulas_eventual.id
-                     idfalta = session[:falta_id0]
-                     t=0
-                     @falta= AulasFalta.find(idfalta )
-                     @falta.substituicao = ideventual
-                     @falta.save
-
-                     session[:data]=0
-                    @aulas_eventual.ano_letivo = Time.now.year
-                    @aulas_eventual.aulas_falta_id= session[:falta_id]
-                    #@aulas_eventual.classe = session[:classe_classe]
-                    @aulas_eventual.classe_id = session[:classe_id]
-                    @aulas_eventual.professor_id=@falta.professor_id
-                    @aulas_eventual.save
-             session[:create]=0
 
         end
  

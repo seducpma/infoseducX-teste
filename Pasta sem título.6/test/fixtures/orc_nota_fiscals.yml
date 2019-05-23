@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  orc_empenho: 
+  valor: 9.99
+  data: 2018-09-19
+  obs: MyString
+
+two:
+  orc_empenho: 
+  valor: 9.99
+  data: 2018-09-19
+  obs: MyString

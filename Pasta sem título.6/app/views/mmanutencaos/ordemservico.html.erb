@@ -1,0 +1,130 @@
+<%@situacaos = SituacaoManutencao.find(:all)%>
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+     <tr bgcolor ="#E6E2D">
+        <td align="left">
+         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO - MANUTENÇÃO GERAL</b></font>
+           <hr/>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+         <table>
+           <tr>
+             <td valign="TOP" colspan="2">
+               <%= render 'formshow' %>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top" >
+               <fieldset><legend><font  size=4> ENCAMINHAMENTO</font></legend>
+                 <% form_for(@mmanutencao) do |f| %>
+                 <%= f.error_messages %>
+                   <table width="100%">
+                       <tr>
+                          <td align="left" valign="top"><b>Despacho:</b></td>
+                          <td align="left" width ="50%"><%= @mmanutencao.procedimentos %></td>
+                          <td align="left" width ="5%"> <b>Para:</b></td>
+                          <% if @mmanutencao.chefia.nil? %>
+                            <td> NÃO ENCAMINHADO</td>
+                          <%else%>
+                            <td align="left"><%= @mmanutencao.chefia.nome%></td>
+                          <%end%>
+                       </tr>
+                       <tr>
+                          <td align="left"><b>Situação:</b></td>
+                          <td align="left"><%= @mmanutencao.situacao_manutencao.situacao %></td>
+                          <td align="left" valign="top"><b>Data:</b></td>
+                          <%if @mmanutencao.data_ate.nil?%>
+                            <td>Serviço não realizado</td>
+                          <%else%>
+                            <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
+                          <%end%>
+                       </tr>
+                        <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                            <tr>
+                               <td><b> Serviço: </b> </td>
+                               <td> <font color="red"> PARA ORÇAMENTO <font color="red"></td>
+                           </tr>
+                        <%end%>
+                 </table>
+               </fieldset>
+            </td>
+           </tr>
+           <tr>
+            <td valign="top" >
+              <fieldset><legend><font  size=4> SERVIÇOS</font></legend>
+                  <table  width="100%">
+                 <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                      <tr>
+                        <td><b> Situação: </b> </td>
+                        <td colspan="5"> <font color="red"> PARA ORÇAMENTO <font color="red"></td>
+                    </tr>
+                 <%else if @mmanutencao.situacao == 'AUTORIZADO' %>
+                         <tr>
+                             <td><b> Serviço: </b> </td>
+                             <td colspan="5"> <font color="blue"><b> AUTORIZADO </b></font></td>
+                        </tr>
+                      <%end%>
+                 <%end%>
+                  <% @tipos_manutencaos =  TiposManutencao.find(:all) %>
+                        <tr>
+                           <td align="left" valign="top"><b>Serviços :<BR/>Realizados</b></td>
+                           <td>
+                               <table >
+                                   <% @tipos_manutencaos.in_groups_of(5, false) do |row_tipos_manutencaos| %>
+                                    <tr>
+                                         <% row_tipos_manutencaos.each do |tipos_manutencao| %>
+                                           <td  align="left"><%= check_box_tag "mmanutencao[tipos_manutencao_ids][]", tipos_manutencao.id, @mmanutencao.tipos_manutencaos.include?(tipos_manutencao), :title => "#{tipos_manutencao.servico}"%><%= "#{tipos_manutencao.servico} " %></td>
+                                        <%end%>
+                                   </tr>
+                              <%end%>
+                               </table>
+                         </td>
+                    </tr>
+                 <tr>
+                    <td align="left" valign="top"><b>Descrição:</b></td>
+                    <td align="left"  colspan="5"><%= f.text_area :executado, :cols =>"90", :rows => "2" %></td>
+                 </tr>
+                 <tr>
+                    <td align="left"><b>Funcionário:</b></td>
+                     <td align="left" colspan="5"><%= f.text_field :ffuncionario, :size=> 90 %></td>
+                 </tr>
+                 <tr>
+                    <td align="left"><b>Chamado:</b></td>
+                    <td align="left" colspan="5"><%= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecionar -- '%> </td>
+                 </tr>
+                 <tr>
+                    <td align="left" width="10%" valign="top"><b>Data:</b></td>
+                    <td align="left" colspan="5"><%= Time.now.strftime("%d/%m/%Y %H:%M")%></td>
+                   </tr>
+               </table>
+            </fieldset>
+
+          </td>
+          </tr>
+        </table>
+        <table >
+                <tr >
+                 <div id='Certeza'>
+                   <td width ="2%" align="right"><%= f.submit "Salvar" %> </td>
+                 </div>
+                 <%end%>
+                   <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                   <td align="left" ><%= button_to('Serviços em Aberto', mmanutencaos_path, :method => "get", :title => "Servicos em Aberto") %></td>
+                 </tr>
+         </table>
+      </td>
+     </tr>
+    </table>
+</font>
+
+</div>
+<br/>
+

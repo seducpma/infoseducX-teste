@@ -1,0 +1,47 @@
+  <div class="tabs">
+    <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+            <th width="40">Matricula</th>
+            <th width="300">Nome</th>
+            <th width="00">Categoria</th>
+            <th width="200">Unidade</th>
+            <th >Ativo</th>
+        </tr>
+           <%$t=0%>
+           <% @professors.each do |professor| %>
+           <%$t = $t+1%>
+             <tr bgcolor="#F5F5F5">
+                <td align="center"><%=h professor.professor.matricula%></td>
+                <td align="left"><%=h professor.professor.nome%></td>
+                <td align="center"><%=h professor.categoria%></td>
+                <td align="center"><%=h professor.unidade.nome%></td>
+                <td align="center"><% if  professor.nao_atua == 1%>
+                                       Não
+                                   <%else%>
+                                       Sim
+                                   <%end%>
+                </td>
+             </tr>
+             <tr>
+                <td align="center"><%= button_to('Visualizar', {:action => "show", :id =>professor},:method => "get", :title => "Visualizar") %></td>
+               <% if ((current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('direcao_infantil')or current_user.has_role?('secretaria_infantil') or current_user.has_role?('estagiario SEDUC') ) )%>
+                <td colspan="4" align="left"><%= button_to 'Editar', {:action => "edit", :id =>professor}, :method => "get", :title => "Editar"%></td>
+                <%else%>
+                    <td colspan="4" align="left"> </td>
+                <%end%>
+
+              </tr>
+            <% end %>
+
+
+
+     </table>
+     <table bgcolor="#DCDCDC" width="100%">
+      <tr >
+        <td colspan="3" align="right"><b>TOTAL PROFESSORES: </b>
+            <font color ="red "size="2"><b><%=$t %></b></font> 
+          </td>
+      </tr>
+    </table>
+  </div>
+

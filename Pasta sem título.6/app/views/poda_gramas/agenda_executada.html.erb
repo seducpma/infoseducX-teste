@@ -1,0 +1,38 @@
+
+<div id="interno2">
+<% title "ALUNOS".singularize %>
+
+ <div id="caixa_titulo" class ="invisible_to_print ">
+     <font size="3"><strong>AGENDA DE PODA DE GRAMA EXECUTADAS</strong></font><br/>
+ </div>
+
+      <div class="tabs">
+
+      <fieldset>
+          <table width="100%" align="center" bgcolor="#DCDCDC">
+
+        <tr bgcolor="#F5F5F5">
+            <td with ="100%">
+                 <%= render :partial => "agenda_executada" %>
+            </td>
+
+          </tr>
+
+       </table>
+
+
+      </fieldset>
+       <br/>
+       <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <td align="left"><%#= button_to 'Nova Consulta', agenda_poda_gramas_path, :title => "Nova Consulta" %></td>
+
+    </tr>
+  </table>
+ </div>
+
+
+
+<br/>
+</div>

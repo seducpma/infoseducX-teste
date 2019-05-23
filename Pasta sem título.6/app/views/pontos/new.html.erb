@@ -1,0 +1,50 @@
+<div id="interno8">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>PONTO ELETRÔNICO - ESTAGIÁRIO</strong></font><br/>
+ </div>
+      <div class="tabs">
+        <br/>
+        <table align="center" width="100%">
+               <tr bgcolor ="#F5F5F5">
+                 <td >
+
+      <font size="2">
+      <fieldset>
+      <table>
+        <tr>
+        <% form_for(@ponto) do |f| %>
+        <%= f.error_messages %>
+        <tr bgcolor ='#F5F5F5'>
+              <td align="left"><b>Estagiário:</b><%= Estagiario.find(params[:estagiario_id]).nome %><%= f.hidden_field(:estagiario_id, :value => params[:estagiario_id])  %></td>
+        </tr>
+         <tr bgcolor ='#F5F5F5'>
+            <td align="right"> <b>Americana, <%= Time.now.strftime("%d de %B de %Y") %> - <%= Time.now.strftime("%H:%M")  %></b> </td>
+        </tr>
+     </table>
+    </fieldset>
+          <table >
+             <tr>
+                 <td Width="2%" align="left"><%= submit_tag "Salvar", :class => "btn_filtrar" %></td>
+                <% end %>
+                <td width="2%" align="left" ><%= button_to("Imprimir", onclick="javascript:window.print()", :title => "Imprimir") %></td>
+                <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+            </tr>
+          </table>
+   </font>
+
+
+
+                  </td>
+               </tr>
+            </table>
+           <br/>
+    </div>
+  </div>
+<br/>
+</div>
+
+
+
+

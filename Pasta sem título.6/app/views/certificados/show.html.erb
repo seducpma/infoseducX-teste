@@ -1,0 +1,90 @@
+<div id="interno5">
+    <% title "CLASSES".singularize %>
+    <div class="tabs">
+        <div id="caixa_titulo">
+            <font size="3"><strong>SOLICITAÇÂO DE CERTIFICADO</strong></font><br/>
+        </div>
+        <div class="tabs">
+            <br/>
+            <font size="2">
+                <table width="100%" align="center" bgcolor="#F5F5F5" >
+                    <tr bgcolor ="#E6E2D">
+                        <td colspan="6" align="left">
+                            <font  size=5 color="black"> <b> SOLICITAÇÂO DE CERTIFICADO </b></font>
+                            <hr/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font  size="2">
+                                <table width="100%">
+                                    <tr bgcolor="#F5F5F5">
+                                      <td> <b>Protocolo:</b></td>
+                                      <td><%=h @certificado.id %>/2018</td>
+                                    </tr>
+                                    <tr bgcolor="#F5F5F5">
+                                      <td> <b>Curso:</b></td>
+                                      <td><%=h @certificado.curso.nome %></td>
+                                    </tr>
+                                    <tr bgcolor="#F5F5F5">
+                                      <td> <b>Participante:</b></td>
+                                      <td><%=h @certificado.inscricao.participante.nome %></td>
+                                    </tr>
+
+                                    <tr bgcolor="#F5F5F5">
+                                      <td> <b>Participante:</b></td>
+                                      <td><%=h @certificado.inscricao.participante.nome %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <font><b>
+                                                    >> ESTA ORDEM DE SERVIÇO SERÁ ATENDIDA ASSIM QUE POSSÍVEL<br/>
+                                                    >> QUALQUER DÚVIDA ENTRAR EM CONTARO COM A INFORMÁTICA- SEDUC
+                                                </b></font>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table bgcolor ="#E6E2D">
+                                    <tr >
+                                        <td align="left" width="4%"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                    </tr>
+                                </table>
+
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </font>
+        </div>
+        <br/>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+  <b>Inscricao:</b>
+  <%=h @certificado.inscricao %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%=h @certificado.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_certificado_path(@certificado) %> |
+<%= link_to 'Back', certificados_path %>

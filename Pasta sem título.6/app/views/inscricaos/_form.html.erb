@@ -1,0 +1,117 @@
+<% form_for(@inscricao) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+ <table width="100%" align="center"  bgcolor="#F5F5F5" >
+   <tr   bgcolor ="#E6E2D">
+        <th align="center">
+           <font  size=5 color="black">  <b> CADASTRO DE INSCRIÇÃO </b></font>
+        </th>
+      </tr>
+  <tr>
+  <td colspan="2">
+   <fieldset><legend><font size ="4"><b></b></font></legend>
+       <table width="100%" >
+             <tr>
+                 <td colspan="2" align="center"><font  size=5 color="RED"> <b><u> FAVOR LER ATENTAMENTE TODAS AS INSTRUÇÕES ANTES DE EFETUAR SUA INSCRIÇÃO</b></u></font><br/></td>
+              </tr>
+              <tr>
+                  <td colspan="2" ><br/></td>
+              </tr>
+              <tr>
+                <td  colspan="2" align="center"> <font size ="3"><br/><b>Participante:</b>
+                   <%= f.collection_select :participante_id, @participantesInscricao, :id, :nome, :include_blank => ' -- Selecionar seu nome -- ' %></b></font></td>
+               </tr>
+
+ <!--         <%= observe_field  :inscricao_participante_id,
+              :with => :inscricao_participante_id,
+             :url => { :action => 'sel_participa' } %>
+-->
+              <tr><td colspan="2"><br/></td></tr>
+
+    
+               <tr>
+                   <td valign="middle"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><font color ="red" <u>ATENÇÃO:</u> SE SEU NOME NÃO CONSTAR NA LISTA ACIMA FAVOR CADASTRAR.</b>  ====></td>
+                   <td valign="bottom"><%= link_to image_tag("/stylesheets/images/participante.png", :size => "180x30"), new_participante_path, :title => "Cadastrar Participante" %> </b></td>
+               </tr>
+              <tr><td></td>
+                <td colspan="4">
+                 <%if @participante.present?%>
+                  Matricula: <%=h @participante.matricula %><br/>
+                  Nome:<%=h @participante.nome %><br/>
+                  Cidade:<%=h @participante.cidade %><br/>
+                  Email:<%=h @participante.email %><br/>
+                    Observações: <%=h @participante.obs %><br/>
+                <%else%>
+                  <div id="informacoes"></div>
+                <%end%>
+                </td>
+              </tr>
+    </table>
+
+       <table align="center" width="100%" >
+
+<!--
+    <tr><td>&nbsp&nbsp<b> NÃO HÁ CURSOS OFERECIDOS NO MOMENTO</b></td></tr>
+-->
+      <tr>
+        <td colspan="3"><font size="2">
+            <center><font size ="5"color="red"><b><u>CURSOS DISPONÍVEIS</u></b></font></center><br/>
+        </td>
+     </tr>
+     <% for curso in @cursos %>
+        <%if curso.vagas_disponiveis > 0 %>
+             <tr><td width =" 10%"></td>
+               <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font> &nbsp - &nbsp <font size ="3"color="red"><b>Vagas disponíveis:</b> <%=h curso.vagas_disponiveis%></font><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u></u> <%=h curso.ministrante %><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> <%=h curso.publico %><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontros:</u> Dias <%=h curso.datas %> &nbsp - &nbsp <u>Carga Horária: <%=h curso.carga_horaria%> </u><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> <%=h curso.horario %><br/>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> <%=h curso.local %><br/>
+                     
+         ---------------------------------------------------------------------------------------------------------------
+               </td>
+             </tr>
+            <%end%>
+     <%end%>
+    <!--
+      <tr>
+        <td colspan="2" align="center"><b><u>OBS:</u></b>  Entrada Gratuita - condicionada a apresentação de holerite recente. </td>
+     </tr>-->
+
+    <tr>
+      <td colspan="2" align="left"><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <font size="3"><b>Curso: <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' %> </font>    </b>
+         <br/><br/>
+      </td>
+    </tr>
+
+
+
+   </table>
+
+</fieldset>
+
+         <table width="100%" align="left">
+           <tr>
+               
+               <!--
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÂO <b></font></td>
+               -->
+               <td align="right">   <%= f.submit "INSCREVER" %></td>
+      <% end %>
+               <td width="2%" align="right"><%= button_to(' CONSULTA INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
+               <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+           </tr>
+       </table>
+
+    </td>
+  </tr>
+  </table>
+</font>
+
+
+
+
+
+
+

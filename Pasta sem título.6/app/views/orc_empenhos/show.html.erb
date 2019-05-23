@@ -1,0 +1,126 @@
+<div id="interno1">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong> EMPENHO - SEDUC/PMA </strong></font><br/>
+ </div>
+ <table width="100%"  bgcolor="white">
+        <tr>
+            <td rowspan="2"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+            <td><center><font size="4"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+                <center><font size="2"><b><i> Secretaria da Educação</i></b><br/></center>
+            </td>
+        </tr>
+
+ </table>
+  <table  width="100%"  bgcolor="white" >
+     <tr>
+       <td colspan="4"><hr/></td>
+     </tr>
+
+      <tr>
+        <td align="left" colspan="2"><b>Data:</b>&nbsp <%if !@orc_empenho.data.nil? %><%=h @orc_empenho.data.strftime("%d de %b de %Y") %> <%end%></td>
+        <td align="left" colspan="3" ><b>Nº Empenho </b> <%=h @orc_empenho.codigo %> &nbsp&nbsp&nbsp&nbsp <b>Nº Pedido </b> <%=h @orc_empenho.npedido %> &nbsp&nbsp&nbsp&nbsp <b>Nº Processo </b> <%=h @orc_empenho.processo %> &nbsp&nbsp&nbsp&nbsp
+         <% if @orc_empenho.cancelado == 1%>
+            <b>Status:</b> <font color="red"> Empenho Cancelado </font>
+         <%end%>
+        </td>
+      </tr>
+      <tr>
+          <td colspan="4">  <b>Ficha:</b> <%=h @ficha[0].ficha %> - <%=h @ficha[0].descricao %> &nbsp&nbsp&nbsp&nbsp
+               <% if !@orc_empenho.orc_pedido_compra_id.nil? %>
+                 <b>Serviço Interno: </b> <%=h @orc_empenho.orc_pedido_compra.codigo %>
+               <%end%>
+        </td>
+      </tr>
+      <tr>
+        <td><b>INTERESSADO</b>: </td>
+        <td colspan="3"> <%=h @orc_empenho.interessado%> &nbsp&nbsp&nbsp&nbsp
+                         <b>CNPJ: </b>: &nbsp <%=h @orc_empenho.cnpj%></td>
+      </tr>
+      <tr>
+        <td><b>MODALIDADE</b>: </td>
+        <td> <%=h @orc_empenho.modalidade%></td>
+        <td colspan="3"><b>VENCIMENTO: </b>: <%if !@orc_empenho.vencimento.nil?%> <%=h @orc_empenho.vencimento.strftime("%d/%m/%y") %>  <%end%> &nbsp&nbsp&nbsp&nbsp
+             <b>VALIDADE: </b>: <%if !@orc_empenho.validade.nil?%> <%=h @orc_empenho.validade.strftime("%d/%m/%y") %><%end%>  &nbsp&nbsp&nbsp&nbsp
+             <b>DESTINAÇÂO RECURSO </b>: <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"><b>UNIDADE ORÇAMENTARIA</b>: &nbsp SECRETARIA DE EDUCAÇÃO &nbsp&nbsp&nbsp&nbsp
+            <b>UNIDADE EXECUTORA </b>: &nbsp <%=h  @ficha[0].orc_uni_orcamentaria.descricao %> &nbsp&nbsp&nbsp&nbsp
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"><b>PROJETO ATIVIDADE</b>: <%=h @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %> &nbsp&nbsp&nbsp&nbsp
+            <b>CATEGORIA ECONÔMICA </b>:  <%=h @orc_empenho.cat_economica%> 
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+            <table  border="1" cellspacing="0" cellpadding="1" width="100%">
+                <tr bgcolor= white >
+                  <td align="center"><b>Item</b></td>
+                  <td align="center" width ="10%"><b>Quant.</b></td>
+                  <td align="center" width =" 50%"><b>Descrição</b></td>
+                  <td align="center"><b>Unitário</b></td>
+                  <td align="center"><b>Valor</b></td>
+                </tr>
+                <%contador=1%>
+                <% session[:soma]=0 %>
+                <% total_geral = 0.00 %>
+                <% if !@orc_empenho_itens.nil? %>
+                    <% @orc_empenho_itens.each do |item|%>
+                      <tr>
+                         <td align="center"><%= contador%> </td>
+                         <td align="center"><%= item.quantidade%> </td>
+                         <td align="left"> <%= item.descricao%> </td>
+                         <td align="center"> R$ <%= item.unitario%> </td>
+                         <td align="center"> R$ <%= item.total%> </td>
+                       </tr>
+                      <% contador = contador+1%>
+                      <% total_geral = total_geral+ item.total%>
+                    <%end%>
+               <%end%>
+                       <tr>
+                         <td colspan="4" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+                         <td align="center"> R$ <%= total_geral %></td>
+
+                       </tr>
+              </table>
+
+        </td>
+      </tr>
+               <tr>
+                   <td width="9%" align="left" valign="top"><b>Observações:</b></td>
+                   <td colspan="5" align="left"><%=h @orc_empenho.obs %></td>
+              </tr>
+
+
+      
+
+       </table>
+
+
+      <table>
+           <tr>
+              <td  width="2%"align="left" ><%= button_to('Cadastrar', new_orc_empenho_path, :method => "get", :title => "Cadastrar")%></td>
+              <td  width="2%"align="left" ><%= button_to('Consultar', consulta_orc_empenhos_path, :method => "get", :title => "Fechar")%></td>
+              <td  align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              <% if (current_user.has_role?('admin'))%>
+                   <td align="right" colspan="1"><%= button_to('Editar', {:action => "edit", :id => @orc_empenho.id},:method => "get", :title => "Editar") %></td>
+              <%else%>
+                   <td align="right" colspan="1"></td>
+              <%end%>
+            </tr>
+      </table>
+
+</font>
+<br/>
+
+</div>
+<br/>
+</div>
+
+
+

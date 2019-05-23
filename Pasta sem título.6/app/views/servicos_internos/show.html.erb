@@ -1,0 +1,66 @@
+<div id="interno7">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CONTROLE DE EMISSÃO DE OFICIOS - SEDUC/PMA</strong></font><br/>
+ </div>
+
+
+<table bgcolor="#F5F5F5"  width="100%">
+
+   <tr bgcolor="#F5F5F5"   width="100%">
+   <td colspan="2">
+    <fieldset><legend><font  size=4>Serviço Interno</font></legend>
+         <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+          <tr>
+            <td align="left" colspan="3"><u><font color="red"size="5"><b>Serviço Interno Nº: <%=h @servicos_interno.codigo%></b></font></u></td>
+          </tr>
+          <tr>
+            <td width="6%"></td>
+            <td align="left" valign="Top" width="9%"><b>Emissor:</b></td>
+            <td align="left"><%=h @servicos_interno.emissor %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left"><b>Assunto: </b></td>
+            <td align="left"><%=h @servicos_interno.assunto %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left"><font size="2"><b>Data:</b></font></td>
+            <td align="left"><font size="2">  <%=h @servicos_interno.data.strftime("%d de %B de %Y") %></font></td><p>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left"><b>Destinatario: </b></td>
+            <td align="left"><%=h @servicos_interno.destinatario %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="left" valign="top"><b>Observações:</b></td>
+            <td align="left"><%=h @servicos_interno.obs  %></td>
+          </tr>       </table>
+    </fieldset>
+
+      <table>
+           <tr>
+              <td align="right" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              <td width="2%"align="right" ><%= button_to('Serviços Internos',servicos_internos_path, :method => "get", :title => "Serviços Internos") %></td>
+              <td width="2%" align="right"><%= button_to "Consultar", consulta_servicos_internos_path, :title => "Consultar" %></td>
+            </tr>
+      </table>
+
+  </td>
+ </tr>
+</table>
+</font>
+<br/>
+
+</div>
+<br/>
+</div>
+
+
+
+
+

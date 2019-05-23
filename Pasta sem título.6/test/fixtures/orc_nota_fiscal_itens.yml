@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nota_fiscal_i: 
+  quantidade: 9.99
+  descricao: MyString
+  unitario: 9.99
+  total: 9.99
+  total_geral: 9.99
+  obs: MyString
+
+two:
+  nota_fiscal_i: 
+  quantidade: 9.99
+  descricao: MyString
+  unitario: 9.99
+  total: 9.99
+  total_geral: 9.99
+  obs: MyString

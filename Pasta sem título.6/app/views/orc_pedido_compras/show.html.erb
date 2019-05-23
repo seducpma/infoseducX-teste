@@ -1,0 +1,163 @@
+<div id="interno3">
+<% title "PROFESSORS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SERVIÇO INTERNO - SEDUC/PMA </strong></font><br/>
+ </div>
+ <table width="100%"  bgcolor="white">
+        <tr>
+            <td rowspan="2"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+            <td><center><font size="4"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+                <center><font size="2"><b><i> Secretaria da Educação</i></b><br/></center>
+            </td>
+        </tr>
+      
+ </table>
+    <table  width="100%"  bgcolor="white" >
+     <tr>
+       <td colspan="4"><hr/></td>
+     </tr>
+
+    <tr>
+      <td colspan="4" align="left"><b> SI/COMPRAS <%=h @orc_pedido_compra.codigo %> <br/>
+                                       DE: SECRETARIA DE EDUCAÇÃO <br/>
+                                       P/ <%= session[:destino] %></b><br/><br/>
+      </td>
+    </tr>
+      <tr>
+        <td colspan="4" align="center"><b><u>SOLICITAÇÃO DE COMPRA </u></b><br/><br/></td>
+      </tr>
+      <tr>
+        <td colspan="4" align="left"><b><u>OBJETIVO</u>: </b> &nbsp <%=h @orc_pedido_compra.objetivo %>  &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
+                               <% if @orc_pedido_compra.cancelado == 1%>
+                                       <font color="red"> S.I. Cancelado </font>
+                                <%end%><br/><br/></td>
+      </tr>
+       <% if !@orc_pedido_compra.ata_id.nil? %>
+           <% @ata= OrcAta.find(:all, :conditions => ['id=?',@orc_pedido_compra.ata_id]) %>
+           <tr>
+               <td colspan="4" align="left"><b><u>ATA</u>: </b> &nbsp <%=h @ata[0].codigo %> &nbsp -&nbsp <b><%=h @ata[0].modalidade %>:</b> <%=h @ata[0].numero %> &nbsp -&nbsp <b><u>PROCESSO</u>: </b> <%=h @ata[0].administrativo%> <br/><br/></td>
+           </tr>
+       <%end%>
+      <tr>
+        <td colspan="4" align="left"><b><u>FORNECEDOR</u>: </b> &nbsp <%=h @orc_pedido_compra.fornecedor %>  - <b><u>CPF/CNPJ</u>: </b> <%=h @orc_pedido_compra.cnpj%> <br/><br/></td>
+      </tr>
+        <% if  !@orc_pedido_compra.orc_ficha_id.nil? %>
+              <tr>
+                <td colspan="4" align="left"><b><u>DOTAÇÃO ORÇAMENTÁRIA</u></b>: &nbsp <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.codigo%>.<%=h  @orc_pedido_compra.orc_ficha.codigo%>
+                                             &nbsp&nbsp <b><u>FICHA</u>: &nbsp </b><%=h   @orc_pedido_compra.orc_ficha.ficha%>
+                    &nbsp&nbsp <b><u>DR</u>: </b> <%=h   @orc_pedido_compra.orc_ficha.dr%> &nbsp&nbsp <b><u>Fonte</u>: </b> &nbsp&nbsp<%=h   @orc_pedido_compra.orc_ficha.fonte%></td>
+                 </tr>
+                 <tr align="left">
+                      <td align="left"><%=h   @orc_pedido_compra.orc_ficha.descricao%>
+                           <% if @orc_pedido_compra.orc_ficha.ficha.count("SE") == 2 %>
+                              - SALARIO EDUCAÇÂO
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.include?("PNAE")%>
+                             - PNAE
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("FUNDEB")== 6 %>
+                             - FUNDEB
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.include?("PNATE") %>
+                             - PNATE
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("BC") == 2 %>
+                              - BRASIL CARINHOSO
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("PDDE") == 4 %>
+                              - PDDE
+                           <%end%>
+                           <% if  @orc_pedido_compra.orc_ficha.ficha.count("FNDE") == 4 %>
+                              - FNDE
+                           <%end%>
+
+
+                        - <%=h  @orc_pedido_compra.orc_ficha.orc_uni_orcamentaria.orc_uni_despesa.descricao%>
+                   <br/><br/></td>
+              </tr>
+         <%else%>
+               <tr>
+                 <td align="left"  colspan="6"><b>Ficha:</b> &nbsp &nbsp Ainda não indicada</td>
+               </tr>
+        <%end%>
+
+        <tr>
+        <td>
+            <table  border="1" cellspacing="0" cellpadding="1" width="100%">
+                <tr bgcolor= white >
+                  <td align="center"><b>Item</b></td>
+                  <td align="center" width ="10%"><b>Quant.</b></td>
+                  <td align="center" width ="10%"><b>Medida</b></td>
+                  <td align="center" width =" 50%"><b>Descrição</b></td>
+                  <td align="center"><b>Unitário</b></td>
+                  <td align="center"><b>Valor</b></td>
+                </tr>
+                <%contador=1%>
+                <% session[:soma]=0 %>
+                <% total_geral = 0.00 %>
+                <% if !@orc_pedido_descricaos.nil? %>
+                    <% @orc_pedido_descricaos.each do |descricao|%>
+                      <tr>
+                         <td align="center"><%= contador%> </td>
+                         <td align="center"><%= descricao.quantidade%> </td>
+                         <td align="center"><%= descricao.medida%> </td>
+                         <td align="left"> <%= descricao.descricao%> </td>
+                         <td align="center"> R$ <%= descricao.unitario%> </td>
+                         <td align="center"> R$ <%= descricao.total%> </td>
+                       </tr>
+                      <% contador = contador+1%>
+                      <% total_geral = total_geral+ descricao.total%>
+                    <%end%>
+               <%end%>
+                       <tr>
+                         <td colspan="5" align="right"><b>Total Geral </b> &nbsp&nbsp&nbsp&nbsp </td>
+                         <td align="center"> R$ <%= total_geral %></td>
+
+                       </tr>
+              </table>
+
+        </td>
+      </tr>
+
+
+      <tr>
+        <td colspan="4" align="left"><b><u>VALOR TOTAL</u>: </b> &nbsp R$ <%= total_geral %> <br/><br/></td>
+      </tr>
+      <tr>
+        <td colspan="4" align="left"><b><u>JUSTIFICATIVA</u>: </b> &nbsp <%=h @orc_pedido_compra.justificativa %> <br/><br/></td>
+      </tr>
+      <% if  !@orc_pedido_compra.obs.nil?%>
+          <tr>
+            <td colspan="4" align="left"><b><u>OBSERVAÇÃO</u>: </b> &nbsp <%=h @orc_pedido_compra.obs %> <br/><br/></td>
+          </tr>
+      <%end%>
+
+
+
+      <tr>
+        <td colspan="4" align="left"><b><u>Data</u>: </b> &nbsp <%=h @orc_pedido_compra.created_at.strftime("%d de %B de %Y") %> <br/><br/></td>
+      </tr>
+
+       </table>
+
+
+      <table>
+           <tr>
+              <td  width="2%"align="left" ><%= button_to('Cadastrar', new_orc_pedido_compra_path, :method => "get", :title => "Cadastrar")%></td> 
+              <td  width="2%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+              <!--<td  width="2%"align="left"><%#= button_to('Serviços', orc_pedido_compras_path, :method => "get",  :title => "Despesas")%></td>-->
+              <td  align="left" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pedido_path}','impressao', 'scrollbars=yes , toolbar=yes, status=yes');", :title => "Imprimir" %> </b></td>
+              <td align="right" colspan="1"><%#= button_to('Editar', {:action => "edit", :id => @orc_pedido_compra.id},:method => "get", :title => "Editar") %></td>
+
+            </tr>
+      </table>
+
+</font>
+<br/>
+
+</div>
+<br/>
+</div>
+
+

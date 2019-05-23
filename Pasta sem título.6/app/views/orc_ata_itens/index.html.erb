@@ -1,0 +1,32 @@
+<h1>Listing orc_ata_itens</h1>
+
+<table>
+  <tr>
+    <th>Orc ata</th>
+    <th>Quantidade</th>
+    <th>Descricao</th>
+    <th>Unitario</th>
+    <th>Total</th>
+    <th>Total geral</th>
+    <th>Obs</th>
+  </tr>
+
+<% @orc_ata_itens.each do |orc_ata_iten| %>
+  <tr>
+    <td><%=h orc_ata_iten.orc_ata %></td>
+    <td><%=h orc_ata_iten.quantidade %></td>
+    <td><%=h orc_ata_iten.descricao %></td>
+    <td><%=h orc_ata_iten.unitario %></td>
+    <td><%=h orc_ata_iten.total %></td>
+    <td><%=h orc_ata_iten.total_geral %></td>
+    <td><%=h orc_ata_iten.obs %></td>
+    <td><%= link_to 'Show', orc_ata_iten %></td>
+    <td><%= link_to 'Edit', edit_orc_ata_iten_path(orc_ata_iten) %></td>
+    <td><%= link_to 'Destroy', orc_ata_iten, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New orc_ata_iten', new_orc_ata_iten_path %>

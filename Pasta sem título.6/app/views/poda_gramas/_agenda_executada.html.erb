@@ -1,0 +1,63 @@
+<link rel="stylesheet" media="all" href="css/calendar.css" />
+
+<% if @poda_grama.present? %>
+  <div id="calendar">
+       <h2><center> <b><%= session[:titulo_agenda] %> </b></center> </h2>
+         
+        
+
+  <hr/>
+  <b><center>  <font size="5"color="red"><u><%= flash[:notice] %></u></font></center></b>
+    <h2 id="month">
+
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+                     
+    </h2>
+    <% calendar_for @poda_grama, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+        <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+              <% calendar.day(:day_method => :created_at) do |date, articles| %>
+                <%= date.day %>
+                <ul>
+                  <% for data in articles %>
+                    <li><% if current_user.has_role?('admin')  or current_user.has_role?('terceiro')   %>
+                            <%= link_to h(data.unidade.nome), {:controller =>"poda_gramas", :action => "edit", :id =>data}%><br/>
+                                      --------------------------------
+                        <%else%>
+                            <%= data.unidade.nome%><br/>
+                                      --------------------------------
+                        <%end%>
+                    </li>
+                  <% end %>
+                </ul>
+      <% end %>
+    <% end %>
+  </div>
+<%end%>
+<br/>
+<table align="right">
+  <tr>
+    <td align="right" ><%= button_to("Voltar",  home_path, :method => "get", :title => "Voltar")%></td>
+     <td width="2%" align="right"><%= button_to("Relatório", relatorio_agendamento_poda_gramas_path,  :title => "Relatório") %></td>
+    <td width="2%" >
+        <%if  params[:type_of].to_i == 2 or params[:type_of].to_i == 1 %>
+             <%= button_to("Impressão",  impressao_calendar_agenda_path, :method => "get",  :target => '_blank', :title => "Imprimir")%>
+        <%else if  params[:type_of].to_i == 3 %>
+                   <%= button_to("Impressão",  impressao_calendar_execucoes_path, :method => "get",  :target => '_blank', :title => "Imprimir")%>
+              <%else if  params[:type_of].to_i == 4 %>
+                           <%= button_to("Impressão",  impressao_calendar_nexecutado_path, :method => "get",  :target => '_blank', :title => "Imprimir")%>
+                    <%end%>
+              <%end%>
+        <%end%>
+
+    </td>
+
+
+   </tr>
+</table>
+
+
+
+
+

@@ -1,0 +1,17 @@
+<p>
+<h1><%= "Parabéns #{@participante.nome}" %></h1>
+<b><%= "Sua inscrição nos modulos de treinamento foi efetuada com sucesso." %></b>
+<b><%=  "Inscricao nº: #{@inscricao.id}" %></b><br/>
+<b>
+  <%= "Você esta inscrito nos seguintes módulos" %>
+  <ul>
+    <% @inscricao.cursos.each do |inscricao| %>
+        <li><%= inscricao.nome %></li>
+    <%end%>
+  </ul>
+
+  <h2>Agradecemos por sua inscrição</h2>
+  <h2>Equipe de Formação - SEDUC</h2>
+  <h2>Prefeitura de Americana</h2>
+</b>
+</p>  

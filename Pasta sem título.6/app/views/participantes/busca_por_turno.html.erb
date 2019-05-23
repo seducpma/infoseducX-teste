@@ -1,0 +1,77 @@
+<br/><br/>
+<table class="tabelas1" align="center" width="80%">
+ <tr>
+   <th colspan="2" align="left">
+      <font  size=5 color="black"> <b> INSCRIÇÕES POR TURNO </b></font>
+   </th>
+  </tr>
+  <tr>
+    <td>
+      <br/>
+      <div class="botao">
+         <table width="100%">
+            <tr>
+              <td>
+                <% form_tag busca_por_turno_participantes_path, :method => 'get' do %>
+                  <b><font size="3">Periodo:</b></font><%= select_tag :turno, options_for_select(Inscricao::Periodo), :include_blank => "Selecionar" %>
+                  <input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+                <% end %>
+             </td>
+           </tr>
+         </table>
+      </div>
+      <br/>
+    <% if @turno_op.present?%>
+       <h2 align="center">Inscrições para curso no perído   <%=  params[:turno] %></h2>
+      <table width="100%" align="center" class="tabelas1"  border="1">
+        <tr>
+          <th width="80%"> Incrisção</th>
+          <th> Curso</th>
+        </tr>
+          <% @turno_op.each do |op| %>
+            <tr>
+              <td><b><%= op.participante.nome %></b><br/>
+               <% if (op.periodoop1.nil?) %>
+                    <dd><b>1ª Opção:</b> Não selecionada
+                <%else%>
+                    <dd><b>1ª Opção:</b> <%= "#{op.periodoop1} - #{Unidade.find(op.opcao1).nome}" %><br/>
+                <%end%>
+                <% if (op.periodoop2.nil?) %>
+                   <dd><b>2ª Opção:</b> Não selecionada
+                <%else%>
+                  <dd><b>2ª Opção:</b> <%= "#{op.periodoop2} - #{Unidade.find(op.opcao2).nome}" %><br/>
+               <%end%>
+    
+            </td>
+            <td>
+              <ul>
+                 <%op.cursos.each do |curso|%>
+                   <li><%= curso.nome %></li>
+                 <%end%>
+             </ul>
+           </td>
+          </tr>
+         <%end%>
+         <tr>
+          <th colspan="2">
+            <%if @turno_op.present?%>
+                <b><%= "#{@turno_op.count} escolheram este período" %></b>
+          </th>
+         </tr>
+       <%end%>
+      </table>
+    <%end%>
+      <div class="botao">
+        <table width="100%" align="left">
+          <tr>
+            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+       </table>
+      </div>
+    </td>
+  </tr>
+</table>
+<br>
+
+

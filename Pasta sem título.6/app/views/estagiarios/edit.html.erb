@@ -1,0 +1,135 @@
+<div id="interno4">
+<% title "SAUDES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CADASTRO DE ESTAGIÁRIO</strong></font><br/>
+ </div>
+      <div class="tabs">
+    <%  if current_user.unidade_id == 52 or current_user.unidade_id == 53 %>
+       <% @unidades= Unidade.find(:all, :order => 'nome ASC') %>
+     <%  else %>
+        <% @unidades= Unidade.find(:all , :conditions => ['id = ?', current_user.unidade_id]) %>
+      <% end%>
+            <br/>
+            <% form_for @estagiario, :html => { :multipart => true } do |f| %>
+            <%= f.error_messages %>
+            <font  size="2">
+            <table  bgcolor="#F5F5F5" width="100%"  align="center">
+               <tr>
+                 <td colspan="2">
+                   <fieldset><legend><font  size=4> Dados Pessais</font></legend>
+                     <table width="100%">
+                        <tr>
+                          <td align="left"><b>Nome:</b></td>
+                          <td align="left" colspan="3"><%= f.text_field :nome, :size => 45%>
+                                &nbsp <b>RG:</b><%= f.text_field :RG, :size => 13 %>
+                                &nbsp <b> CPF:</b><%= f.text_field :CPF, :size => 13 %></td>
+                        </tr>
+                       <tr>
+                          <td align="left"><b> Endereço:</b></td>
+                          <td align="left" colspan="3"> <%= f.text_field :endereco, :size => 45%>
+                                <b>Nº </b><%= f.text_field :num, :size => 4 %>
+                                &nbsp <b> Complemento:</b><%= f.text_field :complemento, :size =>25%></td>
+                       </tr>
+                       <tr>
+                          <td align="left"><b> Bairro:</b></td>
+                          <td align="left" colspan="3"><%= f.text_field :bairro, :size =>40 %>
+                               &nbsp <b> Cidade:</b><%= f.text_field :cidade, :size =>35 %></td>
+                       </tr>
+                       <tr>
+                          <td align="left"><b>Telefone:</b></td>
+                          <td align="left" colspan="3"><%= f.text_field :fone, :size =>15 %>
+                              &nbsp <b> Celular:</b><%= f.text_field :cel, :size =>20%>
+                              &nbsp <b> e_mail:</b><%= f.text_field :email, :size =>30%>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td align="left"><b>Data Nasc:</b></td>
+                           <td align="left"><%= f.date_select(:data_nasc, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %><BR /></td><p>
+                           <td align="left"></td>
+                           <td align="left"><b>Foto: </b> <%= f.file_field :photo%></td>
+                       </tr>
+                     </table>
+                   </fieldset>
+                  <br/>
+                   <fieldset><legend><font  size=4> Dados Faculdade</font></legend>
+                     <table>
+                        <tr>
+                           <td align="left"><b>Faculdade:</b></td>
+                           <td align="left"> <%= f.text_field :faculdade, :size =>39%></td>
+                           <td align="left">&nbsp&nbsp<b> Matricula:</b></td>
+                           <td align="left"><%= f.text_field :matricula, :size =>10  %>
+                            &nbsp&nbsp <b>Periodo: </b> <%= f.select :periodo_est, PERIODOT, :include_blank => 'Selecionar',  :size =>19 %>            </td>
+
+                        </tr>
+                        <tr>
+                           <td align="left" colspan="2"><b>Inicio do Curso:</b> <%= f.date_select(:data_ingresso, :order => [:month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></td>
+                           <td align="left" colspan="2"><b>Previsão de Término do Curso:</b> <%= f.date_select(:data_termino, :order => [:month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year + 5)) %></td>
+
+                        </tr>
+                    </table>
+                  </fieldset>
+                  <br/>
+                  <fieldset><legend><font  size=4> Dados Contrato</font></legend>
+                      <table width="100%">
+                        <tr>
+                           <td align="left" width="26%"><b>Matricula(PMA): </b><%= f.text_field :matriculaPMA, :size =>15 %></td>
+                           <td colspan="2">
+                              <b> Típo de Estágio:</b>&nbsp
+                              <%= collection_select  :estagiario, :tipo, @estagios, :nome, :nome, :include_blank => 'Selecionar'  %>
+                              &nbsp&nbsp <b> Carga Horária:</b>&nbsp
+                              <%= f.select :carga_horaria, CHORARIA, :include_blank => 'Selecionar',  :size =>16 %>
+                           </td>
+                           </tr>
+                         <tr>
+                           <td align="left" > <b> Horário:</b><%= f.text_field :horario, :size => 15%></td>
+                           <td colspan="4" align="left"> <b> Período:</b><%= f.select :periodo_trab, PERIODOT, :include_blank => 'Selecionar' %></td>
+                         </tr>
+                         <tr>
+                           <td colspan="6"><b>Unidade:</b><%= f.collection_select  :unidade_id, @unidades, :id, :nome, :include_blank => 'Selecionar'  %></td>
+                         </tr>
+                         <tr>
+                            <td align="left" colspan="4"><b>Admissão:</b>&nbsp&nbsp    <%= f.date_select(:data_admissao, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
+                            &nbsp&nbsp <b> Responsável:</b> <%= f.text_field :responsavel, :size => 44%>
+
+                            </td>
+                         </tr>
+                         <tr>
+                             <td align="left" colspan="4 "><b>Desligado: &nbsp&nbsp SIM  </b> <%= f.check_box :desligado %> <b> - em </b> <%= f.date_select(:data_desliga, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %>
+                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b> Motivo:</b><%= f.select :etinerante, options_for_select([ "  ", "DESCREDENCIAMENTO","TÉRMINO CONTRATO",]) %>
+                             </td>
+                         </tr>
+                         <% if current_user.has_role?('admin')  or current_user.has_role?('SEDUC') %>
+                            <tr>
+                                <td colspan="4"><b>Observação:</b>
+                               <%= f.text_field :obs, :size => 82%></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" ><b> Avaliação:</b>
+                                <%= f.text_field :aval, :size => 84%></td>
+                            </tr>
+                         <%end%>
+                    </table>
+                  </fieldset>
+
+                    <table width="100%" align="left">
+                       <tr>
+                          <td width="6%" align="left"><%= f.submit "Salvar", :class => "btn_filtrar" %></td>
+            <% end %>
+                         <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                        </tr>
+                    </table>
+
+                </td>
+               </tr>
+              </table>
+            </font>
+            <br/>
+
+     </div>
+    <br/>
+</div>
+
+
+
+

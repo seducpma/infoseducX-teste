@@ -1,0 +1,65 @@
+<div id="interno3">
+<% title "ATRIBUICAO" %>
+<div class ="tabs">
+   <fieldset><legend><font  size=3><b> Atribuição de Aula</b></font></legend>
+    <table width="100%">
+       <tr bgcolor="#F5F5F5">
+         <td width=20%" align="left"><b>Ano Letivo:</b></td>
+         <td><%=h @atribuicao.ano_letivo %></td>
+      </tr>
+      <tr bgcolor="#F5F5F5">
+         <td align="left"><b>Classe:</b></td>
+         <td align="left" ><%=h @atribuicao.classe.classe_classe%></td>
+      </tr>
+       <tr bgcolor="#F5F5F5">
+         <td align="left"><b>Unidade:</b></td>
+         <td ><%=h @atribuicao.classe.unidade.nome%></td>
+      </tr>
+       <tr bgcolor="#F5F5F5">
+           <td align="left"><b>Professor:</b></td>
+           <td align="left"><%=h @atribuicao.professor.nome%></td>
+       </tr>
+       <tr bgcolor="#F5F5F5">
+           <td align="left"><b>Disciplina:</b></td>
+           <td colspan="3"align="left"><%=h @atribuicao.disciplina.disciplina%></td>
+       </tr>
+       <%if current_user.unidade_id > 40  and  current_user.unidade_id < 52 %>
+           <tr bgcolor="#F5F5F5">
+               <td align="left"witdh ="5%"><b>Aulas 1º Bim:</b></td>
+               <td align="left"><%=h @atribuicao.aulas1%>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Aulas 2º Bim:</b>
+               &nbsp&nbsp&nbsp <%=h @atribuicao.aulas2%></td>
+           </tr>
+           <tr bgcolor="#F5F5F5">
+               <td align="left"><b>Aulas 3º Bim:</b></td>
+               <td align="left" ><%=h @atribuicao.aulas3%>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Aulas 4º Bim:</b>
+               &nbsp&nbsp&nbsp <%=h @atribuicao.aulas4%></td>
+           </tr>
+       <%end%>
+  </table>
+</fieldset>
+
+
+  <table width="100%" >
+         <tr>
+            <% if current_user.has_role?('professor_fundamental')%>
+                <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental'))%>
+                     <td width="6%"align="left" ><%= button_to 'Lançar Notas', {:action => "edit", :id =>@atribuicao}, :method => "get", :title => "Lançar"%></td>
+                <%end%>
+                <td width="4%"><%= button_to 'Lançar Notas', {:controller => "notas", :action => "voltar_lancamento_notas", :method => "get"}  %></td>
+             <%else%>
+                <td width="4%"><%= button_to 'Cadastrar Atribuição',new_atribuicao_path, :method => :get %></td>
+                     <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental'))%>
+                           <td width="4%"><%= button_to 'Lançar Notas', {:controller => "notas", :action => "voltar_lancamento_notas", :method => "get"}  %></td>
+                      <%end%>
+            <%end%>
+            <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+         </tr><br/>
+       </table>
+<br/>
+
+
+</div>
+<br/>
+</div>

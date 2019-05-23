@@ -1,0 +1,97 @@
+
+
+<div id="interno2">
+<% title "CONSULTA_FICHA".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SALDO DOTAÇÃO ORÇAMENTÁRIA (FICHA)</strong></font><br/>
+ </div>
+    <table width="100%"  bgcolor="#F5F5F5">
+        <tr>
+            <td rowspan="2"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+            <td><center><font size="2"><i><b>PREFEITURA MUNICIPAL DE AMERICANA</b></i></center>
+                <center><font size="1"><b><i> Secretaria da Educação</i></b><br/></center>
+                <center><font size="1">Rua dos Professores, 40 - Centro - Americana - SP -  13465-060   </font></center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><font size="2"><b>SALDO DOTAÇÃO ORÇAMENTÁRIA (FICHA) &nbsp&nbsp&nbsp&nbsp</b></font> </td>
+        </tr>
+
+    </table>
+    <table border="1" cellspacing="0" cellpadding="1" width="100%"  bgcolor="#DCDCEE">
+        <tr style="font-size: 10px">
+            <td align="center"width="2%"><b>Un.Despesa</b> </td>
+            <td align="center"width="2%"><b>Un.Orçamentaria </b> </td>
+            <td align="center"width="25%"><b>Especificação</b></td>
+            <td align="center" width="8%"><b>Ficha</b></td>
+            <td align="center" width="5%"><b>DR</b></td>
+            <td align="center" width="10%"><b>Dotação Atual</b></td>
+            <td align="center" width="10%"><b>Empenhado</b></td> 
+            <td align="center" width="10%"><b>Reservado</b></td> 
+            <td align="center" width="10%"><b>Saldo</b></td> 
+        </tr>
+        <%@un_despesa.each do |despesa|%>
+            <tr style="font-size: 10px" bgcolor="#DCDCDC">
+                <td align="right"><b><%= despesa.codigo %></b></td>
+                <td colspan="8" align="left" style="font-size: 12px"><b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   <%= despesa.descricao %></b></td>
+            </tr>    
+            <% @un_orcamentaria= OrcUniOrcamentaria.find(:all, :conditions =>['orc_uni_despesa_id=?', despesa.id])  %>
+            <%@un_orcamentaria.each do |orcamentaria|%>
+                <tr style="font-size: 10px" bgcolor="#DCDCD1">
+                    <td colspan="2"align="right"><b><%= orcamentaria.codigo %></b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td colspan="7" align="left"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><%=orcamentaria.descricao %></b></td>
+                </tr>    
+                <% @ficha= OrcFicha.find(:all, :conditions =>['orc_uni_orcamentaria_id=?', orcamentaria.id])  %>
+                <%@ficha.each do |ficha|%>
+                    <tr style="font-size: 10px"bgcolor="#F5F5F5">
+                        <td colspan="2"align="right"><b><%= ficha.codigo %></b></td>
+                        <td align="left">&nbsp <b><%= truncate(ficha.descricao,:length => 50,:omission => "...") %></b></td>
+                                                  
+                        <td align="center"> <b><%=ficha.ficha %></b></td>
+                        <td align="right"> <b><%=ficha.dr %></b></td>                        
+                        <td align="right"> <b><%=ficha.saldo_atual %></b></td>
+                        <td align="right"> <b><%=ficha.saldo_empenhado %></b></td>
+                        <td align="right"> <b><%=ficha.saldo_reservado %></b></td>
+                        <td align="right"> <b><%=ficha.saldo %></b></td>
+                    </tr>
+
+                <%end%>
+
+            <%end%>
+        <%end%>
+     </table>
+    <table  width="100%">
+        <tr>
+            <td width="6%"align="left"   style="border-color: white"'"><br/><%= button_to '', home_path, {:method => "get"}  %></td>
+                <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental'))%>
+                <td colspan="10"align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_dotacao_path}','impressao', 'scrollbars=yes , toolbar=yes, status=yes');", :title => "Imprimir" %> </b></td>
+            <%end%> <!-- 198 -->
+        </tr>
+        <tr>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" align="center" bgcolor="#DCDCDC" >
+        <tr><td> <br/><hr><br/><br/></td>
+        </tr>
+    </table>
+
+
+
+ </div>
+<br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+

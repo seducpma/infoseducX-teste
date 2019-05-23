@@ -1,0 +1,77 @@
+
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO INFORMÁTICA</strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5" >
+         <tr  bgcolor ="#E6E2D">
+            <td align="left">
+             <font  size=5 color="black"> <b> CONSULTA SERVIÇO - MANUTENÇÃO INFORMÁTICA</b></font>
+               <hr/>
+            </td>
+        </tr>
+   <tr>
+     <td>
+       <table width="100%">
+        <tr>
+          <td align="right">
+            <% form_tag busca_protocolo_chamados_path, :method => 'get' do %>
+            <font size="4"> Selecionar o Nº do Protocolo :</font>
+               <%= select_tag :search, options_for_select(@protocolos.collect { |ff| [ff.id, ff.id] }.insert(0, '--Selecionar--')) %>
+               <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
+          </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td colspan="2">
+                  <table border="1" cellspacing="0" cellpadding="1" width="100%">
+                 <%if @chamados.present?%>
+                 <% for chamado in @chamados %>
+                 <tr>
+                    <th>Nº Ordem</th>
+                    <th>Data sol</th>
+                    <th>Solicitante</th>
+                    <th>Unidade</th>
+                    <th>Solicitação</th>
+                    <%if chamado.situacao_chamado_id == 6%>
+                       <th colspan="2">Procedimento</th>
+                    <%else%>
+                       <th colspan="2">Problema</th>
+                    <%end%>
+                    <th>Status</th>
+                 </tr>
+                 <tr>
+                    <td><%=h chamado.id %></td>
+                    <td><%=h chamado.data_sol.strftime("%d/%m/%Y %H:%M horas")%></td>
+                    <td><%=h chamado.solicitante %></td>
+                    <td><%=h chamado.unidade.nome %></td>
+                    <td><%=h chamado.forma_sol %></td>
+                    <%if chamado.situacao_chamado_id == 6%>
+                       <td colspan="2"><%=h chamado.procedimentos %></td>
+                    <%else%>
+                       <td colspan="2"><%=h chamado.problema %></td>
+                    <%end%>
+                    <td><%=h chamado.situacao_chamado.situacao %></td>
+                 </tr>
+                 <%end%>
+                 <%end%>
+              </table>
+
+           <table align="left">
+              <tr>
+                 <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+               </tr>
+           </table>
+
+        </td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  </div>
+</div>
+<br/>

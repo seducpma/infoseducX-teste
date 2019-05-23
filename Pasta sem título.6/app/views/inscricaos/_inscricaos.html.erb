@@ -1,0 +1,27 @@
+  <br/> 
+   
+  <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: black">
+      <tr  bgcolor="#DCDCDC">
+        <th>Participante</th>
+        <th>Curso</th>
+        <th>Data</th>
+        
+        <th></th>
+      </tr>
+      <% for inscricao in @inscricaos %>
+      <tr>
+       <td><%=h inscricao.participante.nome %></td>
+       <td><%=h inscricao.curso.nome %></td>
+       <td align="center"><%=h inscricao.data_inscricao.strftime("%d/%b/%y") %> </td>
+        <td align="center" colspan="1"><%= button_to('Inscrição', inscricao, :method => "get", :title => "Inscrição")%></td>
+
+
+  
+    </tr>
+   <% end %>
+  </table>
+ 
+
+
+
+

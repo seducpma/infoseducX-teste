@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  inscricao: 1
+  obs: MyString
+
+two:
+  inscricao: 1
+  obs: MyString
