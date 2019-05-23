@@ -23,8 +23,10 @@ server application, :app, :web, :db, :primary => true
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
      #run "ln -s /home/atena/photos/infoseduc /home/atena/infoseduc.seducpma.com/current/public/photos"
-     run "ln -s /home/atena/photos /home/atena/infoseduc.seducpma.com/current/public/photos/infoseduc"
-     #run "ln -s /home/atena/photos/sisgered /home/atena/sisgered.seducpma.com/current/public/photos"  <<<<<<<<<<<<<
+     run "ln -s /home/atena/photos/infoseduc /home/atena/infoseduc.seducpma.com/current/public/photos"
+     #run "ln -s /home/atena/photos/sisgered /home/atena/sisgered.seducpma.com/current/public/photos"
+
+
   end
 
    task :custom_symlinks do
