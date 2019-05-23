@@ -16,8 +16,8 @@
                      
     </h2>
     <% calendar_for @poda_grama, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
-        <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
-              <% calendar.day(:day_method => :created_at) do |date, articles| %>
+        <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>[
+              <% calendar.day(:day_method => :execucao) do |date, articles| %>
                 <%= date.day %>
                 <ul>
                   <% for data in articles %>
