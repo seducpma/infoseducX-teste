@@ -8,7 +8,7 @@
                   <%if !@aulas_eventual[0].present? %>
                        <h2><center> <b>NÃO existe nada cadastado para esta unidade</b></center> </h2>
                   <%else%>
-                        <h2><center> <b>AGENDA - <%=  @aulas_eventual[0].eventual.professor.nome%> </b></center> </h2>
+                        <h2><center> <b>AGENDA - <%=@aulas_eventual[0].professor.nome%> </b></center> </h2>
                        
                   <%end%>  
                 <h2 id="month">
@@ -16,7 +16,8 @@
                   <%=h @date.strftime("%B %Y") %>
                   <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
                 </h2>
-                <% calendar_for @aulas_eventual, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+               <ul></ul>
+               <% calendar_for @aulas_eventual, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
                <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
                   <% calendar.day(:day_method => :data) do |date, articles| %>
                     <%= date.day %>
@@ -29,7 +30,7 @@
                                        <%end%>
                                      <b><font color ="blue"> <b><font color ="blue"> <%= data.unidade.tipo.nome%> <%= data.unidade.nome%></font></b><br/>
                                                                                         <%  session[:eventual_id]= data.eventual_id %>
-                                                                                     Classe: <%= data.classe.classe_classe%> (<%= data.periodo%>)
+                                                                                     Classe: <%= data.classe_id%> (<%= data.periodo%>)
                                        <%  session[:professor_id]= data.eventual_id %>
 
                                <% session[:anaja]=  AulasEventual.find(:all, :select => 'id', :conditions => ['unidade_id = 16 AND eventual_id =? AND month(data) =?', session[:eventual_id], @date.month ]).count %>
@@ -171,7 +172,7 @@
                                     <% session[:total]=  session[:total] + session[:bacuri] %> <br/>
                                  <%end%>
                                  <%if session[:batuira] != 0 %>
-                                    EMEI Baturi = <%= session[:batuira] %>
+                                    EMEI Batuira = <%= session[:batuira] %>
                                     <% session[:total]=  session[:total] + session[:batuira] %> <br/>
                                  <%end%>
                                  <%if session[:bore] != 0 %>

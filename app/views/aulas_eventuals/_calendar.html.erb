@@ -13,7 +13,7 @@
                     <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
                 </h2>
 
-
+                <ul></ul>
                 <% calendar_for @aulas_eventual, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
                <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
                   <% calendar.day(:day_method => :data) do |date, articles| %>

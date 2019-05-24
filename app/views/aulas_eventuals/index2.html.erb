@@ -14,7 +14,7 @@
 
 
                  <font size="3"> Professor:</font>
-                 <%= f.collection_select :eventual_id_equals, @professores_eventual, :id, :nome, :include_blank => true%>
+                 <%= f.collection_select :professor_id_equals, @professores_eventual, :idpro, :nome, :include_blank => true%>
                  <%= f.submit "Visualizar", :class => "btn_filtrar" %>
               <% end %>
 

@@ -15,31 +15,32 @@ class AulasEventualsController < ApplicationController
            end
     end
 
-   def index2
+    def index2
         if current_user.unidade.tipo_id == 2   or current_user.unidade.tipo_id == 5 or  current_user.unidade.tipo_id == 8
-            session[:infantil]= 0
+            session[:infantil]=0
         else
-            session[:infantil]= 1
+            session[:infantil]=1
         end
-          session[:unidade]= current_user.unidade_id
-
+            session[:unidade]=current_user.unidade_id
+t=0
         @date = params[:month] ? Date.parse(params[:month]) : Date.today
+t=0
         @search = AulasEventual.search(params[:search])
+t=0
         if !(params[:search].blank?)
             @aulas_eventual = @search.all
+t=0
             @aulas_eventual_unidade = @search.first
+t=0
         end
-
-       
         session[:professor] =1
         session[:funcionario] =0
-
-  end
+    end
 
   def destroy
         @aulas_eventual = AulasEventual.find(params[:id])
         id=params[:id]
-        @aulas_falta= AulasFalta.find(:all, :conditions => ['substituicao=?',params[:id] ])
+        @aulas_falta= AulasFalta.find(:all, :conditions => ['id=?',@aulas_eventual.aulas_falta_id ])
         @aulas_falta[0].substituicao=0
         @aulas_falta[0].save
         @aulas_eventual.destroy
@@ -118,20 +119,18 @@ class AulasEventualsController < ApplicationController
                     i=i+1
                     end
               session[:create]=0
-
-
-
-
         else
-
-
                    i=0
                    if !params[:aulas_eventual][:dataI].nil?
                        a1=session[:dataI]=params[:aulas_eventual][:dataI].to_date
                        a2=session[:dataF]=params[:aulas_eventual][:dataF].to_date
                        a3=session[:data]= session[:dataF]-session[:dataI]
+                       t=0
                    else
                         session[:data]= 0
+                        session[:dataI]=params[:aulas_eventual][:data].to_date
+                        session[:dataF]=params[:aulas_eventual][:data].to_date
+                        t=0
                    end
                    while i < session[:data]+1 do
                     @aulas_eventual = AulasEventual.new(params[:aulas_eventual])
@@ -267,9 +266,19 @@ def aulas_faltas_prof_classe
        session[:professor_id]=@aula_falta[0].professor.id
        #@classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos ON atribuicaos.classe_id = classes.id INNER JOIN professors ON atribuicaos.professor_id = professors.id ", :conditions=>[ "atribuicaos.professor_id = ? AND atribuicaos.ano_letivo = ?" , session[:professor_id], Time.now.year]  )
 #       @classe= Classe.find(:all, :joins => "INNER JOIN "+session[:base]+"aulas.faltas ON aulas_faltas.classe = classes.classe_classe id", :conditions=>[ "'+session[:base]+'.aulas_faltas.id = ? ",session[:aulas_falta_id]]  )
-        @classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos atr ON atr.classe_id = classes.id INNER JOIN professors  pro ON atr.professor_id = pro.id INNER JOIN  "+session[:baseinfo]+".aulas_faltas falt ON falt.classe = classes.classe_classe", :conditions=>[ "atr.professor_id = ? AND atr.ano_letivo = ? AND classes.unidade_id = falt.unidade_id AND falt.id =?" , session[:professor_id], Time.now.year, session[:aulas_falta_id] ]  )
-       w5=session[:classe_id]=@classe[0].id
-       w6=session[:classe_classe]=@classe[0].classe_classe
+### Alex 2019-05-24 12:31 Ini
+       if @aula_falta[0].classe=="PA"
+            session[:classe_classe]="PA"
+            session[:classe_id]=0
+       else
+            @classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos atr ON atr.classe_id = classes.id INNER JOIN professors  pro ON atr.professor_id = pro.id INNER JOIN  "+session[:baseinfo]+".aulas_faltas falt ON falt.classe = classes.classe_classe", :conditions=>[ "atr.professor_id = ? AND atr.ano_letivo = ? AND classes.unidade_id = falt.unidade_id AND falt.id =?" , session[:professor_id], Time.now.year, session[:aulas_falta_id] ]  )
+            session[:classe_id]=@classe[0].id
+            session[:classe_classe]=@classe[0].classe_classe
+       end
+### Alex 2019-05-24 12:31 Fim
+#        @classe= Classe.find(:all, :joins => "xxx INNER JOIN atribuicaos atr ON atr.classe_id = classes.id INNER JOIN professors  pro ON atr.professor_id = pro.id INNER JOIN  "+session[:baseinfo]+".aulas_faltas falt ON falt.classe = classes.classe_classe", :conditions=>[ "atr.professor_id = ? AND atr.ano_letivo = ? AND classes.unidade_id = falt.unidade_id AND falt.id =?" , session[:professor_id], Time.now.year, session[:aulas_falta_id] ]  )
+#       w5=session[:classe_id]=@classe[0].id
+#       w6=session[:classe_classe]=@classe[0].classe_classe
        w2=session[:falta_id]= @aula_falta[0].id
        w3=session[:prof_falt] = 0
        w4=session[:aulas_eventual_data]
@@ -278,6 +287,7 @@ def aulas_faltas_prof_classe
       @falta = AulasFalta.find(:all, :conditions => ['dataI =? AND professor_id =? AND classe=?', @aulas_falta[0].dataI, session[:professor_id], session[:classe_classe]])
       session[:num_faltas]= @falta.count
       session[:tipo_falta]=@aulas_falta[0].tipo
+      t=0
            render :partial => 'proffalta'
   else
       w= params[:aulas_eventual_eventual_id]
@@ -347,7 +357,7 @@ end
 def relatorios_eventual_professor
     session[:tiporelatorio]=2
     session[:aulas_professor_id]=params[:aulas_eventual][:eventual_id]
-    session[:verifica_professor_id]=params[:aulas_eventual][:eventual_id]
+    w=session[:verifica_professor_id]=params[:aulas_eventual][:eventual_id]
     session[:dia_final]=params[:diaF]
     session[:mesF]=params[:mesF]
     session[:dataI]=params[:aulas_falta][:dataI][6,4]+'-'+params[:aulas_falta][:dataI][3,2]+'-'+params[:aulas_falta][:dataI][0,2]
@@ -479,16 +489,17 @@ def impressao_eventuals_professor
     render :layout => "impressao"
 end
 
-def load_iniciais
-    #session[:base]= 'sisgered_development'
-     #session[:base]= 'sisgered_production'
-         if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('estagiario SEDUC')
-            @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8 OR id=52"], :order => 'nome ASC')
-            @professores_eventual= AulasEventual.find_by_sql("SELECT DISTINCT(pro.id), pro.nome, eve.id FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+" ORDER BY pro.nome")
-         else
-            @unidades_infantil = Unidade.find(:all,  :select => 'nome, id', :conditions =>  ["id=?", current_user.unidade_id], :order => 'nome ASC')
-            @professores_eventual= AulasEventual.find_by_sql("SELECT DISTINCT(pro.id), pro.nome, eve.id FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+"  AND aev.unidade_id = "+(current_user.unidade_id).to_s+"  ORDER BY pro.nome")
-         end
-      @professores_eventual_infantil= Eventual.find_by_sql("SELECT pro.id, pro.nome, eve.id FROM eventuals eve LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = 'Time.now.year).to_s +' ORDER BY pro.nome")
+    def load_iniciais
+        #session[:base]= 'sisgered_development'
+         #session[:base]= 'sis3ered_production'
+             if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or  current_user.has_role?('estagiario SEDUC')
+                @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8 OR id=52"], :order => 'nome ASC')
+    #            @professores_eventual= AulasEventual.find_by_sql("SELECT DISTINCT(pro.id), pro.nome, eve.id FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON aev.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+" ORDER BY pro.nome")
+             else
+                @unidades_infantil = Unidade.find(:all,  :select => 'nome, id', :conditions =>  ["id=?", current_user.unidade_id], :order => 'nome ASC')
+    #            @professores_eventual= AulasEventual.find_by_sql("SELECT DISTINCT(pro.id), pro.nome, eve.id FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+"  AND aev.unidade_id = "+(current_user.unidade_id).to_s+"  ORDER BY pro.nome")
+             end
+          @professores_eventual= AulasEventual.find_by_sql("SELECT DISTINCT(pro.id) AS idpro, pro.nome, eve.id AS ideve , aev.eventual_id AS idaev FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON aev.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+" ORDER BY pro.nome")
+          @professores_eventual_infantil= Eventual.find_by_sql("SELECT pro.id, pro.nome, eve.id FROM eventuals eve LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = 'Time.now.year).to_s +' ORDER BY pro.nome")
     end
 end

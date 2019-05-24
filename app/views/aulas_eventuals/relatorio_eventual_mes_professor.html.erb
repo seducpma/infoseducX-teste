@@ -1,6 +1,6 @@
 <div id="interno2">
 <% title "CONSULTA_FICHA".singularize %>
-
+    <%  @professores= AulasEventual.find_by_sql("SELECT DISTINCT(eve.id) AS ideve,  pro.nome FROM aulas_eventuals aev LEFT JOIN  eventuals eve ON aev.eventual_id = eve.id LEFT JOIN "+session[:base]+".professors pro ON eve.professor_id = pro.id WHERE eve.ano_letivo = "+(Time.now.year).to_s+" ORDER BY pro.nome")%>
 <div class="tabs">
  <div id="caixa_titulo">
      <font size="3"><strong>RELATÓRIO SUBSTITUIÇÕES/MÊS - PROFESSOR</strong></font><br/>
@@ -17,7 +17,8 @@
                <font size="2"><b class="label_busca3">Final:</b></font>&nbsp
                 <%= datepicker_tag(:aulas_falta, :dataF,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-              <b>Professor:</b></font>&nbsp  <%= collection_select :aulas_eventual,:eventual_id, @professores_eventual, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+
+              <b>Professor:</b></font>&nbsp  <%= collection_select :aulas_eventual,:eventual_id,@professores, :ideve, :nome, :include_blank => ' -- Selecionar -- ' %>
            </td>
           <td width ="14%" align="right">
             <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
