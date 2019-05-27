@@ -22,16 +22,16 @@ class AulasEventualsController < ApplicationController
             session[:infantil]=1
         end
             session[:unidade]=current_user.unidade_id
-t=0
+
         @date = params[:month] ? Date.parse(params[:month]) : Date.today
-t=0
+
         @search = AulasEventual.search(params[:search])
-t=0
+
         if !(params[:search].blank?)
             @aulas_eventual = @search.all
-t=0
+
             @aulas_eventual_unidade = @search.first
-t=0
+
         end
         session[:professor] =1
         session[:funcionario] =0
@@ -55,6 +55,9 @@ t=0
 
    def show
         @aulas_eventual = AulasEventual.find(params[:id])
+        session[:data]= 0
+        
+
         respond_to do |format|
             format.html # show.html.erb
             format.xml  { render :xml => @aulas_eventual }
