@@ -13,6 +13,11 @@ class AulasEventualsController < ApplicationController
 #              params[:search][:unidade_id_equals]
               @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (month( data) = "+@date.strftime("%m")+" AND ano_letivo = "+(Time.now.year).to_s+" AND unidade_id ="+(params[:search][:unidade_id_equals]).to_s+" ) GROUP BY eventual_id")
            end
+
+          session[:flag_show]= 1
+           
+  
+
     end
 
     def index2
@@ -33,6 +38,9 @@ class AulasEventualsController < ApplicationController
             @aulas_eventual_unidade = @search.first
 
         end
+
+        session[:flag_show]= 1
+
         session[:professor] =1
         session[:funcionario] =0
     end
@@ -55,8 +63,13 @@ class AulasEventualsController < ApplicationController
 
    def show
         @aulas_eventual = AulasEventual.find(params[:id])
-        session[:data]= 0
-        
+
+        if session[:flag_show]==1
+                session[:data]=0
+                session[:flag_show]=0
+                @falta = AulasFalta.find(:all, :conditions => ['dataI =? AND professor_id =? AND classe=?', @aulas_eventual.dataI, @aulas_eventual.professor_id, @aulas_eventual.aulas_falta.classe])
+                 session[:num_faltas]= @falta.count
+        end
 
         respond_to do |format|
             format.html # show.html.erb
@@ -164,7 +177,8 @@ class AulasEventualsController < ApplicationController
                     i=i+1
                     end
                 session[:create]=0
-
+                session[:flag_show]=0
+                 
                 respond_to do |format|
                         if @aulas_eventual.save
                             flash[:notice] = 'SALVO COM SUCESSO.'
