@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :participantes, :collection => {:busca_por_turno => :get,:consulta => :get,:voltarparticipante => :get, :aviso => :get}, :member => [:addemail,:update_email]
   map.resources :senhas
   map.resources :chamados, :collection => {:selected_print => :get, :busca_protocolo => :get}
-  map.resources :aulas_faltas, :collection => { :relatorio_falta_dia=>:get, :relatorio_falta_mes=>:get, :show=>:get, :index2=>:get , :index3=>:get,  :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
+  map.resources :aulas_faltas, :collection => { :relatorio_falta_dia=>:get, :relatorio_falta_mes=>:get, :show=>:get, :index2=>:get , :index3=>:get, :index4=>:get ,   :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
   map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:imp_show => :get ,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get , :relatorios => :get}
   map.resources :mmanutencaos_tipos_manutencaos
@@ -101,6 +101,7 @@ ActionController::Routing::Routes.draw do |map|
   map.aulas_eventuals2 '/aulas_eventuals2', :controller => 'aulas_eventuals', :action => 'index2'
   map.aulas_faltas2 '/aulas_faltas2', :controller => 'aulas_faltas', :action => 'index2'
   map.aulas_faltas3 '/aulas_faltas3', :controller => 'aulas_faltas', :action => 'index3'
+  map.aulas_faltas4 '/aulas_faltas4', :controller => 'aulas_faltas', :action => 'index4'
   map.montar_classe '/montar_classe', :controller => 'classes', :action => 'montar_classe'
   map.new_disciplinanota '/new_disciplinanota', :controller => 'disciplinas', :action => 'new_disciplinanota'
   map.create_discipina_nota '/create_discipina_nota', :controller => 'disciplinas', :action => 'create_discipina_nota'

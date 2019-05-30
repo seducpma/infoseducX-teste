@@ -3,6 +3,7 @@ class AulasFaltasController < ApplicationController
     before_filter :load_iniciais
 
     def index
+        t=0
         @date = params[:month] ? Date.parse(params[:month]) : Date.today
         @date.strftime("%m")
         @search = AulasFalta.search(params[:search])
@@ -21,6 +22,7 @@ class AulasFaltasController < ApplicationController
     end
 
     def index2
+        t=0
         if current_user.unidade.tipo_id == 2   or current_user.unidade.tipo_id == 5 or  current_user.unidade.tipo_id == 8
             session[:infantil]= 0
         else
@@ -52,6 +54,29 @@ class AulasFaltasController < ApplicationController
         session[:funcionario] =1
         session[:professor] =0
     end
+
+
+    def index4
+        @date = params[:month] ? Date.parse(params[:month]) : Date.today
+        @date.strftime("%m")
+        @search = AulasFalta.search(params[:search])
+        if !(params[:search].blank?)
+            @aulas_faltas = @search.find(:all, :conditions => ['ano_letivo =?', Time.now.year])
+            @aulas_faltas_unidade = @search.first
+        end
+        session[:search]=params[:search]
+        if !(params[:search].blank?)
+            #params[:search][:unidade_id_equals]
+           if params[:search][:unidade_id_equals].empty?
+               @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (month( data) = "+@date.strftime("%m")+" AND ano_letivo = "+(Time.now.year).to_s+" AND professor_id IS NOT NULL ) GROUP BY professor_id")
+               @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (month( data) = "+@date.strftime("%m")+" AND ano_letivo = "+(Time.now.year).to_s+" AND funcionario_id IS NOT NULL) GROUP BY professor_id")
+           else
+                @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (month( data) = "+@date.strftime("%m")+" AND ano_letivo = "+(Time.now.year).to_s+" AND unidade_id ="+(params[:search][:unidade_id_equals]).to_s+" AND professor_id IS NOT NULL ) GROUP BY professor_id")
+                @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (month( data) = "+@date.strftime("%m")+" AND ano_letivo = "+(Time.now.year).to_s+" AND unidade_id ="+(params[:search][:unidade_id_equals]).to_s+" AND funcionario_id IS NOT NULL) GROUP BY professor_id")
+           end
+        end
+        session[:funcionario] = 1
+        session[:professor] = 1    end
 
     def show
         @aulas_falta = AulasFalta.find(params[:id])
