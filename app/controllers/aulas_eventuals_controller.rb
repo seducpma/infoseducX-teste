@@ -48,7 +48,7 @@ class AulasEventualsController < ApplicationController
   def destroy
         @aulas_eventual = AulasEventual.find(params[:id])
         id=params[:id]
-        @aulas_falta= AulasFalta.find(:all, :conditions => ['id=?',@aulas_eventual.aulas_falta_id ])
+        @aulas_falta= AulasFalta.find(:all, :conditions => ['substituicao=?',params[:id]])
         @aulas_falta[0].substituicao=0
         @aulas_falta[0].save
         @aulas_eventual.destroy
@@ -140,7 +140,7 @@ class AulasEventualsController < ApplicationController
                    if !params[:aulas_eventual][:dataI].nil?
                        a1=session[:dataI]=params[:aulas_eventual][:dataI].to_date
                        a2=session[:dataF]=params[:aulas_eventual][:dataF].to_date
-                       a3=session[:data]= session[:dataF]-session[:dataI]
+                       a3=session[:data]= session[:dataF]-session[:dataI]       # esta session[:data] é para contar o numero de vezes da repetição
                        t=0
                    else
                         session[:data]= 0
