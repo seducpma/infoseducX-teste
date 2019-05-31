@@ -47,7 +47,7 @@ class AulasEventualsController < ApplicationController
 
   def destroy
         @aulas_eventual = AulasEventual.find(params[:id])
-        id=params[:id]
+        #id=params[:id]
         @aulas_falta= AulasFalta.find(:all, :conditions => ['substituicao=?',params[:id]])
         @aulas_falta[0].substituicao=0
         @aulas_falta[0].save
