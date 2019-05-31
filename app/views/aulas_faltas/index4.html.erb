@@ -10,7 +10,7 @@
 
                <% form_for @search do |f| %>
 
-                 <font color = 'red'> (Para todas a undidades da SEDUC NÃO selecionar nnhuma unidade.) </font><font size="3"> Unidade:</font>
+                 <font color = 'red'> (Para todas a undidades da SEDUC NÃO selecionar nenhuma unidade.) </font><font size="3"> Unidade:</font>
                  <%= f.collection_select :unidade_id_equals, @unidades_infantil, :id, :nome, :include_blank => true%>
                  <%= f.submit "Visualizar", :class => "btn_filtrar" %>
                  
