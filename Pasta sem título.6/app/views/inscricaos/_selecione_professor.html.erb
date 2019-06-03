@@ -1,5 +1,0 @@
-<%= collection_select :inscricao,:participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
-<%= observe_field 'inscricao_participante_id',
-                   :with => :inscricao_participante_id,
-                   :update => 'teste',
-                   :url => { :action => 'sel_participa' } %>

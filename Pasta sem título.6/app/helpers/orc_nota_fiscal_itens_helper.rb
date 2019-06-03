@@ -1,2 +1,0 @@
-module OrcNotaFiscalItensHelper
-end
