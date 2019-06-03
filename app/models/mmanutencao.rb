@@ -15,13 +15,6 @@ class Mmanutencao < ActiveRecord::Base
 
      
 
-before_save :teste
-
-    def teste
-        w=:rails_root
-        t=0
-
-    end
 
 
 
