@@ -6,7 +6,7 @@ class Estagiario < ActiveRecord::Base
   before_update :sem_est, :if => :verify?
   before_save  :maiusculo, :com_est, :if => :verify?
   before_update :sai, :if => :verify?
-  has_attached_file :photo, :styles => {:thumb=> "100x100#", :small  => "150x150>" },
+  has_attached_file :photo, :styles => {:original=> "130x130>" },
                     :url => "/photos/estagiarios/:id.:extension",
                     :path => ":rails_root/public/photos/estagiarios/:id.:extension"
 
