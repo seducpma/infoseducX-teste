@@ -10,13 +10,7 @@ class Estagiario < ActiveRecord::Base
                     :url => "/photos/estagiarios/:id.:extension",
                     :path => ":rails_root/public/photos/estagiarios/:id.:extension"
 
-before_save :teste
 
-    def teste
-        w=:rails_root
-        t=0
-
-    end
 
 
 def maiusculo
