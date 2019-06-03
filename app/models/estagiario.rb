@@ -7,9 +7,8 @@ class Estagiario < ActiveRecord::Base
   before_save  :maiusculo, :com_est, :if => :verify?
   before_update :sai, :if => :verify?
   has_attached_file :photo, :styles => {:thumb=> "100x100#", :small  => "150x150>" },
-                    :url => "/photos/estagiarios/:id.:extension",
-                    :path => ":rails_root/public/photos/estagiarios/:id.:extension"
-
+                    :url => "/:id.:extension",
+                    :path => ":rails_root/public/:id.:extension"
 
 before_save :teste
 
