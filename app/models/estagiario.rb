@@ -11,14 +11,6 @@ class Estagiario < ActiveRecord::Base
                     :path => ":rails_root/public/photos/estagiarios/:id.:extension"
 
 
-before_save :teste
-
-    def teste
-        w=:rails_root
-        t=0
-
-    end
-
 
 def maiusculo
     self.nome.upcase!
