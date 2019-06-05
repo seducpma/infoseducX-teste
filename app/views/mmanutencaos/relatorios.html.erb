@@ -3,9 +3,9 @@
 
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>RELATÓRIO DE SERVIÇOS EXECUTADOS </strong></font><br/>
+     <font size="3"><strong>RELATÓRIO DE SERVIÇOS</strong></font><br/>
  </div>
- <% @tipo_manuntecao= TiposManutencao.find(:all, :conditions => ["ativo = 1"], :order => 'servico ASC') %>
+ <% @tipo_manuntecao= TiposManutencao.find(:all, :order => 'servico ASC') %>
     <div class="tabs">
     <% form_remote_tag :url => relatorios_manutencaos_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>
       <fieldset>
@@ -21,7 +21,7 @@
                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                <font size="2"><b class="label_busca3">Serviço:</b></font>&nbsp
                 
-               <%= collection_select :manutencao, :situacao_manutencao_id, @tipo_manuntecao, :id, :servico, :include_blank => ' '  %>
+               <%= collection_select :manutencao, :tipos_manutencao_id, @tipo_manuntecao, :id, :servico, :include_blank => ' '  %>
          </td>
           <td width ="14%" align="right">
             <%= submit_tag "Visualizar", :class => "btn_filtrar" %>

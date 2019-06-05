@@ -1,0 +1,120 @@
+
+                 <table border="2" cellspacing="0" cellpadding="1" width="100%">
+                  <tr >
+                    <th width ="1%" align="center">Proto- colo</th>
+                    <th width ="5%">Data Solicitação</th>
+                    <th width ="10%">Solicitante</th>
+                    <th width ="10%">Unidade</th>
+                    <th width ="35%">Solicitação</th>
+                    <th width ="15%">Encaminhanto</th>
+                    <th width="15%">Status</th>
+                  </tr>
+                <%$cont=0%>
+                  <%form_tag selected_print_mmanutencaos_path, :method => :get do %>
+                    <% for chamado in @mmanutencaos %>
+                     <% if current_user.unidade_id != 53 %>
+
+                           <tr>
+                             <td align="center"><%=h chamado.id %></td>
+                             <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+                             <td><%=h chamado.solicitante %></td>
+                             <td><%=h chamado.nome%> </td>
+                             <td><%=h chamado.descricao %></td>
+                             <td><%=h chamado.procedimentos %></td>
+                             <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                                 <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                             <% else %>
+
+                                 <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS')or (chamado.situacao_manutencao.situacao == 'DEVOLUÇÃO PARA UNIDADE') %>
+                                 <td align="center"><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                                 <% else %>
+                                    <td><font color="blue"><b><%=h chamado.situacao_manutencao.situacao %></b></font> <br/>
+                                      <%if chamado.chefia.nil? %>
+                                         p/ <%=h chamado.user.login %>
+                                      <%else%>
+                                         p/ <%=h chamado.chefia.nome %>
+                                      <%end%>
+                                     </td>
+                                    <%end%>
+                             <% end %>
+                         </tr>
+
+                      <%else%>
+                     <tr>
+                       <td align="center"><%=h chamado.id %></td>
+                       <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+                       <td><%=h chamado.solicitante %></td>
+                       <td><%=h chamado.unidade.nome %></td>
+                       <td><%=h chamado.descricao %></td>
+                       <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                           <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                       <% else %>
+
+                           <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                              <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                           <% else %>
+                              <td align="center"><font color="blue"><b> <%=h chamado.situacao_manutencao.situacao %></b></font> <br/>
+                                <%if chamado.chefia.nil? %>
+                                   p/ <%=h chamado.user.login %>
+                                <%else%>
+                                   p/ <%=h chamado.chefia.nome %>
+                                <%end%>
+                               </td>
+                              <%end%>
+                       <% end %>
+                      </tr>
+
+
+                      <%end%>
+
+                      <tr>
+                        <td align="right" colspan="7">
+                           <table >
+                              <tr>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') %>
+                                  <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') %>
+                                      <td width="6% align="right" ><%= link_to image_tag("/stylesheets/images/encami.png" ), {:action => "despacho", :id =>chamado}, :method => "get", :title => "Encaminhar" %> </td>
+                                  <%end%>
+
+                                      <td align="left"> <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_manutencao", :id =>chamado}, :method => "get", :title => "Imprimir" %></td>
+                                 <%end%>
+                                 <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('diretor_unidade') or current_user.has_role?('terceiro')or current_user.has_role?('estagiario SEDUC') %>
+                                   <td align="right" ><%= link_to image_tag("/stylesheets/images/servico.png"),  {:action => "ordemservico", :id =>chamado}, :method => "get", :title => "Serviço" %></td>
+                                 <%end%>
+                               </tr>
+                            </table>
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td align="right" colspan="7">
+                        </td>
+                      </tr>
+                           <%$cont=$cont+1%>
+                    <%end%>
+                      <tr>
+                          <td  colspan="12">
+                              <table>
+                                  <tr>
+                                     <td  colspan="12"> <b><u>ESTATÍSTICA:</u></b>  </td>
+                                  </tr>
+                                  <tr>
+                                   <% for situacao in @situacaos %>
+                                      <td> <b>- <%=situacao.situacao%></b> : <%=situacao.contador%> &nbsp&nbsp </td>
+
+
+                                   <%end%>
+                                  </tr>
+                              </table>
+                          </td>
+                     </tr>
+                      <tr>
+                        <td  colspan="12">
+                          <b>Total de Ordem de Serviços de <%= session[:servico] %> :  <%= $cont %> </b>
+                        </td>
+                      </tr>
+                  <%end%>
+
+
+          </table>
+
