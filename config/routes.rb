@@ -60,7 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :unidades,  :collection => {:consultas => :get}
   map.resources :logs
   map.resources :roles_users
-  map.resources :users
+  map.resources :users, :collection => {:aviso => :get}
   map.resources :classes
   map.resources :informativos
   map.resources :logs
