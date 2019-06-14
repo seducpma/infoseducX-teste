@@ -21,7 +21,7 @@
                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                <font size="2"><b class="label_busca3">Serviço:</b></font>&nbsp
                 
-               <%= collection_select :manutencao, :tipos_manutencao_id, @tipo_manuntecao, :id, :servico, :include_blank => ' '  %>
+               <%= collection_select :manutencao, :tipos_manutencao_id, @tipo_manuntecao, :id, :servico, :include_blank => 'TODOS '  %>
          </td>
           <td width ="14%" align="right">
             <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
