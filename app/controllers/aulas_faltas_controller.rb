@@ -113,7 +113,7 @@ class AulasFaltasController < ApplicationController
  def create
 if params[:aulas_falta][:dataF].nil?
     
-     if session[:tipo]='FALTA ABONADA'
+     if session[:tipo]=='FALTA ABONADA'
        @faltasabonadas=AulasFalta.find_by_sql('SELECT count(*) AS qtde FROM aulas_faltas af JOIN '+session[:base]+'.professors pr ON af.professor_id=pr.id WHERE (periodo="'+session[:periodo]+'" AND data="'+(params[:aulas_falta][:dataI].to_date).to_s+'" AND pr.funcao2="'+session[:funcao2_professor]+'" AND af.tipo="FALTA ABONADA")')
        session[:faltas_abonadas]=@faltasabonadas[0].qtde.to_i
      else
