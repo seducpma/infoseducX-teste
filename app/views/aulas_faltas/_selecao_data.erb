@@ -2,6 +2,13 @@
    <tr>
          <td width="10%"    align="left" >&nbsp&nbsp&nbsp <b>Data: </b></td>
          <td colspan="3">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <%= datepicker_tag(:aulas_falta,:dataI,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>  </td>
+                                         <%= observe_field 'aulas_falta_dataI',
+                                            :with   => :aulas_falta_dataI,
+                                            :url  => { :action => 'data' }%>
+
+
+
+
   </tr>
 </table>
 

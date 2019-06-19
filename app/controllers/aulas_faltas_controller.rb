@@ -111,71 +111,87 @@ class AulasFaltasController < ApplicationController
     end
 
  def create
-    if params[:aulas_falta][:dataF].nil?
-        session[:flag]=0
-        @aulas_falta = AulasFalta.new(params[:aulas_falta])
-        @aulas_falta.data=params[:aulas_falta][:dataI]
-         @aulas_falta.dataF=params[:aulas_falta][:dataI]
-        @aulas_falta.dataI=params[:aulas_falta][:dataI]
-        w=@aulas_falta.ano_letivo =  Time.now.year
-        w1=@aulas_falta.funcao = session[:funcao]
-        w2=@aulas_falta.setor = session[:setor]
-        #w3=@aulas_falta.classe = session[:profclasse]
-        #w4=@aulas_falta.periodo = session[:classeper]
-
-        @aulas_falta.periodo = params[:periodop]
-        respond_to do |format|
-            if @aulas_falta.save
-                flash[:notice] = 'SALVO COM SUCESSO.'
-                format.html { redirect_to(@aulas_falta) }
-                format.xml  { render :xml => @aulas_falta, :status => :created, :location => @aulas_falta }
-            else
-                format.html { render :action => "new" }
-                format.xml  { render :xml => @aulas_falta.errors, :status => :unprocessable_entity }
-            end
-        end
-    else
-       session[:flag]=1
-       session[:dataI]=params[:aulas_falta][:dataI].to_date
-      w1= session[:dataF]=params[:aulas_falta][:dataF].to_date
-       w=session[:data]= session[:dataF]-session[:dataI]
-       i=0
-       while i <= session[:data] do
-
-            @aulas_falta = AulasFalta.new(params[:aulas_falta])
-            @aulas_falta.data=session[:dataI].to_date+i
-#            @aulas_falta.dataF=params[:aulas_falta][:dataF]
-#            @aulas_falta.dataI=params[:aulas_falta][:dataI]
-            @aulas_falta.ano_letivo =  Time.now.year
-            @aulas_falta.funcao = session[:funcao]
-            @aulas_falta.setor = session[:setor]
-            #@aulas_falta.classe = session[:profclasse]
-            #w4=@aulas_falta.periodo = session[:classeper]
-            @aulas_falta.periodo = params[:periodop]
-            @aulas_falta.save
-            i=i+1
-
-        end
-        respond_to do |format|
-            if @aulas_falta.save
-                flash[:notice] = 'SALVO COM SUCESSO.'
-                format.html { redirect_to(@aulas_falta) }
-                format.xml  { render :xml => @aulas_falta, :status => :created, :location => @aulas_falta }
-            else
-                format.html { render :action => "new" }
-                format.xml  { render :xml => @aulas_falta.errors, :status => :unprocessable_entity }
-            end
-        end
+if params[:aulas_falta][:dataF].nil?
+    
+     if session[:tipo]='FALTA ABONADA'
+       @faltasabonadas=AulasFalta.find_by_sql('SELECT count(*) AS qtde FROM aulas_faltas af JOIN '+session[:base]+'.professors pr ON af.professor_id=pr.id WHERE (periodo="'+session[:periodo]+'" AND data="'+(params[:aulas_falta][:dataI].to_date).to_s+'" AND pr.funcao2="'+session[:funcao2_professor]+'" AND af.tipo="FALTA ABONADA")')
+       session[:faltas_abonadas]=@faltasabonadas[0].qtde.to_i
+     else
+       session[:faltas_abonadas]=0
+     end
+     if session[:faltas_abonadas] < 3 or current_user.has_role?('SEDUC') or current_user.has_role?('admin')
+                    session[:flag]=0
+                    @aulas_falta = AulasFalta.new(params[:aulas_falta])
+                    @aulas_falta.data=params[:aulas_falta][:dataI]
+                     @aulas_falta.dataF=params[:aulas_falta][:dataI]
+                    @aulas_falta.dataI=params[:aulas_falta][:dataI]
+                    w=@aulas_falta.ano_letivo =  Time.now.year
+                    w1=@aulas_falta.funcao = session[:funcao]
+                    w2=@aulas_falta.setor = session[:setor]
+                    #w3=@aulas_falta.classe = session[:profclasse]
+                    #w4=@aulas_falta.periodo = session[:classeper]
+                    @aulas_falta.periodo = session[:periodo]
+                    respond_to do |format|
+                        if @aulas_falta.save
+                            flash[:notice] = 'SALVO COM SUCESSO.'
+                            format.html { redirect_to(@aulas_falta) }
+                            format.xml  { render :xml => @aulas_falta, :status => :created, :location => @aulas_falta }
+                        else
+                            format.html { render :action => "new" }
+                            format.xml  { render :xml => @aulas_falta.errors, :status => :unprocessable_entity }
+                        end
+                    end
+             else
+                 t=0
+                  respond_to do |format|
+                            #flash[:notice] = 'CADASTRADO COM SUCESSO.'
+                            format.html { redirect_to(aviso_aulas_faltas_path) }
+                            format.xml  { head :ok }
+                        end
 
 
 
+             end
+        else
+                   session[:flag]=1
+                   session[:dataI]=params[:aulas_falta][:dataI].to_date
+                  w1= session[:dataF]=params[:aulas_falta][:dataF].to_date
+                   w=session[:data]= session[:dataF]-session[:dataI]
+                   i=0
+                   while i <= session[:data] do
 
+                        @aulas_falta = AulasFalta.new(params[:aulas_falta])
+                        @aulas_falta.data=session[:dataI].to_date+i
+            #            @aulas_falta.dataF=params[:aulas_falta][:dataF]
+            #            @aulas_falta.dataI=params[:aulas_falta][:dataI]
+                        @aulas_falta.ano_letivo =  Time.now.year
+                        @aulas_falta.funcao = session[:funcao]
+                        @aulas_falta.setor = session[:setor]
+                        #@aulas_falta.classe = session[:profclasse]
+                        #w4=@aulas_falta.periodo = session[:classeper]
+                        @aulas_falta.periodo = session[:periodo]
+                        @aulas_falta.save
+                        i=i+1
 
+                    end
+                    respond_to do |format|
+                        if @aulas_falta.save
+                            flash[:notice] = 'SALVO COM SUCESSO.'
+                            format.html { redirect_to(@aulas_falta) }
+                            format.xml  { render :xml => @aulas_falta, :status => :created, :location => @aulas_falta }
+                        else
+                            format.html { render :action => "new" }
+                            format.xml  { render :xml => @aulas_falta.errors, :status => :unprocessable_entity }
+                        end
+                    end
 
-
-    end
+              end
 
  end
+
+ def aviso
+ end
+
 
     def update
         @aulas_falta = AulasFalta.find(params[:id])
@@ -202,26 +218,40 @@ class AulasFaltasController < ApplicationController
 
     def data_falta
      session[:aulas_falta_data]=params[:aulas_falta_data][6,4]+'-'+params[:aulas_falta_data][3,2]+'-'+params[:aulas_falta_data][0,2]
+    end
+
+
+    def data
+     session[:aulas_falta_dataI]=params[:aulas_falta_dataI][6,4]+'-'+params[:aulas_falta_dataI][3,2]+'-'+params[:aulas_falta_dataI][0,2]
 
     end
+
+    def periodo
+     session[:periodo]=params[:aulas_falta_periodo]
+
+    end
+
+
 
 
     def nome_falta
 
         session[:aulas_falta_unidade_id]=params[:aulas_falta_unidade_id]
         @tipo_unidade = Unidade.find(:all, :select => ['id, tipo_id'] , :conditions => ['id =?',  params[:aulas_falta_unidade_id]]  )
-
-        w=@tipo_unidade[0].tipo_id
-
-        if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
-           params[:aulas_falta_unidade_id]
-           @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
-           @professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND disciplinas.curriculo= "I" ', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
+         if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
+           # @faltas = AulasFalta.find(:all, :select=>[:professor_id], :conditions => ['data = ? AND  periodo=?', session[:aulas_falta_dataI], session[:periodo]])
+            @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
+            #@professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND disciplinas.curriculo= "I"  ', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
+            #@professores_cat = Professor.find(:all, :select => " distinct(professorss.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND disciplinas.curriculo= "I" AND professors.id NOT IN (?) ', params[:aulas_falta_unidade_id], Time.now.year, @faltas], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
+            @professores_cat = Professor.find_by_sql("SELECT  distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id FROM `professors`  INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id WHERE ((unidade_id ='16' or unidade_id=54) AND atribuicaos.ano_letivo = 2019 AND disciplinas.curriculo= 'I' AND professors.id NOT IN (SELECT af.professor_id FROM "+session[:baseinfo]+".aulas_faltas af WHERE (af.data = '"+session[:aulas_falta_dataI]+"' AND  (af.periodo='"+session[:periodo]+"' OR af.periodo='INTEGRAL'))) )  ORDER BY professors.unidade_id ASC, professors.nome ASC ")
+            #@professores1 = Eventual.find_by_sql("SELECT eventuals.id, professors.nome FROM eventuals INNER JOIN  professors  ON  professors.id = eventuals.professor_id INNER JOIN  unidades  ON  unidades.id = professors.unidade_id WHERE eventuals.periodo = '"+session[:periodo_prof_eventual]+"' AND eventuals.categoria = '"+session[:caregoria_prof_eventual]+"'AND eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+" AND eventuals.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+" order by unidades.regiao_id ASC ) order by unidades.regiao_id ASC")
+           
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
         else
-           @professores = Professor.find(:all, :conditions => ['(unidade_id =? or unidade_id = 52 or  unidade_id = 75 or diversas_unidades = 1 or unidade_id = 54) and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ')
-           @professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND (disciplinas.curriculo= "B" OR disciplinas.curriculo= "D")', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
-
+            #  FUNDAMENTAL
+            @professores = Professor.find(:all, :conditions => ['(unidade_id =? or unidade_id = 52 or  unidade_id = 75 or diversas_unidades = 1 or unidade_id = 54) and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ')
+            #@professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND (disciplinas.curriculo= "B" OR disciplinas.curriculo= "D")', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
+             @professores_cat = Professor.find_by_sql("SELECT  distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id FROM `professors`  INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id WHERE ((unidade_id ='16' or unidade_id=54) AND atribuicaos.ano_letivo = 2019 AND disciplinas.curriculo= 'I' AND professors.id NOT IN (SELECT af.professor_id FROM "+session[:baseinfo]+".aulas_faltas af WHERE (af.data = '"+session[:aulas_falta_dataI]+"' AND  (af.periodo='"+session[:periodo]+"' OR af.periodo='INTEGRAL'))) )  ORDER BY professors.unidade_id ASC, professors.nome ASC ")
            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
         end
         if (@professores.present?) or (@funcionarios.present?)
@@ -566,6 +596,8 @@ class AulasFaltasController < ApplicationController
 
     def classe_professor
         w=session[:prof_id]=params[:aulas_falta_professor_id]
+        @professor= Professor.find(:all, :conditions => ['id=?',session[:prof_id] ])
+        session[:funcao2_professor]= @professor[0].funcao2
         @professor_classe= Classe.find_by_sql("SELECT  cla.horario , dis.disciplina as disciplina, cla.classe_classe as classe, atr.ano_letivo FROM "+session[:base]+".classes cla INNER JOIN  "+session[:base]+".atribuicaos atr  ON  cla.id = atr.classe_id INNER JOIN  "+session[:base]+".disciplinas dis  ON  dis.id = atr.disciplina_id WHERE atr.ano_letivo ="+(Time.now.year).to_s+" AND atr.professor_id ="+session[:prof_id].to_s+"")
 
         t=0

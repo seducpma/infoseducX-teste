@@ -1,0 +1,58 @@
+<div id="interno3">
+<% title "AULASEVENTUAL".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>FALTAS</strong></font><br/>
+ </div>
+
+  <div class="tabs">
+
+             <table  width="100%"  align="center"  bgcolor="#F5F5F5" >
+                <tr   bgcolor ="#E6E2D">
+                  <td colspan="8"><b><font size="3"> &nbsp CADASTRAR FALTA &nbsp  </b></td>
+                </tr>
+                <tr>
+                  <td colspan="8"><hr></td>
+                </tr>
+
+               <tr>
+                   <td colspan="8"><font color ="RED" SIZE="3"> <b><u>ATENÇÃO:</u> </b></font><br/><br/></td>
+               </tr>
+               <tr>
+                   <td></td><td></td>
+                   <td><font color ="RED" size="3"> &nbsp&nbsp&nbsp&nbsp <b>NÃO PODE SER CADASTRADA A FALTA. Execeu o número de FALTAS ABONADAS <br/>
+                               &nbsp&nbsp&nbsp&nbsp para esta categoria de professor para o período <%=session[:periodo]%> para o dia de hoje.
+                       </font><br/><br/></td>
+               </tr>
+
+           </table>
+
+             <table width="100%"  align="center">
+                    <tr>
+
+                       <td align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+
+                   </tr>
+                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

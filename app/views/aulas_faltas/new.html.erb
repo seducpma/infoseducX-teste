@@ -21,7 +21,10 @@
                    <td colspan="8"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro a DATA, TIPO DE FALTA e UNIDADE.</b></font><br/><br/></td>
                </tr>
  <tr>
-     <td colspan="8"><b> Periodo da falta do professor(a): </b>&nbsp&nbsp&nbsp&nbsp <%= select_tag :periodop, options_for_select(PERIODO).sort%> <font color="red"><== <b>ATENÇÃO - OBRIGATÓRIO !!</b></td>
+     <td colspan="8"><b> Periodo da falta do professor(a): </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :periodo,(AulasFalta::PERIODO).sort%> <font color="red"><== <b>ATENÇÃO - OBRIGATÓRIO !!</b></td>
+                                       <%= observe_field 'aulas_falta_periodo',
+                                            :with   => :aulas_falta_periodo,
+                                            :url  => { :action => 'periodo' }%>
 
  </tr>
                <tr>

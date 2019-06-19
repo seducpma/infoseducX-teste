@@ -11,7 +11,7 @@ class AulasFalta < ActiveRecord::Base
   validates_presence_of :unidade_id
   validates_presence_of :funcao
   validates_presence_of :setor
-  validates_presence_of :periodo
+  #validates_presence_of :periodo
 
     	
 

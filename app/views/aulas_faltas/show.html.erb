@@ -75,6 +75,15 @@
                    <td align="left"><b>OBS:</b></td>
                    <td colspan="3"align="left"><%=h @aulas_falta.obs %></td>
                  </tr>
+                 <% if current_user.has_role?('SEDUC') or current_user.has_role?('admin') %>
+                 <tr bgcolor="#F5F5F5" >
+                     <td align="left" colspan="5"><font color="red"><b>FALTAS ABONADAS:</b> <%= session[:faltas_abonadas]  %>
+                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Categoria :</b> <%= @aulas_falta.professor.funcao2  %>
+                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>para este periodo e data</b></font>
+
+                     </td>
+                 </tr>
+                 <%end%>
                </table>
            </td>
         </tr>
