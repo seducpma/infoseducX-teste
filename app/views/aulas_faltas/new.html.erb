@@ -68,6 +68,7 @@
                     <tr>
                        <td width="5px"align="left"><%= f.submit 'Salvar' %></td>
       <% end %>
+                       <%session[:teste]=@aulas_falta.periodo%>
                        <td align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
 
 

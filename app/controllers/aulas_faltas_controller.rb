@@ -114,6 +114,13 @@ class AulasFaltasController < ApplicationController
 if params[:aulas_falta][:dataF].nil?
     
      if session[:tipo]=='FALTA ABONADA'
+                prof=Professor.find(:all, :conditions => ["id=?", params[:aulas_falta][:professor_id]])
+                unid=Unidade.find(:all, :conditions => ["id=?", params[:aulas_falta][:unidade_id]])
+                
+                session[:aviso_fa]=params[:aulas_falta][:dataI].to_s+" | "+params[:aulas_falta][:periodo]+
+                                   " | "+params[:aulas_falta][:classe]+" | "+params[:aulas_falta][:tipo]+
+                                   " | "+unid[0].nome+" | "+prof[0].matricula.to_s+" | "+prof[0].nome+" | "+prof[0].funcao
+
        @faltasabonadas=AulasFalta.find_by_sql('SELECT count(*) AS qtde FROM aulas_faltas af JOIN '+session[:base]+'.professors pr ON af.professor_id=pr.id WHERE (periodo="'+session[:periodo]+'" AND data="'+(params[:aulas_falta][:dataI].to_date).to_s+'" AND pr.funcao2="'+session[:funcao2_professor]+'" AND af.tipo="FALTA ABONADA")')
        session[:faltas_abonadas]=@faltasabonadas[0].qtde.to_i
      else
@@ -190,6 +197,8 @@ if params[:aulas_falta][:dataF].nil?
  end
 
  def aviso
+ 
+
  end
 
 
