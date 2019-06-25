@@ -126,7 +126,7 @@ if params[:aulas_falta][:dataF].nil?
      else
        session[:faltas_abonadas]=0
      end
-     if session[:faltas_abonadas] < 3 or current_user.has_role?('SEDUC') or current_user.has_role?('admin')
+     if session[:faltas_abonadas] < 4 or current_user.has_role?('SEDUC') or current_user.has_role?('admin')
                     session[:flag]=0
                     @aulas_falta = AulasFalta.new(params[:aulas_falta])
                     @aulas_falta.data=params[:aulas_falta][:dataI]
