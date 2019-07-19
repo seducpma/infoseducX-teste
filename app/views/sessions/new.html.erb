@@ -21,10 +21,15 @@
                         <td width="10%"></td>
                         <td width ="80%">
                             <table >
-             <td colspan="2" align="center" style=" font-size: large"> &nbsp&nbsp <b><u>Cursos Disponíveis</b></u></font><br/>
+
+             <!--<td colspan="2" align="center" style=" font-size: large"> &nbsp&nbsp <b><u>Cursos Disponíveis</b></u></font><br/>
                        <font size="0" > &nbsp&nbsp Para inscrever-se acesse o módulo Inscrições On-Line</font><br/>
              </td>
-    
+             -->
+
+             <td colspan="2" align="center"><font size ="5"> &nbsp&nbsp <b><u>CLASSIFICAÇÃO PROCESSO SELETIVO <br/> PROFESSOR SUBSTITUTO</b></u></font><br/><br/>
+                       <font size="4" >  Acesse o site: <br/><%= link_to "https://processoseletivo.seducpma.com", :title => "Processo Seletivo"%></font><br/>
+             </td>
                           <% $cont = 1%>
                             <% @cursos.in_groups_of(1, false) do |row_cursos| %>
 
