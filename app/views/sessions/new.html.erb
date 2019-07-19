@@ -28,7 +28,9 @@
              -->
 
              <td colspan="2" align="center"><font size ="5"> &nbsp&nbsp <b><u>CLASSIFICAÇÃO PROCESSO SELETIVO <br/> PROFESSOR SUBSTITUTO</b></u></font><br/><br/>
-                       <font size="4" >  Acesse o site: <br/><%= link_to "https://processoseletivo.seducpma.com", :title => "Processo Seletivo"%></font><br/>
+                       <font size="4" >  Acesse o site: <br/><%= link_to "https://processoseletivo.seducpma.com", "https://processoseletivo.seducpma.com", :target => "_blank"%></font><br/>
+
+                                                      
              </td>
                           <% $cont = 1%>
                             <% @cursos.in_groups_of(1, false) do |row_cursos| %>
