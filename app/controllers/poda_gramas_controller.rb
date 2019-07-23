@@ -261,7 +261,7 @@ class PodaGramasController < ApplicationController
        if params[:type_of].to_i == 1
           @date = params[:month] ? Date.parse(params[:month]) : Date.today
           @poda_grama = PodaGrama.all
-          session[:titulo_agenda]='AGENDA SOLICITAÇÂO DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
+          session[:titulo_agenda]='AGENDA SOLICITAÇÃO DE EXECUÇÃO DE PODA DE GRAMA - SEDUC '
         render :update do |page|
             page.replace_html 'calendario', :partial => 'agendamento'
         end

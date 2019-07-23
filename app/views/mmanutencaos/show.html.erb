@@ -116,7 +116,7 @@
                                       <%if @mmanutencao.chefia_id.nil?%>
                                          <td align="left" > <font color="red">Serviço sem encaminhamento</font></td>
                                       <%else%>
-                                        <td align="left"><%if @mmanutencao.chefia.nome == 'DEVOLUÇÂO PARA UNIDADE'%>
+                                        <td align="left"><%if @mmanutencao.chefia.nome == 'DEVOLUÇÃO PARA UNIDADE'%>
                                                              <font color=" red"> <b>DEVOLUÇÃO PARA UNIDADE</b></font>
                                                        <%else%>
                                                             <%=h @mmanutencao.chefia.nome  %>                                                     

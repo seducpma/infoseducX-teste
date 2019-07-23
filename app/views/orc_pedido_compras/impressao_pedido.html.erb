@@ -44,7 +44,7 @@
           <td colspan="4" align="left"style="border-color: white" ><b><u>DR</u>: </b> <%=h  pedido.orc_ficha.dr%>  &nbsp <b><u>Fonte</u>: </b> <%=h  pedido.orc_ficha.fonte%>
             &nbsp <%=h pedido.orc_ficha.descricao%>
                    <% if pedido.orc_ficha.ficha.count("SE") == 2 %>
-                      - SALARIO EDUCAÇÂO
+                      - SALARIO EDUCAÇÃO
                    <%end%>
                    <% if pedido.orc_ficha.ficha.include?("PNAE")%>
                      - PNAE

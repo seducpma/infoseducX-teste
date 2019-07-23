@@ -136,7 +136,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and created_at > ?", $data])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and created_at > ?", $data])
@@ -213,7 +213,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=1 and created_at > ?", $data])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=1 and created_at > ?", $data])
@@ -288,7 +288,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=2 and created_at > ?", $data])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=2 and created_at > ?", $data])
@@ -364,7 +364,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ?", $data])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ?", $data])
@@ -442,7 +442,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and created_at > ? and created_at < ?", $datai, $dataf])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and created_at > ? and created_at < ?", $datai, $dataf])
@@ -519,7 +519,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=1 and created_at > ? and created_at < ?", $datai, $dataf])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=1 and created_at > ? and created_at < ?", $datai, $dataf])
@@ -596,7 +596,7 @@ end
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and situacao_manutencao_id=2 and created_at > ? and created_at < ?", $datai, $dataf])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and situacao_manutencao_id=2 and created_at > ? and created_at < ?", $datai, $dataf])
@@ -673,7 +673,7 @@ def estatisticasMANTAt
       render "estatisticasM"
    else if (params[:estatisticas].to_i == 2)
            @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 3 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ? and created_at < ?", $datai, $dataf])
-           session[:nome_manutencao]= 'DEDETIZAÇÂO'
+           session[:nome_manutencao]= 'DEDETIZAÇÃO'
            render "estatisticasM"
         else if (params[:estatisticas].to_i == 3)
               @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 4 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ? and created_at < ?", $datai, $dataf])
@@ -772,7 +772,7 @@ def estatisticasMANTAt
     @mmanutencao.user_id = current_user.id
     respond_to do |format|
       if @mmanutencao.save
-        flash[:notice] = 'MANUTENÇÂO SOLICITADA.'
+        flash[:notice] = 'MANUTENÇÃO SOLICITADA.'
         format.html { redirect_to(@mmanutencao) }
         format.xml  { render :xml => @mmanutencao, :status => :created, :location => @mmanutencao }
       else

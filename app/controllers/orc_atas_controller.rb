@@ -279,7 +279,7 @@ def consulta_ata_produto
                    render :update do |page|
                       page.replace_html 'ata', :partial => "ata_saldo"
                    end
-              else if params[:type_of].to_i == 5   #dia NÂO FUNCIONA
+              else if params[:type_of].to_i == 5   #dia NÃO FUNCIONA
                            #session[:dataI]=params[:ata][:dataI][6,4]+'-'+params[:ata][:dataI][3,2]+'-'+params[:ata][:dataI][0,2]
                            # session[:dataF]=params[:ata][:dataF][6,4]+'-'+params[:ata][:dataF][3,2]+'-'+params[:ata][:dataF][0,2]
                            # session[:mes]=params[:ata][:dataF][3,2]
@@ -287,7 +287,7 @@ def consulta_ata_produto
                          render :update do |page|
                             page.replace_html 'ata', :partial => "atas"
                          end
-                   else  if params[:type_of].to_i == 6   # encerrando 60 dias NÂO FUNCIONA
+                   else  if params[:type_of].to_i == 6   # encerrando 60 dias NÃO FUNCIONA
 
                            #@atas = OrcAta.find(:all, :conditions => ["DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()" ])
                            #@atas = OrcAta.find(:all, :conditions => ["(DATE_ADD(data, INTERVAL 1 YEAR) >= NOW()) AND (DATE_ADD(data, INTERVAL 1 YEAR) <= DATE_ADD(NOW(), INTERVAL 2 MONTH))" ], :order => 'data ASC')

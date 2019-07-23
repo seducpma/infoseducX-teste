@@ -139,12 +139,12 @@ end
           render :update do |page|
                   page.replace_html 'reserva', :partial => "reservas"
           end
-    else if params[:type_of].to_i == 2   #cancelado    NÂO FUNCIONA
+    else if params[:type_of].to_i == 2   #cancelado    NÃO FUNCIONA
                  
                render :update do |page|
                   page.replace_html 'reserva', :partial => "reservas"
                end
-         else if params[:type_of].to_i == 3   #realizado NÂO FUNCIONA
+         else if params[:type_of].to_i == 3   #realizado NÃO FUNCIONA
 
                  @empenhos = OrcEmpenho.find(:all, :joins=>['LEFT JOIN orc_pedido_compras ON orc_empenhos.orc_pedido_compra_id = orc_pedido_compras.id'], :conditions => ['orc_pedido_compras.codigo like ?', "%" + params[:search_si].to_s + "%"], :order => 'id DESC')
 

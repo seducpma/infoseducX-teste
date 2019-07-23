@@ -43,7 +43,7 @@
         <td> <%=h @orc_empenho.modalidade%></td>
         <td colspan="3"><b>VENCIMENTO: </b>: <%if !@orc_empenho.vencimento.nil?%> <%=h @orc_empenho.vencimento.strftime("%d/%m/%y") %>  <%end%> &nbsp&nbsp&nbsp&nbsp
              <b>VALIDADE: </b>: <%if !@orc_empenho.validade.nil?%> <%=h @orc_empenho.validade.strftime("%d/%m/%y") %><%end%>  &nbsp&nbsp&nbsp&nbsp
-             <b>DESTINAÇÂO RECURSO </b>: <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
+             <b>DESTINAÇÃO RECURSO </b>: <%=h  @ficha[0].orc_uni_orcamentaria.orc_uni_despesa.descricao %>
         </td>
       </tr>
       <tr>
