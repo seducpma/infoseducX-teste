@@ -1,13 +1,13 @@
-<table width="92%" align="center" >
+<table width="100%" align="center"  >
      <tr>
-       <td>
-         <table>
-             <tr><td align="center">  <%= button_to('ATENÇÃO CONFERIR DADOS ANTES DE CONTITUAR',{:controller =>"participantes" ,:action => "edit", :id =>@dadosparticipa}, :method => "get", :title => "Dados do candidato")%></td></tr>
+         <td colspan="3">
+             <table  width="100%" >
+                 <tr><td align="left"> <b><font size=" 3"><u>PARTICIPANTE:</u></b> </td><td align="right"><a  class="invisivel" ><%= button_to('', new_participante_path) %></a></td></tr>
             <tr>
                 <td colspan="2">
                     
                 <% $idparticipante = @dadosparticipa.id %>
-                    <font size=" 4">
+                    <font size="3">
                  <b>Nome:</b><%=h @dadosparticipa.nome %>
                       <%if @dadosparticipa.unidade_id.nil?%>
                          <br/>
@@ -28,7 +28,7 @@
        </td>
      </tr>
      <tr>
-                   <td> <font color="red" size=" 5"><b><u>ATENÇÃO:</u></font> <font color="blue" size="4"><b> CONFERIR DADOS E CORRIGIR SE NECESSÁRIO</b></font>
+                   <td> <font color="red" size="4"><b><u>ATENÇÃO:</u></font> <font color="blue" size="3"><b> CONFERIR DADOS E CORRIGIR SE NECESSÁRIO</b></font>
                        </b></font> =====></td>
 
                    <td valign="bottom">

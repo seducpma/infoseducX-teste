@@ -367,11 +367,6 @@ $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
 $("#localizacao_data_aquisicao").datepicker({dateFormat: 'dd-mm-yy', changeYear: true, changeMonth: true, yearRange: '-60:+0'});
 
 
-
-
-
-
-
   // Inicio Mensagem busca
     $(".txt_busca").val("Digite parte da busca").css("color","gray");
   // Fim Mensagem busca
