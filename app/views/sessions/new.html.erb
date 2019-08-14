@@ -21,24 +21,18 @@
                         <td width="10%"></td>
                         <td width ="80%">
                             <table >
+                                <tr>
+                                     <td colspan="2" align="center" style=" font-size: large"> &nbsp&nbsp <b><u>Cursos Disponíveis</b></u></font><br/>
+                                               <font size="0" > &nbsp&nbsp Para inscrever-se acesse o módulo Inscrições On-Line</font><br/>
+                                     </td>
+                              </tr>
 
-             <td colspan="2" align="center" style=" font-size: large"> &nbsp&nbsp <b><u>Cursos Disponíveis</b></u></font><br/>
-                       <font size="0" > &nbsp&nbsp Para inscrever-se acesse o módulo Inscrições On-Line</font><br/>
-             </td>
-
-<!--
-             <td colspan="2" align="center"><font size ="5"> &nbsp&nbsp <b><u>CLASSIFICAÇÃO PROCESSO SELETIVO <br/> PROFESSOR SUBSTITUTO</b></u></font><br/><br/>
-                       <font size="4" >  Acesse os sites: <br/><%= link_to "https://processoseletivo.seducpma.com", "https://processoseletivo.seducpma.com", :target => "_blank"%></font><br/><br/>ou no Diário Oficial edição nº209 de 20/07/2019 <br/><br/>
-
-                        
-                       
-                        <font size="4" ><%= link_to "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php", "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php", :target => "_blank"%></font> <br/><br/>
-                           <font color="blue" size="3"><center><b><u>DÚVIDAS ENTRAR EM CONTATO PELO E_MAIL:  processoseletivo@seducpma.com</u></center><br/>
-             </td>
--->
-                          <% $cont = 1%>
-                            <% @cursos.in_groups_of(1, false) do |row_cursos| %>
-
+                             <tr>
+                                 <td colspan="2">
+                                           <% $cont = 1%>
+                                            <% @cursos.in_groups_of(1, false) do |row_cursos| %>
+                                 </td>
+                             </tr>
                               <tr>
 
                                 <% row_cursos.each do |curso| %>
@@ -59,6 +53,19 @@
                                     <%end%>
                                  <% $cont = $cont + 1 %>
                                 <%end%>
+                              </tr>
+                               
+                             <tr>
+  
+                                     <td colspan="2" align="center"><br/><font size ="4"> &nbsp&nbsp <b><u>CLASSIFICAÇÃO FINAL E CONVOCAÇÃO PROCESSO SELETIVO <br/> PROFESSOR SUBSTITUTO</b></u></font><br/><br/>
+                                               <font size="4" >  Acesse o site: <br/><%= link_to "https://processoseletivo.seducpma.com", "https://processoseletivo.seducpma.com", :target => "_blank"%></font><br/><br/>
+
+
+
+                        <!--                        ou no Diário Oficial edição nº209 de 20/07/2019 <br/><br/>
+                                                   <font size="4" ><%= link_to "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php", "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php", :target => "_blank"%></font> <br/><br/>-->
+                                                   <font color="blue" size="3"><center><b><u>DÚVIDAS ENTRAR EM CONTATO PELO E_MAIL:  processoseletivo@seducpma.com</u></center><br/>
+                                     </td>
                               </tr>
 
                            <%end%>
