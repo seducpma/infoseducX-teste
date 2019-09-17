@@ -126,15 +126,16 @@ if params[:aulas_falta][:dataF].nil?
      else
        session[:faltas_abonadas]=0
      end
-     if session[:faltas_abonadas] < 4 or current_user.has_role?('SEDUC') or current_user.has_role?('admin')
+     session[:lim_faltas_abonadas]=8 # Limite máximo de faltas abonadas por dia para cadastro normal (exceto SUPERVISORAS e ADMIN)
+     if (session[:faltas_abonadas] < session[:lim_faltas_abonadas]) or current_user.has_role?('SEDUC') or current_user.has_role?('admin')
                     session[:flag]=0
                     @aulas_falta = AulasFalta.new(params[:aulas_falta])
                     @aulas_falta.data=params[:aulas_falta][:dataI]
-                     @aulas_falta.dataF=params[:aulas_falta][:dataI]
+                    @aulas_falta.dataF=params[:aulas_falta][:dataI]
                     @aulas_falta.dataI=params[:aulas_falta][:dataI]
-                    w=@aulas_falta.ano_letivo =  Time.now.year
-                    w1=@aulas_falta.funcao = session[:funcao]
-                    w2=@aulas_falta.setor = session[:setor]
+                    @aulas_falta.ano_letivo =  Time.now.year
+                    @aulas_falta.funcao = session[:funcao]
+                    @aulas_falta.setor = session[:setor]
                     #w3=@aulas_falta.classe = session[:profclasse]
                     #w4=@aulas_falta.periodo = session[:classeper]
                     @aulas_falta.periodo = session[:periodo]
