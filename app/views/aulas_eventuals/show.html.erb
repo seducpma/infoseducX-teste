@@ -39,7 +39,7 @@
                       <%else%>
                        <b>Inicio:</b> <%=h @aulas_eventual.dataI.strftime("%d/%b/%Y") %> &nbsp&nbsp
                        <b>Término:</b><%=h @aulas_eventual.dataF.strftime("%d/%b/%Y") %> &nbsp&nbsp
-                        - &nbsp&nbsp <%= session[:data]+1 %> / <%= session[:num_faltas] %> dia(s).
+                        - &nbsp&nbsp <%= session[:data]+1 %> / <%= session[:num_faltas] %> falta(s).
                         <%end%>
                    </td>
                  </tr>
@@ -52,7 +52,7 @@
                  </tr>
                  <tr bgcolor="#F5F5F5" >
                    <td align="left" colspan="4">&nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
-                       <%=  session[:tipo_falta]%> de <%= session[:num_faltas]%> dia(s)
+                       <%=  session[:tipo_falta]%> de <%= session[:num_faltas]%> falta(s)
                    </td>
                  </tr>
 
