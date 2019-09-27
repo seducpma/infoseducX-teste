@@ -52,7 +52,7 @@ end
     @eventual.regiao_id = session[:regiao_id]
  
 
-    @duplicidade= Eventual.find(:all, :conditions => ['professor_id =?' , @eventual.professor_id])
+    @duplicidade= Eventual.find(:all, :conditions => ['professor_id =? AND  periodo=?' , @eventual.professor_id, @eventual.periodo])
     if   @duplicidade.empty?
         respond_to do |format|
           if @eventual.save
