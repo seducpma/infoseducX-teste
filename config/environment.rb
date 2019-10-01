@@ -106,12 +106,9 @@ ActionMailer::Base.smtp_settings = {
    :port => 587,
    :domain => "gmail.com",
    :authentication => :plain,
-   :user_name => "estagiario@seducpma.com", #Você pode usar o Google Apps!
+   :user_name => "no-reply@seducpma.com", #Você pode usar o Google Apps!
    :password => "s3inf09s3inf09"
 }
-
-
-
 
 WillPaginate::ViewHelpers.pagination_options[:previous_label]=I18n.t("pagination.prev")
 WillPaginate::ViewHelpers.pagination_options[:next_label]=I18n.t("pagination.next")
