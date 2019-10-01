@@ -104,9 +104,10 @@ ActionMailer::Base.smtp_settings = {
    :enable_starttls_auto => true,
    :address => "smtp.gmail.com",
    :port => 587,
+   :domain => "gmail.com",
    :authentication => :plain,
-   :user_name => "no-reply@seducpma.com", #Você pode usar o Google Apps!
-    :password => 's3inf2009'
+   :user_name => "estagiario@seducpma.com", #Você pode usar o Google Apps!
+   :password => "s3inf09s3inf09"
 }
 
 

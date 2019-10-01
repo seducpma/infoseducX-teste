@@ -20,6 +20,7 @@ class PasswordsController < ApplicationController
   end
 
   def edit
+
     if params[:id].nil?
       render :action => 'new'
       return

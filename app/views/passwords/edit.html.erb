@@ -18,7 +18,8 @@
                <td align="center">
                 <br/><br/>
                    <% form_tag url_for(:action => "atualiza", :id => params[:id]) do %>
-                         <b> Nova Senha</b>:
+                         <b> Usuário: </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%=@user.login %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br/><br/>
+                         <b> Nova Senha</b>:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           <%= password_field_tag :password %><br /><br />
                           <b>Confirma senha:</b>
                           <%= password_field_tag :password_confirmation %><br /><br />
