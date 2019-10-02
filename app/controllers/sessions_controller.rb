@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "VOCẼ ACABOU DE SAIR DO SISGERED"
+    flash[:notice] = "VOCÊ ACABOU DE SAIR DO INFOSEDUC."
     redirect_back_or_default('/')
   end
 

@@ -49,14 +49,14 @@ class PasswordsController < ApplicationController
     raise if @user.nil?
     return if @user unless params[:password]
       if (params[:password] == params[:password_confirmation])
-    @user.password_confirmation = params[:password_confirmation]
-    @user.password = params[:password]
-    @user.reset_password
-    flash[:notice] = @user.save ? "Senha alterada." : "Password not reset."
+        @user.password_confirmation = params[:password_confirmation]
+        @user.password = params[:password]
+        @user.reset_password
+        flash[:notice] = @user.save ? "Senha alterada." : "Password not reset."
       else
-        flash[:notice] = "Senha alterada com sucesso."
+        flash[:notice2] = "ERRO: As senhas estão diferentes repita o processo."
         render :action => 'edit', :id => params[:id]
-      return
+        return
       end
       redirect_to login_path
   rescue
