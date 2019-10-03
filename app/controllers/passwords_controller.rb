@@ -14,7 +14,7 @@ class PasswordsController < ApplicationController
       flash[:notice] = "Um link para efetuar a troca da senha foi enviado para o e-mail cadastrado."
     redirect_to login_path
     else
-      flash[:notice] = "Nenhum usuário cadastrado com o e-mail indicado."
+      flash[:notice] = "Nenhum usuário cadastrado com o e-mail informado."
       render :action => 'new'
     end
   end
