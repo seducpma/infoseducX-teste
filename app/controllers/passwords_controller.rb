@@ -66,7 +66,5 @@ class PasswordsController < ApplicationController
 
   end
   def update
-
   end
-
 end

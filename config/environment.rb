@@ -1,4 +1,4 @@
-  # Uncomment below to force Rails into production mode when
+# Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
@@ -6,7 +6,7 @@
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
-#require 'brI18n'
+# require 'brI18n'
 require File.join(File.dirname(__FILE__), 'boot')
 require 'spreadsheet'
 require 'csv'
@@ -122,7 +122,3 @@ WillPaginate::ViewHelpers.pagination_options[:next_label]=I18n.t("pagination.nex
 #   :user_name => "informatica@seducpma.com",
 #   :password => 'mus@and2'
 #}
-
-
-
-

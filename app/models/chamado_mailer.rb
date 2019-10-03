@@ -1,7 +1,7 @@
 class ChamadoMailer < ActionMailer::Base
   def forgot_password(user)
     setup_email(user)
-    @subject += ' Você solicitou a mudança da sua senha (SEDUC).'
+    @subject += ' Alteração de senha'
     if RAILS_ENV == "production"
       @body[:url]  = "http://infoseduc.seducpma.com/reset_password/#{user.password_reset_code}"
     else
@@ -13,8 +13,8 @@ class ChamadoMailer < ActionMailer::Base
 
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "no-reply@informatica@seducpma.com"
-      @subject     = "Esqueceu sua senha!"
+      @from        = "no-reply@seducpma.com"
+      @subject     = "SEDUC INFORMÁTICA -"
       @sent_on     = Time.now
       @body[:user] = user
     end
