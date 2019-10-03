@@ -15,14 +15,17 @@
        <fieldset><legend><font  size=3></font></legend>
          <table width="100%">
             <tr bgcolor="#F5F5F5">
-               <td align="left">
+               <td align="center">
                 <br/><br/>
                     <% form_tag url_for(:action => 'create') do %>
-                      <b>Digite e-mail cadastrado no sistema</b>
-                      <%= text_field_tag :email, "", :size => 50 %>
-                     <%= submit_tag 'Enviar' %>
+                        <b>Digite e-mail cadastrado no sistema</b>
+                        <%= text_field_tag :email, "", :size => 50 %>
+                        <%= submit_tag 'Enviar' %>
                     <% end %>
-                      <br/><br/>
+                    <br/>
+                    <font size="3" style="color:blue">Logo após Enviar, procure a mensagem na <b>CAIXA DE ENTRADA</b> no <b>LIXO ELETRÔNICO</b> ou no <b>SPAM</b><br/>
+                                                     do e-mail informado</b> para localizar a mensagem e continuar o procedimento.</font>
+                    <br/><br/>
                  </td>
             </tr>
          </table>

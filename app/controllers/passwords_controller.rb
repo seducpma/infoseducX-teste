@@ -11,7 +11,7 @@ class PasswordsController < ApplicationController
       @user.forgot_password
       ChamadoMailer.deliver_forgot_password(@user)
       @user.save
-      flash[:notice] = "Um de link para efetuar a troca da senha foi enviado para o e-mail cadastrado."
+      flash[:notice] = "Um link para efetuar a troca da senha foi enviado para o e-mail cadastrado."
     redirect_to login_path
     else
       flash[:notice] = "Nenhum usuário cadastrado com o e-mail indicado."
@@ -29,7 +29,7 @@ class PasswordsController < ApplicationController
     raise if @user.nil?
   rescue
     logger.error "Codigo de substituição de senha incompatível."
-    flash[:notice] = "Desculpe - Este é um código de substituição de senha invalido. Favor confirir e tentar novamente."
+    flash[:notice] = "ERRO: Algo deu errado, por favor tente novamente ou procure a Informática da SEDUC."
     #redirect_back_or_default('/')
     redirect_to new_user_path
   end
@@ -52,7 +52,7 @@ class PasswordsController < ApplicationController
         @user.password_confirmation = params[:password_confirmation]
         @user.password = params[:password]
         @user.reset_password
-        flash[:notice] = @user.save ? "Senha alterada." : "Password not reset."
+        flash[:notice] = @user.save ? "A senha foi alterada com sucesso!" : "ERRO: A senha não foi alterada."
       else
         flash[:notice2] = "ERRO: As senhas estão diferentes repita o processo."
         render :action => 'edit', :id => params[:id]
@@ -61,7 +61,7 @@ class PasswordsController < ApplicationController
       redirect_to login_path
   rescue
     logger.error "Codigo de substituição de senha incompatível."
-    flash[:notice] = "Desculpe - Este é um código de substituição de senha invalido. Favor confirir e tentar novamente."
+    flash[:notice] = "ERRO: Algo deu errado, por favor tente novamente ou procure a Informática da SEDUC."
     redirect_to new_user_path
 
   end
