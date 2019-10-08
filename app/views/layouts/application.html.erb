@@ -73,7 +73,7 @@ display: none;
       <table width="100%">
       <tr>
         <td width ="10%">
-           <font size="4" color="green"><%= link_to h(current_user.login.capitalize), edit_user_path(current_user) %>  </font>
+           <font size="4" color="green"><%= link_to h(current_user.login), edit_user_path(current_user) %>  </font>
         </td>
         <% if current_user.has_role?('admin') %>
          <td>Acesso de Administrador do Sistema|
@@ -192,7 +192,7 @@ display: none;
     <center><font size="4" style="color: red"><b><%=flash[:notice1]%><%=flash[:notice]%></b></font></center>
    <%else%>
       <%= link_to '|Entrar|', login_path %>
-      <font size="4" style="color: blue"><b><%=flash[:notice]%></b></font>
+      <font size="4" style="color: red"><b><%=flash[:notice]%></b></font>
    <%end%>
  </div>
  

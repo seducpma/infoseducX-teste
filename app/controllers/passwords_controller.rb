@@ -20,7 +20,6 @@ class PasswordsController < ApplicationController
   end
 
   def edit
-
     if params[:id].nil?
       render :action => 'new'
       return
@@ -59,12 +58,13 @@ class PasswordsController < ApplicationController
         return
       end
       redirect_to login_path
-  rescue
-    logger.error "Codigo de substituição de senha incompatível."
-    flash[:notice] = "ERRO: Algo deu errado, por favor tente novamente ou procure a Informática da SEDUC."
-    redirect_to new_user_path
+    rescue
+        logger.error "Codigo de substituição de senha incompatível."
+        flash[:notice] = "ERRO: Algo deu errado, por favor tente novamente ou procure a Informática da SEDUC."
+        redirect_to new_user_path
 
   end
+
   def update
   end
 end
