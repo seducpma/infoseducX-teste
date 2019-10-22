@@ -81,7 +81,7 @@ end
   
   def estatitica_unidade    #graph_por_unidade
     unidade = params[:unidade]
-    title = Title.new("Manutenção Unidade: #{Mmanutencao.nome_unidade(unidade)} - Criancas Cadastradas: #{Crianca.todas_crianca_por_unidade(unidade).length}" )
+    title = Title.new("Manutenção Unidade: #{Mmanutencao.nome_unidade(unidade)} - Solicitações: #{Crianca.todas_crianca_por_unidade(unidade).length}" )
     pie = Pie.new
     pie.start_angle = 0
     pie.animate = true

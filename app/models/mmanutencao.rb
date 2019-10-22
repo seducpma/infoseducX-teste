@@ -37,10 +37,12 @@ def data_encerramento
         self.data_ate = Time.now
       end
  end
-
-
-
 end
+
+ def self.nome_unidade(unidade)
+    Unidade.find(unidade).nome
+  end
+
 
 def self.manutencao_aberto_geral
     Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
@@ -54,6 +56,7 @@ def self.manutencao_geral
     Mmanutencao.find(:all)
 end
 
+#======== POR UNIDADE
 
 def self.manutencao_aberto_unidade
     Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
@@ -63,10 +66,12 @@ def self.manutencao_encerrado_unidade
     Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2'])
 end
 
-
 def self.manutencao_unidade
     Mmanutencao.find(:all)
 end
 
-
+def self.todos_manutencao_por_unidade(unidade)
+     unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all, :conditions => ['unidade_id = ?', unidade_id])
+end
 end
