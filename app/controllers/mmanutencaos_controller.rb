@@ -106,13 +106,13 @@ def consulta_encerrados_unidade
      if params[:type_of].to_i == 1
         tipo=  params[:manutencao][:tipo]
         t=0
-        @mmanutencaos = Mmanutencao.find_by_sql("SELECT mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id WHERE situacao_manutencao_id = 2 and tma.tipos_manutencao_id ="+tipo.to_s+" order by data_enc ASC ")
+        @mmanutencaos = Mmanutencao.find_by_sql("SELECT mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id WHERE situacao_manutencao_id = 2 and tma.tipos_manutencao_id ="+tipo.to_s+" order by data_enc DESC ")
           render :update do |page|
                   page.replace_html 'encerrados', :partial => "encerrados"
              end
      else if params[:type_of].to_i == 2
              unidade=params[:unidade][:id]
-             @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2 and unidade_id ="+unidade.to_s+" order by data_enc ASC ")
+             @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2 and unidade_id ="+unidade.to_s+" order by data_enc DESC ")
                  render :update do |page|
                       page.replace_html 'encerrados', :partial => "encerrados"
                  end
