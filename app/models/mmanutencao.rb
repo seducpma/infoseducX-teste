@@ -44,33 +44,31 @@ end
   end
 
 
-def self.manutencao_aberto_geral
+def self.aberto_geral
     Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
 end
 
-def self.manutencao_encerrado_geral
+def self.encerrado_geral
     Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2'])
 end
 
-def self.manutencao_geral
+def self.geral
     Mmanutencao.find(:all)
 end
 
 #======== POR UNIDADE
 
-def self.manutencao_aberto_unidade
-    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
+def self.aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all, :conditions => ['unidade_id=? AND situacao_manutencao_id = 2',unidade_id])
 end
 
-def self.manutencao_encerrado_unidade
-    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2'])
+def self.encerrado_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all, :conditions => ['unidade_id=? AND situacao_manutencao_id <> 2',unidade_id] )
 end
 
-def self.manutencao_unidade
-    Mmanutencao.find(:all)
-end
-
-def self.todos_manutencao_por_unidade(unidade)
+def self.por_unidade(unidade)
      unidade_id = Unidade.find(unidade).id
     Mmanutencao.find(:all, :conditions => ['unidade_id = ?', unidade_id])
 end

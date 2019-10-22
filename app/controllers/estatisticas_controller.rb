@@ -4,6 +4,10 @@ class EstatisticasController < ApplicationController
 
   end
 
+
+def estatistica
+end
+
   def grafico_demanda_geral
     @graph = open_flash_chart_object(600,300,"/grafico/graph_code_demanda_geral")
 
@@ -49,16 +53,30 @@ end
     $uni=0
     $menu=1
     session[:input] = params[:contact][:grafico_id]
-    @graph = open_flash_chart_object(600,300,"/grafico/graph_por_unidade?unidade=#{session[:input]}",false,'/')
-                
+    @graph = open_flash_chart_object(600,300,"/estatistica/grafico_por_unidade?unidade=#{session[:input]}",false,'/')
+
+    vencerrado= (Mmanutencao.encerrado_unidade(session[:input])).length
+    vaberto = (Mmanutencao.aberto_unidade(session[:input])).length
+    vtotal= Mmanutencao.geral.length
+
+
     @static_graph = Gchart.pie_3d(
-        :data => [(Crianca.matriculas_crianca_por_unidade(session[:input])).length,(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length, (Crianca.cancelada_crianca_por_unidade(session[:input])).length],
-        :title => "Demanda por Unidade: #{Crianca.nome_unidade(session[:input])} - #{(Crianca.todas_crianca_por_unidade(session[:input])).length}" ,
+        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
+        :title => "Manuntenção por Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} - de um total #{vtotal} chamados " ,
         :size => '600x300',
         :format => 'image_tag',
-        :labels => ["Matriculadas: #{(Crianca.matriculas_crianca_por_unidade(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_unidade(session[:input])).length}"])
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Total: #{(vtotal-vencerrado-vaberto)}",])
 
-      render :action => "grafico_demanda_unidade"
+
+   @static_graph2 = Gchart.pie_3d(
+        :data => [vaberto,vencerrado],
+        :title => "Manuntenção por Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length}" ,
+        :size => '600x300',
+        :format => 'image_tag',
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
+
+
+      render :action => "estatistica_unidade"
   end
 
   def graph_code_demanda_geral
@@ -78,18 +96,23 @@ end
     chart.x_axis = nil
     render :text => chart.to_s
   end
-  
-  def estatitica_unidade    #graph_por_unidade
+
+  def estatistica_unidade
+
+  end
+
+
+  def grafico_unidade    #graph_por_unidade
     unidade = params[:unidade]
-    title = Title.new("Manutenção Unidade: #{Mmanutencao.nome_unidade(unidade)} - Solicitações: #{Crianca.todas_crianca_por_unidade(unidade).length}" )
+    title = Title.new("Manutenção Unidade: #{Mmanutencao.nome_unidade(unidade)} - Solicitações: #{Mmanutencao.por_unidade(unidade).length}" )
     pie = Pie.new
     pie.start_angle = 0
     pie.animate = true
     pie.tooltip = '#val# of #total#<br>#percent# of 100%'
     pie.colours = ["#d01f3c", "#356aa0", "#C79810"]
-    matriculada = Crianca.matriculas_crianca_por_unidade(unidade)
-    nao_matriculada = Crianca.nao_matriculas_crianca_por_unidade(unidade)
-    pie.values  = [PieValue.new(matriculada.length,"Crianças Matriculadas na unidade: " + (matriculada.length).to_s), PieValue.new(nao_matriculada.length,"Crianças Não Matriculadas: " + (nao_matriculada.length).to_s)]
+    abertos = Mmanuntencao.aberto_unidade(unidade)
+    encerrados = Mmanuntencao.encerrado_unidade(unidade)
+    pie.values  = [PieValue.new(aberto_geral.length,"Solicitações ABERTAS na unidade: " + (aberto_geral.length).to_s), PieValue.new(encerrado_geral.length,"Crianças Não Matriculadas: " + (nao_matriculada.length).to_s)]
     chart = OpenFlashChart.new
     chart.title = title
     chart.add_element(pie)
@@ -109,9 +132,8 @@ end
 protected
 
   def load_unidades
-    @unidades =  Unidade.find(:all,  :conditions => ["tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8" ],:order => "nome")
-
-   
+       @unidades = Unidade.find(:all, :order => 'nome ASC')
+  
     $uni=1
     $menu=0
   end

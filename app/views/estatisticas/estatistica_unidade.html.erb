@@ -5,7 +5,7 @@
   <tr bgcolor="#DCDCDC" >
       <td colspan="2">
          <div id="caixa_titulo">
-             <font size="3"><strong>DEMANDA POR UNIDADE</strong></font><br/>
+             <font size="3"><strong>SOLICITAÇÔES DE MANUNTENÇÂO  POR UNIDADE</strong></font><br/>
          </div>
 
       </td>
@@ -41,13 +41,23 @@
           <%end%>
       </td>
     </tr>
+    <tr>
+
+      <td colspan="2" align="center">
+          <% if @static_graph2.present?%>
+              <%= @static_graph2%>
+          <%else%>
+              <%= @graph2 %>
+          <%end%>
+      </td>
+    </tr>
 
 
    <% if $menu==1 %>
     <tr>
 
         <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
-        <td><b><%= link_to image_tag("/stylesheets/images/imprimir12.png"), onclick="javascript:MM_openBrWindow('#{impressao_geral_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+        <td><b><%#= link_to image_tag("/stylesheets/images/imprimir12.png"), onclick="javascript:MM_openBrWindow('#{impressao_geral_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
 
 
   </tr>
