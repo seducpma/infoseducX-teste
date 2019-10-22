@@ -97,6 +97,10 @@ ActionController::Routing::Routes.draw do |map|
   map.new_saida '/new_saida', :controller => 'produtos_lancamentos', :action => 'new_saida'
   map.lista_inscricaos '/lista_inscricaos', :controller => 'inscricaos', :action => 'lista_inscricaos'
   map.encerrados '/cencerrados', :controller => 'chamados', :action => 'encerrados'
+
+  map.consultas_encerrados '/consultas_encerrados', :controller => 'mmanutencaos', :action => 'consultas_encerrados'
+  map.consulta_encerrados_unidade '/consulta_encerrados_unidade', :controller => 'mmanutencaos', :action => 'consulta_encerrados_unidade'
+
   map.sem_estagiario '/sem_estagiario', :controller => 'unidades', :action => 'sem_estagiarios'
   map.aulas_eventuals2 '/aulas_eventuals2', :controller => 'aulas_eventuals', :action => 'index2'
   map.aulas_faltas2 '/aulas_faltas2', :controller => 'aulas_faltas', :action => 'index2'

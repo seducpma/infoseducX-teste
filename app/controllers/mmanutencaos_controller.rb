@@ -98,23 +98,72 @@ def relatorios
 end
 
 
+
+
+
+
+def consulta_encerrados_unidade
+     if params[:type_of].to_i == 1
+        tipo=  params[:manutencao][:tipo]
+        t=0
+        @mmanutencaos = Mmanutencao.find_by_sql("SELECT mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id WHERE situacao_manutencao_id = 2 and tma.tipos_manutencao_id ="+tipo.to_s+" order by data_enc DESC ")
+          render :update do |page|
+                  page.replace_html 'encerrados', :partial => "encerrados"
+             end
+     else if params[:type_of].to_i == 2
+             unidade=params[:unidade][:id]
+             @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2 and unidade_id ="+unidade.to_s+" order by data_enc DESC ")
+                 render :update do |page|
+                      page.replace_html 'encerrados', :partial => "encerrados"
+                 end
+          else if params[:type_of].to_i == 3
+                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('terceiro')or current_user.has_role?('oficios')or current_user.has_role?('estagiario SEDUC')
+                            @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2")
+                        else
+                           @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2 and unidade_id ="+(current_user.unidade_id).to_s+" order by data_enc DESC ")
+                        end
+                     render :update do |page|
+                         page.replace_html 'encerrados', :partial => "encerrados"
+                     end
+              else if params[:type_of].to_i == 4
+                        # NÂO UTILIUZADO
+                     else if params[:type_of].to_i == 5
+                        # NÂO UTILIUZADO
+                     end
+                  end
+              end
+          end
+     end
+
+
+
+
+
+end
+
+def consultas_encerrados
+     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
+      @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
+     else
+        if (current_user.unidade_id== 53)
+           @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
+        else 
+          @unidades_manutencao =  Unidade.find(:all, :conditions => ['id = ?',current_user.unidade_id ],:order => 'nome ASC')
+        end
+    end
+     @servicos =  TiposManutencao.find(:all, :order => 'servico ASC')
+end
+
+
  def relatorios_manutencaos
    session[:dataI]=params[:manutecao][:dataI][6,4]+'-'+params[:manutecao][:dataI][3,2]+'-'+params[:manutecao][:dataI][0,2]
    session[:dataF]=params[:manutecao][:dataF][6,4]+'-'+params[:manutecao][:dataF][3,2]+'-'+params[:manutecao][:dataF][0,2]
-
-
      if !params[:manutencao][:tipos_manutencao_id].empty?
          @servico= TiposManutencao.find(:all, :conditions=> ['id =?',  params[:manutencao][:tipos_manutencao_id]] )
         w= session[:servico]= @servico[0].servico
-        
-
-
-
-
     @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDER BY  mma.data_sol DESC")
     @situacaos = Mmanutencao.find_by_sql("SELECT mma.situacao_manutencao_id, sm.situacao, count( mma.id ) AS contador FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id JOIN situacao_manutencaos sm ON sm.id = mma.situacao_manutencao_id WHERE tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' GROUP BY mma.situacao_manutencao_id ORDER BY  mma.data_sol DESC")
      @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDEr BY  mma.data_sol DESC")
-
      else
      t=0
       @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDEr BY  mma.data_sol DESC")
