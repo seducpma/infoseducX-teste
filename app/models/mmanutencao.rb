@@ -42,6 +42,31 @@ def data_encerramento
 
 end
 
+def self.manutencao_aberto_geral
+    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
+end
+
+def self.manutencao_encerrado_geral
+    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2'])
+end
+
+def self.manutencao_geral
+    Mmanutencao.find(:all)
+end
+
+
+def self.manutencao_aberto_unidade
+    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
+end
+
+def self.manutencao_encerrado_unidade
+    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2'])
+end
+
+
+def self.manutencao_unidade
+    Mmanutencao.find(:all)
+end
 
 
 end

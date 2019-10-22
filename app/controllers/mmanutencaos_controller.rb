@@ -158,7 +158,8 @@ end
 def consulta_abertos_unidade
      if params[:type_of].to_i == 1
         tipo=  params[:manutencao][:tipo]
-        @mmanutencaos = Mmanutencao.find_by_sql("SELECT mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id WHERE situacao_manutencao_id <> 2 and tma.tipos_manutencao_id ="+tipo.to_s+" order by data_sol DESC ")
+        @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <> 2 and tma.tipos_manutencao_id ="+tipo.to_s+" order by data_sol DESC ")
+      
           render :update do |page|
                   page.replace_html 'abertos', :partial => "abertos"
              end
