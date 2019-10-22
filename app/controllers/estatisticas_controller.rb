@@ -58,15 +58,16 @@ end
     vencerrado= (Mmanutencao.encerrado_unidade(session[:input])).length
     vaberto = (Mmanutencao.aberto_unidade(session[:input])).length
     vtotal= Mmanutencao.geral.length
-
-
+    pe = (vencerrado.to_f/vtotal.to_f)*100
+    pa = (vaberto.to_f/vtotal.to_f)*100
+    pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
     @static_graph = Gchart.pie_3d(
         :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
         :title => "Manuntenção por Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} - de um total #{vtotal} chamados " ,
         :size => '600x300',
         :format => 'image_tag',
         :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Total: #{(vtotal-vencerrado-vaberto)}",])
-
+        
 
    @static_graph2 = Gchart.pie_3d(
         :data => [vaberto,vencerrado],
