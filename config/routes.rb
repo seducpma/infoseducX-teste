@@ -100,6 +100,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.consultas_encerrados '/consultas_encerrados', :controller => 'mmanutencaos', :action => 'consultas_encerrados'
   map.consulta_encerrados_unidade '/consulta_encerrados_unidade', :controller => 'mmanutencaos', :action => 'consulta_encerrados_unidade'
+  map.consultas_abertos '/consultas_abertos', :controller => 'mmanutencaos', :action => 'consultas_abertos'
+  map.consulta_abertos_unidade '/consulta_abertos_unidade', :controller => 'mmanutencaos', :action => 'consulta_abertos_unidade'
+
 
   map.sem_estagiario '/sem_estagiario', :controller => 'unidades', :action => 'sem_estagiarios'
   map.aulas_eventuals2 '/aulas_eventuals2', :controller => 'aulas_eventuals', :action => 'index2'
