@@ -126,7 +126,9 @@
               <table align="right">
                <tr>
                   <td align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-                  <td align="right"><%= button_to('Imprimir',  onclick="javascript:window.print()", :title => "Imprimir")%></td>
+                  <td align="right"><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_estatistica_unidade_aberta_path}','impressao', 'scrollbars=yes , toolbar=yes, status=yes');", :title => "Imprimir" %>
+
+<%#= button_to('Imprimir',  onclick="javascript:window.print()", :title => "Imprimir")%></td>
                </tr>
                </table>
 

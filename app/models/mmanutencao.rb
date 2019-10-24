@@ -60,6 +60,27 @@ end
 
 def self.aberto_unidade(unidade)
     unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all, :conditions => ['unidade_id=? AND situacao_manutencao_id <> 2',unidade_id])
+    t=0
+end
+
+def self.encerrado_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all, :conditions => ['unidade_id=? AND situacao_manutencao_id == 2',unidade_id] )
+    t=0
+end
+
+def self.por_unidade(unidade)
+     unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all, :conditions => ['unidade_id = ?', unidade_id])
+end
+
+
+
+#======== POR SERVICO
+
+def self.aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
     Mmanutencao.find(:all, :conditions => ['unidade_id=? AND situacao_manutencao_id = 2',unidade_id])
 end
 
@@ -72,4 +93,9 @@ def self.por_unidade(unidade)
      unidade_id = Unidade.find(unidade).id
     Mmanutencao.find(:all, :conditions => ['unidade_id = ?', unidade_id])
 end
+
+
+
+
 end
+

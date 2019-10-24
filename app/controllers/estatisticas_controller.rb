@@ -21,6 +21,7 @@ end
 
   def impressao_geral
 
+
     if  session[:geral] == 0
       @graph = open_flash_chart_object(600,300,"/grafico/graph_code_demanda_geral")
 
@@ -44,13 +45,82 @@ end
 
 end
 
+    def impressao_estatistica_unidade
+
+t=0
+
+
+#    if  session[:geral] == 0
+      vencerrado=(Mmanutencao.aberto_unidade(session[:input])).length
+    vaberto =  (Mmanutencao.encerrado_unidade(session[:input])).length
+    vtotal= Mmanutencao.geral.length
+    pe = (vencerrado.to_f/vtotal.to_f)*100
+    pa = (vaberto.to_f/vtotal.to_f)*100
+    pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
+    @static_graph = Gchart.pie_3d(
+        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
+        :size => '600x300',
+        :format => 'image_tag',
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+
+
+   @static_graph2 = Gchart.pie_3d(
+        :data => [vaberto,vencerrado],
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados" ,
+        :size => '900x450',
+        :format => 'image_tag',
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
+#    else
+
+#      @static_graph = Gchart.pie_3d(
+#            :data => [(Crianca.matriculas_crianca_por_unidade(session[:input])).length,(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length, (Crianca.cancelada_crianca_por_unidade(session[:input])).length],
+#            :title => "Demanda por Unidade: #{Crianca.nome_unidade(session[:input])} - #{(Crianca.todas_crianca_por_unidade(session[:input])).length}" ,
+#            :size => '700x350',
+#            :format => 'image_tag',
+#            :labels => ["Matriculadas: #{(Crianca.matriculas_crianca_por_unidade(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_unidade(session[:input])).length}"])
+
+#    end
+      render :layout => "impressao"
+
+end
 
   def grafico_demanda_unidade
 
   end
 
-  def search
-    $uni=0
+  def por_unidade
+    $menu=1
+    session[:input] = params[:contact][:grafico_id]
+    @graph = open_flash_chart_object(600,300,"/estatistica/grafico_por_unidade?unidade=#{session[:input]}",false,'/')
+
+    vencerrado=(Mmanutencao.aberto_unidade(session[:input])).length
+    vaberto =  (Mmanutencao.encerrado_unidade(session[:input])).length
+    vtotal= Mmanutencao.geral.length
+    pe = (vencerrado.to_f/vtotal.to_f)*100
+    pa = (vaberto.to_f/vtotal.to_f)*100
+    pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
+    @static_graph = Gchart.pie_3d(
+        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
+        :size => '600x300',
+        :format => 'image_tag',
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+        
+
+   @static_graph2 = Gchart.pie_3d(
+        :data => [vaberto,vencerrado],
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados" ,
+        :size => '600x300',
+        :format => 'image_tag',
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
+
+
+      render :action => "estatistica_unidade"
+  end
+
+
+   def por_servico
     $menu=1
     session[:input] = params[:contact][:grafico_id]
     @graph = open_flash_chart_object(600,300,"/estatistica/grafico_por_unidade?unidade=#{session[:input]}",false,'/')
@@ -63,22 +133,24 @@ end
     pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
     @static_graph = Gchart.pie_3d(
         :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
-        :title => "Manuntenção por Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} - de um total #{vtotal} chamados " ,
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
         :size => '600x300',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Total: #{(vtotal-vencerrado-vaberto)}",])
-        
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+
 
    @static_graph2 = Gchart.pie_3d(
         :data => [vaberto,vencerrado],
-        :title => "Manuntenção por Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length}" ,
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados" ,
         :size => '600x300',
         :format => 'image_tag',
         :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
 
 
-      render :action => "estatistica_unidade"
+      render :action => "estatistica_servico"
   end
+
+
 
   def graph_code_demanda_geral
     title = Title.new("Demanda Geral - Crianças Cadastradas: #{Crianca.total_demanda.length}")
@@ -134,6 +206,7 @@ protected
 
   def load_unidades
        @unidades = Unidade.find(:all, :order => 'nome ASC')
+       @servicos = TiposManutencao.find(:all, :order => 'servico ASC')
   
     $uni=1
     $menu=0

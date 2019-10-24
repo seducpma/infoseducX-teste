@@ -99,6 +99,10 @@ ActionController::Routing::Routes.draw do |map|
   map.encerrados '/cencerrados', :controller => 'chamados', :action => 'encerrados'
   map.estatisticas '/estatisticas', :controller => 'estatisticas', :action => 'estatiticas'
   map.estatistica_unidade '/estatistica_unidade', :controller => 'estatisticas', :action => 'estatistica_unidade'
+  map.impressao_estatistica_unidade '/impressao_estatistica_unidade', :controller => 'estatisticas', :action => 'impressao_estatistica_unidade'
+  map.impressao_estatistica_unidade_aberta '/impressao_estatistica_unidade_aberta', :controller => 'mmanutencaos', :action => 'impressao_estatistica_unidade_aberta'
+
+  map.estatistica_servico '/estatistica_servico', :controller => 'estatisticas', :action => 'estatistica_servico'
 
   map.consultas_encerrados '/consultas_encerrados', :controller => 'mmanutencaos', :action => 'consultas_encerrados'
   map.consulta_encerrados_unidade '/consulta_encerrados_unidade', :controller => 'mmanutencaos', :action => 'consulta_encerrados_unidade'
