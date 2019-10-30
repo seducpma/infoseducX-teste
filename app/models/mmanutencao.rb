@@ -61,7 +61,6 @@ end
 def self.aberto_unidade(unidade)
     unidade_id = Unidade.find(unidade).id
     Mmanutencao.find(:all, :conditions => ['unidade_id=? AND situacao_manutencao_id <> 2',unidade_id])
-    t=0
 end
 
 def self.encerrado_unidade(unidade)
@@ -74,10 +73,6 @@ def self.por_unidade(unidade)
      unidade_id = Unidade.find(unidade).id
     Mmanutencao.find(:all, :conditions => ['unidade_id = ?', unidade_id])
 end
-
-
-
-#======== POR SERVICO
 
 def self.aberto_unidade(unidade)
     unidade_id = Unidade.find(unidade).id
@@ -94,6 +89,82 @@ def self.por_unidade(unidade)
     Mmanutencao.find(:all, :conditions => ['unidade_id = ?', unidade_id])
 end
 
+
+
+#======== POR SERVICO
+
+
+
+def self.alvenaria_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 2',unidade_id])
+end
+
+def self.dedetizacao_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 3',unidade_id])
+end
+
+def self.eletro_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 4',unidade_id])
+end
+
+def self.eletrica_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 5',unidade_id])
+end
+
+def self.cozinha_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 6',unidade_id])
+end
+
+
+def self.hidrau_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 7',unidade_id])
+end
+
+def self.limpeza_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 8',unidade_id])
+end
+
+def self.marcenaria_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 9',unidade_id])
+end
+
+def self.pintura_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 10',unidade_id])
+end
+
+def self.playground_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 11',unidade_id])
+end
+
+def self.grama_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 12',unidade_id])
+end
+
+def self.serralheria_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 13',unidade_id])
+end
+
+def self.telhado_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 14',unidade_id])
+end
+
+def self.outros_aberto_unidade(unidade)
+    unidade_id = Unidade.find(unidade).id
+    Mmanutencao.find(:all,  :joins => "INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id", :conditions => ['mmanutencaos.unidade_id=? AND mmanutencaos.situacao_manutencao_id = 2 AND mmanutencaos_tipos_manutencaos.tipos_manutencao_id = 15',unidade_id])
+end
 
 
 

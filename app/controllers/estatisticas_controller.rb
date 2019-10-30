@@ -51,18 +51,52 @@ t=0
 
 
 #    if  session[:geral] == 0
-      vencerrado=(Mmanutencao.aberto_unidade(session[:input])).length
+    vencerrado=(Mmanutencao.aberto_unidade(session[:input])).length
     vaberto =  (Mmanutencao.encerrado_unidade(session[:input])).length
     vtotal= Mmanutencao.geral.length
     pe = (vencerrado.to_f/vtotal.to_f)*100
     pa = (vaberto.to_f/vtotal.to_f)*100
     pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
-    @static_graph = Gchart.pie_3d(
+
+        valvenaria = (Mmanutencao.alvernaria_aberto_unidade(session[:input])).length
+        vdedetizacao = (Mmanutencao.dedetizacao_aberto_unidade(session[:input])).length
+        veletrodomesticos = (Mmanutencao.eletro_aberto_unidade(session[:input])).length
+        veletrica = (Mmanutencao.eletri_aberto_unidade(session[:input])).length
+        vequipamento_cozinha = (Mmanutencao.cozinha_aberto_unidade(session[:input])).length
+        vhidraulica = (Mmanutencao.hidrau_aberto_unidade(session[:input])).length
+        vlimpeza = (Mmanutencao.limpeza_aberto_unidade(session[:input])).length
+        vmarcenaria = (Mmanutencao.marcenaria_aberto_unidade(session[:input])).length
+        vpintura = (Mmanutencao.pintura_aberto_unidade(session[:input])).length
+        vplayground = (Mmanutencao.playground_aberto_unidade(session[:input])).length
+        vpoda_grama = (Mmanutencao.aberto_unidade(session[:input])).length
+        vserralheria = (Mmanutencao.serallheria_aberto_unidade(session[:input])).length
+        vtelhado = (Mmanutencao.telhado_aberto_unidade(session[:input])).length
+        voutros = (Mmanutencao.outros_aberto_unidade(session[:input])).length
+
+
+        palvenaria = (valvenaria.to_f / vaberto)*100
+        pdedetizacao = (vdedetizacao.to_f / vaberto)*100
+        peletrodomesticos =(veletrodomesticos.to_f / vaberto)*100
+        peletrica= (veletrica.to_f / vaberto)*100
+        pequipamento_cozinha= (vequipamento_cozinha / vaberto)*100 
+        phidraulica=(vhidraulica.to_f / vaberto)*100
+        plimpeza=(vlimpeza.to_f / vaberto)*100 
+        pmarcenaria=(vmarcenaria.to_f / vaberto)*100 
+        ppintura=(vpintura.to_f / vaberto)*100 
+        pplayground=(vplayground.to_f / vaberto)*100 
+        ppoda_grama=(vpoda_grama.to_f / vaberto)*100 
+        pserralheria=(vserralheria.to_f / vaberto)*100
+        ptelhado=(vtelhado.to_f / vaberto)*100 
+        poutros=(voutros.to_f / vaberto)*100
+
+
+
+   @static_graph = Gchart.pie_3d(
         :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
         :size => '600x300',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+        :labels => ["Abertas:  #{vaberto} ", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
 
 
    @static_graph2 = Gchart.pie_3d(
@@ -71,7 +105,19 @@ t=0
         :size => '900x450',
         :format => 'image_tag',
         :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
-#    else
+
+
+
+@static_graph3 = Gchart.pie_3d(
+        :data => [ valvenaria, vdedetizacao, veletrodomesticos, veletrica, vequipamento_cozinha, vhidraulica, vlimpeza,  vmarcenaria,  vpintura, vplayground, vpoda_grama, vserralheria, vtelhado, voutros],               
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços" ,
+        :size => '1000x500',
+        :format => 'image_tag',
+        :labels => ["Alvenaria:  #{valvenaria}", "Dedetização:  #{vdedetizacao}", "Eletrodomésticos:  #{veletrodomesticos}","Elétrica:  #{veletrica}", "Equip.Cozinha:  #{vequipamento_cozinha}", "Hidráulica:  #{vhidraulica}","Limp.Cx.Água:  #{vlimpeza}", "Marcenaria:  #{ vmarcenaria}", "Pintura:  #{ vpintura}","Playground:  #{vplayground}", "Poda grama:  #{vpoda_grama}","Serralheria:  #{vserralheria}","Telhado:  #{ vtelhado}","Outros:  #{voutros}",])
+
+        
+    
+ #    else
 
 #      @static_graph = Gchart.pie_3d(
 #            :data => [(Crianca.matriculas_crianca_por_unidade(session[:input])).length,(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length, (Crianca.cancelada_crianca_por_unidade(session[:input])).length],
@@ -97,23 +143,46 @@ end
     vencerrado=(Mmanutencao.aberto_unidade(session[:input])).length
     vaberto =  (Mmanutencao.encerrado_unidade(session[:input])).length
     vtotal= Mmanutencao.geral.length
+        valvenaria = (Mmanutencao.alvenaria_aberto_unidade(session[:input])).length
+        vdedetizacao = (Mmanutencao.dedetizacao_aberto_unidade(session[:input])).length
+        veletrodomesticos = (Mmanutencao.eletro_aberto_unidade(session[:input])).length
+        veletrica = (Mmanutencao.eletrica_aberto_unidade(session[:input])).length
+        vequipamento_cozinha = (Mmanutencao.cozinha_aberto_unidade(session[:input])).length
+        vhidraulica = (Mmanutencao.hidrau_aberto_unidade(session[:input])).length
+        vlimpeza = (Mmanutencao.limpeza_aberto_unidade(session[:input])).length
+        vmarcenaria = (Mmanutencao.marcenaria_aberto_unidade(session[:input])).length
+        vpintura = (Mmanutencao.pintura_aberto_unidade(session[:input])).length
+        vplayground = (Mmanutencao.playground_aberto_unidade(session[:input])).length
+        vpoda_grama = (Mmanutencao.aberto_unidade(session[:input])).length
+        vserralheria = (Mmanutencao.serralheria_aberto_unidade(session[:input])).length
+        vtelhado = (Mmanutencao.telhado_aberto_unidade(session[:input])).length
+        voutros = (Mmanutencao.outros_aberto_unidade(session[:input])).length
     pe = (vencerrado.to_f/vtotal.to_f)*100
     pa = (vaberto.to_f/vtotal.to_f)*100
     pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
+
+      
     @static_graph = Gchart.pie_3d(
         :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
-        :size => '600x300',
+        :size => '700x400',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+        :labels => ["Abertas: #{vaberto}", "Encer.:#{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
         
 
    @static_graph2 = Gchart.pie_3d(
         :data => [vaberto,vencerrado],
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados" ,
-        :size => '600x300',
+        :size => '700x400',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
+        :labels => ["Abertas: #{vaberto}", "Encer.: #{vencerrado}", ])
+
+    @static_graph3 = Gchart.pie_3d(
+        :data => [ valvenaria, vdedetizacao, veletrodomesticos, veletrica, vequipamento_cozinha, vhidraulica, vlimpeza,  vmarcenaria,  vpintura, vplayground, vpoda_grama, vserralheria, vtelhado, voutros],
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços em Aberto"  ,
+        :size => '700x400',
+        :format => 'image_tag',
+        :labels => ["Alven.: #{valvenaria}", "Dedetiz.: #{vdedetizacao}", "Ele.dom.: #{veletrodomesticos}","Elétrica: #{veletrica}", "E.Coz.: #{vequipamento_cozinha}", "Hidráu.: #{vhidraulica}","Cx.Água: #{vlimpeza}", "Marcenar.: #{ vmarcenaria}", "Pintura: #{ vpintura}","Playgrou.: #{vplayground}", "P.Grama: #{vpoda_grama}","Serral.:  #{vserralheria}","Telhado: #{ vtelhado}","Outros: #{voutros}",])
 
 
       render :action => "estatistica_unidade"

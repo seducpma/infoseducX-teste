@@ -51,6 +51,16 @@
           <%end%>
       </td>
     </tr>
+    <tr>
+
+      <td colspan="2" align="center">
+          <% if @static_graph3.present?%>
+              <%= @static_graph3%>
+          <%else%>
+              <%= @graph3 %>
+          <%end%>
+      </td>
+    </tr>
 
 
    <% if $menu==1 %>
