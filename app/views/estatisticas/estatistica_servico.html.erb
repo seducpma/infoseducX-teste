@@ -34,26 +34,27 @@
     <tr>
       
       <td colspan="2" align="center">
-          <% if @static_graph.present?%>
-              <%= @static_graph%>
+          <% if @static_graph4.present?%>
+              <%= @static_graph4%>
           <%else%>
-              <%= @graph %>
+              <%= @graph4 %>
           <%end%>
       </td>
     </tr>
+
     <tr>
 
       <td colspan="2" align="center">
-          <% if @static_graph2.present?%>
-              <%= @static_graph2%>
+          <% if @static_graph5.present?%>
+              <%= @static_graph5%>
           <%else%>
-              <%= @graph2 %>
+              <%= @graph5 %>
           <%end%>
       </td>
     </tr>
 
 
-   <% if $menu==1 %>
+
     <tr>
 
         <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
@@ -61,7 +62,7 @@
 
 
   </tr>
-  <%end%>
+
 </table>
 <br/><br/>
 

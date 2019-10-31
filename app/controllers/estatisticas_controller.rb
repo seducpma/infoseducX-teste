@@ -140,8 +140,8 @@ end
     session[:input] = params[:contact][:grafico_id]
     @graph = open_flash_chart_object(600,300,"/estatistica/grafico_por_unidade?unidade=#{session[:input]}",false,'/')
 
-    vencerrado=(Mmanutencao.aberto_unidade(session[:input])).length
-    vaberto =  (Mmanutencao.encerrado_unidade(session[:input])).length
+    vencerrado=(Mmanutencao.encerrado_unidade(session[:input])).length
+    vaberto =  (Mmanutencao.aberto_unidade(session[:input])).length
     vtotal= Mmanutencao.geral.length
         valvenaria = (Mmanutencao.alvenaria_aberto_unidade(session[:input])).length
         vdedetizacao = (Mmanutencao.dedetizacao_aberto_unidade(session[:input])).length
@@ -163,7 +163,7 @@ end
 
       
     @static_graph = Gchart.pie_3d(
-        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
+        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/2],
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
         :size => '700x400',
         :format => 'image_tag',
@@ -179,10 +179,10 @@ end
 
     @static_graph3 = Gchart.pie_3d(
         :data => [ valvenaria, vdedetizacao, veletrodomesticos, veletrica, vequipamento_cozinha, vhidraulica, vlimpeza,  vmarcenaria,  vpintura, vplayground, vpoda_grama, vserralheria, vtelhado, voutros],
-        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços em Aberto"  ,
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{vaberto} Serviços em Aberto"  ,
         :size => '700x400',
         :format => 'image_tag',
-        :labels => ["Alven.: #{valvenaria}", "Dedetiz.: #{vdedetizacao}", "Ele.dom.: #{veletrodomesticos}","Elétrica: #{veletrica}", "E.Coz.: #{vequipamento_cozinha}", "Hidráu.: #{vhidraulica}","Cx.Água: #{vlimpeza}", "Marcenar.: #{ vmarcenaria}", "Pintura: #{ vpintura}","Playgrou.: #{vplayground}", "P.Grama: #{vpoda_grama}","Serral.:  #{vserralheria}","Telhado: #{ vtelhado}","Outros: #{voutros}",])
+        :labels => ["Alven.: #{valvenaria}", "Dedetiz.: #{vdedetizacao}", "Ele.dom.: #{veletrodomesticos}","Elétrica: #{veletrica}", "E.Coz.: #{vequipamento_cozinha}", "Hidráu.: #{vhidraulica}","CxÁgua: #{vlimpeza}", "Marcen.: #{ vmarcenaria}", "Pintura: #{ vpintura}","Playgrou.: #{vplayground}", "P.Grama: #{vpoda_grama}","Serral.:  #{vserralheria}","Telhado: #{ vtelhado}","Outros: #{voutros}",])
 
 
       render :action => "estatistica_unidade"
@@ -192,28 +192,60 @@ end
    def por_servico
     $menu=1
     session[:input] = params[:contact][:grafico_id]
-    @graph = open_flash_chart_object(600,300,"/estatistica/grafico_por_unidade?unidade=#{session[:input]}",false,'/')
+    @graph = open_flash_chart_object(600,300,"/estatistica/grafico_por_servico?servico=#{session[:input]}",false,'/')
 
-    vencerrado= (Mmanutencao.encerrado_unidade(session[:input])).length
-    vaberto = (Mmanutencao.aberto_unidade(session[:input])).length
+    vencerrado= (Mmanutencao.encerrado_servico(session[:input])).length
+    vaberto = (Mmanutencao.aberto_servico(session[:input])).length
     vtotal= Mmanutencao.geral.length
+
+        quant_unidade = Unidade.all(:conditions =>['desativada = 0']).count
+
+
+        valvenaria = (Mmanutencao.alvenaria_aberto_unidade(session[:input])).length
+        vdedetizacao = (Mmanutencao.dedetizacao_aberto_unidade(session[:input])).length
+        veletrodomesticos = (Mmanutencao.eletro_aberto_unidade(session[:input])).length
+        veletrica = (Mmanutencao.eletrica_aberto_unidade(session[:input])).length
+        vequipamento_cozinha = (Mmanutencao.cozinha_aberto_unidade(session[:input])).length
+        vhidraulica = (Mmanutencao.hidrau_aberto_unidade(session[:input])).length
+        vlimpeza = (Mmanutencao.limpeza_aberto_unidade(session[:input])).length
+        vmarcenaria = (Mmanutencao.marcenaria_aberto_unidade(session[:input])).length
+        vpintura = (Mmanutencao.pintura_aberto_unidade(session[:input])).length
+        vplayground = (Mmanutencao.playground_aberto_unidade(session[:input])).length
+        vpoda_grama = (Mmanutencao.aberto_unidade(session[:input])).length
+        vserralheria = (Mmanutencao.serralheria_aberto_unidade(session[:input])).length
+        vtelhado = (Mmanutencao.telhado_aberto_unidade(session[:input])).length
+        voutros = (Mmanutencao.outros_aberto_unidade(session[:input])).length
+
+
     pe = (vencerrado.to_f/vtotal.to_f)*100
     pa = (vaberto.to_f/vtotal.to_f)*100
     pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
-    @static_graph = Gchart.pie_3d(
-        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/3],
-        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
-        :size => '600x300',
+    @static_graph4 = Gchart.pie_3d(
+        :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/2],
+        :title => "Serviço: #{Mmanutencao.servico(session[:input])} - #{(Mmanutencao.por_servico(session[:input]) ).length} serviços de um total de #{vtotal} " ,
+        :size => '700x400',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+        :labels => ["Aberto: #{vaberto}", "Encer: #{vencerrado}", "Outros: #{(vtotal-vencerrado-vaberto)}",])
 
 
-   @static_graph2 = Gchart.pie_3d(
+   @static_graph5 = Gchart.pie_3d(
         :data => [vaberto,vencerrado],
-        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados" ,
-        :size => '600x300',
+        :title => "Serviço: #{Mmanutencao.servico(session[:input])} - #{(Mmanutencao.por_servico(session[:input])).length} chamados" ,
+        :size => '700x400',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
+        :labels => ["Aberto: #{vaberto}", "Encer: #{vencerrado}", ])
+
+    @static_graph3 = Gchart.pie_3d(
+        :data => [ valvenaria, vdedetizacao, veletrodomesticos, veletrica, vequipamento_cozinha, vhidraulica, vlimpeza,  vmarcenaria,  vpintura, vplayground, vpoda_grama, vserralheria, vtelhado, voutros],
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços em Aberto"  ,
+        :size => '700x400',
+        :format => 'image_tag',
+        :labels => ["Alven.: #{valvenaria}", "Dedetiz.: #{vdedetizacao}", "Ele.dom.: #{veletrodomesticos}","Elétrica: #{veletrica}", "E.Coz.: #{vequipamento_cozinha}", "Hidráu.: #{vhidraulica}","Cx.Água: #{vlimpeza}", "Marcenar.: #{ vmarcenaria}", "Pintura: #{ vpintura}","Playgrou.: #{vplayground}", "P.Grama: #{vpoda_grama}","Serral.:  #{vserralheria}","Telhado: #{ vtelhado}","Outros: #{voutros}",])
+
+
+
+
+
 
 
       render :action => "estatistica_servico"
