@@ -240,7 +240,7 @@ end
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços em Aberto"  ,
         :size => '700x400',
         :format => 'image_tag',
-        :labels => ["Alven.: #{valvenaria}", "Dedetiz.: #{vdedetizacao}", "Ele.dom.: #{veletrodomesticos}","Elétrica: #{veletrica}", "E.Coz.: #{vequipamento_cozinha}", "Hidráu.: #{vhidraulica}","Cx.Água: #{vlimpeza}", "Marcenar.: #{ vmarcenaria}", "Pintura: #{ vpintura}","Playgrou.: #{vplayground}", "P.Grama: #{vpoda_grama}","Serral.:  #{vserralheria}","Telhado: #{ vtelhado}","Outros: #{voutros}",])
+        :labels => ["Alven.: #{valvenaria}", "Dedetiz.: #{vdedetizacao}", "Ele.dom.: #{veletrodomesticos}","Elétrica: #{veletrica}", "E.Coz.: #{vequipamento_cozinha}", "Hidráu.: #{vhidraulica}","Cx.Água: #{vlimpeza}", "Marcenar.: #{ vmarcenaria}", "Pintura: #{ vpintura}","Playgrou.: #{vplayground}", "P.Grama: #{vpoda_grama}","Serralh.:  #{vserralheria}","Telhado: #{ vtelhado}","Outros: #{voutros}",])
 
 
 
