@@ -222,7 +222,7 @@ end
     pr = (vtotal.to_f-vencerrado.to_f-vaberto.to_f)/vtotal.to_f * 100
     @static_graph4 = Gchart.pie_3d(
         :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/2],
-        :title => "Serviço: #{Mmanutencao.servico(session[:input])} - #{(Mmanutencao.por_servico(session[:input]) ).length} serviços de um total de #{vtotal} " ,
+        :title => "Serviço: #{Mmanutencao.servico(session[:input])} (  - #{(Mmanutencao.por_servico(session[:input]) ).length} serviços de um total de #{vtotal} " ,
         :size => '700x400',
         :format => 'image_tag',
         :labels => ["Aberto: #{vaberto}", "Encer: #{vencerrado}", "Outros: #{(vtotal-vencerrado-vaberto)}",])
