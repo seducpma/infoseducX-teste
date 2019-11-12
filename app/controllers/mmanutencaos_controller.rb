@@ -113,7 +113,7 @@ def consulta_abertos_unidade
      else if params[:type_of].to_i == 2
              session[:type_of] = 2
              session[:unidade]=params[:unidade][:id]
-                if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC')
+                if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC')  or current_user.has_role?('SEDUC')
                   #  @mmanutencaos_abertas = Mmanutencao.all(:conditions => ["situacao_manutencao_id <> 2"])
                      #@mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma RIGHT JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <>2 ORDER BY mma.data_sol DESC")
                      @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE (situacao_manutencao_id <> 2 AND situacao_manutencao_id <> 9)   and mma.unidade_id ="+session[:unidade].to_s+" ORDER BY mma.data_sol DESC")
@@ -134,7 +134,7 @@ def consulta_abertos_unidade
                  end
           else if params[:type_of].to_i == 3
                   session[:type_of] = 3
-                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('terceiro')or current_user.has_role?('oficios')or current_user.has_role?('estagiario SEDUC')
+                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('terceiro')or current_user.has_role?('oficios')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC')
                             #@mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id = 2")
                             @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma RIGHT JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE (situacao_manutencao_id <> 2 AND situacao_manutencao_id <> 9) ORDER BY mma.data_sol DESC")
                         else
