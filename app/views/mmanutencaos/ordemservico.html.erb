@@ -47,12 +47,14 @@
                             <td align="left"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
                           <%end%>
                        </tr>
-                        <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                       <!--
+                        <%# if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
                             <tr>
                                <td><b> Serviço: </b> </td>
                                <td> <font color="red"> PARA ORÇAMENTO <font color="red"></td>
                            </tr>
-                        <%end%>
+                        <%#end%>
+                       -->
                  </table>
                </fieldset>
             </td>
@@ -60,19 +62,20 @@
            <tr>
             <td valign="top" >
               <fieldset><legend><font  size=4> SERVIÇOS</font></legend>
-                  <table  width="100%">
-                 <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                  <table  width="100%"><!--
+                 <%# if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
                       <tr>
                         <td><b> Situação: </b> </td>
                         <td colspan="5"> <font color="red"> PARA ORÇAMENTO <font color="red"></td>
                     </tr>
-                 <%else if @mmanutencao.situacao == 'AUTORIZADO' %>
+                 <%#else if @mmanutencao.situacao == 'AUTORIZADO' %>
                          <tr>
                              <td><b> Serviço: </b> </td>
                              <td colspan="5"> <font color="blue"><b> AUTORIZADO </b></font></td>
                         </tr>
-                      <%end%>
-                 <%end%>
+                      <%#end%>
+                 <%#end%>
+                <-->
                   <% @tipos_manutencaos =  TiposManutencao.find(:all) %>
                         <tr>
                            <td align="left" valign="top"><b>Serviços :<BR/>Realizados</b></td>
@@ -116,8 +119,14 @@
                    <td width ="2%" align="right"><%= f.submit "Salvar" %> </td>
                  </div>
                  <%end%>
-                   <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-                   <td align="left" ><%= button_to('Serviços em Aberto', mmanutencaos_path, :method => "get", :title => "Servicos em Aberto") %></td>
+                 <% if current_user.has_role?('admin') or current_user.has_role?('SEDUC') %>
+                      <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                      <td width="2%"  align="left" ><%= button_to('Serviços em Aberto', mmanutencaos_path, :method => "get", :title => "Servicos em Aberto") %></td>
+                      <td align="left" ><%= button_to("Serviços para Terceirizado",  {:action => "terceirizada", :id =>@mmanutencao}, :method => "get", :title => "Serviço") %></td>
+                 <%else%>
+                     <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                      <td align="left" ><%= button_to('Serviços em Aberto', mmanutencaos_path, :method => "get", :title => "Servicos em Aberto") %></td>
+                  <%end%>
                  </tr>
          </table>
       </td>

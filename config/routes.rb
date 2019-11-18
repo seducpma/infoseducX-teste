@@ -22,10 +22,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get, :editar => :get}
 
   map.resources :despachos
-
-
-
-
   map.resources :produtos
   map.resources :produtos_lancamentos
   map.resources :agendas

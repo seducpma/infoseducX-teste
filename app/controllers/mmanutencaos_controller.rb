@@ -144,7 +144,19 @@ def consulta_abertos_unidade
                          page.replace_html 'abertos', :partial => "abertos"
                      end
               else if params[:type_of].to_i == 4
-                        # NÂO UTILIUZADO
+                        w=session[:sstatus]=  params[:manutencao][:situacao_manutencao_id]
+                        t=0
+                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC')
+                           @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE  mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
+                           t=0
+                        else
+                           @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE mma.unidade_id ="+(current_user.unidade_id).to_s+"  and mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
+                        end
+                        t=0
+                       render :update do |page|
+                         page.replace_html 'abertos', :partial => "abertos"
+                       end
+
                      else if params[:type_of].to_i == 5
                         # NÂO UTILIUZADO
                      end
@@ -160,6 +172,8 @@ def consulta_abertos_unidade
 end
 
 def consultas_abertos
+     @situacao_manutencao =  SituacaoManutencao.find(:all, :conditions =>  ["id <> 2"], :order => 'situacao')
+                        
      if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
       @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
      else
@@ -811,6 +825,7 @@ def estatisticasMANTAt
 
   def show
     @mmanutencao = Mmanutencao.find(params[:id])
+    session[:id_manutencao]=params[:id]
     session[:idprotocolo]= @mmanutencao.id
     respond_to do |format|
       format.html # show.html.erb
@@ -860,17 +875,24 @@ def estatisticasMANTAt
     @mmanutencao = Mmanutencao.find(params[:id])
    respond_to do |format|
       if @mmanutencao.update_attributes(params[:mmanutencao])
-       if @mmanutencao.chefia_id == 12
+       if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')
+
           @mmanutencao.situacao = 'PARA ORÇAMENTO'
            if @mmanutencao.situacao_manutencao_id == 8
                  @mmanutencao.situacao = 'AUTORIZADO'
                 @mmanutencao.chefia_id= 13
                 @mmanutencao.data_autoriza = Time.now
+                t=0
            end
        else
          @mmanutencao.situacao = nil
        end
-         
+     if session[:despacho]==1
+         @mmanutencao.data_ate = Time.now
+       session[:despacho]=0
+     end
+
+
     
      @mmanutencao.save
         flash[:notice] = 'CADASTRADO COM SUCESSO.'
@@ -913,6 +935,12 @@ def lista_unidade
   def despacho
     @mmanutencao = Mmanutencao.find(params[:id])
     @mmanutencao.data_ate = Time.now
+  end
+
+
+ def terceirizada
+    @mmanutencao = Mmanutencao.find(params[:id])
+    
   end
 
  def ordemservico
@@ -1038,5 +1066,7 @@ $ok=1
       format.xml  { render :xml => @mmanutencao }
     end
   end
+
+
 
 end

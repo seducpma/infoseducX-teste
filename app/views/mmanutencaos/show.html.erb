@@ -1,6 +1,6 @@
 
 
-            <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('admin_manutencao')  %>
+            <% if current_user.has_role?('admin') or current_user.has_role?('chefia_manutencao') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')   %>
             <div id="interno6">
             <% title "CLASSES".singularize %>
             <div class="tabs">
@@ -10,10 +10,10 @@
                 <div class="tabs">
                  <br/>
                   <font size="2">
-                 <table width="100%" align="center"  bgcolor="#F5F5F5" >
+                     <table width="100%" align="center"  bgcolor="#F5F5F5" >
                    <tr bgcolor ="#E6E2D">
                      <td colspan="6" align="left">
-                         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO - MANUTENÇÃO GERAL</b></font>
+                         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO - Nº <%=h @mmanutencao.id%></b></font>
                          <hr/>
                       </td>
                    </tr>
@@ -91,7 +91,7 @@
                                         </table>
                                     </td>
                                 </tr>
- 
+
                                 <tr>
                                   <td colspan="2"align="right">
                                           <%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %>
@@ -102,7 +102,7 @@
                      </td>
                   </tr>
                   <tr>
-                     <td >
+                      <td colspan="2">
                          <fieldset><legend><font  size=4> ENCAMINHAMENTO</font></legend>
                             <table>
                                  <tr>
@@ -119,7 +119,7 @@
                                         <td align="left"><%if @mmanutencao.chefia.nome == 'DEVOLUÇÃO PARA UNIDADE'%>
                                                              <font color=" red"> <b>DEVOLUÇÃO PARA UNIDADE</b></font>
                                                        <%else%>
-                                                            <%=h @mmanutencao.chefia.nome  %>                                                     
+                                                            <%=h @mmanutencao.chefia.nome  %>
                                                        <%end%>
                                         </td>
                                      <%end%>
@@ -144,7 +144,7 @@
                      </td>
                   </tr>
                   <tr>
-                     <td >
+                     <td valign="top">
                          <fieldset><legend><font  size=4> SERVIÇO</font></legend>
                              <table>
                                 <tr>
@@ -172,9 +172,9 @@
                                    <%end%>
                                   </tr>
                                  <tr>
-                                   <td align="left"><b>Data:</b></td>
+                                   <td align="left"><br/><b>Data:</b></td>
                                    <%if @mmanutencao.data_enc.nil?%>
-                                      <td align="left">
+                                      <td align="left"><br/>
                                          <%if @mmanutencao.situacao_manutencao_id == 8 %>
                                              <font color="red">  AUTORIZADO em <%=h @mmanutencao.data_autoriza.strftime("%d/%m/%Y %H:%M horas" ) %> </font>
                                         <%else%>
@@ -185,24 +185,74 @@
                                        <td align="left"><font color="red">  ENCERRADO em  <%=h @mmanutencao.data_enc.strftime("%d/%m/%Y %H:%M horas" ) %></font></td>
                                    <%end%>
                                  </tr>
-                                 <% if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
+                                 <!--
+                                 <%# if @mmanutencao.situacao == 'PARA ORÇAMENTO' %>
                                     <tr>
                                       <td></td>
                                       <td> <font color="red"> &nbsp&nbsp&nbsp ORÇAMENTO <font color="red"></td>
 
                                     </tr>
-                                 <%end%>
+                                 <%#end%>
+                                 -->
                             </table>
                           </fieldset>
                           </td>
+                          <% if !@mmanutencao.servico_terceiro.nil? %>
+                            <td width ="50%" valign="top">
+                                  <fieldset><legend><font  size=4> SERVIÇO P/ TERCEIRIZADA</font></legend>
+                                      <table  width="100%">
+                                <tr>
+                                  <td valign="top" width="15%"><b>Serviço:</b></td>
+                                  <td>
+                                     <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                                      - <%=h servico.servico%><br/>
+                                     <% end %>
+                                  </td>
+                                </tr>                                     <tr>
+                                        <td align="left" valign="top"><b>Descrição do Serviço:</b></td>
+                                        <td align="left"  colspan="5"><%= @mmanutencao.servico_terceiro %></td>
+                                     </tr>
+                                     <tr>
+                                        <td align="left"><b>Funcionário:</b></td>
+                                         <td align="left" colspan="5"><%= @mmanutencao.ffuncionario %></td>
+                                     </tr>
+                                     <tr>
+                                        <td align="left"><b>Chamado:</b></td>
+                                        <td align="left" colspan="5"><%#= f.collection_select :situacao_manutencao_id, @situacaos, :id, :situacao, :include_blank => ' -- Selecionar -- '%>
+                                            <%= @mmanutencao.situacao_manutencao.situacao %>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td align="left" colspan="5" valign="top"><b>Data envio e-mail:</b> 
+                                             <%if !@mmanutencao.data3.nil? %>
+                                                 <%= @mmanutencao.data3.strftime("%d/%m/%Y")%>
+                                             <%else%>
+                                                  <font color="red">E-mail não enviado</font>
+                                             <%end%>
+                                        </td>
+
+                                       </tr>
+                                   </table>
+                                </fieldset>
+                            </td>
+                          <%end%>
                         </tr>
+
+
+
+
+
                        </table>
                     <table>
                         <tr>
                           <td width ="2%"align="left" ><%= button_to('Fechar', mmanutencaos_path, :method => "get", :title => "Fechar")%></td>
                             <% if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') %>
                               <td width="2%"align="left" ><%= button_to('Encaminhar', {:action => "despacho", :id =>@mmanutencao}, :method => "get", :title => "Encaminhar") %></td>
-                              <td align="left" ><%= button_to('Serviço', {:action => "ordemservico", :id =>@mmanutencao }, :method => "get", :title => "Solicitação") %></td>
+                              <td width="2%"align="left" ><%= button_to('Serviço', {:action => "ordemservico", :id =>@mmanutencao }, :method => "get", :title => "Solicitação") %></td>
+                              <td align="left" ><%= button_to("Serviços para Terceirizado",  {:action => "terceirizada", :id =>@mmanutencao}, :method => "get", :title => "Serviço") %></td>
+                              <% if !@mmanutencao.servico_terceiro.nil? %>
+                                  <td align="left" ><%= button_to('Enviar E-mail', {:action => "tela_email", :controller =>'passwords' }, :method => "get", :title => "Email") %></td>
+                                <%end%>
                            <%end%>
                          </tr>
                     </table>
@@ -235,32 +285,32 @@
                             <%= render 'formshow' %>
                           </td>
                         </tr>
-                        
+
                         <tr>
                           <td>
                             <font><b>
-                                
+
                                    GUARDAR O NÚMERO DESTE PROCOLO.<br/>
                                    O SERVIÇO SERÁ ATENDIDA ASSIM QUE POSSÍVEL.
                                    QUALQUER DÚVIDA ENTRAR EM CONTATO COM A INFORMÁTICA.
-                                
+
                             </b></font>
                            </td>
                         </tr>
-                        
+
                        </table>
-                        
+
                         <table align="left" width="100%">
                           <tr>
                             <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
                             <% if current_user.has_role?('admin') or current_user.has_role?('estagiario SEDUC') %>
                               <td align="left"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_mmanutencao_path(@mmanutencao), :title => "Alterar"%></td>
                             <%end%>
-                              
+
                               <td align="right" ><b><%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_show_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %></b></td>
                           </tr>
                         </table>
-                        
+
                      </font>
                    </td>
                    </tr>
@@ -272,6 +322,6 @@
 </div>
             <%end%>
 
-    
+
 
 

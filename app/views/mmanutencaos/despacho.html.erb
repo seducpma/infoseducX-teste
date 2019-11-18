@@ -19,7 +19,7 @@
                <%= render 'formshow' %>
             </td>
         </tr>
-        <tr/>
+        <tr>
            <td valign="top" width="50%">
              <fieldset><legend><font  size=4> ENCAMINHAMENTO</font></legend>
                    <% form_for(@mmanutencao) do |f| %>
@@ -48,6 +48,7 @@
                      </tr>
                  </table>
               </td>
+              <%session[:despacho]=1%>
               </tr>
 
 

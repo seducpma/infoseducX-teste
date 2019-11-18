@@ -19,6 +19,42 @@ class PasswordsController < ApplicationController
     end
   end
 
+  def tela_email
+     
+  end
+
+  def email
+       
+  #   participante = Participante.find_by_matricula(params[:matricula])
+       session[:email]=email= (params[:email])
+
+      if !session[:id_manutencao].nil?
+       @mmanutencao= Mmanutencao.find(session[:id_manutencao])
+       @mmanutencao.data3= Time.now
+       @mmanutencao.save
+       t=0
+      end
+       #InscricaoMailer.deliver_confirmacao_inscricao(@inscricao,@inscricao.participante)
+       MmanutencaoMailer.deliver_enviar_email(@mmanutencao,email)
+  end
+  #return unless request.post?
+  #if @user = User.find_for_forget(params[:email])
+  #    @user.forgot_password
+  #    ChamadoMailer.deliver_forgot_password(@user)
+  #    @user.save
+  #    flash[:notice] = "Um link para efetuar a troca da senha foi enviado para o e-mail cadastrado."
+  #  redirect_to login_path
+  #  else
+  #    flash[:notice] = "Nenhum usuário cadastrado com o e-mail informado."
+  #    render :action => 'new'
+  #  end
+  #end
+
+
+
+
+
+
   def edit
     if params[:id].nil?
       render :action => 'new'

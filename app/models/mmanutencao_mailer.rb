@@ -8,4 +8,14 @@ def notificar_mmanutencao(mmanutencao)
   body :mmanutencao => mmanutencao
 end
 
+
+def enviar_email(mmanutencao,email)
+  recipients email
+  subject "Secretaria de Educação   O.S. #{mmanutencao.id}  "
+  from  "no-replay@seducpma.com"
+  #body :participante => participante, :inscricao => inscricao
+  body :email => email, :mmanutencao => mmanutencao
+end
+
+
 end

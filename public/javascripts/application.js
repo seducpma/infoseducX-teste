@@ -502,6 +502,7 @@ $(".sem_filtroE").click(function ()
      $(".label_busca").show();
      $(".consulta_nome").show();
      $(".txt_busca").val("Digite parte da busca").css("color","gray");
+     $(".status").hide();
      $(".consulta1").hide();
      $(".consulta_unidade").hide();
      $(".consulta_professor").hide();
@@ -537,6 +538,7 @@ $(".filtro_nome").click(function ()
      $(".label_busca1").show();
      $(".consulta_nome").show();
 
+     $(".status").hide();
      $(".consulta").hide();
      $(".consulta2").hide();
      $(".txt_busca2").hide();
@@ -576,14 +578,27 @@ $(".prof_filtro").click(function ()
    { $(".consulta2").show();
      $(".txt_busca2").show();
      $(".label_busca2").show();
-
      $(".consulta2").show();
      $(".txt_busca2").show();
      $(".label_busca2").show();
+     $(".status").hide();
      $(".consulta").hide();
      $(".consulta1").hide();
 
   });
+
+    $(".filtro_status").click(function ()
+   { $(".status").show();
+
+     $(".consulta").hide();
+     $(".consulta1").hide();
+     $(".consulta2").hide();
+
+  });
+
+
+
+
 $(".sem_filtro").click(function ()
     { $(".txt_busca2").hide();
       $(".label_busca2").hide();
