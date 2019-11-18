@@ -145,14 +145,12 @@ def consulta_abertos_unidade
                      end
               else if params[:type_of].to_i == 4
                         w=session[:sstatus]=  params[:manutencao][:situacao_manutencao_id]
-                        t=0
+                        
                         if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC')
                            @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE  mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
-                           t=0
                         else
                            @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE mma.unidade_id ="+(current_user.unidade_id).to_s+"  and mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
                         end
-                        t=0
                        render :update do |page|
                          page.replace_html 'abertos', :partial => "abertos"
                        end
